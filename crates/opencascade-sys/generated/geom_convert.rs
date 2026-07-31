@@ -267,6 +267,81 @@ pub fn surface_to_b_spline_surface(
         ))
     }
 }
+/// **Source:** `GeomConvert.hxx`:297 - `GeomConvert::ConcatG1`
+/// This Method concatenates G1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_g1_arr1_geom_bsplinecurve_arr1_double_harr1_geom_bsplinecurve_bool_real(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomConvert_concat_g1_arr1_geom_bsplinecurve_arr1_double_harr1_geom_bsplinecurve_bool_real(ArrayOfCurves, ArrayOfToler, ArrayOfConcatenated, ClosedFlag, ClosedTolerance)
+    })
+}
+/// **Source:** `GeomConvert.hxx`:316 - `GeomConvert::ConcatC1`
+/// This Method concatenates C1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfIndices: &mut crate::ffi_types::Handle_NCollection_HArray1_int,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real(ArrayOfCurves, ArrayOfToler, ArrayOfIndices, ArrayOfConcatenated, ClosedFlag, ClosedTolerance)
+    })
+}
+/// **Source:** `GeomConvert.hxx`:336 - `GeomConvert::ConcatC1`
+/// This Method concatenates C1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real2(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfIndices: &mut crate::ffi_types::Handle_NCollection_HArray1_int,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+    AngularTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real2(ArrayOfCurves, ArrayOfToler, ArrayOfIndices, ArrayOfConcatenated, ClosedFlag, ClosedTolerance, AngularTolerance)
+    })
+}
 /// **Source:** `GeomConvert.hxx`:352 - `GeomConvert::C0BSplineToC1BSplineCurve`
 /// This Method reduces as far as it is possible the
 /// multiplicities of the knots of the BSpline BS.(keeping the
@@ -288,13 +363,13 @@ pub fn c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
 /// This Method reduces as far as it is possible the
 /// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1. tolerance is a geometrical tolerance.
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real(
     BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
-    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
     tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(BS, tabBS, tolerance)
+        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real(BS, tabBS, tolerance)
     })
 }
 /// **Source:** `GeomConvert.hxx`:371 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -305,14 +380,14 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencol
 /// The Angular tolerance is in radians and measures the angle of
 /// the tangents on the left and on the right to decide if the curve
 /// is C1 or not at a given point
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real2(
     BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
-    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
     AngularTolerance: f64,
     tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
+        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
     })
 }
 
@@ -781,6 +856,29 @@ impl BSplineCurveToBezierCurve {
         }
     }
 
+    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:89 - `GeomConvert_BSplineCurveToBezierCurve::Arcs()`
+    /// Constructs all the Bezier curves whose data is
+    /// computed by this algorithm and loads these curves into the Curves table.
+    /// The Bezier curves have the same orientation as the
+    /// BSpline curve analyzed in this framework.
+    /// Exceptions
+    /// Standard_DimensionError if the Curves array was
+    /// not created with the following bounds:
+    /// -   1 , and
+    /// -   the number of adjacent Bezier arcs computed by
+    /// this algorithm (as given by the function NbArcs).
+    pub fn arcs(
+        &mut self,
+        Curves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom_BezierCurve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_arcs(
+                self as *mut Self,
+                Curves,
+            )
+        })
+    }
+
     /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:95 - `GeomConvert_BSplineCurveToBezierCurve::Knots()`
     /// This methode returns the bspline's knots associated to
     /// the converted arcs
@@ -812,15 +910,6 @@ impl BSplineCurveToBezierCurve {
         })
     }
 }
-
-// ── Skipped symbols for BSplineCurveToBezierCurve (1 total) ──
-// SKIPPED: **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:89 - `GeomConvert_BSplineCurveToBezierCurve::Arcs`
-//   method: Constructs all the Bezier curves whose data is
-//   method: computed by this algorithm and loads these curves into the Curves table.
-//   method: The Bezier curves have the same orientation as the
-//   Reason: has unbindable types: param 'Curves': unresolved template type (NCollection_Array1<occ::handle<Geom_BezierCurve>>&)
-//   // pub fn arcs(&mut self, Curves: /* NCollection_Array1<occ::handle<Geom_BezierCurve>>& */);
-//
 
 // ========================
 // From GeomConvert_BSplineSurfaceKnotSplitting.hxx
@@ -1135,6 +1224,42 @@ impl BSplineSurfaceToBezierSurface {
         }
     }
 
+    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:142 - `GeomConvert_BSplineSurfaceToBezierSurface::Patches()`
+    /// Constructs all the Bezier surfaces whose data is
+    /// computed by this algorithm, and loads them into the Surfaces table.
+    /// These Bezier surfaces have the same orientation as
+    /// the BSpline surface analyzed in this framework.
+    /// The Surfaces array is organised in the same way as
+    /// the patch grid computed on the BSpline surface
+    /// analyzed by this algorithm. A row in the array
+    /// corresponds to a series of adjacent patches, all
+    /// limited by the same two u-isoparametric curves of
+    /// the surface. A column in the array corresponds to a
+    /// series of adjacent patches, all limited by the same two
+    /// v-isoparametric curves of the surface.
+    /// Exceptions
+    /// Standard_DimensionError if the Surfaces array
+    /// was not created with the following bounds:
+    /// -   1, and the number of adjacent patch series in the
+    /// u parametric direction of the patch grid computed
+    /// on the BSpline surface, analyzed by this algorithm
+    /// (as given by the function NbUPatches) as row bounds,
+    /// -   1, and the number of adjacent patch series in the
+    /// v parametric direction of the patch grid computed
+    /// on the BSpline surface, analyzed by this algorithm
+    /// (as given by the function NbVPatches) as column bounds.
+    pub fn patches(
+        &mut self,
+        Surfaces: &mut crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_patches(
+                self as *mut Self,
+                Surfaces,
+            )
+        })
+    }
+
     /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:148 - `GeomConvert_BSplineSurfaceToBezierSurface::UKnots()`
     /// This methode returns the bspline's u-knots associated to
     /// the converted Patches
@@ -1198,15 +1323,6 @@ impl BSplineSurfaceToBezierSurface {
     }
 }
 
-// ── Skipped symbols for BSplineSurfaceToBezierSurface (1 total) ──
-// SKIPPED: **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:142 - `GeomConvert_BSplineSurfaceToBezierSurface::Patches`
-//   method: Constructs all the Bezier surfaces whose data is
-//   method: computed by this algorithm, and loads them into the Surfaces table.
-//   method: These Bezier surfaces have the same orientation as
-//   Reason: has unbindable types: param 'Surfaces': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>>&)
-//   // pub fn patches(&mut self, Surfaces: /* NCollection_Array2<occ::handle<Geom_BezierSurface>>& */);
-//
-
 // ========================
 // From GeomConvert_CompBezierSurfacesToBSplineSurface.hxx
 // ========================
@@ -1248,6 +1364,300 @@ unsafe impl crate::CppDeletable for CompBezierSurfacesToBSplineSurface {
 }
 
 impl CompBezierSurfacesToBSplineSurface {
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:115 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    /// Computes all the data needed to build a "C0"
+    /// continuous BSpline surface equivalent to the grid of
+    /// adjacent non-rational Bezier surfaces Beziers.
+    /// Each surface in the Beziers grid becomes a natural
+    /// patch, limited by knots values, on the BSpline surface
+    /// whose data is computed. Surfaces in the grid must
+    /// satisfy the following conditions:
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a row of the Beziers grid
+    /// must be u-isoparametric bounding curves of these two surfaces.
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a column of the Beziers
+    /// grid must be v-isoparametric bounding curves of these two surfaces.
+    /// The BSpline surface whose data is computed has the
+    /// following characteristics:
+    /// -   Its degree in the u (respectively v) parametric
+    /// direction is equal to that of the Bezier surface
+    /// which has the highest degree in the u
+    /// (respectively v) parametric direction in the Beziers grid.
+    /// -   It is a "Piecewise Bezier" in both u and v
+    /// parametric directions, i.e.:
+    /// -   the knots are regularly spaced in each
+    /// parametric direction (i.e. the difference between
+    /// two consecutive knots is a constant), and
+    /// -   all the multiplicities of the surface knots in a
+    /// given parametric direction are equal to
+    /// Degree, which is the degree of the BSpline
+    /// surface in this parametric direction, except for
+    /// the first and last knots for which the multiplicity is
+    /// equal to Degree + 1.
+    /// -   Coincident bounding curves between two
+    /// consecutive columns of Bezier surfaces in the
+    /// Beziers grid become u-isoparametric curves,
+    /// corresponding to knots values of the BSpline surface.
+    /// -   Coincident bounding curves between two
+    /// consecutive rows of Bezier surfaces in the Beziers
+    /// grid become v-isoparametric curves
+    /// corresponding to knots values of the BSpline surface.
+    /// Use the available consultation functions to access the
+    /// computed data. This data may be used to construct the BSpline surface.
+    /// Warning
+    /// The surfaces in the Beziers grid must be adjacent, i.e.
+    /// two consecutive Bezier surfaces in the grid (in a row
+    /// or column) must have a coincident bounding curve. In
+    /// addition, the location of the parameterization on each
+    /// of these surfaces (i.e. the relative location of u and v
+    /// isoparametric curves on the surface) is of importance
+    /// with regard to the positioning of the surfaces in the
+    /// Beziers grid. Care must be taken with respect to the
+    /// above, as these properties are not checked and an
+    /// error may occur if they are not satisfied.
+    /// Exceptions
+    /// Standard_NotImplemented if one of the Bezier
+    /// surfaces of the Beziers grid is rational.
+    pub fn new_arr2_geom_beziersurface(
+        Beziers: &crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface(Beziers)))
+        }
+    }
+
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:122 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    /// Build an Ci uniform (Rational) BSpline surface
+    /// The highest Continuity Ci is imposed, like the
+    /// maximal deformation is lower than <Tolerance>.
+    /// Warning: The Continuity C0 is imposed without any check.
+    pub fn new_arr2_geom_beziersurface_real_bool(
+        Beziers: &crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+        Tolerance: f64,
+        RemoveKnots: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_real_bool(Beziers, Tolerance, RemoveKnots)))
+        }
+    }
+
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:213 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    /// Computes all the data needed to construct a BSpline
+    /// surface equivalent to the adjacent non-rational
+    /// Bezier surfaces Beziers grid.
+    /// Each surface in the Beziers grid becomes a natural
+    /// patch, limited by knots values, on the BSpline surface
+    /// whose data is computed. Surfaces in the grid must
+    /// satisfy the following conditions:
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a row of the Beziers grid
+    /// must be u-isoparametric bounding curves of these two surfaces.
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a column of the Beziers
+    /// grid must be v-isoparametric bounding curves of these two surfaces.
+    /// The BSpline surface whose data is computed has the
+    /// following characteristics:
+    /// -   Its degree in the u (respectively v) parametric
+    /// direction is equal to that of the Bezier surface
+    /// which has the highest degree in the u
+    /// (respectively v) parametric direction in the Beziers grid.
+    /// -   Coincident bounding curves between two
+    /// consecutive columns of Bezier surfaces in the
+    /// Beziers grid become u-isoparametric curves
+    /// corresponding to knots values of the BSpline surface.
+    /// -   Coincident bounding curves between two
+    /// consecutive rows of Bezier surfaces in the Beziers
+    /// grid become v-isoparametric curves
+    /// corresponding to knots values of the BSpline surface.
+    /// Knots values of the BSpline surface are given in the two tables:
+    /// -   UKnots for the u parametric direction (which
+    /// corresponds to the order of Bezier surface columns in the Beziers grid), and
+    /// -   VKnots for the v parametric direction (which
+    /// corresponds to the order of Bezier surface rows in the Beziers grid).
+    /// The dimensions of UKnots (respectively VKnots)
+    /// must be equal to the number of columns (respectively,
+    /// rows) of the Beziers grid, plus 1 .
+    /// UContinuity and VContinuity, which are both
+    /// defaulted to GeomAbs_C0, specify the required
+    /// continuity on the BSpline surface. If the required
+    /// degree of continuity is greater than 0 in a given
+    /// parametric direction, a deformation is applied locally
+    /// on the initial surface (as defined by the Beziers grid)
+    /// to satisfy this condition. This local deformation is not
+    /// applied however, if it is greater than Tolerance
+    /// (defaulted to 1.0 e-7). In such cases, the
+    /// continuity condition is not satisfied, and the function
+    /// IsDone will return false. A small tolerance value
+    /// prevents any modification of the surface and a large
+    /// tolerance value "smoothes" the surface.
+    /// Use the available consultation functions to access the
+    /// computed data. This data may be used to construct the BSpline surface.
+    /// Warning
+    /// The surfaces in the Beziers grid must be adjacent, i.e.
+    /// two consecutive Bezier surfaces in the grid (in a row
+    /// or column) must have a coincident bounding curve. In
+    /// addition, the location of the parameterization on each
+    /// of these surfaces (i.e. the relative location of u and v
+    /// isoparametric curves on the surface) is of importance
+    /// with regard to the positioning of the surfaces in the
+    /// Beziers grid. Care must be taken with respect to the
+    /// above, as these properties are not checked and an
+    /// error may occur if they are not satisfied.
+    /// Exceptions
+    /// Standard_DimensionMismatch:
+    /// -   if the number of knots in the UKnots table (i.e. the
+    /// length of the UKnots array) is not equal to the
+    /// number of columns of Bezier surfaces in the
+    /// Beziers grid plus 1, or
+    /// -   if the number of knots in the VKnots table (i.e. the
+    /// length of the VKnots array) is not equal to the
+    /// number of rows of Bezier surfaces in the Beziers grid, plus 1.
+    /// Standard_ConstructionError:
+    /// -   if UContinuity and VContinuity are not equal to
+    /// one of the following values: GeomAbs_C0,
+    /// GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or
+    /// -   if the number of columns in the Beziers grid is
+    /// greater than 1, and the required degree of
+    /// continuity in the u parametric direction is greater
+    /// than that of the Bezier surface with the highest
+    /// degree in the u parametric direction (in the Beziers grid), minus 1; or
+    /// -   if the number of rows in the Beziers grid is
+    /// greater than 1, and the required degree of
+    /// continuity in the v parametric direction is greater
+    /// than that of the Bezier surface with the highest
+    /// degree in the v parametric direction (in the Beziers grid), minus 1 .
+    /// Standard_NotImplemented if one of the Bezier
+    /// surfaces in the Beziers grid is rational.
+    pub fn new_arr2_geom_beziersurface_arr1_double2_shape2_real(
+        Beziers: &crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+        UKnots: &crate::ffi_types::NCollection_Array1_double,
+        VKnots: &crate::ffi_types::NCollection_Array1_double,
+        UContinuity: crate::geom_abs::Shape,
+        VContinuity: crate::geom_abs::Shape,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_arr1_double2_shape2_real(Beziers, UKnots, VKnots, UContinuity.into(), VContinuity.into(), Tolerance)))
+        }
+    }
+
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:122 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    /// Build an Ci uniform (Rational) BSpline surface
+    /// The highest Continuity Ci is imposed, like the
+    /// maximal deformation is lower than <Tolerance>.
+    /// Warning: The Continuity C0 is imposed without any check.
+    pub fn new_arr2_geom_beziersurface_real(
+        Beziers: &crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+        Tolerance: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_arr2_geom_beziersurface_real_bool(Beziers, Tolerance, true)
+    }
+
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:213 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    /// Computes all the data needed to construct a BSpline
+    /// surface equivalent to the adjacent non-rational
+    /// Bezier surfaces Beziers grid.
+    /// Each surface in the Beziers grid becomes a natural
+    /// patch, limited by knots values, on the BSpline surface
+    /// whose data is computed. Surfaces in the grid must
+    /// satisfy the following conditions:
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a row of the Beziers grid
+    /// must be u-isoparametric bounding curves of these two surfaces.
+    /// -   Coincident bounding curves between two
+    /// consecutive surfaces in a column of the Beziers
+    /// grid must be v-isoparametric bounding curves of these two surfaces.
+    /// The BSpline surface whose data is computed has the
+    /// following characteristics:
+    /// -   Its degree in the u (respectively v) parametric
+    /// direction is equal to that of the Bezier surface
+    /// which has the highest degree in the u
+    /// (respectively v) parametric direction in the Beziers grid.
+    /// -   Coincident bounding curves between two
+    /// consecutive columns of Bezier surfaces in the
+    /// Beziers grid become u-isoparametric curves
+    /// corresponding to knots values of the BSpline surface.
+    /// -   Coincident bounding curves between two
+    /// consecutive rows of Bezier surfaces in the Beziers
+    /// grid become v-isoparametric curves
+    /// corresponding to knots values of the BSpline surface.
+    /// Knots values of the BSpline surface are given in the two tables:
+    /// -   UKnots for the u parametric direction (which
+    /// corresponds to the order of Bezier surface columns in the Beziers grid), and
+    /// -   VKnots for the v parametric direction (which
+    /// corresponds to the order of Bezier surface rows in the Beziers grid).
+    /// The dimensions of UKnots (respectively VKnots)
+    /// must be equal to the number of columns (respectively,
+    /// rows) of the Beziers grid, plus 1 .
+    /// UContinuity and VContinuity, which are both
+    /// defaulted to GeomAbs_C0, specify the required
+    /// continuity on the BSpline surface. If the required
+    /// degree of continuity is greater than 0 in a given
+    /// parametric direction, a deformation is applied locally
+    /// on the initial surface (as defined by the Beziers grid)
+    /// to satisfy this condition. This local deformation is not
+    /// applied however, if it is greater than Tolerance
+    /// (defaulted to 1.0 e-7). In such cases, the
+    /// continuity condition is not satisfied, and the function
+    /// IsDone will return false. A small tolerance value
+    /// prevents any modification of the surface and a large
+    /// tolerance value "smoothes" the surface.
+    /// Use the available consultation functions to access the
+    /// computed data. This data may be used to construct the BSpline surface.
+    /// Warning
+    /// The surfaces in the Beziers grid must be adjacent, i.e.
+    /// two consecutive Bezier surfaces in the grid (in a row
+    /// or column) must have a coincident bounding curve. In
+    /// addition, the location of the parameterization on each
+    /// of these surfaces (i.e. the relative location of u and v
+    /// isoparametric curves on the surface) is of importance
+    /// with regard to the positioning of the surfaces in the
+    /// Beziers grid. Care must be taken with respect to the
+    /// above, as these properties are not checked and an
+    /// error may occur if they are not satisfied.
+    /// Exceptions
+    /// Standard_DimensionMismatch:
+    /// -   if the number of knots in the UKnots table (i.e. the
+    /// length of the UKnots array) is not equal to the
+    /// number of columns of Bezier surfaces in the
+    /// Beziers grid plus 1, or
+    /// -   if the number of knots in the VKnots table (i.e. the
+    /// length of the VKnots array) is not equal to the
+    /// number of rows of Bezier surfaces in the Beziers grid, plus 1.
+    /// Standard_ConstructionError:
+    /// -   if UContinuity and VContinuity are not equal to
+    /// one of the following values: GeomAbs_C0,
+    /// GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or
+    /// -   if the number of columns in the Beziers grid is
+    /// greater than 1, and the required degree of
+    /// continuity in the u parametric direction is greater
+    /// than that of the Bezier surface with the highest
+    /// degree in the u parametric direction (in the Beziers grid), minus 1; or
+    /// -   if the number of rows in the Beziers grid is
+    /// greater than 1, and the required degree of
+    /// continuity in the v parametric direction is greater
+    /// than that of the Bezier surface with the highest
+    /// degree in the v parametric direction (in the Beziers grid), minus 1 .
+    /// Standard_NotImplemented if one of the Bezier
+    /// surfaces in the Beziers grid is rational.
+    pub fn new_arr2_geom_beziersurface_arr1_double2_shape2(
+        Beziers: &crate::ffi_types::NCollection_Array2_Handle_Geom_BezierSurface,
+        UKnots: &crate::ffi_types::NCollection_Array1_double,
+        VKnots: &crate::ffi_types::NCollection_Array1_double,
+        UContinuity: crate::geom_abs::Shape,
+        VContinuity: crate::geom_abs::Shape,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_arr2_geom_beziersurface_arr1_double2_shape2_real(
+            Beziers,
+            UKnots,
+            VKnots,
+            UContinuity,
+            VContinuity,
+            1.0e-4,
+        )
+    }
+
     /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:223 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUKnots()`
     /// Returns the number of knots in the U direction
     /// of the BSpline surface whose data is computed in this framework.
@@ -1385,29 +1795,6 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 }
-
-// ── Skipped symbols for CompBezierSurfacesToBSplineSurface (3 total) ──
-// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:115 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
-//   constructor: Computes all the data needed to build a "C0"
-//   constructor: continuous BSpline surface equivalent to the grid of
-//   constructor: adjacent non-rational Bezier surfaces Beziers.
-//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
-//   // pub fn new_beziersurface>>(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:122 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
-//   constructor: Build an Ci uniform (Rational) BSpline surface
-//   constructor: The highest Continuity Ci is imposed, like the
-//   constructor: maximal deformation is lower than <Tolerance>.
-//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
-//   // pub fn new_beziersurface>>_real_bool(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */, Tolerance: f64, RemoveKnots: bool) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:213 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
-//   constructor: Computes all the data needed to construct a BSpline
-//   constructor: surface equivalent to the adjacent non-rational
-//   constructor: Bezier surfaces Beziers grid.
-//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
-//   // pub fn new_beziersurface>>_arr1_double2_shape2_real(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */, UKnots: &Array1_double, VKnots: &Array1_double, UContinuity: Shape, VContinuity: Shape, Tolerance: f64) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From GeomConvert_CompCurveToBSplineCurve.hxx

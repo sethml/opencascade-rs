@@ -5,7 +5,6 @@
 
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
@@ -77,12 +76,10 @@
 #include <BRep_CurveOn2Surfaces.hxx>
 #include <BRep_CurveOnClosedSurface.hxx>
 #include <BRep_CurveOnSurface.hxx>
-#include <BRep_CurveRepresentation.hxx>
 #include <BRep_GCurve.hxx>
 #include <BRep_PointOnCurve.hxx>
 #include <BRep_PointOnCurveOnSurface.hxx>
 #include <BRep_PointOnSurface.hxx>
-#include <BRep_PointRepresentation.hxx>
 #include <BRep_PointsOnSurface.hxx>
 #include <BRep_Polygon3D.hxx>
 #include <BRep_PolygonOnClosedSurface.hxx>
@@ -116,8 +113,6 @@
 #include <GeomAdaptor_Surface.hxx>
 #include <GeomAdaptor_TransformedCurve.hxx>
 #include <GeomAdaptor_TransformedSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Message_Alert.hxx>
 #include <Message_Attribute.hxx>
 #include <Message_AttributeStream.hxx>
 #include <Message_Messenger.hxx>
@@ -126,7 +121,6 @@
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
 #include <ShapeBuild_ReShape.hxx>
 #include <ShapeCustom_BSplineRestriction.hxx>
 #include <ShapeCustom_ConvertToBSpline.hxx>
@@ -167,7 +161,6 @@
 #include <TopoDS_TCompound.hxx>
 #include <TopoDS_TEdge.hxx>
 #include <TopoDS_TFace.hxx>
-#include <TopoDS_TShape.hxx>
 #include <TopoDS_TShell.hxx>
 #include <TopoDS_TSolid.hxx>
 #include <TopoDS_TVertex.hxx>
@@ -639,6 +632,10 @@ extern "C" const char* BRep_Builder_make_face_face_handlegeomsurface_location_re
 }
 extern "C" const char* BRep_Builder_make_face_face_handlepolytriangulation(const BRep_Builder* self_, TopoDS_Face* theFace, Handle(Poly_Triangulation) const* theTriangulation) {
     try { self_->MakeFace(*theFace, *theTriangulation); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRep_Builder_make_face_face_list_poly_triangulation_handlepolytriangulation(const BRep_Builder* self_, TopoDS_Face* theFace, NCollection_List_Handle_Poly_Triangulation const* theTriangulations, Handle(Poly_Triangulation) const* theActiveTriangulation) {
+    try { self_->MakeFace(*theFace, *theTriangulations, *theActiveTriangulation); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BRep_Builder_update_face_face_handlegeomsurface_location_real(const BRep_Builder* self_, TopoDS_Face const* F, Handle(Geom_Surface) const* S, TopLoc_Location const* L, double Tol) {
@@ -3821,6 +3818,14 @@ extern "C" const char* BRep_TEdge_degenerated_bool(BRep_TEdge* self_, bool S) {
     try { self_->Degenerated(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_BRep_CurveRepresentation const*> BRep_TEdge_curves(const BRep_TEdge* self_) {
+    try { return {&(self_->Curves()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_BRep_CurveRepresentation*> BRep_TEdge_change_curves(BRep_TEdge* self_) {
+    try { return {&(self_->ChangeCurves()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRep_TEdge_dynamic_type(const BRep_TEdge* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3985,6 +3990,14 @@ extern "C" const char* BRep_TFace_triangulation_handlepolytriangulation_bool(BRe
     try { self_->Triangulation(*theTriangulation, theToReset); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_Poly_Triangulation const*> BRep_TFace_triangulations(const BRep_TFace* self_) {
+    try { return {&(self_->Triangulations()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRep_TFace_triangulations_list_poly_triangulation_handlepolytriangulation(BRep_TFace* self_, NCollection_List_Handle_Poly_Triangulation const* theTriangulations, Handle(Poly_Triangulation) const* theActiveTriangulation) {
+    try { self_->Triangulations(*theTriangulations, *theActiveTriangulation); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> BRep_TFace_nb_triangulations(const BRep_TFace* self_) {
     try { return {self_->NbTriangulations(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4137,6 +4150,14 @@ extern "C" const char* BRep_TVertex_pnt_pnt(BRep_TVertex* self_, gp_Pnt const* P
     try { self_->Pnt(*P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_BRep_PointRepresentation const*> BRep_TVertex_points(const BRep_TVertex* self_) {
+    try { return {&(self_->Points()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_BRep_PointRepresentation*> BRep_TVertex_change_points(BRep_TVertex* self_) {
+    try { return {&(self_->ChangePoints()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRep_TVertex_dynamic_type(const BRep_TVertex* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4271,6 +4292,10 @@ extern "C" OcctResult<Handle(Geom_Surface)*> BRep_Tool_surface_face(TopoDS_Face 
 }
 extern "C" OcctResult<Handle(Poly_Triangulation) const*> BRep_Tool_triangulation(TopoDS_Face const* theFace, TopLoc_Location* theLocation, uint32_t theMeshPurpose) {
     try { return {&(BRep_Tool::Triangulation(*theFace, *theLocation, theMeshPurpose)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_Poly_Triangulation const*> BRep_Tool_triangulations(TopoDS_Face const* theFace, TopLoc_Location* theLocation) {
+    try { return {&(BRep_Tool::Triangulations(*theFace, *theLocation)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> BRep_Tool_tolerance_face(TopoDS_Face const* F) {

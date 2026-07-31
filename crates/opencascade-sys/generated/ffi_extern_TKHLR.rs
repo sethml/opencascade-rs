@@ -1877,6 +1877,14 @@ unsafe extern "C" {
         self_: *mut HLRAlgo_PolyAlgo,
         theNbShells: i32,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::PolyShell()`
+    pub fn HLRAlgo_PolyAlgo_poly_shell(
+        self_: *const HLRAlgo_PolyAlgo,
+    ) -> crate::OcctResult<*const NCollection_Array1_Handle_HLRAlgo_PolyShellData>;
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:41 - `HLRAlgo_PolyAlgo::ChangePolyShell()`
+    pub fn HLRAlgo_PolyAlgo_change_poly_shell(
+        self_: *mut HLRAlgo_PolyAlgo,
+    ) -> crate::OcctResult<*mut NCollection_Array1_Handle_HLRAlgo_PolyShellData>;
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:43 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn HLRAlgo_PolyAlgo_clear(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:46 - `HLRAlgo_PolyAlgo::Update()`
@@ -2157,6 +2165,38 @@ unsafe extern "C" {
         nbNod: i32,
         nbTri: i32,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalData>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:37 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub fn HLRAlgo_PolyInternalData_update_links_arr1_triangledata_arr1_polyinternalsegment_arr1_hlralgo_polyinternalnode(
+        self_: *mut HLRAlgo_PolyInternalData,
+        theTData: *mut NCollection_Array1_HLRAlgo_TriangleData,
+        thePISeg: *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePINod: *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:42 - `HLRAlgo_PolyInternalData::AddNode()`
+    pub fn HLRAlgo_PolyInternalData_add_node(
+        self_: *mut HLRAlgo_PolyInternalData,
+        theNod1RValues: *mut HLRAlgo_PolyInternalNode_NodeData,
+        theNod2RValues: *mut HLRAlgo_PolyInternalNode_NodeData,
+        thePINod1: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        theCoef1: f64,
+        theX3: f64,
+        theY3: f64,
+        theZ3: f64,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:51 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub fn HLRAlgo_PolyInternalData_update_links_int3_arr1_triangledataptr2_arr1_polyinternalsegmentptr2_arr1_hlralgo_polyinternalnodeptr2(
+        self_: *mut HLRAlgo_PolyInternalData,
+        theIp1: i32,
+        theIp2: i32,
+        theIp3: i32,
+        theTData1: *mut *mut NCollection_Array1_HLRAlgo_TriangleData,
+        theTData2: *mut *mut NCollection_Array1_HLRAlgo_TriangleData,
+        thePISeg1: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePISeg2: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePINod1: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn HLRAlgo_PolyInternalData_dump(
         self_: *const HLRAlgo_PolyInternalData,
@@ -2172,6 +2212,12 @@ unsafe extern "C" {
         self_: *mut HLRAlgo_PolyInternalData,
         PISeg1: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
         PISeg2: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:70 - `HLRAlgo_PolyInternalData::IncPINod()`
+    pub fn HLRAlgo_PolyInternalData_inc_pi_nod(
+        self_: *mut HLRAlgo_PolyInternalData,
+        thePINod1: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: *mut *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:74 - `HLRAlgo_PolyInternalData::DecTData()`
     pub fn HLRAlgo_PolyInternalData_dec_t_data(
@@ -2223,6 +2269,10 @@ unsafe extern "C" {
     pub fn HLRAlgo_PolyInternalData_pi_seg(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<*mut NCollection_Array1_HLRAlgo_PolyInternalSegment>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:98 - `HLRAlgo_PolyInternalData::PINod()`
+    pub fn HLRAlgo_PolyInternalData_pi_nod(
+        self_: *mut HLRAlgo_PolyInternalData,
+    ) -> crate::OcctResult<*mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode>;
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::DynamicType()`
     pub fn HLRAlgo_PolyInternalData_dynamic_type(
         self_: *const HLRAlgo_PolyInternalData,
@@ -2416,6 +2466,14 @@ unsafe extern "C" {
     pub fn HLRAlgo_PolyShellData_hiding(
         self_: *const HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:45 - `HLRAlgo_PolyShellData::PolyData()`
+    pub fn HLRAlgo_PolyShellData_poly_data(
+        self_: *mut HLRAlgo_PolyShellData,
+    ) -> crate::OcctResult<*mut NCollection_Array1_Handle_HLRAlgo_PolyData>;
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:47 - `HLRAlgo_PolyShellData::HidingPolyData()`
+    pub fn HLRAlgo_PolyShellData_hiding_poly_data(
+        self_: *mut HLRAlgo_PolyShellData,
+    ) -> crate::OcctResult<*mut NCollection_Array1_Handle_HLRAlgo_PolyData>;
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:49 - `HLRAlgo_PolyShellData::Edges()`
     pub fn HLRAlgo_PolyShellData_edges(
         self_: *mut HLRAlgo_PolyShellData,

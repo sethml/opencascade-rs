@@ -1528,13 +1528,28 @@ impl LineTool {
             crate::ffi_extern_TKGeomAlgo::GeomInt_LineTool_last_parameter(L)
         })
     }
-}
 
-// ── Skipped symbols for LineTool (1 total) ──
-// SKIPPED: **Source:** `GeomInt_LineTool.hxx`:42 - `GeomInt_LineTool::DecompositionOfWLine`
-//   Reason: has unbindable types: param 'theNewLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn decomposition_of_w_line(theWLine: &HandleWLine, theSurface1: &HandleSurface, theSurface2: &HandleSurface, aTolSum: f64, theLConstructor: &LineConstructor, theNewLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */) -> bool;
-//
+    /// **Source:** `GeomInt_LineTool.hxx`:42 - `GeomInt_LineTool::DecompositionOfWLine()`
+    pub fn decomposition_of_w_line(
+        theWLine: &crate::ffi_types::Handle_IntPatch_WLine,
+        theSurface1: &crate::ffi_types::Handle_GeomAdaptor_Surface,
+        theSurface2: &crate::ffi_types::Handle_GeomAdaptor_Surface,
+        aTolSum: f64,
+        theLConstructor: &LineConstructor,
+        theNewLines: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomInt_LineTool_decomposition_of_w_line(
+                theWLine,
+                theSurface1,
+                theSurface2,
+                aTolSum,
+                theLConstructor,
+                theNewLines,
+            )
+        })
+    }
+}
 
 // ========================
 // From GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx

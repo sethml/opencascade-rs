@@ -1325,6 +1325,20 @@ impl ADriverTable {
         }
     }
 
+    /// **Source:** `XmlMDF_ADriverTable.hxx`:53 - `XmlMDF_ADriverTable::CreateDrvMap()`
+    /// Fills the map by all registered drivers.
+    pub fn create_drv_map(
+        &mut self,
+        theDriverMap: &mut crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlMDF_ADriverTable_create_drv_map(
+                self as *mut Self,
+                theDriverMap,
+            )
+        })
+    }
+
     /// **Source:** `XmlMDF_ADriverTable.hxx`:59 - `XmlMDF_ADriverTable::GetDriver()`
     /// Gets a driver <aDriver> according to <aType>
     ///
@@ -1527,13 +1541,6 @@ impl Handle_XmlMDF_ADriverTable {
         }
     }
 }
-
-// ── Skipped symbols for ADriverTable (1 total) ──
-// SKIPPED: **Source:** `XmlMDF_ADriverTable.hxx`:53 - `XmlMDF_ADriverTable::CreateDrvMap`
-//   method: Fills the map by all registered drivers.
-//   Reason: has unbindable types: param 'theDriverMap': unresolved template type (NCollection_DataMap<TCollection_AsciiString, occ::handle<XmlMDF_ADriver>>&)
-//   // pub fn create_drv_map(&mut self, theDriverMap: /* NCollection_DataMap<TCollection_AsciiString, occ::handle<XmlMDF_ADriver>>& */);
-//
 
 // ========================
 // From XmlMDF_DerivedDriver.hxx

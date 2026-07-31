@@ -8600,7 +8600,7 @@ impl DimensionedGeometry {
         &mut self,
         nbDims: i32,
         aDimension: &crate::ffi_types::Handle_IGESData_IGESEntity,
-        entities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        entities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_DimensionedGeometry_init(
@@ -9604,7 +9604,7 @@ impl FlagNote {
         leftCorner: &crate::gp::XYZ,
         anAngle: f64,
         aNote: &crate::ffi_types::Handle_IGESDimen_GeneralNote,
-        someLeaders: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        someLeaders: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_FlagNote_init(
@@ -10649,7 +10649,7 @@ impl GeneralLabel {
     pub fn init(
         &mut self,
         aNote: &crate::ffi_types::Handle_IGESDimen_GeneralNote,
-        someLeaders: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        someLeaders: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_GeneralLabel_init(
@@ -12331,13 +12331,13 @@ impl GeneralNote {
         widths: &crate::ffi_types::Handle_NCollection_HArray1_double,
         heights: &crate::ffi_types::Handle_NCollection_HArray1_double,
         fontCodes: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        fonts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
+        fonts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
         slants: &crate::ffi_types::Handle_NCollection_HArray1_double,
         rotations: &crate::ffi_types::Handle_NCollection_HArray1_double,
         mirrorFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
         rotFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
         start: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
-        texts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        texts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_GeneralNote_init(
@@ -13493,8 +13493,8 @@ impl GeneralSymbol {
     pub fn init(
         &mut self,
         aNote: &crate::ffi_types::Handle_IGESDimen_GeneralNote,
-        allGeoms: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allLeaders: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        allGeoms: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allLeaders: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_GeneralSymbol_init(
@@ -16667,7 +16667,7 @@ impl NewDimensionedGeometry {
         aDimen: &crate::ffi_types::Handle_IGESData_IGESEntity,
         anOrientation: i32,
         anAngle: f64,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         allLocations: &crate::ffi_types::Handle_NCollection_HArray1_int,
         allPoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
     ) {
@@ -17739,18 +17739,18 @@ impl NewGeneralNote {
         interLineSpc: &crate::ffi_types::Handle_NCollection_HArray1_double,
         fontStyles: &crate::ffi_types::Handle_NCollection_HArray1_int,
         charAngles: &crate::ffi_types::Handle_NCollection_HArray1_double,
-        controlCodeStrings: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        controlCodeStrings: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         nbChars: &crate::ffi_types::Handle_NCollection_HArray1_int,
         boxWidths: &crate::ffi_types::Handle_NCollection_HArray1_double,
         boxHeights: &crate::ffi_types::Handle_NCollection_HArray1_double,
         charSetCodes: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        charSetEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        charSetEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         slAngles: &crate::ffi_types::Handle_NCollection_HArray1_double,
         rotAngles: &crate::ffi_types::Handle_NCollection_HArray1_double,
         mirrorFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
         rotateFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
         startPoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
-        texts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        texts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_NewGeneralNote_init(
@@ -24070,7 +24070,7 @@ impl SectionedArea {
         aPoint: &crate::gp::XYZ,
         aDistance: f64,
         anAngle: f64,
-        someIslands: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        someIslands: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDimen_SectionedArea_init(

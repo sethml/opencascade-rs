@@ -16411,6 +16411,10 @@ unsafe extern "C" {
         Length: *mut f64,
         Error: *mut f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Poly.hxx`:56 - `Poly::Catenate`
+    pub fn Poly_catenate(
+        lstTri: *const NCollection_List_Handle_Poly_Triangulation,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
     /// **Source:** `Poly.hxx`:64 - `Poly::Write`
     pub fn Poly_write_handlepolytriangulation_ostream_bool(
         T: *const Handle_Poly_Triangulation,

@@ -63,7 +63,6 @@
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Poly_TriangulationParameters.hxx>
 #include <RWMesh_TriangulationSource.hxx>
 #include <Select3D_BndBox3d.hxx>
@@ -14159,6 +14158,10 @@ extern "C" const char* PLib_eval_length_int2_real6(int32_t Degree, int32_t Dimen
 // ========================
 // Poly namespace functions
 // ========================
+extern "C" OcctResult<Handle(Poly_Triangulation)*> Poly_catenate(NCollection_List_Handle_Poly_Triangulation const* lstTri) {
+    try { return {new Handle(Poly_Triangulation)(Poly::Catenate(*lstTri)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* Poly_write_handlepolytriangulation_ostream_bool(Handle(Poly_Triangulation) const* T, Standard_OStream* OS, bool Compact) {
     try { Poly::Write(*T, *OS, Compact); return nullptr; }
     OCCT_CATCH_RETURN_VOID

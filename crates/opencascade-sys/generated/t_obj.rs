@@ -744,6 +744,20 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
@@ -1296,7 +1310,12 @@ impl CheckModel {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
-    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetMessageStrings(
@@ -6099,12 +6118,12 @@ unsafe impl crate::CppDeletable for SequenceIterator {
 impl SequenceIterator {
     /// **Source:** `TObj_SequenceIterator.hxx`:51 - `TObj_SequenceIterator::TObj_SequenceIterator()`
     /// Creates an iterator an initialize it by sequence of objects.
-    pub fn new_handlencollectionhsequenceopencascadehandletobjobject_handlestandardtype(
-        theObjects: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TObj_Object,
+    pub fn new_hseq_tobj_object_handlestandardtype(
+        theObjects: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TObj_Object,
         theType: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTObj::TObj_SequenceIterator_ctor_handlencollectionhsequenceopencascadehandletobjobject_handlestandardtype(theObjects, theType)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTObj::TObj_SequenceIterator_ctor_hseq_tobj_object_handlestandardtype(theObjects, theType)))
         }
     }
 
@@ -6907,6 +6926,23 @@ impl TIntSparseArray {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -7492,6 +7528,23 @@ impl TModel {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -7706,6 +7759,29 @@ impl TNameContainer {
         })
     }
 
+    /// **Source:** `TObj_TNameContainer.hxx`:76 - `TObj_TNameContainer::Set()`
+    /// Sets the NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> object
+    pub fn set(
+        &mut self,
+        theElem: &crate::ffi_types::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_set(self as *mut Self, theElem)
+        })
+    }
+
+    /// **Source:** `TObj_TNameContainer.hxx`:81 - `TObj_TNameContainer::Get()`
+    /// Returns the NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> object
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_get(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `TObj_TNameContainer.hxx`:88 - `TObj_TNameContainer::NewEmpty()`
     /// Returns an new empty TObj_TNameContainer attribute. It is used by the
     /// copy algorithm.
@@ -7758,12 +7834,12 @@ impl TNameContainer {
     /// **Source:** `TObj_TNameContainer.hxx`:54 - `TObj_TNameContainer::Set()`
     /// Creates NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> attribute on
     /// given label if not exist
-    pub fn set(
+    pub fn set_label(
         theLabel: &crate::tdf::Label,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_TObj_TNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTObj::TObj_TNameContainer_set(theLabel),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_set_label(theLabel),
             ))
         }
     }
@@ -8124,6 +8200,23 @@ impl TNameContainer {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -8267,18 +8360,6 @@ impl Handle_TObj_TNameContainer {
         }
     }
 }
-
-// ── Skipped symbols for TNameContainer (2 total) ──
-// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:76 - `TObj_TNameContainer::Set`
-//   method: Sets the NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> object
-//   Reason: has unbindable types: param 'theElem': unresolved template type (NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> const&)
-//   // pub fn set(&mut self, theElem: /* NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> const& */);
-//
-// SKIPPED: **Source:** `TObj_TNameContainer.hxx`:81 - `TObj_TNameContainer::Get`
-//   method: Returns the NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> object
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> const&)
-//   // pub fn get(&self) -> /* NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> const& */;
-//
 
 // ========================
 // From TObj_TObject.hxx
@@ -8738,6 +8819,23 @@ impl TObject {
             crate::ffi_extern_TKTObj::TObj_TObject_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -9390,6 +9488,23 @@ impl TReference {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -9982,6 +10097,23 @@ impl TXYZ {
     pub fn references(&self, aDataSet: &crate::ffi_types::Handle_TDF_DataSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_References(self as *const Self, aDataSet)
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         })
     }
 

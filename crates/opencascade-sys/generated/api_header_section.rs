@@ -325,7 +325,7 @@ impl EditHeader {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -362,7 +362,7 @@ impl EditHeader {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -686,7 +686,7 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:87 - `APIHeaderSection_MakeHeader::SetAuthor()`
     pub fn set_author(
         &mut self,
-        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_author(
@@ -714,9 +714,8 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:93 - `APIHeaderSection_MakeHeader::Author()`
     pub fn author(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_author(self as *const Self),
@@ -751,7 +750,7 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:102 - `APIHeaderSection_MakeHeader::SetOrganization()`
     pub fn set_organization(
         &mut self,
-        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_organization(
@@ -779,9 +778,8 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:110 - `APIHeaderSection_MakeHeader::Organization()`
     pub fn organization(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_organization(
@@ -923,7 +921,7 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:144 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiers()`
     pub fn set_schema_identifiers(
         &mut self,
-        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_schema_identifiers(
@@ -951,9 +949,8 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:153 - `APIHeaderSection_MakeHeader::SchemaIdentifiers()`
     pub fn schema_identifiers(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_schema_identifiers(
@@ -1029,7 +1026,7 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:172 - `APIHeaderSection_MakeHeader::SetDescription()`
     pub fn set_description(
         &mut self,
-        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_description(
@@ -1057,9 +1054,8 @@ impl MakeHeader {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:180 - `APIHeaderSection_MakeHeader::Description()`
     pub fn description(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_description(

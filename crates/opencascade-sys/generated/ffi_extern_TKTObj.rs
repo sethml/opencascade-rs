@@ -314,6 +314,10 @@ unsafe extern "C" {
     pub fn TObj_Application_inherited_Version(
         self_: *const TObj_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn TObj_Application_inherited_MetaDataLookUpTable(
+        self_: *mut TObj_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TObj_Application_inherited_IsInstance(
         self_: *const TObj_Application,
@@ -504,9 +508,7 @@ unsafe extern "C" {
     pub fn TObj_CheckModel_inherited_GetMessageStrings(
         self_: *const TObj_CheckModel,
         theStatus: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TObj_CheckModel_inherited_IsInstance(
         self_: *const TObj_CheckModel,
@@ -2225,8 +2227,8 @@ unsafe extern "C" {
     // ======================== TObj_SequenceIterator ========================
     pub fn TObj_SequenceIterator_destructor(self_: *mut TObj_SequenceIterator);
     /// **Source:** `TObj_SequenceIterator.hxx`:51 - `TObj_SequenceIterator::TObj_SequenceIterator()`
-    pub fn TObj_SequenceIterator_ctor_handlencollectionhsequenceopencascadehandletobjobject_handlestandardtype(
-        theObjects: *const Handle_NCollection_HSequence_opencascade_handle_TObj_Object,
+    pub fn TObj_SequenceIterator_ctor_hseq_tobj_object_handlestandardtype(
+        theObjects: *const Handle_NCollection_HSequence_Handle_TObj_Object,
         theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<*mut TObj_SequenceIterator>;
     /// **Source:** `TObj_SequenceIterator.hxx`:61 - `TObj_SequenceIterator::More()`
@@ -2576,6 +2578,13 @@ unsafe extern "C" {
         self_: *const TObj_TIntSparseArray,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TIntSparseArray_inherited_ExtendedDump(
+        self_: *const TObj_TIntSparseArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TIntSparseArray_inherited_Forget(
         self_: *mut TObj_TIntSparseArray,
@@ -2805,6 +2814,13 @@ unsafe extern "C" {
         self_: *const TObj_TModel,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TModel_inherited_ExtendedDump(
+        self_: *const TObj_TModel,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TModel_inherited_Forget(
         self_: *mut TObj_TModel,
@@ -2862,6 +2878,15 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     /// **Source:** `TObj_TNameContainer.hxx`:70 - `TObj_TNameContainer::Clear()`
     pub fn TObj_TNameContainer_clear(self_: *mut TObj_TNameContainer) -> *const std::ffi::c_char;
+    /// **Source:** `TObj_TNameContainer.hxx`:76 - `TObj_TNameContainer::Set()`
+    pub fn TObj_TNameContainer_set(
+        self_: *mut TObj_TNameContainer,
+        theElem: *const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TObj_TNameContainer.hxx`:81 - `TObj_TNameContainer::Get()`
+    pub fn TObj_TNameContainer_get(
+        self_: *const TObj_TNameContainer,
+    ) -> crate::OcctResult<*const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label>;
     /// **Source:** `TObj_TNameContainer.hxx`:88 - `TObj_TNameContainer::NewEmpty()`
     pub fn TObj_TNameContainer_new_empty(
         self_: *const TObj_TNameContainer,
@@ -2884,7 +2909,7 @@ unsafe extern "C" {
     /// **Source:** `TObj_TNameContainer.hxx`:44 - `TObj_TNameContainer::GetID()`
     pub fn TObj_TNameContainer_get_id() -> crate::OcctResult<*const Standard_GUID>;
     /// **Source:** `TObj_TNameContainer.hxx`:54 - `TObj_TNameContainer::Set()`
-    pub fn TObj_TNameContainer_set(
+    pub fn TObj_TNameContainer_set_label(
         theLabel: *const TDF_Label,
     ) -> crate::OcctResult<*mut Handle_TObj_TNameContainer>;
     /// **Source:** `TObj_TNameContainer.hxx`:106 - `TObj_TNameContainer::get_type_name()`
@@ -3065,6 +3090,13 @@ unsafe extern "C" {
     pub fn TObj_TNameContainer_inherited_References(
         self_: *const TObj_TNameContainer,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TNameContainer_inherited_ExtendedDump(
+        self_: *const TObj_TNameContainer,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TNameContainer_inherited_Forget(
@@ -3307,6 +3339,13 @@ unsafe extern "C" {
     pub fn TObj_TObject_inherited_References(
         self_: *const TObj_TObject,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TObject_inherited_ExtendedDump(
+        self_: *const TObj_TObject,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TObject_inherited_Forget(
@@ -3572,6 +3611,13 @@ unsafe extern "C" {
         self_: *const TObj_TReference,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TReference_inherited_ExtendedDump(
+        self_: *const TObj_TReference,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TReference_inherited_Forget(
         self_: *mut TObj_TReference,
@@ -3799,6 +3845,13 @@ unsafe extern "C" {
     pub fn TObj_TXYZ_inherited_References(
         self_: *const TObj_TXYZ,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TObj_TXYZ_inherited_ExtendedDump(
+        self_: *const TObj_TXYZ,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TObj_TXYZ_inherited_Forget(

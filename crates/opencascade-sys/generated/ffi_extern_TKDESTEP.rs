@@ -160,9 +160,7 @@ unsafe extern "C" {
         self_: *const APIHeaderSection_EditHeader,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:144 - `IFSelect_Editor::Update()`
     pub fn APIHeaderSection_EditHeader_inherited_Update(
         self_: *const APIHeaderSection_EditHeader,
@@ -176,7 +174,7 @@ unsafe extern "C" {
         self_: *const APIHeaderSection_EditHeader,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -267,7 +265,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:87 - `APIHeaderSection_MakeHeader::SetAuthor()`
     pub fn APIHeaderSection_MakeHeader_set_author(
         self_: *mut APIHeaderSection_MakeHeader,
-        aAuthor: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:90 - `APIHeaderSection_MakeHeader::SetAuthorValue()`
     pub fn APIHeaderSection_MakeHeader_set_author_value(
@@ -278,9 +276,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:93 - `APIHeaderSection_MakeHeader::Author()`
     pub fn APIHeaderSection_MakeHeader_author(
         self_: *const APIHeaderSection_MakeHeader,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:97 - `APIHeaderSection_MakeHeader::AuthorValue()`
     pub fn APIHeaderSection_MakeHeader_author_value(
         self_: *const APIHeaderSection_MakeHeader,
@@ -293,7 +289,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:102 - `APIHeaderSection_MakeHeader::SetOrganization()`
     pub fn APIHeaderSection_MakeHeader_set_organization(
         self_: *mut APIHeaderSection_MakeHeader,
-        aOrganization: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aOrganization: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:105 - `APIHeaderSection_MakeHeader::SetOrganizationValue()`
     pub fn APIHeaderSection_MakeHeader_set_organization_value(
@@ -304,9 +300,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:110 - `APIHeaderSection_MakeHeader::Organization()`
     pub fn APIHeaderSection_MakeHeader_organization(
         self_: *const APIHeaderSection_MakeHeader,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:114 - `APIHeaderSection_MakeHeader::OrganizationValue()`
     pub fn APIHeaderSection_MakeHeader_organization_value(
         self_: *const APIHeaderSection_MakeHeader,
@@ -354,7 +348,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:144 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiers()`
     pub fn APIHeaderSection_MakeHeader_set_schema_identifiers(
         self_: *mut APIHeaderSection_MakeHeader,
-        aSchemaIdentifiers: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:148 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiersValue()`
     pub fn APIHeaderSection_MakeHeader_set_schema_identifiers_value(
@@ -365,9 +359,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:153 - `APIHeaderSection_MakeHeader::SchemaIdentifiers()`
     pub fn APIHeaderSection_MakeHeader_schema_identifiers(
         self_: *const APIHeaderSection_MakeHeader,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:156 - `APIHeaderSection_MakeHeader::SchemaIdentifiersValue()`
     pub fn APIHeaderSection_MakeHeader_schema_identifiers_value(
         self_: *const APIHeaderSection_MakeHeader,
@@ -393,7 +385,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:172 - `APIHeaderSection_MakeHeader::SetDescription()`
     pub fn APIHeaderSection_MakeHeader_set_description(
         self_: *mut APIHeaderSection_MakeHeader,
-        aDescription: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:175 - `APIHeaderSection_MakeHeader::SetDescriptionValue()`
     pub fn APIHeaderSection_MakeHeader_set_description_value(
@@ -404,9 +396,7 @@ unsafe extern "C" {
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:180 - `APIHeaderSection_MakeHeader::Description()`
     pub fn APIHeaderSection_MakeHeader_description(
         self_: *const APIHeaderSection_MakeHeader,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:184 - `APIHeaderSection_MakeHeader::DescriptionValue()`
     pub fn APIHeaderSection_MakeHeader_description_value(
         self_: *const APIHeaderSection_MakeHeader,
@@ -1785,20 +1775,18 @@ unsafe extern "C" {
     /// **Source:** `HeaderSection_FileDescription.hxx`:36 - `HeaderSection_FileDescription::Init()`
     pub fn HeaderSection_FileDescription_init(
         self_: *mut HeaderSection_FileDescription,
-        aDescription: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         aImplementationLevel: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileDescription.hxx`:40 - `HeaderSection_FileDescription::SetDescription()`
     pub fn HeaderSection_FileDescription_set_description(
         self_: *mut HeaderSection_FileDescription,
-        aDescription: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileDescription.hxx`:44 - `HeaderSection_FileDescription::Description()`
     pub fn HeaderSection_FileDescription_description(
         self_: *const HeaderSection_FileDescription,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `HeaderSection_FileDescription.hxx`:46 - `HeaderSection_FileDescription::DescriptionValue()`
     pub fn HeaderSection_FileDescription_description_value(
         self_: *const HeaderSection_FileDescription,
@@ -1902,8 +1890,8 @@ unsafe extern "C" {
         self_: *mut HeaderSection_FileName,
         aName: *const Handle_TCollection_HAsciiString,
         aTimeStamp: *const Handle_TCollection_HAsciiString,
-        aAuthor: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        aOrganization: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        aOrganization: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         aPreprocessorVersion: *const Handle_TCollection_HAsciiString,
         aOriginatingSystem: *const Handle_TCollection_HAsciiString,
         aAuthorisation: *const Handle_TCollection_HAsciiString,
@@ -1929,14 +1917,12 @@ unsafe extern "C" {
     /// **Source:** `HeaderSection_FileName.hxx`:53 - `HeaderSection_FileName::SetAuthor()`
     pub fn HeaderSection_FileName_set_author(
         self_: *mut HeaderSection_FileName,
-        aAuthor: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileName.hxx`:56 - `HeaderSection_FileName::Author()`
     pub fn HeaderSection_FileName_author(
         self_: *const HeaderSection_FileName,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `HeaderSection_FileName.hxx`:59 - `HeaderSection_FileName::AuthorValue()`
     pub fn HeaderSection_FileName_author_value(
         self_: *const HeaderSection_FileName,
@@ -1949,14 +1935,12 @@ unsafe extern "C" {
     /// **Source:** `HeaderSection_FileName.hxx`:63 - `HeaderSection_FileName::SetOrganization()`
     pub fn HeaderSection_FileName_set_organization(
         self_: *mut HeaderSection_FileName,
-        aOrganization: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aOrganization: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileName.hxx`:67 - `HeaderSection_FileName::Organization()`
     pub fn HeaderSection_FileName_organization(
         self_: *const HeaderSection_FileName,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `HeaderSection_FileName.hxx`:69 - `HeaderSection_FileName::OrganizationValue()`
     pub fn HeaderSection_FileName_organization_value(
         self_: *const HeaderSection_FileName,
@@ -2073,19 +2057,17 @@ unsafe extern "C" {
     /// **Source:** `HeaderSection_FileSchema.hxx`:36 - `HeaderSection_FileSchema::Init()`
     pub fn HeaderSection_FileSchema_init(
         self_: *mut HeaderSection_FileSchema,
-        aSchemaIdentifiers: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileSchema.hxx`:40 - `HeaderSection_FileSchema::SetSchemaIdentifiers()`
     pub fn HeaderSection_FileSchema_set_schema_identifiers(
         self_: *mut HeaderSection_FileSchema,
-        aSchemaIdentifiers: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HeaderSection_FileSchema.hxx`:45 - `HeaderSection_FileSchema::SchemaIdentifiers()`
     pub fn HeaderSection_FileSchema_schema_identifiers(
         self_: *const HeaderSection_FileSchema,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `HeaderSection_FileSchema.hxx`:47 - `HeaderSection_FileSchema::SchemaIdentifiersValue()`
     pub fn HeaderSection_FileSchema_schema_identifiers_value(
         self_: *const HeaderSection_FileSchema,
@@ -3567,6 +3549,12 @@ unsafe extern "C" {
         theParams: *const DESTEP_Parameters,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles()`
+    pub fn STEPCAFControl_Reader_extern_files(
+        self_: *const STEPCAFControl_Reader,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    >;
     /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
     pub fn STEPCAFControl_Reader_extern_file(
         self_: *const STEPCAFControl_Reader,
@@ -3804,6 +3792,12 @@ unsafe extern "C" {
         theParams: *const DESTEP_Parameters,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `STEPCAFControl_Writer.hxx`:170 - `STEPCAFControl_Writer::ExternFiles()`
+    pub fn STEPCAFControl_Writer_extern_files(
+        self_: *const STEPCAFControl_Writer,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    >;
     /// **Source:** `STEPCAFControl_Writer.hxx`:177 - `STEPCAFControl_Writer::ExternFile()`
     pub fn STEPCAFControl_Writer_extern_file_label_handlestepcafcontrolexternfile(
         self_: *const STEPCAFControl_Writer,
@@ -4251,12 +4245,12 @@ unsafe extern "C" {
     pub fn STEPConstruct_ContextTool_get_roots_for_part(
         self_: *mut STEPConstruct_ContextTool,
         SDRTool: *const STEPConstruct_Part,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `STEPConstruct_ContextTool.hxx`:126 - `STEPConstruct_ContextTool::GetRootsForAssemblyLink()`
     pub fn STEPConstruct_ContextTool_get_roots_for_assembly_link(
         self_: *mut STEPConstruct_ContextTool,
         assembly: *const STEPConstruct_Assembly,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     // ======================== STEPConstruct_ExternRefs ========================
     pub fn STEPConstruct_ExternRefs_destructor(self_: *mut STEPConstruct_ExternRefs);
     /// **Source:** `STEPConstruct_ExternRefs.hxx`:52 - `STEPConstruct_ExternRefs::STEPConstruct_ExternRefs()`
@@ -4797,7 +4791,7 @@ unsafe extern "C" {
     /// **Source:** `STEPConstruct_Styles.hxx`:133 - `STEPConstruct_Styles::LoadInvisStyles()`
     pub fn STEPConstruct_Styles_load_invis_styles(
         self_: *const STEPConstruct_Styles,
-        InvSyles: *mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        InvSyles: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `STEPConstruct_Styles.hxx`:139 - `STEPConstruct_Styles::MakeColorPSA()`
     pub fn STEPConstruct_Styles_make_color_psa(
@@ -4825,8 +4819,14 @@ unsafe extern "C" {
         theIsComponent: *mut bool,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `STEPConstruct_Styles.hxx`:169 - `STEPConstruct_Styles::EncodeColor()`
-    pub fn STEPConstruct_Styles_encode_color(
+    pub fn STEPConstruct_Styles_encode_color_color(
         Col: *const Quantity_Color,
+    ) -> crate::OcctResult<*mut Handle_StepVisual_Colour>;
+    /// **Source:** `STEPConstruct_Styles.hxx`:175 - `STEPConstruct_Styles::EncodeColor()`
+    pub fn STEPConstruct_Styles_encode_color_color_worksessionmap_dmap_pnt_standard_transient(
+        Col: *const Quantity_Color,
+        DPDCs: *mut XSControl_WorkSessionMap,
+        ColRGBs: *mut NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
     ) -> crate::OcctResult<*mut Handle_StepVisual_Colour>;
     /// **Source:** `STEPConstruct_Styles.hxx`:182 - `STEPConstruct_Styles::DecodeColor()`
     pub fn STEPConstruct_Styles_decode_color(
@@ -5040,6 +5040,11 @@ unsafe extern "C" {
         target: *mut StepRepr_CharacterizedDefinition,
         Context: *mut Handle_StepRepr_RepresentationContext,
         instance: bool,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `STEPConstruct_ValidationProps.hxx`:101 - `STEPConstruct_ValidationProps::LoadProps()`
+    pub fn STEPConstruct_ValidationProps_load_props(
+        self_: *const STEPConstruct_ValidationProps,
+        seq: *mut NCollection_Sequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:105 - `STEPConstruct_ValidationProps::GetPropNAUO()`
     pub fn STEPConstruct_ValidationProps_get_prop_nauo(
@@ -5862,7 +5867,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:191 - `XSControl_Reader::TransferList()`
     pub fn STEPControl_Reader_inherited_TransferList(
         self_: *mut STEPControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
     /// Inherited: **Source:** `XSControl_Reader.hxx`:198 - `XSControl_Reader::TransferRoots()`
@@ -5908,7 +5913,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn STEPControl_Reader_inherited_GetStatsTransfer(
         self_: *const STEPControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         nbMapped: *mut i32,
         nbWithResult: *mut i32,
         nbWithFail: *mut i32,
@@ -6178,9 +6183,7 @@ unsafe extern "C" {
         self_: *const STEPEdit_EditContext,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:144 - `IFSelect_Editor::Update()`
     pub fn STEPEdit_EditContext_inherited_Update(
         self_: *const STEPEdit_EditContext,
@@ -6194,7 +6197,7 @@ unsafe extern "C" {
         self_: *const STEPEdit_EditContext,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -6374,9 +6377,7 @@ unsafe extern "C" {
         self_: *const STEPEdit_EditSDR,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:144 - `IFSelect_Editor::Update()`
     pub fn STEPEdit_EditSDR_inherited_Update(
         self_: *const STEPEdit_EditSDR,
@@ -6390,7 +6391,7 @@ unsafe extern "C" {
         self_: *const STEPEdit_EditSDR,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -6431,9 +6432,9 @@ unsafe extern "C" {
     pub fn STEPSelections_AssemblyComponent_ctor(
     ) -> crate::OcctResult<*mut STEPSelections_AssemblyComponent>;
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:35 - `STEPSelections_AssemblyComponent::STEPSelections_AssemblyComponent()`
-    pub fn STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_handlencollectionhsequenceopencascadehandlestepselectionsassemblylink(
+    pub fn STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_hseq_stepselections_assemblylink(
         sdr: *const Handle_StepShape_ShapeDefinitionRepresentation,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
+        list: *const Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
     ) -> crate::OcctResult<*mut STEPSelections_AssemblyComponent>;
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:39 - `STEPSelections_AssemblyComponent::GetSDR()`
     pub fn STEPSelections_AssemblyComponent_get_sdr(
@@ -6442,9 +6443,7 @@ unsafe extern "C" {
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:41 - `STEPSelections_AssemblyComponent::GetList()`
     pub fn STEPSelections_AssemblyComponent_get_list(
         self_: *const STEPSelections_AssemblyComponent,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink>;
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:43 - `STEPSelections_AssemblyComponent::SetSDR()`
     pub fn STEPSelections_AssemblyComponent_set_sdr(
         self_: *mut STEPSelections_AssemblyComponent,
@@ -6453,7 +6452,7 @@ unsafe extern "C" {
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:45 - `STEPSelections_AssemblyComponent::SetList()`
     pub fn STEPSelections_AssemblyComponent_set_list(
         self_: *mut STEPSelections_AssemblyComponent,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
+        list: *const Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
     ) -> *const std::ffi::c_char;
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:48 - `STEPSelections_AssemblyComponent::DynamicType()`
     pub fn STEPSelections_AssemblyComponent_dynamic_type(
@@ -10337,38 +10336,35 @@ unsafe extern "C" {
     /// **Source:** `StepAP209_Construct.hxx`:84 - `StepAP209_Construct::GetElementMaterial()`
     pub fn StepAP209_Construct_get_element_material(
         self_: *const StepAP209_Construct,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial>;
     /// **Source:** `StepAP209_Construct.hxx`:88 - `StepAP209_Construct::GetElemGeomRelat()`
     pub fn StepAP209_Construct_get_elem_geom_relat(
         self_: *const StepAP209_Construct,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
+        *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
     >;
     /// **Source:** `StepAP209_Construct.hxx`:91 - `StepAP209_Construct::GetElements1D()`
     pub fn StepAP209_Construct_get_elements1_d(
         self_: *const StepAP209_Construct,
         theFeaModel: *const Handle_StepFEA_FeaModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation>;
     /// **Source:** `StepAP209_Construct.hxx`:94 - `StepAP209_Construct::GetElements2D()`
     pub fn StepAP209_Construct_get_elements2_d(
         self_: *const StepAP209_Construct,
         theFEAModel: *const Handle_StepFEA_FeaModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation>;
     /// **Source:** `StepAP209_Construct.hxx`:97 - `StepAP209_Construct::GetElements3D()`
     pub fn StepAP209_Construct_get_elements3_d(
         self_: *const StepAP209_Construct,
         theFEAModel: *const Handle_StepFEA_FeaModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation>;
     /// **Source:** `StepAP209_Construct.hxx`:103 - `StepAP209_Construct::GetCurElemSection()`
-    pub fn StepAP209_Construct_get_cur_elem_section(self_: *const StepAP209_Construct, ElemRepr: *const Handle_StepFEA_Curve3dElementRepresentation) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition>;
+    pub fn StepAP209_Construct_get_cur_elem_section(
+        self_: *const StepAP209_Construct,
+        ElemRepr: *const Handle_StepFEA_Curve3dElementRepresentation,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    >;
     /// **Source:** `StepAP209_Construct.hxx`:105 - `StepAP209_Construct::GetShReprForElem()`
     pub fn StepAP209_Construct_get_sh_repr_for_elem(
         self_: *const StepAP209_Construct,
@@ -14488,17 +14484,17 @@ unsafe extern "C" {
     pub fn StepAP214_AutoDesignSecurityClassificationAssignment_init(
         self_: *mut StepAP214_AutoDesignSecurityClassificationAssignment,
         aAssignedSecurityClassification: *const Handle_StepBasic_SecurityClassification,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepBasic_Approval,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:43 - `StepAP214_AutoDesignSecurityClassificationAssignment::SetItems()`
     pub fn StepAP214_AutoDesignSecurityClassificationAssignment_set_items(
         self_: *mut StepAP214_AutoDesignSecurityClassificationAssignment,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepBasic_Approval,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:46 - `StepAP214_AutoDesignSecurityClassificationAssignment::Items()`
     pub fn StepAP214_AutoDesignSecurityClassificationAssignment_items(
         self_: *const StepAP214_AutoDesignSecurityClassificationAssignment,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Approval>;
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:48 - `StepAP214_AutoDesignSecurityClassificationAssignment::ItemsValue()`
     pub fn StepAP214_AutoDesignSecurityClassificationAssignment_items_value(
         self_: *const StepAP214_AutoDesignSecurityClassificationAssignment,
@@ -17018,7 +17014,7 @@ unsafe extern "C" {
         theDescription: *const Handle_TCollection_HAsciiString,
         theDefinition: *const StepAP242_ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: *const Handle_StepRepr_Representation,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     pub fn StepAP242_DraughtingModelItemAssociation_inherited_SetName(
@@ -17059,9 +17055,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     pub fn StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItem(
         self_: *const StepAP242_DraughtingModelItemAssociation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     pub fn StepAP242_DraughtingModelItemAssociation_inherited_NbIdentifiedItem(
         self_: *const StepAP242_DraughtingModelItemAssociation,
@@ -17069,7 +17063,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(
         self_: *mut StepAP242_DraughtingModelItemAssociation,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     pub fn StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItemValue(
@@ -17184,7 +17178,7 @@ unsafe extern "C" {
         theDescription: *const Handle_TCollection_HAsciiString,
         theDefinition: *const StepAP242_ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: *const Handle_StepRepr_Representation,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     pub fn StepAP242_GeometricItemSpecificUsage_inherited_SetName(
@@ -17225,9 +17219,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     pub fn StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItem(
         self_: *const StepAP242_GeometricItemSpecificUsage,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     pub fn StepAP242_GeometricItemSpecificUsage_inherited_NbIdentifiedItem(
         self_: *const StepAP242_GeometricItemSpecificUsage,
@@ -17235,7 +17227,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(
         self_: *mut StepAP242_GeometricItemSpecificUsage,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     pub fn StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItemValue(
@@ -17529,7 +17521,7 @@ unsafe extern "C" {
         theDescription: *const Handle_TCollection_HAsciiString,
         theDefinition: *const StepAP242_ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: *const Handle_StepRepr_Representation,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     pub fn StepAP242_ItemIdentifiedRepresentationUsage_set_name(
@@ -17570,9 +17562,7 @@ unsafe extern "C" {
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     pub fn StepAP242_ItemIdentifiedRepresentationUsage_identified_item(
         self_: *const StepAP242_ItemIdentifiedRepresentationUsage,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     pub fn StepAP242_ItemIdentifiedRepresentationUsage_nb_identified_item(
         self_: *const StepAP242_ItemIdentifiedRepresentationUsage,
@@ -17580,7 +17570,7 @@ unsafe extern "C" {
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(
         self_: *mut StepAP242_ItemIdentifiedRepresentationUsage,
-        theIdentifiedItem: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     pub fn StepAP242_ItemIdentifiedRepresentationUsage_identified_item_value(
@@ -22920,19 +22910,17 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_DerivedUnit.hxx`:37 - `StepBasic_DerivedUnit::Init()`
     pub fn StepBasic_DerivedUnit_init(
         self_: *mut StepBasic_DerivedUnit,
-        elements: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
+        elements: *const Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_DerivedUnit.hxx`:40 - `StepBasic_DerivedUnit::SetElements()`
     pub fn StepBasic_DerivedUnit_set_elements(
         self_: *mut StepBasic_DerivedUnit,
-        elements: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
+        elements: *const Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_DerivedUnit.hxx`:44 - `StepBasic_DerivedUnit::Elements()`
     pub fn StepBasic_DerivedUnit_elements(
         self_: *const StepBasic_DerivedUnit,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement>;
     /// **Source:** `StepBasic_DerivedUnit.hxx`:46 - `StepBasic_DerivedUnit::NbElements()`
     pub fn StepBasic_DerivedUnit_nb_elements(
         self_: *const StepBasic_DerivedUnit,
@@ -28159,18 +28147,18 @@ unsafe extern "C" {
         aElectronicMailAddress: *const Handle_TCollection_HAsciiString,
         hasAtelexNumber: bool,
         aTelexNumber: *const Handle_TCollection_HAsciiString,
-        aOrganizations: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
+        aOrganizations: *const Handle_NCollection_HArray1_Handle_StepBasic_Organization,
         aDescription: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:67 - `StepBasic_OrganizationalAddress::SetOrganizations()`
     pub fn StepBasic_OrganizationalAddress_set_organizations(
         self_: *mut StepBasic_OrganizationalAddress,
-        aOrganizations: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
+        aOrganizations: *const Handle_NCollection_HArray1_Handle_StepBasic_Organization,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:71 - `StepBasic_OrganizationalAddress::Organizations()`
     pub fn StepBasic_OrganizationalAddress_organizations(
         self_: *const StepBasic_OrganizationalAddress,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Organization>;
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:73 - `StepBasic_OrganizationalAddress::OrganizationsValue()`
     pub fn StepBasic_OrganizationalAddress_organizations_value(
         self_: *const StepBasic_OrganizationalAddress,
@@ -28494,11 +28482,11 @@ unsafe extern "C" {
         hasAfirstName: bool,
         aFirstName: *const Handle_TCollection_HAsciiString,
         hasAmiddleNames: bool,
-        aMiddleNames: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aMiddleNames: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         hasAprefixTitles: bool,
-        aPrefixTitles: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aPrefixTitles: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         hasAsuffixTitles: bool,
-        aSuffixTitles: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSuffixTitles: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Person.hxx`:50 - `StepBasic_Person::SetId()`
     pub fn StepBasic_Person_set_id(
@@ -28546,7 +28534,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:70 - `StepBasic_Person::SetMiddleNames()`
     pub fn StepBasic_Person_set_middle_names(
         self_: *mut StepBasic_Person,
-        aMiddleNames: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aMiddleNames: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Person.hxx`:73 - `StepBasic_Person::UnSetMiddleNames()`
     pub fn StepBasic_Person_un_set_middle_names(
@@ -28555,9 +28543,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:76 - `StepBasic_Person::MiddleNames()`
     pub fn StepBasic_Person_middle_names(
         self_: *const StepBasic_Person,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `StepBasic_Person.hxx`:78 - `StepBasic_Person::HasMiddleNames()`
     pub fn StepBasic_Person_has_middle_names(
         self_: *const StepBasic_Person,
@@ -28574,7 +28560,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:84 - `StepBasic_Person::SetPrefixTitles()`
     pub fn StepBasic_Person_set_prefix_titles(
         self_: *mut StepBasic_Person,
-        aPrefixTitles: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aPrefixTitles: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Person.hxx`:87 - `StepBasic_Person::UnSetPrefixTitles()`
     pub fn StepBasic_Person_un_set_prefix_titles(
@@ -28583,9 +28569,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:90 - `StepBasic_Person::PrefixTitles()`
     pub fn StepBasic_Person_prefix_titles(
         self_: *const StepBasic_Person,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `StepBasic_Person.hxx`:92 - `StepBasic_Person::HasPrefixTitles()`
     pub fn StepBasic_Person_has_prefix_titles(
         self_: *const StepBasic_Person,
@@ -28602,7 +28586,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:98 - `StepBasic_Person::SetSuffixTitles()`
     pub fn StepBasic_Person_set_suffix_titles(
         self_: *mut StepBasic_Person,
-        aSuffixTitles: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSuffixTitles: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Person.hxx`:101 - `StepBasic_Person::UnSetSuffixTitles()`
     pub fn StepBasic_Person_un_set_suffix_titles(
@@ -28611,9 +28595,7 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Person.hxx`:104 - `StepBasic_Person::SuffixTitles()`
     pub fn StepBasic_Person_suffix_titles(
         self_: *const StepBasic_Person,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
     /// **Source:** `StepBasic_Person.hxx`:106 - `StepBasic_Person::HasSuffixTitles()`
     pub fn StepBasic_Person_has_suffix_titles(
         self_: *const StepBasic_Person,
@@ -29161,18 +29143,18 @@ unsafe extern "C" {
         aElectronicMailAddress: *const Handle_TCollection_HAsciiString,
         hasAtelexNumber: bool,
         aTelexNumber: *const Handle_TCollection_HAsciiString,
-        aPeople: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
+        aPeople: *const Handle_NCollection_HArray1_Handle_StepBasic_Person,
         aDescription: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_PersonalAddress.hxx`:66 - `StepBasic_PersonalAddress::SetPeople()`
     pub fn StepBasic_PersonalAddress_set_people(
         self_: *mut StepBasic_PersonalAddress,
-        aPeople: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
+        aPeople: *const Handle_NCollection_HArray1_Handle_StepBasic_Person,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_PersonalAddress.hxx`:69 - `StepBasic_PersonalAddress::People()`
     pub fn StepBasic_PersonalAddress_people(
         self_: *const StepBasic_PersonalAddress,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Person>;
     /// **Source:** `StepBasic_PersonalAddress.hxx`:71 - `StepBasic_PersonalAddress::PeopleValue()`
     pub fn StepBasic_PersonalAddress_people_value(
         self_: *const StepBasic_PersonalAddress,
@@ -29862,7 +29844,7 @@ unsafe extern "C" {
         aId: *const Handle_TCollection_HAsciiString,
         aName: *const Handle_TCollection_HAsciiString,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aFrameOfReference: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
+        aFrameOfReference: *const Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Product.hxx`:45 - `StepBasic_Product::SetId()`
     pub fn StepBasic_Product_set_id(
@@ -29894,14 +29876,12 @@ unsafe extern "C" {
     /// **Source:** `StepBasic_Product.hxx`:57 - `StepBasic_Product::SetFrameOfReference()`
     pub fn StepBasic_Product_set_frame_of_reference(
         self_: *mut StepBasic_Product,
-        aFrameOfReference: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
+        aFrameOfReference: *const Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_Product.hxx`:62 - `StepBasic_Product::FrameOfReference()`
     pub fn StepBasic_Product_frame_of_reference(
         self_: *const StepBasic_Product,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_ProductContext>;
     /// **Source:** `StepBasic_Product.hxx`:64 - `StepBasic_Product::FrameOfReferenceValue()`
     pub fn StepBasic_Product_frame_of_reference_value(
         self_: *const StepBasic_Product,
@@ -31897,16 +31877,16 @@ unsafe extern "C" {
         aDescription: *const Handle_TCollection_HAsciiString,
         aFormation: *const Handle_StepBasic_ProductDefinitionFormation,
         aFrame: *const Handle_StepBasic_ProductDefinitionContext,
-        aDocIds: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
+        aDocIds: *const Handle_NCollection_HArray1_Handle_StepBasic_Document,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:46 - `StepBasic_ProductDefinitionWithAssociatedDocuments::DocIds()`
     pub fn StepBasic_ProductDefinitionWithAssociatedDocuments_doc_ids(
         self_: *const StepBasic_ProductDefinitionWithAssociatedDocuments,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Document>;
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:48 - `StepBasic_ProductDefinitionWithAssociatedDocuments::SetDocIds()`
     pub fn StepBasic_ProductDefinitionWithAssociatedDocuments_set_doc_ids(
         self_: *mut StepBasic_ProductDefinitionWithAssociatedDocuments,
-        DocIds: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
+        DocIds: *const Handle_NCollection_HArray1_Handle_StepBasic_Document,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:51 - `StepBasic_ProductDefinitionWithAssociatedDocuments::NbDocIds()`
     pub fn StepBasic_ProductDefinitionWithAssociatedDocuments_nb_doc_ids(
@@ -32168,17 +32148,17 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         hasAdescription: bool,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aProducts: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:45 - `StepBasic_ProductRelatedProductCategory::SetProducts()`
     pub fn StepBasic_ProductRelatedProductCategory_set_products(
         self_: *mut StepBasic_ProductRelatedProductCategory,
-        aProducts: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:48 - `StepBasic_ProductRelatedProductCategory::Products()`
     pub fn StepBasic_ProductRelatedProductCategory_products(
         self_: *const StepBasic_ProductRelatedProductCategory,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Product>;
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:50 - `StepBasic_ProductRelatedProductCategory::ProductsValue()`
     pub fn StepBasic_ProductRelatedProductCategory_products_value(
         self_: *const StepBasic_ProductRelatedProductCategory,
@@ -32382,17 +32362,17 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         hasAdescription: bool,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aProducts: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:45 - `StepBasic_ProductRelatedProductCategory::SetProducts()`
     pub fn StepBasic_ProductType_inherited_SetProducts(
         self_: *mut StepBasic_ProductType,
-        aProducts: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:48 - `StepBasic_ProductRelatedProductCategory::Products()`
     pub fn StepBasic_ProductType_inherited_Products(
         self_: *const StepBasic_ProductType,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Product>;
     /// Inherited: **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:50 - `StepBasic_ProductRelatedProductCategory::ProductsValue()`
     pub fn StepBasic_ProductType_inherited_ProductsValue(
         self_: *const StepBasic_ProductType,
@@ -41858,14 +41838,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_AngularityTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_AngularityTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_AngularityTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_AngularityTolerance,
@@ -41873,7 +41851,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_AngularityTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_AngularityTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_AngularityTolerance_inherited_Name(
@@ -42025,14 +42003,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_CircularRunoutTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_CircularRunoutTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_CircularRunoutTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_CircularRunoutTolerance,
@@ -42040,7 +42016,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_CircularRunoutTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_CircularRunoutTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_CircularRunoutTolerance_inherited_Name(
@@ -42190,14 +42166,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_CoaxialityTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_CoaxialityTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_CoaxialityTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_CoaxialityTolerance,
@@ -42205,7 +42179,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_CoaxialityTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_CoaxialityTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_CoaxialityTolerance_inherited_Name(
@@ -42516,14 +42490,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_ConcentricityTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_ConcentricityTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_ConcentricityTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_ConcentricityTolerance,
@@ -42531,7 +42503,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_ConcentricityTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_ConcentricityTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_ConcentricityTolerance_inherited_Name(
@@ -43028,9 +43000,7 @@ unsafe extern "C" {
     /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:50 - `StepDimTol_DatumOrCommonDatum::CommonDatumList()`
     pub fn StepDimTol_DatumOrCommonDatum_common_datum_list(
         self_: *const StepDimTol_DatumOrCommonDatum,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement>;
     /// Upcast StepDimTol_DatumOrCommonDatum to StepData_SelectType
     pub fn StepDimTol_DatumOrCommonDatum_as_StepData_SelectType(
         self_: *const StepDimTol_DatumOrCommonDatum,
@@ -43810,18 +43780,18 @@ unsafe extern "C" {
         theDescription: *const Handle_TCollection_HAsciiString,
         theOfShape: *const Handle_StepRepr_ProductDefinitionShape,
         theProductDefinitional: i32,
-        theConstituents: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
+        theConstituents: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_DatumSystem.hxx`:45 - `StepDimTol_DatumSystem::Constituents()`
     pub fn StepDimTol_DatumSystem_constituents(
         self_: *mut StepDimTol_DatumSystem,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
+        *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
     >;
     /// **Source:** `StepDimTol_DatumSystem.hxx`:51 - `StepDimTol_DatumSystem::SetConstituents()`
     pub fn StepDimTol_DatumSystem_set_constituents(
         self_: *mut StepDimTol_DatumSystem,
-        theConstituents: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
+        theConstituents: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_DatumSystem.hxx`:59 - `StepDimTol_DatumSystem::NbConstituents()`
     pub fn StepDimTol_DatumSystem_nb_constituents(
@@ -46329,13 +46299,13 @@ unsafe extern "C" {
     pub fn StepDimTol_GeometricToleranceWithDatumReference_ctor(
     ) -> crate::OcctResult<*mut StepDimTol_GeometricToleranceWithDatumReference>;
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:40 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
-    pub fn StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_handlencollectionharray1opencascadehandlestepdimtoldatumreference(
+    pub fn StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_harr1_stepdimtol_datumreference(
         self_: *mut StepDimTol_GeometricToleranceWithDatumReference,
         theGeometricTolerance_Name: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:48 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
     pub fn StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_geometrictolerancetarget_harr1_datumsystemorreference(
@@ -46349,17 +46319,15 @@ unsafe extern "C" {
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_GeometricToleranceWithDatumReference_datum_system(
         self_: *const StepDimTol_GeometricToleranceWithDatumReference,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_GeometricToleranceWithDatumReference_datum_system_ap242(
         self_: *const StepDimTol_GeometricToleranceWithDatumReference,
     ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_StepDimTol_DatumSystemOrReference>;
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
-    pub fn StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_handlencollectionharray1opencascadehandlestepdimtoldatumreference(
+    pub fn StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_harr1_stepdimtol_datumreference(
         self_: *mut StepDimTol_GeometricToleranceWithDatumReference,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:68 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_harr1_datumsystemorreference(
@@ -47588,16 +47556,16 @@ unsafe extern "C" {
     pub fn StepDimTol_NonUniformZoneDefinition_inherited_Init(
         self_: *mut StepDimTol_NonUniformZoneDefinition,
         theZone: *const Handle_StepDimTol_ToleranceZone,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn StepDimTol_NonUniformZoneDefinition_inherited_Boundaries(
         self_: *const StepDimTol_NonUniformZoneDefinition,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn StepDimTol_NonUniformZoneDefinition_inherited_SetBoundaries(
         self_: *mut StepDimTol_NonUniformZoneDefinition,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:55 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
     pub fn StepDimTol_NonUniformZoneDefinition_inherited_NbBoundaries(
@@ -47735,14 +47703,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_ParallelismTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_ParallelismTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_ParallelismTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_ParallelismTolerance,
@@ -47750,7 +47716,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_ParallelismTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_ParallelismTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_ParallelismTolerance_inherited_Name(
@@ -47902,14 +47868,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_PerpendicularityTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_PerpendicularityTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_PerpendicularityTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_PerpendicularityTolerance,
@@ -47917,7 +47881,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_PerpendicularityTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_PerpendicularityTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_PerpendicularityTolerance_inherited_Name(
@@ -48293,7 +48257,7 @@ unsafe extern "C" {
     pub fn StepDimTol_ProjectedZoneDefinition_init(
         self_: *mut StepDimTol_ProjectedZoneDefinition,
         theZone: *const Handle_StepDimTol_ToleranceZone,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
         theProjectionEnd: *const Handle_StepRepr_ShapeAspect,
         theProjectionLength: *const Handle_StepBasic_LengthMeasureWithUnit,
     ) -> *const std::ffi::c_char;
@@ -48376,11 +48340,11 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn StepDimTol_ProjectedZoneDefinition_inherited_Boundaries(
         self_: *const StepDimTol_ProjectedZoneDefinition,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn StepDimTol_ProjectedZoneDefinition_inherited_SetBoundaries(
         self_: *mut StepDimTol_ProjectedZoneDefinition,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:55 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
     pub fn StepDimTol_ProjectedZoneDefinition_inherited_NbBoundaries(
@@ -48582,7 +48546,7 @@ unsafe extern "C" {
     pub fn StepDimTol_RunoutZoneDefinition_init(
         self_: *mut StepDimTol_RunoutZoneDefinition,
         theZone: *const Handle_StepDimTol_ToleranceZone,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
         theOrientation: *const Handle_StepDimTol_RunoutZoneOrientation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_RunoutZoneDefinition.hxx`:43 - `StepDimTol_RunoutZoneDefinition::Orientation()`
@@ -48655,11 +48619,11 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn StepDimTol_RunoutZoneDefinition_inherited_Boundaries(
         self_: *const StepDimTol_RunoutZoneDefinition,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn StepDimTol_RunoutZoneDefinition_inherited_SetBoundaries(
         self_: *mut StepDimTol_RunoutZoneDefinition,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:55 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
     pub fn StepDimTol_RunoutZoneDefinition_inherited_NbBoundaries(
@@ -49474,14 +49438,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_SymmetryTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_SymmetryTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_SymmetryTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_SymmetryTolerance,
@@ -49489,7 +49451,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_SymmetryTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_SymmetryTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_SymmetryTolerance_inherited_Name(
@@ -49736,16 +49698,16 @@ unsafe extern "C" {
     pub fn StepDimTol_ToleranceZoneDefinition_init(
         self_: *mut StepDimTol_ToleranceZoneDefinition,
         theZone: *const Handle_StepDimTol_ToleranceZone,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn StepDimTol_ToleranceZoneDefinition_boundaries(
         self_: *const StepDimTol_ToleranceZoneDefinition,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>;
     /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn StepDimTol_ToleranceZoneDefinition_set_boundaries(
         self_: *mut StepDimTol_ToleranceZoneDefinition,
-        theBoundaries: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:55 - `StepDimTol_ToleranceZoneDefinition::NbBoundaries()`
     pub fn StepDimTol_ToleranceZoneDefinition_nb_boundaries(
@@ -50145,14 +50107,12 @@ unsafe extern "C" {
         theGeometricTolerance_Description: *const Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: *const Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: *const Handle_StepRepr_ShapeAspect,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:57 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystem()`
     pub fn StepDimTol_TotalRunoutTolerance_inherited_DatumSystem(
         self_: *const StepDimTol_TotalRunoutTolerance,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:61 - `StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242()`
     pub fn StepDimTol_TotalRunoutTolerance_inherited_DatumSystemAP242(
         self_: *const StepDimTol_TotalRunoutTolerance,
@@ -50160,7 +50120,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn StepDimTol_TotalRunoutTolerance_inherited_SetDatumSystem(
         self_: *mut StepDimTol_TotalRunoutTolerance,
-        theDatumSystem: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepDimTol_GeometricTolerance.hxx`:48 - `StepDimTol_GeometricTolerance::Name()`
     pub fn StepDimTol_TotalRunoutTolerance_inherited_Name(
@@ -50516,14 +50476,14 @@ unsafe extern "C" {
         self_: *mut StepElement_Curve3dElementDescriptor,
         aElementDescriptor_TopologyOrder: i32,
         aElementDescriptor_Description: *const Handle_TCollection_HAsciiString,
-        aPurpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
+        aPurpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:49 - `StepElement_Curve3dElementDescriptor::Purpose()`
-    pub fn StepElement_Curve3dElementDescriptor_purpose(self_: *const StepElement_Curve3dElementDescriptor) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember>;
+    pub fn StepElement_Curve3dElementDescriptor_purpose(self_: *const StepElement_Curve3dElementDescriptor) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember>;
     /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:52 - `StepElement_Curve3dElementDescriptor::SetPurpose()`
     pub fn StepElement_Curve3dElementDescriptor_set_purpose(
         self_: *mut StepElement_Curve3dElementDescriptor,
-        Purpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
+        Purpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:57 - `StepElement_Curve3dElementDescriptor::DynamicType()`
     pub fn StepElement_Curve3dElementDescriptor_dynamic_type(
@@ -52184,7 +52144,7 @@ unsafe extern "C" {
         self_: *mut StepElement_ElementMaterial,
         aMaterialId: *const Handle_TCollection_HAsciiString,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aProperties: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
+        aProperties: *const Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_ElementMaterial.hxx`:43 - `StepElement_ElementMaterial::MaterialId()`
     pub fn StepElement_ElementMaterial_material_id(
@@ -52208,12 +52168,12 @@ unsafe extern "C" {
     pub fn StepElement_ElementMaterial_properties(
         self_: *const StepElement_ElementMaterial,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
+        *mut Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
     >;
     /// **Source:** `StepElement_ElementMaterial.hxx`:60 - `StepElement_ElementMaterial::SetProperties()`
     pub fn StepElement_ElementMaterial_set_properties(
         self_: *mut StepElement_ElementMaterial,
-        Properties: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
+        Properties: *const Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_ElementMaterial.hxx`:64 - `StepElement_ElementMaterial::DynamicType()`
     pub fn StepElement_ElementMaterial_dynamic_type(
@@ -52611,15 +52571,15 @@ unsafe extern "C" {
         self_: *mut StepElement_Surface3dElementDescriptor,
         aElementDescriptor_TopologyOrder: i32,
         aElementDescriptor_Description: *const Handle_TCollection_HAsciiString,
-        aPurpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
+        aPurpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
         aShape: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:51 - `StepElement_Surface3dElementDescriptor::Purpose()`
-    pub fn StepElement_Surface3dElementDescriptor_purpose(self_: *const StepElement_Surface3dElementDescriptor) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember>;
+    pub fn StepElement_Surface3dElementDescriptor_purpose(self_: *const StepElement_Surface3dElementDescriptor) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember>;
     /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:54 - `StepElement_Surface3dElementDescriptor::SetPurpose()`
     pub fn StepElement_Surface3dElementDescriptor_set_purpose(
         self_: *mut StepElement_Surface3dElementDescriptor,
-        Purpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
+        Purpose: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:60 - `StepElement_Surface3dElementDescriptor::Shape()`
     pub fn StepElement_Surface3dElementDescriptor_shape(
@@ -53487,19 +53447,17 @@ unsafe extern "C" {
     /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:36 - `StepElement_SurfaceSectionFieldVarying::Init()`
     pub fn StepElement_SurfaceSectionFieldVarying_init(
         self_: *mut StepElement_SurfaceSectionFieldVarying,
-        aDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+        aDefinitions: *const Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
         aAdditionalNodeValues: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:42 - `StepElement_SurfaceSectionFieldVarying::Definitions()`
     pub fn StepElement_SurfaceSectionFieldVarying_definitions(
         self_: *const StepElement_SurfaceSectionFieldVarying,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection>;
     /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:45 - `StepElement_SurfaceSectionFieldVarying::SetDefinitions()`
     pub fn StepElement_SurfaceSectionFieldVarying_set_definitions(
         self_: *mut StepElement_SurfaceSectionFieldVarying,
-        Definitions: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+        Definitions: *const Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:49 - `StepElement_SurfaceSectionFieldVarying::AdditionalNodeValues()`
     pub fn StepElement_SurfaceSectionFieldVarying_additional_node_values(
@@ -53769,19 +53727,19 @@ unsafe extern "C" {
         self_: *mut StepElement_Volume3dElementDescriptor,
         aElementDescriptor_TopologyOrder: i32,
         aElementDescriptor_Description: *const Handle_TCollection_HAsciiString,
-        aPurpose: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
+        aPurpose: *const Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
         aShape: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:48 - `StepElement_Volume3dElementDescriptor::Purpose()`
     pub fn StepElement_Volume3dElementDescriptor_purpose(
         self_: *const StepElement_Volume3dElementDescriptor,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
+        *mut Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
     >;
     /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:51 - `StepElement_Volume3dElementDescriptor::SetPurpose()`
     pub fn StepElement_Volume3dElementDescriptor_set_purpose(
         self_: *mut StepElement_Volume3dElementDescriptor,
-        Purpose: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
+        Purpose: *const Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:56 - `StepElement_Volume3dElementDescriptor::Shape()`
     pub fn StepElement_Volume3dElementDescriptor_shape(
@@ -54751,9 +54709,9 @@ unsafe extern "C" {
         self_: *mut StepFEA_Curve3dElementProperty,
         aPropertyId: *const Handle_TCollection_HAsciiString,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aIntervalDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-        aEndOffsets: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-        aEndReleases: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
+        aIntervalDefinitions: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+        aEndOffsets: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+        aEndReleases: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:48 - `StepFEA_Curve3dElementProperty::PropertyId()`
     pub fn StepFEA_Curve3dElementProperty_property_id(
@@ -54776,35 +54734,29 @@ unsafe extern "C" {
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:61 - `StepFEA_Curve3dElementProperty::IntervalDefinitions()`
     pub fn StepFEA_Curve3dElementProperty_interval_definitions(
         self_: *const StepFEA_Curve3dElementProperty,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval>;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:64 - `StepFEA_Curve3dElementProperty::SetIntervalDefinitions()`
     pub fn StepFEA_Curve3dElementProperty_set_interval_definitions(
         self_: *mut StepFEA_Curve3dElementProperty,
-        IntervalDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
+        IntervalDefinitions: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:70 - `StepFEA_Curve3dElementProperty::EndOffsets()`
     pub fn StepFEA_Curve3dElementProperty_end_offsets(
         self_: *const StepFEA_Curve3dElementProperty,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset>;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:73 - `StepFEA_Curve3dElementProperty::SetEndOffsets()`
     pub fn StepFEA_Curve3dElementProperty_set_end_offsets(
         self_: *mut StepFEA_Curve3dElementProperty,
-        EndOffsets: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
+        EndOffsets: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:78 - `StepFEA_Curve3dElementProperty::EndReleases()`
     pub fn StepFEA_Curve3dElementProperty_end_releases(
         self_: *const StepFEA_Curve3dElementProperty,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease>;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:81 - `StepFEA_Curve3dElementProperty::SetEndReleases()`
     pub fn StepFEA_Curve3dElementProperty_set_end_releases(
         self_: *mut StepFEA_Curve3dElementProperty,
-        EndReleases: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
+        EndReleases: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:85 - `StepFEA_Curve3dElementProperty::DynamicType()`
     pub fn StepFEA_Curve3dElementProperty_dynamic_type(
@@ -54893,9 +54845,9 @@ unsafe extern "C" {
     pub fn StepFEA_Curve3dElementRepresentation_init(
         self_: *mut StepFEA_Curve3dElementRepresentation,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: *const Handle_StepFEA_FeaModel3d,
         aElementDescriptor: *const Handle_StepElement_Curve3dElementDescriptor,
         aProperty: *const Handle_StepFEA_Curve3dElementProperty,
@@ -55010,13 +54962,11 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:48 - `StepFEA_ElementRepresentation::NodeList()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_NodeList(
         self_: *const StepFEA_Curve3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_SetNodeList(
         self_: *mut StepFEA_Curve3dElementRepresentation,
-        NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_SetName(
@@ -55030,14 +54980,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_SetItems(
         self_: *mut StepFEA_Curve3dElementRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_Items(
         self_: *const StepFEA_Curve3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_Curve3dElementRepresentation_inherited_ItemsValue(
         self_: *const StepFEA_Curve3dElementRepresentation,
@@ -55308,7 +55256,7 @@ unsafe extern "C" {
     pub fn StepFEA_CurveElementEndRelease_init(
         self_: *mut StepFEA_CurveElementEndRelease,
         aCoordinateSystem: *const StepFEA_CurveElementEndCoordinateSystem,
-        aReleases: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
+        aReleases: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_CurveElementEndRelease.hxx`:42 - `StepFEA_CurveElementEndRelease::CoordinateSystem()`
     pub fn StepFEA_CurveElementEndRelease_coordinate_system(
@@ -55323,12 +55271,12 @@ unsafe extern "C" {
     pub fn StepFEA_CurveElementEndRelease_releases(
         self_: *const StepFEA_CurveElementEndRelease,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
+        *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
     >;
     /// **Source:** `StepFEA_CurveElementEndRelease.hxx`:54 - `StepFEA_CurveElementEndRelease::SetReleases()`
     pub fn StepFEA_CurveElementEndRelease_set_releases(
         self_: *mut StepFEA_CurveElementEndRelease,
-        Releases: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
+        Releases: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_CurveElementEndRelease.hxx`:58 - `StepFEA_CurveElementEndRelease::DynamicType()`
     pub fn StepFEA_CurveElementEndRelease_dynamic_type(
@@ -55659,14 +55607,18 @@ unsafe extern "C" {
         self_: *mut StepFEA_CurveElementIntervalLinearlyVarying,
         aCurveElementInterval_FinishPosition: *const Handle_StepFEA_CurveElementLocation,
         aCurveElementInterval_EuAngles: *const Handle_StepBasic_EulerAngles,
-        aSections: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
+        aSections: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_CurveElementIntervalLinearlyVarying.hxx`:47 - `StepFEA_CurveElementIntervalLinearlyVarying::Sections()`
-    pub fn StepFEA_CurveElementIntervalLinearlyVarying_sections(self_: *const StepFEA_CurveElementIntervalLinearlyVarying) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition>;
+    pub fn StepFEA_CurveElementIntervalLinearlyVarying_sections(
+        self_: *const StepFEA_CurveElementIntervalLinearlyVarying,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    >;
     /// **Source:** `StepFEA_CurveElementIntervalLinearlyVarying.hxx`:50 - `StepFEA_CurveElementIntervalLinearlyVarying::SetSections()`
     pub fn StepFEA_CurveElementIntervalLinearlyVarying_set_sections(
         self_: *mut StepFEA_CurveElementIntervalLinearlyVarying,
-        Sections: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
+        Sections: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_CurveElementIntervalLinearlyVarying.hxx`:54 - `StepFEA_CurveElementIntervalLinearlyVarying::DynamicType()`
     pub fn StepFEA_CurveElementIntervalLinearlyVarying_dynamic_type(
@@ -56244,7 +56196,7 @@ unsafe extern "C" {
     pub fn StepFEA_DummyNode_inherited_Init(
         self_: *mut StepFEA_DummyNode,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -56269,14 +56221,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_DummyNode_inherited_SetItems(
         self_: *mut StepFEA_DummyNode,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_DummyNode_inherited_Items(
         self_: *const StepFEA_DummyNode,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_DummyNode_inherited_ItemsValue(
         self_: *const StepFEA_DummyNode,
@@ -56452,18 +56402,16 @@ unsafe extern "C" {
         aGroup_Name: *const Handle_TCollection_HAsciiString,
         aGroup_Description: *const Handle_TCollection_HAsciiString,
         aFeaGroup_ModelRef: *const Handle_StepFEA_FeaModel,
-        aElements: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
+        aElements: *const Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_ElementGroup.hxx`:46 - `StepFEA_ElementGroup::Elements()`
     pub fn StepFEA_ElementGroup_elements(
         self_: *const StepFEA_ElementGroup,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation>;
     /// **Source:** `StepFEA_ElementGroup.hxx`:49 - `StepFEA_ElementGroup::SetElements()`
     pub fn StepFEA_ElementGroup_set_elements(
         self_: *mut StepFEA_ElementGroup,
-        Elements: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
+        Elements: *const Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_ElementGroup.hxx`:52 - `StepFEA_ElementGroup::DynamicType()`
     pub fn StepFEA_ElementGroup_dynamic_type(
@@ -56702,20 +56650,18 @@ unsafe extern "C" {
     pub fn StepFEA_ElementRepresentation_init(
         self_: *mut StepFEA_ElementRepresentation,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
-        aNodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_ElementRepresentation.hxx`:48 - `StepFEA_ElementRepresentation::NodeList()`
     pub fn StepFEA_ElementRepresentation_node_list(
         self_: *const StepFEA_ElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn StepFEA_ElementRepresentation_set_node_list(
         self_: *mut StepFEA_ElementRepresentation,
-        NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_ElementRepresentation.hxx`:54 - `StepFEA_ElementRepresentation::DynamicType()`
     pub fn StepFEA_ElementRepresentation_dynamic_type(
@@ -56799,14 +56745,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_ElementRepresentation_inherited_SetItems(
         self_: *mut StepFEA_ElementRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_ElementRepresentation_inherited_Items(
         self_: *const StepFEA_ElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_ElementRepresentation_inherited_ItemsValue(
         self_: *const StepFEA_ElementRepresentation,
@@ -57978,7 +57922,7 @@ unsafe extern "C" {
     pub fn StepFEA_FeaModel_init(
         self_: *mut StepFEA_FeaModel,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aCreatingSoftware: *const Handle_TCollection_HAsciiString,
         aIntendedAnalysisCode: *const Handle_NCollection_HArray1_TCollection_AsciiString,
@@ -58089,14 +58033,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_FeaModel_inherited_SetItems(
         self_: *mut StepFEA_FeaModel,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_FeaModel_inherited_Items(
         self_: *const StepFEA_FeaModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_FeaModel_inherited_ItemsValue(
         self_: *const StepFEA_FeaModel,
@@ -58217,7 +58159,7 @@ unsafe extern "C" {
     pub fn StepFEA_FeaModel3d_inherited_Init(
         self_: *mut StepFEA_FeaModel3d,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aCreatingSoftware: *const Handle_TCollection_HAsciiString,
         aIntendedAnalysisCode: *const Handle_NCollection_HArray1_TCollection_AsciiString,
@@ -58272,14 +58214,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_FeaModel3d_inherited_SetItems(
         self_: *mut StepFEA_FeaModel3d,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_FeaModel3d_inherited_Items(
         self_: *const StepFEA_FeaModel3d,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_FeaModel3d_inherited_ItemsValue(
         self_: *const StepFEA_FeaModel3d,
@@ -60035,7 +59975,7 @@ unsafe extern "C" {
     pub fn StepFEA_GeometricNode_inherited_Init(
         self_: *mut StepFEA_GeometricNode,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -60060,14 +60000,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_GeometricNode_inherited_SetItems(
         self_: *mut StepFEA_GeometricNode,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_GeometricNode_inherited_Items(
         self_: *const StepFEA_GeometricNode,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_GeometricNode_inherited_ItemsValue(
         self_: *const StepFEA_GeometricNode,
@@ -60196,7 +60134,7 @@ unsafe extern "C" {
     pub fn StepFEA_Node_inherited_Init(
         self_: *mut StepFEA_Node,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -60221,14 +60159,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_Node_inherited_SetItems(
         self_: *mut StepFEA_Node,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_Node_inherited_Items(
         self_: *const StepFEA_Node,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_Node_inherited_ItemsValue(
         self_: *const StepFEA_Node,
@@ -60415,18 +60351,16 @@ unsafe extern "C" {
         aGroup_Name: *const Handle_TCollection_HAsciiString,
         aGroup_Description: *const Handle_TCollection_HAsciiString,
         aFeaGroup_ModelRef: *const Handle_StepFEA_FeaModel,
-        aNodes: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodes: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_NodeGroup.hxx`:45 - `StepFEA_NodeGroup::Nodes()`
     pub fn StepFEA_NodeGroup_nodes(
         self_: *const StepFEA_NodeGroup,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// **Source:** `StepFEA_NodeGroup.hxx`:49 - `StepFEA_NodeGroup::SetNodes()`
     pub fn StepFEA_NodeGroup_set_nodes(
         self_: *mut StepFEA_NodeGroup,
-        Nodes: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        Nodes: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_NodeGroup.hxx`:52 - `StepFEA_NodeGroup::DynamicType()`
     pub fn StepFEA_NodeGroup_dynamic_type(
@@ -60561,7 +60495,7 @@ unsafe extern "C" {
     pub fn StepFEA_NodeRepresentation_init(
         self_: *mut StepFEA_NodeRepresentation,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -60663,14 +60597,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_NodeRepresentation_inherited_SetItems(
         self_: *mut StepFEA_NodeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_NodeRepresentation_inherited_Items(
         self_: *const StepFEA_NodeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_NodeRepresentation_inherited_ItemsValue(
         self_: *const StepFEA_NodeRepresentation,
@@ -60727,18 +60659,16 @@ unsafe extern "C" {
     pub fn StepFEA_NodeSet_init(
         self_: *mut StepFEA_NodeSet,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aNodes: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodes: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_NodeSet.hxx`:42 - `StepFEA_NodeSet::Nodes()`
     pub fn StepFEA_NodeSet_nodes(
         self_: *const StepFEA_NodeSet,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// **Source:** `StepFEA_NodeSet.hxx`:46 - `StepFEA_NodeSet::SetNodes()`
     pub fn StepFEA_NodeSet_set_nodes(
         self_: *mut StepFEA_NodeSet,
-        Nodes: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        Nodes: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepFEA_NodeSet.hxx`:49 - `StepFEA_NodeSet::DynamicType()`
     pub fn StepFEA_NodeSet_dynamic_type(
@@ -60936,7 +60866,7 @@ unsafe extern "C" {
     pub fn StepFEA_NodeWithSolutionCoordinateSystem_inherited_Init(
         self_: *mut StepFEA_NodeWithSolutionCoordinateSystem,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -60961,14 +60891,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_NodeWithSolutionCoordinateSystem_inherited_SetItems(
         self_: *mut StepFEA_NodeWithSolutionCoordinateSystem,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_NodeWithSolutionCoordinateSystem_inherited_Items(
         self_: *const StepFEA_NodeWithSolutionCoordinateSystem,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_NodeWithSolutionCoordinateSystem_inherited_ItemsValue(
         self_: *const StepFEA_NodeWithSolutionCoordinateSystem,
@@ -61104,7 +61032,7 @@ unsafe extern "C" {
     pub fn StepFEA_NodeWithVector_inherited_Init(
         self_: *mut StepFEA_NodeWithVector,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         aModelRef: *const Handle_StepFEA_FeaModel,
     ) -> *const std::ffi::c_char;
@@ -61129,14 +61057,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_NodeWithVector_inherited_SetItems(
         self_: *mut StepFEA_NodeWithVector,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_NodeWithVector_inherited_Items(
         self_: *const StepFEA_NodeWithVector,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_NodeWithVector_inherited_ItemsValue(
         self_: *const StepFEA_NodeWithVector,
@@ -61599,9 +61525,9 @@ unsafe extern "C" {
     pub fn StepFEA_Surface3dElementRepresentation_init(
         self_: *mut StepFEA_Surface3dElementRepresentation,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: *const Handle_StepFEA_FeaModel3d,
         aElementDescriptor: *const Handle_StepElement_Surface3dElementDescriptor,
         aProperty: *const Handle_StepElement_SurfaceElementProperty,
@@ -61716,13 +61642,11 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:48 - `StepFEA_ElementRepresentation::NodeList()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_NodeList(
         self_: *const StepFEA_Surface3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_SetNodeList(
         self_: *mut StepFEA_Surface3dElementRepresentation,
-        NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_SetName(
@@ -61736,14 +61660,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_SetItems(
         self_: *mut StepFEA_Surface3dElementRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_Items(
         self_: *const StepFEA_Surface3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_Surface3dElementRepresentation_inherited_ItemsValue(
         self_: *const StepFEA_Surface3dElementRepresentation,
@@ -62671,9 +62593,9 @@ unsafe extern "C" {
     pub fn StepFEA_Volume3dElementRepresentation_init(
         self_: *mut StepFEA_Volume3dElementRepresentation,
         aRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        aRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: *const Handle_StepFEA_FeaModel3d,
         aElementDescriptor: *const Handle_StepElement_Volume3dElementDescriptor,
         aMaterial: *const Handle_StepElement_ElementMaterial,
@@ -62778,13 +62700,11 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:48 - `StepFEA_ElementRepresentation::NodeList()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_NodeList(
         self_: *const StepFEA_Volume3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_SetNodeList(
         self_: *mut StepFEA_Volume3dElementRepresentation,
-        NodeList: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_SetName(
@@ -62798,14 +62718,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_SetItems(
         self_: *mut StepFEA_Volume3dElementRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_Items(
         self_: *const StepFEA_Volume3dElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepFEA_Volume3dElementRepresentation_inherited_ItemsValue(
         self_: *const StepFEA_Volume3dElementRepresentation,
@@ -63567,7 +63485,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_BSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -63584,12 +63502,12 @@ unsafe extern "C" {
     /// **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_BSplineCurve_set_control_points_list(
         self_: *mut StepGeom_BSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_BSplineCurve_control_points_list(
         self_: *const StepGeom_BSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_BSplineCurve_control_points_list_value(
         self_: *const StepGeom_BSplineCurve,
@@ -63801,7 +63719,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_BSplineCurveWithKnots,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -63972,12 +63890,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_BSplineCurveWithKnots_inherited_SetControlPointsList(
         self_: *mut StepGeom_BSplineCurveWithKnots,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_BSplineCurveWithKnots_inherited_ControlPointsList(
         self_: *const StepGeom_BSplineCurveWithKnots,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_BSplineCurveWithKnots_inherited_ControlPointsListValue(
         self_: *const StepGeom_BSplineCurveWithKnots,
@@ -64061,11 +63979,11 @@ unsafe extern "C" {
     pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_ctor(
     ) -> crate::OcctResult<*mut StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve>;
     /// **Source:** `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:42 - `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(
+    pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(
         self_: *mut StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -64073,11 +63991,11 @@ unsafe extern "C" {
         aRationalBSplineCurve: *const Handle_StepGeom_RationalBSplineCurve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:53 - `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(
+    pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(
         self_: *mut StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -64285,12 +64203,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsList(
         self_: *const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve,
@@ -64376,7 +64294,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -64403,12 +64321,12 @@ unsafe extern "C" {
     /// **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_BSplineSurface_set_control_points_list(
         self_: *mut StepGeom_BSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_BSplineSurface_control_points_list(
         self_: *const StepGeom_BSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_BSplineSurface_control_points_list_value(
         self_: *const StepGeom_BSplineSurface,
@@ -64638,7 +64556,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -64857,12 +64775,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_BSplineSurfaceWithKnots_inherited_SetControlPointsList(
         self_: *mut StepGeom_BSplineSurfaceWithKnots,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsList(
         self_: *const StepGeom_BSplineSurfaceWithKnots,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsListValue(
         self_: *const StepGeom_BSplineSurfaceWithKnots,
@@ -64960,12 +64878,12 @@ unsafe extern "C" {
     pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_ctor(
     ) -> crate::OcctResult<*mut StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface>;
     /// **Source:** `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:44 - `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(
+    pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(
         self_: *mut StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -64974,12 +64892,12 @@ unsafe extern "C" {
         aRationalBSplineSurface: *const Handle_StepGeom_RationalBSplineSurface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:57 - `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(
+    pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(
         self_: *mut StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -65240,12 +65158,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsList(
         self_: *const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface,
@@ -65445,7 +65363,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_BezierCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -65462,12 +65380,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_BezierCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_BezierCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_BezierCurve_inherited_ControlPointsList(
         self_: *const StepGeom_BezierCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_BezierCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_BezierCurve,
@@ -65551,11 +65469,11 @@ unsafe extern "C" {
     pub fn StepGeom_BezierCurveAndRationalBSplineCurve_ctor(
     ) -> crate::OcctResult<*mut StepGeom_BezierCurveAndRationalBSplineCurve>;
     /// **Source:** `StepGeom_BezierCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_BezierCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(
+    pub fn StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(
         self_: *mut StepGeom_BezierCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -65563,11 +65481,11 @@ unsafe extern "C" {
         aRationalBSplineCurve: *const Handle_StepGeom_RationalBSplineCurve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BezierCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_BezierCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         self_: *mut StepGeom_BezierCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -65727,12 +65645,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_BezierCurveAndRationalBSplineCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_BezierCurveAndRationalBSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsList(
         self_: *const StepGeom_BezierCurveAndRationalBSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_BezierCurveAndRationalBSplineCurve,
@@ -65921,7 +65839,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -65948,12 +65866,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_BezierSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_BezierSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_BezierSurface_inherited_ControlPointsList(
         self_: *const StepGeom_BezierSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_BezierSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_BezierSurface,
@@ -66051,12 +65969,12 @@ unsafe extern "C" {
     pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_ctor(
     ) -> crate::OcctResult<*mut StepGeom_BezierSurfaceAndRationalBSplineSurface>;
     /// **Source:** `StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_BezierSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(
+    pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(
         self_: *mut StepGeom_BezierSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -66065,12 +65983,12 @@ unsafe extern "C" {
         aRationalBSplineSurface: *const Handle_StepGeom_RationalBSplineSurface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_BezierSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         self_: *mut StepGeom_BezierSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -66245,12 +66163,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_BezierSurfaceAndRationalBSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(
         self_: *const StepGeom_BezierSurfaceAndRationalBSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_BezierSurfaceAndRationalBSplineSurface,
@@ -66467,20 +66385,18 @@ unsafe extern "C" {
     pub fn StepGeom_BoundaryCurve_inherited_Init(
         self_: *mut StepGeom_BoundaryCurve,
         aName: *const Handle_TCollection_HAsciiString,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: i32,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn StepGeom_BoundaryCurve_inherited_SetSegments(
         self_: *mut StepGeom_BoundaryCurve,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
     pub fn StepGeom_BoundaryCurve_inherited_Segments(
         self_: *const StepGeom_BoundaryCurve,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment>;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:50 - `StepGeom_CompositeCurve::SegmentsValue()`
     pub fn StepGeom_BoundaryCurve_inherited_SegmentsValue(
         self_: *const StepGeom_BoundaryCurve,
@@ -67846,20 +67762,18 @@ unsafe extern "C" {
     pub fn StepGeom_CompositeCurve_init(
         self_: *mut StepGeom_CompositeCurve,
         aName: *const Handle_TCollection_HAsciiString,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn StepGeom_CompositeCurve_set_segments(
         self_: *mut StepGeom_CompositeCurve,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
     pub fn StepGeom_CompositeCurve_segments(
         self_: *const StepGeom_CompositeCurve,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment>;
     /// **Source:** `StepGeom_CompositeCurve.hxx`:50 - `StepGeom_CompositeCurve::SegmentsValue()`
     pub fn StepGeom_CompositeCurve_segments_value(
         self_: *const StepGeom_CompositeCurve,
@@ -68145,20 +68059,18 @@ unsafe extern "C" {
     pub fn StepGeom_CompositeCurveOnSurface_inherited_Init(
         self_: *mut StepGeom_CompositeCurveOnSurface,
         aName: *const Handle_TCollection_HAsciiString,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: i32,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn StepGeom_CompositeCurveOnSurface_inherited_SetSegments(
         self_: *mut StepGeom_CompositeCurveOnSurface,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
     pub fn StepGeom_CompositeCurveOnSurface_inherited_Segments(
         self_: *const StepGeom_CompositeCurveOnSurface,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment>;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:50 - `StepGeom_CompositeCurve::SegmentsValue()`
     pub fn StepGeom_CompositeCurveOnSurface_inherited_SegmentsValue(
         self_: *const StepGeom_CompositeCurveOnSurface,
@@ -70482,13 +70394,13 @@ unsafe extern "C" {
         aGlobalUncertaintyAssignedCtx: *const Handle_StepRepr_GlobalUncertaintyAssignedContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:50 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Init()`
-    pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit_handlencollectionharray1opencascadehandlestepbasicuncertaintymeasurewithunit(
+    pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit_harr1_stepbasic_uncertaintymeasurewithunit(
         self_: *mut StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
         aContextIdentifier: *const Handle_TCollection_HAsciiString,
         aContextType: *const Handle_TCollection_HAsciiString,
         aCoordinateSpaceDimension: i32,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-        anUncertainty: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+        anUncertainty: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:58 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetGeometricRepresentationContext()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_geometric_representation_context(
@@ -70529,12 +70441,12 @@ unsafe extern "C" {
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:79 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUnits()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_units(
         self_: *mut StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:82 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Units()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units(
         self_: *const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:84 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::UnitsValue()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units_value(
         self_: *const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
@@ -70547,13 +70459,13 @@ unsafe extern "C" {
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:88 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUncertainty()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_uncertainty(
         self_: *mut StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
-        aUncertainty: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:94 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Uncertainty()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty(
         self_: *const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     >;
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:96 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::UncertaintyValue()`
     pub fn StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty_value(
@@ -70819,12 +70731,12 @@ unsafe extern "C" {
         aGlobalUnitAssignedContext: *const Handle_StepRepr_GlobalUnitAssignedContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:47 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Init()`
-    pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit(
+    pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit(
         self_: *mut StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext,
         aContextIdentifier: *const Handle_TCollection_HAsciiString,
         aContextType: *const Handle_TCollection_HAsciiString,
         aCoordinateSpaceDimension: i32,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:53 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetGeometricRepresentationContext()`
     pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_set_geometric_representation_context(
@@ -70856,12 +70768,12 @@ unsafe extern "C" {
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:68 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetUnits()`
     pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_set_units(
         self_: *mut StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:71 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Units()`
     pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units(
         self_: *const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>;
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:73 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::UnitsValue()`
     pub fn StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units_value(
         self_: *const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext,
@@ -73160,20 +73072,18 @@ unsafe extern "C" {
     pub fn StepGeom_OuterBoundaryCurve_inherited_Init(
         self_: *mut StepGeom_OuterBoundaryCurve,
         aName: *const Handle_TCollection_HAsciiString,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: i32,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn StepGeom_OuterBoundaryCurve_inherited_SetSegments(
         self_: *mut StepGeom_OuterBoundaryCurve,
-        aSegments: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
     pub fn StepGeom_OuterBoundaryCurve_inherited_Segments(
         self_: *const StepGeom_OuterBoundaryCurve,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment>;
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:50 - `StepGeom_CompositeCurve::SegmentsValue()`
     pub fn StepGeom_OuterBoundaryCurve_inherited_SegmentsValue(
         self_: *const StepGeom_OuterBoundaryCurve,
@@ -74509,17 +74419,17 @@ unsafe extern "C" {
     pub fn StepGeom_Polyline_init(
         self_: *mut StepGeom_Polyline,
         aName: *const Handle_TCollection_HAsciiString,
-        aPoints: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPoints: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_Polyline.hxx`:42 - `StepGeom_Polyline::SetPoints()`
     pub fn StepGeom_Polyline_set_points(
         self_: *mut StepGeom_Polyline,
-        aPoints: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPoints: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_Polyline.hxx`:45 - `StepGeom_Polyline::Points()`
     pub fn StepGeom_Polyline_points(
         self_: *const StepGeom_Polyline,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// **Source:** `StepGeom_Polyline.hxx`:48 - `StepGeom_Polyline::PointsValue()`
     pub fn StepGeom_Polyline_points_value(
         self_: *const StepGeom_Polyline,
@@ -74768,7 +74678,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_QuasiUniformCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -74785,12 +74695,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_QuasiUniformCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_QuasiUniformCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_QuasiUniformCurve_inherited_ControlPointsList(
         self_: *const StepGeom_QuasiUniformCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_QuasiUniformCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_QuasiUniformCurve,
@@ -74874,11 +74784,11 @@ unsafe extern "C" {
     pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_ctor(
     ) -> crate::OcctResult<*mut StepGeom_QuasiUniformCurveAndRationalBSplineCurve>;
     /// **Source:** `StepGeom_QuasiUniformCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(
+    pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(
         self_: *mut StepGeom_QuasiUniformCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -74886,11 +74796,11 @@ unsafe extern "C" {
         aRationalBSplineCurve: *const Handle_StepGeom_RationalBSplineCurve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_QuasiUniformCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         self_: *mut StepGeom_QuasiUniformCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -75050,12 +74960,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_QuasiUniformCurveAndRationalBSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(
         self_: *const StepGeom_QuasiUniformCurveAndRationalBSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_QuasiUniformCurveAndRationalBSplineCurve,
@@ -75247,7 +75157,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -75274,12 +75184,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_QuasiUniformSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_QuasiUniformSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_QuasiUniformSurface_inherited_ControlPointsList(
         self_: *const StepGeom_QuasiUniformSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_QuasiUniformSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_QuasiUniformSurface,
@@ -75377,12 +75287,12 @@ unsafe extern "C" {
     pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_ctor(
     ) -> crate::OcctResult<*mut StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface>;
     /// **Source:** `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(
+    pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(
         self_: *mut StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -75391,12 +75301,12 @@ unsafe extern "C" {
         aRationalBSplineSurface: *const Handle_StepGeom_RationalBSplineSurface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         self_: *mut StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -75571,12 +75481,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(
         self_: *const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface,
@@ -75676,7 +75586,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_RationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -75818,12 +75728,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_RationalBSplineCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_RationalBSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_RationalBSplineCurve_inherited_ControlPointsList(
         self_: *const StepGeom_RationalBSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_RationalBSplineCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_RationalBSplineCurve,
@@ -75910,7 +75820,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -76067,12 +75977,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_RationalBSplineSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_RationalBSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_RationalBSplineSurface_inherited_ControlPointsList(
         self_: *const StepGeom_RationalBSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_RationalBSplineSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_RationalBSplineSurface,
@@ -76173,17 +76083,17 @@ unsafe extern "C" {
     pub fn StepGeom_RectangularCompositeSurface_init(
         self_: *mut StepGeom_RectangularCompositeSurface,
         aName: *const Handle_TCollection_HAsciiString,
-        aSegments: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+        aSegments: *const Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:42 - `StepGeom_RectangularCompositeSurface::SetSegments()`
     pub fn StepGeom_RectangularCompositeSurface_set_segments(
         self_: *mut StepGeom_RectangularCompositeSurface,
-        aSegments: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+        aSegments: *const Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:45 - `StepGeom_RectangularCompositeSurface::Segments()`
     pub fn StepGeom_RectangularCompositeSurface_segments(
         self_: *const StepGeom_RectangularCompositeSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch>;
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:48 - `StepGeom_RectangularCompositeSurface::SegmentsValue()`
     pub fn StepGeom_RectangularCompositeSurface_segments_value(
         self_: *const StepGeom_RectangularCompositeSurface,
@@ -79395,7 +79305,7 @@ unsafe extern "C" {
         self_: *mut StepGeom_UniformCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -79412,12 +79322,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_UniformCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_UniformCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_UniformCurve_inherited_ControlPointsList(
         self_: *const StepGeom_UniformCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_UniformCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_UniformCurve,
@@ -79501,11 +79411,11 @@ unsafe extern "C" {
     pub fn StepGeom_UniformCurveAndRationalBSplineCurve_ctor(
     ) -> crate::OcctResult<*mut StepGeom_UniformCurveAndRationalBSplineCurve>;
     /// **Source:** `StepGeom_UniformCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_UniformCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(
+    pub fn StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(
         self_: *mut StepGeom_UniformCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -79513,11 +79423,11 @@ unsafe extern "C" {
         aRationalBSplineCurve: *const Handle_StepGeom_RationalBSplineCurve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_UniformCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_UniformCurveAndRationalBSplineCurve::Init()`
-    pub fn StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         self_: *mut StepGeom_UniformCurveAndRationalBSplineCurve,
         aName: *const Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: i32,
         aClosedCurve: i32,
         aSelfIntersect: i32,
@@ -79677,12 +79587,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn StepGeom_UniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(
         self_: *mut StepGeom_UniformCurveAndRationalBSplineCurve,
-        aControlPointsList: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(
         self_: *const StepGeom_UniformCurveAndRationalBSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:60 - `StepGeom_BSplineCurve::ControlPointsListValue()`
     pub fn StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(
         self_: *const StepGeom_UniformCurveAndRationalBSplineCurve,
@@ -79871,7 +79781,7 @@ unsafe extern "C" {
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -79898,12 +79808,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_UniformSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_UniformSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_UniformSurface_inherited_ControlPointsList(
         self_: *const StepGeom_UniformSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_UniformSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_UniformSurface,
@@ -80001,12 +79911,12 @@ unsafe extern "C" {
     pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_ctor(
     ) -> crate::OcctResult<*mut StepGeom_UniformSurfaceAndRationalBSplineSurface>;
     /// **Source:** `StepGeom_UniformSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_UniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(
+    pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(
         self_: *mut StepGeom_UniformSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -80015,12 +79925,12 @@ unsafe extern "C" {
         aRationalBSplineSurface: *const Handle_StepGeom_RationalBSplineSurface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepGeom_UniformSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_UniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         self_: *mut StepGeom_UniformSurfaceAndRationalBSplineSurface,
         aName: *const Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: i32,
         aUClosed: i32,
         aVClosed: i32,
@@ -80195,12 +80105,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(
         self_: *mut StepGeom_UniformSurfaceAndRationalBSplineSurface,
-        aControlPointsList: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(
         self_: *const StepGeom_UniformSurfaceAndRationalBSplineSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:66 - `StepGeom_BSplineSurface::ControlPointsListValue()`
     pub fn StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(
         self_: *const StepGeom_UniformSurfaceAndRationalBSplineSurface,
@@ -83359,7 +83269,7 @@ unsafe extern "C" {
     pub fn StepKinematics_KinematicLinkRepresentation_init(
         self_: *mut StepKinematics_KinematicLinkRepresentation,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theRepresentedLink: *const Handle_StepKinematics_KinematicLink,
     ) -> *const std::ffi::c_char;
@@ -83450,14 +83360,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_KinematicLinkRepresentation_inherited_SetItems(
         self_: *mut StepKinematics_KinematicLinkRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_KinematicLinkRepresentation_inherited_Items(
         self_: *const StepKinematics_KinematicLinkRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_KinematicLinkRepresentation_inherited_ItemsValue(
         self_: *const StepKinematics_KinematicLinkRepresentation,
@@ -84238,7 +84146,7 @@ unsafe extern "C" {
     pub fn StepKinematics_KinematicTopologyDirectedStructure_init(
         self_: *mut StepKinematics_KinematicTopologyDirectedStructure,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theParent: *const Handle_StepKinematics_KinematicTopologyStructure,
     ) -> *const std::ffi::c_char;
@@ -84321,14 +84229,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_KinematicTopologyDirectedStructure_inherited_SetItems(
         self_: *mut StepKinematics_KinematicTopologyDirectedStructure,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_KinematicTopologyDirectedStructure_inherited_Items(
         self_: *const StepKinematics_KinematicTopologyDirectedStructure,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_KinematicTopologyDirectedStructure_inherited_ItemsValue(
         self_: *const StepKinematics_KinematicTopologyDirectedStructure,
@@ -84388,7 +84294,7 @@ unsafe extern "C" {
     pub fn StepKinematics_KinematicTopologyNetworkStructure_init(
         self_: *mut StepKinematics_KinematicTopologyNetworkStructure,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theParent: *const Handle_StepKinematics_KinematicTopologyStructure,
     ) -> *const std::ffi::c_char;
@@ -84471,14 +84377,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_KinematicTopologyNetworkStructure_inherited_SetItems(
         self_: *mut StepKinematics_KinematicTopologyNetworkStructure,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_KinematicTopologyNetworkStructure_inherited_Items(
         self_: *const StepKinematics_KinematicTopologyNetworkStructure,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_KinematicTopologyNetworkStructure_inherited_ItemsValue(
         self_: *const StepKinematics_KinematicTopologyNetworkStructure,
@@ -84704,7 +84608,7 @@ unsafe extern "C" {
     pub fn StepKinematics_KinematicTopologyStructure_inherited_Init(
         self_: *mut StepKinematics_KinematicTopologyStructure,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -84719,14 +84623,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_KinematicTopologyStructure_inherited_SetItems(
         self_: *mut StepKinematics_KinematicTopologyStructure,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_KinematicTopologyStructure_inherited_Items(
         self_: *const StepKinematics_KinematicTopologyStructure,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_KinematicTopologyStructure_inherited_ItemsValue(
         self_: *const StepKinematics_KinematicTopologyStructure,
@@ -85224,7 +85126,7 @@ unsafe extern "C" {
     pub fn StepKinematics_LinearFlexibleLinkRepresentation_inherited_Init(
         self_: *mut StepKinematics_LinearFlexibleLinkRepresentation,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theRepresentedLink: *const Handle_StepKinematics_KinematicLink,
     ) -> *const std::ffi::c_char;
@@ -85249,14 +85151,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_LinearFlexibleLinkRepresentation_inherited_SetItems(
         self_: *mut StepKinematics_LinearFlexibleLinkRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_LinearFlexibleLinkRepresentation_inherited_Items(
         self_: *const StepKinematics_LinearFlexibleLinkRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_LinearFlexibleLinkRepresentation_inherited_ItemsValue(
         self_: *const StepKinematics_LinearFlexibleLinkRepresentation,
@@ -86402,7 +86302,7 @@ unsafe extern "C" {
     pub fn StepKinematics_MechanismRepresentation_init(
         self_: *mut StepKinematics_MechanismRepresentation,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theRepresentedTopology: *const StepKinematics_KinematicTopologyRepresentationSelect,
     ) -> *const std::ffi::c_char;
@@ -86485,14 +86385,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_MechanismRepresentation_inherited_SetItems(
         self_: *mut StepKinematics_MechanismRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_MechanismRepresentation_inherited_Items(
         self_: *const StepKinematics_MechanismRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_MechanismRepresentation_inherited_ItemsValue(
         self_: *const StepKinematics_MechanismRepresentation,
@@ -86552,7 +86450,7 @@ unsafe extern "C" {
     pub fn StepKinematics_MechanismStateRepresentation_init(
         self_: *mut StepKinematics_MechanismStateRepresentation,
         theName: *const Handle_TCollection_HAsciiString,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theMechanism: *const Handle_StepKinematics_MechanismRepresentation,
     ) -> *const std::ffi::c_char;
@@ -86635,14 +86533,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_MechanismStateRepresentation_inherited_SetItems(
         self_: *mut StepKinematics_MechanismStateRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_MechanismStateRepresentation_inherited_Items(
         self_: *const StepKinematics_MechanismStateRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_MechanismStateRepresentation_inherited_ItemsValue(
         self_: *const StepKinematics_MechanismStateRepresentation,
@@ -91878,7 +91774,7 @@ unsafe extern "C" {
     pub fn StepKinematics_RigidLinkRepresentation_inherited_Init(
         self_: *mut StepKinematics_RigidLinkRepresentation,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theRepresentedLink: *const Handle_StepKinematics_KinematicLink,
     ) -> *const std::ffi::c_char;
@@ -91903,14 +91799,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepKinematics_RigidLinkRepresentation_inherited_SetItems(
         self_: *mut StepKinematics_RigidLinkRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepKinematics_RigidLinkRepresentation_inherited_Items(
         self_: *const StepKinematics_RigidLinkRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepKinematics_RigidLinkRepresentation_inherited_ItemsValue(
         self_: *const StepKinematics_RigidLinkRepresentation,
@@ -98479,7 +98373,7 @@ unsafe extern "C" {
         self_: *mut StepRepr_CharacterizedRepresentation,
         theName: *const Handle_TCollection_HAsciiString,
         theDescription: *const Handle_TCollection_HAsciiString,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_CharacterizedRepresentation.hxx`:39 - `StepRepr_CharacterizedRepresentation::SetDescription()`
@@ -98561,14 +98455,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepRepr_CharacterizedRepresentation_inherited_SetItems(
         self_: *mut StepRepr_CharacterizedRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepRepr_CharacterizedRepresentation_inherited_Items(
         self_: *const StepRepr_CharacterizedRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepRepr_CharacterizedRepresentation_inherited_ItemsValue(
         self_: *const StepRepr_CharacterizedRepresentation,
@@ -99230,14 +99122,12 @@ unsafe extern "C" {
     pub fn StepRepr_CompoundRepresentationItem_init(
         self_: *mut StepRepr_CompoundRepresentationItem,
         aName: *const Handle_TCollection_HAsciiString,
-        item_element: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:40 - `StepRepr_CompoundRepresentationItem::ItemElement()`
     pub fn StepRepr_CompoundRepresentationItem_item_element(
         self_: *const StepRepr_CompoundRepresentationItem,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:42 - `StepRepr_CompoundRepresentationItem::NbItemElement()`
     pub fn StepRepr_CompoundRepresentationItem_nb_item_element(
         self_: *const StepRepr_CompoundRepresentationItem,
@@ -99245,7 +99135,7 @@ unsafe extern "C" {
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:44 - `StepRepr_CompoundRepresentationItem::SetItemElement()`
     pub fn StepRepr_CompoundRepresentationItem_set_item_element(
         self_: *mut StepRepr_CompoundRepresentationItem,
-        item_element: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:47 - `StepRepr_CompoundRepresentationItem::ItemElementValue()`
     pub fn StepRepr_CompoundRepresentationItem_item_element_value(
@@ -99920,7 +99810,7 @@ unsafe extern "C" {
     pub fn StepRepr_ConstructiveGeometryRepresentation_inherited_Init(
         self_: *mut StepRepr_ConstructiveGeometryRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -99935,14 +99825,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepRepr_ConstructiveGeometryRepresentation_inherited_SetItems(
         self_: *mut StepRepr_ConstructiveGeometryRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepRepr_ConstructiveGeometryRepresentation_inherited_Items(
         self_: *const StepRepr_ConstructiveGeometryRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepRepr_ConstructiveGeometryRepresentation_inherited_ItemsValue(
         self_: *const StepRepr_ConstructiveGeometryRepresentation,
@@ -100300,7 +100188,7 @@ unsafe extern "C" {
         self_: *mut StepRepr_DataEnvironment,
         aName: *const Handle_TCollection_HAsciiString,
         aDescription: *const Handle_TCollection_HAsciiString,
-        aElements: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
+        aElements: *const Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_DataEnvironment.hxx`:43 - `StepRepr_DataEnvironment::Name()`
     pub fn StepRepr_DataEnvironment_name(
@@ -100321,11 +100209,15 @@ unsafe extern "C" {
         Description: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_DataEnvironment.hxx`:57 - `StepRepr_DataEnvironment::Elements()`
-    pub fn StepRepr_DataEnvironment_elements(self_: *const StepRepr_DataEnvironment) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation>;
+    pub fn StepRepr_DataEnvironment_elements(
+        self_: *const StepRepr_DataEnvironment,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    >;
     /// **Source:** `StepRepr_DataEnvironment.hxx`:60 - `StepRepr_DataEnvironment::SetElements()`
     pub fn StepRepr_DataEnvironment_set_elements(
         self_: *mut StepRepr_DataEnvironment,
-        Elements: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
+        Elements: *const Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_DataEnvironment.hxx`:64 - `StepRepr_DataEnvironment::DynamicType()`
     pub fn StepRepr_DataEnvironment_dynamic_type(
@@ -100473,7 +100365,7 @@ unsafe extern "C" {
     pub fn StepRepr_DefinitionalRepresentation_inherited_Init(
         self_: *mut StepRepr_DefinitionalRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -100488,14 +100380,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepRepr_DefinitionalRepresentation_inherited_SetItems(
         self_: *mut StepRepr_DefinitionalRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepRepr_DefinitionalRepresentation_inherited_Items(
         self_: *const StepRepr_DefinitionalRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepRepr_DefinitionalRepresentation_inherited_ItemsValue(
         self_: *const StepRepr_DefinitionalRepresentation,
@@ -101037,7 +100927,7 @@ unsafe extern "C" {
     pub fn StepRepr_ExternallyDefinedRepresentation_inherited_Init(
         self_: *mut StepRepr_ExternallyDefinedRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -101052,14 +100942,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepRepr_ExternallyDefinedRepresentation_inherited_SetItems(
         self_: *mut StepRepr_ExternallyDefinedRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepRepr_ExternallyDefinedRepresentation_inherited_Items(
         self_: *const StepRepr_ExternallyDefinedRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepRepr_ExternallyDefinedRepresentation_inherited_ItemsValue(
         self_: *const StepRepr_ExternallyDefinedRepresentation,
@@ -101518,18 +101406,18 @@ unsafe extern "C" {
         self_: *mut StepRepr_GlobalUncertaintyAssignedContext,
         aContextIdentifier: *const Handle_TCollection_HAsciiString,
         aContextType: *const Handle_TCollection_HAsciiString,
-        aUncertainty: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:43 - `StepRepr_GlobalUncertaintyAssignedContext::SetUncertainty()`
     pub fn StepRepr_GlobalUncertaintyAssignedContext_set_uncertainty(
         self_: *mut StepRepr_GlobalUncertaintyAssignedContext,
-        aUncertainty: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:49 - `StepRepr_GlobalUncertaintyAssignedContext::Uncertainty()`
     pub fn StepRepr_GlobalUncertaintyAssignedContext_uncertainty(
         self_: *const StepRepr_GlobalUncertaintyAssignedContext,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     >;
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:51 - `StepRepr_GlobalUncertaintyAssignedContext::UncertaintyValue()`
     pub fn StepRepr_GlobalUncertaintyAssignedContext_uncertainty_value(
@@ -101658,17 +101546,17 @@ unsafe extern "C" {
         self_: *mut StepRepr_GlobalUnitAssignedContext,
         aContextIdentifier: *const Handle_TCollection_HAsciiString,
         aContextType: *const Handle_TCollection_HAsciiString,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:43 - `StepRepr_GlobalUnitAssignedContext::SetUnits()`
     pub fn StepRepr_GlobalUnitAssignedContext_set_units(
         self_: *mut StepRepr_GlobalUnitAssignedContext,
-        aUnits: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:46 - `StepRepr_GlobalUnitAssignedContext::Units()`
     pub fn StepRepr_GlobalUnitAssignedContext_units(
         self_: *const StepRepr_GlobalUnitAssignedContext,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>;
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:48 - `StepRepr_GlobalUnitAssignedContext::UnitsValue()`
     pub fn StepRepr_GlobalUnitAssignedContext_units_value(
         self_: *const StepRepr_GlobalUnitAssignedContext,
@@ -105967,7 +105855,7 @@ unsafe extern "C" {
     pub fn StepRepr_Representation_init(
         self_: *mut StepRepr_Representation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -105982,14 +105870,12 @@ unsafe extern "C" {
     /// **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepRepr_Representation_set_items(
         self_: *mut StepRepr_Representation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepRepr_Representation_items(
         self_: *const StepRepr_Representation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepRepr_Representation_items_value(
         self_: *const StepRepr_Representation,
@@ -110602,14 +110488,12 @@ unsafe extern "C" {
     pub fn StepRepr_ValueRange_inherited_Init(
         self_: *mut StepRepr_ValueRange,
         aName: *const Handle_TCollection_HAsciiString,
-        item_element: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_CompoundRepresentationItem.hxx`:40 - `StepRepr_CompoundRepresentationItem::ItemElement()`
     pub fn StepRepr_ValueRange_inherited_ItemElement(
         self_: *const StepRepr_ValueRange,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_CompoundRepresentationItem.hxx`:42 - `StepRepr_CompoundRepresentationItem::NbItemElement()`
     pub fn StepRepr_ValueRange_inherited_NbItemElement(
         self_: *const StepRepr_ValueRange,
@@ -110617,7 +110501,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_CompoundRepresentationItem.hxx`:44 - `StepRepr_CompoundRepresentationItem::SetItemElement()`
     pub fn StepRepr_ValueRange_inherited_SetItemElement(
         self_: *mut StepRepr_ValueRange,
-        item_element: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_CompoundRepresentationItem.hxx`:47 - `StepRepr_CompoundRepresentationItem::ItemElementValue()`
     pub fn StepRepr_ValueRange_inherited_ItemElementValue(
@@ -111748,7 +111632,7 @@ unsafe extern "C" {
     pub fn StepShape_AdvancedBrepShapeRepresentation_inherited_Init(
         self_: *mut StepShape_AdvancedBrepShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -111763,14 +111647,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_AdvancedBrepShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_AdvancedBrepShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_AdvancedBrepShapeRepresentation_inherited_Items(
         self_: *const StepShape_AdvancedBrepShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_AdvancedBrepShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_AdvancedBrepShapeRepresentation,
@@ -111918,7 +111800,7 @@ unsafe extern "C" {
     pub fn StepShape_AdvancedFace_inherited_Init(
         self_: *mut StepShape_AdvancedFace,
         aName: *const Handle_TCollection_HAsciiString,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aFaceGeometry: *const Handle_StepGeom_Surface,
         aSameSense: bool,
     ) -> *const std::ffi::c_char;
@@ -111943,12 +111825,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn StepShape_AdvancedFace_inherited_SetBounds(
         self_: *mut StepShape_AdvancedFace,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn StepShape_AdvancedFace_inherited_Bounds(
         self_: *const StepShape_AdvancedFace,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
     /// Inherited: **Source:** `StepShape_Face.hxx`:48 - `StepShape_Face::BoundsValue()`
     pub fn StepShape_AdvancedFace_inherited_BoundsValue(
         self_: *const StepShape_AdvancedFace,
@@ -112894,19 +112776,17 @@ unsafe extern "C" {
         self_: *mut StepShape_BrepWithVoids,
         aName: *const Handle_TCollection_HAsciiString,
         aOuter: *const Handle_StepShape_ClosedShell,
-        aVoids: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_BrepWithVoids.hxx`:44 - `StepShape_BrepWithVoids::SetVoids()`
     pub fn StepShape_BrepWithVoids_set_voids(
         self_: *mut StepShape_BrepWithVoids,
-        aVoids: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_BrepWithVoids.hxx`:48 - `StepShape_BrepWithVoids::Voids()`
     pub fn StepShape_BrepWithVoids_voids(
         self_: *const StepShape_BrepWithVoids,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell>;
     /// **Source:** `StepShape_BrepWithVoids.hxx`:50 - `StepShape_BrepWithVoids::VoidsValue()`
     pub fn StepShape_BrepWithVoids_voids_value(
         self_: *const StepShape_BrepWithVoids,
@@ -113145,17 +113025,17 @@ unsafe extern "C" {
     pub fn StepShape_ClosedShell_inherited_Init(
         self_: *mut StepShape_ClosedShell,
         aName: *const Handle_TCollection_HAsciiString,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn StepShape_ClosedShell_inherited_SetCfsFaces(
         self_: *mut StepShape_ClosedShell,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn StepShape_ClosedShell_inherited_CfsFaces(
         self_: *const StepShape_ClosedShell,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:48 - `StepShape_ConnectedFaceSet::CfsFacesValue()`
     pub fn StepShape_ClosedShell_inherited_CfsFacesValue(
         self_: *const StepShape_ClosedShell,
@@ -113285,7 +113165,7 @@ unsafe extern "C" {
     pub fn StepShape_CompoundShapeRepresentation_inherited_Init(
         self_: *mut StepShape_CompoundShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -113300,14 +113180,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_CompoundShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_CompoundShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_CompoundShapeRepresentation_inherited_Items(
         self_: *const StepShape_CompoundShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_CompoundShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_CompoundShapeRepresentation,
@@ -113364,16 +113242,16 @@ unsafe extern "C" {
     pub fn StepShape_ConnectedEdgeSet_init(
         self_: *mut StepShape_ConnectedEdgeSet,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aCesEdges: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
+        aCesEdges: *const Handle_NCollection_HArray1_Handle_StepShape_Edge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ConnectedEdgeSet.hxx`:42 - `StepShape_ConnectedEdgeSet::CesEdges()`
     pub fn StepShape_ConnectedEdgeSet_ces_edges(
         self_: *const StepShape_ConnectedEdgeSet,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Edge>;
     /// **Source:** `StepShape_ConnectedEdgeSet.hxx`:45 - `StepShape_ConnectedEdgeSet::SetCesEdges()`
     pub fn StepShape_ConnectedEdgeSet_set_ces_edges(
         self_: *mut StepShape_ConnectedEdgeSet,
-        CesEdges: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
+        CesEdges: *const Handle_NCollection_HArray1_Handle_StepShape_Edge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ConnectedEdgeSet.hxx`:48 - `StepShape_ConnectedEdgeSet::DynamicType()`
     pub fn StepShape_ConnectedEdgeSet_dynamic_type(
@@ -113491,17 +113369,17 @@ unsafe extern "C" {
     pub fn StepShape_ConnectedFaceSet_init(
         self_: *mut StepShape_ConnectedFaceSet,
         aName: *const Handle_TCollection_HAsciiString,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn StepShape_ConnectedFaceSet_set_cfs_faces(
         self_: *mut StepShape_ConnectedFaceSet,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn StepShape_ConnectedFaceSet_cfs_faces(
         self_: *const StepShape_ConnectedFaceSet,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:48 - `StepShape_ConnectedFaceSet::CfsFacesValue()`
     pub fn StepShape_ConnectedFaceSet_cfs_faces_value(
         self_: *const StepShape_ConnectedFaceSet,
@@ -113708,7 +113586,7 @@ unsafe extern "C" {
     pub fn StepShape_ConnectedFaceShapeRepresentation_inherited_Init(
         self_: *mut StepShape_ConnectedFaceShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -113723,14 +113601,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_ConnectedFaceShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_ConnectedFaceShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_ConnectedFaceShapeRepresentation_inherited_Items(
         self_: *const StepShape_ConnectedFaceShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_ConnectedFaceShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_ConnectedFaceShapeRepresentation,
@@ -113788,7 +113664,7 @@ unsafe extern "C" {
     pub fn StepShape_ConnectedFaceSubSet_init(
         self_: *mut StepShape_ConnectedFaceSubSet,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aConnectedFaceSet_CfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aConnectedFaceSet_CfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
         aParentFaceSet: *const Handle_StepShape_ConnectedFaceSet,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ConnectedFaceSubSet.hxx`:43 - `StepShape_ConnectedFaceSubSet::ParentFaceSet()`
@@ -113885,12 +113761,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn StepShape_ConnectedFaceSubSet_inherited_SetCfsFaces(
         self_: *mut StepShape_ConnectedFaceSubSet,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn StepShape_ConnectedFaceSubSet_inherited_CfsFaces(
         self_: *const StepShape_ConnectedFaceSubSet,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:48 - `StepShape_ConnectedFaceSet::CfsFacesValue()`
     pub fn StepShape_ConnectedFaceSubSet_inherited_CfsFacesValue(
         self_: *const StepShape_ConnectedFaceSubSet,
@@ -114275,7 +114151,7 @@ unsafe extern "C" {
     pub fn StepShape_CsgShapeRepresentation_inherited_Init(
         self_: *mut StepShape_CsgShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -114290,14 +114166,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_CsgShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_CsgShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_CsgShapeRepresentation_inherited_Items(
         self_: *const StepShape_CsgShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_CsgShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_CsgShapeRepresentation,
@@ -114561,7 +114435,7 @@ unsafe extern "C" {
     pub fn StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Init(
         self_: *mut StepShape_DefinitionalRepresentationAndShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -114576,14 +114450,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_DefinitionalRepresentationAndShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Items(
         self_: *const StepShape_DefinitionalRepresentationAndShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_DefinitionalRepresentationAndShapeRepresentation,
@@ -115725,18 +115597,16 @@ unsafe extern "C" {
     pub fn StepShape_EdgeBasedWireframeModel_init(
         self_: *mut StepShape_EdgeBasedWireframeModel,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aEbwmBoundary: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
+        aEbwmBoundary: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_EdgeBasedWireframeModel.hxx`:43 - `StepShape_EdgeBasedWireframeModel::EbwmBoundary()`
     pub fn StepShape_EdgeBasedWireframeModel_ebwm_boundary(
         self_: *const StepShape_EdgeBasedWireframeModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet>;
     /// **Source:** `StepShape_EdgeBasedWireframeModel.hxx`:46 - `StepShape_EdgeBasedWireframeModel::SetEbwmBoundary()`
     pub fn StepShape_EdgeBasedWireframeModel_set_ebwm_boundary(
         self_: *mut StepShape_EdgeBasedWireframeModel,
-        EbwmBoundary: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
+        EbwmBoundary: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_EdgeBasedWireframeModel.hxx`:49 - `StepShape_EdgeBasedWireframeModel::DynamicType()`
     pub fn StepShape_EdgeBasedWireframeModel_dynamic_type(
@@ -115928,7 +115798,7 @@ unsafe extern "C" {
     pub fn StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Init(
         self_: *mut StepShape_EdgeBasedWireframeShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -115943,14 +115813,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_EdgeBasedWireframeShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_EdgeBasedWireframeShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Items(
         self_: *const StepShape_EdgeBasedWireframeShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_EdgeBasedWireframeShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_EdgeBasedWireframeShapeRepresentation,
@@ -116172,17 +116040,17 @@ unsafe extern "C" {
     pub fn StepShape_EdgeLoop_init(
         self_: *mut StepShape_EdgeLoop,
         aName: *const Handle_TCollection_HAsciiString,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_EdgeLoop.hxx`:42 - `StepShape_EdgeLoop::SetEdgeList()`
     pub fn StepShape_EdgeLoop_set_edge_list(
         self_: *mut StepShape_EdgeLoop,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_EdgeLoop.hxx`:45 - `StepShape_EdgeLoop::EdgeList()`
     pub fn StepShape_EdgeLoop_edge_list(
         self_: *const StepShape_EdgeLoop,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>;
     /// **Source:** `StepShape_EdgeLoop.hxx`:48 - `StepShape_EdgeLoop::EdgeListValue()`
     pub fn StepShape_EdgeLoop_edge_list_value(
         self_: *const StepShape_EdgeLoop,
@@ -116657,17 +116525,17 @@ unsafe extern "C" {
     pub fn StepShape_Face_init(
         self_: *mut StepShape_Face,
         aName: *const Handle_TCollection_HAsciiString,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn StepShape_Face_set_bounds(
         self_: *mut StepShape_Face,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn StepShape_Face_bounds(
         self_: *const StepShape_Face,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
     /// **Source:** `StepShape_Face.hxx`:48 - `StepShape_Face::BoundsValue()`
     pub fn StepShape_Face_bounds_value(
         self_: *const StepShape_Face,
@@ -116802,18 +116670,16 @@ unsafe extern "C" {
     pub fn StepShape_FaceBasedSurfaceModel_init(
         self_: *mut StepShape_FaceBasedSurfaceModel,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aFbsmFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
+        aFbsmFaces: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_FaceBasedSurfaceModel.hxx`:43 - `StepShape_FaceBasedSurfaceModel::FbsmFaces()`
     pub fn StepShape_FaceBasedSurfaceModel_fbsm_faces(
         self_: *const StepShape_FaceBasedSurfaceModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet>;
     /// **Source:** `StepShape_FaceBasedSurfaceModel.hxx`:46 - `StepShape_FaceBasedSurfaceModel::SetFbsmFaces()`
     pub fn StepShape_FaceBasedSurfaceModel_set_fbsm_faces(
         self_: *mut StepShape_FaceBasedSurfaceModel,
-        FbsmFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
+        FbsmFaces: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_FaceBasedSurfaceModel.hxx`:49 - `StepShape_FaceBasedSurfaceModel::DynamicType()`
     pub fn StepShape_FaceBasedSurfaceModel_dynamic_type(
@@ -117216,7 +117082,7 @@ unsafe extern "C" {
     pub fn StepShape_FaceSurface_init(
         self_: *mut StepShape_FaceSurface,
         aName: *const Handle_TCollection_HAsciiString,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aFaceGeometry: *const Handle_StepGeom_Surface,
         aSameSense: bool,
     ) -> *const std::ffi::c_char;
@@ -117323,12 +117189,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn StepShape_FaceSurface_inherited_SetBounds(
         self_: *mut StepShape_FaceSurface,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn StepShape_FaceSurface_inherited_Bounds(
         self_: *const StepShape_FaceSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
     /// Inherited: **Source:** `StepShape_Face.hxx`:48 - `StepShape_Face::BoundsValue()`
     pub fn StepShape_FaceSurface_inherited_BoundsValue(
         self_: *const StepShape_FaceSurface,
@@ -117541,11 +117407,11 @@ unsafe extern "C" {
         aBrepWithVoids: *const Handle_StepShape_BrepWithVoids,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:46 - `StepShape_FacetedBrepAndBrepWithVoids::Init()`
-    pub fn StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_handlencollectionharray1opencascadehandlestepshapeorientedclosedshell(
+    pub fn StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_harr1_stepshape_orientedclosedshell(
         self_: *mut StepShape_FacetedBrepAndBrepWithVoids,
         aName: *const Handle_TCollection_HAsciiString,
         aOuter: *const Handle_StepShape_ClosedShell,
-        aVoids: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:51 - `StepShape_FacetedBrepAndBrepWithVoids::SetFacetedBrep()`
     pub fn StepShape_FacetedBrepAndBrepWithVoids_set_faceted_brep(
@@ -117568,14 +117434,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:59 - `StepShape_FacetedBrepAndBrepWithVoids::SetVoids()`
     pub fn StepShape_FacetedBrepAndBrepWithVoids_set_voids(
         self_: *mut StepShape_FacetedBrepAndBrepWithVoids,
-        aVoids: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:63 - `StepShape_FacetedBrepAndBrepWithVoids::Voids()`
     pub fn StepShape_FacetedBrepAndBrepWithVoids_voids(
         self_: *const StepShape_FacetedBrepAndBrepWithVoids,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell>;
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:65 - `StepShape_FacetedBrepAndBrepWithVoids::VoidsValue()`
     pub fn StepShape_FacetedBrepAndBrepWithVoids_voids_value(
         self_: *const StepShape_FacetedBrepAndBrepWithVoids,
@@ -117808,7 +117672,7 @@ unsafe extern "C" {
     pub fn StepShape_FacetedBrepShapeRepresentation_inherited_Init(
         self_: *mut StepShape_FacetedBrepShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -117823,14 +117687,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_FacetedBrepShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_FacetedBrepShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_FacetedBrepShapeRepresentation_inherited_Items(
         self_: *const StepShape_FacetedBrepShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_FacetedBrepShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_FacetedBrepShapeRepresentation,
@@ -118360,7 +118222,7 @@ unsafe extern "C" {
     pub fn StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Init(
         self_: *mut StepShape_GeometricallyBoundedSurfaceShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -118375,14 +118237,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_GeometricallyBoundedSurfaceShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Items(
         self_: *const StepShape_GeometricallyBoundedSurfaceShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_GeometricallyBoundedSurfaceShapeRepresentation,
@@ -118512,7 +118372,7 @@ unsafe extern "C" {
     pub fn StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Init(
         self_: *mut StepShape_GeometricallyBoundedWireframeShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -118527,14 +118387,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_GeometricallyBoundedWireframeShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Items(
         self_: *const StepShape_GeometricallyBoundedWireframeShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_GeometricallyBoundedWireframeShapeRepresentation,
@@ -118978,10 +118836,10 @@ unsafe extern "C" {
         aPath: *const Handle_StepShape_Path,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_LoopAndPath.hxx`:44 - `StepShape_LoopAndPath::Init()`
-    pub fn StepShape_LoopAndPath_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepshapeorientededge(
+    pub fn StepShape_LoopAndPath_init_handletcollectionhasciistring_harr1_stepshape_orientededge(
         self_: *mut StepShape_LoopAndPath,
         aName: *const Handle_TCollection_HAsciiString,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_LoopAndPath.hxx`:48 - `StepShape_LoopAndPath::SetLoop()`
     pub fn StepShape_LoopAndPath_set_loop(
@@ -119004,12 +118862,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_LoopAndPath.hxx`:56 - `StepShape_LoopAndPath::SetEdgeList()`
     pub fn StepShape_LoopAndPath_set_edge_list(
         self_: *mut StepShape_LoopAndPath,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_LoopAndPath.hxx`:59 - `StepShape_LoopAndPath::EdgeList()`
     pub fn StepShape_LoopAndPath_edge_list(
         self_: *const StepShape_LoopAndPath,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>;
     /// **Source:** `StepShape_LoopAndPath.hxx`:62 - `StepShape_LoopAndPath::EdgeListValue()`
     pub fn StepShape_LoopAndPath_edge_list_value(
         self_: *const StepShape_LoopAndPath,
@@ -119362,7 +119220,7 @@ unsafe extern "C" {
     pub fn StepShape_ManifoldSurfaceShapeRepresentation_inherited_Init(
         self_: *mut StepShape_ManifoldSurfaceShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -119377,14 +119235,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_ManifoldSurfaceShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_ManifoldSurfaceShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_ManifoldSurfaceShapeRepresentation_inherited_Items(
         self_: *const StepShape_ManifoldSurfaceShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_ManifoldSurfaceShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_ManifoldSurfaceShapeRepresentation,
@@ -119803,7 +119659,7 @@ unsafe extern "C" {
     pub fn StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Init(
         self_: *mut StepShape_NonManifoldSurfaceShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -119818,14 +119674,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_NonManifoldSurfaceShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_NonManifoldSurfaceShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Items(
         self_: *const StepShape_NonManifoldSurfaceShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_NonManifoldSurfaceShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_NonManifoldSurfaceShapeRepresentation,
@@ -119963,17 +119817,17 @@ unsafe extern "C" {
     pub fn StepShape_OpenShell_inherited_Init(
         self_: *mut StepShape_OpenShell,
         aName: *const Handle_TCollection_HAsciiString,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn StepShape_OpenShell_inherited_SetCfsFaces(
         self_: *mut StepShape_OpenShell,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn StepShape_OpenShell_inherited_CfsFaces(
         self_: *const StepShape_OpenShell,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:48 - `StepShape_ConnectedFaceSet::CfsFacesValue()`
     pub fn StepShape_OpenShell_inherited_CfsFacesValue(
         self_: *const StepShape_OpenShell,
@@ -120055,12 +119909,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:52 - `StepShape_OrientedClosedShell::SetCfsFaces()`
     pub fn StepShape_OrientedClosedShell_set_cfs_faces(
         self_: *mut StepShape_OrientedClosedShell,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:55 - `StepShape_OrientedClosedShell::CfsFaces()`
     pub fn StepShape_OrientedClosedShell_cfs_faces(
         self_: *const StepShape_OrientedClosedShell,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:58 - `StepShape_OrientedClosedShell::CfsFacesValue()`
     pub fn StepShape_OrientedClosedShell_cfs_faces_value(
         self_: *const StepShape_OrientedClosedShell,
@@ -120408,12 +120262,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_OrientedFace.hxx`:51 - `StepShape_OrientedFace::SetBounds()`
     pub fn StepShape_OrientedFace_set_bounds(
         self_: *mut StepShape_OrientedFace,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_OrientedFace.hxx`:54 - `StepShape_OrientedFace::Bounds()`
     pub fn StepShape_OrientedFace_bounds(
         self_: *const StepShape_OrientedFace,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
     /// **Source:** `StepShape_OrientedFace.hxx`:57 - `StepShape_OrientedFace::BoundsValue()`
     pub fn StepShape_OrientedFace_bounds_value(
         self_: *const StepShape_OrientedFace,
@@ -120573,12 +120427,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:52 - `StepShape_OrientedOpenShell::SetCfsFaces()`
     pub fn StepShape_OrientedOpenShell_set_cfs_faces(
         self_: *mut StepShape_OrientedOpenShell,
-        aCfsFaces: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:55 - `StepShape_OrientedOpenShell::CfsFaces()`
     pub fn StepShape_OrientedOpenShell_cfs_faces(
         self_: *const StepShape_OrientedOpenShell,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:58 - `StepShape_OrientedOpenShell::CfsFacesValue()`
     pub fn StepShape_OrientedOpenShell_cfs_faces_value(
         self_: *const StepShape_OrientedOpenShell,
@@ -120752,12 +120606,12 @@ unsafe extern "C" {
     /// **Source:** `StepShape_OrientedPath.hxx`:51 - `StepShape_OrientedPath::SetEdgeList()`
     pub fn StepShape_OrientedPath_set_edge_list(
         self_: *mut StepShape_OrientedPath,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_OrientedPath.hxx`:55 - `StepShape_OrientedPath::EdgeList()`
     pub fn StepShape_OrientedPath_edge_list(
         self_: *const StepShape_OrientedPath,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>;
     /// **Source:** `StepShape_OrientedPath.hxx`:58 - `StepShape_OrientedPath::EdgeListValue()`
     pub fn StepShape_OrientedPath_edge_list_value(
         self_: *const StepShape_OrientedPath,
@@ -120893,17 +120747,17 @@ unsafe extern "C" {
     pub fn StepShape_Path_init(
         self_: *mut StepShape_Path,
         aName: *const Handle_TCollection_HAsciiString,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_Path.hxx`:42 - `StepShape_Path::SetEdgeList()`
     pub fn StepShape_Path_set_edge_list(
         self_: *mut StepShape_Path,
-        aEdgeList: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_Path.hxx`:46 - `StepShape_Path::EdgeList()`
     pub fn StepShape_Path_edge_list(
         self_: *const StepShape_Path,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>;
     /// **Source:** `StepShape_Path.hxx`:48 - `StepShape_Path::EdgeListValue()`
     pub fn StepShape_Path_edge_list_value(
         self_: *const StepShape_Path,
@@ -121200,7 +121054,7 @@ unsafe extern "C" {
     pub fn StepShape_PointRepresentation_inherited_Init(
         self_: *mut StepShape_PointRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -121215,14 +121069,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_PointRepresentation_inherited_SetItems(
         self_: *mut StepShape_PointRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_PointRepresentation_inherited_Items(
         self_: *const StepShape_PointRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_PointRepresentation_inherited_ItemsValue(
         self_: *const StepShape_PointRepresentation,
@@ -121279,17 +121131,17 @@ unsafe extern "C" {
     pub fn StepShape_PolyLoop_init(
         self_: *mut StepShape_PolyLoop,
         aName: *const Handle_TCollection_HAsciiString,
-        aPolygon: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPolygon: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_PolyLoop.hxx`:42 - `StepShape_PolyLoop::SetPolygon()`
     pub fn StepShape_PolyLoop_set_polygon(
         self_: *mut StepShape_PolyLoop,
-        aPolygon: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPolygon: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_PolyLoop.hxx`:45 - `StepShape_PolyLoop::Polygon()`
     pub fn StepShape_PolyLoop_polygon(
         self_: *const StepShape_PolyLoop,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
     /// **Source:** `StepShape_PolyLoop.hxx`:48 - `StepShape_PolyLoop::PolygonValue()`
     pub fn StepShape_PolyLoop_polygon_value(
         self_: *const StepShape_PolyLoop,
@@ -122894,10 +122746,10 @@ unsafe extern "C" {
     pub fn StepShape_ShapeDimensionRepresentation_ctor(
     ) -> crate::OcctResult<*mut StepShape_ShapeDimensionRepresentation>;
     /// **Source:** `StepShape_ShapeDimensionRepresentation.hxx`:35 - `StepShape_ShapeDimensionRepresentation::Init()`
-    pub fn StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepreprrepresentationitem_handlestepreprrepresentationcontext(
+    pub fn StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_harr1_steprepr_representationitem_handlestepreprrepresentationcontext(
         self_: *mut StepShape_ShapeDimensionRepresentation,
         theName: *const Handle_TCollection_HAsciiString,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_ShapeDimensionRepresentation.hxx`:41 - `StepShape_ShapeDimensionRepresentation::Init()`
@@ -122998,14 +122850,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_ShapeDimensionRepresentation_inherited_SetItems(
         self_: *mut StepShape_ShapeDimensionRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_ShapeDimensionRepresentation_inherited_Items(
         self_: *const StepShape_ShapeDimensionRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_ShapeDimensionRepresentation_inherited_ItemsValue(
         self_: *const StepShape_ShapeDimensionRepresentation,
@@ -123295,7 +123145,7 @@ unsafe extern "C" {
     pub fn StepShape_ShapeRepresentation_inherited_Init(
         self_: *mut StepShape_ShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -123310,14 +123160,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_ShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_ShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_ShapeRepresentation_inherited_Items(
         self_: *const StepShape_ShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_ShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_ShapeRepresentation,
@@ -123447,7 +123295,7 @@ unsafe extern "C" {
     pub fn StepShape_ShapeRepresentationWithParameters_inherited_Init(
         self_: *mut StepShape_ShapeRepresentationWithParameters,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -123462,14 +123310,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_ShapeRepresentationWithParameters_inherited_SetItems(
         self_: *mut StepShape_ShapeRepresentationWithParameters,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_ShapeRepresentationWithParameters_inherited_Items(
         self_: *const StepShape_ShapeRepresentationWithParameters,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_ShapeRepresentationWithParameters_inherited_ItemsValue(
         self_: *const StepShape_ShapeRepresentationWithParameters,
@@ -124355,7 +124201,7 @@ unsafe extern "C" {
     pub fn StepShape_Subface_init(
         self_: *mut StepShape_Subface,
         aRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        aFace_Bounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aFace_Bounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aParentFace: *const Handle_StepShape_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepShape_Subface.hxx`:43 - `StepShape_Subface::ParentFace()`
@@ -124446,12 +124292,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn StepShape_Subface_inherited_SetBounds(
         self_: *mut StepShape_Subface,
-        aBounds: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn StepShape_Subface_inherited_Bounds(
         self_: *const StepShape_Subface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
     /// Inherited: **Source:** `StepShape_Face.hxx`:48 - `StepShape_Face::BoundsValue()`
     pub fn StepShape_Subface_inherited_BoundsValue(
         self_: *const StepShape_Subface,
@@ -125544,7 +125390,7 @@ unsafe extern "C" {
     pub fn StepShape_TransitionalShapeRepresentation_inherited_Init(
         self_: *mut StepShape_TransitionalShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -125559,14 +125405,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepShape_TransitionalShapeRepresentation_inherited_SetItems(
         self_: *mut StepShape_TransitionalShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepShape_TransitionalShapeRepresentation_inherited_Items(
         self_: *const StepShape_TransitionalShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepShape_TransitionalShapeRepresentation_inherited_ItemsValue(
         self_: *const StepShape_TransitionalShapeRepresentation,
@@ -126553,6 +126397,17 @@ unsafe extern "C" {
     pub fn StepToTopoDS_NMTool_destructor(self_: *mut StepToTopoDS_NMTool);
     /// **Source:** `StepToTopoDS_NMTool.hxx`:40 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool()`
     pub fn StepToTopoDS_NMTool_ctor() -> crate::OcctResult<*mut StepToTopoDS_NMTool>;
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:42 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool()`
+    pub fn StepToTopoDS_NMTool_ctor_dmap_steprepr_representationitem_shape_dmap_asciistring_shape(
+        MapOfRI: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        MapOfRINames: *const NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape,
+    ) -> crate::OcctResult<*mut StepToTopoDS_NMTool>;
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:46 - `StepToTopoDS_NMTool::Init()`
+    pub fn StepToTopoDS_NMTool_init(
+        self_: *mut StepToTopoDS_NMTool,
+        MapOfRI: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        MapOfRINames: *const NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `StepToTopoDS_NMTool.hxx`:50 - `StepToTopoDS_NMTool::SetActive()`
     pub fn StepToTopoDS_NMTool_set_active(
         self_: *mut StepToTopoDS_NMTool,
@@ -126659,6 +126514,17 @@ unsafe extern "C" {
     pub fn StepToTopoDS_Tool_destructor(self_: *mut StepToTopoDS_Tool);
     /// **Source:** `StepToTopoDS_Tool.hxx`:50 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
     pub fn StepToTopoDS_Tool_ctor() -> crate::OcctResult<*mut StepToTopoDS_Tool>;
+    /// **Source:** `StepToTopoDS_Tool.hxx`:52 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
+    pub fn StepToTopoDS_Tool_ctor_dmap_stepshape_topologicalrepresentationitem_shape_handletransfertransientprocess(
+        Map: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        TP: *const Handle_Transfer_TransientProcess,
+    ) -> crate::OcctResult<*mut StepToTopoDS_Tool>;
+    /// **Source:** `StepToTopoDS_Tool.hxx`:57 - `StepToTopoDS_Tool::Init()`
+    pub fn StepToTopoDS_Tool_init(
+        self_: *mut StepToTopoDS_Tool,
+        Map: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        TP: *const Handle_Transfer_TransientProcess,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `StepToTopoDS_Tool.hxx`:62 - `StepToTopoDS_Tool::IsBound()`
     pub fn StepToTopoDS_Tool_is_bound(
         self_: *mut StepToTopoDS_Tool,
@@ -127515,19 +127381,19 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationCurveOccurrence_inherited_Init(
         self_: *mut StepVisual_AnnotationCurveOccurrence,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationCurveOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationCurveOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationCurveOccurrence_inherited_Styles(
         self_: *const StepVisual_AnnotationCurveOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationCurveOccurrence_inherited_StylesValue(
@@ -127695,19 +127561,19 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Init(
         self_: *mut StepVisual_AnnotationCurveOccurrenceAndGeomReprItem,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationCurveOccurrenceAndGeomReprItem,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Styles(
         self_: *const StepVisual_AnnotationCurveOccurrenceAndGeomReprItem,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_StylesValue(
@@ -127943,7 +127809,7 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationFillAreaOccurrence_init(
         self_: *mut StepVisual_AnnotationFillAreaOccurrence,
         theName: *const Handle_TCollection_HAsciiString,
-        theStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        theStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         theItem: *const Handle_Standard_Transient,
         theFillStyleTarget: *const Handle_StepGeom_GeometricRepresentationItem,
     ) -> *const std::ffi::c_char;
@@ -128041,13 +127907,13 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationFillAreaOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationFillAreaOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationFillAreaOccurrence_inherited_Styles(
         self_: *const StepVisual_AnnotationFillAreaOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationFillAreaOccurrence_inherited_StylesValue(
@@ -128213,19 +128079,19 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationOccurrence_inherited_Init(
         self_: *mut StepVisual_AnnotationOccurrence,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationOccurrence_inherited_Styles(
         self_: *const StepVisual_AnnotationOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationOccurrence_inherited_StylesValue(
@@ -128296,7 +128162,7 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationPlane_init(
         self_: *mut StepVisual_AnnotationPlane,
         theName: *const Handle_TCollection_HAsciiString,
-        theStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        theStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         theItem: *const Handle_Standard_Transient,
         theElements: *const Handle_NCollection_HArray1_StepVisual_AnnotationPlaneElement,
     ) -> *const std::ffi::c_char;
@@ -128408,13 +128274,13 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationPlane_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationPlane,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationPlane_inherited_Styles(
         self_: *const StepVisual_AnnotationPlane,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationPlane_inherited_StylesValue(
@@ -128811,19 +128677,19 @@ unsafe extern "C" {
     pub fn StepVisual_AnnotationTextOccurrence_inherited_Init(
         self_: *mut StepVisual_AnnotationTextOccurrence,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_AnnotationTextOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_AnnotationTextOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_AnnotationTextOccurrence_inherited_Styles(
         self_: *const StepVisual_AnnotationTextOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_AnnotationTextOccurrence_inherited_StylesValue(
@@ -130935,7 +130801,7 @@ unsafe extern "C" {
     pub fn StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Init(
         self_: *mut StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -130950,14 +130816,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_SetItems(
         self_: *mut StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Items(
         self_: *const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_ItemsValue(
         self_: *const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel,
@@ -131366,8 +131230,8 @@ unsafe extern "C" {
         theHasTessellatedFace_GeometricLink: bool,
         theTessellatedFace_GeometricLink: *const StepVisual_FaceOrSurface,
         thePnindex: *const Handle_NCollection_HArray1_int,
-        theTriangleStrips: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-        theTriangleFans: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
+        theTriangleFans: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:50 - `StepVisual_ComplexTriangulatedFace::Pnindex()`
     pub fn StepVisual_ComplexTriangulatedFace_pnindex(
@@ -131390,11 +131254,11 @@ unsafe extern "C" {
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:62 - `StepVisual_ComplexTriangulatedFace::TriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedFace_triangle_strips(
         self_: *const StepVisual_ComplexTriangulatedFace,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Transient>;
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:66 - `StepVisual_ComplexTriangulatedFace::SetTriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedFace_set_triangle_strips(
         self_: *mut StepVisual_ComplexTriangulatedFace,
-        theTriangleStrips: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:70 - `StepVisual_ComplexTriangulatedFace::NbTriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedFace_nb_triangle_strips(
@@ -131403,11 +131267,11 @@ unsafe extern "C" {
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:73 - `StepVisual_ComplexTriangulatedFace::TriangleFans()`
     pub fn StepVisual_ComplexTriangulatedFace_triangle_fans(
         self_: *const StepVisual_ComplexTriangulatedFace,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Transient>;
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:77 - `StepVisual_ComplexTriangulatedFace::SetTriangleFans()`
     pub fn StepVisual_ComplexTriangulatedFace_set_triangle_fans(
         self_: *mut StepVisual_ComplexTriangulatedFace,
-        theTriangleFans: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleFans: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedFace.hxx`:81 - `StepVisual_ComplexTriangulatedFace::NbTriangleFans()`
     pub fn StepVisual_ComplexTriangulatedFace_nb_triangle_fans(
@@ -131617,8 +131481,8 @@ unsafe extern "C" {
         theTessellatedSurfaceSet_Pnmax: i32,
         theTessellatedSurfaceSet_Normals: *const Handle_NCollection_HArray2_double,
         thePnindex: *const Handle_NCollection_HArray1_int,
-        theTriangleStrips: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-        theTriangleFans: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
+        theTriangleFans: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:48 - `StepVisual_ComplexTriangulatedSurfaceSet::Pnindex()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_pnindex(
@@ -131641,11 +131505,11 @@ unsafe extern "C" {
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:60 - `StepVisual_ComplexTriangulatedSurfaceSet::TriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_triangle_strips(
         self_: *const StepVisual_ComplexTriangulatedSurfaceSet,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Transient>;
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:64 - `StepVisual_ComplexTriangulatedSurfaceSet::SetTriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_strips(
         self_: *mut StepVisual_ComplexTriangulatedSurfaceSet,
-        theTriangleStrips: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:68 - `StepVisual_ComplexTriangulatedSurfaceSet::NbTriangleStrips()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_nb_triangle_strips(
@@ -131654,11 +131518,11 @@ unsafe extern "C" {
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:71 - `StepVisual_ComplexTriangulatedSurfaceSet::TriangleFans()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_triangle_fans(
         self_: *const StepVisual_ComplexTriangulatedSurfaceSet,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Transient>;
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:75 - `StepVisual_ComplexTriangulatedSurfaceSet::SetTriangleFans()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_fans(
         self_: *mut StepVisual_ComplexTriangulatedSurfaceSet,
-        theTriangleFans: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleFans: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_ComplexTriangulatedSurfaceSet.hxx`:79 - `StepVisual_ComplexTriangulatedSurfaceSet::NbTriangleFans()`
     pub fn StepVisual_ComplexTriangulatedSurfaceSet_nb_triangle_fans(
@@ -132267,7 +132131,7 @@ unsafe extern "C" {
     pub fn StepVisual_ContextDependentOverRidingStyledItem_init(
         self_: *mut StepVisual_ContextDependentOverRidingStyledItem,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
         aOverRiddenStyle: *const Handle_StepVisual_StyledItem,
         aStyleContext: *const Handle_NCollection_HArray1_StepVisual_StyleContextSelect,
@@ -132384,13 +132248,13 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_ContextDependentOverRidingStyledItem_inherited_SetStyles(
         self_: *mut StepVisual_ContextDependentOverRidingStyledItem,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_ContextDependentOverRidingStyledItem_inherited_Styles(
         self_: *const StepVisual_ContextDependentOverRidingStyledItem,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_ContextDependentOverRidingStyledItem_inherited_StylesValue(
@@ -133136,7 +133000,7 @@ unsafe extern "C" {
     pub fn StepVisual_CurveStyleFont_init(
         self_: *mut StepVisual_CurveStyleFont,
         aName: *const Handle_TCollection_HAsciiString,
-        aPatternList: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
+        aPatternList: *const Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:43 - `StepVisual_CurveStyleFont::SetName()`
     pub fn StepVisual_CurveStyleFont_set_name(
@@ -133150,14 +133014,12 @@ unsafe extern "C" {
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:47 - `StepVisual_CurveStyleFont::SetPatternList()`
     pub fn StepVisual_CurveStyleFont_set_pattern_list(
         self_: *mut StepVisual_CurveStyleFont,
-        aPatternList: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
+        aPatternList: *const Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:52 - `StepVisual_CurveStyleFont::PatternList()`
     pub fn StepVisual_CurveStyleFont_pattern_list(
         self_: *const StepVisual_CurveStyleFont,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern>;
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:54 - `StepVisual_CurveStyleFont::PatternListValue()`
     pub fn StepVisual_CurveStyleFont_pattern_list_value(
         self_: *const StepVisual_CurveStyleFont,
@@ -133580,19 +133442,19 @@ unsafe extern "C" {
     pub fn StepVisual_DraughtingAnnotationOccurrence_inherited_Init(
         self_: *mut StepVisual_DraughtingAnnotationOccurrence,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_DraughtingAnnotationOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_DraughtingAnnotationOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_DraughtingAnnotationOccurrence_inherited_Styles(
         self_: *const StepVisual_DraughtingAnnotationOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_DraughtingAnnotationOccurrence_inherited_StylesValue(
@@ -133979,7 +133841,7 @@ unsafe extern "C" {
     pub fn StepVisual_DraughtingModel_inherited_Init(
         self_: *mut StepVisual_DraughtingModel,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -133994,14 +133856,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_DraughtingModel_inherited_SetItems(
         self_: *mut StepVisual_DraughtingModel,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_DraughtingModel_inherited_Items(
         self_: *const StepVisual_DraughtingModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_DraughtingModel_inherited_ItemsValue(
         self_: *const StepVisual_DraughtingModel,
@@ -135941,7 +135801,7 @@ unsafe extern "C" {
     pub fn StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Init(
         self_: *mut StepVisual_MechanicalDesignGeometricPresentationArea,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -135956,14 +135816,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationArea_inherited_SetItems(
         self_: *mut StepVisual_MechanicalDesignGeometricPresentationArea,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Items(
         self_: *const StepVisual_MechanicalDesignGeometricPresentationArea,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationArea_inherited_ItemsValue(
         self_: *const StepVisual_MechanicalDesignGeometricPresentationArea,
@@ -136093,7 +135951,7 @@ unsafe extern "C" {
     pub fn StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Init(
         self_: *mut StepVisual_MechanicalDesignGeometricPresentationRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -136108,14 +135966,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_SetItems(
         self_: *mut StepVisual_MechanicalDesignGeometricPresentationRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Items(
         self_: *const StepVisual_MechanicalDesignGeometricPresentationRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_ItemsValue(
         self_: *const StepVisual_MechanicalDesignGeometricPresentationRepresentation,
@@ -136370,7 +136226,7 @@ unsafe extern "C" {
     pub fn StepVisual_OverRidingStyledItem_init(
         self_: *mut StepVisual_OverRidingStyledItem,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
         aOverRiddenStyle: *const Handle_StepVisual_StyledItem,
     ) -> *const std::ffi::c_char;
@@ -136460,13 +136316,13 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_OverRidingStyledItem_inherited_SetStyles(
         self_: *mut StepVisual_OverRidingStyledItem,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_OverRidingStyledItem_inherited_Styles(
         self_: *const StepVisual_OverRidingStyledItem,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_OverRidingStyledItem_inherited_StylesValue(
@@ -137553,7 +137409,7 @@ unsafe extern "C" {
     pub fn StepVisual_PresentationArea_inherited_Init(
         self_: *mut StepVisual_PresentationArea,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -137568,14 +137424,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_PresentationArea_inherited_SetItems(
         self_: *mut StepVisual_PresentationArea,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_PresentationArea_inherited_Items(
         self_: *const StepVisual_PresentationArea,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_PresentationArea_inherited_ItemsValue(
         self_: *const StepVisual_PresentationArea,
@@ -137942,7 +137796,7 @@ unsafe extern "C" {
     pub fn StepVisual_PresentationRepresentation_inherited_Init(
         self_: *mut StepVisual_PresentationRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -137957,14 +137811,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_PresentationRepresentation_inherited_SetItems(
         self_: *mut StepVisual_PresentationRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_PresentationRepresentation_inherited_Items(
         self_: *const StepVisual_PresentationRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_PresentationRepresentation_inherited_ItemsValue(
         self_: *const StepVisual_PresentationRepresentation,
@@ -138834,7 +138686,7 @@ unsafe extern "C" {
     pub fn StepVisual_PresentationView_inherited_Init(
         self_: *mut StepVisual_PresentationView,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -138849,14 +138701,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_PresentationView_inherited_SetItems(
         self_: *mut StepVisual_PresentationView,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_PresentationView_inherited_Items(
         self_: *const StepVisual_PresentationView,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_PresentationView_inherited_ItemsValue(
         self_: *const StepVisual_PresentationView,
@@ -139607,19 +139457,19 @@ unsafe extern "C" {
     pub fn StepVisual_StyledItem_init(
         self_: *mut StepVisual_StyledItem,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_StyledItem_set_styles(
         self_: *mut StepVisual_StyledItem,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_StyledItem_styles(
         self_: *const StepVisual_StyledItem,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_StyledItem_styles_value(
@@ -141602,7 +141452,7 @@ unsafe extern "C" {
     pub fn StepVisual_Template_inherited_Init(
         self_: *mut StepVisual_Template,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -141617,14 +141467,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_Template_inherited_SetItems(
         self_: *mut StepVisual_Template,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_Template_inherited_Items(
         self_: *const StepVisual_Template,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_Template_inherited_ItemsValue(
         self_: *const StepVisual_Template,
@@ -141891,19 +141739,19 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedAnnotationOccurrence_inherited_Init(
         self_: *mut StepVisual_TessellatedAnnotationOccurrence,
         aName: *const Handle_TCollection_HAsciiString,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn StepVisual_TessellatedAnnotationOccurrence_inherited_SetStyles(
         self_: *mut StepVisual_TessellatedAnnotationOccurrence,
-        aStyles: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
     pub fn StepVisual_TessellatedAnnotationOccurrence_inherited_Styles(
         self_: *const StepVisual_TessellatedAnnotationOccurrence,
     ) -> crate::OcctResult<
-        *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     >;
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:54 - `StepVisual_StyledItem::StylesValue()`
     pub fn StepVisual_TessellatedAnnotationOccurrence_inherited_StylesValue(
@@ -143444,7 +143292,7 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedShapeRepresentation_inherited_Init(
         self_: *mut StepVisual_TessellatedShapeRepresentation,
         aName: *const Handle_TCollection_HAsciiString,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: *const Handle_StepRepr_RepresentationContext,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:44 - `StepRepr_Representation::SetName()`
@@ -143459,14 +143307,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_TessellatedShapeRepresentation_inherited_SetItems(
         self_: *mut StepVisual_TessellatedShapeRepresentation,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_TessellatedShapeRepresentation_inherited_Items(
         self_: *const StepVisual_TessellatedShapeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_TessellatedShapeRepresentation_inherited_ItemsValue(
         self_: *const StepVisual_TessellatedShapeRepresentation,
@@ -143526,7 +143372,7 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_init(
         self_: *mut StepVisual_TessellatedShapeRepresentationWithAccuracyParameters,
         theRepresentation_Name: *const Handle_TCollection_HAsciiString,
-        theRepresentation_Items: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: *const Handle_StepRepr_RepresentationContext,
         theTessellationAccuracyParameters: *const Handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
@@ -143646,14 +143492,12 @@ unsafe extern "C" {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_SetItems(
         self_: *mut StepVisual_TessellatedShapeRepresentationWithAccuracyParameters,
-        aItems: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:51 - `StepRepr_Representation::Items()`
     pub fn StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_Items(
         self_: *const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:54 - `StepRepr_Representation::ItemsValue()`
     pub fn StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_ItemsValue(
         self_: *const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters,
@@ -143710,7 +143554,7 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedShell_init(
         self_: *mut StepVisual_TessellatedShell,
         theRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
         theHasTopologicalLink: bool,
         theTopologicalLink: *const Handle_StepShape_ConnectedFaceSet,
     ) -> *const std::ffi::c_char;
@@ -143718,12 +143562,12 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedShell_items(
         self_: *const StepVisual_TessellatedShell,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     >;
     /// **Source:** `StepVisual_TessellatedShell.hxx`:50 - `StepVisual_TessellatedShell::SetItems()`
     pub fn StepVisual_TessellatedShell_set_items(
         self_: *mut StepVisual_TessellatedShell,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_TessellatedShell.hxx`:55 - `StepVisual_TessellatedShell::NbItems()`
     pub fn StepVisual_TessellatedShell_nb_items(
@@ -143875,7 +143719,7 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedSolid_init(
         self_: *mut StepVisual_TessellatedSolid,
         theRepresentationItem_Name: *const Handle_TCollection_HAsciiString,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
         theHasGeometricLink: bool,
         theGeometricLink: *const Handle_StepShape_ManifoldSolidBrep,
     ) -> *const std::ffi::c_char;
@@ -143883,12 +143727,12 @@ unsafe extern "C" {
     pub fn StepVisual_TessellatedSolid_items(
         self_: *const StepVisual_TessellatedSolid,
     ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     >;
     /// **Source:** `StepVisual_TessellatedSolid.hxx`:50 - `StepVisual_TessellatedSolid::SetItems()`
     pub fn StepVisual_TessellatedSolid_set_items(
         self_: *mut StepVisual_TessellatedSolid,
-        theItems: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StepVisual_TessellatedSolid.hxx`:55 - `StepVisual_TessellatedSolid::NbItems()`
     pub fn StepVisual_TessellatedSolid_nb_items(
@@ -146473,6 +146317,19 @@ unsafe extern "C" {
     pub fn TopoDSToStep_Tool_ctor_handlestepdatastepmodel(
         theModel: *const Handle_StepData_StepModel,
     ) -> crate::OcctResult<*mut TopoDSToStep_Tool>;
+    /// **Source:** `TopoDSToStep_Tool.hxx`:47 - `TopoDSToStep_Tool::TopoDSToStep_Tool()`
+    pub fn TopoDSToStep_Tool_ctor_dmap_shape_standard_transient_bool_int(
+        M: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        FacetedContext: bool,
+        theSurfCurveMode: i32,
+    ) -> crate::OcctResult<*mut TopoDSToStep_Tool>;
+    /// **Source:** `TopoDSToStep_Tool.hxx`:53 - `TopoDSToStep_Tool::Init()`
+    pub fn TopoDSToStep_Tool_init(
+        self_: *mut TopoDSToStep_Tool,
+        M: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        FacetedContext: bool,
+        theSurfCurveMode: i32,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TopoDSToStep_Tool.hxx`:59 - `TopoDSToStep_Tool::IsBound()`
     pub fn TopoDSToStep_Tool_is_bound(
         self_: *mut TopoDSToStep_Tool,
@@ -146549,6 +146406,12 @@ unsafe extern "C" {
     pub fn TopoDSToStep_Tool_surface_reversed(
         self_: *const TopoDSToStep_Tool,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopoDSToStep_Tool.hxx`:97 - `TopoDSToStep_Tool::Map()`
+    pub fn TopoDSToStep_Tool_map(
+        self_: *const TopoDSToStep_Tool,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+    >;
     /// **Source:** `TopoDSToStep_Tool.hxx`:101 - `TopoDSToStep_Tool::PCurveMode()`
     pub fn TopoDSToStep_Tool_p_curve_mode(
         self_: *const TopoDSToStep_Tool,
@@ -146578,7 +146441,32 @@ unsafe extern "C" {
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:58 - `TopoDSToStep_WireframeBuilder::Value()`
     pub fn TopoDSToStep_WireframeBuilder_value(
         self_: *const TopoDSToStep_WireframeBuilder,
-    ) -> crate::OcctResult<*const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HSequence_Handle_Standard_Transient>;
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:63 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge()`
+    pub fn TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(
+        self_: *const TopoDSToStep_WireframeBuilder,
+        E: *const TopoDS_Edge,
+        F: *const TopoDS_Face,
+        M: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: *const StepData_Factors,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:72 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace()`
+    pub fn TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(
+        self_: *const TopoDSToStep_WireframeBuilder,
+        F: *const TopoDS_Face,
+        M: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: *const StepData_Factors,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:80 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape()`
+    pub fn TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(
+        self_: *const TopoDSToStep_WireframeBuilder,
+        S: *const TopoDS_Shape,
+        M: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: *const StepData_Factors,
+    ) -> crate::OcctResult<bool>;
     /// Upcast TopoDSToStep_WireframeBuilder to TopoDSToStep_Root
     pub fn TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root(
         self_: *const TopoDSToStep_WireframeBuilder,

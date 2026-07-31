@@ -32,7 +32,6 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases

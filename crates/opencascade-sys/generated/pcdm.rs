@@ -3046,15 +3046,35 @@ impl StorageDriver {
 
     /// **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
     /// raises NotImplemented.
-    pub fn make(
+    pub fn make_handlecdmdocument(
         &mut self,
         aDocument: &crate::ffi_types::Handle_CDM_Document,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCDF::PCDM_StorageDriver_make(self as *mut Self, aDocument),
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_make_handlecdmdocument(
+                    self as *mut Self,
+                    aDocument,
+                ),
             ))
         }
+    }
+
+    /// **Source:** `PCDM_StorageDriver.hxx`:55 - `PCDM_StorageDriver::Make()`
+    /// By default, puts in the Sequence the document returns
+    /// by the previous Make method.
+    pub fn make_handlecdmdocument_seq_pcdm_document(
+        &mut self,
+        aDocument: &crate::ffi_types::Handle_CDM_Document,
+        Documents: &mut crate::ffi_types::NCollection_Sequence_Handle_PCDM_Document,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_make_handlecdmdocument_seq_pcdm_document(
+                self as *mut Self,
+                aDocument,
+                Documents,
+            )
+        })
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:64 - `PCDM_StorageDriver::Write()`
@@ -3481,14 +3501,6 @@ impl Handle_PCDM_StorageDriver {
         }
     }
 }
-
-// ── Skipped symbols for StorageDriver (1 total) ──
-// SKIPPED: **Source:** `PCDM_StorageDriver.hxx`:55 - `PCDM_StorageDriver::Make`
-//   method: By default, puts in the Sequence the document returns
-//   method: by the previous Make method.
-//   Reason: has unbindable types: param 'Documents': unresolved template type (NCollection_Sequence<occ::handle<PCDM_Document>>&)
-//   // pub fn make(&mut self, aDocument: &HandleDocument, Documents: /* NCollection_Sequence<occ::handle<PCDM_Document>>& */);
-//
 
 // ========================
 // From PCDM_Writer.hxx

@@ -72,19 +72,26 @@ impl ConstraintDriver {
     }
 
     /// **Source:** `BinMDataXtd_ConstraintDriver.hxx`:39 - `BinMDataXtd_ConstraintDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_ConstraintDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_ConstraintDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_ConstraintDriver.hxx`:43 - `BinMDataXtd_ConstraintDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_ConstraintDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -347,12 +354,6 @@ impl Handle_BinMDataXtd_ConstraintDriver {
     }
 }
 
-// ── Skipped symbols for ConstraintDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_ConstraintDriver.hxx`:43 - `BinMDataXtd_ConstraintDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMDataXtd_GeometryDriver.hxx
 // ========================
@@ -393,19 +394,26 @@ impl GeometryDriver {
     }
 
     /// **Source:** `BinMDataXtd_GeometryDriver.hxx`:39 - `BinMDataXtd_GeometryDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_GeometryDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_GeometryDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_GeometryDriver.hxx`:43 - `BinMDataXtd_GeometryDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_GeometryDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -670,12 +678,6 @@ impl Handle_BinMDataXtd_GeometryDriver {
     }
 }
 
-// ── Skipped symbols for GeometryDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_GeometryDriver.hxx`:43 - `BinMDataXtd_GeometryDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMDataXtd_PatternStdDriver.hxx
 // ========================
@@ -718,19 +720,26 @@ impl PatternStdDriver {
     }
 
     /// **Source:** `BinMDataXtd_PatternStdDriver.hxx`:39 - `BinMDataXtd_PatternStdDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_PatternStdDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_PatternStdDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_PatternStdDriver.hxx`:43 - `BinMDataXtd_PatternStdDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PatternStdDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -993,12 +1002,6 @@ impl Handle_BinMDataXtd_PatternStdDriver {
     }
 }
 
-// ── Skipped symbols for PatternStdDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_PatternStdDriver.hxx`:43 - `BinMDataXtd_PatternStdDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMDataXtd_PositionDriver.hxx
 // ========================
@@ -1039,19 +1042,26 @@ impl PositionDriver {
     }
 
     /// **Source:** `BinMDataXtd_PositionDriver.hxx`:39 - `BinMDataXtd_PositionDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_PositionDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_PositionDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_PositionDriver.hxx`:43 - `BinMDataXtd_PositionDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PositionDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -1316,12 +1326,6 @@ impl Handle_BinMDataXtd_PositionDriver {
     }
 }
 
-// ── Skipped symbols for PositionDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_PositionDriver.hxx`:43 - `BinMDataXtd_PositionDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMDataXtd_PresentationDriver.hxx
 // ========================
@@ -1364,19 +1368,26 @@ impl PresentationDriver {
     }
 
     /// **Source:** `BinMDataXtd_PresentationDriver.hxx`:39 - `BinMDataXtd_PresentationDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_PresentationDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_PresentationDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_PresentationDriver.hxx`:43 - `BinMDataXtd_PresentationDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_PresentationDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -1641,12 +1652,6 @@ impl Handle_BinMDataXtd_PresentationDriver {
     }
 }
 
-// ── Skipped symbols for PresentationDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_PresentationDriver.hxx`:43 - `BinMDataXtd_PresentationDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMDataXtd_TriangulationDriver.hxx
 // ========================
@@ -1685,19 +1690,26 @@ impl TriangulationDriver {
     }
 
     /// **Source:** `BinMDataXtd_TriangulationDriver.hxx`:39 - `BinMDataXtd_TriangulationDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMDataXtd_TriangulationDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMDataXtd_TriangulationDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMDataXtd_TriangulationDriver.hxx`:43 - `BinMDataXtd_TriangulationDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMDataXtd_TriangulationDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -1961,9 +1973,3 @@ impl Handle_BinMDataXtd_TriangulationDriver {
         }
     }
 }
-
-// ── Skipped symbols for TriangulationDriver (1 total) ──
-// SKIPPED: **Source:** `BinMDataXtd_TriangulationDriver.hxx`:43 - `BinMDataXtd_TriangulationDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//

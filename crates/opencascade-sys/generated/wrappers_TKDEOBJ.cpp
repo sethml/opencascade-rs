@@ -10,7 +10,6 @@
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Poly_Triangulation.hxx>
 #include <RWMesh_CafReader.hxx>
 #include <RWMesh_CoordinateSystemConverter.hxx>
 #include <RWMesh_MaterialMap.hxx>
@@ -26,7 +25,6 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <gp_Ax3.hxx>
 

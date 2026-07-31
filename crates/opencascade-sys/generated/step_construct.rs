@@ -977,9 +977,8 @@ impl ContextTool {
     pub fn get_roots_for_part(
         &mut self,
         SDRTool: &Part,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::STEPConstruct_ContextTool_get_roots_for_part(
@@ -996,9 +995,8 @@ impl ContextTool {
     pub fn get_roots_for_assembly_link(
         &mut self,
         assembly: &Assembly,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::STEPConstruct_ContextTool_get_roots_for_assembly_link(
@@ -2464,7 +2462,7 @@ impl Styles {
     /// (which bring styles) and fills out sequence of styles
     pub fn load_invis_styles(
         &self,
-        InvSyles: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        InvSyles: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_load_invis_styles(
@@ -2553,13 +2551,28 @@ impl Styles {
     /// The analysis is performed for whether the color corresponds to
     /// one of standard colors predefined in STEP. In that case,
     /// PredefinedColour entity is created instead of RGBColour
-    pub fn encode_color(
+    pub fn encode_color_color(
         Col: &crate::quantity::Color,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepVisual_Colour> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_encode_color(Col),
+                crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_encode_color_color(Col),
             ))
+        }
+    }
+
+    /// **Source:** `STEPConstruct_Styles.hxx`:175 - `STEPConstruct_Styles::EncodeColor()`
+    /// Create STEP color entity by given Quantity_Color
+    /// The analysis is performed for whether the color corresponds to
+    /// one of standard colors predefined in STEP. In that case,
+    /// PredefinedColour entity is created instead of RGBColour
+    pub fn encode_color_color_worksessionmap_dmap_pnt_standard_transient(
+        Col: &crate::quantity::Color,
+        DPDCs: &mut crate::ffi_types::XSControl_WorkSessionMap,
+        ColRGBs: &mut crate::ffi_types::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepVisual_Colour> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::STEPConstruct_Styles_encode_color_color_worksessionmap_dmap_pnt_standard_transient(Col, DPDCs, ColRGBs)))
         }
     }
 
@@ -2651,15 +2664,6 @@ impl Styles {
         }
     }
 }
-
-// ── Skipped symbols for Styles (1 total) ──
-// SKIPPED: **Source:** `STEPConstruct_Styles.hxx`:175 - `STEPConstruct_Styles::EncodeColor`
-//   static_method: Create STEP color entity by given Quantity_Color
-//   static_method: The analysis is performed for whether the color corresponds to
-//   static_method: one of standard colors predefined in STEP. In that case,
-//   Reason: has unbindable types: param 'ColRGBs': unresolved template type (NCollection_DataMap<gp_Pnt, occ::handle<Standard_Transient>>&)
-//   // pub fn encode_color(Col: &Color, DPDCs: &mut WorkSessionMap, ColRGBs: /* NCollection_DataMap<gp_Pnt, occ::handle<Standard_Transient>>& */) -> OwnedPtr<Handle<StepVisual_Colour>>;
-//
 
 // ========================
 // From STEPConstruct_Tool.hxx
@@ -3159,6 +3163,21 @@ impl ValidationProps {
         })
     }
 
+    /// **Source:** `STEPConstruct_ValidationProps.hxx`:101 - `STEPConstruct_ValidationProps::LoadProps()`
+    /// Searches for entities of the type PropertyDefinitionRepresentation
+    /// in the model and fills the sequence by them
+    pub fn load_props(
+        &self,
+        seq: &mut crate::ffi_types::NCollection_Sequence_Handle_Standard_Transient,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::STEPConstruct_ValidationProps_load_props(
+                self as *const Self,
+                seq,
+            )
+        })
+    }
+
     /// **Source:** `STEPConstruct_ValidationProps.hxx`:105 - `STEPConstruct_ValidationProps::GetPropNAUO()`
     /// Returns CDSR associated with given PpD or NULL if not found
     /// (when, try GetPropSDR)
@@ -3345,11 +3364,3 @@ impl ValidationProps {
         }
     }
 }
-
-// ── Skipped symbols for ValidationProps (1 total) ──
-// SKIPPED: **Source:** `STEPConstruct_ValidationProps.hxx`:101 - `STEPConstruct_ValidationProps::LoadProps`
-//   method: Searches for entities of the type PropertyDefinitionRepresentation
-//   method: in the model and fills the sequence by them
-//   Reason: has unbindable types: param 'seq': unresolved template type (NCollection_Sequence<occ::handle<Standard_Transient>>&)
-//   // pub fn load_props(&self, seq: /* NCollection_Sequence<occ::handle<Standard_Transient>>& */) -> bool;
-//

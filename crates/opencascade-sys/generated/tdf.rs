@@ -645,6 +645,28 @@ impl Attribute {
         }
     }
 
+    /// **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    /// Dumps the attribute content on <aStream>, using
+    /// <aMap> like this: if an attribute is not in the
+    /// map, first put add it to the map and then dump it.
+    /// Use the map rank instead of dumping each attribute
+    /// field.
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Attribute_extended_dump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     /// Forgets the attribute. <aTransaction> is the
     /// current transaction in which the forget is done. A
@@ -2447,15 +2469,6 @@ impl Handle_TDF_Attribute {
     }
 }
 
-// ── Skipped symbols for Attribute (1 total) ──
-// SKIPPED: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump`
-//   method: Dumps the attribute content on <aStream>, using
-//   method: <aMap> like this: if an attribute is not in the
-//   method: map, first put add it to the map and then dump it.
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedMap<occ::handle<TDF_Attribute>>&)
-//   // pub fn extended_dump(&self, anOS: &mut OStream, aFilter: &IDFilter, aMap: /* NCollection_IndexedMap<occ::handle<TDF_Attribute>>& */);
-//
-
 // ========================
 // From TDF_AttributeDelta.hxx
 // ========================
@@ -3429,14 +3442,21 @@ impl ClosureTool {
             )
         })
     }
-}
 
-// ── Skipped symbols for ClosureTool (1 total) ──
-// SKIPPED: **Source:** `TDF_ClosureTool.hxx`:59 - `TDF_ClosureTool::Closure`
-//   static_method: Builds the transitive closure of <aLabel>.
-//   Reason: has unbindable types: param 'anAttMap': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn closure(aLabel: &Label, aLabMap: &mut Map_TDF_Label, anAttMap: /* NCollection_Map<occ::handle<TDF_Attribute>>& */, aFilter: &IDFilter, aMode: &ClosureMode);
-//
+    /// **Source:** `TDF_ClosureTool.hxx`:59 - `TDF_ClosureTool::Closure()`
+    /// Builds the transitive closure of <aLabel>.
+    pub fn closure_label_map_label_map_tdf_attribute_idfilter_closuremode(
+        aLabel: &Label,
+        aLabMap: &mut crate::ffi_types::NCollection_Map_TDF_Label,
+        anAttMap: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+        aFilter: &IDFilter,
+        aMode: &ClosureMode,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_ClosureTool_closure_label_map_label_map_tdf_attribute_idfilter_closuremode(aLabel, aLabMap, anAttMap, aFilter, aMode)
+        })
+    }
+}
 
 // ========================
 // From TDF_ComparisonTool.hxx
@@ -3657,19 +3677,33 @@ impl CopyLabel {
             )))
         }
     }
-}
 
-// ── Skipped symbols for CopyLabel (2 total) ──
-// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:50 - `TDF_CopyLabel::ExternalReferences`
-//   static_method: Check external references and if exist fills the aExternals Map
-//   Reason: has unbindable types: param 'aExternals': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn external_references(Lab: &Label, aExternals: /* NCollection_Map<occ::handle<TDF_Attribute>>& */, aFilter: &IDFilter) -> bool;
-//
-// SKIPPED: **Source:** `TDF_CopyLabel.hxx`:56 - `TDF_CopyLabel::ExternalReferences`
-//   static_method: Check external references and if exist fills the aExternals Map
-//   Reason: has unbindable types: param 'aExternals': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn external_references(aRefLab: &Label, Lab: &Label, aExternals: /* NCollection_Map<occ::handle<TDF_Attribute>>& */, aFilter: &IDFilter, aDataSet: &mut HandleDataSet);
-//
+    /// **Source:** `TDF_CopyLabel.hxx`:50 - `TDF_CopyLabel::ExternalReferences()`
+    /// Check external references and if exist fills the aExternals Map
+    pub fn external_references_label_map_tdf_attribute_idfilter(
+        Lab: &Label,
+        aExternals: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+        aFilter: &IDFilter,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_CopyLabel_external_references_label_map_tdf_attribute_idfilter(Lab, aExternals, aFilter)
+        })
+    }
+
+    /// **Source:** `TDF_CopyLabel.hxx`:56 - `TDF_CopyLabel::ExternalReferences()`
+    /// Check external references and if exist fills the aExternals Map
+    pub fn external_references_label2_map_tdf_attribute_idfilter_handletdfdataset(
+        aRefLab: &Label,
+        Lab: &Label,
+        aExternals: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+        aFilter: &IDFilter,
+        aDataSet: &mut crate::ffi_types::Handle_TDF_DataSet,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_CopyLabel_external_references_label2_map_tdf_attribute_idfilter_handletdfdataset(aRefLab, Lab, aExternals, aFilter, aDataSet)
+        })
+    }
+}
 
 // ========================
 // From TDF_CopyTool.hxx
@@ -4268,6 +4302,17 @@ impl DataSet {
         })
     }
 
+    /// **Source:** `TDF_DataSet.hxx`:65 - `TDF_DataSet::Attributes()`
+    /// Returns the map of attributes in the current data set.
+    /// This map can be used directly, or updated.
+    pub fn attributes(&mut self) -> &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TDF_DataSet_attributes(
+                self as *mut Self,
+            )))
+        }
+    }
+
     /// **Source:** `TDF_DataSet.hxx`:68 - `TDF_DataSet::AddRoot()`
     /// Adds a root label to <myRootLabels>.
     pub fn add_root(&mut self, aLabel: &Label) {
@@ -4473,14 +4518,6 @@ impl Handle_TDF_DataSet {
         }
     }
 }
-
-// ── Skipped symbols for DataSet (1 total) ──
-// SKIPPED: **Source:** `TDF_DataSet.hxx`:65 - `TDF_DataSet::Attributes`
-//   method: Returns the map of attributes in the current data set.
-//   method: This map can be used directly, or updated.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn attributes(&mut self) -> /* NCollection_Map<occ::handle<TDF_Attribute>>& */;
-//
 
 // ========================
 // From TDF_DefaultDeltaOnModification.hxx
@@ -5216,6 +5253,18 @@ impl Delta {
         })
     }
 
+    /// **Source:** `TDF_Delta.hxx`:61 - `TDF_Delta::AttributeDeltas()`
+    /// Returns the field <myAttDeltaList>.
+    pub fn attribute_deltas(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TDF_AttributeDelta {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TDF_Delta_attribute_deltas(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `TDF_Delta.hxx`:64 - `TDF_Delta::Name()`
     /// Returns a name associated with this delta.
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
@@ -5425,13 +5474,6 @@ impl Handle_TDF_Delta {
         }
     }
 }
-
-// ── Skipped symbols for Delta (1 total) ──
-// SKIPPED: **Source:** `TDF_Delta.hxx`:61 - `TDF_Delta::AttributeDeltas`
-//   method: Returns the field <myAttDeltaList>.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TDF_AttributeDelta>> const&)
-//   // pub fn attribute_deltas(&self) -> /* NCollection_List<occ::handle<TDF_AttributeDelta>> const& */;
-//
 
 // ========================
 // From TDF_DeltaOnAddition.hxx
@@ -7067,14 +7109,15 @@ impl DerivedAttribute {
             )))
         }
     }
-}
 
-// ── Skipped symbols for DerivedAttribute (1 total) ──
-// SKIPPED: **Source:** `TDF_DerivedAttribute.hxx`:81 - `TDF_DerivedAttribute::Attributes`
-//   static_method: Returns all the derived registered attributes list.
-//   Reason: has unbindable types: param 'theList': unresolved template type (NCollection_List<occ::handle<TDF_Attribute>>&)
-//   // pub fn attributes(theList: /* NCollection_List<occ::handle<TDF_Attribute>>& */);
-//
+    /// **Source:** `TDF_DerivedAttribute.hxx`:81 - `TDF_DerivedAttribute::Attributes()`
+    /// Returns all the derived registered attributes list.
+    pub fn attributes(theList: &mut crate::ffi_types::NCollection_List_Handle_TDF_Attribute) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_DerivedAttribute_attributes(theList)
+        })
+    }
+}
 
 // ========================
 // From TDF_IDFilter.hxx
@@ -7708,6 +7751,25 @@ impl Label {
         }
     }
 
+    /// **Source:** `TDF_Label.hxx`:247 - `TDF_Label::ExtendedDump()`
+    /// Dumps the label on <aStream> and its attributes
+    /// rank in <aMap> if their IDs are kept by <IDFilter>.
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Label_extended_dump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// **Source:** `TDF_Label.hxx`:252 - `TDF_Label::EntryDump()`
     /// Dumps the label entry.
     pub fn entry_dump(&self, anOS: &mut crate::ffi_types::Standard_OStream) {
@@ -7716,14 +7778,6 @@ impl Label {
         })
     }
 }
-
-// ── Skipped symbols for Label (1 total) ──
-// SKIPPED: **Source:** `TDF_Label.hxx`:247 - `TDF_Label::ExtendedDump`
-//   method: Dumps the label on <aStream> and its attributes
-//   method: rank in <aMap> if their IDs are kept by <IDFilter>.
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedMap<occ::handle<TDF_Attribute>>&)
-//   // pub fn extended_dump(&self, anOS: &mut OStream, aFilter: &IDFilter, aMap: /* NCollection_IndexedMap<occ::handle<TDF_Attribute>>& */);
-//
 
 // ========================
 // From TDF_Reference.hxx
@@ -8185,6 +8239,23 @@ impl Reference {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Reference_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -8544,6 +8615,22 @@ impl RelocationTable {
         })
     }
 
+    /// **Source:** `TDF_RelocationTable.hxx`:137 - `TDF_RelocationTable::TargetAttributeMap()`
+    /// Fills <anAttributeMap> with target relocation
+    /// attributes. <anAttributeMap> is not cleared before
+    /// use.
+    pub fn target_attribute_map(
+        &self,
+        anAttributeMap: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_RelocationTable_target_attribute_map(
+                self as *const Self,
+                anAttributeMap,
+            )
+        })
+    }
+
     /// **Source:** `TDF_RelocationTable.hxx`:141 - `TDF_RelocationTable::LabelTable()`
     /// Returns <myLabelTable> to be used or updated.
     pub fn label_table(
@@ -8553,6 +8640,28 @@ impl RelocationTable {
             &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TDF_RelocationTable_label_table(
                 self as *mut Self,
             )))
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable()`
+    /// Returns <myAttributeTable> to be used or updated.
+    pub fn attribute_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDF_RelocationTable_attribute_table(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TDF_RelocationTable.hxx`:150 - `TDF_RelocationTable::TransientTable()`
+    /// Returns <myTransientTable> to be used or updated.
+    pub fn transient_table(&mut self) -> &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient{
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDF_RelocationTable_transient_table(self as *mut Self),
+            ))
         }
     }
 
@@ -8766,25 +8875,6 @@ impl Handle_TDF_RelocationTable {
         }
     }
 }
-
-// ── Skipped symbols for RelocationTable (3 total) ──
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:137 - `TDF_RelocationTable::TargetAttributeMap`
-//   method: Fills <anAttributeMap> with target relocation
-//   method: attributes. <anAttributeMap> is not cleared before
-//   method: use.
-//   Reason: has unbindable types: param 'anAttributeMap': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn target_attribute_map(&self, anAttributeMap: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable`
-//   method: Returns <myAttributeTable> to be used or updated.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<occ::handle<TDF_Attribute>, occ::handle<TDF_Attribute>>&)
-//   // pub fn attribute_table(&mut self) -> /* NCollection_DataMap<occ::handle<TDF_Attribute>, occ::handle<TDF_Attribute>>& */;
-//
-// SKIPPED: **Source:** `TDF_RelocationTable.hxx`:150 - `TDF_RelocationTable::TransientTable`
-//   method: Returns <myTransientTable> to be used or updated.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn transient_table(&mut self) -> /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */;
-//
 
 // ========================
 // From TDF_TagSource.hxx
@@ -9260,6 +9350,23 @@ impl TagSource {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_TagSource_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -9471,6 +9578,75 @@ impl Tool {
         })
     }
 
+    /// **Source:** `TDF_Tool.hxx`:72 - `TDF_Tool::OutReferers()`
+    /// Returns in <theAtts> the attributes having out
+    /// references.
+    ///
+    /// Caution: <theAtts> is not cleared before use!
+    pub fn out_referers_label_map_tdf_attribute(
+        theLabel: &Label,
+        theAtts: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Tool_out_referers_label_map_tdf_attribute(
+                theLabel, theAtts,
+            )
+        })
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers()`
+    /// Returns in <atts> the attributes having out
+    /// references and kept by <aFilterForReferers>.
+    /// It considers only the references kept by <aFilterForReferences>.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_referers_label_idfilter2_map_tdf_attribute(
+        aLabel: &Label,
+        aFilterForReferers: &IDFilter,
+        aFilterForReferences: &IDFilter,
+        atts: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Tool_out_referers_label_idfilter2_map_tdf_attribute(
+                aLabel,
+                aFilterForReferers,
+                aFilterForReferences,
+                atts,
+            )
+        })
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences()`
+    /// Returns in <atts> the referenced attributes.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_references_label_map_tdf_attribute(
+        aLabel: &Label,
+        atts: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Tool_out_references_label_map_tdf_attribute(aLabel, atts)
+        })
+    }
+
+    /// **Source:** `TDF_Tool.hxx`:92 - `TDF_Tool::OutReferences()`
+    /// Returns in <atts> the referenced attributes and kept by <aFilterForReferences>.
+    /// It considers only the referrers kept by <aFilterForReferers>.
+    /// Caution: <atts> is not cleared before use!
+    pub fn out_references_label_idfilter2_map_tdf_attribute(
+        aLabel: &Label,
+        aFilterForReferers: &IDFilter,
+        aFilterForReferences: &IDFilter,
+        atts: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDF_Tool_out_references_label_idfilter2_map_tdf_attribute(
+                aLabel,
+                aFilterForReferers,
+                aFilterForReferences,
+                atts,
+            )
+        })
+    }
+
     /// **Source:** `TDF_Tool.hxx`:107 - `TDF_Tool::RelocateLabel()`
     /// Returns the label having the same sub-entry as
     /// <aLabel> but located as descendant as <toRoot>
@@ -9668,34 +9844,6 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (4 total) ──
-// SKIPPED: **Source:** `TDF_Tool.hxx`:72 - `TDF_Tool::OutReferers`
-//   static_method: Returns in <theAtts> the attributes having out
-//   static_method: references.
-//   Reason: has unbindable types: param 'theAtts': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn out_referers(theLabel: &Label, theAtts: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers`
-//   static_method: Returns in <atts> the attributes having out
-//   static_method: references and kept by <aFilterForReferers>.
-//   static_method: It considers only the references kept by <aFilterForReferences>.
-//   Reason: has unbindable types: param 'atts': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn out_referers(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences`
-//   static_method: Returns in <atts> the referenced attributes.
-//   static_method: Caution: <atts> is not cleared before use!
-//   Reason: has unbindable types: param 'atts': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn out_references(aLabel: &Label, atts: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
-// SKIPPED: **Source:** `TDF_Tool.hxx`:92 - `TDF_Tool::OutReferences`
-//   static_method: Returns in <atts> the referenced attributes and kept by <aFilterForReferences>.
-//   static_method: It considers only the referrers kept by <aFilterForReferers>.
-//   static_method: Caution: <atts> is not cleared before use!
-//   Reason: has unbindable types: param 'atts': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn out_references(aLabel: &Label, aFilterForReferers: &IDFilter, aFilterForReferences: &IDFilter, atts: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
 
 // ========================
 // From TDF_Transaction.hxx

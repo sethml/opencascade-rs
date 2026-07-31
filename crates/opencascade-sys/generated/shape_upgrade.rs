@@ -8,12 +8,12 @@
 
 /// **Source:** `ShapeUpgrade.hxx`:45 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
 /// Unifies same domain faces and edges of specified shape
-pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(
+pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(
     BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
-    seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
+    seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(BS, seqBS)
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(BS, seqBS)
     })
 }
 /// **Source:** `ShapeUpgrade.hxx`:55 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
@@ -23,12 +23,12 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlen
 /// this one does not use any tolerance and therefore does not change the geometry of B-Spline.
 /// Returns True if C0 B-Spline was successfully split,
 /// else returns False (if BS is C1 B-Spline).
-pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(
+pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(
     BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
-    seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
+    seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(BS, seqBS)
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(BS, seqBS)
     })
 }
 
@@ -1180,9 +1180,7 @@ impl ConvertCurve2dToBezier {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(self as *const Self)))
         }
@@ -1600,9 +1598,7 @@ impl ConvertCurve3dToBezier {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(self as *const Self)))
         }
@@ -7743,9 +7739,7 @@ impl SplitCurve2d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_get_curves(
@@ -8233,9 +8227,7 @@ impl SplitCurve2dContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(self as *const Self)))
         }
@@ -8502,9 +8494,7 @@ impl SplitCurve3d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_get_curves(
@@ -9003,9 +8993,7 @@ impl SplitCurve3dContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
+    pub fn get_curves(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(self as *const Self)))
         }

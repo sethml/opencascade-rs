@@ -768,6 +768,23 @@ impl Area {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Area_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -2181,6 +2198,23 @@ impl AssemblyItemRef {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_AssemblyItemRef_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -2885,6 +2919,23 @@ impl Centroid {
             crate::ffi_extern_TKXCAF::XCAFDoc_Centroid_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Centroid_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -3730,6 +3781,23 @@ impl ClippingPlaneTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ClippingPlaneTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -4423,6 +4491,23 @@ impl Color {
             crate::ffi_extern_TKXCAF::XCAFDoc_Color_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Color_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -5669,6 +5754,23 @@ impl ColorTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ColorTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -6343,6 +6445,23 @@ impl Datum {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Datum_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -6962,6 +7081,23 @@ impl DimTol {
             crate::ffi_extern_TKXCAF::XCAFDoc_DimTol_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_DimTol_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -8171,6 +8307,23 @@ impl DimTolTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_DimTolTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -8818,6 +8971,23 @@ impl Dimension {
             crate::ffi_extern_TKXCAF::XCAFDoc_Dimension_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Dimension_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -9822,6 +9992,23 @@ impl DocumentTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_DocumentTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -10104,6 +10291,43 @@ impl Editor {
         }
     }
 
+    /// **Source:** `XCAFDoc_Editor.hxx`:93 - `XCAFDoc_Editor::CloneMetaData()`
+    /// Copies metadata contains from the source label to the destination label.
+    /// Protected against creating a new label for non-existent tools
+    /// @param[in] theSrcLabel original label to copy from
+    /// @param[in] theDstLabel destination shape label to set attributes
+    /// @param[in] theVisMatMap relating map of the original VisMaterial and created. Can be NULL for
+    /// the same document
+    /// @param[in] theToCopyColor copying visible value and shape color (handled all color type)
+    /// @param[in] theToCopyLayer copying layer
+    /// @param[in] theToCopyMaterial copying  material
+    /// @param[in] theToCopyVisMaterial copying visual material
+    /// @param[in] theToCopyAttributes copying of other node attributes, for example, a shape's
+    /// property
+    pub fn clone_meta_data(
+        theSrcLabel: &crate::tdf::Label,
+        theDstLabel: &crate::tdf::Label,
+        theVisMatMap: &mut crate::ffi_types::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+        theToCopyColor: bool,
+        theToCopyLayer: bool,
+        theToCopyMaterial: bool,
+        theToCopyVisMaterial: bool,
+        theToCopyAttributes: bool,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Editor_clone_meta_data(
+                theSrcLabel,
+                theDstLabel,
+                theVisMatMap as *mut _,
+                theToCopyColor,
+                theToCopyLayer,
+                theToCopyMaterial,
+                theToCopyVisMaterial,
+                theToCopyAttributes,
+            )
+        })
+    }
+
     /// **Source:** `XCAFDoc_Editor.hxx`:107 - `XCAFDoc_Editor::GetParentShapeLabels()`
     /// Gets shape labels that has down relation with the input label.
     /// @param[in] theLabel input label
@@ -10190,15 +10414,6 @@ impl Editor {
         })
     }
 }
-
-// ── Skipped symbols for Editor (1 total) ──
-// SKIPPED: **Source:** `XCAFDoc_Editor.hxx`:93 - `XCAFDoc_Editor::CloneMetaData`
-//   static_method: Copies metadata contains from the source label to the destination label.
-//   static_method: Protected against creating a new label for non-existent tools
-//   static_method: @param[in] theSrcLabel original label to copy from
-//   Reason: param 'theVisMatMap' uses unknown type 'NCollection_DataMap<occ::handle<XCAFDoc_VisMaterial>, occ::handle<XCAFDoc_VisMaterial>>*'
-//   // pub fn clone_meta_data(theSrcLabel: &Label, theDstLabel: &Label, theVisMatMap: /* NCollection_DataMap<occ::handle<XCAFDoc_VisMaterial>, occ::handle<XCAFDoc_VisMaterial>>* */, theToCopyColor: bool, theToCopyLayer: bool, theToCopyMaterial: bool, theToCopyVisMaterial: bool, theToCopyAttributes: bool);
-//
 
 // ========================
 // From XCAFDoc_GeomTolerance.hxx
@@ -10720,6 +10935,23 @@ impl GeomTolerance {
             crate::ffi_extern_TKXCAF::XCAFDoc_GeomTolerance_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_GeomTolerance_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -11527,6 +11759,23 @@ impl GraphNode {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_GraphNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
@@ -12645,6 +12894,23 @@ impl LayerTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_LayerTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -13350,6 +13616,23 @@ impl LengthUnit {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_LengthUnit_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -13949,6 +14232,23 @@ impl Location {
             crate::ffi_extern_TKXCAF::XCAFDoc_Location_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Location_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -14599,6 +14899,23 @@ impl Material {
             crate::ffi_extern_TKXCAF::XCAFDoc_Material_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Material_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -15357,6 +15674,23 @@ impl MaterialTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_MaterialTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -15998,6 +16332,23 @@ impl Note {
             crate::ffi_extern_TKXCAF::XCAFDoc_Note_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Note_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -16765,6 +17116,23 @@ impl NoteBalloon {
             crate::ffi_extern_TKXCAF::XCAFDoc_NoteBalloon_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_NoteBalloon_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -17546,6 +17914,23 @@ impl NoteBinData {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_NoteBinData_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -18300,6 +18685,23 @@ impl NoteComment {
             crate::ffi_extern_TKXCAF::XCAFDoc_NoteComment_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_NoteComment_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -19856,6 +20258,23 @@ impl NotesTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_NotesTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -20497,6 +20916,23 @@ impl ShapeMapTool {
             crate::ffi_extern_TKXCAF::XCAFDoc_ShapeMapTool_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ShapeMapTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -21191,6 +21627,29 @@ impl ShapeTool {
         }
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:372 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    /// Sets the names of references on the no-step files
+    pub fn set_extern_refs_seq_tcollection_hasciistring(
+        &self,
+        SHAS: &crate::ffi_types::NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_set_extern_refs_seq_tcollection_hasciistring(self as *const Self, SHAS)))
+        }
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:375 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    /// Sets the names of references on the no-step files
+    pub fn set_extern_refs_label_seq_tcollection_hasciistring(
+        &self,
+        L: &crate::tdf::Label,
+        SHAS: &crate::ffi_types::NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_set_extern_refs_label_seq_tcollection_hasciistring(self as *const Self, L, SHAS)
+        })
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:388 - `XCAFDoc_ShapeTool::SetSHUO()`
     /// Sets the SHUO structure between upper_usage and next_usage
     /// create multy-level (if number of labels > 2) SHUO from first to last
@@ -21613,6 +22072,17 @@ impl ShapeTool {
         crate::check_result(unsafe { crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_is_extern_ref(L) })
     }
 
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:380 - `XCAFDoc_ShapeTool::GetExternRefs()`
+    /// Gets the names of references on the no-step files
+    pub fn get_extern_refs(
+        L: &crate::tdf::Label,
+        SHAS: &mut crate::ffi_types::NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_get_extern_refs(L, SHAS)
+        })
+    }
+
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:393 - `XCAFDoc_ShapeTool::GetSHUO()`
     /// Returns founded SHUO GraphNode attribute <aSHUOAttr>
     /// Returns false in other case
@@ -21622,6 +22092,18 @@ impl ShapeTool {
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_get_shuo(SHUOLabel, aSHUOAttr)
+        })
+    }
+
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:398 - `XCAFDoc_ShapeTool::GetAllComponentSHUO()`
+    /// Returns founded SHUO GraphNodes of indicated component
+    /// Returns false in other case
+    pub fn get_all_component_shuo(
+        CompLabel: &crate::tdf::Label,
+        SHUOAttrs: &mut crate::ffi_types::NCollection_Sequence_Handle_TDF_Attribute,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_get_all_component_shuo(CompLabel, SHUOAttrs)
         })
     }
 
@@ -22064,6 +22546,23 @@ impl ShapeTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ShapeTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -22220,29 +22719,6 @@ impl Handle_XCAFDoc_ShapeTool {
         }
     }
 }
-
-// ── Skipped symbols for ShapeTool (4 total) ──
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:372 - `XCAFDoc_ShapeTool::SetExternRefs`
-//   method: Sets the names of references on the no-step files
-//   Reason: has unbindable types: param 'SHAS': unresolved template type (NCollection_Sequence<occ::handle<TCollection_HAsciiString>> const&)
-//   // pub fn set_extern_refs(&self, SHAS: /* NCollection_Sequence<occ::handle<TCollection_HAsciiString>> const& */) -> OwnedPtr<TDF_Label>;
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:375 - `XCAFDoc_ShapeTool::SetExternRefs`
-//   method: Sets the names of references on the no-step files
-//   Reason: has unbindable types: param 'SHAS': unresolved template type (NCollection_Sequence<occ::handle<TCollection_HAsciiString>> const&)
-//   // pub fn set_extern_refs(&self, L: &Label, SHAS: /* NCollection_Sequence<occ::handle<TCollection_HAsciiString>> const& */);
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:380 - `XCAFDoc_ShapeTool::GetExternRefs`
-//   static_method: Gets the names of references on the no-step files
-//   Reason: has unbindable types: param 'SHAS': unresolved template type (NCollection_Sequence<occ::handle<TCollection_HAsciiString>>&)
-//   // pub fn get_extern_refs(L: &Label, SHAS: /* NCollection_Sequence<occ::handle<TCollection_HAsciiString>>& */);
-//
-// SKIPPED: **Source:** `XCAFDoc_ShapeTool.hxx`:398 - `XCAFDoc_ShapeTool::GetAllComponentSHUO`
-//   static_method: Returns founded SHUO GraphNodes of indicated component
-//   static_method: Returns false in other case
-//   Reason: has unbindable types: param 'SHUOAttrs': unresolved template type (NCollection_Sequence<occ::handle<TDF_Attribute>>&)
-//   // pub fn get_all_component_shuo(CompLabel: &Label, SHUOAttrs: /* NCollection_Sequence<occ::handle<TDF_Attribute>>& */) -> bool;
-//
 
 // ========================
 // From XCAFDoc_View.hxx
@@ -22699,6 +23175,23 @@ impl View {
             crate::ffi_extern_TKXCAF::XCAFDoc_View_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_View_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -23634,6 +24127,23 @@ impl ViewTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_ViewTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -24423,6 +24933,23 @@ impl VisMaterial {
             crate::ffi_extern_TKXCAF::XCAFDoc_VisMaterial_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_VisMaterial_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -25395,6 +25922,23 @@ impl VisMaterialTool {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_VisMaterialTool_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -26040,6 +26584,23 @@ impl Volume {
             crate::ffi_extern_TKXCAF::XCAFDoc_Volume_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDoc_Volume_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }

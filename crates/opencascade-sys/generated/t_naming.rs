@@ -461,25 +461,44 @@ impl CopyShape {
             ))
         }
     }
-}
 
-// ── Skipped symbols for CopyShape (3 total) ──
-// SKIPPED: **Source:** `TNaming_CopyShape.hxx`:35 - `TNaming_CopyShape::CopyTool`
-//   static_method: Makes copy a set of shape(s), using the aMap
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn copy_tool(aShape: &Shape, aMap: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */, aResult: &mut Shape);
-//
-// SKIPPED: **Source:** `TNaming_CopyShape.hxx`:42 - `TNaming_CopyShape::Translate`
-//   static_method: Translates a Transient shape(s) to Transient
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn translate(aShape: &Shape, aMap: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */, aResult: &mut Shape, TrTool: &HandleTranslateTool);
-//
-// SKIPPED: **Source:** `TNaming_CopyShape.hxx`:51 - `TNaming_CopyShape::Translate`
-//   static_method: Translates a Topological Location to an other Top.
-//   static_method: Location
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn translate(L: &Location, aMap: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */) -> OwnedPtr<TopLoc_Location>;
-//
+    /// **Source:** `TNaming_CopyShape.hxx`:35 - `TNaming_CopyShape::CopyTool()`
+    /// Makes copy a set of shape(s), using the aMap
+    pub fn copy_tool(
+        aShape: &crate::topo_ds::Shape,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        aResult: &mut crate::topo_ds::Shape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_CopyShape_copy_tool(aShape, aMap, aResult)
+        })
+    }
+
+    /// **Source:** `TNaming_CopyShape.hxx`:42 - `TNaming_CopyShape::Translate()`
+    /// Translates a Transient shape(s) to Transient
+    pub fn translate_shape_idmap_standard_transient_standard_transient_shape_handletnamingtranslatetool(
+        aShape: &crate::topo_ds::Shape,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        aResult: &mut crate::topo_ds::Shape,
+        TrTool: &crate::ffi_types::Handle_TNaming_TranslateTool,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_CopyShape_translate_shape_idmap_standard_transient_standard_transient_shape_handletnamingtranslatetool(aShape, aMap, aResult, TrTool)
+        })
+    }
+
+    /// **Source:** `TNaming_CopyShape.hxx`:51 - `TNaming_CopyShape::Translate()`
+    /// Translates a Topological Location to an other Top.
+    /// Location
+    pub fn translate_location_idmap_standard_transient_standard_transient(
+        L: &crate::top_loc::Location,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::top_loc::Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_CopyShape_translate_location_idmap_standard_transient_standard_transient(L, aMap)))
+        }
+    }
+}
 
 // ========================
 // From TNaming_DeltaOnModification.hxx
@@ -1616,6 +1635,46 @@ impl Localizer {
         })
     }
 
+    /// **Source:** `TNaming_Localizer.hxx`:61 - `TNaming_Localizer::GoBack()`
+    pub fn go_back(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        Lab: &crate::tdf::Label,
+        Evol: crate::t_naming::Evolution,
+        OldS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        OldLab: &mut crate::ffi_types::NCollection_List_Handle_TNaming_NamedShape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Localizer_go_back(
+                self as *mut Self,
+                S,
+                Lab,
+                Evol.into(),
+                OldS,
+                OldLab,
+            )
+        })
+    }
+
+    /// **Source:** `TNaming_Localizer.hxx`:67 - `TNaming_Localizer::Backward()`
+    pub fn backward(
+        &mut self,
+        NS: &crate::ffi_types::Handle_TNaming_NamedShape,
+        S: &crate::topo_ds::Shape,
+        Primitives: &mut crate::ffi_types::NCollection_Map_Handle_TNaming_NamedShape,
+        ValidShapes: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Localizer_backward(
+                self as *mut Self,
+                NS,
+                S,
+                Primitives,
+                ValidShapes,
+            )
+        })
+    }
+
     /// **Source:** `TNaming_Localizer.hxx`:73 - `TNaming_Localizer::FindNeighbourg()`
     pub fn find_neighbourg(
         &mut self,
@@ -1664,16 +1723,6 @@ impl Localizer {
         })
     }
 }
-
-// ── Skipped symbols for Localizer (2 total) ──
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:61 - `TNaming_Localizer::GoBack`
-//   Reason: has unbindable types: param 'OldLab': unresolved template type (NCollection_List<occ::handle<TNaming_NamedShape>>&)
-//   // pub fn go_back(&mut self, S: &Shape, Lab: &Label, Evol: Evolution, OldS: &mut List_TopoDS_Shape, OldLab: /* NCollection_List<occ::handle<TNaming_NamedShape>>& */);
-//
-// SKIPPED: **Source:** `TNaming_Localizer.hxx`:67 - `TNaming_Localizer::Backward`
-//   Reason: has unbindable types: param 'Primitives': unresolved template type (NCollection_Map<occ::handle<TNaming_NamedShape>>&)
-//   // pub fn backward(&mut self, NS: &HandleNamedShape, S: &Shape, Primitives: /* NCollection_Map<occ::handle<TNaming_NamedShape>>& */, ValidShapes: &mut Map_TopoDS_Shape_TopTools_ShapeMapHasher);
-//
 
 // ========================
 // From TNaming_Name.hxx
@@ -1794,6 +1843,15 @@ impl Name {
         }
     }
 
+    /// **Source:** `TNaming_Name.hxx`:66 - `TNaming_Name::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_Handle_TNaming_NamedShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Name_arguments(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `TNaming_Name.hxx`:68 - `TNaming_Name::StopNamedShape()`
     pub fn stop_named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TNaming_NamedShape> {
         unsafe {
@@ -1845,12 +1903,6 @@ impl Name {
         })
     }
 }
-
-// ── Skipped symbols for Name (1 total) ──
-// SKIPPED: **Source:** `TNaming_Name.hxx`:66 - `TNaming_Name::Arguments`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TNaming_NamedShape>> const&)
-//   // pub fn arguments(&self) -> /* NCollection_List<occ::handle<TNaming_NamedShape>> const& */;
-//
 
 // ========================
 // From TNaming_NamedShape.hxx
@@ -2386,6 +2438,23 @@ impl NamedShape {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -2663,6 +2732,23 @@ impl Naming {
                 anOS,
             )))
         }
+    }
+
+    /// **Source:** `TNaming_Naming.hxx`:104 - `TNaming_Naming::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Naming_extended_dump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:112 - `TNaming_Naming::DynamicType()`
@@ -3182,12 +3268,6 @@ impl Handle_TNaming_Naming {
         }
     }
 }
-
-// ── Skipped symbols for Naming (1 total) ──
-// SKIPPED: **Source:** `TNaming_Naming.hxx`:104 - `TNaming_Naming::ExtendedDump`
-//   Reason: has unbindable types: param 'aMap': unresolved template type (NCollection_IndexedMap<occ::handle<TDF_Attribute>>&)
-//   // pub fn extended_dump(&self, anOS: &mut OStream, aFilter: &IDFilter, aMap: /* NCollection_IndexedMap<occ::handle<TDF_Attribute>>& */);
-//
 
 // ========================
 // From TNaming_NamingTool.hxx
@@ -3897,6 +3977,15 @@ impl Selector {
         })
     }
 
+    /// **Source:** `TNaming_Selector.hxx`:122 - `TNaming_Selector::Arguments()`
+    /// Returns the attribute list args.
+    /// This list contains the named shape on which the topological naming was built.
+    pub fn arguments(&self, args: &mut crate::ffi_types::NCollection_Map_Handle_TDF_Attribute) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Selector_arguments(self as *const Self, args)
+        })
+    }
+
     /// **Source:** `TNaming_Selector.hxx`:126 - `TNaming_Selector::NamedShape()`
     /// Returns the NamedShape build or under construction,
     /// which contains the topological naming..
@@ -3931,14 +4020,6 @@ impl Selector {
         })
     }
 }
-
-// ── Skipped symbols for Selector (1 total) ──
-// SKIPPED: **Source:** `TNaming_Selector.hxx`:122 - `TNaming_Selector::Arguments`
-//   method: Returns the attribute list args.
-//   method: This list contains the named shape on which the topological naming was built.
-//   Reason: has unbindable types: param 'args': unresolved template type (NCollection_Map<occ::handle<TDF_Attribute>>&)
-//   // pub fn arguments(&self, args: /* NCollection_Map<occ::handle<TDF_Attribute>>& */);
-//
 
 // ========================
 // From TNaming_ShapesSet.hxx
@@ -4254,6 +4335,17 @@ impl Tool {
         }
     }
 
+    /// **Source:** `TNaming_Tool.hxx`:134 - `TNaming_Tool::Collect()`
+    pub fn collect(
+        NS: &crate::ffi_types::Handle_TNaming_NamedShape,
+        Labels: &mut crate::ffi_types::NCollection_Map_Handle_TNaming_NamedShape,
+        OnlyModif: bool,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Tool_collect(NS, Labels, OnlyModif)
+        })
+    }
+
     /// **Source:** `TNaming_Tool.hxx`:139 - `TNaming_Tool::HasLabel()`
     /// Returns True if <aShape> appears under a label.(DP)
     pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
@@ -4315,12 +4407,6 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (1 total) ──
-// SKIPPED: **Source:** `TNaming_Tool.hxx`:134 - `TNaming_Tool::Collect`
-//   Reason: has unbindable types: param 'Labels': unresolved template type (NCollection_Map<occ::handle<TNaming_NamedShape>>&)
-//   // pub fn collect(NS: &HandleNamedShape, Labels: /* NCollection_Map<occ::handle<TNaming_NamedShape>>& */, OnlyModif: bool);
-//
 
 // ========================
 // From TNaming_TranslateTool.hxx
@@ -4412,6 +4498,57 @@ impl TranslateTool {
     pub fn make_compound(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_compound(self as *const Self, S)
+        })
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:53 - `TNaming_TranslateTool::UpdateVertex()`
+    pub fn update_vertex(
+        &self,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
+        M: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_vertex(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
+        })
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:59 - `TNaming_TranslateTool::UpdateEdge()`
+    pub fn update_edge(
+        &self,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
+        M: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_edge(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
+        })
+    }
+
+    /// **Source:** `TNaming_TranslateTool.hxx`:65 - `TNaming_TranslateTool::UpdateFace()`
+    pub fn update_face(
+        &self,
+        S1: &crate::topo_ds::Shape,
+        S2: &mut crate::topo_ds::Shape,
+        M: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_face(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
         })
     }
 
@@ -4610,20 +4747,6 @@ impl Handle_TNaming_TranslateTool {
         }
     }
 }
-
-// ── Skipped symbols for TranslateTool (3 total) ──
-// SKIPPED: **Source:** `TNaming_TranslateTool.hxx`:53 - `TNaming_TranslateTool::UpdateVertex`
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn update_vertex(&self, S1: &Shape, S2: &mut Shape, M: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */);
-//
-// SKIPPED: **Source:** `TNaming_TranslateTool.hxx`:59 - `TNaming_TranslateTool::UpdateEdge`
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn update_edge(&self, S1: &Shape, S2: &mut Shape, M: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */);
-//
-// SKIPPED: **Source:** `TNaming_TranslateTool.hxx`:65 - `TNaming_TranslateTool::UpdateFace`
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn update_face(&self, S1: &Shape, S2: &mut Shape, M: /* NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */);
-//
 
 // ========================
 // From TNaming_Translator.hxx
@@ -5187,6 +5310,23 @@ impl UsedShapes {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`

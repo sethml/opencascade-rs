@@ -13,7 +13,6 @@
 #include <PCDM_Writer.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
 #include <TopAbs_Orientation.hxx>
@@ -23,7 +22,6 @@
 #include <XmlDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
-#include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
 #include <XmlMDataXtd.hxx>
 #include <XmlMDataXtd_ConstraintDriver.hxx>

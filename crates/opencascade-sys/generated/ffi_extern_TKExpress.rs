@@ -34,6 +34,12 @@ unsafe extern "C" {
         self_: *const Expr_Absolute,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Absolute.hxx`:57 - `Expr_Absolute::Evaluate()`
+    pub fn Expr_Absolute_evaluate(
+        self_: *const Expr_Absolute,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Absolute.hxx`:61 - `Expr_Absolute::String()`
     pub fn Expr_Absolute_string(
         self_: *const Expr_Absolute,
@@ -207,6 +213,12 @@ unsafe extern "C" {
         self_: *const Expr_ArcCosine,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcCosine.hxx`:57 - `Expr_ArcCosine::Evaluate()`
+    pub fn Expr_ArcCosine_evaluate(
+        self_: *const Expr_ArcCosine,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArcCosine.hxx`:61 - `Expr_ArcCosine::String()`
     pub fn Expr_ArcCosine_string(
         self_: *const Expr_ArcCosine,
@@ -381,6 +393,12 @@ unsafe extern "C" {
         self_: *const Expr_ArcSine,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcSine.hxx`:57 - `Expr_ArcSine::Evaluate()`
+    pub fn Expr_ArcSine_evaluate(
+        self_: *const Expr_ArcSine,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArcSine.hxx`:61 - `Expr_ArcSine::String()`
     pub fn Expr_ArcSine_string(
         self_: *const Expr_ArcSine,
@@ -553,6 +571,12 @@ unsafe extern "C" {
         self_: *const Expr_ArcTangent,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcTangent.hxx`:57 - `Expr_ArcTangent::Evaluate()`
+    pub fn Expr_ArcTangent_evaluate(
+        self_: *const Expr_ArcTangent,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArcTangent.hxx`:61 - `Expr_ArcTangent::String()`
     pub fn Expr_ArcTangent_string(
         self_: *const Expr_ArcTangent,
@@ -728,6 +752,12 @@ unsafe extern "C" {
         self_: *const Expr_ArgCosh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgCosh.hxx`:57 - `Expr_ArgCosh::Evaluate()`
+    pub fn Expr_ArgCosh_evaluate(
+        self_: *const Expr_ArgCosh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArgCosh.hxx`:61 - `Expr_ArgCosh::String()`
     pub fn Expr_ArgCosh_string(
         self_: *const Expr_ArgCosh,
@@ -900,6 +930,12 @@ unsafe extern "C" {
         self_: *const Expr_ArgSinh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgSinh.hxx`:57 - `Expr_ArgSinh::Evaluate()`
+    pub fn Expr_ArgSinh_evaluate(
+        self_: *const Expr_ArgSinh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArgSinh.hxx`:61 - `Expr_ArgSinh::String()`
     pub fn Expr_ArgSinh_string(
         self_: *const Expr_ArgSinh,
@@ -1072,6 +1108,12 @@ unsafe extern "C" {
         self_: *const Expr_ArgTanh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgTanh.hxx`:57 - `Expr_ArgTanh::Evaluate()`
+    pub fn Expr_ArgTanh_evaluate(
+        self_: *const Expr_ArgTanh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_ArgTanh.hxx`:61 - `Expr_ArgTanh::String()`
     pub fn Expr_ArgTanh_string(
         self_: *const Expr_ArgTanh,
@@ -1364,6 +1406,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn Expr_BinaryExpression_inherited_Evaluate(
+        self_: *const Expr_BinaryExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_BinaryExpression_inherited_EvaluateNumeric(
         self_: *const Expr_BinaryExpression,
@@ -1436,6 +1484,12 @@ unsafe extern "C" {
         self_: *const Expr_BinaryFunction,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:67 - `Expr_BinaryFunction::Evaluate()`
+    pub fn Expr_BinaryFunction_evaluate(
+        self_: *const Expr_BinaryFunction,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_BinaryFunction.hxx`:71 - `Expr_BinaryFunction::String()`
     pub fn Expr_BinaryFunction_string(
         self_: *const Expr_BinaryFunction,
@@ -1621,6 +1675,12 @@ unsafe extern "C" {
         self_: *const Expr_Cosh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosh.hxx`:58 - `Expr_Cosh::Evaluate()`
+    pub fn Expr_Cosh_evaluate(
+        self_: *const Expr_Cosh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Cosh.hxx`:62 - `Expr_Cosh::String()`
     pub fn Expr_Cosh_string(
         self_: *const Expr_Cosh,
@@ -1782,6 +1842,12 @@ unsafe extern "C" {
         self_: *const Expr_Cosine,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosine.hxx`:58 - `Expr_Cosine::Evaluate()`
+    pub fn Expr_Cosine_evaluate(
+        self_: *const Expr_Cosine,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Cosine.hxx`:62 - `Expr_Cosine::String()`
     pub fn Expr_Cosine_string(
         self_: *const Expr_Cosine,
@@ -1958,6 +2024,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Difference.hxx`:65 - `Expr_Difference::Evaluate()`
+    pub fn Expr_Difference_evaluate(
+        self_: *const Expr_Difference,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Difference.hxx`:69 - `Expr_Difference::String()`
     pub fn Expr_Difference_string(
         self_: *const Expr_Difference,
@@ -2299,6 +2371,12 @@ unsafe extern "C" {
         self_: *const Expr_Division,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Division.hxx`:59 - `Expr_Division::Evaluate()`
+    pub fn Expr_Division_evaluate(
+        self_: *const Expr_Division,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Division.hxx`:63 - `Expr_Division::String()`
     pub fn Expr_Division_string(
         self_: *const Expr_Division,
@@ -2636,6 +2714,12 @@ unsafe extern "C" {
         self_: *const Expr_Exponential,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponential.hxx`:57 - `Expr_Exponential::Evaluate()`
+    pub fn Expr_Exponential_evaluate(
+        self_: *const Expr_Exponential,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Exponential.hxx`:61 - `Expr_Exponential::String()`
     pub fn Expr_Exponential_string(
         self_: *const Expr_Exponential,
@@ -2812,6 +2896,12 @@ unsafe extern "C" {
         self_: *const Expr_Exponentiate,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponentiate.hxx`:59 - `Expr_Exponentiate::Evaluate()`
+    pub fn Expr_Exponentiate_evaluate(
+        self_: *const Expr_Exponentiate,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Exponentiate.hxx`:63 - `Expr_Exponentiate::String()`
     pub fn Expr_Exponentiate_string(
         self_: *const Expr_Exponentiate,
@@ -3015,6 +3105,12 @@ unsafe extern "C" {
         self_: *const Expr_FunctionDerivative,
         index: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:53 - `Expr_FunctionDerivative::Evaluate()`
+    pub fn Expr_FunctionDerivative_evaluate(
+        self_: *const Expr_FunctionDerivative,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        values: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_FunctionDerivative.hxx`:57 - `Expr_FunctionDerivative::Copy()`
     pub fn Expr_FunctionDerivative_copy(
         self_: *const Expr_FunctionDerivative,
@@ -3211,6 +3307,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn Expr_GeneralExpression_evaluate(
+        self_: *const Expr_GeneralExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_GeneralExpression_evaluate_numeric(
         self_: *const Expr_GeneralExpression,
@@ -3454,6 +3556,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         deg: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:58 - `Expr_GeneralFunction::Evaluate()`
+    pub fn Expr_GeneralFunction_evaluate(
+        self_: *const Expr_GeneralFunction,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_GeneralFunction.hxx`:64 - `Expr_GeneralFunction::IsIdentical()`
     pub fn Expr_GeneralFunction_is_identical(
         self_: *const Expr_GeneralFunction,
@@ -4488,6 +4596,12 @@ unsafe extern "C" {
         self_: *const Expr_LogOf10,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOf10.hxx`:58 - `Expr_LogOf10::Evaluate()`
+    pub fn Expr_LogOf10_evaluate(
+        self_: *const Expr_LogOf10,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_LogOf10.hxx`:62 - `Expr_LogOf10::String()`
     pub fn Expr_LogOf10_string(
         self_: *const Expr_LogOf10,
@@ -4660,6 +4774,12 @@ unsafe extern "C" {
         self_: *const Expr_LogOfe,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOfe.hxx`:58 - `Expr_LogOfe::Evaluate()`
+    pub fn Expr_LogOfe_evaluate(
+        self_: *const Expr_LogOfe,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_LogOfe.hxx`:62 - `Expr_LogOfe::String()`
     pub fn Expr_LogOfe_string(
         self_: *const Expr_LogOfe,
@@ -4864,6 +4984,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Expr_NamedConstant.hxx`:87 - `Expr_NamedConstant::Evaluate()`
+    pub fn Expr_NamedConstant_evaluate(
+        self_: *const Expr_NamedConstant,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_NamedConstant.hxx`:90 - `Expr_NamedConstant::DynamicType()`
     pub fn Expr_NamedConstant_dynamic_type(
         self_: *const Expr_NamedConstant,
@@ -5116,6 +5242,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn Expr_NamedExpression_inherited_Evaluate(
+        self_: *const Expr_NamedExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_NamedExpression_inherited_EvaluateNumeric(
         self_: *const Expr_NamedExpression,
@@ -5152,6 +5284,12 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== Expr_NamedFunction ========================
     pub fn Expr_NamedFunction_destructor(self_: *mut Expr_NamedFunction);
+    /// **Source:** `Expr_NamedFunction.hxx`:36 - `Expr_NamedFunction::Expr_NamedFunction()`
+    pub fn Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_arr1_expr_namedunknown(
+        name: *const TCollection_AsciiString,
+        exp: *const Handle_Expr_GeneralExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Expr_NamedFunction>;
     /// **Source:** `Expr_NamedFunction.hxx`:42 - `Expr_NamedFunction::SetName()`
     pub fn Expr_NamedFunction_set_name(
         self_: *mut Expr_NamedFunction,
@@ -5170,6 +5308,12 @@ unsafe extern "C" {
         self_: *const Expr_NamedFunction,
         index: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_NamedFunction.hxx`:58 - `Expr_NamedFunction::Evaluate()`
+    pub fn Expr_NamedFunction_evaluate(
+        self_: *const Expr_NamedFunction,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        values: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_NamedFunction.hxx`:62 - `Expr_NamedFunction::Copy()`
     pub fn Expr_NamedFunction_copy(
         self_: *const Expr_NamedFunction,
@@ -5354,6 +5498,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Expr_NamedUnknown.hxx`:93 - `Expr_NamedUnknown::Evaluate()`
+    pub fn Expr_NamedUnknown_evaluate(
+        self_: *const Expr_NamedUnknown,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_NamedUnknown.hxx`:96 - `Expr_NamedUnknown::DynamicType()`
     pub fn Expr_NamedUnknown_dynamic_type(
         self_: *const Expr_NamedUnknown,
@@ -5617,6 +5767,12 @@ unsafe extern "C" {
         var: *const Handle_Expr_NamedUnknown,
         with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Expr_NumericValue.hxx`:91 - `Expr_NumericValue::Evaluate()`
+    pub fn Expr_NumericValue_evaluate(
+        self_: *const Expr_NumericValue,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_NumericValue.hxx`:95 - `Expr_NumericValue::String()`
     pub fn Expr_NumericValue_string(
         self_: *const Expr_NumericValue,
@@ -5849,6 +6005,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn Expr_PolyExpression_inherited_Evaluate(
+        self_: *const Expr_PolyExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_PolyExpression_inherited_EvaluateNumeric(
         self_: *const Expr_PolyExpression,
@@ -5889,6 +6051,11 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== Expr_PolyFunction ========================
     pub fn Expr_PolyFunction_destructor(self_: *mut Expr_PolyFunction);
+    /// **Source:** `Expr_PolyFunction.hxx`:38 - `Expr_PolyFunction::Expr_PolyFunction()`
+    pub fn Expr_PolyFunction_ctor_handleexprgeneralfunction_arr1_expr_generalexpression(
+        func: *const Handle_Expr_GeneralFunction,
+        exps: *const NCollection_Array1_Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Expr_PolyFunction>;
     /// **Source:** `Expr_PolyFunction.hxx`:43 - `Expr_PolyFunction::Function()`
     pub fn Expr_PolyFunction_function(
         self_: *const Expr_PolyFunction,
@@ -5913,6 +6080,12 @@ unsafe extern "C" {
         self_: *const Expr_PolyFunction,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyFunction.hxx`:67 - `Expr_PolyFunction::Evaluate()`
+    pub fn Expr_PolyFunction_evaluate(
+        self_: *const Expr_PolyFunction,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::String()`
     pub fn Expr_PolyFunction_string(
         self_: *const Expr_PolyFunction,
@@ -6070,6 +6243,10 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Product ========================
     pub fn Expr_Product_destructor(self_: *mut Expr_Product);
+    /// **Source:** `Expr_Product.hxx`:36 - `Expr_Product::Expr_Product()`
+    pub fn Expr_Product_ctor_seq_expr_generalexpression(
+        exps: *const NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Expr_Product>;
     /// **Source:** `Expr_Product.hxx`:40 - `Expr_Product::Expr_Product()`
     pub fn Expr_Product_ctor_handleexprgeneralexpression2(
         exp1: *const Handle_Expr_GeneralExpression,
@@ -6095,6 +6272,12 @@ unsafe extern "C" {
         self_: *const Expr_Product,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Product.hxx`:65 - `Expr_Product::Evaluate()`
+    pub fn Expr_Product_evaluate(
+        self_: *const Expr_Product,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Product.hxx`:69 - `Expr_Product::String()`
     pub fn Expr_Product_string(
         self_: *const Expr_Product,
@@ -6302,6 +6485,12 @@ unsafe extern "C" {
         self_: *const Expr_Sign,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sign.hxx`:58 - `Expr_Sign::Evaluate()`
+    pub fn Expr_Sign_evaluate(
+        self_: *const Expr_Sign,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Sign.hxx`:62 - `Expr_Sign::String()`
     pub fn Expr_Sign_string(
         self_: *const Expr_Sign,
@@ -6463,6 +6652,12 @@ unsafe extern "C" {
         self_: *const Expr_Sine,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sine.hxx`:58 - `Expr_Sine::Evaluate()`
+    pub fn Expr_Sine_evaluate(
+        self_: *const Expr_Sine,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Sine.hxx`:62 - `Expr_Sine::String()`
     pub fn Expr_Sine_string(
         self_: *const Expr_Sine,
@@ -6795,6 +6990,12 @@ unsafe extern "C" {
         self_: *const Expr_Sinh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sinh.hxx`:58 - `Expr_Sinh::Evaluate()`
+    pub fn Expr_Sinh_evaluate(
+        self_: *const Expr_Sinh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Sinh.hxx`:62 - `Expr_Sinh::String()`
     pub fn Expr_Sinh_string(
         self_: *const Expr_Sinh,
@@ -6956,6 +7157,12 @@ unsafe extern "C" {
         self_: *const Expr_Square,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Square.hxx`:58 - `Expr_Square::Evaluate()`
+    pub fn Expr_Square_evaluate(
+        self_: *const Expr_Square,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Square.hxx`:62 - `Expr_Square::String()`
     pub fn Expr_Square_string(
         self_: *const Expr_Square,
@@ -7125,6 +7332,12 @@ unsafe extern "C" {
         self_: *const Expr_SquareRoot,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SquareRoot.hxx`:58 - `Expr_SquareRoot::Evaluate()`
+    pub fn Expr_SquareRoot_evaluate(
+        self_: *const Expr_SquareRoot,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_SquareRoot.hxx`:62 - `Expr_SquareRoot::String()`
     pub fn Expr_SquareRoot_string(
         self_: *const Expr_SquareRoot,
@@ -7276,6 +7489,10 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Sum ========================
     pub fn Expr_Sum_destructor(self_: *mut Expr_Sum);
+    /// **Source:** `Expr_Sum.hxx`:37 - `Expr_Sum::Expr_Sum()`
+    pub fn Expr_Sum_ctor_seq_expr_generalexpression(
+        exps: *const NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Expr_Sum>;
     /// **Source:** `Expr_Sum.hxx`:40 - `Expr_Sum::Expr_Sum()`
     pub fn Expr_Sum_ctor_handleexprgeneralexpression2(
         exp1: *const Handle_Expr_GeneralExpression,
@@ -7307,6 +7524,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sum.hxx`:71 - `Expr_Sum::Evaluate()`
+    pub fn Expr_Sum_evaluate(
+        self_: *const Expr_Sum,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::String()`
     pub fn Expr_Sum_string(
         self_: *const Expr_Sum,
@@ -7608,6 +7831,12 @@ unsafe extern "C" {
         self_: *const Expr_Tangent,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tangent.hxx`:58 - `Expr_Tangent::Evaluate()`
+    pub fn Expr_Tangent_evaluate(
+        self_: *const Expr_Tangent,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Tangent.hxx`:62 - `Expr_Tangent::String()`
     pub fn Expr_Tangent_string(
         self_: *const Expr_Tangent,
@@ -7780,6 +8009,12 @@ unsafe extern "C" {
         self_: *const Expr_Tanh,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tanh.hxx`:58 - `Expr_Tanh::Evaluate()`
+    pub fn Expr_Tanh_evaluate(
+        self_: *const Expr_Tanh,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_Tanh.hxx`:62 - `Expr_Tanh::String()`
     pub fn Expr_Tanh_string(
         self_: *const Expr_Tanh,
@@ -8119,6 +8354,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn Expr_UnaryExpression_inherited_Evaluate(
+        self_: *const Expr_UnaryExpression,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_UnaryExpression_inherited_EvaluateNumeric(
         self_: *const Expr_UnaryExpression,
@@ -8190,6 +8431,12 @@ unsafe extern "C" {
         self_: *const Expr_UnaryFunction,
         X: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:66 - `Expr_UnaryFunction::Evaluate()`
+    pub fn Expr_UnaryFunction_evaluate(
+        self_: *const Expr_UnaryFunction,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_UnaryFunction.hxx`:70 - `Expr_UnaryFunction::String()`
     pub fn Expr_UnaryFunction_string(
         self_: *const Expr_UnaryFunction,
@@ -8371,6 +8618,12 @@ unsafe extern "C" {
         X: *const Handle_Expr_NamedUnknown,
         N: i32,
     ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:65 - `Expr_UnaryMinus::Evaluate()`
+    pub fn Expr_UnaryMinus_evaluate(
+        self_: *const Expr_UnaryMinus,
+        vars: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: *const NCollection_Array1_double,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `Expr_UnaryMinus.hxx`:69 - `Expr_UnaryMinus::String()`
     pub fn Expr_UnaryMinus_string(
         self_: *const Expr_UnaryMinus,
@@ -8683,11 +8936,14 @@ unsafe extern "C" {
         self_: *mut ExprIntrp_GenExp,
         func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenExp_inherited_GetNamed(
         self_: *const ExprIntrp_GenExp,
-        name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn ExprIntrp_GenExp_inherited_GetFunctions(
+        self_: *const ExprIntrp_GenExp,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedFunction>;
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenExp_inherited_GetFunction(
         self_: *const ExprIntrp_GenExp,
@@ -8791,11 +9047,14 @@ unsafe extern "C" {
         self_: *mut ExprIntrp_GenFct,
         func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenFct_inherited_GetNamed(
         self_: *const ExprIntrp_GenFct,
-        name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn ExprIntrp_GenFct_inherited_GetFunctions(
+        self_: *const ExprIntrp_GenFct,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedFunction>;
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenFct_inherited_GetFunction(
         self_: *const ExprIntrp_GenFct,
@@ -8903,11 +9162,14 @@ unsafe extern "C" {
         self_: *mut ExprIntrp_GenRel,
         func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenRel_inherited_GetNamed(
         self_: *const ExprIntrp_GenRel,
-        name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn ExprIntrp_GenRel_inherited_GetFunctions(
+        self_: *const ExprIntrp_GenRel,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedFunction>;
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenRel_inherited_GetFunction(
         self_: *const ExprIntrp_GenRel,
@@ -8955,8 +9217,16 @@ unsafe extern "C" {
         self_: *mut ExprIntrp_Generator,
         named: *const Handle_Expr_NamedExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
+    /// **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_Generator_get_named(
+        self_: *const ExprIntrp_Generator,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedExpression>;
+    /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn ExprIntrp_Generator_get_functions(
+        self_: *const ExprIntrp_Generator,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Expr_NamedFunction>;
+    /// **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
+    pub fn ExprIntrp_Generator_get_named_asciistring(
         self_: *const ExprIntrp_Generator,
         name: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;

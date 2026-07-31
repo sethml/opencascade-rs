@@ -3842,7 +3842,7 @@ impl FreeFormatEntity {
     /// by IGESWriter
     pub fn add_entities(
         &mut self,
-        ents: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        ents: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESData_FreeFormatEntity_add_entities(
@@ -10441,7 +10441,7 @@ impl IGESModel {
     pub fn start_section(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10491,7 +10491,7 @@ impl IGESModel {
     /// later on, will have no effect on the Start section.
     pub fn set_start_section(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         copy: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -11441,7 +11441,7 @@ impl IGESReaderData {
     pub fn start_section(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -12903,7 +12903,7 @@ impl IGESWriter {
         &self,
         numsec: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18149,15 +18149,15 @@ impl ParamReader {
     }
 
     /// **Source:** `IGESData_ParamReader.hxx`:329 - `IGESData_ParamReader::ReadTexts()`
-    pub fn read_texts_paramcursor_msg_handlencollectionharray1opencascadehandletcollectionhasciistring_int(
+    pub fn read_texts_paramcursor_msg_harr1_tcollection_hasciistring_int(
         &mut self,
         PC: &ParamCursor,
         amsg: &crate::message::Msg,
-        val: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        val: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         index: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_texts_paramcursor_msg_handlencollectionharray1opencascadehandletcollectionhasciistring_int(self as *mut Self, PC, amsg, val, index)
+            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_texts_paramcursor_msg_harr1_tcollection_hasciistring_int(self as *mut Self, PC, amsg, val, index)
         })
     }
 
@@ -18167,30 +18167,30 @@ impl ParamReader {
     /// Same conditions as for ReadInts, for PC and index
     /// If all params are not Text, Check is filled (using mess)
     /// and return value is False
-    pub fn read_texts_paramcursor_charptr_handlencollectionharray1opencascadehandletcollectionhasciistring_int(
+    pub fn read_texts_paramcursor_charptr_harr1_tcollection_hasciistring_int(
         &mut self,
         PC: &ParamCursor,
         mess: &str,
-        val: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        val: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         index: i32,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_texts_paramcursor_charptr_handlencollectionharray1opencascadehandletcollectionhasciistring_int(self as *mut Self, PC, c_mess.as_ptr(), val, index)
+            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_texts_paramcursor_charptr_harr1_tcollection_hasciistring_int(self as *mut Self, PC, c_mess.as_ptr(), val, index)
         })
     }
 
     /// **Source:** `IGESData_ParamReader.hxx`:346 - `IGESData_ParamReader::ReadEnts()`
-    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_msg_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_msg_harr1_igesdata_igesentity_int(
         &mut self,
         IR: &crate::ffi_types::Handle_IGESData_IGESReaderData,
         PC: &ParamCursor,
         amsg: &crate::message::Msg,
-        val: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_handlencollectionharray1opencascadehandleigesdataigesentity_int(self as *mut Self, IR, PC, amsg, val, index)
+            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_harr1_igesdata_igesentity_int(self as *mut Self, IR, PC, amsg, val, index)
         })
     }
 
@@ -18204,17 +18204,17 @@ impl ParamReader {
     /// (negative pointers too : they provoke a Warning message)
     /// If the caller wants to check them, a loop on ReadEntity should
     /// be used
-    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn read_ents_handleigesdataigesreaderdata_paramcursor_charptr_harr1_igesdata_igesentity_int(
         &mut self,
         IR: &crate::ffi_types::Handle_IGESData_IGESReaderData,
         PC: &ParamCursor,
         mess: &str,
-        val: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: i32,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handlencollectionharray1opencascadehandleigesdataigesentity_int(self as *mut Self, IR, PC, c_mess.as_ptr(), val, index)
+            crate::ffi_extern_TKDEIGES::IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_harr1_igesdata_igesentity_int(self as *mut Self, IR, PC, c_mess.as_ptr(), val, index)
         })
     }
 

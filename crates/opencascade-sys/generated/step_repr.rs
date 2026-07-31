@@ -3299,7 +3299,7 @@ impl CharacterizedRepresentation {
         &mut self,
         theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -3433,7 +3433,7 @@ impl CharacterizedRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_CharacterizedRepresentation_inherited_SetItems(
@@ -3447,7 +3447,7 @@ impl CharacterizedRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5126,7 +5126,7 @@ impl CompoundRepresentationItem {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        item_element: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_CompoundRepresentationItem_init(
@@ -5141,7 +5141,7 @@ impl CompoundRepresentationItem {
     pub fn item_element(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5164,7 +5164,7 @@ impl CompoundRepresentationItem {
     /// **Source:** `StepRepr_CompoundRepresentationItem.hxx`:44 - `StepRepr_CompoundRepresentationItem::SetItemElement()`
     pub fn set_item_element(
         &mut self,
-        item_element: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_CompoundRepresentationItem_set_item_element(
@@ -6844,7 +6844,7 @@ impl ConstructiveGeometryRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -6874,7 +6874,7 @@ impl ConstructiveGeometryRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_ConstructiveGeometryRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -6885,7 +6885,7 @@ impl ConstructiveGeometryRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepRepr_ConstructiveGeometryRepresentation_inherited_Items(self as *const Self)))
@@ -7788,7 +7788,7 @@ impl DataEnvironment {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aElements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
+        aElements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_DataEnvironment_init(
@@ -7848,7 +7848,7 @@ impl DataEnvironment {
 
     /// **Source:** `StepRepr_DataEnvironment.hxx`:57 - `StepRepr_DataEnvironment::Elements()`
     /// Returns field Elements
-    pub fn elements(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation>{
+    pub fn elements(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepRepr_DataEnvironment_elements(self as *const Self),
@@ -7860,7 +7860,7 @@ impl DataEnvironment {
     /// Set field Elements
     pub fn set_elements(
         &mut self,
-        Elements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
+        Elements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_DataEnvironment_set_elements(
@@ -8168,7 +8168,7 @@ impl DefinitionalRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -8205,7 +8205,7 @@ impl DefinitionalRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_DefinitionalRepresentation_inherited_SetItems(
@@ -8219,7 +8219,7 @@ impl DefinitionalRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9697,7 +9697,7 @@ impl ExternallyDefinedRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -9734,7 +9734,7 @@ impl ExternallyDefinedRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_ExternallyDefinedRepresentation_inherited_SetItems(
@@ -9748,7 +9748,7 @@ impl ExternallyDefinedRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepRepr_ExternallyDefinedRepresentation_inherited_Items(self as *const Self)))
@@ -10938,7 +10938,7 @@ impl GlobalUncertaintyAssignedContext {
         &mut self,
         aContextIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aContextType: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_GlobalUncertaintyAssignedContext_init(
@@ -10953,7 +10953,7 @@ impl GlobalUncertaintyAssignedContext {
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:43 - `StepRepr_GlobalUncertaintyAssignedContext::SetUncertainty()`
     pub fn set_uncertainty(
         &mut self,
-        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_GlobalUncertaintyAssignedContext_set_uncertainty(
@@ -10964,7 +10964,11 @@ impl GlobalUncertaintyAssignedContext {
     }
 
     /// **Source:** `StepRepr_GlobalUncertaintyAssignedContext.hxx`:49 - `StepRepr_GlobalUncertaintyAssignedContext::Uncertainty()`
-    pub fn uncertainty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit>{
+    pub fn uncertainty(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepRepr_GlobalUncertaintyAssignedContext_uncertainty(
@@ -11268,7 +11272,7 @@ impl GlobalUnitAssignedContext {
         &mut self,
         aContextIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aContextType: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_GlobalUnitAssignedContext_init(
@@ -11283,7 +11287,7 @@ impl GlobalUnitAssignedContext {
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:43 - `StepRepr_GlobalUnitAssignedContext::SetUnits()`
     pub fn set_units(
         &mut self,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_GlobalUnitAssignedContext_set_units(
@@ -11296,9 +11300,8 @@ impl GlobalUnitAssignedContext {
     /// **Source:** `StepRepr_GlobalUnitAssignedContext.hxx`:46 - `StepRepr_GlobalUnitAssignedContext::Units()`
     pub fn units(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepRepr_GlobalUnitAssignedContext_units(
@@ -21986,7 +21989,7 @@ impl Representation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -22018,7 +22021,7 @@ impl Representation {
     /// **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_Representation_set_items(self as *mut Self, aItems)
@@ -22029,7 +22032,7 @@ impl Representation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -35925,7 +35928,7 @@ impl ValueRange {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        item_element: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_ValueRange_inherited_Init(
@@ -35940,7 +35943,7 @@ impl ValueRange {
     pub fn item_element(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -35963,7 +35966,7 @@ impl ValueRange {
     /// Inherited: **Source:** `StepRepr_CompoundRepresentationItem.hxx`:44 - `StepRepr_CompoundRepresentationItem::SetItemElement()`
     pub fn set_item_element(
         &mut self,
-        item_element: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        item_element: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepRepr_ValueRange_inherited_SetItemElement(

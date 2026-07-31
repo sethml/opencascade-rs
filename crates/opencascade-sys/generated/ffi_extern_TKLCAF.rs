@@ -263,6 +263,10 @@ unsafe extern "C" {
     pub fn AppStdL_Application_inherited_Version(
         self_: *const AppStdL_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn AppStdL_Application_inherited_MetaDataLookUpTable(
+        self_: *mut AppStdL_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn AppStdL_Application_inherited_IsInstance(
         self_: *const AppStdL_Application,
@@ -431,6 +435,13 @@ unsafe extern "C" {
         self_: *mut TDF_Attribute,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
+    /// **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDF_Attribute_extended_dump(
+        self_: *const TDF_Attribute,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDF_Attribute_forget(
         self_: *mut TDF_Attribute,
@@ -1124,6 +1135,14 @@ unsafe extern "C" {
         aFilter: *const TDF_IDFilter,
         aMode: *const TDF_ClosureMode,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_ClosureTool.hxx`:59 - `TDF_ClosureTool::Closure()`
+    pub fn TDF_ClosureTool_closure_label_map_label_map_tdf_attribute_idfilter_closuremode(
+        aLabel: *const TDF_Label,
+        aLabMap: *mut NCollection_Map_TDF_Label,
+        anAttMap: *mut NCollection_Map_Handle_TDF_Attribute,
+        aFilter: *const TDF_IDFilter,
+        aMode: *const TDF_ClosureMode,
+    ) -> *const std::ffi::c_char;
     // ======================== TDF_ComparisonTool ========================
     pub fn TDF_ComparisonTool_destructor(self_: *mut TDF_ComparisonTool);
     /// **Source:** `TDF_ComparisonTool.hxx` - `TDF_ComparisonTool::TDF_ComparisonTool()`
@@ -1186,6 +1205,20 @@ unsafe extern "C" {
     pub fn TDF_CopyLabel_relocation_table(
         self_: *const TDF_CopyLabel,
     ) -> crate::OcctResult<*const Handle_TDF_RelocationTable>;
+    /// **Source:** `TDF_CopyLabel.hxx`:50 - `TDF_CopyLabel::ExternalReferences()`
+    pub fn TDF_CopyLabel_external_references_label_map_tdf_attribute_idfilter(
+        Lab: *const TDF_Label,
+        aExternals: *mut NCollection_Map_Handle_TDF_Attribute,
+        aFilter: *const TDF_IDFilter,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `TDF_CopyLabel.hxx`:56 - `TDF_CopyLabel::ExternalReferences()`
+    pub fn TDF_CopyLabel_external_references_label2_map_tdf_attribute_idfilter_handletdfdataset(
+        aRefLab: *const TDF_Label,
+        Lab: *const TDF_Label,
+        aExternals: *mut NCollection_Map_Handle_TDF_Attribute,
+        aFilter: *const TDF_IDFilter,
+        aDataSet: *mut Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
     // ======================== TDF_CopyTool ========================
     pub fn TDF_CopyTool_destructor(self_: *mut TDF_CopyTool);
     /// **Source:** `TDF_CopyTool.hxx` - `TDF_CopyTool::TDF_CopyTool()`
@@ -1360,6 +1393,10 @@ unsafe extern "C" {
         self_: *const TDF_DataSet,
         anAttribute: *const Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TDF_DataSet.hxx`:65 - `TDF_DataSet::Attributes()`
+    pub fn TDF_DataSet_attributes(
+        self_: *mut TDF_DataSet,
+    ) -> crate::OcctResult<*mut NCollection_Map_Handle_TDF_Attribute>;
     /// **Source:** `TDF_DataSet.hxx`:68 - `TDF_DataSet::AddRoot()`
     pub fn TDF_DataSet_add_root(
         self_: *mut TDF_DataSet,
@@ -1703,6 +1740,10 @@ unsafe extern "C" {
         self_: *const TDF_Delta,
         aLabelList: *mut NCollection_List_TDF_Label,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_Delta.hxx`:61 - `TDF_Delta::AttributeDeltas()`
+    pub fn TDF_Delta_attribute_deltas(
+        self_: *const TDF_Delta,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TDF_AttributeDelta>;
     /// **Source:** `TDF_Delta.hxx`:64 - `TDF_Delta::Name()`
     pub fn TDF_Delta_name(
         self_: *const TDF_Delta,
@@ -2344,6 +2385,10 @@ unsafe extern "C" {
     pub fn TDF_DerivedAttribute_type_name(
         theType: *const std::ffi::c_char,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
+    /// **Source:** `TDF_DerivedAttribute.hxx`:81 - `TDF_DerivedAttribute::Attributes()`
+    pub fn TDF_DerivedAttribute_attributes(
+        theList: *mut NCollection_List_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     // ======================== TDF_IDFilter ========================
     pub fn TDF_IDFilter_destructor(self_: *mut TDF_IDFilter);
     /// **Source:** `TDF_IDFilter.hxx`:50 - `TDF_IDFilter::TDF_IDFilter()`
@@ -2535,6 +2580,13 @@ unsafe extern "C" {
         self_: *mut TDF_Label,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
+    /// **Source:** `TDF_Label.hxx`:247 - `TDF_Label::ExtendedDump()`
+    pub fn TDF_Label_extended_dump(
+        self_: *const TDF_Label,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TDF_Label.hxx`:252 - `TDF_Label::EntryDump()`
     pub fn TDF_Label_entry_dump(
         self_: *const TDF_Label,
@@ -2757,6 +2809,13 @@ unsafe extern "C" {
     pub fn TDF_Reference_inherited_DeltaOnRemoval(
         self_: *const TDF_Reference,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDF_Reference_inherited_ExtendedDump(
+        self_: *const TDF_Reference,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDF_Reference_inherited_Forget(
         self_: *mut TDF_Reference,
@@ -2857,10 +2916,25 @@ unsafe extern "C" {
         self_: *const TDF_RelocationTable,
         aLabelMap: *mut NCollection_Map_TDF_Label,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_RelocationTable.hxx`:137 - `TDF_RelocationTable::TargetAttributeMap()`
+    pub fn TDF_RelocationTable_target_attribute_map(
+        self_: *const TDF_RelocationTable,
+        anAttributeMap: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TDF_RelocationTable.hxx`:141 - `TDF_RelocationTable::LabelTable()`
     pub fn TDF_RelocationTable_label_table(
         self_: *mut TDF_RelocationTable,
     ) -> crate::OcctResult<*mut NCollection_DataMap_TDF_Label_TDF_Label>;
+    /// **Source:** `TDF_RelocationTable.hxx`:145 - `TDF_RelocationTable::AttributeTable()`
+    pub fn TDF_RelocationTable_attribute_table(
+        self_: *mut TDF_RelocationTable,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute>;
+    /// **Source:** `TDF_RelocationTable.hxx`:150 - `TDF_RelocationTable::TransientTable()`
+    pub fn TDF_RelocationTable_transient_table(
+        self_: *mut TDF_RelocationTable,
+    ) -> crate::OcctResult<
+        *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    >;
     /// **Source:** `TDF_RelocationTable.hxx`:153 - `TDF_RelocationTable::Dump()`
     pub fn TDF_RelocationTable_dump(
         self_: *mut TDF_RelocationTable,
@@ -3154,6 +3228,13 @@ unsafe extern "C" {
         self_: *const TDF_TagSource,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDF_TagSource_inherited_ExtendedDump(
+        self_: *const TDF_TagSource,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDF_TagSource_inherited_Forget(
         self_: *mut TDF_TagSource,
@@ -3207,6 +3288,30 @@ unsafe extern "C" {
         aLabel: *const TDF_Label,
         aFilter: *const TDF_IDFilter,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TDF_Tool.hxx`:72 - `TDF_Tool::OutReferers()`
+    pub fn TDF_Tool_out_referers_label_map_tdf_attribute(
+        theLabel: *const TDF_Label,
+        theAtts: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_Tool.hxx`:79 - `TDF_Tool::OutReferers()`
+    pub fn TDF_Tool_out_referers_label_idfilter2_map_tdf_attribute(
+        aLabel: *const TDF_Label,
+        aFilterForReferers: *const TDF_IDFilter,
+        aFilterForReferences: *const TDF_IDFilter,
+        atts: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_Tool.hxx`:86 - `TDF_Tool::OutReferences()`
+    pub fn TDF_Tool_out_references_label_map_tdf_attribute(
+        aLabel: *const TDF_Label,
+        atts: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TDF_Tool.hxx`:92 - `TDF_Tool::OutReferences()`
+    pub fn TDF_Tool_out_references_label_idfilter2_map_tdf_attribute(
+        aLabel: *const TDF_Label,
+        aFilterForReferers: *const TDF_IDFilter,
+        aFilterForReferences: *const TDF_IDFilter,
+        atts: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TDF_Tool.hxx`:107 - `TDF_Tool::RelocateLabel()`
     pub fn TDF_Tool_relocate_label(
         aSourceLabel: *const TDF_Label,
@@ -3560,6 +3665,13 @@ unsafe extern "C" {
         self_: *const TDataStd_AsciiString,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_AsciiString_inherited_ExtendedDump(
+        self_: *const TDataStd_AsciiString,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_AsciiString_inherited_Forget(
         self_: *mut TDataStd_AsciiString,
@@ -3854,6 +3966,13 @@ unsafe extern "C" {
     pub fn TDataStd_BooleanArray_inherited_References(
         self_: *const TDataStd_BooleanArray,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_BooleanArray_inherited_ExtendedDump(
+        self_: *const TDataStd_BooleanArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_BooleanArray_inherited_Forget(
@@ -4163,6 +4282,13 @@ unsafe extern "C" {
         self_: *const TDataStd_BooleanList,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_BooleanList_inherited_ExtendedDump(
+        self_: *const TDataStd_BooleanList,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_BooleanList_inherited_Forget(
         self_: *mut TDataStd_BooleanList,
@@ -4458,6 +4584,13 @@ unsafe extern "C" {
     pub fn TDataStd_ByteArray_inherited_References(
         self_: *const TDataStd_ByteArray,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_ByteArray_inherited_ExtendedDump(
+        self_: *const TDataStd_ByteArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_ByteArray_inherited_Forget(
@@ -4769,6 +4902,13 @@ unsafe extern "C" {
         self_: *const TDataStd_Comment,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Comment_inherited_ExtendedDump(
+        self_: *const TDataStd_Comment,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Comment_inherited_Forget(
         self_: *mut TDataStd_Comment,
@@ -5030,6 +5170,13 @@ unsafe extern "C" {
     pub fn TDataStd_Current_inherited_References(
         self_: *const TDataStd_Current,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Current_inherited_ExtendedDump(
+        self_: *const TDataStd_Current,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Current_inherited_Forget(
@@ -5927,6 +6074,13 @@ unsafe extern "C" {
         self_: *const TDataStd_Directory,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Directory_inherited_ExtendedDump(
+        self_: *const TDataStd_Directory,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Directory_inherited_Forget(
         self_: *mut TDataStd_Directory,
@@ -5979,6 +6133,10 @@ unsafe extern "C" {
     pub fn TDataStd_Expression_get_expression(
         self_: *const TDataStd_Expression,
     ) -> crate::OcctResult<*const TCollection_ExtendedString>;
+    /// **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetVariables()`
+    pub fn TDataStd_Expression_get_variables(
+        self_: *mut TDataStd_Expression,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TDF_Attribute>;
     /// **Source:** `TDataStd_Expression.hxx`:63 - `TDataStd_Expression::ID()`
     pub fn TDataStd_Expression_id(
         self_: *const TDataStd_Expression,
@@ -6195,6 +6353,13 @@ unsafe extern "C" {
     pub fn TDataStd_Expression_inherited_References(
         self_: *const TDataStd_Expression,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Expression_inherited_ExtendedDump(
+        self_: *const TDataStd_Expression,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Expression_inherited_Forget(
@@ -6512,6 +6677,13 @@ unsafe extern "C" {
     pub fn TDataStd_ExtStringArray_inherited_References(
         self_: *const TDataStd_ExtStringArray,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_ExtStringArray_inherited_ExtendedDump(
+        self_: *const TDataStd_ExtStringArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_ExtStringArray_inherited_Forget(
@@ -6844,6 +7016,13 @@ unsafe extern "C" {
         self_: *const TDataStd_ExtStringList,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_ExtStringList_inherited_ExtendedDump(
+        self_: *const TDataStd_ExtStringList,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_ExtStringList_inherited_Forget(
         self_: *mut TDataStd_ExtStringList,
@@ -7160,6 +7339,13 @@ unsafe extern "C" {
         self_: *const TDataStd_GenericEmpty,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_GenericEmpty_inherited_ExtendedDump(
+        self_: *const TDataStd_GenericEmpty,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_GenericEmpty_inherited_Forget(
         self_: *mut TDataStd_GenericEmpty,
@@ -7416,6 +7602,13 @@ unsafe extern "C" {
         self_: *const TDataStd_GenericExtString,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_GenericExtString_inherited_ExtendedDump(
+        self_: *const TDataStd_GenericExtString,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_GenericExtString_inherited_Forget(
         self_: *mut TDataStd_GenericExtString,
@@ -7553,10 +7746,26 @@ unsafe extern "C" {
     pub fn TDataStd_HDataMapOfStringHArray1OfInteger_ctor_int(
         NbBuckets: i32,
     ) -> crate::OcctResult<*mut TDataStd_HDataMapOfStringHArray1OfInteger>;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfInteger_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_int(
+        theOther: *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    ) -> crate::OcctResult<*mut TDataStd_HDataMapOfStringHArray1OfInteger>;
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:32 - `TDataStd_HDataMapOfStringHArray1OfInteger::DynamicType()`
     pub fn TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(
         self_: *const TDataStd_HDataMapOfStringHArray1OfInteger,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfInteger_map(
+        self_: *const TDataStd_HDataMapOfStringHArray1OfInteger,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    >;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfInteger_change_map(
+        self_: *mut TDataStd_HDataMapOfStringHArray1OfInteger,
+    ) -> crate::OcctResult<
+        *mut NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    >;
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:32 - `TDataStd_HDataMapOfStringHArray1OfInteger::get_type_name()`
     pub fn TDataStd_HDataMapOfStringHArray1OfInteger_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -7637,10 +7846,26 @@ unsafe extern "C" {
     pub fn TDataStd_HDataMapOfStringHArray1OfReal_ctor_int(
         NbBuckets: i32,
     ) -> crate::OcctResult<*mut TDataStd_HDataMapOfStringHArray1OfReal>;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfReal_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_double(
+        theOther: *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    ) -> crate::OcctResult<*mut TDataStd_HDataMapOfStringHArray1OfReal>;
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:32 - `TDataStd_HDataMapOfStringHArray1OfReal::DynamicType()`
     pub fn TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(
         self_: *const TDataStd_HDataMapOfStringHArray1OfReal,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfReal::Map()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfReal_map(
+        self_: *const TDataStd_HDataMapOfStringHArray1OfReal,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    >;
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap()`
+    pub fn TDataStd_HDataMapOfStringHArray1OfReal_change_map(
+        self_: *mut TDataStd_HDataMapOfStringHArray1OfReal,
+    ) -> crate::OcctResult<
+        *mut NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    >;
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:32 - `TDataStd_HDataMapOfStringHArray1OfReal::get_type_name()`
     pub fn TDataStd_HDataMapOfStringHArray1OfReal_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -8274,6 +8499,13 @@ unsafe extern "C" {
         self_: *const TDataStd_IntPackedMap,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_IntPackedMap_inherited_ExtendedDump(
+        self_: *const TDataStd_IntPackedMap,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_IntPackedMap_inherited_Forget(
         self_: *mut TDataStd_IntPackedMap,
@@ -8539,6 +8771,13 @@ unsafe extern "C" {
     pub fn TDataStd_Integer_inherited_References(
         self_: *const TDataStd_Integer,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Integer_inherited_ExtendedDump(
+        self_: *const TDataStd_Integer,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Integer_inherited_Forget(
@@ -8855,6 +9094,13 @@ unsafe extern "C" {
     pub fn TDataStd_IntegerArray_inherited_References(
         self_: *const TDataStd_IntegerArray,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_IntegerArray_inherited_ExtendedDump(
+        self_: *const TDataStd_IntegerArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_IntegerArray_inherited_Forget(
@@ -9179,6 +9425,13 @@ unsafe extern "C" {
         self_: *const TDataStd_IntegerList,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_IntegerList_inherited_ExtendedDump(
+        self_: *const TDataStd_IntegerList,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_IntegerList_inherited_Forget(
         self_: *mut TDataStd_IntegerList,
@@ -9454,6 +9707,13 @@ unsafe extern "C" {
         self_: *const TDataStd_Name,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Name_inherited_ExtendedDump(
+        self_: *const TDataStd_Name,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Name_inherited_Forget(
         self_: *mut TDataStd_Name,
@@ -9629,6 +9889,17 @@ unsafe extern "C" {
         theName: *const TCollection_ExtendedString,
         theArrayOfIntegers: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDataStd_NamedData.hxx`:169 - `TDataStd_NamedData::GetArraysOfIntegersContainer()`
+    pub fn TDataStd_NamedData_get_arrays_of_integers_container(
+        self_: *mut TDataStd_NamedData,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    >;
+    /// **Source:** `TDataStd_NamedData.hxx`:172 - `TDataStd_NamedData::ChangeArraysOfIntegers()`
+    pub fn TDataStd_NamedData_change_arrays_of_integers(
+        self_: *mut TDataStd_NamedData,
+        theArraysOfIntegers: *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TDataStd_NamedData.hxx`:177 - `TDataStd_NamedData::HasArraysOfReals()`
     pub fn TDataStd_NamedData_has_arrays_of_reals(
         self_: *const TDataStd_NamedData,
@@ -9648,6 +9919,17 @@ unsafe extern "C" {
         self_: *mut TDataStd_NamedData,
         theName: *const TCollection_ExtendedString,
         theArrayOfReals: *const Handle_NCollection_HArray1_double,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TDataStd_NamedData.hxx`:202 - `TDataStd_NamedData::GetArraysOfRealsContainer()`
+    pub fn TDataStd_NamedData_get_arrays_of_reals_container(
+        self_: *mut TDataStd_NamedData,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    >;
+    /// **Source:** `TDataStd_NamedData.hxx`:205 - `TDataStd_NamedData::ChangeArraysOfReals()`
+    pub fn TDataStd_NamedData_change_arrays_of_reals(
+        self_: *mut TDataStd_NamedData,
+        theArraysOfReals: *const NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TDataStd_NamedData.hxx`:210 - `TDataStd_NamedData::Clear()`
     pub fn TDataStd_NamedData_clear(self_: *mut TDataStd_NamedData) -> *const std::ffi::c_char;
@@ -9913,6 +10195,13 @@ unsafe extern "C" {
     pub fn TDataStd_NamedData_inherited_References(
         self_: *const TDataStd_NamedData,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_NamedData_inherited_ExtendedDump(
+        self_: *const TDataStd_NamedData,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_NamedData_inherited_Forget(
@@ -10194,6 +10483,13 @@ unsafe extern "C" {
         self_: *const TDataStd_NoteBook,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_NoteBook_inherited_ExtendedDump(
+        self_: *const TDataStd_NoteBook,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_NoteBook_inherited_Forget(
         self_: *mut TDataStd_NoteBook,
@@ -10460,6 +10756,13 @@ unsafe extern "C" {
     pub fn TDataStd_Real_inherited_References(
         self_: *const TDataStd_Real,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Real_inherited_ExtendedDump(
+        self_: *const TDataStd_Real,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Real_inherited_Forget(
@@ -10764,6 +11067,13 @@ unsafe extern "C" {
     pub fn TDataStd_RealArray_inherited_References(
         self_: *const TDataStd_RealArray,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_RealArray_inherited_ExtendedDump(
+        self_: *const TDataStd_RealArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_RealArray_inherited_Forget(
@@ -11081,6 +11391,13 @@ unsafe extern "C" {
         self_: *const TDataStd_RealList,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_RealList_inherited_ExtendedDump(
+        self_: *const TDataStd_RealList,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_RealList_inherited_Forget(
         self_: *mut TDataStd_RealList,
@@ -11387,6 +11704,13 @@ unsafe extern "C" {
     pub fn TDataStd_ReferenceArray_inherited_DeltaOnRemoval(
         self_: *const TDataStd_ReferenceArray,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_ReferenceArray_inherited_ExtendedDump(
+        self_: *const TDataStd_ReferenceArray,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_ReferenceArray_inherited_Forget(
         self_: *mut TDataStd_ReferenceArray,
@@ -11718,6 +12042,13 @@ unsafe extern "C" {
     pub fn TDataStd_ReferenceList_inherited_DeltaOnRemoval(
         self_: *const TDataStd_ReferenceList,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_ReferenceList_inherited_ExtendedDump(
+        self_: *const TDataStd_ReferenceList,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_ReferenceList_inherited_Forget(
         self_: *mut TDataStd_ReferenceList,
@@ -11862,6 +12193,10 @@ unsafe extern "C" {
     pub fn TDataStd_Relation_inherited_GetExpression(
         self_: *const TDataStd_Relation,
     ) -> crate::OcctResult<*const TCollection_ExtendedString>;
+    /// Inherited: **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetVariables()`
+    pub fn TDataStd_Relation_inherited_GetVariables(
+        self_: *mut TDataStd_Relation,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TDF_Attribute>;
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:65 - `TDataStd_Expression::Restore()`
     pub fn TDataStd_Relation_inherited_Restore(
         self_: *mut TDataStd_Relation,
@@ -12002,6 +12337,13 @@ unsafe extern "C" {
     pub fn TDataStd_Relation_inherited_References(
         self_: *const TDataStd_Relation,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Relation_inherited_ExtendedDump(
+        self_: *const TDataStd_Relation,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Relation_inherited_Forget(
@@ -12258,6 +12600,13 @@ unsafe extern "C" {
     pub fn TDataStd_Tick_inherited_References(
         self_: *const TDataStd_Tick,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Tick_inherited_ExtendedDump(
+        self_: *const TDataStd_Tick,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Tick_inherited_Forget(
@@ -12639,6 +12988,13 @@ unsafe extern "C" {
     pub fn TDataStd_TreeNode_inherited_DeltaOnRemoval(
         self_: *const TDataStd_TreeNode,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_TreeNode_inherited_ExtendedDump(
+        self_: *const TDataStd_TreeNode,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_TreeNode_inherited_Forget(
         self_: *mut TDataStd_TreeNode,
@@ -12890,6 +13246,13 @@ unsafe extern "C" {
     pub fn TDataStd_UAttribute_inherited_DeltaOnRemoval(
         self_: *const TDataStd_UAttribute,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_UAttribute_inherited_ExtendedDump(
+        self_: *const TDataStd_UAttribute,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_UAttribute_inherited_Forget(
         self_: *mut TDataStd_UAttribute,
@@ -13199,6 +13562,13 @@ unsafe extern "C" {
     pub fn TDataStd_Variable_inherited_DeltaOnRemoval(
         self_: *const TDataStd_Variable,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataStd_Variable_inherited_ExtendedDump(
+        self_: *const TDataStd_Variable,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataStd_Variable_inherited_Forget(
         self_: *mut TDataStd_Variable,
@@ -13551,6 +13921,10 @@ unsafe extern "C" {
     pub fn TDocStd_Application_inherited_Version(
         self_: *const TDocStd_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn TDocStd_Application_inherited_MetaDataLookUpTable(
+        self_: *mut TDocStd_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDocStd_Application_inherited_IsInstance(
         self_: *const TDocStd_Application,
@@ -13585,6 +13959,10 @@ unsafe extern "C" {
     pub fn TDocStd_ApplicationDelta_destructor(self_: *mut TDocStd_ApplicationDelta);
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:31 - `TDocStd_ApplicationDelta::TDocStd_ApplicationDelta()`
     pub fn TDocStd_ApplicationDelta_ctor() -> crate::OcctResult<*mut TDocStd_ApplicationDelta>;
+    /// **Source:** `TDocStd_ApplicationDelta.hxx`:33 - `TDocStd_ApplicationDelta::GetDocuments()`
+    pub fn TDocStd_ApplicationDelta_get_documents(
+        self_: *mut TDocStd_ApplicationDelta,
+    ) -> crate::OcctResult<*mut NCollection_Sequence_Handle_TDocStd_Document>;
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:35 - `TDocStd_ApplicationDelta::GetName()`
     pub fn TDocStd_ApplicationDelta_get_name(
         self_: *const TDocStd_ApplicationDelta,
@@ -13752,6 +14130,10 @@ unsafe extern "C" {
         self_: *const TDocStd_CompoundDelta,
         aLabelList: *mut NCollection_List_TDF_Label,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Delta.hxx`:61 - `TDF_Delta::AttributeDeltas()`
+    pub fn TDocStd_CompoundDelta_inherited_AttributeDeltas(
+        self_: *const TDocStd_CompoundDelta,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TDF_AttributeDelta>;
     /// Inherited: **Source:** `TDF_Delta.hxx`:64 - `TDF_Delta::Name()`
     pub fn TDocStd_CompoundDelta_inherited_Name(
         self_: *const TDocStd_CompoundDelta,
@@ -13905,6 +14287,14 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     /// **Source:** `TDocStd_Document.hxx`:172 - `TDocStd_Document::Redo()`
     pub fn TDocStd_Document_redo(self_: *mut TDocStd_Document) -> crate::OcctResult<bool>;
+    /// **Source:** `TDocStd_Document.hxx`:174 - `TDocStd_Document::GetUndos()`
+    pub fn TDocStd_Document_get_undos(
+        self_: *const TDocStd_Document,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TDF_Delta>;
+    /// **Source:** `TDocStd_Document.hxx`:176 - `TDocStd_Document::GetRedos()`
+    pub fn TDocStd_Document_get_redos(
+        self_: *const TDocStd_Document,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TDF_Delta>;
     /// **Source:** `TDocStd_Document.hxx`:180 - `TDocStd_Document::RemoveFirstUndo()`
     pub fn TDocStd_Document_remove_first_undo(
         self_: *mut TDocStd_Document,
@@ -14578,6 +14968,13 @@ unsafe extern "C" {
         self_: *const TDocStd_Modified,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDocStd_Modified_inherited_ExtendedDump(
+        self_: *const TDocStd_Modified,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDocStd_Modified_inherited_Forget(
         self_: *mut TDocStd_Modified,
@@ -14635,6 +15032,14 @@ unsafe extern "C" {
     pub fn TDocStd_MultiTransactionManager_redo(
         self_: *mut TDocStd_MultiTransactionManager,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:72 - `TDocStd_MultiTransactionManager::GetAvailableUndos()`
+    pub fn TDocStd_MultiTransactionManager_get_available_undos(
+        self_: *const TDocStd_MultiTransactionManager,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_TDocStd_ApplicationDelta>;
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:75 - `TDocStd_MultiTransactionManager::GetAvailableRedos()`
+    pub fn TDocStd_MultiTransactionManager_get_available_redos(
+        self_: *const TDocStd_MultiTransactionManager,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_TDocStd_ApplicationDelta>;
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:80 - `TDocStd_MultiTransactionManager::OpenCommand()`
     pub fn TDocStd_MultiTransactionManager_open_command(
         self_: *mut TDocStd_MultiTransactionManager,
@@ -14675,6 +15080,10 @@ unsafe extern "C" {
         self_: *mut TDocStd_MultiTransactionManager,
         theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:114 - `TDocStd_MultiTransactionManager::Documents()`
+    pub fn TDocStd_MultiTransactionManager_documents(
+        self_: *const TDocStd_MultiTransactionManager,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_TDocStd_Document>;
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:120 - `TDocStd_MultiTransactionManager::SetNestedTransactionMode()`
     pub fn TDocStd_MultiTransactionManager_set_nested_transaction_mode(
         self_: *mut TDocStd_MultiTransactionManager,
@@ -15010,6 +15419,13 @@ unsafe extern "C" {
         self_: *const TDocStd_Owner,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDocStd_Owner_inherited_ExtendedDump(
+        self_: *const TDocStd_Owner,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDocStd_Owner_inherited_Forget(
         self_: *mut TDocStd_Owner,
@@ -15301,6 +15717,13 @@ unsafe extern "C" {
         self_: *const TDocStd_XLink,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDocStd_XLink_inherited_ExtendedDump(
+        self_: *const TDocStd_XLink,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDocStd_XLink_inherited_Forget(
         self_: *mut TDocStd_XLink,
@@ -15579,6 +16002,13 @@ unsafe extern "C" {
     pub fn TDocStd_XLinkRoot_inherited_References(
         self_: *const TDocStd_XLinkRoot,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDocStd_XLinkRoot_inherited_ExtendedDump(
+        self_: *const TDocStd_XLinkRoot,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDocStd_XLinkRoot_inherited_Forget(
@@ -16102,6 +16532,13 @@ unsafe extern "C" {
     pub fn TFunction_Function_inherited_DeltaOnRemoval(
         self_: *const TFunction_Function,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TFunction_Function_inherited_ExtendedDump(
+        self_: *const TFunction_Function,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TFunction_Function_inherited_Forget(
         self_: *mut TFunction_Function,
@@ -16419,6 +16856,13 @@ unsafe extern "C" {
     pub fn TFunction_GraphNode_inherited_DeltaOnRemoval(
         self_: *const TFunction_GraphNode,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TFunction_GraphNode_inherited_ExtendedDump(
+        self_: *const TFunction_GraphNode,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TFunction_GraphNode_inherited_Forget(
         self_: *mut TFunction_GraphNode,
@@ -16854,6 +17298,13 @@ unsafe extern "C" {
         self_: *const TFunction_Logbook,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TFunction_Logbook_inherited_ExtendedDump(
+        self_: *const TFunction_Logbook,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TFunction_Logbook_inherited_Forget(
         self_: *mut TFunction_Logbook,
@@ -17161,6 +17612,13 @@ unsafe extern "C" {
     pub fn TFunction_Scope_inherited_References(
         self_: *const TFunction_Scope,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TFunction_Scope_inherited_ExtendedDump(
+        self_: *const TFunction_Scope,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TFunction_Scope_inherited_Forget(

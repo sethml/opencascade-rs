@@ -9,7 +9,6 @@
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor3d_InterFunc.hxx>
 #include <Adaptor3d_IsoCurve.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <AdvApprox_ApproxAFunction.hxx>
 #include <AdvApprox_Cutting.hxx>
@@ -24,7 +23,6 @@
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BiTgte_CurveOnEdge.hxx>
 #include <BiTgte_CurveOnVertex.hxx>
-#include <ChFiDS_ElSpine.hxx>
 #include <GeomAbs_BSplKnotDistribution.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_IsoType.hxx>
@@ -82,8 +80,6 @@
 #include <Geom_Axis2Placement.hxx>
 #include <Geom_AxisPlacement.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_BoundedSurface.hxx>
 #include <Geom_CartesianPoint.hxx>
 #include <Geom_Circle.hxx>

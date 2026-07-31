@@ -1218,17 +1218,27 @@ impl TopLoc {
             ))
         }
     }
-}
 
-// ── Skipped symbols for TopLoc (2 total) ──
-// SKIPPED: **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate`
-//   Reason: has unbindable types: param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>&)
-//   // pub fn translate(theLoc: &Location, theMap: /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Handle<StdPersistent_TopLoc::ItemLocation>>;
-//
-// SKIPPED: **Source:** `StdPersistent_TopLoc.hxx`:74 - `StdPersistent_TopLoc::Translate`
-//   Reason: has unbindable types: param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>&)
-//   // pub fn translate(theDatum: &HandleDatum3D, theMap: /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<Handle<StdPersistent_TopLoc::Datum3D>>;
-//
+    /// **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate()`
+    pub fn translate_location_dmap_standard_transient_stdobjmgt_persistent(
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdPersistent_TopLoc_ItemLocation> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::StdPersistent_TopLoc_translate_location_dmap_standard_transient_stdobjmgt_persistent(theLoc, theMap)))
+        }
+    }
+
+    /// **Source:** `StdPersistent_TopLoc.hxx`:74 - `StdPersistent_TopLoc::Translate()`
+    pub fn translate_handletoplocdatum3d_dmap_standard_transient_stdobjmgt_persistent(
+        theDatum: &crate::ffi_types::Handle_TopLoc_Datum3D,
+        theMap: &mut crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdPersistent_TopLoc_Datum3D> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::StdPersistent_TopLoc_translate_handletoplocdatum3d_dmap_standard_transient_stdobjmgt_persistent(theDatum, theMap)))
+        }
+    }
+}
 
 /// **Source:** `StdPersistent_TopLoc.hxx`:30 - `StdPersistent_TopLoc_Datum3D`
 pub use crate::ffi_types::StdPersistent_TopLoc_Datum3D as TopLoc_Datum3D;

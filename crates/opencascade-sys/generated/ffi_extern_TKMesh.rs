@@ -1992,6 +1992,9 @@ unsafe extern "C" {
     pub fn BRepMesh_DiscretAlgoFactory_find_factory(
         theName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut Handle_BRepMesh_DiscretAlgoFactory>;
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:57 - `BRepMesh_DiscretAlgoFactory::Factories()`
+    pub fn BRepMesh_DiscretAlgoFactory_factories(
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BRepMesh_DiscretAlgoFactory>;
     /// Upcast BRepMesh_DiscretAlgoFactory to Standard_Transient
     pub fn BRepMesh_DiscretAlgoFactory_as_Standard_Transient(
         self_: *const BRepMesh_DiscretAlgoFactory,
@@ -3466,9 +3469,7 @@ unsafe extern "C" {
     pub fn BRepMesh_ModelBuilder_inherited_GetMessageStrings(
         self_: *const BRepMesh_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepMesh_ModelBuilder_inherited_IsInstance(
         self_: *const BRepMesh_ModelBuilder,
@@ -6731,9 +6732,7 @@ unsafe extern "C" {
     pub fn IMeshTools_MeshBuilder_inherited_GetMessageStrings(
         self_: *const IMeshTools_MeshBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_MeshBuilder_inherited_IsInstance(
         self_: *const IMeshTools_MeshBuilder,
@@ -6976,9 +6975,7 @@ unsafe extern "C" {
     pub fn IMeshTools_ModelBuilder_inherited_GetMessageStrings(
         self_: *const IMeshTools_ModelBuilder,
         theStatus: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IMeshTools_ModelBuilder_inherited_IsInstance(
         self_: *const IMeshTools_ModelBuilder,

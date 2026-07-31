@@ -7543,6 +7543,47 @@ impl Sweep {
         })
     }
 
+    /// **Source:** `BRepFill_Sweep.hxx`:93 - `BRepFill_Sweep::Build()`
+    /// Build the Sweep Surface
+    /// Transition define Transition strategy
+    /// Approx define Approximation Strategy
+    /// - GeomFill_Section : The composed Function Location X Section
+    /// is directly approximated.
+    /// - GeomFill_Location : The location law is approximated, and the
+    /// SweepSurface builds an algebraic composition
+    /// of approximated location law and section law
+    /// This option is Ok, if Section.Surface() methode
+    /// is effective.
+    /// Continuity : The continuity in v waiting on the surface
+    /// Degmax     : The maximum degree in v required on the surface
+    /// Segmax     : The maximum number of span in v required on
+    /// the surface.
+    pub fn build(
+        &mut self,
+        ReversedEdges: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Tapes: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Rails: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Transition: crate::b_rep_fill::TransitionStyle,
+        Continuity: crate::geom_abs::Shape,
+        Approx: crate::geom_fill::ApproxStyle,
+        Degmax: i32,
+        Segmax: i32,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::BRepFill_Sweep_build(
+                self as *mut Self,
+                ReversedEdges,
+                Tapes,
+                Rails,
+                Transition.into(),
+                Continuity.into(),
+                Approx.into(),
+                Degmax,
+                Segmax,
+            )
+        })
+    }
+
     /// **Source:** `BRepFill_Sweep.hxx`:107 - `BRepFill_Sweep::IsDone()`
     /// Say if the Shape is Build.
     pub fn is_done(&self) -> bool {
@@ -7612,15 +7653,6 @@ impl Sweep {
         }
     }
 }
-
-// ── Skipped symbols for Sweep (1 total) ──
-// SKIPPED: **Source:** `BRepFill_Sweep.hxx`:93 - `BRepFill_Sweep::Build`
-//   method: Build the Sweep Surface
-//   method: Transition define Transition strategy
-//   method: Approx define Approximation Strategy
-//   Reason: has unbindable types: param 'Tapes': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>&); param 'Rails': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>&)
-//   // pub fn build(&mut self, ReversedEdges: &mut Map_TopoDS_Shape_TopTools_ShapeMapHasher, Tapes: /* NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>& */, Rails: /* NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>& */, Transition: TransitionStyle, Continuity: Shape, Approx: ApproxStyle, Degmax: i32, Segmax: i32);
-//
 
 // ========================
 // From BRepFill_TrimEdgeTool.hxx

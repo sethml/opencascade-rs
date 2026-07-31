@@ -1249,24 +1249,24 @@ impl CompositeSurface {
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:75 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
     /// Initializes by a grid of surfaces (calls Init()).
-    pub fn new_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(
-        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+    pub fn new_handlencollectionharray2handlegeomsurface_parametrisation(
+        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_Handle_Geom_Surface,
         param: crate::shape_extend::Parametrisation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(GridSurf, param.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_parametrisation(GridSurf, param.into())))
         }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:80 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
     /// Initializes by a grid of surfaces (calls Init()).
-    pub fn new_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(
-        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+    pub fn new_handlencollectionharray2handlegeomsurface_arr1_double2(
+        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_Handle_Geom_Surface,
         UJoints: &crate::ffi_types::NCollection_Array1_double,
         VJoints: &crate::ffi_types::NCollection_Array1_double,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(GridSurf, UJoints, VJoints)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_arr1_double2(GridSurf, UJoints, VJoints)))
         }
     }
 
@@ -1283,13 +1283,13 @@ impl CompositeSurface {
     /// ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc.
     /// ShapeExtend_Uniform: Ui = i-1, Vj = j-1
     /// ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
-    pub fn init_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(
+    pub fn init_handlencollectionharray2handlegeomsurface_parametrisation(
         &mut self,
-        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_Handle_Geom_Surface,
         param: crate::shape_extend::Parametrisation,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(self as *mut Self, GridSurf, param.into())
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_parametrisation(self as *mut Self, GridSurf, param.into())
         })
     }
 
@@ -1304,14 +1304,14 @@ impl CompositeSurface {
     /// If geometrical connectivity is not satisfied, method
     /// returns False.
     /// However, class is initialized even in that case.
-    pub fn init_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(
+    pub fn init_handlencollectionharray2handlegeomsurface_arr1_double2(
         &mut self,
-        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+        GridSurf: &crate::ffi_types::Handle_NCollection_HArray2_Handle_Geom_Surface,
         UJoints: &crate::ffi_types::NCollection_Array1_double,
         VJoints: &crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(self as *mut Self, GridSurf, UJoints, VJoints)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_arr1_double2(self as *mut Self, GridSurf, UJoints, VJoints)
         })
     }
 
@@ -1351,9 +1351,7 @@ impl CompositeSurface {
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:126 - `ShapeExtend_CompositeSurface::Patches()`
     /// Returns grid of surfaces
-    pub fn patches(
-        &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Geom_Surface {
+    pub fn patches(&self) -> &crate::ffi_types::Handle_NCollection_HArray2_Handle_Geom_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_patches(
@@ -2754,6 +2752,21 @@ impl MsgRegistrator {
         })
     }
 
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:65 - `ShapeExtend_MsgRegistrator::MapTransient()`
+    /// Returns a Map of objects and message list
+    pub fn map_transient(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg
+    {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_map_transient(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:69 - `ShapeExtend_MsgRegistrator::MapShape()`
     /// Returns a Map of shapes and message list
     pub fn map_shape(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher{
@@ -2987,13 +3000,6 @@ impl Handle_ShapeExtend_MsgRegistrator {
         }
     }
 }
-
-// ── Skipped symbols for MsgRegistrator (1 total) ──
-// SKIPPED: **Source:** `ShapeExtend_MsgRegistrator.hxx`:65 - `ShapeExtend_MsgRegistrator::MapTransient`
-//   method: Returns a Map of objects and message list
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, NCollection_List<Message_Msg>> const&)
-//   // pub fn map_transient(&self) -> /* NCollection_DataMap<occ::handle<Standard_Transient>, NCollection_List<Message_Msg>> const& */;
-//
 
 // ========================
 // From ShapeExtend_WireData.hxx

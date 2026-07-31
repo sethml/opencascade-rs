@@ -54,6 +54,12 @@ pub struct CollectionInfo {
     /// The C++ header that defines the value type (for data maps). `None` for
     /// primitive value types or non-map collections.
     pub value_header: Option<String>,
+    /// When the element/key is an OCCT handle, the class it points to (e.g.
+    /// `Geom_Curve` for an element of `occ::handle<Geom_Curve>`). `element_type`
+    /// then holds the canonical `Handle_Geom_Curve` token.
+    pub element_handle_inner: Option<String>,
+    /// Same, for the value type of a data map.
+    pub value_handle_inner: Option<String>,
     /// The kind of collection
     pub kind: CollectionKind,
 }
@@ -275,6 +281,39 @@ pub fn canonicalize_cpp_spelling(spelling: &str) -> String {
     .into_owned()
 }
 
+/// If `spelling` names an OCCT handle (`occ::handle<X>` or
+/// `opencascade::handle<X>`), return the pointee class `X`.
+pub fn handle_inner(spelling: &str) -> Option<String> {
+    let s = spelling.trim();
+    let rest = s
+        .strip_prefix("occ::handle<")
+        .or_else(|| s.strip_prefix("opencascade::handle<"))
+        .or_else(|| s.strip_prefix("Handle("))?;
+    let inner = if s.starts_with("Handle(") {
+        rest.strip_suffix(')')?
+    } else {
+        rest.strip_suffix('>')?
+    };
+    let inner = inner.trim();
+    // Nested handles (a handle to a collection, say) are not element types we can
+    // name cleanly; leave those to the normal unbindable path.
+    if inner.is_empty() || inner.contains('<') {
+        return None;
+    }
+    Some(inner.to_string())
+}
+
+/// Canonical token for a collection element/value type: handles collapse to the
+/// `Handle_X` spelling, which is a real type on both sides — a C++ typedef and the
+/// generated Rust `ffi_types::Handle_X` — so the rest of the generation needs no
+/// special cases. Everything else passes through unchanged.
+pub fn canonical_element_token(spelling: &str) -> String {
+    match handle_inner(spelling) {
+        Some(inner) => crate::type_mapping::handle_type_name(&inner),
+        None => spelling.to_string(),
+    }
+}
+
 /// Helper to extract module name from a type (e.g., "topo_ds" from "TopoDS_Shape")
 fn type_to_module(type_name: &str) -> String {
     if let Some(underscore_pos) = type_name.find('_') {
@@ -326,14 +365,7 @@ pub fn parse_canonical_collection(spelling: &str) -> Option<CollectionInfo> {
         return None;
     }
 
-    let typedef_name = crate::config::template_alias_name(spelling);
-    // Short name drops the "NCollection_" prefix, e.g. "List_TopoDS_Shape".
-    let short_name = typedef_name
-        .strip_prefix("NCollection_")
-        .unwrap_or(&typedef_name)
-        .to_string();
-
-    let (element_type, value_type) = if kind.is_data_map() {
+    let (element_raw, value_raw) = if kind.is_data_map() {
         // DataMap<Key, Value[, Hasher]> / IndexedDataMap<Key, Value[, Hasher]>
         let value = args.get(1)?.clone();
         (args[0].clone(), Some(value))
@@ -342,17 +374,46 @@ pub fn parse_canonical_collection(spelling: &str) -> Option<CollectionInfo> {
         (args[0].clone(), None)
     };
 
+    // Collapse handle arguments to `Handle_X` before naming, so the collection is
+    // called `List_Handle_Geom_Curve` rather than something mangled from
+    // `occ::handle<Geom_Curve>`.
+    let element_handle_inner = handle_inner(&element_raw);
+    let value_handle_inner = value_raw.as_deref().and_then(handle_inner);
+    let element_type = canonical_element_token(&element_raw);
+    let value_type = value_raw.as_deref().map(canonical_element_token);
+
+    // `template_alias_name` collapses handle arguments itself, so the raw spelling
+    // already yields `..._Handle_Geom_Curve` — and, crucially, the same name the
+    // handle-type registration derives.
+    let typedef_name = crate::config::template_alias_name(spelling);
+    // Short name drops the "NCollection_" prefix, e.g. "List_TopoDS_Shape".
+    let short_name = typedef_name
+        .strip_prefix("NCollection_")
+        .unwrap_or(&typedef_name)
+        .to_string();
+
+    // A handle's module comes from the class it points to — `Handle_Geom_Curve`
+    // belongs to `geom`, not to a "handle" module.
+    let element_module = type_to_module(element_handle_inner.as_deref().unwrap_or(&element_type));
+    let value_module = match (&value_handle_inner, &value_type) {
+        (Some(inner), _) => Some(type_to_module(inner)),
+        (None, Some(v)) => Some(type_to_module(v)),
+        (None, None) => None,
+    };
+
     Some(CollectionInfo {
         typedef_name,
         cpp_spelling: spelling.to_string(),
         module: "n_collection".to_string(),
         short_name,
-        element_module: type_to_module(&element_type),
-        value_module: value_type.as_deref().map(type_to_module),
+        element_module,
+        value_module,
         element_type,
         value_type,
         element_header: None,
         value_header: None,
+        element_handle_inner,
+        value_handle_inner,
         kind,
     })
 }
@@ -401,15 +462,26 @@ pub fn discover_collections(
         // Gate on bindability: the C++ wrapper and FFI can only be generated when the
         // element (and value, for maps) types are primitives or known classes with a
         // resolvable defining header.
-        let element_header = if is_primitive_element(&info.element_type) {
+        // A handle element resolves through the class it points to: the handle
+        // itself has no header of its own, but `Handle_X` is usable wherever X's
+        // header is included.
+        let element_lookup = info
+            .element_handle_inner
+            .clone()
+            .unwrap_or_else(|| info.element_type.clone());
+        let element_header = if is_primitive_element(&element_lookup) {
             None
         } else {
-            match header_of(&info.element_type) {
+            match header_of(&element_lookup) {
                 Some(h) => Some(h),
                 None => continue,
             }
         };
-        let value_header = match &info.value_type {
+        let value_lookup = info
+            .value_handle_inner
+            .clone()
+            .or_else(|| info.value_type.clone());
+        let value_header = match &value_lookup {
             Some(v) if is_primitive_element(v) => None,
             Some(v) => match header_of(v) {
                 Some(h) => Some(h),
@@ -447,6 +519,20 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     output.push_str("// ========================\n");
     output.push_str(&format!("// {} - {}\n", typedef_name, collection_kind_description(info.kind)));
     output.push_str("// ========================\n\n");
+
+    // Handle element/value types are referred to as `Handle_X`. That typedef is
+    // emitted per-toolkit only for handles the group's own classes use, which need
+    // not include this collection's element, so define it here too. Repeating an
+    // identical typedef is legal C++, so this is safe when both are present.
+    for inner in [&info.element_handle_inner, &info.value_handle_inner]
+        .into_iter()
+        .flatten()
+    {
+        output.push_str(&format!(
+            "typedef opencascade::handle<{inner}> {};\n",
+            crate::type_mapping::handle_type_name(inner)
+        ));
+    }
 
     // Bridge the mangled canonical identifier to the C++ template spelling so the
     // rest of the generation (which uses `typedef_name`) refers to the real type.

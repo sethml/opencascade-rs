@@ -2445,7 +2445,12 @@ impl Algorithm {
     /// **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     /// Return the strings associated with the indicated status;
     /// Null handle if no such status or no strings associated with it
-    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_get_message_strings(
@@ -2468,14 +2473,24 @@ impl Algorithm {
     /// **Source:** `Message_Algorithm.hxx`:206 - `Message_Algorithm::PrepareReport()`
     /// Prepares a string containing a list of integers contained
     /// in theError map, but not more than theMaxCount
-    pub fn prepare_report(
+    pub fn prepare_report_handletcolstdhpackedmapofinteger_int(
         theError: &crate::ffi_types::Handle_TColStd_HPackedMapOfInteger,
         theMaxCount: i32,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Message_Algorithm_prepare_report(theError, theMaxCount),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Message_Algorithm_prepare_report_handletcolstdhpackedmapofinteger_int(theError, theMaxCount)))
+        }
+    }
+
+    /// **Source:** `Message_Algorithm.hxx`:212 - `Message_Algorithm::PrepareReport()`
+    /// Prepares a string containing a list of names contained
+    /// in theReportSeq sequence, but not more than theMaxCount
+    pub fn prepare_report_seq_tcollection_hextendedstring_int(
+        theReportSeq: &crate::ffi_types::NCollection_Sequence_Handle_TCollection_HExtendedString,
+        theMaxCount: i32,
+    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Message_Algorithm_prepare_report_seq_tcollection_hextendedstring_int(theReportSeq, theMaxCount)))
         }
     }
 
@@ -2704,14 +2719,6 @@ impl Handle_Message_Algorithm {
         }
     }
 }
-
-// ── Skipped symbols for Algorithm (1 total) ──
-// SKIPPED: **Source:** `Message_Algorithm.hxx`:212 - `Message_Algorithm::PrepareReport`
-//   static_method: Prepares a string containing a list of names contained
-//   static_method: in theReportSeq sequence, but not more than theMaxCount
-//   Reason: has unbindable types: param 'theReportSeq': unresolved template type (NCollection_Sequence<occ::handle<TCollection_HExtendedString>> const&)
-//   // pub fn prepare_report(theReportSeq: /* NCollection_Sequence<occ::handle<TCollection_HExtendedString>> const& */, theMaxCount: i32) -> OwnedPtr<TCollection_ExtendedString>;
-//
 
 // ========================
 // From Message_Attribute.hxx
@@ -4061,6 +4068,20 @@ impl CompositeAlerts {
         }
     }
 
+    /// **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts()`
+    /// Returns list of collected alerts with specified gravity
+    pub fn alerts(
+        &self,
+        theGravity: crate::message::Gravity,
+    ) -> &crate::ffi_types::NCollection_List_Handle_Message_Alert {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::Message_CompositeAlerts_alerts(
+                self as *const Self,
+                theGravity.into(),
+            )))
+        }
+    }
+
     /// **Source:** `Message_CompositeAlerts.hxx`:38 - `Message_CompositeAlerts::AddAlert()`
     /// Add alert with specified gravity. If the alert supports merge it will be merged.
     /// @param theGravity an alert gravity
@@ -4347,13 +4368,6 @@ impl Handle_Message_CompositeAlerts {
         }
     }
 }
-
-// ── Skipped symbols for CompositeAlerts (1 total) ──
-// SKIPPED: **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts`
-//   method: Returns list of collected alerts with specified gravity
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Message_Alert>> const&)
-//   // pub fn alerts(&self, theGravity: Gravity) -> /* NCollection_List<occ::handle<Message_Alert>> const& */;
-//
 
 // ========================
 // From Message_ExecStatus.hxx
@@ -4803,6 +4817,29 @@ impl Messenger {
         })
     }
 
+    /// **Source:** `Message_Messenger.hxx`:167 - `Message_Messenger::Printers()`
+    /// Returns current sequence of printers
+    pub fn printers(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Message_Printer {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::Message_Messenger_printers(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `Message_Messenger.hxx`:171 - `Message_Messenger::ChangePrinters()`
+    /// Returns sequence of printers
+    /// The sequence can be modified.
+    pub fn change_printers(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Sequence_Handle_Message_Printer {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::Message_Messenger_change_printers(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `Message_Messenger.hxx`:176 - `Message_Messenger::Send()`
     /// Dispatch a message to all the printers in the list.
     /// Three versions of string representations are accepted for
@@ -5178,19 +5215,6 @@ impl Handle_Message_Messenger {
         }
     }
 }
-
-// ── Skipped symbols for Messenger (2 total) ──
-// SKIPPED: **Source:** `Message_Messenger.hxx`:167 - `Message_Messenger::Printers`
-//   method: Returns current sequence of printers
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Message_Printer>> const&)
-//   // pub fn printers(&self) -> /* NCollection_Sequence<occ::handle<Message_Printer>> const& */;
-//
-// SKIPPED: **Source:** `Message_Messenger.hxx`:171 - `Message_Messenger::ChangePrinters`
-//   method: Returns sequence of printers
-//   method: The sequence can be modified.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Message_Printer>>&)
-//   // pub fn change_printers(&mut self) -> /* NCollection_Sequence<occ::handle<Message_Printer>>& */;
-//
 
 /// **Source:** `Message_Messenger.hxx`:61 - `Message_Messenger_StreamBuffer`
 /// Auxiliary class wrapping std::stringstream thus allowing constructing
@@ -7921,6 +7945,20 @@ impl Report {
         })
     }
 
+    /// **Source:** `Message_Report.hxx`:66 - `Message_Report::GetAlerts()`
+    /// Returns list of collected alerts with specified gravity
+    pub fn get_alerts(
+        &self,
+        theGravity: crate::message::Gravity,
+    ) -> &crate::ffi_types::NCollection_List_Handle_Message_Alert {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::Message_Report_get_alerts(
+                self as *const Self,
+                theGravity.into(),
+            )))
+        }
+    }
+
     /// **Source:** `Message_Report.hxx`:70 - `Message_Report::HasAlert()`
     /// Returns true if specific type of alert is recorded
     pub fn has_alert_handlestandardtype(
@@ -8370,10 +8408,3 @@ impl Handle_Message_Report {
         }
     }
 }
-
-// ── Skipped symbols for Report (1 total) ──
-// SKIPPED: **Source:** `Message_Report.hxx`:66 - `Message_Report::GetAlerts`
-//   method: Returns list of collected alerts with specified gravity
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Message_Alert>> const&)
-//   // pub fn get_alerts(&self, theGravity: Gravity) -> /* NCollection_List<occ::handle<Message_Alert>> const& */;
-//

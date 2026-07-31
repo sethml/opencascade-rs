@@ -389,7 +389,7 @@ impl EditContext {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -426,7 +426,7 @@ impl EditContext {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -872,7 +872,7 @@ impl EditSDR {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -909,7 +909,7 @@ impl EditSDR {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {

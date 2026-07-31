@@ -135,6 +135,81 @@ pub fn curve_to_b_spline_curve_handlegeom2dcurve_parameterisationtype(
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Geom2dConvert_curve_to_b_spline_curve_handlegeom2dcurve_parameterisationtype(C, Parameterisation.into())))
     }
 }
+/// **Source:** `Geom2dConvert.hxx`:185 - `Geom2dConvert::ConcatG1`
+/// This Method concatenates G1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_g1_arr1_geom2d_bsplinecurve_arr1_double_harr1_geom2d_bsplinecurve_bool_real(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_concat_g1_arr1_geom2d_bsplinecurve_arr1_double_harr1_geom2d_bsplinecurve_bool_real(ArrayOfCurves, ArrayOfToler, ArrayOfConcatenated, ClosedFlag, ClosedTolerance)
+    })
+}
+/// **Source:** `Geom2dConvert.hxx`:204 - `Geom2dConvert::ConcatC1`
+/// This Method concatenates C1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfIndices: &mut crate::ffi_types::Handle_NCollection_HArray1_int,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real(ArrayOfCurves, ArrayOfToler, ArrayOfIndices, ArrayOfConcatenated, ClosedFlag, ClosedTolerance)
+    })
+}
+/// **Source:** `Geom2dConvert.hxx`:224 - `Geom2dConvert::ConcatC1`
+/// This Method concatenates C1 the ArrayOfCurves as far
+/// as it is possible.
+/// ArrayOfCurves[0..N-1]
+/// ArrayOfToler contains the biggest tolerance of the two
+/// points shared by two consecutives curves.
+/// Its dimension: [0..N-2]
+/// ClosedFlag indicates if the ArrayOfCurves is closed.
+/// In this case ClosedTolerance contains the biggest tolerance
+/// of the two points which are at the closure.
+/// Otherwise its value is 0.0
+/// ClosedFlag becomes False on the output
+/// if it is impossible to build closed curve.
+pub fn concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real2(
+    ArrayOfCurves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ArrayOfToler: &crate::ffi_types::NCollection_Array1_double,
+    ArrayOfIndices: &mut crate::ffi_types::Handle_NCollection_HArray1_int,
+    ArrayOfConcatenated: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ClosedFlag: &mut bool,
+    ClosedTolerance: f64,
+    AngularTolerance: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real2(ArrayOfCurves, ArrayOfToler, ArrayOfIndices, ArrayOfConcatenated, ClosedFlag, ClosedTolerance, AngularTolerance)
+    })
+}
 /// **Source:** `Geom2dConvert.hxx`:237 - `Geom2dConvert::C0BSplineToC1BSplineCurve`
 /// This Method reduces as far as it is possible the
 /// multiplicities of the knots of the BSpline BS.(keeping the geometry).
@@ -153,13 +228,13 @@ pub fn c0b_spline_to_c1b_spline_curve_handlegeom2dbsplinecurve_real(
 /// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1.
 /// Tolerance is a geometrical tolerance
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real(
     BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
-    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
     Tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(BS, tabBS, Tolerance)
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real(BS, tabBS, Tolerance)
     })
 }
 /// **Source:** `Geom2dConvert.hxx`:253 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -167,14 +242,14 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlenc
 /// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1.
 /// tolerance is a geometrical tolerance
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real2(
     BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
-    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
     AngularTolerance: f64,
     Tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(BS, tabBS, AngularTolerance, Tolerance)
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real2(BS, tabBS, AngularTolerance, Tolerance)
     })
 }
 
@@ -212,14 +287,19 @@ impl ApproxArcsSegments {
             ))
         }
     }
-}
 
-// ── Skipped symbols for ApproxArcsSegments (1 total) ──
-// SKIPPED: **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:45 - `Geom2dConvert_ApproxArcsSegments::GetResult`
-//   method: Get the result curve after approximation.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Geom2d_Curve>> const&)
-//   // pub fn get_result(&self) -> /* NCollection_Sequence<occ::handle<Geom2d_Curve>> const& */;
-//
+    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:45 - `Geom2dConvert_ApproxArcsSegments::GetResult()`
+    /// Get the result curve after approximation.
+    pub fn get_result(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom2d_Curve {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxArcsSegments_get_result(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+}
 
 // ========================
 // From Geom2dConvert_ApproxCurve.hxx
@@ -543,6 +623,30 @@ impl BSplineCurveToBezierCurve {
         }
     }
 
+    /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs()`
+    /// Constructs all the Bezier curves whose data is
+    /// computed by this algorithm and loads these curves
+    /// into the Curves table.
+    /// The Bezier curves have the same orientation as the
+    /// BSpline curve analyzed in this framework.
+    /// Exceptions
+    /// Standard_DimensionError if the Curves array was
+    /// not created with the following bounds:
+    /// -   1 , and
+    /// -   the number of adjacent Bezier arcs computed by
+    /// this algorithm (as given by the function NbArcs).
+    pub fn arcs(
+        &mut self,
+        Curves: &mut crate::ffi_types::NCollection_Array1_Handle_Geom2d_BezierCurve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_arcs(
+                self as *mut Self,
+                Curves,
+            )
+        })
+    }
+
     /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:105 - `Geom2dConvert_BSplineCurveToBezierCurve::Knots()`
     /// This methode returns the bspline's knots associated to
     /// the converted arcs
@@ -574,15 +678,6 @@ impl BSplineCurveToBezierCurve {
         })
     }
 }
-
-// ── Skipped symbols for BSplineCurveToBezierCurve (1 total) ──
-// SKIPPED: **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs`
-//   method: Constructs all the Bezier curves whose data is
-//   method: computed by this algorithm and loads these curves
-//   method: into the Curves table.
-//   Reason: has unbindable types: param 'Curves': unresolved template type (NCollection_Array1<occ::handle<Geom2d_BezierCurve>>&)
-//   // pub fn arcs(&mut self, Curves: /* NCollection_Array1<occ::handle<Geom2d_BezierCurve>>& */);
-//
 
 // ========================
 // From Geom2dConvert_CompCurveToBSplineCurve.hxx

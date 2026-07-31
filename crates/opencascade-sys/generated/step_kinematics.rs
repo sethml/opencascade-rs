@@ -6837,7 +6837,7 @@ impl KinematicLinkRepresentation {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theRepresentedLink: &crate::ffi_types::Handle_StepKinematics_KinematicLink,
     ) {
@@ -6957,7 +6957,7 @@ impl KinematicLinkRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_KinematicLinkRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -6968,7 +6968,7 @@ impl KinematicLinkRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_KinematicLinkRepresentation_inherited_Items(self as *const Self)))
@@ -9162,7 +9162,7 @@ impl KinematicTopologyDirectedStructure {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theParent: &crate::ffi_types::Handle_StepKinematics_KinematicTopologyStructure,
     ) {
@@ -9275,7 +9275,7 @@ impl KinematicTopologyDirectedStructure {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyDirectedStructure_inherited_SetItems(self as *mut Self, aItems)
@@ -9286,7 +9286,7 @@ impl KinematicTopologyDirectedStructure {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyDirectedStructure_inherited_Items(self as *const Self)))
@@ -9481,7 +9481,7 @@ impl KinematicTopologyNetworkStructure {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theParent: &crate::ffi_types::Handle_StepKinematics_KinematicTopologyStructure,
     ) {
@@ -9598,7 +9598,7 @@ impl KinematicTopologyNetworkStructure {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyNetworkStructure_inherited_SetItems(self as *mut Self, aItems)
@@ -9609,7 +9609,7 @@ impl KinematicTopologyNetworkStructure {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyNetworkStructure_inherited_Items(self as *const Self)))
@@ -10079,7 +10079,7 @@ impl KinematicTopologyStructure {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -10112,7 +10112,7 @@ impl KinematicTopologyStructure {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyStructure_inherited_SetItems(
@@ -10126,7 +10126,7 @@ impl KinematicTopologyStructure {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_KinematicTopologyStructure_inherited_Items(self as *const Self)))
@@ -11202,7 +11202,7 @@ impl LinearFlexibleLinkRepresentation {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theRepresentedLink: &crate::ffi_types::Handle_StepKinematics_KinematicLink,
     ) {
@@ -11247,7 +11247,7 @@ impl LinearFlexibleLinkRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_LinearFlexibleLinkRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -11258,7 +11258,7 @@ impl LinearFlexibleLinkRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_LinearFlexibleLinkRepresentation_inherited_Items(self as *const Self)))
@@ -13941,7 +13941,7 @@ impl MechanismRepresentation {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theRepresentedTopology: &KinematicTopologyRepresentationSelect,
     ) {
@@ -14069,7 +14069,7 @@ impl MechanismRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_MechanismRepresentation_inherited_SetItems(
@@ -14083,7 +14083,7 @@ impl MechanismRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14306,7 +14306,7 @@ impl MechanismStateRepresentation {
     pub fn init(
         &mut self,
         theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theMechanism: &crate::ffi_types::Handle_StepKinematics_MechanismRepresentation,
     ) {
@@ -14424,7 +14424,7 @@ impl MechanismStateRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_MechanismStateRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -14435,7 +14435,7 @@ impl MechanismStateRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepKinematics_MechanismStateRepresentation_inherited_Items(self as *const Self)))
@@ -26705,7 +26705,7 @@ impl RigidLinkRepresentation {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theRepresentedLink: &crate::ffi_types::Handle_StepKinematics_KinematicLink,
     ) {
@@ -26763,7 +26763,7 @@ impl RigidLinkRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepKinematics_RigidLinkRepresentation_inherited_SetItems(
@@ -26777,7 +26777,7 @@ impl RigidLinkRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(

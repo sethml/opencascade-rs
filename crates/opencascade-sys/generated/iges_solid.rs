@@ -1094,7 +1094,7 @@ impl BooleanTree {
     /// - operations : Array containing integer type for operations
     pub fn init(
         &mut self,
-        operands: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        operands: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         operations: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
@@ -6178,10 +6178,10 @@ impl EdgeList {
     /// endVertexList and endVertexIndex do no match
     pub fn init(
         &mut self,
-        curves: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        startVertexList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
+        curves: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        startVertexList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
         startVertexIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        endVertexList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
+        endVertexList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
         endVertexIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
@@ -8277,7 +8277,7 @@ impl Face {
         &mut self,
         aSurface: &crate::ffi_types::Handle_IGESData_IGESEntity,
         outerLoopFlag: bool,
-        loops: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
+        loops: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSolid_Face_init(
@@ -9887,7 +9887,7 @@ impl Loop {
     pub fn init(
         &mut self,
         types: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        edges: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        edges: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: &crate::ffi_types::Handle_NCollection_HArray1_int,
         orient: &crate::ffi_types::Handle_NCollection_HArray1_int,
         nbParameterCurves: &crate::ffi_types::Handle_NCollection_HArray1_int,
@@ -10895,7 +10895,7 @@ impl ManifoldSolid {
         &mut self,
         aShell: &crate::ffi_types::Handle_IGESSolid_Shell,
         shellflag: bool,
-        voidShells: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
+        voidShells: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
         voidShellFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
@@ -15848,7 +15848,7 @@ impl Shell {
     /// raises exception if length of allFaces & allOrient do not match
     pub fn init(
         &mut self,
-        allFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face,
+        allFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Face,
         allOrient: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
@@ -16798,8 +16798,8 @@ impl SolidAssembly {
     /// do not match
     pub fn init(
         &mut self,
-        allItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allMatrices: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
+        allItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allMatrices: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSolid_SolidAssembly_init(

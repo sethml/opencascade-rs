@@ -577,6 +577,20 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
@@ -1130,6 +1144,22 @@ unsafe impl crate::CppDeletable for FWOSDriver {
 }
 
 impl FWOSDriver {
+    /// **Source:** `CDF_FWOSDriver.hxx`:37 - `CDF_FWOSDriver::CDF_FWOSDriver()`
+    /// Initializes the MetaDatadriver connected to specified look-up table.
+    /// Note that the created driver will keep reference to the table,
+    /// thus it must have life time longer than this object.
+    pub fn new_dmap_extendedstring_cdm_metadata(
+        theLookUpTable: &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_ctor_dmap_extendedstring_cdm_metadata(
+                    theLookUpTable,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `CDF_FWOSDriver.hxx`:41 - `CDF_FWOSDriver::Find()`
     /// indicate whether a file exists corresponding to the folder and the name
     pub fn find(
@@ -1505,15 +1535,6 @@ impl Handle_CDF_FWOSDriver {
         }
     }
 }
-
-// ── Skipped symbols for FWOSDriver (1 total) ──
-// SKIPPED: **Source:** `CDF_FWOSDriver.hxx`:37 - `CDF_FWOSDriver::CDF_FWOSDriver`
-//   constructor: Initializes the MetaDatadriver connected to specified look-up table.
-//   constructor: Note that the created driver will keep reference to the table,
-//   constructor: thus it must have life time longer than this object.
-//   Reason: has unbindable types: param 'theLookUpTable': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>&)
-//   // pub fn new_metadata>>(theLookUpTable: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>& */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From CDF_MetaDataDriver.hxx

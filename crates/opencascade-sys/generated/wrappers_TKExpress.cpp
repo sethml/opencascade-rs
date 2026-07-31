@@ -29,7 +29,6 @@
 #include <Expr_Exponentiate.hxx>
 #include <Expr_ExprFailure.hxx>
 #include <Expr_FunctionDerivative.hxx>
-#include <Expr_GeneralExpression.hxx>
 #include <Expr_GeneralFunction.hxx>
 #include <Expr_GeneralRelation.hxx>
 #include <Expr_GreaterThan.hxx>
@@ -42,9 +41,6 @@
 #include <Expr_LogOf10.hxx>
 #include <Expr_LogOfe.hxx>
 #include <Expr_NamedConstant.hxx>
-#include <Expr_NamedExpression.hxx>
-#include <Expr_NamedFunction.hxx>
-#include <Expr_NamedUnknown.hxx>
 #include <Expr_NotAssigned.hxx>
 #include <Expr_NotEvaluable.hxx>
 #include <Expr_NumericValue.hxx>
@@ -473,6 +469,10 @@ extern "C" OcctResult<bool> Expr_Absolute_is_linear(const Expr_Absolute* self_) 
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Absolute_evaluate(const Expr_Absolute* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Absolute_dynamic_type(const Expr_Absolute* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -619,6 +619,10 @@ extern "C" OcctResult<bool> Expr_ArcCosine_is_identical(const Expr_ArcCosine* se
 }
 extern "C" OcctResult<bool> Expr_ArcCosine_is_linear(const Expr_ArcCosine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_ArcCosine_evaluate(const Expr_ArcCosine* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcCosine_dynamic_type(const Expr_ArcCosine* self_) {
@@ -769,6 +773,10 @@ extern "C" OcctResult<bool> Expr_ArcSine_is_linear(const Expr_ArcSine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_ArcSine_evaluate(const Expr_ArcSine* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcSine_dynamic_type(const Expr_ArcSine* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -915,6 +923,10 @@ extern "C" OcctResult<bool> Expr_ArcTangent_is_identical(const Expr_ArcTangent* 
 }
 extern "C" OcctResult<bool> Expr_ArcTangent_is_linear(const Expr_ArcTangent* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_ArcTangent_evaluate(const Expr_ArcTangent* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcTangent_dynamic_type(const Expr_ArcTangent* self_) {
@@ -1065,6 +1077,10 @@ extern "C" OcctResult<bool> Expr_ArgCosh_is_linear(const Expr_ArgCosh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_ArgCosh_evaluate(const Expr_ArgCosh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgCosh_dynamic_type(const Expr_ArgCosh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1213,6 +1229,10 @@ extern "C" OcctResult<bool> Expr_ArgSinh_is_linear(const Expr_ArgSinh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_ArgSinh_evaluate(const Expr_ArgSinh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgSinh_dynamic_type(const Expr_ArgSinh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1359,6 +1379,10 @@ extern "C" OcctResult<bool> Expr_ArgTanh_is_identical(const Expr_ArgTanh* self_,
 }
 extern "C" OcctResult<bool> Expr_ArgTanh_is_linear(const Expr_ArgTanh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_ArgTanh_evaluate(const Expr_ArgTanh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgTanh_dynamic_type(const Expr_ArgTanh* self_) {
@@ -1613,6 +1637,10 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_BinaryExpression_inh
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_BinaryExpression_inherited_Evaluate(const Expr_BinaryExpression* self, NCollection_Array1_Handle_Expr_NamedUnknown const& vars, NCollection_Array1_double const& vals) {
+    try { return {self->Evaluate(vars, vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<double> Expr_BinaryExpression_inherited_EvaluateNumeric(const Expr_BinaryExpression* self) {
     try { return {self->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1685,6 +1713,10 @@ extern "C" OcctResult<bool> Expr_BinaryFunction_is_identical(const Expr_BinaryFu
 }
 extern "C" OcctResult<bool> Expr_BinaryFunction_is_linear(const Expr_BinaryFunction* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_BinaryFunction_evaluate(const Expr_BinaryFunction* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_BinaryFunction_dynamic_type(const Expr_BinaryFunction* self_) {
@@ -1843,6 +1875,10 @@ extern "C" OcctResult<bool> Expr_Cosh_is_linear(const Expr_Cosh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Cosh_evaluate(const Expr_Cosh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Cosh_dynamic_type(const Expr_Cosh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1989,6 +2025,10 @@ extern "C" OcctResult<bool> Expr_Cosine_is_identical(const Expr_Cosine* self_, H
 }
 extern "C" OcctResult<bool> Expr_Cosine_is_linear(const Expr_Cosine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Cosine_evaluate(const Expr_Cosine* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Cosine_dynamic_type(const Expr_Cosine* self_) {
@@ -2141,6 +2181,10 @@ extern "C" OcctResult<bool> Expr_Difference_is_identical(const Expr_Difference* 
 }
 extern "C" OcctResult<bool> Expr_Difference_is_linear(const Expr_Difference* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Difference_evaluate(const Expr_Difference* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Difference_dynamic_type(const Expr_Difference* self_) {
@@ -2433,6 +2477,10 @@ extern "C" OcctResult<bool> Expr_Division_is_identical(const Expr_Division* self
 }
 extern "C" OcctResult<bool> Expr_Division_is_linear(const Expr_Division* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Division_evaluate(const Expr_Division* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Division_dynamic_type(const Expr_Division* self_) {
@@ -2731,6 +2779,10 @@ extern "C" OcctResult<bool> Expr_Exponential_is_linear(const Expr_Exponential* s
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Exponential_evaluate(const Expr_Exponential* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Exponential_dynamic_type(const Expr_Exponential* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2877,6 +2929,10 @@ extern "C" OcctResult<bool> Expr_Exponentiate_is_identical(const Expr_Exponentia
 }
 extern "C" OcctResult<bool> Expr_Exponentiate_is_linear(const Expr_Exponentiate* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Exponentiate_evaluate(const Expr_Exponentiate* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Exponentiate_dynamic_type(const Expr_Exponentiate* self_) {
@@ -3071,6 +3127,10 @@ extern "C" OcctResult<int32_t> Expr_FunctionDerivative_nb_of_variables(const Exp
     try { return {self_->NbOfVariables(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_FunctionDerivative_evaluate(const Expr_FunctionDerivative* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* values) {
+    try { return {self_->Evaluate(*vars, *values), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> Expr_FunctionDerivative_is_identical(const Expr_FunctionDerivative* self_, Handle(Expr_GeneralFunction) const* func) {
     try { return {self_->IsIdentical(*func), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3212,6 +3272,10 @@ extern "C" OcctResult<bool> Expr_GeneralExpression_is_identical(const Expr_Gener
 extern "C" const char* Expr_GeneralExpression_replace(Expr_GeneralExpression* self_, Handle(Expr_NamedUnknown) const* var, Handle(Expr_GeneralExpression) const* with) {
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Expr_GeneralExpression_evaluate(const Expr_GeneralExpression* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Expr_GeneralExpression_evaluate_numeric(const Expr_GeneralExpression* self_) {
     try { return {self_->EvaluateNumeric(), nullptr}; }
@@ -3579,6 +3643,10 @@ extern "C" OcctResult<TCollection_AsciiString*> Expr_GeneralFunction_get_string_
 }
 extern "C" OcctResult<int32_t> Expr_GeneralFunction_nb_of_variables(const Expr_GeneralFunction* self_) {
     try { return {self_->NbOfVariables(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_GeneralFunction_evaluate(const Expr_GeneralFunction* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_GeneralFunction_is_identical(const Expr_GeneralFunction* self_, Handle(Expr_GeneralFunction) const* func) {
@@ -4499,6 +4567,10 @@ extern "C" OcctResult<bool> Expr_LogOf10_is_linear(const Expr_LogOf10* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_LogOf10_evaluate(const Expr_LogOf10* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_LogOf10_dynamic_type(const Expr_LogOf10* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4645,6 +4717,10 @@ extern "C" OcctResult<bool> Expr_LogOfe_is_identical(const Expr_LogOfe* self_, H
 }
 extern "C" OcctResult<bool> Expr_LogOfe_is_linear(const Expr_LogOfe* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_LogOfe_evaluate(const Expr_LogOfe* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_LogOfe_dynamic_type(const Expr_LogOfe* self_) {
@@ -4818,6 +4894,10 @@ extern "C" OcctResult<bool> Expr_NamedConstant_is_linear(const Expr_NamedConstan
 extern "C" const char* Expr_NamedConstant_replace(Expr_NamedConstant* self_, Handle(Expr_NamedUnknown) const* var, Handle(Expr_GeneralExpression) const* with) {
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Expr_NamedConstant_evaluate(const Expr_NamedConstant* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NamedConstant_dynamic_type(const Expr_NamedConstant* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -5031,6 +5111,10 @@ extern "C" const char* Expr_NamedExpression_inherited_Replace(Expr_NamedExpressi
     try { self->Replace(var, with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<double> Expr_NamedExpression_inherited_Evaluate(const Expr_NamedExpression* self, NCollection_Array1_Handle_Expr_NamedUnknown const& vars, NCollection_Array1_double const& vals) {
+    try { return {self->Evaluate(vars, vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<double> Expr_NamedExpression_inherited_EvaluateNumeric(const Expr_NamedExpression* self) {
     try { return {self->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5069,6 +5153,10 @@ extern "C" void Expr_NamedExpression_destructor(Expr_NamedExpression* self_) { d
 // Expr_NamedFunction wrappers
 // ========================
 
+extern "C" OcctResult<Expr_NamedFunction*> Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_arr1_expr_namedunknown(TCollection_AsciiString const* name, Handle(Expr_GeneralExpression) const* exp, NCollection_Array1_Handle_Expr_NamedUnknown const* vars) {
+    try { return {new Expr_NamedFunction(*name, *exp, *vars), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<TCollection_AsciiString*> Expr_NamedFunction_get_name(const Expr_NamedFunction* self_) {
     try { return {new TCollection_AsciiString(self_->GetName()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5103,6 +5191,10 @@ extern "C" const char* Expr_NamedFunction_set_name(Expr_NamedFunction* self_, TC
 }
 extern "C" OcctResult<int32_t> Expr_NamedFunction_nb_of_variables(const Expr_NamedFunction* self_) {
     try { return {self_->NbOfVariables(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_NamedFunction_evaluate(const Expr_NamedFunction* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* values) {
+    try { return {self_->Evaluate(*vars, *values), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_NamedFunction_is_identical(const Expr_NamedFunction* self_, Handle(Expr_GeneralFunction) const* func) {
@@ -5246,6 +5338,10 @@ extern "C" OcctResult<bool> Expr_NamedUnknown_is_linear(const Expr_NamedUnknown*
 extern "C" const char* Expr_NamedUnknown_replace(Expr_NamedUnknown* self_, Handle(Expr_NamedUnknown) const* var, Handle(Expr_GeneralExpression) const* with) {
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Expr_NamedUnknown_evaluate(const Expr_NamedUnknown* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NamedUnknown_dynamic_type(const Expr_NamedUnknown* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -5467,6 +5563,10 @@ extern "C" const char* Expr_NumericValue_replace(Expr_NumericValue* self_, Handl
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<double> Expr_NumericValue_evaluate(const Expr_NumericValue* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NumericValue_dynamic_type(const Expr_NumericValue* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5665,6 +5765,10 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_PolyExpression_inher
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_PolyExpression_inherited_Evaluate(const Expr_PolyExpression* self, NCollection_Array1_Handle_Expr_NamedUnknown const& vars, NCollection_Array1_double const& vals) {
+    try { return {self->Evaluate(vars, vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<double> Expr_PolyExpression_inherited_EvaluateNumeric(const Expr_PolyExpression* self) {
     try { return {self->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5707,6 +5811,10 @@ extern "C" void Expr_PolyExpression_destructor(Expr_PolyExpression* self_) { del
 // Expr_PolyFunction wrappers
 // ========================
 
+extern "C" OcctResult<Expr_PolyFunction*> Expr_PolyFunction_ctor_handleexprgeneralfunction_arr1_expr_generalexpression(Handle(Expr_GeneralFunction) const* func, NCollection_Array1_Handle_Expr_GeneralExpression const* exps) {
+    try { return {new Expr_PolyFunction(*func, *exps), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Expr_GeneralFunction)*> Expr_PolyFunction_function(const Expr_PolyFunction* self_) {
     try { return {new Handle(Expr_GeneralFunction)(self_->Function()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5733,6 +5841,10 @@ extern "C" OcctResult<bool> Expr_PolyFunction_is_identical(const Expr_PolyFuncti
 }
 extern "C" OcctResult<bool> Expr_PolyFunction_is_linear(const Expr_PolyFunction* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_PolyFunction_evaluate(const Expr_PolyFunction* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_PolyFunction_dynamic_type(const Expr_PolyFunction* self_) {
@@ -5859,6 +5971,10 @@ extern "C" void Expr_PolyFunction_destructor(Expr_PolyFunction* self_) { delete 
 // Expr_Product wrappers
 // ========================
 
+extern "C" OcctResult<Expr_Product*> Expr_Product_ctor_seq_expr_generalexpression(NCollection_Sequence_Handle_Expr_GeneralExpression const* exps) {
+    try { return {new Expr_Product(*exps), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Expr_Product*> Expr_Product_ctor_handleexprgeneralexpression2(Handle(Expr_GeneralExpression) const* exp1, Handle(Expr_GeneralExpression) const* exp2) {
     try { return {new Expr_Product(*exp1, *exp2), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5885,6 +6001,10 @@ extern "C" OcctResult<bool> Expr_Product_is_identical(const Expr_Product* self_,
 }
 extern "C" OcctResult<bool> Expr_Product_is_linear(const Expr_Product* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Product_evaluate(const Expr_Product* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Product_dynamic_type(const Expr_Product* self_) {
@@ -6083,6 +6203,10 @@ extern "C" OcctResult<bool> Expr_Sign_is_linear(const Expr_Sign* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Sign_evaluate(const Expr_Sign* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sign_dynamic_type(const Expr_Sign* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6229,6 +6353,10 @@ extern "C" OcctResult<bool> Expr_Sine_is_identical(const Expr_Sine* self_, Handl
 }
 extern "C" OcctResult<bool> Expr_Sine_is_linear(const Expr_Sine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Sine_evaluate(const Expr_Sine* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sine_dynamic_type(const Expr_Sine* self_) {
@@ -6553,6 +6681,10 @@ extern "C" OcctResult<bool> Expr_Sinh_is_linear(const Expr_Sinh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Sinh_evaluate(const Expr_Sinh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sinh_dynamic_type(const Expr_Sinh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6699,6 +6831,10 @@ extern "C" OcctResult<bool> Expr_Square_is_identical(const Expr_Square* self_, H
 }
 extern "C" OcctResult<bool> Expr_Square_is_linear(const Expr_Square* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Square_evaluate(const Expr_Square* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Square_dynamic_type(const Expr_Square* self_) {
@@ -6849,6 +6985,10 @@ extern "C" OcctResult<bool> Expr_SquareRoot_is_linear(const Expr_SquareRoot* sel
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_SquareRoot_evaluate(const Expr_SquareRoot* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_SquareRoot_dynamic_type(const Expr_SquareRoot* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6969,6 +7109,10 @@ extern "C" void Expr_SquareRoot_destructor(Expr_SquareRoot* self_) { delete self
 // Expr_Sum wrappers
 // ========================
 
+extern "C" OcctResult<Expr_Sum*> Expr_Sum_ctor_seq_expr_generalexpression(NCollection_Sequence_Handle_Expr_GeneralExpression const* exps) {
+    try { return {new Expr_Sum(*exps), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Expr_Sum*> Expr_Sum_ctor_handleexprgeneralexpression2(Handle(Expr_GeneralExpression) const* exp1, Handle(Expr_GeneralExpression) const* exp2) {
     try { return {new Expr_Sum(*exp1, *exp2), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6999,6 +7143,10 @@ extern "C" OcctResult<bool> Expr_Sum_is_identical(const Expr_Sum* self_, Handle(
 }
 extern "C" OcctResult<bool> Expr_Sum_is_linear(const Expr_Sum* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Sum_evaluate(const Expr_Sum* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sum_dynamic_type(const Expr_Sum* self_) {
@@ -7275,6 +7423,10 @@ extern "C" OcctResult<bool> Expr_Tangent_is_linear(const Expr_Tangent* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_Tangent_evaluate(const Expr_Tangent* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Tangent_dynamic_type(const Expr_Tangent* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7421,6 +7573,10 @@ extern "C" OcctResult<bool> Expr_Tanh_is_identical(const Expr_Tanh* self_, Handl
 }
 extern "C" OcctResult<bool> Expr_Tanh_is_linear(const Expr_Tanh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_Tanh_evaluate(const Expr_Tanh* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Tanh_dynamic_type(const Expr_Tanh* self_) {
@@ -7803,6 +7959,10 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_UnaryExpression_inhe
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<double> Expr_UnaryExpression_inherited_Evaluate(const Expr_UnaryExpression* self, NCollection_Array1_Handle_Expr_NamedUnknown const& vars, NCollection_Array1_double const& vals) {
+    try { return {self->Evaluate(vars, vals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<double> Expr_UnaryExpression_inherited_EvaluateNumeric(const Expr_UnaryExpression* self) {
     try { return {self->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7875,6 +8035,10 @@ extern "C" OcctResult<bool> Expr_UnaryFunction_is_identical(const Expr_UnaryFunc
 }
 extern "C" OcctResult<bool> Expr_UnaryFunction_is_linear(const Expr_UnaryFunction* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_UnaryFunction_evaluate(const Expr_UnaryFunction* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_UnaryFunction_dynamic_type(const Expr_UnaryFunction* self_) {
@@ -8027,6 +8191,10 @@ extern "C" OcctResult<bool> Expr_UnaryMinus_is_identical(const Expr_UnaryMinus* 
 }
 extern "C" OcctResult<bool> Expr_UnaryMinus_is_linear(const Expr_UnaryMinus* self_) {
     try { return {self_->IsLinear(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Expr_UnaryMinus_evaluate(const Expr_UnaryMinus* self_, NCollection_Array1_Handle_Expr_NamedUnknown const* vars, NCollection_Array1_double const* vals) {
+    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_UnaryMinus_dynamic_type(const Expr_UnaryMinus* self_) {
@@ -8305,8 +8473,12 @@ extern "C" const char* ExprIntrp_GenExp_inherited_Use(ExprIntrp_GenExp* self, Ha
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenExp_inherited_GetNamed(const ExprIntrp_GenExp* self, TCollection_AsciiString const& name) {
-    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedExpression const*> ExprIntrp_GenExp_inherited_GetNamed(const ExprIntrp_GenExp* self) {
+    try { return {&(self->GetNamed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedFunction const*> ExprIntrp_GenExp_inherited_GetFunctions(const ExprIntrp_GenExp* self) {
+    try { return {&(self->GetFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenExp_inherited_GetFunction(const ExprIntrp_GenExp* self, TCollection_AsciiString const& name) {
@@ -8399,8 +8571,12 @@ extern "C" const char* ExprIntrp_GenFct_inherited_Use(ExprIntrp_GenFct* self, Ha
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenFct_inherited_GetNamed(const ExprIntrp_GenFct* self, TCollection_AsciiString const& name) {
-    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedExpression const*> ExprIntrp_GenFct_inherited_GetNamed(const ExprIntrp_GenFct* self) {
+    try { return {&(self->GetNamed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedFunction const*> ExprIntrp_GenFct_inherited_GetFunctions(const ExprIntrp_GenFct* self) {
+    try { return {&(self->GetFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenFct_inherited_GetFunction(const ExprIntrp_GenFct* self, TCollection_AsciiString const& name) {
@@ -8497,8 +8673,12 @@ extern "C" const char* ExprIntrp_GenRel_inherited_Use(ExprIntrp_GenRel* self, Ha
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenRel_inherited_GetNamed(const ExprIntrp_GenRel* self, TCollection_AsciiString const& name) {
-    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedExpression const*> ExprIntrp_GenRel_inherited_GetNamed(const ExprIntrp_GenRel* self) {
+    try { return {&(self->GetNamed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedFunction const*> ExprIntrp_GenRel_inherited_GetFunctions(const ExprIntrp_GenRel* self) {
+    try { return {&(self->GetFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenRel_inherited_GetFunction(const ExprIntrp_GenRel* self, TCollection_AsciiString const& name) {
@@ -8539,7 +8719,7 @@ extern "C" void ExprIntrp_GenRel_destructor(ExprIntrp_GenRel* self_) { delete se
 // ExprIntrp_Generator wrappers
 // ========================
 
-extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_Generator_get_named(const ExprIntrp_Generator* self_, TCollection_AsciiString const* name) {
+extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_Generator_get_named_asciistring(const ExprIntrp_Generator* self_, TCollection_AsciiString const* name) {
     try { return {new Handle(Expr_NamedExpression)(self_->GetNamed(*name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8554,6 +8734,14 @@ extern "C" const char* ExprIntrp_Generator_use_handleexprnamedfunction(ExprIntrp
 extern "C" const char* ExprIntrp_Generator_use_handleexprnamedexpression(ExprIntrp_Generator* self_, Handle(Expr_NamedExpression) const* named) {
     try { self_->Use(*named); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedExpression const*> ExprIntrp_Generator_get_named(const ExprIntrp_Generator* self_) {
+    try { return {&(self_->GetNamed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Expr_NamedFunction const*> ExprIntrp_Generator_get_functions(const ExprIntrp_Generator* self_) {
+    try { return {&(self_->GetFunctions()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> ExprIntrp_Generator_dynamic_type(const ExprIntrp_Generator* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }

@@ -140,6 +140,19 @@ impl Application {
         }
     }
 
+    /// **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    /// Returns MetaData LookUpTable
+    pub fn meta_data_look_up_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKCDF::CDM_Application_meta_data_look_up_table(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
@@ -412,13 +425,6 @@ impl Handle_CDM_Application {
         }
     }
 }
-
-// ── Skipped symbols for Application (1 total) ──
-// SKIPPED: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable`
-//   method: Returns MetaData LookUpTable
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>&)
-//   // pub fn meta_data_look_up_table(&mut self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>& */;
-//
 
 // ========================
 // From CDM_Document.hxx
@@ -1507,6 +1513,35 @@ impl MetaData {
         }
     }
 
+    /// **Source:** `CDM_MetaData.hxx`:37 - `CDM_MetaData::LookUp()`
+    pub fn look_up_dmap_extendedstring_cdm_metadata_extendedstring4_bool(
+        theLookUpTable: &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        aPath: &crate::t_collection::ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        ReadOnly: bool,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_CDM_MetaData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCDF::CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring4_bool(theLookUpTable, aFolder, aName, aPath, aFileName, ReadOnly)))
+        }
+    }
+
+    /// **Source:** `CDM_MetaData.hxx`:45 - `CDM_MetaData::LookUp()`
+    pub fn look_up_dmap_extendedstring_cdm_metadata_extendedstring5_bool(
+        theLookUpTable: &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        aFolder: &crate::t_collection::ExtendedString,
+        aName: &crate::t_collection::ExtendedString,
+        aPath: &crate::t_collection::ExtendedString,
+        aVersion: &crate::t_collection::ExtendedString,
+        aFileName: &crate::t_collection::ExtendedString,
+        ReadOnly: bool,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_CDM_MetaData> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCDF::CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring5_bool(theLookUpTable, aFolder, aName, aPath, aVersion, aFileName, ReadOnly)))
+        }
+    }
+
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
@@ -1664,16 +1699,6 @@ impl Handle_CDM_MetaData {
         }
     }
 }
-
-// ── Skipped symbols for MetaData (2 total) ──
-// SKIPPED: **Source:** `CDM_MetaData.hxx`:37 - `CDM_MetaData::LookUp`
-//   Reason: has unbindable types: param 'theLookUpTable': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>&)
-//   // pub fn look_up(theLookUpTable: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>& */, aFolder: &ExtendedString, aName: &ExtendedString, aPath: &ExtendedString, aFileName: &ExtendedString, ReadOnly: bool) -> OwnedPtr<Handle<CDM_MetaData>>;
-//
-// SKIPPED: **Source:** `CDM_MetaData.hxx`:45 - `CDM_MetaData::LookUp`
-//   Reason: has unbindable types: param 'theLookUpTable': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>&)
-//   // pub fn look_up(theLookUpTable: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>>& */, aFolder: &ExtendedString, aName: &ExtendedString, aPath: &ExtendedString, aVersion: &ExtendedString, aFileName: &ExtendedString, ReadOnly: bool) -> OwnedPtr<Handle<CDM_MetaData>>;
-//
 
 // ========================
 // From CDM_Reference.hxx

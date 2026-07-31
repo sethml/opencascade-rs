@@ -1133,7 +1133,7 @@ impl AttributeDef {
         attrTypes: &crate::ffi_types::Handle_NCollection_HArray1_int,
         attrValueDataTypes: &crate::ffi_types::Handle_NCollection_HArray1_int,
         attrValueCounts: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        attrValues: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        attrValues: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
         attrValuePointers: &crate::ffi_types::Handle_IGESDefs_HArray1OfHArray1OfTextDisplayTemplate,
     ) {
         crate::check_void_result(unsafe {
@@ -2288,7 +2288,7 @@ impl AttributeTable {
     /// - NbRows = 1 is a particular case (Form 0)
     pub fn init(
         &mut self,
-        attributes: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_Standard_Transient,
+        attributes: &crate::ffi_types::Handle_NCollection_HArray2_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDefs_AttributeTable_init(self as *mut Self, attributes)
@@ -4092,7 +4092,7 @@ impl GenericData {
         nbPropVal: i32,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         allTypes: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allValues: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        allValues: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDefs_GenericData_init(
@@ -5176,7 +5176,7 @@ impl HArray1OfHArray1OfTextDisplayTemplate {
     pub fn set_value(
         &mut self,
         num: i32,
-        val: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
+        val: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_set_value(
@@ -5188,7 +5188,12 @@ impl HArray1OfHArray1OfTextDisplayTemplate {
     }
 
     /// **Source:** `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx`:46 - `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate::Value()`
-    pub fn value(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate>{
+    pub fn value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_value(
@@ -5392,7 +5397,7 @@ impl MacroDef {
         &mut self,
         macro_: &crate::ffi_types::Handle_TCollection_HAsciiString,
         entityTypeID: i32,
-        langStatements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        langStatements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         endMacro: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
@@ -9600,8 +9605,8 @@ impl UnitsData {
     /// unitScale are not same
     pub fn init(
         &mut self,
-        unitTypes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        unitValues: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        unitTypes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        unitValues: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         unitScales: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {

@@ -1334,9 +1334,9 @@ impl Curve3dElementProperty {
         &mut self,
         aPropertyId: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aIntervalDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-        aEndOffsets: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-        aEndReleases: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
+        aIntervalDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+        aEndOffsets: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+        aEndReleases: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_init(
@@ -1408,7 +1408,11 @@ impl Curve3dElementProperty {
 
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:61 - `StepFEA_Curve3dElementProperty::IntervalDefinitions()`
     /// Returns field IntervalDefinitions
-    pub fn interval_definitions(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval>{
+    pub fn interval_definitions(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_interval_definitions(
@@ -1422,7 +1426,7 @@ impl Curve3dElementProperty {
     /// Set field IntervalDefinitions
     pub fn set_interval_definitions(
         &mut self,
-        IntervalDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
+        IntervalDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_set_interval_definitions(
@@ -1434,7 +1438,11 @@ impl Curve3dElementProperty {
 
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:70 - `StepFEA_Curve3dElementProperty::EndOffsets()`
     /// Returns field EndOffsets
-    pub fn end_offsets(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset>{
+    pub fn end_offsets(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_end_offsets(
@@ -1448,7 +1456,7 @@ impl Curve3dElementProperty {
     /// Set field EndOffsets
     pub fn set_end_offsets(
         &mut self,
-        EndOffsets: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
+        EndOffsets: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_set_end_offsets(
@@ -1460,7 +1468,11 @@ impl Curve3dElementProperty {
 
     /// **Source:** `StepFEA_Curve3dElementProperty.hxx`:78 - `StepFEA_Curve3dElementProperty::EndReleases()`
     /// Returns field EndReleases
-    pub fn end_releases(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease>{
+    pub fn end_releases(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_end_releases(
@@ -1474,7 +1486,7 @@ impl Curve3dElementProperty {
     /// Set field EndReleases
     pub fn set_end_releases(
         &mut self,
-        EndReleases: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
+        EndReleases: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementProperty_set_end_releases(
@@ -1713,9 +1725,9 @@ impl Curve3dElementRepresentation {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel3d,
         aElementDescriptor: &crate::ffi_types::Handle_StepElement_Curve3dElementDescriptor,
         aProperty: &crate::ffi_types::Handle_StepFEA_Curve3dElementProperty,
@@ -1931,7 +1943,7 @@ impl Curve3dElementRepresentation {
     pub fn node_list(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1945,7 +1957,7 @@ impl Curve3dElementRepresentation {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn set_node_list(
         &mut self,
-        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementRepresentation_inherited_SetNodeList(
@@ -1979,7 +1991,7 @@ impl Curve3dElementRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Curve3dElementRepresentation_inherited_SetItems(
@@ -1993,7 +2005,7 @@ impl Curve3dElementRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2770,7 +2782,7 @@ impl CurveElementEndRelease {
     pub fn init(
         &mut self,
         aCoordinateSystem: &CurveElementEndCoordinateSystem,
-        aReleases: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
+        aReleases: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndRelease_init(
@@ -2806,7 +2818,7 @@ impl CurveElementEndRelease {
 
     /// **Source:** `StepFEA_CurveElementEndRelease.hxx`:51 - `StepFEA_CurveElementEndRelease::Releases()`
     /// Returns field Releases
-    pub fn releases(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket>{
+    pub fn releases(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndRelease_releases(
@@ -2820,7 +2832,7 @@ impl CurveElementEndRelease {
     /// Set field Releases
     pub fn set_releases(
         &mut self,
-        Releases: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
+        Releases: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_CurveElementEndRelease_set_releases(
@@ -3710,7 +3722,7 @@ impl CurveElementIntervalLinearlyVarying {
         &mut self,
         aCurveElementInterval_FinishPosition: &crate::ffi_types::Handle_StepFEA_CurveElementLocation,
         aCurveElementInterval_EuAngles: &crate::ffi_types::Handle_StepBasic_EulerAngles,
-        aSections: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
+        aSections: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalLinearlyVarying_init(
@@ -3724,7 +3736,7 @@ impl CurveElementIntervalLinearlyVarying {
 
     /// **Source:** `StepFEA_CurveElementIntervalLinearlyVarying.hxx`:47 - `StepFEA_CurveElementIntervalLinearlyVarying::Sections()`
     /// Returns field Sections
-    pub fn sections(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition>{
+    pub fn sections(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalLinearlyVarying_sections(
@@ -3738,7 +3750,7 @@ impl CurveElementIntervalLinearlyVarying {
     /// Set field Sections
     pub fn set_sections(
         &mut self,
-        Sections: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
+        Sections: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_CurveElementIntervalLinearlyVarying_set_sections(
@@ -5128,7 +5140,7 @@ impl DummyNode {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -5186,7 +5198,7 @@ impl DummyNode {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_DummyNode_inherited_SetItems(
@@ -5200,7 +5212,7 @@ impl DummyNode {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5739,7 +5751,7 @@ impl ElementGroup {
         aGroup_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aGroup_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aFeaGroup_ModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
-        aElements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
+        aElements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_ElementGroup_init(
@@ -5754,7 +5766,11 @@ impl ElementGroup {
 
     /// **Source:** `StepFEA_ElementGroup.hxx`:46 - `StepFEA_ElementGroup::Elements()`
     /// Returns field Elements
-    pub fn elements(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation>{
+    pub fn elements(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepFEA_ElementGroup_elements(self as *const Self),
@@ -5766,7 +5782,7 @@ impl ElementGroup {
     /// Set field Elements
     pub fn set_elements(
         &mut self,
-        Elements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
+        Elements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_ElementGroup_set_elements(
@@ -6401,9 +6417,9 @@ impl ElementRepresentation {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
-        aNodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_ElementRepresentation_init(
@@ -6421,7 +6437,7 @@ impl ElementRepresentation {
     pub fn node_list(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6436,7 +6452,7 @@ impl ElementRepresentation {
     /// Set field NodeList
     pub fn set_node_list(
         &mut self,
-        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_ElementRepresentation_set_node_list(
@@ -6548,7 +6564,7 @@ impl ElementRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_ElementRepresentation_inherited_SetItems(
@@ -6562,7 +6578,7 @@ impl ElementRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9751,7 +9767,7 @@ impl FeaModel {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aCreatingSoftware: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aIntendedAnalysisCode: &crate::ffi_types::Handle_NCollection_HArray1_TCollection_AsciiString,
@@ -9981,7 +9997,7 @@ impl FeaModel {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_FeaModel_inherited_SetItems(
@@ -9995,7 +10011,7 @@ impl FeaModel {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10337,7 +10353,7 @@ impl FeaModel3d {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aCreatingSoftware: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aIntendedAnalysisCode: &crate::ffi_types::Handle_NCollection_HArray1_TCollection_AsciiString,
@@ -10484,7 +10500,7 @@ impl FeaModel3d {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_FeaModel3d_inherited_SetItems(
@@ -10498,7 +10514,7 @@ impl FeaModel3d {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14967,7 +14983,7 @@ impl GeometricNode {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -15027,7 +15043,7 @@ impl GeometricNode {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_GeometricNode_inherited_SetItems(
@@ -15041,7 +15057,7 @@ impl GeometricNode {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15376,7 +15392,7 @@ impl Node {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -15429,7 +15445,7 @@ impl Node {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Node_inherited_SetItems(self as *mut Self, aItems)
@@ -15440,7 +15456,7 @@ impl Node {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16067,7 +16083,7 @@ impl NodeGroup {
         aGroup_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aGroup_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aFeaGroup_ModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
-        aNodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeGroup_init(
@@ -16085,7 +16101,7 @@ impl NodeGroup {
     pub fn nodes(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16098,7 +16114,7 @@ impl NodeGroup {
     /// Set field Nodes
     pub fn set_nodes(
         &mut self,
-        Nodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        Nodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeGroup_set_nodes(self as *mut Self, Nodes)
@@ -16460,7 +16476,7 @@ impl NodeRepresentation {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -16604,7 +16620,7 @@ impl NodeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeRepresentation_inherited_SetItems(
@@ -16618,7 +16634,7 @@ impl NodeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16936,7 +16952,7 @@ impl NodeSet {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aNodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aNodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeSet_init(
@@ -16952,7 +16968,7 @@ impl NodeSet {
     pub fn nodes(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16965,7 +16981,7 @@ impl NodeSet {
     /// Set field Nodes
     pub fn set_nodes(
         &mut self,
-        Nodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        Nodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeSet_set_nodes(self as *mut Self, Nodes)
@@ -17367,7 +17383,7 @@ impl NodeWithSolutionCoordinateSystem {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -17420,7 +17436,7 @@ impl NodeWithSolutionCoordinateSystem {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeWithSolutionCoordinateSystem_inherited_SetItems(
@@ -17434,7 +17450,7 @@ impl NodeWithSolutionCoordinateSystem {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepFEA_NodeWithSolutionCoordinateSystem_inherited_Items(self as *const Self)))
@@ -17791,7 +17807,7 @@ impl NodeWithVector {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel,
     ) {
@@ -17851,7 +17867,7 @@ impl NodeWithVector {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_NodeWithVector_inherited_SetItems(
@@ -17865,7 +17881,7 @@ impl NodeWithVector {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18970,9 +18986,9 @@ impl Surface3dElementRepresentation {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel3d,
         aElementDescriptor: &crate::ffi_types::Handle_StepElement_Surface3dElementDescriptor,
         aProperty: &crate::ffi_types::Handle_StepElement_SurfaceElementProperty,
@@ -19181,7 +19197,7 @@ impl Surface3dElementRepresentation {
     pub fn node_list(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepFEA_Surface3dElementRepresentation_inherited_NodeList(self as *const Self)))
@@ -19191,7 +19207,7 @@ impl Surface3dElementRepresentation {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn set_node_list(
         &mut self,
-        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Surface3dElementRepresentation_inherited_SetNodeList(
@@ -19225,7 +19241,7 @@ impl Surface3dElementRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Surface3dElementRepresentation_inherited_SetItems(
@@ -19239,7 +19255,7 @@ impl Surface3dElementRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -21625,9 +21641,9 @@ impl Volume3dElementRepresentation {
     pub fn init(
         &mut self,
         aRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
-        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        aElementRepresentation_NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
         aModelRef: &crate::ffi_types::Handle_StepFEA_FeaModel3d,
         aElementDescriptor: &crate::ffi_types::Handle_StepElement_Volume3dElementDescriptor,
         aMaterial: &crate::ffi_types::Handle_StepElement_ElementMaterial,
@@ -21809,7 +21825,7 @@ impl Volume3dElementRepresentation {
     pub fn node_list(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepFEA_Volume3dElementRepresentation_inherited_NodeList(self as *const Self)))
@@ -21819,7 +21835,7 @@ impl Volume3dElementRepresentation {
     /// Inherited: **Source:** `StepFEA_ElementRepresentation.hxx`:51 - `StepFEA_ElementRepresentation::SetNodeList()`
     pub fn set_node_list(
         &mut self,
-        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
+        NodeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Volume3dElementRepresentation_inherited_SetNodeList(
@@ -21853,7 +21869,7 @@ impl Volume3dElementRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFEA_Volume3dElementRepresentation_inherited_SetItems(
@@ -21867,7 +21883,7 @@ impl Volume3dElementRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(

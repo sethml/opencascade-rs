@@ -13451,7 +13451,7 @@ impl DerivedUnit {
     /// **Source:** `StepBasic_DerivedUnit.hxx`:37 - `StepBasic_DerivedUnit::Init()`
     pub fn init(
         &mut self,
-        elements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
+        elements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_DerivedUnit_init(self as *mut Self, elements)
@@ -13461,7 +13461,7 @@ impl DerivedUnit {
     /// **Source:** `StepBasic_DerivedUnit.hxx`:40 - `StepBasic_DerivedUnit::SetElements()`
     pub fn set_elements(
         &mut self,
-        elements: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
+        elements: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_DerivedUnit_set_elements(
@@ -13472,7 +13472,11 @@ impl DerivedUnit {
     }
 
     /// **Source:** `StepBasic_DerivedUnit.hxx`:44 - `StepBasic_DerivedUnit::Elements()`
-    pub fn elements(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement>{
+    pub fn elements(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_DerivedUnit_elements(self as *const Self),
@@ -27594,7 +27598,7 @@ impl OrganizationalAddress {
         aElectronicMailAddress: &crate::ffi_types::Handle_TCollection_HAsciiString,
         hasAtelexNumber: bool,
         aTelexNumber: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aOrganizations: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
+        aOrganizations: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Organization,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
@@ -27633,7 +27637,7 @@ impl OrganizationalAddress {
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:67 - `StepBasic_OrganizationalAddress::SetOrganizations()`
     pub fn set_organizations(
         &mut self,
-        aOrganizations: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
+        aOrganizations: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Organization,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_OrganizationalAddress_set_organizations(
@@ -27646,9 +27650,8 @@ impl OrganizationalAddress {
     /// **Source:** `StepBasic_OrganizationalAddress.hxx`:71 - `StepBasic_OrganizationalAddress::Organizations()`
     pub fn organizations(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Organization>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_OrganizationalAddress_organizations(
@@ -28433,11 +28436,11 @@ impl Person {
         hasAfirstName: bool,
         aFirstName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         hasAmiddleNames: bool,
-        aMiddleNames: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aMiddleNames: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         hasAprefixTitles: bool,
-        aPrefixTitles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aPrefixTitles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         hasAsuffixTitles: bool,
-        aSuffixTitles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSuffixTitles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Person_init(
@@ -28542,7 +28545,7 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:70 - `StepBasic_Person::SetMiddleNames()`
     pub fn set_middle_names(
         &mut self,
-        aMiddleNames: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aMiddleNames: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Person_set_middle_names(
@@ -28562,9 +28565,8 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:76 - `StepBasic_Person::MiddleNames()`
     pub fn middle_names(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_Person_middle_names(self as *const Self),
@@ -28604,7 +28606,7 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:84 - `StepBasic_Person::SetPrefixTitles()`
     pub fn set_prefix_titles(
         &mut self,
-        aPrefixTitles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aPrefixTitles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Person_set_prefix_titles(
@@ -28624,9 +28626,8 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:90 - `StepBasic_Person::PrefixTitles()`
     pub fn prefix_titles(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_Person_prefix_titles(self as *const Self),
@@ -28666,7 +28667,7 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:98 - `StepBasic_Person::SetSuffixTitles()`
     pub fn set_suffix_titles(
         &mut self,
-        aSuffixTitles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSuffixTitles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Person_set_suffix_titles(
@@ -28686,9 +28687,8 @@ impl Person {
     /// **Source:** `StepBasic_Person.hxx`:104 - `StepBasic_Person::SuffixTitles()`
     pub fn suffix_titles(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_Person_suffix_titles(self as *const Self),
@@ -30096,7 +30096,7 @@ impl PersonalAddress {
         aElectronicMailAddress: &crate::ffi_types::Handle_TCollection_HAsciiString,
         hasAtelexNumber: bool,
         aTelexNumber: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPeople: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
+        aPeople: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Person,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
@@ -30135,7 +30135,7 @@ impl PersonalAddress {
     /// **Source:** `StepBasic_PersonalAddress.hxx`:66 - `StepBasic_PersonalAddress::SetPeople()`
     pub fn set_people(
         &mut self,
-        aPeople: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
+        aPeople: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Person,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_PersonalAddress_set_people(
@@ -30148,9 +30148,7 @@ impl PersonalAddress {
     /// **Source:** `StepBasic_PersonalAddress.hxx`:69 - `StepBasic_PersonalAddress::People()`
     pub fn people(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Person> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_PersonalAddress_people(self as *const Self),
@@ -31860,7 +31858,7 @@ impl Product {
         aId: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aFrameOfReference: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
+        aFrameOfReference: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Product_init(
@@ -31932,7 +31930,7 @@ impl Product {
     /// **Source:** `StepBasic_Product.hxx`:57 - `StepBasic_Product::SetFrameOfReference()`
     pub fn set_frame_of_reference(
         &mut self,
-        aFrameOfReference: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
+        aFrameOfReference: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_Product_set_frame_of_reference(
@@ -31945,9 +31943,8 @@ impl Product {
     /// **Source:** `StepBasic_Product.hxx`:62 - `StepBasic_Product::FrameOfReference()`
     pub fn frame_of_reference(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_Product_frame_of_reference(
@@ -36994,7 +36991,7 @@ impl ProductDefinitionWithAssociatedDocuments {
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aFormation: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
         aFrame: &crate::ffi_types::Handle_StepBasic_ProductDefinitionContext,
-        aDocIds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
+        aDocIds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Document,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductDefinitionWithAssociatedDocuments_init(
@@ -37011,9 +37008,8 @@ impl ProductDefinitionWithAssociatedDocuments {
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:46 - `StepBasic_ProductDefinitionWithAssociatedDocuments::DocIds()`
     pub fn doc_ids(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Document>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepBasic_ProductDefinitionWithAssociatedDocuments_doc_ids(self as *const Self)))
         }
@@ -37022,7 +37018,7 @@ impl ProductDefinitionWithAssociatedDocuments {
     /// **Source:** `StepBasic_ProductDefinitionWithAssociatedDocuments.hxx`:48 - `StepBasic_ProductDefinitionWithAssociatedDocuments::SetDocIds()`
     pub fn set_doc_ids(
         &mut self,
-        DocIds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
+        DocIds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Document,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductDefinitionWithAssociatedDocuments_set_doc_ids(self as *mut Self, DocIds)
@@ -37581,7 +37577,7 @@ impl ProductRelatedProductCategory {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         hasAdescription: bool,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductRelatedProductCategory_init(
@@ -37597,7 +37593,7 @@ impl ProductRelatedProductCategory {
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:45 - `StepBasic_ProductRelatedProductCategory::SetProducts()`
     pub fn set_products(
         &mut self,
-        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductRelatedProductCategory_set_products(
@@ -37610,9 +37606,8 @@ impl ProductRelatedProductCategory {
     /// **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:48 - `StepBasic_ProductRelatedProductCategory::Products()`
     pub fn products(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_ProductRelatedProductCategory_products(
@@ -38060,7 +38055,7 @@ impl ProductType {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         hasAdescription: bool,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductType_inherited_Init(
@@ -38076,7 +38071,7 @@ impl ProductType {
     /// Inherited: **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:45 - `StepBasic_ProductRelatedProductCategory::SetProducts()`
     pub fn set_products(
         &mut self,
-        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
+        aProducts: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepBasic_ProductType_inherited_SetProducts(
@@ -38089,9 +38084,8 @@ impl ProductType {
     /// Inherited: **Source:** `StepBasic_ProductRelatedProductCategory.hxx`:48 - `StepBasic_ProductRelatedProductCategory::Products()`
     pub fn products(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepBasic_ProductType_inherited_Products(

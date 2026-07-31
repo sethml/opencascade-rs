@@ -7,14 +7,11 @@
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_AttributeDelta.hxx>
 #include <TDF_DataSet.hxx>
 #include <TDF_DeltaOnAddition.hxx>
 #include <TDF_DeltaOnModification.hxx>
@@ -52,7 +49,6 @@
 #include <TNaming_Localizer.hxx>
 #include <TNaming_Name.hxx>
 #include <TNaming_NameType.hxx>
-#include <TNaming_NamedShape.hxx>
 #include <TNaming_Naming.hxx>
 #include <TNaming_NamingTool.hxx>
 #include <TNaming_NewShapeIterator.hxx>
@@ -414,6 +410,10 @@ extern "C" OcctResult<TCollection_AsciiString*> AppStd_Application_inherited_Ver
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> AppStd_Application_inherited_MetaDataLookUpTable(AppStd_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> AppStd_Application_inherited_IsInstance(const AppStd_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -640,6 +640,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Axis_inherited_Delta
 }
 extern "C" const char* TDataXtd_Axis_inherited_References(const TDataXtd_Axis* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataXtd_Axis_inherited_ExtendedDump(const TDataXtd_Axis* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Axis_inherited_Forget(TDataXtd_Axis* self, int32_t aTransaction) {
@@ -956,6 +960,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Constraint_inherited
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDataXtd_Constraint_inherited_ExtendedDump(const TDataXtd_Constraint* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_Constraint_inherited_Forget(TDataXtd_Constraint* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1250,6 +1258,10 @@ extern "C" const char* TDataXtd_Geometry_inherited_References(const TDataXtd_Geo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataXtd_Geometry_inherited_ExtendedDump(const TDataXtd_Geometry* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_Geometry_inherited_Forget(TDataXtd_Geometry* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1474,6 +1486,10 @@ extern "C" const char* TDataXtd_Pattern_inherited_Paste(const TDataXtd_Pattern* 
 }
 extern "C" const char* TDataXtd_Pattern_inherited_References(const TDataXtd_Pattern* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataXtd_Pattern_inherited_ExtendedDump(const TDataXtd_Pattern* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Pattern_inherited_Forget(TDataXtd_Pattern* self, int32_t aTransaction) {
@@ -1796,6 +1812,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_PatternStd_inherited
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDataXtd_PatternStd_inherited_ExtendedDump(const TDataXtd_PatternStd* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_PatternStd_inherited_Forget(TDataXtd_PatternStd* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2022,6 +2042,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Placement_inherited_
 }
 extern "C" const char* TDataXtd_Placement_inherited_References(const TDataXtd_Placement* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataXtd_Placement_inherited_ExtendedDump(const TDataXtd_Placement* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Placement_inherited_Forget(TDataXtd_Placement* self, int32_t aTransaction) {
@@ -2256,6 +2280,10 @@ extern "C" const char* TDataXtd_Plane_inherited_References(const TDataXtd_Plane*
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataXtd_Plane_inherited_ExtendedDump(const TDataXtd_Plane* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_Plane_inherited_Forget(TDataXtd_Plane* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2486,6 +2514,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Point_inherited_Delt
 }
 extern "C" const char* TDataXtd_Point_inherited_References(const TDataXtd_Point* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataXtd_Point_inherited_ExtendedDump(const TDataXtd_Point* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Point_inherited_Forget(TDataXtd_Point* self, int32_t aTransaction) {
@@ -2720,6 +2752,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Position_inherited_D
 }
 extern "C" const char* TDataXtd_Position_inherited_References(const TDataXtd_Position* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataXtd_Position_inherited_ExtendedDump(const TDataXtd_Position* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Position_inherited_Forget(TDataXtd_Position* self, int32_t aTransaction) {
@@ -3072,6 +3108,10 @@ extern "C" const char* TDataXtd_Presentation_inherited_References(const TDataXtd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataXtd_Presentation_inherited_ExtendedDump(const TDataXtd_Presentation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_Presentation_inherited_Forget(TDataXtd_Presentation* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3311,6 +3351,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TDataXtd_Shape_inherited
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataXtd_Shape_inherited_DeltaOnRemoval(const TDataXtd_Shape* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TDataXtd_Shape_inherited_ExtendedDump(const TDataXtd_Shape* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataXtd_Shape_inherited_Forget(TDataXtd_Shape* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -3606,6 +3650,10 @@ extern "C" const char* TDataXtd_Triangulation_inherited_References(const TDataXt
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataXtd_Triangulation_inherited_ExtendedDump(const TDataXtd_Triangulation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataXtd_Triangulation_inherited_Forget(TDataXtd_Triangulation* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3680,6 +3728,18 @@ extern "C" void TNaming_Builder_destructor(TNaming_Builder* self_) { delete self
 
 extern "C" OcctResult<TNaming_CopyShape*> TNaming_CopyShape_ctor() {
     try { return {new TNaming_CopyShape(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TNaming_CopyShape_copy_tool(TopoDS_Shape const* aShape, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* aMap, TopoDS_Shape* aResult) {
+    try { TNaming_CopyShape::CopyTool(*aShape, *aMap, *aResult); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TNaming_CopyShape_translate_shape_idmap_standard_transient_standard_transient_shape_handletnamingtranslatetool(TopoDS_Shape const* aShape, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* aMap, TopoDS_Shape* aResult, Handle(TNaming_TranslateTool) const* TrTool) {
+    try { TNaming_CopyShape::Translate(*aShape, *aMap, *aResult, *TrTool); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TopLoc_Location*> TNaming_CopyShape_translate_location_idmap_standard_transient_standard_transient(TopLoc_Location const* L, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* aMap) {
+    try { return {new TopLoc_Location(TNaming_CopyShape::Translate(*L, *aMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void TNaming_CopyShape_destructor(TNaming_CopyShape* self_) { delete self_; }
@@ -4050,6 +4110,14 @@ extern "C" const char* TNaming_Localizer_find_features_in_ancestors(TNaming_Loca
     try { self_->FindFeaturesInAncestors(*S, *In, *AncInFeatures); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TNaming_Localizer_go_back(TNaming_Localizer* self_, TopoDS_Shape const* S, TDF_Label const* Lab, int32_t Evol, NCollection_List_TopoDS_Shape* OldS, NCollection_List_Handle_TNaming_NamedShape* OldLab) {
+    try { self_->GoBack(*S, *Lab, static_cast<TNaming_Evolution>(Evol), *OldS, *OldLab); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TNaming_Localizer_backward(TNaming_Localizer* self_, Handle(TNaming_NamedShape) const* NS, TopoDS_Shape const* S, NCollection_Map_Handle_TNaming_NamedShape* Primitives, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* ValidShapes) {
+    try { self_->Backward(*NS, *S, *Primitives, *ValidShapes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TNaming_Localizer_find_neighbourg(TNaming_Localizer* self_, TopoDS_Shape const* Cont, TopoDS_Shape const* S, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* Neighbourg) {
     try { self_->FindNeighbourg(*Cont, *S, *Neighbourg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4122,6 +4190,10 @@ extern "C" OcctResult<int32_t> TNaming_Name_type_(const TNaming_Name* self_) {
 }
 extern "C" OcctResult<int32_t> TNaming_Name_shape_type(const TNaming_Name* self_) {
     try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TNaming_NamedShape const*> TNaming_Name_arguments(const TNaming_Name* self_) {
+    try { return {&(self_->Arguments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TNaming_Name_index(const TNaming_Name* self_) {
@@ -4358,6 +4430,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnResume)*> TNaming_NamedShape_inherited_D
     try { return {new Handle(TDF_DeltaOnResume)(self->DeltaOnResume()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TNaming_NamedShape_inherited_ExtendedDump(const TNaming_NamedShape* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TNaming_NamedShape_inherited_Forget(TNaming_NamedShape* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4443,6 +4519,10 @@ extern "C" const char* TNaming_Naming_references(const TNaming_Naming* self_, Ha
 extern "C" OcctResult<Standard_OStream*> TNaming_Naming_dump(TNaming_Naming* self_, Standard_OStream* anOS) {
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TNaming_Naming_extended_dump(const TNaming_Naming* self_, Standard_OStream* anOS, TDF_IDFilter const* aFilter, NCollection_IndexedMap_Handle_TDF_Attribute* aMap) {
+    try { self_->ExtendedDump(*anOS, *aFilter, *aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> TNaming_Naming_dynamic_type(const TNaming_Naming* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -4890,6 +4970,10 @@ extern "C" OcctResult<bool> TNaming_Selector_solve(const TNaming_Selector* self_
     try { return {self_->Solve(*Valid), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TNaming_Selector_arguments(const TNaming_Selector* self_, NCollection_Map_Handle_TDF_Attribute* args) {
+    try { self_->Arguments(*args); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> TNaming_Selector_is_identified(TDF_Label const* access, TopoDS_Shape const* selection, Handle(TNaming_NamedShape)* NS, bool Geometry) {
     try { return {TNaming_Selector::IsIdentified(*access, *selection, *NS, Geometry), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4994,6 +5078,10 @@ extern "C" OcctResult<TopoDS_Shape*> TNaming_Tool_generated_shape(TopoDS_Shape c
     try { return {new TopoDS_Shape(TNaming_Tool::GeneratedShape(*S, *Generation)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TNaming_Tool_collect(Handle(TNaming_NamedShape) const* NS, NCollection_Map_Handle_TNaming_NamedShape* Labels, bool OnlyModif) {
+    try { TNaming_Tool::Collect(*NS, *Labels, OnlyModif); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> TNaming_Tool_has_label(TDF_Label const* access, TopoDS_Shape const* aShape) {
     try { return {TNaming_Tool::HasLabel(*access, *aShape), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5058,6 +5146,18 @@ extern "C" const char* TNaming_TranslateTool_make_comp_solid(const TNaming_Trans
 }
 extern "C" const char* TNaming_TranslateTool_make_compound(const TNaming_TranslateTool* self_, TopoDS_Shape* S) {
     try { self_->MakeCompound(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TNaming_TranslateTool_update_vertex(const TNaming_TranslateTool* self_, TopoDS_Shape const* S1, TopoDS_Shape* S2, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* M) {
+    try { self_->UpdateVertex(*S1, *S2, *M); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TNaming_TranslateTool_update_edge(const TNaming_TranslateTool* self_, TopoDS_Shape const* S1, TopoDS_Shape* S2, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* M) {
+    try { self_->UpdateEdge(*S1, *S2, *M); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TNaming_TranslateTool_update_face(const TNaming_TranslateTool* self_, TopoDS_Shape const* S1, TopoDS_Shape* S2, NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* M) {
+    try { self_->UpdateFace(*S1, *S2, *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TNaming_TranslateTool_update_shape(const TNaming_TranslateTool* self_, TopoDS_Shape const* S1, TopoDS_Shape* S2) {
@@ -5345,6 +5445,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnResume)*> TNaming_UsedShapes_inherited_D
 extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TNaming_UsedShapes_inherited_DeltaOnModification(const TNaming_UsedShapes* self, Handle(TDF_Attribute) const& anOldAttribute) {
     try { return {new Handle(TDF_DeltaOnModification)(self->DeltaOnModification(anOldAttribute)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TNaming_UsedShapes_inherited_ExtendedDump(const TNaming_UsedShapes* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TNaming_UsedShapes_inherited_Forget(TNaming_UsedShapes* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }

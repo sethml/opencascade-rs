@@ -341,12 +341,19 @@ unsafe extern "C" {
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
     ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:34 - `BinTObjDrivers_IntSparseArrayDriver::Paste()`
-    pub fn BinTObjDrivers_IntSparseArrayDriver_paste(
+    pub fn BinTObjDrivers_IntSparseArrayDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
         theSource: *const BinObjMgt_Persistent,
         theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:40 - `BinTObjDrivers_IntSparseArrayDriver::Paste()`
+    pub fn BinTObjDrivers_IntSparseArrayDriver_paste_handletdfattribute_persistent_imap_standard_transient(
+        self_: *const BinTObjDrivers_IntSparseArrayDriver,
+        theSource: *const Handle_TDF_Attribute,
+        theTarget: *mut BinObjMgt_Persistent,
+        theRelocTable: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_IntSparseArrayDriver.hxx`:49 - `BinTObjDrivers_IntSparseArrayDriver::DynamicType()`
     pub fn BinTObjDrivers_IntSparseArrayDriver_dynamic_type(
         self_: *const BinTObjDrivers_IntSparseArrayDriver,
@@ -458,12 +465,19 @@ unsafe extern "C" {
         self_: *const BinTObjDrivers_ModelDriver,
     ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:34 - `BinTObjDrivers_ModelDriver::Paste()`
-    pub fn BinTObjDrivers_ModelDriver_paste(
+    pub fn BinTObjDrivers_ModelDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const BinTObjDrivers_ModelDriver,
         Source: *const BinObjMgt_Persistent,
         Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:43 - `BinTObjDrivers_ModelDriver::Paste()`
+    pub fn BinTObjDrivers_ModelDriver_paste_handletdfattribute_persistent_imap_standard_transient(
+        self_: *const BinTObjDrivers_ModelDriver,
+        Source: *const Handle_TDF_Attribute,
+        Target: *mut BinObjMgt_Persistent,
+        RelocTable: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_ModelDriver.hxx`:54 - `BinTObjDrivers_ModelDriver::DynamicType()`
     pub fn BinTObjDrivers_ModelDriver_dynamic_type(
         self_: *const BinTObjDrivers_ModelDriver,
@@ -574,12 +588,19 @@ unsafe extern "C" {
         self_: *const BinTObjDrivers_ObjectDriver,
     ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:34 - `BinTObjDrivers_ObjectDriver::Paste()`
-    pub fn BinTObjDrivers_ObjectDriver_paste(
+    pub fn BinTObjDrivers_ObjectDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const BinTObjDrivers_ObjectDriver,
         Source: *const BinObjMgt_Persistent,
         Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:43 - `BinTObjDrivers_ObjectDriver::Paste()`
+    pub fn BinTObjDrivers_ObjectDriver_paste_handletdfattribute_persistent_imap_standard_transient(
+        self_: *const BinTObjDrivers_ObjectDriver,
+        Source: *const Handle_TDF_Attribute,
+        Target: *mut BinObjMgt_Persistent,
+        RelocTable: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_ObjectDriver.hxx`:54 - `BinTObjDrivers_ObjectDriver::DynamicType()`
     pub fn BinTObjDrivers_ObjectDriver_dynamic_type(
         self_: *const BinTObjDrivers_ObjectDriver,
@@ -690,12 +711,19 @@ unsafe extern "C" {
         self_: *const BinTObjDrivers_ReferenceDriver,
     ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:34 - `BinTObjDrivers_ReferenceDriver::Paste()`
-    pub fn BinTObjDrivers_ReferenceDriver_paste(
+    pub fn BinTObjDrivers_ReferenceDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const BinTObjDrivers_ReferenceDriver,
         Source: *const BinObjMgt_Persistent,
         Target: *const Handle_TDF_Attribute,
         RelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:41 - `BinTObjDrivers_ReferenceDriver::Paste()`
+    pub fn BinTObjDrivers_ReferenceDriver_paste_handletdfattribute_persistent_imap_standard_transient(
+        self_: *const BinTObjDrivers_ReferenceDriver,
+        Source: *const Handle_TDF_Attribute,
+        Target: *mut BinObjMgt_Persistent,
+        RelocTable: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_ReferenceDriver.hxx`:54 - `BinTObjDrivers_ReferenceDriver::DynamicType()`
     pub fn BinTObjDrivers_ReferenceDriver_dynamic_type(
         self_: *const BinTObjDrivers_ReferenceDriver,
@@ -807,12 +835,19 @@ unsafe extern "C" {
         self_: *const BinTObjDrivers_XYZDriver,
     ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:33 - `BinTObjDrivers_XYZDriver::Paste()`
-    pub fn BinTObjDrivers_XYZDriver_paste(
+    pub fn BinTObjDrivers_XYZDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const BinTObjDrivers_XYZDriver,
         theSource: *const BinObjMgt_Persistent,
         theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:39 - `BinTObjDrivers_XYZDriver::Paste()`
+    pub fn BinTObjDrivers_XYZDriver_paste_handletdfattribute_persistent_imap_standard_transient(
+        self_: *const BinTObjDrivers_XYZDriver,
+        theSource: *const Handle_TDF_Attribute,
+        theTarget: *mut BinObjMgt_Persistent,
+        theRelocTable: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BinTObjDrivers_XYZDriver.hxx`:48 - `BinTObjDrivers_XYZDriver::DynamicType()`
     pub fn BinTObjDrivers_XYZDriver_dynamic_type(
         self_: *const BinTObjDrivers_XYZDriver,

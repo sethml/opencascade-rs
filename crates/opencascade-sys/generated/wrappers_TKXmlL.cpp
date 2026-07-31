@@ -19,7 +19,6 @@
 #include <Standard_Type.hxx>
 #include <Storage_Data.hxx>
 #include <Storage_HeaderData.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
@@ -29,7 +28,6 @@
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_NamespaceDef.hxx>
 #include <XmlMDF.hxx>
-#include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
 #include <XmlMDF_DerivedDriver.hxx>
 #include <XmlMDF_ReferenceDriver.hxx>
@@ -1236,6 +1234,10 @@ extern "C" const char* XmlMDF_ADriverTable_add_derived_driver_handletdfattribute
 extern "C" OcctResult<Handle(Standard_Type) const*> XmlMDF_ADriverTable_add_derived_driver_charptr(XmlMDF_ADriverTable* self_, const char* theDerivedType) {
     try { return {&(self_->AddDerivedDriver(theDerivedType)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* XmlMDF_ADriverTable_create_drv_map(XmlMDF_ADriverTable* self_, NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* theDriverMap) {
+    try { self_->CreateDrvMap(*theDriverMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> XmlMDF_ADriverTable_get_driver(XmlMDF_ADriverTable* self_, Handle(Standard_Type) const* theType, Handle(XmlMDF_ADriver)* theDriver) {
     try { return {self_->GetDriver(*theType, *theDriver), nullptr}; }

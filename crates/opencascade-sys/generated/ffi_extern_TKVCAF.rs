@@ -370,6 +370,13 @@ unsafe extern "C" {
         self_: *const TPrsStd_AISPresentation,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TPrsStd_AISPresentation_inherited_ExtendedDump(
+        self_: *const TPrsStd_AISPresentation,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TPrsStd_AISPresentation_inherited_Forget(
         self_: *mut TPrsStd_AISPresentation,
@@ -651,6 +658,13 @@ unsafe extern "C" {
     pub fn TPrsStd_AISViewer_inherited_References(
         self_: *const TPrsStd_AISViewer,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TPrsStd_AISViewer_inherited_ExtendedDump(
+        self_: *const TPrsStd_AISViewer,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TPrsStd_AISViewer_inherited_Forget(

@@ -1152,6 +1152,23 @@ impl Function {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -1893,6 +1910,23 @@ impl GraphNode {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
@@ -2989,6 +3023,23 @@ impl Logbook {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -3705,6 +3756,23 @@ impl Scope {
             crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }

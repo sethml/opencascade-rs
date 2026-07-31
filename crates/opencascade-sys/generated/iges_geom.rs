@@ -2445,7 +2445,7 @@ impl Boundary {
         aType: i32,
         aPreference: i32,
         aSurface: &crate::ffi_types::Handle_IGESData_IGESEntity,
-        allModelCurves: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allModelCurves: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         allSenses: &crate::ffi_types::Handle_NCollection_HArray1_int,
         allParameterCurves: &crate::ffi_types::Handle_IGESBasic_HArray1OfHArray1OfIGESEntity,
     ) {
@@ -2553,9 +2553,8 @@ impl Boundary {
     pub fn parameter_curves(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESGeom_Boundary_parameter_curves(
@@ -3499,7 +3498,7 @@ impl BoundedSurface {
         &mut self,
         aType: i32,
         aSurface: &crate::ffi_types::Handle_IGESData_IGESEntity,
-        allBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
+        allBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESGeom_BoundedSurface_init(
@@ -5580,7 +5579,7 @@ impl CompositeCurve {
     /// - allEntities : Constituent Entities of the composite curve
     pub fn init(
         &mut self,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESGeom_CompositeCurve_init(self as *mut Self, allEntities)
@@ -28432,7 +28431,7 @@ impl TrimmedSurface {
         aSurface: &crate::ffi_types::Handle_IGESData_IGESEntity,
         aFlag: i32,
         anOuter: &crate::ffi_types::Handle_IGESGeom_CurveOnSurface,
-        allInners: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
+        allInners: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESGeom_TrimmedSurface_init(

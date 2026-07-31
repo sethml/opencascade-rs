@@ -1636,7 +1636,12 @@ impl MeshBuilder {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
-    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMesh::IMeshTools_MeshBuilder_inherited_GetMessageStrings(
@@ -2306,7 +2311,12 @@ impl ModelBuilder {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
-    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMesh::IMeshTools_ModelBuilder_inherited_GetMessageStrings(

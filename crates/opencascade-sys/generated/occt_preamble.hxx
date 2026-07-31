@@ -65,6 +65,9 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
     catch (...) { return occt_handle_exception(); }
 
 #include <Adaptor3d_Curve.hxx>
+#include <Adaptor3d_Surface.hxx>
+#include <AdvApp2Var_Node.hxx>
+#include <AdvApp2Var_Patch.hxx>
 #include <AppDef_MultiPointConstraint.hxx>
 #include <AppParCurves_ConstraintCouple.hxx>
 #include <AppParCurves_MultiCurve.hxx>
@@ -74,6 +77,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <BOPDS_FaceInfo.hxx>
 #include <BOPDS_Pair.hxx>
 #include <BOPDS_Pave.hxx>
+#include <BOPDS_PaveBlock.hxx>
 #include <BOPDS_Point.hxx>
 #include <BOPDS_VectorOfInterfEE.hxx>
 #include <BOPDS_VectorOfInterfEF.hxx>
@@ -99,10 +103,13 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <BRepGraph_RefId.hxx>
 #include <BRepGraph_UID.hxx>
 #include <BRepLProp_SLProps.hxx>
+#include <BRepMesh_DiscretAlgoFactory.hxx>
 #include <BRepMesh_Vertex.hxx>
 #include <BRepOffset_Interval.hxx>
 #include <BRepOffset_Offset.hxx>
 #include <BRepTopAdaptor_Tool.hxx>
+#include <BRep_CurveRepresentation.hxx>
+#include <BRep_PointRepresentation.hxx>
 #include <BVH_Box.hxx>
 #include <BVH_Builder.hxx>
 #include <BVH_RadixSorter.hxx>
@@ -110,30 +117,44 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <BinObjMgt_PByte.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Range.hxx>
+#include <CDM_MetaData.hxx>
 #include <ChFiDS_CircSection.hxx>
+#include <ChFiDS_ElSpine.hxx>
+#include <ChFiDS_Stripe.hxx>
 #include <ChFiDS_SurfData.hxx>
+#include <Expr_GeneralExpression.hxx>
+#include <Expr_NamedExpression.hxx>
+#include <Expr_NamedFunction.hxx>
+#include <Expr_NamedUnknown.hxx>
 #include <Extrema_POnCurv.hxx>
 #include <Extrema_POnSurf.hxx>
 #include <Geom2dGridEval.hxx>
 #include <Geom2d_BSplineCurve.hxx>
+#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_BoundedCurve.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomGridEval.hxx>
 #include <GeomLProp_SLProps.hxx>
 #include <GeomPlate_Aij.hxx>
 #include <Geom_BSplineCurve.hxx>
+#include <Geom_BezierCurve.hxx>
+#include <Geom_BezierSurface.hxx>
 #include <Geom_BoundedCurve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Surface.hxx>
 #include <HLRAlgo_BiPoint.hxx>
 #include <HLRAlgo_Interference.hxx>
+#include <HLRAlgo_PolyData.hxx>
 #include <HLRAlgo_PolyHidingData.hxx>
+#include <HLRAlgo_PolyInternalNode.hxx>
 #include <HLRAlgo_PolyInternalSegment.hxx>
+#include <HLRAlgo_PolyShellData.hxx>
 #include <HLRAlgo_TriangleData.hxx>
 #include <HLRBRep_EdgeData.hxx>
 #include <HLRBRep_FaceData.hxx>
 #include <HLRBRep_ShapeBounds.hxx>
 #include <IFSelect_ActFunc.hxx>
+#include <IFSelect_Selection.hxx>
 #include <IGESAppli_FiniteElement.hxx>
 #include <IGESAppli_Node.hxx>
 #include <IGESData_IGESEntity.hxx>
@@ -154,6 +175,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <IGESSolid_Shell.hxx>
 #include <IGESSolid_VertexList.hxx>
 #include <IMeshData_Edge.hxx>
+#include <IntPatch_Line.hxx>
 #include <IntPatch_Point.hxx>
 #include <IntPolyh_Couple.hxx>
 #include <IntRes2d_IntersectionPoint.hxx>
@@ -167,8 +189,14 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <IntTools_Range.hxx>
 #include <IntTools_Root.hxx>
 #include <IntTools_SurfaceRangeSample.hxx>
+#include <Law_Function.hxx>
+#include <MAT2d_Connexion.hxx>
+#include <MAT_Arc.hxx>
+#include <MAT_BasicElt.hxx>
+#include <Message_Alert.hxx>
 #include <Message_MetricType.hxx>
 #include <Message_Msg.hxx>
+#include <Message_Printer.hxx>
 #include <NCollection_Array1.hxx>
 #include <NCollection_Array2.hxx>
 #include <NCollection_DataMap.hxx>
@@ -190,11 +218,14 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <NCollection_UBTree.hxx>
 #include <NCollection_Vec4.hxx>
 #include <OSD_StreamBuffer.hxx>
+#include <PCDM_Document.hxx>
 #include <PCDM_Reference.hxx>
 #include <Plate_PinpointConstraint.hxx>
 #include <Poly_Triangle.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Quantity_Color.hxx>
 #include <RWObj_Material.hxx>
+#include <STEPCAFControl_ExternFile.hxx>
 #include <STEPSelections_AssemblyLink.hxx>
 #include <SelectMgr_EntityOwner.hxx>
 #include <ShapeAnalysis_FreeBoundData.hxx>
@@ -202,6 +233,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <Standard_GUID.hxx>
 #include <Standard_Persistent.hxx>
 #include <Standard_Transient.hxx>
+#include <StdObjMgt_Persistent.hxx>
 #include <StdStorage_Root.hxx>
 #include <StepAP203_ApprovedItem.hxx>
 #include <StepAP203_CertifiedItem.hxx>
@@ -281,6 +313,7 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <StepShape_OrientedEdge.hxx>
 #include <StepShape_ShapeDimensionRepresentationItem.hxx>
 #include <StepShape_Shell.hxx>
+#include <StepShape_TopologicalRepresentationItem.hxx>
 #include <StepShape_ValueQualifier.hxx>
 #include <StepVisual_AnnotationPlaneElement.hxx>
 #include <StepVisual_BoxCharacteristicSelect.hxx>
@@ -306,12 +339,21 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HAsciiString.hxx>
 #include <TCollection_HExtendedString.hxx>
+#include <TDF_Attribute.hxx>
+#include <TDF_AttributeDelta.hxx>
+#include <TDF_Delta.hxx>
 #include <TDF_Label.hxx>
+#include <TDocStd_ApplicationDelta.hxx>
+#include <TDocStd_Document.hxx>
+#include <TNaming_NamedShape.hxx>
 #include <TNaming_PtrRefShape.hxx>
 #include <TObj_Object.hxx>
 #include <TopAbs_State.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepBuild_Loop.hxx>
+#include <TopOpeBRepBuild_Pave.hxx>
 #include <TopOpeBRepBuild_VertexInfo.hxx>
+#include <TopOpeBRepDS_Interference.hxx>
 #include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
 #include <TopOpeBRepDS_ShapeData.hxx>
 #include <TopOpeBRepDS_ShapeWithState.hxx>
@@ -319,15 +361,22 @@ __attribute__((noinline)) static const char* occt_handle_exception() {
 #include <TopOpeBRep_Point2d.hxx>
 #include <TopTools_ShapeMapHasher.hxx>
 #include <TopoDS_Shape.hxx>
+#include <TopoDS_TShape.hxx>
 #include <TransferBRep_TransferResultInfo.hxx>
 #include <Transfer_Finder.hxx>
 #include <Units_Quantity.hxx>
 #include <Units_Token.hxx>
 #include <Units_Unit.hxx>
+#include <VrmlData_Appearance.hxx>
+#include <XCAFDimTolObjects_DatumObject.hxx>
 #include <XCAFDimTolObjects_DatumSingleModif.hxx>
 #include <XCAFDimTolObjects_DimensionModif.hxx>
+#include <XCAFDimTolObjects_DimensionObject.hxx>
 #include <XCAFDimTolObjects_GeomToleranceModif.hxx>
+#include <XCAFDimTolObjects_GeomToleranceObject.hxx>
+#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFPrs_Style.hxx>
+#include <XmlMDF_ADriver.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Lin.hxx>
@@ -364,7 +413,7 @@ typedef BVH_Box<double, 2> BVH_Box_double_2;
 typedef BVH_Builder<double, 3> BVH_Builder_double_3;
 typedef BVH_Tree<double, 3> BVH_Tree_double_3;
 typedef GeomLProp_SLPropsBase<BRepAdaptor_Surface> GeomLProp_SLPropsBase_BRepAdaptor_Surface;
-typedef GeomLProp_SLPropsBase<occ::handle<Geom_Surface>> GeomLProp_SLPropsBase_occ_handle_Geom_Surface;
+typedef GeomLProp_SLPropsBase<occ::handle<Geom_Surface>> GeomLProp_SLPropsBase_Handle_Geom_Surface;
 typedef NCollection_Array1<AppDef_MultiPointConstraint> NCollection_Array1_AppDef_MultiPointConstraint;
 typedef NCollection_Array1<AppParCurves_MultiPoint> NCollection_Array1_AppParCurves_MultiPoint;
 typedef NCollection_Array1<BRepGraphInc::ParityOrientation> NCollection_Array1_BRepGraphInc_ParityOrientation;
@@ -411,6 +460,16 @@ typedef NCollection_Array1<gp_Vec2d> NCollection_Array1_gp_Vec2d;
 typedef NCollection_Array1<gp_Vec> NCollection_Array1_gp_Vec;
 typedef NCollection_Array1<gp_XYZ> NCollection_Array1_gp_XYZ;
 typedef NCollection_Array1<int> NCollection_Array1_int;
+typedef NCollection_Array1<occ::handle<Expr_GeneralExpression>> NCollection_Array1_Handle_Expr_GeneralExpression;
+typedef NCollection_Array1<occ::handle<Expr_NamedUnknown>> NCollection_Array1_Handle_Expr_NamedUnknown;
+typedef NCollection_Array1<occ::handle<Geom2d_BSplineCurve>> NCollection_Array1_Handle_Geom2d_BSplineCurve;
+typedef NCollection_Array1<occ::handle<Geom2d_BezierCurve>> NCollection_Array1_Handle_Geom2d_BezierCurve;
+typedef NCollection_Array1<occ::handle<Geom_BSplineCurve>> NCollection_Array1_Handle_Geom_BSplineCurve;
+typedef NCollection_Array1<occ::handle<Geom_BezierCurve>> NCollection_Array1_Handle_Geom_BezierCurve;
+typedef NCollection_Array1<occ::handle<Geom_Curve>> NCollection_Array1_Handle_Geom_Curve;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyData>> NCollection_Array1_Handle_HLRAlgo_PolyData;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>> NCollection_Array1_Handle_HLRAlgo_PolyInternalNode;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> NCollection_Array1_Handle_HLRAlgo_PolyShellData;
 typedef NCollection_Array2<GeomGridEval::SurfD1> NCollection_Array2_GeomGridEval_SurfD1;
 typedef NCollection_Array2<GeomGridEval::SurfD2> NCollection_Array2_GeomGridEval_SurfD2;
 typedef NCollection_Array2<GeomGridEval::SurfD3> NCollection_Array2_GeomGridEval_SurfD3;
@@ -419,13 +478,19 @@ typedef NCollection_Array2<gp_Pnt> NCollection_Array2_gp_Pnt;
 typedef NCollection_Array2<gp_Vec> NCollection_Array2_gp_Vec;
 typedef NCollection_Array2<gp_XYZ> NCollection_Array2_gp_XYZ;
 typedef NCollection_Array2<int> NCollection_Array2_int;
+typedef NCollection_Array2<occ::handle<Geom_BezierSurface>> NCollection_Array2_Handle_Geom_BezierSurface;
 typedef NCollection_DataMap<TCollection_AsciiString, RWObj_Material> NCollection_DataMap_TCollection_AsciiString_RWObj_Material;
 typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString;
 typedef NCollection_DataMap<TCollection_AsciiString, TopoDS_Shape> NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape;
 typedef NCollection_DataMap<TCollection_AsciiString, int> NCollection_DataMap_TCollection_AsciiString_int;
+typedef NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile;
+typedef NCollection_DataMap<TCollection_AsciiString, occ::handle<XmlMDF_ADriver>> NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver;
 typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString;
 typedef NCollection_DataMap<TCollection_ExtendedString, double> NCollection_DataMap_TCollection_ExtendedString_double;
 typedef NCollection_DataMap<TCollection_ExtendedString, int> NCollection_DataMap_TCollection_ExtendedString_int;
+typedef NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>> NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData;
+typedef NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double;
+typedef NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int;
 typedef NCollection_DataMap<TCollection_ExtendedString, uint8_t> NCollection_DataMap_TCollection_ExtendedString_uint8_t;
 typedef NCollection_DataMap<TDF_Label, TDF_Label> NCollection_DataMap_TDF_Label_TDF_Label;
 typedef NCollection_DataMap<TDF_Label, int> NCollection_DataMap_TDF_Label_int;
@@ -444,10 +509,24 @@ typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 typedef NCollection_DataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher> NCollection_DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher;
 typedef NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher> NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher;
 typedef NCollection_DataMap<TopoDS_Shape, int> NCollection_DataMap_TopoDS_Shape_int;
+typedef NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher> NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher;
+typedef NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher;
+typedef NCollection_DataMap<gp_Pnt, occ::handle<Standard_Transient>> NCollection_DataMap_gp_Pnt_Handle_Standard_Transient;
 typedef NCollection_DataMap<int, NCollection_List<TopoDS_Shape>> NCollection_DataMap_int_NCollection_List_TopoDS_Shape;
 typedef NCollection_DataMap<int, TColStd_PackedMapOfInteger> NCollection_DataMap_int_TColStd_PackedMapOfInteger;
 typedef NCollection_DataMap<int, TopoDS_Shape> NCollection_DataMap_int_TopoDS_Shape;
 typedef NCollection_DataMap<int, int> NCollection_DataMap_int_int;
+typedef NCollection_DataMap<int, occ::handle<MAT_BasicElt>> NCollection_DataMap_int_Handle_MAT_BasicElt;
+typedef NCollection_DataMap<occ::handle<Standard_Transient>, NCollection_List<Message_Msg>> NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg;
+typedef NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>> NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient;
+typedef NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>> NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent;
+typedef NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape;
+typedef NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape;
+typedef NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label;
+typedef NCollection_DataMap<occ::handle<TDF_Attribute>, occ::handle<TDF_Attribute>> NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute;
+typedef NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>> NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance;
+typedef NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>> NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject;
+typedef NCollection_DataMap<occ::handle<XCAFDoc_VisMaterial>, occ::handle<XCAFDoc_VisMaterial>> NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial;
 typedef NCollection_DoubleMap<int, TDF_Label> NCollection_DoubleMap_int_TDF_Label;
 typedef NCollection_DynamicArray<BOPDS_Curve> NCollection_DynamicArray_BOPDS_Curve;
 typedef NCollection_DynamicArray<BOPDS_FaceInfo> NCollection_DynamicArray_BOPDS_FaceInfo;
@@ -468,6 +547,8 @@ typedef NCollection_DynamicArray<double> NCollection_DynamicArray_double;
 typedef NCollection_DynamicArray<gp_Pnt2d> NCollection_DynamicArray_gp_Pnt2d;
 typedef NCollection_DynamicArray<gp_XYZ> NCollection_DynamicArray_gp_XYZ;
 typedef NCollection_DynamicArray<int> NCollection_DynamicArray_int;
+typedef NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>> NCollection_DynamicArray_Handle_Adaptor3d_Surface;
+typedef NCollection_DynamicArray<occ::handle<Standard_Transient>> NCollection_DynamicArray_Handle_Standard_Transient;
 typedef NCollection_FlatDataMap<BRepGraph_ItemId, BRepGraph_ItemId> NCollection_FlatDataMap_BRepGraph_ItemId_BRepGraph_ItemId;
 typedef NCollection_FlatMap<BRepGraph_ItemUID> NCollection_FlatMap_BRepGraph_ItemUID;
 typedef NCollection_FlatMap<BRepGraph_NodeId> NCollection_FlatMap_BRepGraph_NodeId;
@@ -551,113 +632,114 @@ typedef NCollection_HArray1<gp_Vec> NCollection_HArray1_gp_Vec;
 typedef NCollection_HArray1<gp_XY> NCollection_HArray1_gp_XY;
 typedef NCollection_HArray1<gp_XYZ> NCollection_HArray1_gp_XYZ;
 typedef NCollection_HArray1<int> NCollection_HArray1_int;
-typedef NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>> NCollection_HArray1_opencascade_handle_Adaptor3d_Curve;
-typedef NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>> NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve;
-typedef NCollection_HArray1<opencascade::handle<Geom2d_Curve>> NCollection_HArray1_opencascade_handle_Geom2d_Curve;
-typedef NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>> NCollection_HArray1_opencascade_handle_Geom_BSplineCurve;
-typedef NCollection_HArray1<opencascade::handle<Geom_Curve>> NCollection_HArray1_opencascade_handle_Geom_Curve;
-typedef NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>> NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement;
-typedef NCollection_HArray1<opencascade::handle<IGESAppli_Node>> NCollection_HArray1_opencascade_handle_IGESAppli_Node;
-typedef NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> NCollection_HArray1_opencascade_handle_IGESData_IGESEntity;
-typedef NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>> NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity;
-typedef NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>> NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity;
-typedef NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>> NCollection_HArray1_opencascade_handle_IGESDefs_TabularData;
-typedef NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>> NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote;
-typedef NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>> NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow;
-typedef NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>> NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint;
-typedef NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>> NCollection_HArray1_opencascade_handle_IGESGeom_Boundary;
-typedef NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>> NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface;
-typedef NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>> NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix;
-typedef NCollection_HArray1<opencascade::handle<IGESGraph_Color>> NCollection_HArray1_opencascade_handle_IGESGraph_Color;
-typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>> NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate;
-typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>> NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef;
-typedef NCollection_HArray1<opencascade::handle<IGESSolid_Face>> NCollection_HArray1_opencascade_handle_IGESSolid_Face;
-typedef NCollection_HArray1<opencascade::handle<IGESSolid_Loop>> NCollection_HArray1_opencascade_handle_IGESSolid_Loop;
-typedef NCollection_HArray1<opencascade::handle<IGESSolid_Shell>> NCollection_HArray1_opencascade_handle_IGESSolid_Shell;
-typedef NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>> NCollection_HArray1_opencascade_handle_IGESSolid_VertexList;
-typedef NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember>>>> NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember;
-typedef NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>>> NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember;
-typedef NCollection_HArray1<opencascade::handle<Standard_Persistent>> NCollection_HArray1_opencascade_handle_Standard_Persistent;
-typedef NCollection_HArray1<opencascade::handle<Standard_Transient>> NCollection_HArray1_opencascade_handle_Standard_Transient;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_Approval>> NCollection_HArray1_opencascade_handle_StepBasic_Approval;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_Document>> NCollection_HArray1_opencascade_handle_StepBasic_Document;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_Organization>> NCollection_HArray1_opencascade_handle_StepBasic_Organization;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_Person>> NCollection_HArray1_opencascade_handle_StepBasic_Person;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_Product>> NCollection_HArray1_opencascade_handle_StepBasic_Product;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> NCollection_HArray1_opencascade_handle_StepBasic_ProductContext;
-typedef NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit;
-typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>> NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference;
-typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>> NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment;
-typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>> NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement;
-typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>> NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket;
-typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition;
-typedef NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>> NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection;
-typedef NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>> NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember;
-typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>> NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset;
-typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>> NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease;
-typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>> NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval;
-typedef NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation;
-typedef NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>> NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation;
-typedef NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint;
-typedef NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>> NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment;
-typedef NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation;
-typedef NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation;
-typedef NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem;
-typedef NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>> NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect;
-typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet;
-typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet;
-typedef NCollection_HArray1<opencascade::handle<StepShape_Edge>> NCollection_HArray1_opencascade_handle_StepShape_Edge;
-typedef NCollection_HArray1<opencascade::handle<StepShape_Face>> NCollection_HArray1_opencascade_handle_StepShape_Face;
-typedef NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> NCollection_HArray1_opencascade_handle_StepShape_FaceBound;
-typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell;
-typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge;
-typedef NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>> NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern;
-typedef NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>> NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment;
-typedef NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>> NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem;
-typedef NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>> NCollection_HArray1_opencascade_handle_TCollection_HAsciiString;
+typedef NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>> NCollection_HArray1_Handle_Adaptor3d_Curve;
+typedef NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>> NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+typedef NCollection_HArray1<opencascade::handle<Geom2d_Curve>> NCollection_HArray1_Handle_Geom2d_Curve;
+typedef NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>> NCollection_HArray1_Handle_Geom_BSplineCurve;
+typedef NCollection_HArray1<opencascade::handle<Geom_Curve>> NCollection_HArray1_Handle_Geom_Curve;
+typedef NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>> NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+typedef NCollection_HArray1<opencascade::handle<IGESAppli_Node>> NCollection_HArray1_Handle_IGESAppli_Node;
+typedef NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> NCollection_HArray1_Handle_IGESData_IGESEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>> NCollection_HArray1_Handle_IGESData_LineFontEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>> NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>> NCollection_HArray1_Handle_IGESDefs_TabularData;
+typedef NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>> NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+typedef NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>> NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+typedef NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>> NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>> NCollection_HArray1_Handle_IGESGeom_Boundary;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>> NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>> NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_Color>> NCollection_HArray1_Handle_IGESGraph_Color;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>> NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>> NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Face>> NCollection_HArray1_Handle_IGESSolid_Face;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Loop>> NCollection_HArray1_Handle_IGESSolid_Loop;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Shell>> NCollection_HArray1_Handle_IGESSolid_Shell;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>> NCollection_HArray1_Handle_IGESSolid_VertexList;
+typedef NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember>>>> NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember;
+typedef NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>>> NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember;
+typedef NCollection_HArray1<opencascade::handle<Standard_Persistent>> NCollection_HArray1_Handle_Standard_Persistent;
+typedef NCollection_HArray1<opencascade::handle<Standard_Transient>> NCollection_HArray1_Handle_Standard_Transient;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Approval>> NCollection_HArray1_Handle_StepBasic_Approval;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Document>> NCollection_HArray1_Handle_StepBasic_Document;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> NCollection_HArray1_Handle_StepBasic_NamedUnit;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Organization>> NCollection_HArray1_Handle_StepBasic_Organization;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Person>> NCollection_HArray1_Handle_StepBasic_Person;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Product>> NCollection_HArray1_Handle_StepBasic_Product;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> NCollection_HArray1_Handle_StepBasic_ProductContext;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>> NCollection_HArray1_Handle_StepDimTol_DatumReference;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>> NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>> NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>> NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+typedef NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>> NCollection_HArray1_Handle_StepElement_SurfaceSection;
+typedef NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>> NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>> NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>> NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>> NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>> NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+typedef NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>> NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>> NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Edge>> NCollection_HArray1_Handle_StepShape_Edge;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Face>> NCollection_HArray1_Handle_StepShape_Face;
+typedef NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> NCollection_HArray1_Handle_StepShape_FaceBound;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> NCollection_HArray1_Handle_StepShape_OrientedEdge;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>> NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>> NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>> NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+typedef NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>> NCollection_HArray1_Handle_TCollection_HAsciiString;
 typedef NCollection_HArray2<TopoDS_Shape> NCollection_HArray2_TopoDS_Shape;
 typedef NCollection_HArray2<double> NCollection_HArray2_double;
 typedef NCollection_HArray2<gp_Pnt2d> NCollection_HArray2_gp_Pnt2d;
 typedef NCollection_HArray2<gp_Pnt> NCollection_HArray2_gp_Pnt;
 typedef NCollection_HArray2<gp_XYZ> NCollection_HArray2_gp_XYZ;
 typedef NCollection_HArray2<int> NCollection_HArray2_int;
-typedef NCollection_HArray2<opencascade::handle<Geom_Surface>> NCollection_HArray2_opencascade_handle_Geom_Surface;
+typedef NCollection_HArray2<opencascade::handle<Geom_Surface>> NCollection_HArray2_Handle_Geom_Surface;
 typedef NCollection_HArray2<opencascade::handle<NCollection_HArray1<double>>> NCollection_HArray2_opencascade_handle_NCollection_HArray1_double;
 typedef NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>> NCollection_HArray2_opencascade_handle_NCollection_HArray1_int;
-typedef NCollection_HArray2<opencascade::handle<Standard_Transient>> NCollection_HArray2_opencascade_handle_Standard_Transient;
-typedef NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint;
-typedef NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch>> NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch;
+typedef NCollection_HArray2<opencascade::handle<Standard_Transient>> NCollection_HArray2_Handle_Standard_Transient;
+typedef NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> NCollection_HArray2_Handle_StepGeom_CartesianPoint;
+typedef NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch>> NCollection_HArray2_Handle_StepGeom_SurfacePatch;
 typedef NCollection_HSequence<TCollection_AsciiString> NCollection_HSequence_TCollection_AsciiString;
 typedef NCollection_HSequence<TCollection_ExtendedString> NCollection_HSequence_TCollection_ExtendedString;
 typedef NCollection_HSequence<TopoDS_Shape> NCollection_HSequence_TopoDS_Shape;
 typedef NCollection_HSequence<double> NCollection_HSequence_double;
 typedef NCollection_HSequence<int> NCollection_HSequence_int;
-typedef NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>> NCollection_HSequence_opencascade_handle_ChFiDS_SurfData;
-typedef NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>> NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve;
-typedef NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>> NCollection_HSequence_opencascade_handle_Geom_BoundedCurve;
+typedef NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>> NCollection_HSequence_Handle_ChFiDS_SurfData;
+typedef NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>> NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+typedef NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>> NCollection_HSequence_Handle_Geom_BoundedCurve;
 typedef NCollection_HSequence<opencascade::handle<NCollection_HSequence<gp_Pnt>>> NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt;
-typedef NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink;
-typedef NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData;
-typedef NCollection_HSequence<opencascade::handle<Standard_Transient>> NCollection_HSequence_opencascade_handle_Standard_Transient;
-typedef NCollection_HSequence<opencascade::handle<StdStorage_Root>> NCollection_HSequence_opencascade_handle_StdStorage_Root;
-typedef NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition;
-typedef NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>> NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial;
-typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship;
-typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation;
-typedef NCollection_HSequence<opencascade::handle<Storage_Root>> NCollection_HSequence_opencascade_handle_Storage_Root;
-typedef NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>> NCollection_HSequence_opencascade_handle_TCollection_HAsciiString;
-typedef NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>> NCollection_HSequence_opencascade_handle_TCollection_HExtendedString;
-typedef NCollection_HSequence<opencascade::handle<TObj_Object>> NCollection_HSequence_opencascade_handle_TObj_Object;
-typedef NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo;
-typedef NCollection_HSequence<opencascade::handle<Transfer_Finder>> NCollection_HSequence_opencascade_handle_Transfer_Finder;
-typedef NCollection_HSequence<opencascade::handle<Units_Quantity>> NCollection_HSequence_opencascade_handle_Units_Quantity;
-typedef NCollection_HSequence<opencascade::handle<Units_Token>> NCollection_HSequence_opencascade_handle_Units_Token;
-typedef NCollection_HSequence<opencascade::handle<Units_Unit>> NCollection_HSequence_opencascade_handle_Units_Unit;
+typedef NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+typedef NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+typedef NCollection_HSequence<opencascade::handle<Standard_Transient>> NCollection_HSequence_Handle_Standard_Transient;
+typedef NCollection_HSequence<opencascade::handle<StdStorage_Root>> NCollection_HSequence_Handle_StdStorage_Root;
+typedef NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+typedef NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>> NCollection_HSequence_Handle_StepElement_ElementMaterial;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+typedef NCollection_HSequence<opencascade::handle<Storage_Root>> NCollection_HSequence_Handle_Storage_Root;
+typedef NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>> NCollection_HSequence_Handle_TCollection_HAsciiString;
+typedef NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>> NCollection_HSequence_Handle_TCollection_HExtendedString;
+typedef NCollection_HSequence<opencascade::handle<TObj_Object>> NCollection_HSequence_Handle_TObj_Object;
+typedef NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+typedef NCollection_HSequence<opencascade::handle<Transfer_Finder>> NCollection_HSequence_Handle_Transfer_Finder;
+typedef NCollection_HSequence<opencascade::handle<Units_Quantity>> NCollection_HSequence_Handle_Units_Quantity;
+typedef NCollection_HSequence<opencascade::handle<Units_Token>> NCollection_HSequence_Handle_Units_Token;
+typedef NCollection_HSequence<opencascade::handle<Units_Unit>> NCollection_HSequence_Handle_Units_Unit;
 typedef NCollection_IndexedDataMap<TCollection_AsciiString, Standard_DumpValue> NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue;
 typedef NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString;
 typedef NCollection_IndexedDataMap<TCollection_AsciiString, int> NCollection_IndexedDataMap_TCollection_AsciiString_int;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<Standard_Transient>> NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient;
 typedef NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape> NCollection_IndexedDataMap_TDF_Label_TopoDS_Shape;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, Bnd_Box> NCollection_IndexedDataMap_TopoDS_Shape_Bnd_Box;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher;
@@ -667,11 +749,16 @@ typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, To
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> NCollection_IndexedDataMap_TopoDS_Shape_XCAFPrs_Style_TopTools_ShapeMapHasher;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher> NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher;
+typedef NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>> NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int;
+typedef NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>> NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient;
 typedef NCollection_IndexedMap<Message_MetricType> NCollection_IndexedMap_Message_MetricType;
 typedef NCollection_IndexedMap<TCollection_AsciiString> NCollection_IndexedMap_TCollection_AsciiString;
 typedef NCollection_IndexedMap<TDF_Label> NCollection_IndexedMap_TDF_Label;
 typedef NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher;
 typedef NCollection_IndexedMap<TopoDS_Shape> NCollection_IndexedMap_TopoDS_Shape;
+typedef NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> NCollection_IndexedMap_Handle_BOPDS_PaveBlock;
+typedef NCollection_IndexedMap<occ::handle<Standard_Transient>> NCollection_IndexedMap_Handle_Standard_Transient;
+typedef NCollection_IndexedMap<occ::handle<TDF_Attribute>> NCollection_IndexedMap_Handle_TDF_Attribute;
 typedef NCollection_LinearVector<BRepGraph_ChildRefId> NCollection_LinearVector_BRepGraph_ChildRefId;
 typedef NCollection_LinearVector<BRepGraph_CoEdgeId> NCollection_LinearVector_BRepGraph_CoEdgeId;
 typedef NCollection_LinearVector<BRepGraph_EdgeId> NCollection_LinearVector_BRepGraph_EdgeId;
@@ -710,6 +797,22 @@ typedef NCollection_List<TopoDS_Shape> NCollection_List_TopoDS_Shape;
 typedef NCollection_List<double> NCollection_List_double;
 typedef NCollection_List<gp_Pnt> NCollection_List_gp_Pnt;
 typedef NCollection_List<int> NCollection_List_int;
+typedef NCollection_List<occ::handle<BOPDS_PaveBlock>> NCollection_List_Handle_BOPDS_PaveBlock;
+typedef NCollection_List<occ::handle<BRepMesh_DiscretAlgoFactory>> NCollection_List_Handle_BRepMesh_DiscretAlgoFactory;
+typedef NCollection_List<occ::handle<BRep_CurveRepresentation>> NCollection_List_Handle_BRep_CurveRepresentation;
+typedef NCollection_List<occ::handle<BRep_PointRepresentation>> NCollection_List_Handle_BRep_PointRepresentation;
+typedef NCollection_List<occ::handle<ChFiDS_ElSpine>> NCollection_List_Handle_ChFiDS_ElSpine;
+typedef NCollection_List<occ::handle<ChFiDS_Stripe>> NCollection_List_Handle_ChFiDS_Stripe;
+typedef NCollection_List<occ::handle<Law_Function>> NCollection_List_Handle_Law_Function;
+typedef NCollection_List<occ::handle<Message_Alert>> NCollection_List_Handle_Message_Alert;
+typedef NCollection_List<occ::handle<Poly_Triangulation>> NCollection_List_Handle_Poly_Triangulation;
+typedef NCollection_List<occ::handle<TDF_Attribute>> NCollection_List_Handle_TDF_Attribute;
+typedef NCollection_List<occ::handle<TDF_AttributeDelta>> NCollection_List_Handle_TDF_AttributeDelta;
+typedef NCollection_List<occ::handle<TDF_Delta>> NCollection_List_Handle_TDF_Delta;
+typedef NCollection_List<occ::handle<TNaming_NamedShape>> NCollection_List_Handle_TNaming_NamedShape;
+typedef NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> NCollection_List_Handle_TopOpeBRepBuild_Loop;
+typedef NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> NCollection_List_Handle_TopOpeBRepBuild_Pave;
+typedef NCollection_List<occ::handle<TopOpeBRepDS_Interference>> NCollection_List_Handle_TopOpeBRepDS_Interference;
 typedef NCollection_List<uint8_t> NCollection_List_uint8_t;
 typedef NCollection_LocalArray<double> NCollection_LocalArray_double;
 typedef NCollection_Map<BOPDS_Pair> NCollection_Map_BOPDS_Pair;
@@ -717,6 +820,9 @@ typedef NCollection_Map<TCollection_AsciiString> NCollection_Map_TCollection_Asc
 typedef NCollection_Map<TDF_Label> NCollection_Map_TDF_Label;
 typedef NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher;
 typedef NCollection_Map<int> NCollection_Map_int;
+typedef NCollection_Map<occ::handle<BOPDS_PaveBlock>> NCollection_Map_Handle_BOPDS_PaveBlock;
+typedef NCollection_Map<occ::handle<TDF_Attribute>> NCollection_Map_Handle_TDF_Attribute;
+typedef NCollection_Map<occ::handle<TNaming_NamedShape>> NCollection_Map_Handle_TNaming_NamedShape;
 typedef NCollection_Sequence<AppParCurves_MultiCurve> NCollection_Sequence_AppParCurves_MultiCurve;
 typedef NCollection_Sequence<BRepExtrema_SolutionElem> NCollection_Sequence_BRepExtrema_SolutionElem;
 typedef NCollection_Sequence<Extrema_POnCurv> NCollection_Sequence_Extrema_POnCurv;
@@ -755,8 +861,33 @@ typedef NCollection_Sequence<gp_Vec> NCollection_Sequence_gp_Vec;
 typedef NCollection_Sequence<gp_XY> NCollection_Sequence_gp_XY;
 typedef NCollection_Sequence<gp_XYZ> NCollection_Sequence_gp_XYZ;
 typedef NCollection_Sequence<int> NCollection_Sequence_int;
+typedef NCollection_Sequence<occ::handle<AdvApp2Var_Node>> NCollection_Sequence_Handle_AdvApp2Var_Node;
+typedef NCollection_Sequence<occ::handle<AdvApp2Var_Patch>> NCollection_Sequence_Handle_AdvApp2Var_Patch;
+typedef NCollection_Sequence<occ::handle<ChFiDS_SurfData>> NCollection_Sequence_Handle_ChFiDS_SurfData;
+typedef NCollection_Sequence<occ::handle<Expr_GeneralExpression>> NCollection_Sequence_Handle_Expr_GeneralExpression;
+typedef NCollection_Sequence<occ::handle<Expr_NamedExpression>> NCollection_Sequence_Handle_Expr_NamedExpression;
+typedef NCollection_Sequence<occ::handle<Expr_NamedFunction>> NCollection_Sequence_Handle_Expr_NamedFunction;
+typedef NCollection_Sequence<occ::handle<Geom2d_Curve>> NCollection_Sequence_Handle_Geom2d_Curve;
+typedef NCollection_Sequence<occ::handle<Geom_Curve>> NCollection_Sequence_Handle_Geom_Curve;
+typedef NCollection_Sequence<occ::handle<IFSelect_Selection>> NCollection_Sequence_Handle_IFSelect_Selection;
+typedef NCollection_Sequence<occ::handle<IntPatch_Line>> NCollection_Sequence_Handle_IntPatch_Line;
+typedef NCollection_Sequence<occ::handle<MAT2d_Connexion>> NCollection_Sequence_Handle_MAT2d_Connexion;
+typedef NCollection_Sequence<occ::handle<MAT_Arc>> NCollection_Sequence_Handle_MAT_Arc;
+typedef NCollection_Sequence<occ::handle<MAT_BasicElt>> NCollection_Sequence_Handle_MAT_BasicElt;
+typedef NCollection_Sequence<occ::handle<Message_Printer>> NCollection_Sequence_Handle_Message_Printer;
+typedef NCollection_Sequence<occ::handle<PCDM_Document>> NCollection_Sequence_Handle_PCDM_Document;
+typedef NCollection_Sequence<occ::handle<Poly_Triangulation>> NCollection_Sequence_Handle_Poly_Triangulation;
+typedef NCollection_Sequence<occ::handle<Standard_Transient>> NCollection_Sequence_Handle_Standard_Transient;
+typedef NCollection_Sequence<occ::handle<TCollection_HAsciiString>> NCollection_Sequence_Handle_TCollection_HAsciiString;
+typedef NCollection_Sequence<occ::handle<TCollection_HExtendedString>> NCollection_Sequence_Handle_TCollection_HExtendedString;
+typedef NCollection_Sequence<occ::handle<TDF_Attribute>> NCollection_Sequence_Handle_TDF_Attribute;
+typedef NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> NCollection_Sequence_Handle_TDocStd_ApplicationDelta;
+typedef NCollection_Sequence<occ::handle<TDocStd_Document>> NCollection_Sequence_Handle_TDocStd_Document;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject;
 typedef NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>> NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex;
-typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>> NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner;
+typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>> NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner;
 typedef NCollection_Shared<NCollection_List<gp_Pnt2d>> NCollection_Shared_NCollection_List_gp_Pnt2d;
 typedef NCollection_Shared<NCollection_Map<IMeshData_Edge *>> NCollection_Shared_NCollection_Map_IMeshData_Edge_ptr;
 typedef NCollection_Shared<NCollection_PackedMap<int>> NCollection_Shared_NCollection_PackedMap_int;

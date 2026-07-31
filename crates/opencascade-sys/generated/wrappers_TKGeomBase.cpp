@@ -5,7 +5,6 @@
 
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <AdvApp2Var_ApproxAFunc2Var.hxx>
 #include <AdvApp2Var_ApproxF2var.hxx>
 #include <AdvApp2Var_Context.hxx>
@@ -17,8 +16,6 @@
 #include <AdvApp2Var_Iso.hxx>
 #include <AdvApp2Var_MathBase.hxx>
 #include <AdvApp2Var_Network.hxx>
-#include <AdvApp2Var_Node.hxx>
-#include <AdvApp2Var_Patch.hxx>
 #include <AdvApp2Var_SysBase.hxx>
 #include <AdvApprox_ApproxAFunction.hxx>
 #include <AdvApprox_Cutting.hxx>
@@ -200,7 +197,6 @@
 #include <Geom2dConvert_BSplineCurveToBezierCurve.hxx>
 #include <Geom2dConvert_CompCurveToBSplineCurve.hxx>
 #include <Geom2dConvert_PPoint.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Hyperbola.hxx>
@@ -288,8 +284,6 @@
 #include <GeomTools_SurfaceSet.hxx>
 #include <GeomTools_UndefinedTypeHandler.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_BoundedSurface.hxx>
 #include <Geom_Circle.hxx>
 #include <Geom_ConicalSurface.hxx>
@@ -1269,6 +1263,10 @@ extern "C" void AdvApp2Var_MathBase_destructor(AdvApp2Var_MathBase* self_) { del
 
 extern "C" OcctResult<AdvApp2Var_Network*> AdvApp2Var_Network_ctor() {
     try { return {new AdvApp2Var_Network(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<AdvApp2Var_Network*> AdvApp2Var_Network_ctor_seq_advapp2var_patch_seq_double2(NCollection_Sequence_Handle_AdvApp2Var_Patch const* Net, NCollection_Sequence_double const* TheU, NCollection_Sequence_double const* TheV) {
+    try { return {new AdvApp2Var_Network(*Net, *TheU, *TheV), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> AdvApp2Var_Network_first_not_approx(const AdvApp2Var_Network* self_, int32_t* Index) {
@@ -10739,6 +10737,10 @@ extern "C" OcctResult<Geom2dConvert_ApproxArcsSegments*> Geom2dConvert_ApproxArc
     try { return {new Geom2dConvert_ApproxArcsSegments(*theCurve, theTolerance, theAngleTol), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom2d_Curve const*> Geom2dConvert_ApproxArcsSegments_get_result(const Geom2dConvert_ApproxArcsSegments* self_) {
+    try { return {&(self_->GetResult()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void Geom2dConvert_ApproxArcsSegments_destructor(Geom2dConvert_ApproxArcsSegments* self_) { delete self_; }
 
 // ========================
@@ -10812,6 +10814,10 @@ extern "C" OcctResult<Geom2dConvert_BSplineCurveToBezierCurve*> Geom2dConvert_BS
 extern "C" OcctResult<Handle(Geom2d_BezierCurve)*> Geom2dConvert_BSplineCurveToBezierCurve_arc(Geom2dConvert_BSplineCurveToBezierCurve* self_, int32_t Index) {
     try { return {new Handle(Geom2d_BezierCurve)(self_->Arc(Index)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dConvert_BSplineCurveToBezierCurve_arcs(Geom2dConvert_BSplineCurveToBezierCurve* self_, NCollection_Array1_Handle_Geom2d_BezierCurve* Curves) {
+    try { self_->Arcs(*Curves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* Geom2dConvert_BSplineCurveToBezierCurve_knots(const Geom2dConvert_BSplineCurveToBezierCurve* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
@@ -12001,6 +12007,10 @@ extern "C" OcctResult<Handle(Geom_BezierCurve)*> GeomConvert_BSplineCurveToBezie
     try { return {new Handle(Geom_BezierCurve)(self_->Arc(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomConvert_BSplineCurveToBezierCurve_arcs(GeomConvert_BSplineCurveToBezierCurve* self_, NCollection_Array1_Handle_Geom_BezierCurve* Curves) {
+    try { self_->Arcs(*Curves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomConvert_BSplineCurveToBezierCurve_knots(const GeomConvert_BSplineCurveToBezierCurve* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12057,6 +12067,10 @@ extern "C" OcctResult<Handle(Geom_BezierSurface)*> GeomConvert_BSplineSurfaceToB
     try { return {new Handle(Geom_BezierSurface)(self_->Patch(UIndex, VIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomConvert_BSplineSurfaceToBezierSurface_patches(GeomConvert_BSplineSurfaceToBezierSurface* self_, NCollection_Array2_Handle_Geom_BezierSurface* Surfaces) {
+    try { self_->Patches(*Surfaces); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomConvert_BSplineSurfaceToBezierSurface_u_knots(const GeomConvert_BSplineSurfaceToBezierSurface* self_, NCollection_Array1_double* TKnots) {
     try { self_->UKnots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12079,6 +12093,18 @@ extern "C" void GeomConvert_BSplineSurfaceToBezierSurface_destructor(GeomConvert
 // GeomConvert_CompBezierSurfacesToBSplineSurface wrappers
 // ========================
 
+extern "C" OcctResult<GeomConvert_CompBezierSurfacesToBSplineSurface*> GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface(NCollection_Array2_Handle_Geom_BezierSurface const* Beziers) {
+    try { return {new GeomConvert_CompBezierSurfacesToBSplineSurface(*Beziers), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomConvert_CompBezierSurfacesToBSplineSurface*> GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_real_bool(NCollection_Array2_Handle_Geom_BezierSurface const* Beziers, double Tolerance, bool RemoveKnots) {
+    try { return {new GeomConvert_CompBezierSurfacesToBSplineSurface(*Beziers, Tolerance, RemoveKnots), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomConvert_CompBezierSurfacesToBSplineSurface*> GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_arr1_double2_shape2_real(NCollection_Array2_Handle_Geom_BezierSurface const* Beziers, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, int32_t UContinuity, int32_t VContinuity, double Tolerance) {
+    try { return {new GeomConvert_CompBezierSurfacesToBSplineSurface(*Beziers, *UKnots, *VKnots, static_cast<GeomAbs_Shape>(UContinuity), static_cast<GeomAbs_Shape>(VContinuity), Tolerance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_knots(const GeomConvert_CompBezierSurfacesToBSplineSurface* self_) {
     try { return {self_->NbUKnots(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -16714,15 +16740,27 @@ extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> Geom2dConvert_curve_to_b_spl
     try { return {new Handle(Geom2d_BSplineCurve)(Geom2dConvert::CurveToBSplineCurve(*C, static_cast<Convert_ParameterisationType>(Parameterisation))), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* Geom2dConvert_concat_g1_arr1_geom2d_bsplinecurve_arr1_double_harr1_geom2d_bsplinecurve_bool_real(NCollection_Array1_Handle_Geom2d_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance) {
+    try { Geom2dConvert::ConcatG1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real(NCollection_Array1_Handle_Geom2d_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_int)* ArrayOfIndices, Handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance) {
+    try { Geom2dConvert::ConcatC1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfIndices, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real2(NCollection_Array1_Handle_Geom2d_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_int)* ArrayOfIndices, Handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance, double AngularTolerance) {
+    try { Geom2dConvert::ConcatC1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfIndices, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance, AngularTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* Geom2dConvert_c0b_spline_to_c1b_spline_curve_handlegeom2dbsplinecurve_real(Handle(Geom2d_BSplineCurve)* BS, double Tolerance) {
     try { Geom2dConvert::C0BSplineToC1BSplineCurve(*BS, Tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve)* tabBS, double Tolerance) {
+extern "C" const char* Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve)* tabBS, double Tolerance) {
     try { Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve(*BS, *tabBS, Tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve)* tabBS, double AngularTolerance, double Tolerance) {
+extern "C" const char* Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real2(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve)* tabBS, double AngularTolerance, double Tolerance) {
     try { Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve(*BS, *tabBS, AngularTolerance, Tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16762,15 +16800,27 @@ extern "C" OcctResult<Handle(Geom_BSplineSurface)*> GeomConvert_surface_to_b_spl
     try { return {new Handle(Geom_BSplineSurface)(GeomConvert::SurfaceToBSplineSurface(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomConvert_concat_g1_arr1_geom_bsplinecurve_arr1_double_harr1_geom_bsplinecurve_bool_real(NCollection_Array1_Handle_Geom_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_Handle_Geom_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance) {
+    try { GeomConvert::ConcatG1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real(NCollection_Array1_Handle_Geom_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_int)* ArrayOfIndices, Handle(NCollection_HArray1_Handle_Geom_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance) {
+    try { GeomConvert::ConcatC1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfIndices, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real2(NCollection_Array1_Handle_Geom_BSplineCurve* ArrayOfCurves, NCollection_Array1_double const* ArrayOfToler, Handle(NCollection_HArray1_int)* ArrayOfIndices, Handle(NCollection_HArray1_Handle_Geom_BSplineCurve)* ArrayOfConcatenated, bool* ClosedFlag, double ClosedTolerance, double AngularTolerance) {
+    try { GeomConvert::ConcatC1(*ArrayOfCurves, *ArrayOfToler, *ArrayOfIndices, *ArrayOfConcatenated, *ClosedFlag, ClosedTolerance, AngularTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(Handle(Geom_BSplineCurve)* BS, double tolerance, double AngularTolerance) {
     try { GeomConvert::C0BSplineToC1BSplineCurve(*BS, tolerance, AngularTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HArray1_opencascade_handle_Geom_BSplineCurve)* tabBS, double tolerance) {
+extern "C" const char* GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HArray1_Handle_Geom_BSplineCurve)* tabBS, double tolerance) {
     try { GeomConvert::C0BSplineToArrayOfC1BSplineCurve(*BS, *tabBS, tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HArray1_opencascade_handle_Geom_BSplineCurve)* tabBS, double AngularTolerance, double tolerance) {
+extern "C" const char* GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real2(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HArray1_Handle_Geom_BSplineCurve)* tabBS, double AngularTolerance, double tolerance) {
     try { GeomConvert::C0BSplineToArrayOfC1BSplineCurve(*BS, *tabBS, AngularTolerance, tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }

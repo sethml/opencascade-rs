@@ -2021,6 +2021,17 @@ impl Reader {
         })
     }
 
+    /// **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles()`
+    /// Returns data on external files
+    /// Returns Null handle if no external files are read
+    pub fn extern_files(&self) -> &crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile{
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::STEPCAFControl_Reader_extern_files(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `STEPCAFControl_Reader.hxx`:158 - `STEPCAFControl_Reader::ExternFile()`
     /// Returns data on external file by its name
     /// Returns False if no external file with given name is read
@@ -2355,13 +2366,7 @@ impl Reader {
     }
 }
 
-// ── Skipped symbols for Reader (2 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:154 - `STEPCAFControl_Reader::ExternFiles`
-//   method: Returns data on external files
-//   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> const&)
-//   // pub fn extern_files(&self) -> /* NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> const& */;
-//
+// ── Skipped symbols for Reader (1 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Reader.hxx`:240 - `STEPCAFControl_Reader::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.
@@ -2633,6 +2638,17 @@ impl Writer {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(self as *mut Self, theDoc, c_theFileName.as_ptr(), theParams, theProgress)
         })
+    }
+
+    /// **Source:** `STEPCAFControl_Writer.hxx`:170 - `STEPCAFControl_Writer::ExternFiles()`
+    /// Returns data on external files
+    /// Returns Null handle if no external files are read
+    pub fn extern_files(&self) -> &crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile{
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::STEPCAFControl_Writer_extern_files(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `STEPCAFControl_Writer.hxx`:177 - `STEPCAFControl_Writer::ExternFile()`
@@ -2949,13 +2965,7 @@ impl Writer {
     }
 }
 
-// ── Skipped symbols for Writer (2 total) ──
-// SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:170 - `STEPCAFControl_Writer::ExternFiles`
-//   method: Returns data on external files
-//   method: Returns Null handle if no external files are read
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> const&)
-//   // pub fn extern_files(&self) -> /* NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> const& */;
-//
+// ── Skipped symbols for Writer (1 total) ──
 // SKIPPED: **Source:** `STEPCAFControl_Writer.hxx`:259 - `STEPCAFControl_Writer::SetShapeFixParameters`
 //   method: Sets parameters for shape processing.
 //   method: Parameters are moved from the input map.

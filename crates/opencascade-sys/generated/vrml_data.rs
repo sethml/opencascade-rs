@@ -4326,6 +4326,23 @@ impl Group {
         }
     }
 
+    /// **Source:** `VrmlData_Group.hxx`:143 - `VrmlData_Group::Shape()`
+    ///
+    /// Get the shape representing the group geometry.
+    pub fn shape(
+        &mut self,
+        theShape: &mut crate::topo_ds::Shape,
+        pMapApp: &mut crate::ffi_types::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlData_Group_shape(
+                self as *mut Self,
+                theShape,
+                pMapApp as *mut _,
+            )
+        })
+    }
+
     /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
@@ -4575,13 +4592,6 @@ impl Handle_VrmlData_Group {
         }
     }
 }
-
-// ── Skipped symbols for Group (1 total) ──
-// SKIPPED: **Source:** `VrmlData_Group.hxx`:143 - `VrmlData_Group::Shape`
-//   method: Get the shape representing the group geometry.
-//   Reason: param 'pMapApp' uses unknown type 'NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>*'
-//   // pub fn shape(&mut self, theShape: &mut Shape, pMapApp: /* NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>* */);
-//
 
 // ========================
 // From VrmlData_ImageTexture.hxx
@@ -8438,6 +8448,29 @@ impl Scene {
         }
     }
 
+    /// **Source:** `VrmlData_Scene.hxx`:181 - `VrmlData_Scene::GetShape()`
+    ///
+    /// Convert the scene to a Shape, with the information on materials defined
+    /// for each sub-shape. This method should be used instead of TopoDS_Shape
+    /// explicit conversion operator when you need to retrieve the material
+    /// aspect for each face or edge in the returned topological object.
+    /// @param M
+    /// Data Map that binds an Appearance instance to each created TFace or
+    /// TEdge if the Appearance node is defined in VRML scene for that geometry.
+    /// @return
+    /// TopoDS_Shape (Compound) holding all the scene, similar to the result of
+    /// explicit TopoDS_Shape conversion operator.
+    pub fn get_shape(
+        &mut self,
+        M: &mut crate::ffi_types::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEVRML::VrmlData_Scene_get_shape(self as *mut Self, M),
+            ))
+        }
+    }
+
     /// **Source:** `VrmlData_Scene.hxx`:186 - `VrmlData_Scene::WorldInfo()`
     ///
     /// Query the WorldInfo member.
@@ -8709,7 +8742,7 @@ impl Scene {
     }
 }
 
-// ── Skipped symbols for Scene (3 total) ──
+// ── Skipped symbols for Scene (2 total) ──
 // SKIPPED: **Source:** `VrmlData_Scene.hxx`:89 - `VrmlData_Scene::VrmlDirIterator`
 //   method: Returns the directory iterator, to check the presence of requested VRML
 //   method: file in each iterated directory.
@@ -8720,12 +8753,6 @@ impl Scene {
 //   method: Get the iterator of named nodes.
 //   Reason: has unbindable types: return: unresolved template type (NCollection_Map<occ::handle<VrmlData_Node>>::Iterator)
 //   // pub fn named_nodes_iterator(&self) -> OwnedPtr<NCollection_Map<occ::handle<VrmlData_Node>>::Iterator>;
-//
-// SKIPPED: **Source:** `VrmlData_Scene.hxx`:181 - `VrmlData_Scene::GetShape`
-//   method: Convert the scene to a Shape, with the information on materials defined
-//   method: for each sub-shape. This method should be used instead of TopoDS_Shape
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>&)
-//   // pub fn get_shape(&mut self, M: /* NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>& */) -> OwnedPtr<TopoDS_Shape>;
 //
 
 // ========================

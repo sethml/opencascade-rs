@@ -65,6 +65,18 @@ impl CommonBlock {
         })
     }
 
+    /// **Source:** `BOPDS_CommonBlock.hxx`:53 - `BOPDS_CommonBlock::SetPaveBlocks()`
+    /// Modifier
+    /// Sets the list of pave blocks for the common block
+    pub fn set_pave_blocks(
+        &mut self,
+        aLPB: &crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_CommonBlock_set_pave_blocks(self as *mut Self, aLPB)
+        })
+    }
+
     /// **Source:** `BOPDS_CommonBlock.hxx`:59 - `BOPDS_CommonBlock::AddFace()`
     /// Modifier
     /// Adds the index of the face <aF>
@@ -95,6 +107,18 @@ impl CommonBlock {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPDS_CommonBlock_append_faces(self as *mut Self, aLF)
         })
+    }
+
+    /// **Source:** `BOPDS_CommonBlock.hxx`:75 - `BOPDS_CommonBlock::PaveBlocks()`
+    /// Selector
+    /// Returns the list of pave blocks
+    /// of the common block
+    pub fn pave_blocks(&self) -> &crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_CommonBlock_pave_blocks(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `BOPDS_CommonBlock.hxx`:80 - `BOPDS_CommonBlock::Faces()`
@@ -422,21 +446,6 @@ impl Handle_BOPDS_CommonBlock {
     }
 }
 
-// ── Skipped symbols for CommonBlock (2 total) ──
-// SKIPPED: **Source:** `BOPDS_CommonBlock.hxx`:53 - `BOPDS_CommonBlock::SetPaveBlocks`
-//   method: Modifier
-//   method: Sets the list of pave blocks for the common block
-//   Reason: has unbindable types: param 'aLPB': unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn set_pave_blocks(&mut self, aLPB: /* NCollection_List<occ::handle<BOPDS_PaveBlock>> const& */);
-//
-// SKIPPED: **Source:** `BOPDS_CommonBlock.hxx`:75 - `BOPDS_CommonBlock::PaveBlocks`
-//   method: Selector
-//   method: Returns the list of pave blocks
-//   method: of the common block
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks(&self) -> /* NCollection_List<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-
 // ========================
 // From BOPDS_CoupleOfPaveBlocks.hxx
 // ========================
@@ -694,6 +703,42 @@ impl Curve {
         }
     }
 
+    /// **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks()`
+    pub fn set_pave_blocks(
+        &mut self,
+        theLPB: &crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_Curve_set_pave_blocks(self as *mut Self, theLPB)
+        })
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:72 - `BOPDS_Curve::PaveBlocks()`
+    /// Selector
+    /// Returns the list of pave blocks
+    /// of the curve
+    pub fn pave_blocks(&self) -> &crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_Curve_pave_blocks(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BOPDS_Curve.hxx`:77 - `BOPDS_Curve::ChangePaveBlocks()`
+    /// Selector/Modifier
+    /// Returns the list of pave blocks
+    /// of the curve
+    pub fn change_pave_blocks(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBO::BOPDS_Curve_change_pave_blocks(
+                self as *mut Self,
+            )))
+        }
+    }
+
     /// **Source:** `BOPDS_Curve.hxx`:81 - `BOPDS_Curve::InitPaveBlock1()`
     /// Creates initial pave block
     /// of the curve
@@ -773,26 +818,6 @@ impl Curve {
         })
     }
 }
-
-// ── Skipped symbols for Curve (3 total) ──
-// SKIPPED: **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks`
-//   Reason: has unbindable types: param 'theLPB': unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn set_pave_blocks(&mut self, theLPB: /* NCollection_List<occ::handle<BOPDS_PaveBlock>> const& */);
-//
-// SKIPPED: **Source:** `BOPDS_Curve.hxx`:72 - `BOPDS_Curve::PaveBlocks`
-//   method: Selector
-//   method: Returns the list of pave blocks
-//   method: of the curve
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks(&self) -> /* NCollection_List<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-// SKIPPED: **Source:** `BOPDS_Curve.hxx`:77 - `BOPDS_Curve::ChangePaveBlocks`
-//   method: Selector/Modifier
-//   method: Returns the list of pave blocks
-//   method: of the curve
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn change_pave_blocks(&mut self) -> /* NCollection_List<occ::handle<BOPDS_PaveBlock>>& */;
-//
 
 // ========================
 // From BOPDS_DS.hxx
@@ -1027,6 +1052,36 @@ impl DS {
         })
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:168 - `BOPDS_DS::PaveBlocks()`
+    /// Selector
+    /// Returns the pave blocks for the shape with index theIndex
+    pub fn pave_blocks(
+        &self,
+        theIndex: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_DS_pave_blocks(
+                self as *const Self,
+                theIndex,
+            )))
+        }
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:173 - `BOPDS_DS::ChangePaveBlocks()`
+    /// Selector/Modifier
+    /// Returns the pave blocks for the shape with index theIndex
+    pub fn change_pave_blocks(
+        &mut self,
+        theIndex: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBO::BOPDS_DS_change_pave_blocks(
+                self as *mut Self,
+                theIndex,
+            )))
+        }
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:177 - `BOPDS_DS::UpdatePaveBlocks()`
     /// Update the pave blocks for the all shapes in data structure
     pub fn update_pave_blocks(&mut self) {
@@ -1206,6 +1261,46 @@ impl DS {
         })
     }
 
+    /// **Source:** `BOPDS_DS.hxx`:241 - `BOPDS_DS::FaceInfoOn()`
+    /// Selector
+    /// Returns the state On
+    /// [theMPB,theMVP] of face with index theIndex
+    pub fn face_info_on(
+        &mut self,
+        theIndex: i32,
+        theMPB: &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theMVP: &mut crate::ffi_types::NCollection_Map_int,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_DS_face_info_on(
+                self as *mut Self,
+                theIndex,
+                theMPB,
+                theMVP,
+            )
+        })
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:248 - `BOPDS_DS::FaceInfoIn()`
+    /// Selector
+    /// Returns the state In
+    /// [theMPB,theMVP] of face with index theIndex
+    pub fn face_info_in(
+        &mut self,
+        theIndex: i32,
+        theMPB: &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theMVP: &mut crate::ffi_types::NCollection_Map_int,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_DS_face_info_in(
+                self as *mut Self,
+                theIndex,
+                theMPB,
+                theMVP,
+            )
+        })
+    }
+
     /// **Source:** `BOPDS_DS.hxx`:255 - `BOPDS_DS::AloneVertices()`
     /// Selector
     /// Returns the indices of alone vertices
@@ -1240,6 +1335,36 @@ impl DS {
     pub fn refine_face_info_in(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPDS_DS_refine_face_info_in(self as *mut Self)
+        })
+    }
+
+    /// **Source:** `BOPDS_DS.hxx`:274 - `BOPDS_DS::SubShapesOnIn()`
+    /// Returns information about ON/IN sub-shapes of the given faces.
+    /// @param theFaceIndex1  the index of the first face
+    /// @param theFaceIndex2  the index of the second face
+    /// @param theMVOnIn  the indices of ON/IN vertices from both faces
+    /// @param theMVCommon the indices of common vertices for both faces
+    /// @param thePBOnIn  all On/In pave blocks from both faces
+    /// @param theCommonPaveBlocks  the common pave blocks (that are shared by both faces).
+    pub fn sub_shapes_on_in(
+        &self,
+        theFaceIndex1: i32,
+        theFaceIndex2: i32,
+        theMVOnIn: &mut crate::ffi_types::NCollection_Map_int,
+        theMVCommon: &mut crate::ffi_types::NCollection_Map_int,
+        thePBOnIn: &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theCommonPaveBlocks: &mut crate::ffi_types::NCollection_Map_Handle_BOPDS_PaveBlock,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_DS_sub_shapes_on_in(
+                self as *const Self,
+                theFaceIndex1,
+                theFaceIndex2,
+                theMVOnIn,
+                theMVCommon,
+                thePBOnIn,
+                theCommonPaveBlocks,
+            )
         })
     }
 
@@ -1622,7 +1747,7 @@ impl DS {
     }
 }
 
-// ── Skipped symbols for DS (7 total) ──
+// ── Skipped symbols for DS (2 total) ──
 // SKIPPED: **Source:** `BOPDS_DS.hxx`:154 - `BOPDS_DS::PaveBlocksPool`
 //   method: Selector
 //   method: Returns the information about pave blocks on source edges
@@ -1634,39 +1759,6 @@ impl DS {
 //   method: Returns the information about pave blocks on source edges
 //   Reason: has unbindable types: return: unresolved template type (NCollection_DynamicArray<NCollection_List<occ::handle<BOPDS_PaveBlock>>>&)
 //   // pub fn change_pave_blocks_pool(&mut self) -> /* NCollection_DynamicArray<NCollection_List<occ::handle<BOPDS_PaveBlock>>>& */;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:168 - `BOPDS_DS::PaveBlocks`
-//   method: Selector
-//   method: Returns the pave blocks for the shape with index theIndex
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks(&self, theIndex: i32) -> /* NCollection_List<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:173 - `BOPDS_DS::ChangePaveBlocks`
-//   method: Selector/Modifier
-//   method: Returns the pave blocks for the shape with index theIndex
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn change_pave_blocks(&mut self, theIndex: i32) -> /* NCollection_List<occ::handle<BOPDS_PaveBlock>>& */;
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:241 - `BOPDS_DS::FaceInfoOn`
-//   method: Selector
-//   method: Returns the state On
-//   method: [theMPB,theMVP] of face with index theIndex
-//   Reason: has unbindable types: param 'theMPB': unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn face_info_on(&mut self, theIndex: i32, theMPB: /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */, theMVP: &mut Map_int);
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:248 - `BOPDS_DS::FaceInfoIn`
-//   method: Selector
-//   method: Returns the state In
-//   method: [theMPB,theMVP] of face with index theIndex
-//   Reason: has unbindable types: param 'theMPB': unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn face_info_in(&mut self, theIndex: i32, theMPB: /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */, theMVP: &mut Map_int);
-//
-// SKIPPED: **Source:** `BOPDS_DS.hxx`:274 - `BOPDS_DS::SubShapesOnIn`
-//   method: Returns information about ON/IN sub-shapes of the given faces.
-//   method: @param theFaceIndex1  the index of the first face
-//   method: @param theFaceIndex2  the index of the second face
-//   Reason: has unbindable types: param 'thePBOnIn': unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&); param 'theCommonPaveBlocks': unresolved template type (NCollection_Map<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn sub_shapes_on_in(&self, theFaceIndex1: i32, theFaceIndex2: i32, theMVOnIn: &mut Map_int, theMVCommon: &mut Map_int, thePBOnIn: /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */, theCommonPaveBlocks: /* NCollection_Map<occ::handle<BOPDS_PaveBlock>>& */);
 //
 
 // ========================
@@ -1738,6 +1830,35 @@ impl FaceInfo {
         })
     }
 
+    /// **Source:** `BOPDS_FaceInfo.hxx`:63 - `BOPDS_FaceInfo::PaveBlocksIn()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that have state In
+    pub fn pave_blocks_in(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_FaceInfo_pave_blocks_in(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:69 - `BOPDS_FaceInfo::ChangePaveBlocksIn()`
+    /// Selector/Modifier
+    /// Returns the pave blocks
+    /// of the face
+    /// that have state In
+    pub fn change_pave_blocks_in(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBO::BOPDS_FaceInfo_change_pave_blocks_in(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `BOPDS_FaceInfo.hxx`:75 - `BOPDS_FaceInfo::VerticesIn()`
     /// Selector
     /// Returns the list of indices for vertices
@@ -1763,6 +1884,35 @@ impl FaceInfo {
             &mut *(crate::check_result(crate::ffi_extern_TKBO::BOPDS_FaceInfo_change_vertices_in(
                 self as *mut Self,
             )))
+        }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:88 - `BOPDS_FaceInfo::PaveBlocksOn()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that have state On
+    pub fn pave_blocks_on(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_FaceInfo_pave_blocks_on(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:94 - `BOPDS_FaceInfo::ChangePaveBlocksOn()`
+    /// Selector/Modifier
+    /// Returns the pave blocks
+    /// of the face
+    /// that have state On
+    pub fn change_pave_blocks_on(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBO::BOPDS_FaceInfo_change_pave_blocks_on(self as *mut Self),
+            ))
         }
     }
 
@@ -1794,6 +1944,31 @@ impl FaceInfo {
         }
     }
 
+    /// **Source:** `BOPDS_FaceInfo.hxx`:113 - `BOPDS_FaceInfo::PaveBlocksSc()`
+    /// Selector
+    /// Returns the pave blocks of the face
+    /// that are pave blocks of section edges
+    pub fn pave_blocks_sc(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPDS_FaceInfo_pave_blocks_sc(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BOPDS_FaceInfo.hxx`:115 - `BOPDS_FaceInfo::ChangePaveBlocksSc()`
+    pub fn change_pave_blocks_sc(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBO::BOPDS_FaceInfo_change_pave_blocks_sc(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `BOPDS_FaceInfo.hxx`:120 - `BOPDS_FaceInfo::VerticesSc()`
     /// Selector
     /// Returns the list of indices for section vertices
@@ -1820,47 +1995,6 @@ impl FaceInfo {
         }
     }
 }
-
-// ── Skipped symbols for FaceInfo (6 total) ──
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:63 - `BOPDS_FaceInfo::PaveBlocksIn`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that have state In
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks_in(&self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:69 - `BOPDS_FaceInfo::ChangePaveBlocksIn`
-//   method: Selector/Modifier
-//   method: Returns the pave blocks
-//   method: of the face
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn change_pave_blocks_in(&mut self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:88 - `BOPDS_FaceInfo::PaveBlocksOn`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that have state On
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks_on(&self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:94 - `BOPDS_FaceInfo::ChangePaveBlocksOn`
-//   method: Selector/Modifier
-//   method: Returns the pave blocks
-//   method: of the face
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn change_pave_blocks_on(&mut self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:113 - `BOPDS_FaceInfo::PaveBlocksSc`
-//   method: Selector
-//   method: Returns the pave blocks of the face
-//   method: that are pave blocks of section edges
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const&)
-//   // pub fn pave_blocks_sc(&self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> const& */;
-//
-// SKIPPED: **Source:** `BOPDS_FaceInfo.hxx`:115 - `BOPDS_FaceInfo::ChangePaveBlocksSc`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn change_pave_blocks_sc(&mut self) -> /* NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>>& */;
-//
 
 // ========================
 // From BOPDS_IndexRange.hxx
@@ -4654,6 +4788,22 @@ impl PaveBlock {
         }
     }
 
+    /// **Source:** `BOPDS_PaveBlock.hxx`:136 - `BOPDS_PaveBlock::Update()`
+    /// Modifier
+    /// Updates the pave block. The extra paves are used
+    /// to create new pave blocks <theLPB>.
+    /// <theFlag> - if true, the first and second
+    /// pave are used to produce new pave blocks.
+    pub fn update(
+        &mut self,
+        theLPB: &mut crate::ffi_types::NCollection_List_Handle_BOPDS_PaveBlock,
+        theFlag: bool,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPDS_PaveBlock_update(self as *mut Self, theLPB, theFlag)
+        })
+    }
+
     /// **Source:** `BOPDS_PaveBlock.hxx`:144 - `BOPDS_PaveBlock::ContainsParameter()`
     /// Query
     /// Returns true if the extra paves contain the pave
@@ -4917,15 +5067,6 @@ impl Handle_BOPDS_PaveBlock {
         }
     }
 }
-
-// ── Skipped symbols for PaveBlock (1 total) ──
-// SKIPPED: **Source:** `BOPDS_PaveBlock.hxx`:136 - `BOPDS_PaveBlock::Update`
-//   method: Modifier
-//   method: Updates the pave block. The extra paves are used
-//   method: to create new pave blocks <theLPB>.
-//   Reason: has unbindable types: param 'theLPB': unresolved template type (NCollection_List<occ::handle<BOPDS_PaveBlock>>&)
-//   // pub fn update(&mut self, theLPB: /* NCollection_List<occ::handle<BOPDS_PaveBlock>>& */, theFlag: bool);
-//
 
 // ========================
 // From BOPDS_Point.hxx

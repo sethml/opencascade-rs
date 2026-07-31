@@ -10778,6 +10778,13 @@ unsafe extern "C" {
     pub fn GeomFill_Gordon_destructor(self_: *mut GeomFill_Gordon);
     /// **Source:** `GeomFill_Gordon.hxx`:124 - `GeomFill_Gordon::GeomFill_Gordon()`
     pub fn GeomFill_Gordon_ctor() -> crate::OcctResult<*mut GeomFill_Gordon>;
+    /// **Source:** `GeomFill_Gordon.hxx`:130 - `GeomFill_Gordon::Init()`
+    pub fn GeomFill_Gordon_init(
+        self_: *mut GeomFill_Gordon,
+        theProfiles: *const NCollection_Array1_Handle_Geom_Curve,
+        theGuides: *const NCollection_Array1_Handle_Geom_Curve,
+        theTolerance: f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomFill_Gordon.hxx`:135 - `GeomFill_Gordon::Perform()`
     pub fn GeomFill_Gordon_perform(self_: *mut GeomFill_Gordon) -> *const std::ffi::c_char;
     /// **Source:** `GeomFill_Gordon.hxx`:139 - `GeomFill_Gordon::SetParallelMode()`
@@ -12095,6 +12102,42 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== GeomFill_NSections ========================
     pub fn GeomFill_NSections_destructor(self_: *mut GeomFill_NSections);
+    /// **Source:** `GeomFill_NSections.hxx`:42 - `GeomFill_NSections::GeomFill_NSections()`
+    pub fn GeomFill_NSections_ctor_seq_geom_curve(
+        NC: *const NCollection_Sequence_Handle_Geom_Curve,
+    ) -> crate::OcctResult<*mut GeomFill_NSections>;
+    /// **Source:** `GeomFill_NSections.hxx`:45 - `GeomFill_NSections::GeomFill_NSections()`
+    pub fn GeomFill_NSections_ctor_seq_geom_curve_seq_double(
+        NC: *const NCollection_Sequence_Handle_Geom_Curve,
+        NP: *const NCollection_Sequence_double,
+    ) -> crate::OcctResult<*mut GeomFill_NSections>;
+    /// **Source:** `GeomFill_NSections.hxx`:50 - `GeomFill_NSections::GeomFill_NSections()`
+    pub fn GeomFill_NSections_ctor_seq_geom_curve_seq_double_real2(
+        NC: *const NCollection_Sequence_Handle_Geom_Curve,
+        NP: *const NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+    ) -> crate::OcctResult<*mut GeomFill_NSections>;
+    /// **Source:** `GeomFill_NSections.hxx`:58 - `GeomFill_NSections::GeomFill_NSections()`
+    pub fn GeomFill_NSections_ctor_seq_geom_curve_seq_double_real4(
+        NC: *const NCollection_Sequence_Handle_Geom_Curve,
+        NP: *const NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+    ) -> crate::OcctResult<*mut GeomFill_NSections>;
+    /// **Source:** `GeomFill_NSections.hxx`:70 - `GeomFill_NSections::GeomFill_NSections()`
+    pub fn GeomFill_NSections_ctor_seq_geom_curve_seq_trsf_seq_double_real4_handlegeombsplinesurface(
+        NC: *const NCollection_Sequence_Handle_Geom_Curve,
+        Trsfs: *const NCollection_Sequence_gp_Trsf,
+        NP: *const NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+        Surf: *const Handle_Geom_BSplineSurface,
+    ) -> crate::OcctResult<*mut GeomFill_NSections>;
     /// **Source:** `GeomFill_NSections.hxx`:80 - `GeomFill_NSections::D0()`
     pub fn GeomFill_NSections_d0(
         self_: *mut GeomFill_NSections,
@@ -12325,6 +12368,19 @@ unsafe extern "C" {
     pub fn GeomFill_NetworkSurface_destructor(self_: *mut GeomFill_NetworkSurface);
     /// **Source:** `GeomFill_NetworkSurface.hxx`:73 - `GeomFill_NetworkSurface::GeomFill_NetworkSurface()`
     pub fn GeomFill_NetworkSurface_ctor() -> crate::OcctResult<*mut GeomFill_NetworkSurface>;
+    /// **Source:** `GeomFill_NetworkSurface.hxx`:85 - `GeomFill_NetworkSurface::Init()`
+    pub fn GeomFill_NetworkSurface_init(
+        self_: *mut GeomFill_NetworkSurface,
+        theProfiles: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+        theGuides: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+        theProfileParameters: *const NCollection_Array1_double,
+        theGuideParameters: *const NCollection_Array1_double,
+        theIntersectionPoints: *const NCollection_Array2_gp_Pnt,
+        theIntersectionWeights: *const NCollection_Array2_double,
+        theTolerance: f64,
+        theIsUClosed: bool,
+        theIsVClosed: bool,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomFill_NetworkSurface.hxx`:96 - `GeomFill_NetworkSurface::Perform()`
     pub fn GeomFill_NetworkSurface_perform(
         self_: *mut GeomFill_NetworkSurface,
@@ -12373,6 +12429,11 @@ unsafe extern "C" {
         Path: *const Handle_Geom_Curve,
         FirstSect: *const Handle_Geom_Curve,
         LastSect: *const Handle_Geom_Curve,
+    ) -> crate::OcctResult<*mut GeomFill_Pipe>;
+    /// **Source:** `GeomFill_Pipe.hxx`:128 - `GeomFill_Pipe::GeomFill_Pipe()`
+    pub fn GeomFill_Pipe_ctor_handlegeomcurve_seq_geom_curve(
+        Path: *const Handle_Geom_Curve,
+        NSections: *const NCollection_Sequence_Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut GeomFill_Pipe>;
     /// **Source:** `GeomFill_Pipe.hxx`:133 - `GeomFill_Pipe::GeomFill_Pipe()`
     pub fn GeomFill_Pipe_ctor_handlegeomcurve3_real(
@@ -12429,6 +12490,12 @@ unsafe extern "C" {
         Path: *const Handle_Geom_Curve,
         FirstSect: *const Handle_Geom_Curve,
         LastSect: *const Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomFill_Pipe.hxx`:207 - `GeomFill_Pipe::Init()`
+    pub fn GeomFill_Pipe_init_handlegeomcurve_seq_geom_curve(
+        self_: *mut GeomFill_Pipe,
+        Path: *const Handle_Geom_Curve,
+        NSections: *const NCollection_Sequence_Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `GeomFill_Pipe.hxx`:212 - `GeomFill_Pipe::Init()`
     pub fn GeomFill_Pipe_init_handleadaptor3dcurve3_real(
@@ -15531,6 +15598,15 @@ unsafe extern "C" {
     pub fn GeomInt_LineTool_last_parameter(
         L: *const Handle_IntPatch_Line,
     ) -> crate::OcctResult<f64>;
+    /// **Source:** `GeomInt_LineTool.hxx`:42 - `GeomInt_LineTool::DecompositionOfWLine()`
+    pub fn GeomInt_LineTool_decomposition_of_w_line(
+        theWLine: *const Handle_IntPatch_WLine,
+        theSurface1: *const Handle_GeomAdaptor_Surface,
+        theSurface2: *const Handle_GeomAdaptor_Surface,
+        aTolSum: f64,
+        theLConstructor: *const GeomInt_LineConstructor,
+        theNewLines: *mut NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> crate::OcctResult<bool>;
     // ======================== GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox ========================
     pub fn GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_destructor(
         self_: *mut GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox,
@@ -17326,9 +17402,9 @@ unsafe extern "C" {
     // ======================== GeomPlate_BuildPlateSurface ========================
     pub fn GeomPlate_BuildPlateSurface_destructor(self_: *mut GeomPlate_BuildPlateSurface);
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    pub fn GeomPlate_BuildPlateSurface_ctor_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(
+    pub fn GeomPlate_BuildPlateSurface_ctor_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
         NPoints: *const Handle_NCollection_HArray1_int,
-        TabCurve: *const Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: *const Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: *const Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
@@ -17432,7 +17508,7 @@ unsafe extern "C" {
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:181 - `GeomPlate_BuildPlateSurface::Curves2d()`
     pub fn GeomPlate_BuildPlateSurface_curves2d(
         self_: *const GeomPlate_BuildPlateSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Geom2d_Curve>;
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:187 - `GeomPlate_BuildPlateSurface::Order()`
     pub fn GeomPlate_BuildPlateSurface_order(
         self_: *const GeomPlate_BuildPlateSurface,
@@ -20793,6 +20869,20 @@ unsafe extern "C" {
     pub fn IntPatch_ALineToWLine_tol3_d(
         self_: *const IntPatch_ALineToWLine,
     ) -> crate::OcctResult<f64>;
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:53 - `IntPatch_ALineToWLine::MakeWLine()`
+    pub fn IntPatch_ALineToWLine_make_w_line_handleintpatchaline_seq_intpatch_line(
+        self_: *const IntPatch_ALineToWLine,
+        aline: *const Handle_IntPatch_ALine,
+        theLines: *mut NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:58 - `IntPatch_ALineToWLine::MakeWLine()`
+    pub fn IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_seq_intpatch_line(
+        self_: *const IntPatch_ALineToWLine,
+        aline: *const Handle_IntPatch_ALine,
+        paraminf: f64,
+        paramsup: f64,
+        theLines: *mut NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> *const std::ffi::c_char;
     // ======================== IntPatch_ArcFunction ========================
     pub fn IntPatch_ArcFunction_destructor(self_: *mut IntPatch_ArcFunction);
     /// **Source:** `IntPatch_ArcFunction.hxx`:32 - `IntPatch_ArcFunction::IntPatch_ArcFunction()`
@@ -21874,6 +21964,10 @@ unsafe extern "C" {
         self_: *const IntPatch_Intersection,
         Index: i32,
     ) -> crate::OcctResult<*const Handle_IntPatch_Line>;
+    /// **Source:** `IntPatch_Intersection.hxx`:170 - `IntPatch_Intersection::SequenceOfLine()`
+    pub fn IntPatch_Intersection_sequence_of_line(
+        self_: *const IntPatch_Intersection,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_IntPatch_Line>;
     /// **Source:** `IntPatch_Intersection.hxx`:174 - `IntPatch_Intersection::Dump()`
     pub fn IntPatch_Intersection_dump(
         self_: *const IntPatch_Intersection,
@@ -21897,6 +21991,16 @@ unsafe extern "C" {
         theS2: *const Handle_Adaptor3d_Surface,
         theD2: *const Handle_Adaptor3d_TopolTool,
     ) -> crate::OcctResult<f64>;
+    /// **Source:** `IntPatch_Intersection.hxx`:195 - `IntPatch_Intersection::PrepareSurfaces()`
+    pub fn IntPatch_Intersection_prepare_surfaces(
+        theS1: *const Handle_Adaptor3d_Surface,
+        theD1: *const Handle_Adaptor3d_TopolTool,
+        theS2: *const Handle_Adaptor3d_Surface,
+        theD2: *const Handle_Adaptor3d_TopolTool,
+        Tol: f64,
+        theSeqHS1: *mut NCollection_DynamicArray_Handle_Adaptor3d_Surface,
+        theSeqHS2: *mut NCollection_DynamicArray_Handle_Adaptor3d_Surface,
+    ) -> *const std::ffi::c_char;
     // ======================== IntPatch_Line ========================
     pub fn IntPatch_Line_destructor(self_: *mut IntPatch_Line);
     /// **Source:** `IntPatch_Line.hxx`:41 - `IntPatch_Line::SetValue()`
@@ -22017,6 +22121,17 @@ unsafe extern "C" {
     pub fn IntPatch_LineConstructor_ctor_int(
         mode: i32,
     ) -> crate::OcctResult<*mut IntPatch_LineConstructor>;
+    /// **Source:** `IntPatch_LineConstructor.hxx`:36 - `IntPatch_LineConstructor::Perform()`
+    pub fn IntPatch_LineConstructor_perform(
+        self_: *mut IntPatch_LineConstructor,
+        SL: *const NCollection_Sequence_Handle_IntPatch_Line,
+        L: *const Handle_IntPatch_Line,
+        S1: *const Handle_Adaptor3d_Surface,
+        D1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_Adaptor3d_Surface,
+        D2: *const Handle_Adaptor3d_TopolTool,
+        Tol: f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `IntPatch_LineConstructor.hxx`:44 - `IntPatch_LineConstructor::NbLines()`
     pub fn IntPatch_LineConstructor_nb_lines(
         self_: *const IntPatch_LineConstructor,
@@ -24348,6 +24463,25 @@ unsafe extern "C" {
         theDom1: *const Handle_Adaptor3d_TopolTool,
         theDom2: *const Handle_Adaptor3d_TopolTool,
     ) -> crate::OcctResult<*mut Handle_IntPatch_WLine>;
+    /// **Source:** `IntPatch_WLineTool.hxx`:58 - `IntPatch_WLineTool::JoinWLines()`
+    pub fn IntPatch_WLineTool_join_w_lines(
+        theSlin: *mut NCollection_Sequence_Handle_IntPatch_Line,
+        theSPnt: *mut NCollection_Sequence_IntPatch_Point,
+        theS1: *const Handle_Adaptor3d_Surface,
+        theS2: *const Handle_Adaptor3d_Surface,
+        theTol3D: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `IntPatch_WLineTool.hxx`:75 - `IntPatch_WLineTool::ExtendTwoWLines()`
+    pub fn IntPatch_WLineTool_extend_two_w_lines(
+        theSlin: *mut NCollection_Sequence_Handle_IntPatch_Line,
+        theS1: *const Handle_Adaptor3d_Surface,
+        theS2: *const Handle_Adaptor3d_Surface,
+        theToler3D: f64,
+        theArrPeriods: *const f64,
+        theBoxS1: *const Bnd_Box2d,
+        theBoxS2: *const Bnd_Box2d,
+        theListOfCriticalPoints: *const NCollection_List_gp_Pnt,
+    ) -> *const std::ffi::c_char;
     // ======================== IntPolyh_PointNormal ========================
     pub fn IntPolyh_PointNormal_destructor(self_: *mut IntPolyh_PointNormal);
     /// **Source:** `IntPolyh_ArrayOfPointNormal.hxx` - `IntPolyh_PointNormal::IntPolyh_PointNormal()`
@@ -27559,6 +27693,10 @@ unsafe extern "C" {
         self_: *mut Law_Composite,
         W: f64,
     ) -> crate::OcctResult<*mut Handle_Law_Function>;
+    /// **Source:** `Law_Composite.hxx`:87 - `Law_Composite::ChangeLaws()`
+    pub fn Law_Composite_change_laws(
+        self_: *mut Law_Composite,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_Law_Function>;
     /// **Source:** `Law_Composite.hxx`:89 - `Law_Composite::IsPeriodic()`
     pub fn Law_Composite_is_periodic(self_: *const Law_Composite) -> crate::OcctResult<bool>;
     /// **Source:** `Law_Composite.hxx`:91 - `Law_Composite::SetPeriodic()`

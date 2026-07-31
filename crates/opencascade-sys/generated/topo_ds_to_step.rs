@@ -1679,6 +1679,34 @@ impl Tool {
         }
     }
 
+    /// **Source:** `TopoDSToStep_Tool.hxx`:47 - `TopoDSToStep_Tool::TopoDSToStep_Tool()`
+    pub fn new_dmap_shape_standard_transient_bool_int(
+        M: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        FacetedContext: bool,
+        theSurfCurveMode: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_ctor_dmap_shape_standard_transient_bool_int(M, FacetedContext, theSurfCurveMode)))
+        }
+    }
+
+    /// **Source:** `TopoDSToStep_Tool.hxx`:53 - `TopoDSToStep_Tool::Init()`
+    pub fn init(
+        &mut self,
+        M: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        FacetedContext: bool,
+        theSurfCurveMode: i32,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_init(
+                self as *mut Self,
+                M,
+                FacetedContext,
+                theSurfCurveMode,
+            )
+        })
+    }
+
     /// **Source:** `TopoDSToStep_Tool.hxx`:59 - `TopoDSToStep_Tool::IsBound()`
     pub fn is_bound(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -1817,6 +1845,15 @@ impl Tool {
         })
     }
 
+    /// **Source:** `TopoDSToStep_Tool.hxx`:97 - `TopoDSToStep_Tool::Map()`
+    pub fn map(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher{
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_map(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `TopoDSToStep_Tool.hxx`:101 - `TopoDSToStep_Tool::PCurveMode()`
     /// Returns mode for writing pcurves
     /// (initialized by parameter write.surfacecurve.mode)
@@ -1826,20 +1863,6 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (3 total) ──
-// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:47 - `TopoDSToStep_Tool::TopoDSToStep_Tool`
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
-//   // pub fn new_transient>, toptools_shapemaphasher>_bool_int(M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */, FacetedContext: bool, theSurfCurveMode: i32) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:53 - `TopoDSToStep_Tool::Init`
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
-//   // pub fn init(&mut self, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */, FacetedContext: bool, theSurfCurveMode: i32);
-//
-// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:97 - `TopoDSToStep_Tool::Map`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
-//   // pub fn map(&self) -> /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */;
-//
 
 // ========================
 // From TopoDSToStep_WireframeBuilder.hxx
@@ -1913,7 +1936,7 @@ impl WireframeBuilder {
     /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:58 - `TopoDSToStep_WireframeBuilder::Value()`
     pub fn value(
         &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient {
+    ) -> &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_value(
@@ -1921,6 +1944,71 @@ impl WireframeBuilder {
                 ),
             ))
         }
+    }
+
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:63 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge()`
+    /// Extraction of Trimmed Curves from TopoDS_Edge for the
+    /// Creation of a GeometricallyBoundedWireframeRepresentation
+    pub fn get_trimmed_curve_from_edge(
+        &self,
+        E: &crate::topo_ds::Edge,
+        F: &crate::topo_ds::Face,
+        M: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(
+                self as *const Self,
+                E,
+                F,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
+    }
+
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:72 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace()`
+    /// Extraction of Trimmed Curves from TopoDS_Face for the
+    /// Creation of a GeometricallyBoundedWireframeRepresentation
+    pub fn get_trimmed_curve_from_face(
+        &self,
+        F: &crate::topo_ds::Face,
+        M: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(
+                self as *const Self,
+                F,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
+    }
+
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:80 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape()`
+    /// Extraction of Trimmed Curves from any TopoDS_Shape for the
+    /// Creation of a GeometricallyBoundedWireframeRepresentation
+    pub fn get_trimmed_curve_from_shape(
+        &self,
+        S: &crate::topo_ds::Shape,
+        M: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        L: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(
+                self as *const Self,
+                S,
+                M,
+                L,
+                theLocalFactors,
+            )
+        })
     }
 
     /// Upcast to TopoDSToStep_Root
@@ -1965,23 +2053,3 @@ impl WireframeBuilder {
         })
     }
 }
-
-// ── Skipped symbols for WireframeBuilder (3 total) ──
-// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:63 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge`
-//   method: Extraction of Trimmed Curves from TopoDS_Edge for the
-//   method: Creation of a GeometricallyBoundedWireframeRepresentation
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
-//   // pub fn get_trimmed_curve_from_edge(&self, E: &Edge, F: &Face, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
-//
-// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:72 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace`
-//   method: Extraction of Trimmed Curves from TopoDS_Face for the
-//   method: Creation of a GeometricallyBoundedWireframeRepresentation
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
-//   // pub fn get_trimmed_curve_from_face(&self, F: &Face, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
-//
-// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:80 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape`
-//   method: Extraction of Trimmed Curves from any TopoDS_Shape for the
-//   method: Creation of a GeometricallyBoundedWireframeRepresentation
-//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
-//   // pub fn get_trimmed_curve_from_shape(&self, S: &Shape, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
-//

@@ -367,7 +367,7 @@ impl AddFileComment {
     /// Each of them must comply with demand of AddLine
     pub fn add_lines(
         &mut self,
-        lines: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        lines: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_add_lines(
@@ -405,7 +405,7 @@ impl AddFileComment {
     pub fn lines(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3539,7 +3539,7 @@ impl CounterOfLevelNumber {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) {
         crate::check_void_result(unsafe {
@@ -3554,7 +3554,7 @@ impl CounterOfLevelNumber {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:104 - `IFSelect_SignCounter::AddWithGraph()`
     pub fn add_with_graph(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: &crate::interface::Graph,
     ) {
         crate::check_void_result(unsafe {
@@ -5313,7 +5313,7 @@ impl EditDirPart {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5331,7 +5331,7 @@ impl EditDirPart {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5817,7 +5817,7 @@ impl EditHeader {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5835,7 +5835,7 @@ impl EditHeader {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -20617,7 +20617,7 @@ impl ViewSorter {
     /// Adds a list of entities by adding each of the items
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_add_list(self as *mut Self, list)

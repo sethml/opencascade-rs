@@ -3184,6 +3184,76 @@ impl Tool {
         }
     }
 
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:46 - `XCAFDimTolObjects_Tool::GetDimensions()`
+    /// Returns a sequence of Dimensions currently stored
+    /// in the GD&T table
+    pub fn get_dimensions(
+        &self,
+        theDimensionObjectSequence: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_dimensions(
+                self as *const Self,
+                theDimensionObjectSequence,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:51 - `XCAFDimTolObjects_Tool::GetRefDimensions()`
+    /// Returns all Dimensions defined for Shape
+    pub fn get_ref_dimensions(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theDimensions: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_ref_dimensions(
+                self as *const Self,
+                theShape,
+                theDimensions,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:57 - `XCAFDimTolObjects_Tool::GetGeomTolerances()`
+    /// Returns a sequence of Tolerances currently stored
+    /// in the GD&T table
+    pub fn get_geom_tolerances(
+        &self,
+        theGeomToleranceObjectSequence: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        theDatumObjectSequence: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        theMap: &mut crate::ffi_types::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_geom_tolerances(
+                self as *const Self,
+                theGeomToleranceObjectSequence,
+                theDatumObjectSequence,
+                theMap,
+            )
+        })
+    }
+
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:65 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances()`
+    /// Returns all GeomTolerances defined for Shape
+    pub fn get_ref_geom_tolerances(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+        theGeomToleranceObjectSequence: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        theDatumObjectSequence: &mut crate::ffi_types::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        theMap: &mut crate::ffi_types::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXCAF::XCAFDimTolObjects_Tool_get_ref_geom_tolerances(
+                self as *const Self,
+                theShape,
+                theGeomToleranceObjectSequence,
+                theDatumObjectSequence,
+                theMap,
+            )
+        })
+    }
+
     /// **Source:** `XCAFDimTolObjects_Tool.hxx`:74 - `XCAFDimTolObjects_Tool::GetRefDatum()`
     /// Returns DatumObject defined for Shape
     pub fn get_ref_datum(
@@ -3200,27 +3270,3 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (4 total) ──
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:46 - `XCAFDimTolObjects_Tool::GetDimensions`
-//   method: Returns a sequence of Dimensions currently stored
-//   method: in the GD&T table
-//   Reason: has unbindable types: param 'theDimensionObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>&)
-//   // pub fn get_dimensions(&self, theDimensionObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>& */);
-//
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:51 - `XCAFDimTolObjects_Tool::GetRefDimensions`
-//   method: Returns all Dimensions defined for Shape
-//   Reason: has unbindable types: param 'theDimensions': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>&)
-//   // pub fn get_ref_dimensions(&self, theShape: &Shape, theDimensions: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>>& */) -> bool;
-//
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:57 - `XCAFDimTolObjects_Tool::GetGeomTolerances`
-//   method: Returns a sequence of Tolerances currently stored
-//   method: in the GD&T table
-//   Reason: has unbindable types: param 'theGeomToleranceObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>&); param 'theDatumObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>&); param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>&)
-//   // pub fn get_geom_tolerances(&self, theGeomToleranceObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>& */, theDatumObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>& */, theMap: /* NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>& */);
-//
-// SKIPPED: **Source:** `XCAFDimTolObjects_Tool.hxx`:65 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances`
-//   method: Returns all GeomTolerances defined for Shape
-//   Reason: has unbindable types: param 'theGeomToleranceObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>&); param 'theDatumObjectSequence': unresolved template type (NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>&); param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>&)
-//   // pub fn get_ref_geom_tolerances(&self, theShape: &Shape, theGeomToleranceObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>>& */, theDatumObjectSequence: /* NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>>& */, theMap: /* NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>>& */) -> bool;
-//

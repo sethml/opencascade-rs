@@ -41,7 +41,6 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
 
 // Handle type aliases
@@ -187,9 +186,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_AssemblyItemRefDriver_
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_AssemblyItemRefDriver_paste(const BinMXCAFDoc_AssemblyItemRefDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_AssemblyItemRefDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_AssemblyItemRefDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_AssemblyItemRefDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_AssemblyItemRefDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_AssemblyItemRefDriver_dynamic_type(const BinMXCAFDoc_AssemblyItemRefDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -281,9 +284,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_CentroidDriver_new_emp
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_CentroidDriver_paste(const BinMXCAFDoc_CentroidDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_CentroidDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_CentroidDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_CentroidDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_CentroidDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_CentroidDriver_dynamic_type(const BinMXCAFDoc_CentroidDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -375,9 +382,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_ColorDriver_new_empty(
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_ColorDriver_paste(const BinMXCAFDoc_ColorDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_ColorDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_ColorDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_ColorDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_ColorDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_ColorDriver_dynamic_type(const BinMXCAFDoc_ColorDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -469,9 +480,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_DatumDriver_new_empty(
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_DatumDriver_paste(const BinMXCAFDoc_DatumDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_DatumDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_DatumDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_DatumDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_DatumDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_DatumDriver_dynamic_type(const BinMXCAFDoc_DatumDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -563,9 +578,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_DimTolDriver_new_empty
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_DimTolDriver_paste(const BinMXCAFDoc_DimTolDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_DimTolDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_DimTolDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_DimTolDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_DimTolDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_DimTolDriver_dynamic_type(const BinMXCAFDoc_DimTolDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -657,9 +676,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_GraphNodeDriver_new_em
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_GraphNodeDriver_paste(const BinMXCAFDoc_GraphNodeDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_GraphNodeDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_GraphNodeDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_GraphNodeDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_GraphNodeDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_GraphNodeDriver_dynamic_type(const BinMXCAFDoc_GraphNodeDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -751,9 +774,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_LengthUnitDriver_new_e
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_LengthUnitDriver_paste(const BinMXCAFDoc_LengthUnitDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_LengthUnitDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_LengthUnitDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_LengthUnitDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_LengthUnitDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_LengthUnitDriver_dynamic_type(const BinMXCAFDoc_LengthUnitDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -845,13 +872,21 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_LocationDriver_new_emp
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_LocationDriver_paste(const BinMXCAFDoc_LocationDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_LocationDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_LocationDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_LocationDriver_translate(const BinMXCAFDoc_LocationDriver* self_, BinObjMgt_Persistent const* theSource, TopLoc_Location* theLoc, BinObjMgt_RRelocationTable* theMap) {
+extern "C" const char* BinMXCAFDoc_LocationDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_LocationDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BinMXCAFDoc_LocationDriver_translate_persistent_location_rrelocationtable(const BinMXCAFDoc_LocationDriver* self_, BinObjMgt_Persistent const* theSource, TopLoc_Location* theLoc, BinObjMgt_RRelocationTable* theMap) {
     try { return {self_->Translate(*theSource, *theLoc, *theMap), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_LocationDriver_translate_location_persistent_imap_standard_transient(const BinMXCAFDoc_LocationDriver* self_, TopLoc_Location const* theLoc, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theMap) {
+    try { self_->Translate(*theLoc, *theTarget, *theMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BinMXCAFDoc_LocationDriver_set_ns_driver(BinMXCAFDoc_LocationDriver* self_, Handle(BinMNaming_NamedShapeDriver) const* theNSDriver) {
     try { self_->SetNSDriver(*theNSDriver); return nullptr; }
@@ -947,9 +982,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_MaterialDriver_new_emp
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_MaterialDriver_paste(const BinMXCAFDoc_MaterialDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_MaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_MaterialDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_MaterialDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_MaterialDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_MaterialDriver_dynamic_type(const BinMXCAFDoc_MaterialDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1041,9 +1080,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_NoteBinDataDriver_new_
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_NoteBinDataDriver_paste(const BinMXCAFDoc_NoteBinDataDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_NoteBinDataDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_NoteBinDataDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_NoteBinDataDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_NoteBinDataDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_NoteBinDataDriver_dynamic_type(const BinMXCAFDoc_NoteBinDataDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1141,9 +1184,13 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMXCAFDoc_NoteCommentDriver_new_
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_NoteCommentDriver_paste(const BinMXCAFDoc_NoteCommentDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_NoteCommentDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_NoteCommentDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_NoteCommentDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_NoteCommentDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_NoteCommentDriver_dynamic_type(const BinMXCAFDoc_NoteCommentDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1233,9 +1280,13 @@ extern "C" void BinMXCAFDoc_NoteCommentDriver_destructor(BinMXCAFDoc_NoteComment
 // BinMXCAFDoc_NoteDriver wrappers
 // ========================
 
-extern "C" OcctResult<bool> BinMXCAFDoc_NoteDriver_paste(const BinMXCAFDoc_NoteDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_NoteDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_NoteDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_NoteDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_NoteDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_NoteDriver_dynamic_type(const BinMXCAFDoc_NoteDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1347,9 +1398,13 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_VisMaterialDrive
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_VisMaterialDriver_paste(const BinMXCAFDoc_VisMaterialDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_VisMaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_VisMaterialDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_VisMaterialDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_VisMaterialDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<char const*> BinMXCAFDoc_VisMaterialDriver_get_type_name() {
     try { return {BinMXCAFDoc_VisMaterialDriver::get_type_name(), nullptr}; }
@@ -1441,9 +1496,13 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BinMXCAFDoc_VisMaterialToolD
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMXCAFDoc_VisMaterialToolDriver_paste(const BinMXCAFDoc_VisMaterialToolDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
+extern "C" OcctResult<bool> BinMXCAFDoc_VisMaterialToolDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMXCAFDoc_VisMaterialToolDriver* self_, BinObjMgt_Persistent const* theSource, Handle(TDF_Attribute) const* theTarget, BinObjMgt_RRelocationTable* theRelocTable) {
     try { return {self_->Paste(*theSource, *theTarget, *theRelocTable), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BinMXCAFDoc_VisMaterialToolDriver_paste_handletdfattribute_persistent_imap_standard_transient(const BinMXCAFDoc_VisMaterialToolDriver* self_, Handle(TDF_Attribute) const* theSource, BinObjMgt_Persistent* theTarget, NCollection_IndexedMap_Handle_Standard_Transient* theRelocTable) {
+    try { self_->Paste(*theSource, *theTarget, *theRelocTable); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<char const*> BinMXCAFDoc_VisMaterialToolDriver_get_type_name() {
     try { return {BinMXCAFDoc_VisMaterialToolDriver::get_type_name(), nullptr}; }

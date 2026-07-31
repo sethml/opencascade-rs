@@ -40,12 +40,12 @@ impl AssemblyComponent {
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:35 - `STEPSelections_AssemblyComponent::STEPSelections_AssemblyComponent()`
-    pub fn new_handlestepshapeshapedefinitionrepresentation_handlencollectionhsequenceopencascadehandlestepselectionsassemblylink(
+    pub fn new_handlestepshapeshapedefinitionrepresentation_hseq_stepselections_assemblylink(
         sdr: &crate::ffi_types::Handle_StepShape_ShapeDefinitionRepresentation,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_handlencollectionhsequenceopencascadehandlestepselectionsassemblylink(sdr, list)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_hseq_stepselections_assemblylink(sdr, list)))
         }
     }
 
@@ -63,7 +63,11 @@ impl AssemblyComponent {
     }
 
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:41 - `STEPSelections_AssemblyComponent::GetList()`
-    pub fn get_list(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink>{
+    pub fn get_list(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_get_list(
@@ -89,7 +93,7 @@ impl AssemblyComponent {
     /// **Source:** `STEPSelections_AssemblyComponent.hxx`:45 - `STEPSelections_AssemblyComponent::SetList()`
     pub fn set_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::STEPSelections_AssemblyComponent_set_list(

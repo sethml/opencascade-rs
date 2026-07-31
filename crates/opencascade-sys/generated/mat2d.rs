@@ -1086,6 +1086,17 @@ impl MiniPath {
         })
     }
 
+    /// **Source:** `MAT2d_MiniPath.hxx`:76 - `MAT2d_MiniPath::Path()`
+    /// Returns the sequence of connexions corresponding to
+    /// the path.
+    pub fn path(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_MAT2d_Connexion {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_path(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `MAT2d_MiniPath.hxx`:80 - `MAT2d_MiniPath::IsConnexionsFrom()`
     /// Returns <True> if there is one Connexion which starts
     /// on line designed by <Index>.
@@ -1096,6 +1107,23 @@ impl MiniPath {
                 Index,
             )
         })
+    }
+
+    /// **Source:** `MAT2d_MiniPath.hxx`:84 - `MAT2d_MiniPath::ConnexionsFrom()`
+    /// Returns the connexions which start on line
+    /// designed by <Index>.
+    pub fn connexions_from(
+        &mut self,
+        Index: i32,
+    ) -> &mut crate::ffi_types::NCollection_Sequence_Handle_MAT2d_Connexion {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_connexions_from(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
+        }
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:89 - `MAT2d_MiniPath::IsRoot()`
@@ -1122,25 +1150,13 @@ impl MiniPath {
     }
 }
 
-// ── Skipped symbols for MiniPath (3 total) ──
+// ── Skipped symbols for MiniPath (1 total) ──
 // SKIPPED: **Source:** `MAT2d_MiniPath.hxx`:55 - `MAT2d_MiniPath::Perform`
 //   method: Computes the path to link the lines in <Figure>.
 //   method: the path starts on the line of index <IndStart>
 //   method: <Sense> = True if the Circuit turns in the
 //   Reason: has unbindable types: param 'Figure': unresolved template type (NCollection_Sequence<NCollection_Sequence<occ::handle<Geom2d_Geometry>>> const&)
 //   // pub fn perform(&mut self, Figure: /* NCollection_Sequence<NCollection_Sequence<occ::handle<Geom2d_Geometry>>> const& */, IndStart: i32, Sense: bool);
-//
-// SKIPPED: **Source:** `MAT2d_MiniPath.hxx`:76 - `MAT2d_MiniPath::Path`
-//   method: Returns the sequence of connexions corresponding to
-//   method: the path.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<MAT2d_Connexion>> const&)
-//   // pub fn path(&self) -> /* NCollection_Sequence<occ::handle<MAT2d_Connexion>> const& */;
-//
-// SKIPPED: **Source:** `MAT2d_MiniPath.hxx`:84 - `MAT2d_MiniPath::ConnexionsFrom`
-//   method: Returns the connexions which start on line
-//   method: designed by <Index>.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<MAT2d_Connexion>>&)
-//   // pub fn connexions_from(&mut self, Index: i32) -> /* NCollection_Sequence<occ::handle<MAT2d_Connexion>>& */;
 //
 
 // ========================

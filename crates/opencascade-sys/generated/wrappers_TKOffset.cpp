@@ -53,8 +53,6 @@
 #include <GeomAbs_JoinType.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <GeomFill_Trihedron.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Law_Function.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>

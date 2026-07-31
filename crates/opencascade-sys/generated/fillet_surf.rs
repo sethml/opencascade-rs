@@ -1239,6 +1239,37 @@ impl InternalBuilder {
         }
     }
 
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart()`
+    pub fn split_k_part(
+        &mut self,
+        Data: &crate::ffi_types::Handle_ChFiDS_SurfData,
+        SetData: &mut crate::ffi_types::NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Spine: &crate::ffi_types::Handle_ChFiDS_Spine,
+        Iedge: i32,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        I1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        I2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Intf: &mut bool,
+        Intl: &mut bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::FilletSurf_InternalBuilder_inherited_SplitKPart(
+                self as *mut Self,
+                Data,
+                SetData,
+                Spine,
+                Iedge,
+                S1,
+                I1,
+                S2,
+                I2,
+                Intf,
+                Intl,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         crate::check_result(unsafe {

@@ -1198,6 +1198,13 @@ impl Form {
         })
     }
 
+    /// **Source:** `BRepFeat_Form.hxx`:130 - `BRepFeat_Form::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_Form_curves(self as *mut Self, S)
+        })
+    }
+
     /// **Source:** `BRepFeat_Form.hxx`:132 - `BRepFeat_Form::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -1291,12 +1298,6 @@ impl Form {
         })
     }
 }
-
-// ── Skipped symbols for Form (1 total) ──
-// SKIPPED: **Source:** `BRepFeat_Form.hxx`:130 - `BRepFeat_Form::Curves`
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&mut self, S: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From BRepFeat_Gluer.hxx
@@ -2608,6 +2609,13 @@ impl MakeDPrism {
         })
     }
 
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeDPrism_curves(self as *mut Self, S)
+        })
+    }
+
     /// **Source:** `BRepFeat_MakeDPrism.hxx`:131 - `BRepFeat_MakeDPrism::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -2870,12 +2878,6 @@ impl MakeDPrism {
         })
     }
 }
-
-// ── Skipped symbols for MakeDPrism (1 total) ──
-// SKIPPED: **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::Curves`
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&mut self, S: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From BRepFeat_MakeLinearForm.hxx
@@ -3355,6 +3357,13 @@ impl MakePipe {
         })
     }
 
+    /// **Source:** `BRepFeat_MakePipe.hxx`:106 - `BRepFeat_MakePipe::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakePipe_curves(self as *mut Self, S)
+        })
+    }
+
     /// **Source:** `BRepFeat_MakePipe.hxx`:108 - `BRepFeat_MakePipe::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -3569,12 +3578,6 @@ impl MakePipe {
     }
 }
 
-// ── Skipped symbols for MakePipe (1 total) ──
-// SKIPPED: **Source:** `BRepFeat_MakePipe.hxx`:106 - `BRepFeat_MakePipe::Curves`
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&mut self, S: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
-
 // ========================
 // From BRepFeat_MakePrism.hxx
 // ========================
@@ -3760,6 +3763,14 @@ impl MakePrism {
                 Until,
                 Length,
             )
+        })
+    }
+
+    /// **Source:** `BRepFeat_MakePrism.hxx`:132 - `BRepFeat_MakePrism::Curves()`
+    /// Returns the list of curves S parallel to the axis of the prism.
+    pub fn curves(&mut self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakePrism_curves(self as *mut Self, S)
         })
     }
 
@@ -3995,13 +4006,6 @@ impl MakePrism {
     }
 }
 
-// ── Skipped symbols for MakePrism (1 total) ──
-// SKIPPED: **Source:** `BRepFeat_MakePrism.hxx`:132 - `BRepFeat_MakePrism::Curves`
-//   method: Returns the list of curves S parallel to the axis of the prism.
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&mut self, S: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
-
 // ========================
 // From BRepFeat_MakeRevol.hxx
 // ========================
@@ -4135,6 +4139,13 @@ impl MakeRevol {
                 Until,
                 Angle,
             )
+        })
+    }
+
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:89 - `BRepFeat_MakeRevol::Curves()`
+    pub fn curves(&mut self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::BRepFeat_MakeRevol_curves(self as *mut Self, S)
         })
     }
 
@@ -4368,12 +4379,6 @@ impl MakeRevol {
         })
     }
 }
-
-// ── Skipped symbols for MakeRevol (1 total) ──
-// SKIPPED: **Source:** `BRepFeat_MakeRevol.hxx`:89 - `BRepFeat_MakeRevol::Curves`
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&mut self, S: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From BRepFeat_MakeRevolutionForm.hxx

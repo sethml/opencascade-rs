@@ -702,8 +702,12 @@ fn collect_template_class_types(parsed: &[model::ParsedHeader]) -> HashSet<Strin
             if arg.is_empty() {
                 continue;
             }
-            // Handle wrapper: opencascade::handle<Foo>
-            if arg.starts_with("opencascade::handle<") {
+            // Handle wrapper: opencascade::handle<Foo>. Clang reports the `occ::`
+            // spelling in most signatures, and without it these fall through to the
+            // "nested type with template" rejection below — which is what kept
+            // handle-element collections (NCollection_List<occ::handle<T>>, …) out
+            // of collection discovery entirely.
+            if arg.starts_with("opencascade::handle<") || arg.starts_with("occ::handle<") {
                 continue;
             }
             // Nested type with template (e.g., StdLPersistent_HArray1::instance<...>)

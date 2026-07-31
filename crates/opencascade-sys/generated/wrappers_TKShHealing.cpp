@@ -166,17 +166,17 @@ typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
 typedef opencascade::handle<Geom_Geometry> Handle_Geom_Geometry;
 typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
 typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<NCollection_HArray1_Handle_Geom2d_Curve> Handle_NCollection_HArray1_Handle_Geom2d_Curve;
+typedef opencascade::handle<NCollection_HArray1_Handle_Geom_Curve> Handle_NCollection_HArray1_Handle_Geom_Curve;
 typedef opencascade::handle<NCollection_HArray1_TopoDS_Shape> Handle_NCollection_HArray1_TopoDS_Shape;
 typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom2d_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom_Curve;
+typedef opencascade::handle<NCollection_HArray2_Handle_Geom_Surface> Handle_NCollection_HArray2_Handle_Geom_Surface;
 typedef opencascade::handle<NCollection_HArray2_double> Handle_NCollection_HArray2_double;
-typedef opencascade::handle<NCollection_HArray2_opencascade_handle_Geom_Surface> Handle_NCollection_HArray2_opencascade_handle_Geom_Surface;
+typedef opencascade::handle<NCollection_HSequence_Handle_Geom2d_BoundedCurve> Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+typedef opencascade::handle<NCollection_HSequence_Handle_Geom_BoundedCurve> Handle_NCollection_HSequence_Handle_Geom_BoundedCurve;
+typedef opencascade::handle<NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData> Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
 typedef opencascade::handle<NCollection_HSequence_TopoDS_Shape> Handle_NCollection_HSequence_TopoDS_Shape;
 typedef opencascade::handle<NCollection_HSequence_double> Handle_NCollection_HSequence_double;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve> Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Geom_BoundedCurve> Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData> Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData;
 typedef opencascade::handle<Resource_Manager> Handle_Resource_Manager;
 typedef opencascade::handle<ShapeAlgo_AlgoContainer> Handle_ShapeAlgo_AlgoContainer;
 typedef opencascade::handle<ShapeAlgo_ToolContainer> Handle_ShapeAlgo_ToolContainer;
@@ -664,11 +664,19 @@ extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_connect_next_wire(const Shap
     try { return {self_->ConnectNextWire(*saw, *nextsewd, maxtol, *distmin, *revsewd, *revnextsewd), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom_BoundedCurve)* seqBS) {
+extern "C" const char* ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_seq_geom_curve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* bspline, NCollection_Sequence_Handle_Geom_Curve* seq) {
+    try { self_->ApproxBSplineCurve(*bspline, *seq); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_seq_geom2d_curve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* bspline, NCollection_Sequence_Handle_Geom2d_Curve* seq) {
+    try { self_->ApproxBSplineCurve(*bspline, *seq); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_Handle_Geom_BoundedCurve)* seqBS) {
     try { return {self_->C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(const ShapeAlgo_AlgoContainer* self_, Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_Handle_Geom2d_BoundedCurve)* seqBS) {
     try { return {self_->C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1432,12 +1440,12 @@ extern "C" OcctResult<TopoDS_Shape*> ShapeAnalysis_FreeBoundsProperties_shape(co
     try { return {new TopoDS_Shape(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)(self_->ClosedFreeBounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData)(self_->ClosedFreeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_open_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData)(self_->OpenFreeBounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_open_free_bounds(const ShapeAnalysis_FreeBoundsProperties* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData)(self_->OpenFreeBounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(ShapeAnalysis_FreeBoundData)*> ShapeAnalysis_FreeBoundsProperties_closed_free_bound(const ShapeAnalysis_FreeBoundsProperties* self_, int32_t index) {
@@ -4766,11 +4774,11 @@ extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurfac
     try { return {new ShapeExtend_CompositeSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, int32_t param) {
+extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_parametrisation(Handle(NCollection_HArray2_Handle_Geom_Surface) const* GridSurf, int32_t param) {
     try { return {new ShapeExtend_CompositeSurface(*GridSurf, static_cast<ShapeExtend_Parametrisation>(param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
+extern "C" OcctResult<ShapeExtend_CompositeSurface*> ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_arr1_double2(Handle(NCollection_HArray2_Handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
     try { return {new ShapeExtend_CompositeSurface(*GridSurf, *UJoints, *VJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4826,11 +4834,11 @@ extern "C" OcctResult<gp_Pnt*> ShapeExtend_CompositeSurface_value(const ShapeExt
     try { return {new gp_Pnt(self_->Value(*pnt)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, int32_t param) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_parametrisation(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_Handle_Geom_Surface) const* GridSurf, int32_t param) {
     try { return {self_->Init(*GridSurf, static_cast<ShapeExtend_Parametrisation>(param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
+extern "C" OcctResult<bool> ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_arr1_double2(ShapeExtend_CompositeSurface* self_, Handle(NCollection_HArray2_Handle_Geom_Surface) const* GridSurf, NCollection_Array1_double const* UJoints, NCollection_Array1_double const* VJoints) {
     try { return {self_->Init(*GridSurf, *UJoints, *VJoints), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4846,7 +4854,7 @@ extern "C" OcctResult<Handle(Geom_Surface) const*> ShapeExtend_CompositeSurface_
     try { return {&(self_->Patch(i, j)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_Geom_Surface) const*> ShapeExtend_CompositeSurface_patches(const ShapeExtend_CompositeSurface* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_Geom_Surface) const*> ShapeExtend_CompositeSurface_patches(const ShapeExtend_CompositeSurface* self_) {
     try { return {&(self_->Patches()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5179,6 +5187,10 @@ extern "C" const char* ShapeExtend_MsgRegistrator_send_handlestandardtransient_m
 extern "C" const char* ShapeExtend_MsgRegistrator_send_shape_msg_gravity(ShapeExtend_MsgRegistrator* self_, TopoDS_Shape const* shape, Message_Msg const* message, int32_t gravity) {
     try { self_->Send(*shape, *message, static_cast<Message_Gravity>(gravity)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg const*> ShapeExtend_MsgRegistrator_map_transient(const ShapeExtend_MsgRegistrator* self_) {
+    try { return {&(self_->MapTransient()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher const*> ShapeExtend_MsgRegistrator_map_shape(const ShapeExtend_MsgRegistrator* self_) {
     try { return {&(self_->MapShape()), nullptr}; }
@@ -9297,7 +9309,7 @@ extern "C" const char* ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(ShapeU
     try { self->Init(C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom2d_Curve) const*> ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve2dToBezier* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9437,7 +9449,7 @@ extern "C" const char* ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(ShapeU
     try { self->Init(C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom_Curve) const*> ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(const ShapeUpgrade_ConvertCurve3dToBezier* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11529,7 +11541,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve2d_build(ShapeUpgrade_SplitCurve2d
     try { self_->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2d_get_curves(const ShapeUpgrade_SplitCurve2d* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2d_get_curves(const ShapeUpgrade_SplitCurve2d* self_) {
     try { return {&(self_->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11705,7 +11717,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(Shape
     try { self->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve2dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom2d_Curve) const*> ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve2dContinuity* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11775,7 +11787,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve3d_build(ShapeUpgrade_SplitCurve3d
     try { self_->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3d_get_curves(const ShapeUpgrade_SplitCurve3d* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3d_get_curves(const ShapeUpgrade_SplitCurve3d* self_) {
     try { return {&(self_->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11955,7 +11967,7 @@ extern "C" const char* ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(Shape
     try { self->Build(Segment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve3dContinuity* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom_Curve) const*> ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(const ShapeUpgrade_SplitCurve3dContinuity* self) {
     try { return {&(self->GetCurves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13188,11 +13200,11 @@ extern "C" OcctResult<bool> ShapeProcess_perform_handleshapeprocesscontext_opera
 // ========================
 // ShapeUpgrade namespace functions
 // ========================
-extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom_BoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(Handle(Geom_BSplineCurve) const* BS, Handle(NCollection_HSequence_Handle_Geom_BoundedCurve)* seqBS) {
     try { return {ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve)* seqBS) {
+extern "C" OcctResult<bool> ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(Handle(Geom2d_BSplineCurve) const* BS, Handle(NCollection_HSequence_Handle_Geom2d_BoundedCurve)* seqBS) {
     try { return {ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve(*BS, *seqBS), nullptr}; }
     OCCT_CATCH_RETURN
 }

@@ -99,7 +99,6 @@
 #include <IFSelect_SelectExplore.hxx>
 #include <IFSelect_SelectExtract.hxx>
 #include <IFSelect_SelectSignature.hxx>
-#include <IFSelect_Selection.hxx>
 #include <IFSelect_SelectionIterator.hxx>
 #include <IFSelect_SessionPilot.hxx>
 #include <IFSelect_Signature.hxx>
@@ -135,7 +134,6 @@
 #include <Resource_FormatType.hxx>
 #include <STEPCAFControl_ActorWrite.hxx>
 #include <STEPCAFControl_Controller.hxx>
-#include <STEPCAFControl_ExternFile.hxx>
 #include <STEPCAFControl_GDTProperty.hxx>
 #include <STEPCAFControl_Reader.hxx>
 #include <STEPCAFControl_Writer.hxx>
@@ -888,7 +886,6 @@
 #include <StepShape_SweptFaceSolid.hxx>
 #include <StepShape_ToleranceMethodDefinition.hxx>
 #include <StepShape_ToleranceValue.hxx>
-#include <StepShape_TopologicalRepresentationItem.hxx>
 #include <StepShape_Torus.hxx>
 #include <StepShape_TransitionalShapeRepresentation.hxx>
 #include <StepShape_TypeQualifier.hxx>
@@ -1051,7 +1048,6 @@
 #include <StepVisual_TriangulatedFace.hxx>
 #include <StepVisual_TriangulatedSurfaceSet.hxx>
 #include <StepVisual_ViewVolume.hxx>
-#include <TDocStd_Document.hxx>
 #include <TopoDSToStep.hxx>
 #include <TopoDSToStep_Builder.hxx>
 #include <TopoDSToStep_BuilderError.hxx>
@@ -1097,7 +1093,6 @@
 #include <XCAFDimTolObjects_GeomToleranceType.hxx>
 #include <XCAFDimTolObjects_GeomToleranceTypeValue.hxx>
 #include <XCAFDoc_ShapeTool.hxx>
-#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialCommon.hxx>
 #include <XSAlgo_ShapeProcessor.hxx>
 #include <XSControl_Controller.hxx>
@@ -1189,6 +1184,45 @@ typedef opencascade::handle<Interface_SignType> Handle_Interface_SignType;
 typedef opencascade::handle<Interface_UndefinedContent> Handle_Interface_UndefinedContent;
 typedef opencascade::handle<MoniTool_SignText> Handle_MoniTool_SignText;
 typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
+typedef opencascade::handle<NCollection_HArray1_Handle_Standard_Transient> Handle_NCollection_HArray1_Handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_Approval> Handle_NCollection_HArray1_Handle_StepBasic_Approval;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_DerivedUnitElement> Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_Document> Handle_NCollection_HArray1_Handle_StepBasic_Document;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_NamedUnit> Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_Organization> Handle_NCollection_HArray1_Handle_StepBasic_Organization;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_Person> Handle_NCollection_HArray1_Handle_StepBasic_Person;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_Product> Handle_NCollection_HArray1_Handle_StepBasic_Product;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_ProductContext> Handle_NCollection_HArray1_Handle_StepBasic_ProductContext;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit> Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepDimTol_DatumReference> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket> Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition> Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepElement_SurfaceSection> Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember> Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepFEA_CurveElementInterval> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepFEA_ElementRepresentation> Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepFEA_NodeRepresentation> Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepGeom_CartesianPoint> Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment> Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation> Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation> Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepRepr_RepresentationItem> Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepRepr_ShapeAspect> Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet> Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_ConnectedFaceSet> Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_Edge> Handle_NCollection_HArray1_Handle_StepShape_Edge;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_Face> Handle_NCollection_HArray1_Handle_StepShape_Face;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_FaceBound> Handle_NCollection_HArray1_Handle_StepShape_FaceBound;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_OrientedClosedShell> Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepShape_OrientedEdge> Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern> Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment> Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+typedef opencascade::handle<NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem> Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+typedef opencascade::handle<NCollection_HArray1_Handle_TCollection_HAsciiString> Handle_NCollection_HArray1_Handle_TCollection_HAsciiString;
 typedef opencascade::handle<NCollection_HArray1_StepAP203_ApprovedItem> Handle_NCollection_HArray1_StepAP203_ApprovedItem;
 typedef opencascade::handle<NCollection_HArray1_StepAP203_CertifiedItem> Handle_NCollection_HArray1_StepAP203_CertifiedItem;
 typedef opencascade::handle<NCollection_HArray1_StepAP203_ChangeRequestItem> Handle_NCollection_HArray1_StepAP203_ChangeRequestItem;
@@ -1248,59 +1282,20 @@ typedef opencascade::handle<NCollection_HArray1_TCollection_AsciiString> Handle_
 typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
 typedef opencascade::handle<NCollection_HArray1_gp_XYZ> Handle_NCollection_HArray1_gp_XYZ;
 typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember> Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember> Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Standard_Transient> Handle_NCollection_HArray1_opencascade_handle_Standard_Transient;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_Approval> Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement> Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_Document> Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit> Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_Organization> Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_Person> Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_Product> Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_ProductContext> Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit> Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference> Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment> Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement> Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket> Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition> Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection> Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember> Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset> Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease> Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval> Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation> Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation> Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint> Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment> Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation> Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation> Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem> Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect> Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet> Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet> Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_Edge> Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_Face> Handle_NCollection_HArray1_opencascade_handle_StepShape_Face;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_FaceBound> Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell> Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge> Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern> Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment> Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem> Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember> Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember> Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember;
+typedef opencascade::handle<NCollection_HArray2_Handle_StepGeom_CartesianPoint> Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint;
+typedef opencascade::handle<NCollection_HArray2_Handle_StepGeom_SurfacePatch> Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch;
 typedef opencascade::handle<NCollection_HArray2_double> Handle_NCollection_HArray2_double;
 typedef opencascade::handle<NCollection_HArray2_int> Handle_NCollection_HArray2_int;
-typedef opencascade::handle<NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint> Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint;
-typedef opencascade::handle<NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch> Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch;
+typedef opencascade::handle<NCollection_HSequence_Handle_STEPSelections_AssemblyLink> Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+typedef opencascade::handle<NCollection_HSequence_Handle_Standard_Transient> Handle_NCollection_HSequence_Handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition> Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+typedef opencascade::handle<NCollection_HSequence_Handle_StepElement_ElementMaterial> Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial;
+typedef opencascade::handle<NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship> Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+typedef opencascade::handle<NCollection_HSequence_Handle_StepFEA_ElementRepresentation> Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
 typedef opencascade::handle<NCollection_HSequence_TCollection_AsciiString> Handle_NCollection_HSequence_TCollection_AsciiString;
 typedef opencascade::handle<NCollection_HSequence_TopoDS_Shape> Handle_NCollection_HSequence_TopoDS_Shape;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink> Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Standard_Transient> Handle_NCollection_HSequence_opencascade_handle_Standard_Transient;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition> Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial> Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship> Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation> Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation;
 typedef opencascade::handle<RWHeaderSection_GeneralModule> Handle_RWHeaderSection_GeneralModule;
 typedef opencascade::handle<RWHeaderSection_ReadWriteModule> Handle_RWHeaderSection_ReadWriteModule;
 typedef opencascade::handle<STEPCAFControl_ActorWrite> Handle_STEPCAFControl_ActorWrite;
@@ -7072,15 +7067,15 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> APIHeaderSection_EditHeader_
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> APIHeaderSection_EditHeader_inherited_ListValue(const APIHeaderSection_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> APIHeaderSection_EditHeader_inherited_ListValue(const APIHeaderSection_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> APIHeaderSection_EditHeader_inherited_Update(const APIHeaderSection_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TCollection_HAsciiString) const& newval, bool enforce) {
     try { return {self->Update(form, num, newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> APIHeaderSection_EditHeader_inherited_UpdateList(const APIHeaderSection_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> APIHeaderSection_EditHeader_inherited_UpdateList(const APIHeaderSection_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7142,16 +7137,16 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> APIHeaderSection_MakeHe
     try { return {new Handle(TCollection_HAsciiString)(self_->TimeStamp()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_author(const APIHeaderSection_MakeHeader* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Author()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_author(const APIHeaderSection_MakeHeader* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Author()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_author_value(const APIHeaderSection_MakeHeader* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->AuthorValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_organization(const APIHeaderSection_MakeHeader* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Organization()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_organization(const APIHeaderSection_MakeHeader* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Organization()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_organization_value(const APIHeaderSection_MakeHeader* self_, int32_t num) {
@@ -7174,8 +7169,8 @@ extern "C" OcctResult<Handle(HeaderSection_FileSchema)*> APIHeaderSection_MakeHe
     try { return {new Handle(HeaderSection_FileSchema)(self_->FsValue()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_schema_identifiers(const APIHeaderSection_MakeHeader* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->SchemaIdentifiers()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_schema_identifiers(const APIHeaderSection_MakeHeader* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->SchemaIdentifiers()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_schema_identifiers_value(const APIHeaderSection_MakeHeader* self_, int32_t num) {
@@ -7186,8 +7181,8 @@ extern "C" OcctResult<Handle(HeaderSection_FileDescription)*> APIHeaderSection_M
     try { return {new Handle(HeaderSection_FileDescription)(self_->FdValue()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_description(const APIHeaderSection_MakeHeader* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Description()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_description(const APIHeaderSection_MakeHeader* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> APIHeaderSection_MakeHeader_description_value(const APIHeaderSection_MakeHeader* self_, int32_t num) {
@@ -7222,7 +7217,7 @@ extern "C" const char* APIHeaderSection_MakeHeader_set_time_stamp(APIHeaderSecti
     try { self_->SetTimeStamp(*aTimeStamp); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* APIHeaderSection_MakeHeader_set_author(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aAuthor) {
+extern "C" const char* APIHeaderSection_MakeHeader_set_author(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aAuthor) {
     try { self_->SetAuthor(*aAuthor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7234,7 +7229,7 @@ extern "C" OcctResult<int32_t> APIHeaderSection_MakeHeader_nb_author(const APIHe
     try { return {self_->NbAuthor(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* APIHeaderSection_MakeHeader_set_organization(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aOrganization) {
+extern "C" const char* APIHeaderSection_MakeHeader_set_organization(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aOrganization) {
     try { self_->SetOrganization(*aOrganization); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7262,7 +7257,7 @@ extern "C" OcctResult<bool> APIHeaderSection_MakeHeader_has_fs(const APIHeaderSe
     try { return {self_->HasFs(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* APIHeaderSection_MakeHeader_set_schema_identifiers(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
+extern "C" const char* APIHeaderSection_MakeHeader_set_schema_identifiers(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
     try { self_->SetSchemaIdentifiers(*aSchemaIdentifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7282,7 +7277,7 @@ extern "C" OcctResult<bool> APIHeaderSection_MakeHeader_has_fd(const APIHeaderSe
     try { return {self_->HasFd(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* APIHeaderSection_MakeHeader_set_description(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aDescription) {
+extern "C" const char* APIHeaderSection_MakeHeader_set_description(APIHeaderSection_MakeHeader* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aDescription) {
     try { self_->SetDescription(*aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8434,8 +8429,8 @@ extern "C" OcctResult<HeaderSection_FileDescription*> HeaderSection_FileDescript
     try { return {new HeaderSection_FileDescription(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> HeaderSection_FileDescription_description(const HeaderSection_FileDescription* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Description()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> HeaderSection_FileDescription_description(const HeaderSection_FileDescription* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileDescription_description_value(const HeaderSection_FileDescription* self_, int32_t num) {
@@ -8446,11 +8441,11 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileDescr
     try { return {new Handle(TCollection_HAsciiString)(self_->ImplementationLevel()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HeaderSection_FileDescription_init(HeaderSection_FileDescription* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aDescription, Handle(TCollection_HAsciiString) const* aImplementationLevel) {
+extern "C" const char* HeaderSection_FileDescription_init(HeaderSection_FileDescription* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aDescription, Handle(TCollection_HAsciiString) const* aImplementationLevel) {
     try { self_->Init(*aDescription, *aImplementationLevel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HeaderSection_FileDescription_set_description(HeaderSection_FileDescription* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aDescription) {
+extern "C" const char* HeaderSection_FileDescription_set_description(HeaderSection_FileDescription* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aDescription) {
     try { self_->SetDescription(*aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8538,16 +8533,16 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileName_
     try { return {new Handle(TCollection_HAsciiString)(self_->TimeStamp()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> HeaderSection_FileName_author(const HeaderSection_FileName* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Author()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> HeaderSection_FileName_author(const HeaderSection_FileName* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Author()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileName_author_value(const HeaderSection_FileName* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->AuthorValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> HeaderSection_FileName_organization(const HeaderSection_FileName* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->Organization()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> HeaderSection_FileName_organization(const HeaderSection_FileName* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->Organization()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileName_organization_value(const HeaderSection_FileName* self_, int32_t num) {
@@ -8566,7 +8561,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileName_
     try { return {new Handle(TCollection_HAsciiString)(self_->Authorisation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HeaderSection_FileName_init(HeaderSection_FileName* self_, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aTimeStamp, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aAuthor, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aOrganization, Handle(TCollection_HAsciiString) const* aPreprocessorVersion, Handle(TCollection_HAsciiString) const* aOriginatingSystem, Handle(TCollection_HAsciiString) const* aAuthorisation) {
+extern "C" const char* HeaderSection_FileName_init(HeaderSection_FileName* self_, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aTimeStamp, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aAuthor, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aOrganization, Handle(TCollection_HAsciiString) const* aPreprocessorVersion, Handle(TCollection_HAsciiString) const* aOriginatingSystem, Handle(TCollection_HAsciiString) const* aAuthorisation) {
     try { self_->Init(*aName, *aTimeStamp, *aAuthor, *aOrganization, *aPreprocessorVersion, *aOriginatingSystem, *aAuthorisation); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8578,7 +8573,7 @@ extern "C" const char* HeaderSection_FileName_set_time_stamp(HeaderSection_FileN
     try { self_->SetTimeStamp(*aTimeStamp); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HeaderSection_FileName_set_author(HeaderSection_FileName* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aAuthor) {
+extern "C" const char* HeaderSection_FileName_set_author(HeaderSection_FileName* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aAuthor) {
     try { self_->SetAuthor(*aAuthor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8586,7 +8581,7 @@ extern "C" OcctResult<int32_t> HeaderSection_FileName_nb_author(const HeaderSect
     try { return {self_->NbAuthor(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HeaderSection_FileName_set_organization(HeaderSection_FileName* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aOrganization) {
+extern "C" const char* HeaderSection_FileName_set_organization(HeaderSection_FileName* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aOrganization) {
     try { self_->SetOrganization(*aOrganization); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8674,19 +8669,19 @@ extern "C" OcctResult<HeaderSection_FileSchema*> HeaderSection_FileSchema_ctor()
     try { return {new HeaderSection_FileSchema(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> HeaderSection_FileSchema_schema_identifiers(const HeaderSection_FileSchema* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->SchemaIdentifiers()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> HeaderSection_FileSchema_schema_identifiers(const HeaderSection_FileSchema* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->SchemaIdentifiers()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> HeaderSection_FileSchema_schema_identifiers_value(const HeaderSection_FileSchema* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->SchemaIdentifiersValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* HeaderSection_FileSchema_init(HeaderSection_FileSchema* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
+extern "C" const char* HeaderSection_FileSchema_init(HeaderSection_FileSchema* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
     try { self_->Init(*aSchemaIdentifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* HeaderSection_FileSchema_set_schema_identifiers(HeaderSection_FileSchema* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
+extern "C" const char* HeaderSection_FileSchema_set_schema_identifiers(HeaderSection_FileSchema* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aSchemaIdentifiers) {
     try { self_->SetSchemaIdentifiers(*aSchemaIdentifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9847,6 +9842,10 @@ extern "C" OcctResult<bool> STEPCAFControl_Reader_perform_charptr_handletdocstdd
     try { return {self_->Perform(filename, *doc, *theParams, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile const*> STEPCAFControl_Reader_extern_files(const STEPCAFControl_Reader* self_) {
+    try { return {&(self_->ExternFiles()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> STEPCAFControl_Reader_extern_file(const STEPCAFControl_Reader* self_, const char* name, Handle(STEPCAFControl_ExternFile)* ef) {
     try { return {self_->ExternFile(name, *ef), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10027,6 +10026,10 @@ extern "C" OcctResult<bool> STEPCAFControl_Writer_perform_handletdocstddocument_
 }
 extern "C" OcctResult<bool> STEPCAFControl_Writer_perform_handletdocstddocument_charptr_parameters_progressrange(STEPCAFControl_Writer* self_, Handle(TDocStd_Document) const* theDoc, const char* theFileName, DESTEP_Parameters const* theParams, Message_ProgressRange const* theProgress) {
     try { return {self_->Perform(*theDoc, theFileName, *theParams, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile const*> STEPCAFControl_Writer_extern_files(const STEPCAFControl_Writer* self_) {
+    try { return {&(self_->ExternFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> STEPCAFControl_Writer_extern_file_label_handlestepcafcontrolexternfile(const STEPCAFControl_Writer* self_, TDF_Label const* theLabel, Handle(STEPCAFControl_ExternFile)* theExtFile) {
@@ -10367,12 +10370,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> STEPConstruct_ContextTo
     try { return {new Handle(TCollection_HAsciiString)(self_->GetProductName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> STEPConstruct_ContextTool_get_roots_for_part(STEPConstruct_ContextTool* self_, STEPConstruct_Part const* SDRTool) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetRootsForPart(*SDRTool)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> STEPConstruct_ContextTool_get_roots_for_part(STEPConstruct_ContextTool* self_, STEPConstruct_Part const* SDRTool) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GetRootsForPart(*SDRTool)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> STEPConstruct_ContextTool_get_roots_for_assembly_link(STEPConstruct_ContextTool* self_, STEPConstruct_Assembly const* assembly) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetRootsForAssemblyLink(*assembly)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> STEPConstruct_ContextTool_get_roots_for_assembly_link(STEPConstruct_ContextTool* self_, STEPConstruct_Assembly const* assembly) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GetRootsForAssemblyLink(*assembly)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* STEPConstruct_ContextTool_set_model(STEPConstruct_ContextTool* self_, Handle(StepData_StepModel) const* aStepModel) {
@@ -10949,7 +10952,7 @@ extern "C" OcctResult<bool> STEPConstruct_Styles_load_styles(STEPConstruct_Style
     try { return {self_->LoadStyles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> STEPConstruct_Styles_load_invis_styles(const STEPConstruct_Styles* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)* InvSyles) {
+extern "C" OcctResult<bool> STEPConstruct_Styles_load_invis_styles(const STEPConstruct_Styles* self_, Handle(NCollection_HSequence_Handle_Standard_Transient)* InvSyles) {
     try { return {self_->LoadInvisStyles(*InvSyles), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10957,8 +10960,12 @@ extern "C" OcctResult<bool> STEPConstruct_Styles_get_colors(const STEPConstruct_
     try { return {self_->GetColors(*theStyle, *theSurfaceColour, *theBoundaryColour, *theCurveColour, *theRenderingProps, *theIsComponent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(StepVisual_Colour)*> STEPConstruct_Styles_encode_color(Quantity_Color const* Col) {
+extern "C" OcctResult<Handle(StepVisual_Colour)*> STEPConstruct_Styles_encode_color_color(Quantity_Color const* Col) {
     try { return {new Handle(StepVisual_Colour)(STEPConstruct_Styles::EncodeColor(*Col)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(StepVisual_Colour)*> STEPConstruct_Styles_encode_color_color_worksessionmap_dmap_pnt_standard_transient(Quantity_Color const* Col, XSControl_WorkSessionMap* DPDCs, NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* ColRGBs) {
+    try { return {new Handle(StepVisual_Colour)(STEPConstruct_Styles::EncodeColor(*Col, *DPDCs, *ColRGBs)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> STEPConstruct_Styles_decode_color(Handle(StepVisual_Colour) const* Colour, Quantity_Color* Col) {
@@ -11167,6 +11174,10 @@ extern "C" OcctResult<bool> STEPConstruct_ValidationProps_add_centroid(STEPConst
 }
 extern "C" OcctResult<bool> STEPConstruct_ValidationProps_find_target(STEPConstruct_ValidationProps* self_, TopoDS_Shape const* S, StepRepr_CharacterizedDefinition* target, Handle(StepRepr_RepresentationContext)* Context, bool instance) {
     try { return {self_->FindTarget(*S, *target, *Context, instance), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> STEPConstruct_ValidationProps_load_props(const STEPConstruct_ValidationProps* self_, NCollection_Sequence_Handle_Standard_Transient* seq) {
+    try { return {self_->LoadProps(*seq), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> STEPConstruct_ValidationProps_get_prop_real(const STEPConstruct_ValidationProps* self_, Handle(StepRepr_RepresentationItem) const* item, double* Val, bool* isArea, StepData_Factors const* theLocalFactors) {
@@ -11777,7 +11788,7 @@ extern "C" OcctResult<bool> STEPControl_Reader_inherited_TransferEntity(STEPCont
     try { return {self->TransferEntity(start, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> STEPControl_Reader_inherited_TransferList(STEPControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
+extern "C" OcctResult<int32_t> STEPControl_Reader_inherited_TransferList(STEPControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
     try { return {self->TransferList(list, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11813,7 +11824,7 @@ extern "C" const char* STEPControl_Reader_inherited_PrintStatsTransfer(const STE
     try { self->PrintStatsTransfer(what, mode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
+extern "C" const char* STEPControl_Reader_inherited_GetStatsTransfer(const STEPControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
     try { self->GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12025,15 +12036,15 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> STEPEdit_EditContext_inherit
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> STEPEdit_EditContext_inherited_ListValue(const STEPEdit_EditContext* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> STEPEdit_EditContext_inherited_ListValue(const STEPEdit_EditContext* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> STEPEdit_EditContext_inherited_Update(const STEPEdit_EditContext* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TCollection_HAsciiString) const& newval, bool enforce) {
     try { return {self->Update(form, num, newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> STEPEdit_EditContext_inherited_UpdateList(const STEPEdit_EditContext* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> STEPEdit_EditContext_inherited_UpdateList(const STEPEdit_EditContext* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12175,15 +12186,15 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> STEPEdit_EditSDR_inherited_L
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> STEPEdit_EditSDR_inherited_ListValue(const STEPEdit_EditSDR* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> STEPEdit_EditSDR_inherited_ListValue(const STEPEdit_EditSDR* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> STEPEdit_EditSDR_inherited_Update(const STEPEdit_EditSDR* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TCollection_HAsciiString) const& newval, bool enforce) {
     try { return {self->Update(form, num, newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> STEPEdit_EditSDR_inherited_UpdateList(const STEPEdit_EditSDR* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> STEPEdit_EditSDR_inherited_UpdateList(const STEPEdit_EditSDR* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12225,7 +12236,7 @@ extern "C" OcctResult<STEPSelections_AssemblyComponent*> STEPSelections_Assembly
     try { return {new STEPSelections_AssemblyComponent(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<STEPSelections_AssemblyComponent*> STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_handlencollectionhsequenceopencascadehandlestepselectionsassemblylink(Handle(StepShape_ShapeDefinitionRepresentation) const* sdr, Handle(NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink) const* list) {
+extern "C" OcctResult<STEPSelections_AssemblyComponent*> STEPSelections_AssemblyComponent_ctor_handlestepshapeshapedefinitionrepresentation_hseq_stepselections_assemblylink(Handle(StepShape_ShapeDefinitionRepresentation) const* sdr, Handle(NCollection_HSequence_Handle_STEPSelections_AssemblyLink) const* list) {
     try { return {new STEPSelections_AssemblyComponent(*sdr, *list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12233,15 +12244,15 @@ extern "C" OcctResult<Handle(StepShape_ShapeDefinitionRepresentation)*> STEPSele
     try { return {new Handle(StepShape_ShapeDefinitionRepresentation)(self_->GetSDR()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink)*> STEPSelections_AssemblyComponent_get_list(const STEPSelections_AssemblyComponent* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink)(self_->GetList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_STEPSelections_AssemblyLink)*> STEPSelections_AssemblyComponent_get_list(const STEPSelections_AssemblyComponent* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_STEPSelections_AssemblyLink)(self_->GetList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* STEPSelections_AssemblyComponent_set_sdr(STEPSelections_AssemblyComponent* self_, Handle(StepShape_ShapeDefinitionRepresentation) const* sdr) {
     try { self_->SetSDR(*sdr); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* STEPSelections_AssemblyComponent_set_list(STEPSelections_AssemblyComponent* self_, Handle(NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink) const* list) {
+extern "C" const char* STEPSelections_AssemblyComponent_set_list(STEPSelections_AssemblyComponent* self_, Handle(NCollection_HSequence_Handle_STEPSelections_AssemblyLink) const* list) {
     try { self_->SetList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15511,28 +15522,28 @@ extern "C" OcctResult<Handle(StepShape_ShapeRepresentation)*> StepAP209_Construc
     try { return {new Handle(StepShape_ShapeRepresentation)(self_->NominShape(*PDF)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial)*> StepAP209_Construct_get_element_material(const StepAP209_Construct* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial)(self_->GetElementMaterial()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepElement_ElementMaterial)*> StepAP209_Construct_get_element_material(const StepAP209_Construct* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepElement_ElementMaterial)(self_->GetElementMaterial()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship)*> StepAP209_Construct_get_elem_geom_relat(const StepAP209_Construct* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship)(self_->GetElemGeomRelat()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship)*> StepAP209_Construct_get_elem_geom_relat(const StepAP209_Construct* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship)(self_->GetElemGeomRelat()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements1_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFeaModel) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)(self_->GetElements1D(*theFeaModel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements1_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFeaModel) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)(self_->GetElements1D(*theFeaModel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements2_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFEAModel) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)(self_->GetElements2D(*theFEAModel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements2_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFEAModel) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)(self_->GetElements2D(*theFEAModel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements3_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFEAModel) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation)(self_->GetElements3D(*theFEAModel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)*> StepAP209_Construct_get_elements3_d(const StepAP209_Construct* self_, Handle(StepFEA_FeaModel) const* theFEAModel) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation)(self_->GetElements3D(*theFEAModel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition)*> StepAP209_Construct_get_cur_elem_section(const StepAP209_Construct* self_, Handle(StepFEA_Curve3dElementRepresentation) const* ElemRepr) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition)(self_->GetCurElemSection(*ElemRepr)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition)*> StepAP209_Construct_get_cur_elem_section(const StepAP209_Construct* self_, Handle(StepFEA_Curve3dElementRepresentation) const* ElemRepr) {
+    try { return {new Handle(NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition)(self_->GetCurElemSection(*ElemRepr)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_ShapeRepresentation)*> StepAP209_Construct_get_sh_repr_for_elem(const StepAP209_Construct* self_, Handle(StepFEA_ElementRepresentation) const* ElemRepr) {
@@ -19001,19 +19012,19 @@ extern "C" OcctResult<StepAP214_AutoDesignSecurityClassificationAssignment*> Ste
     try { return {new StepAP214_AutoDesignSecurityClassificationAssignment(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Approval)*> StepAP214_AutoDesignSecurityClassificationAssignment_items(const StepAP214_AutoDesignSecurityClassificationAssignment* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Approval)(self_->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Approval)*> StepAP214_AutoDesignSecurityClassificationAssignment_items(const StepAP214_AutoDesignSecurityClassificationAssignment* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Approval)(self_->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Approval)*> StepAP214_AutoDesignSecurityClassificationAssignment_items_value(const StepAP214_AutoDesignSecurityClassificationAssignment* self_, int32_t num) {
     try { return {new Handle(StepBasic_Approval)(self_->ItemsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP214_AutoDesignSecurityClassificationAssignment_init(StepAP214_AutoDesignSecurityClassificationAssignment* self_, Handle(StepBasic_SecurityClassification) const* aAssignedSecurityClassification, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Approval) const* aItems) {
+extern "C" const char* StepAP214_AutoDesignSecurityClassificationAssignment_init(StepAP214_AutoDesignSecurityClassificationAssignment* self_, Handle(StepBasic_SecurityClassification) const* aAssignedSecurityClassification, Handle(NCollection_HArray1_Handle_StepBasic_Approval) const* aItems) {
     try { self_->Init(*aAssignedSecurityClassification, *aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepAP214_AutoDesignSecurityClassificationAssignment_set_items(StepAP214_AutoDesignSecurityClassificationAssignment* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Approval) const* aItems) {
+extern "C" const char* StepAP214_AutoDesignSecurityClassificationAssignment_set_items(StepAP214_AutoDesignSecurityClassificationAssignment* self_, Handle(NCollection_HArray1_Handle_StepBasic_Approval) const* aItems) {
     try { self_->SetItems(*aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21255,7 +21266,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepAP242_DraughtingMod
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_DraughtingModelItemAssociation_inherited_Init(StepAP242_DraughtingModelItemAssociation* self, Handle(TCollection_HAsciiString) const& theName, Handle(TCollection_HAsciiString) const& theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const& theDefinition, Handle(StepRepr_Representation) const& theUsedRepresentation, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
+extern "C" const char* StepAP242_DraughtingModelItemAssociation_inherited_Init(StepAP242_DraughtingModelItemAssociation* self, Handle(TCollection_HAsciiString) const& theName, Handle(TCollection_HAsciiString) const& theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const& theDefinition, Handle(StepRepr_Representation) const& theUsedRepresentation, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
     try { self->Init(theName, theDescription, theDefinition, theUsedRepresentation, theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21291,15 +21302,15 @@ extern "C" OcctResult<Handle(StepRepr_Representation)*> StepAP242_DraughtingMode
     try { return {new Handle(StepRepr_Representation)(self->UsedRepresentation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItem(const StepAP242_DraughtingModelItemAssociation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->IdentifiedItem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItem(const StepAP242_DraughtingModelItemAssociation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->IdentifiedItem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> StepAP242_DraughtingModelItemAssociation_inherited_NbIdentifiedItem(const StepAP242_DraughtingModelItemAssociation* self) {
     try { return {self->NbIdentifiedItem(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(StepAP242_DraughtingModelItemAssociation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
+extern "C" const char* StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(StepAP242_DraughtingModelItemAssociation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
     try { self->SetIdentifiedItem(theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21385,7 +21396,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepAP242_GeometricItem
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_GeometricItemSpecificUsage_inherited_Init(StepAP242_GeometricItemSpecificUsage* self, Handle(TCollection_HAsciiString) const& theName, Handle(TCollection_HAsciiString) const& theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const& theDefinition, Handle(StepRepr_Representation) const& theUsedRepresentation, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
+extern "C" const char* StepAP242_GeometricItemSpecificUsage_inherited_Init(StepAP242_GeometricItemSpecificUsage* self, Handle(TCollection_HAsciiString) const& theName, Handle(TCollection_HAsciiString) const& theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const& theDefinition, Handle(StepRepr_Representation) const& theUsedRepresentation, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
     try { self->Init(theName, theDescription, theDefinition, theUsedRepresentation, theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21421,15 +21432,15 @@ extern "C" OcctResult<Handle(StepRepr_Representation)*> StepAP242_GeometricItemS
     try { return {new Handle(StepRepr_Representation)(self->UsedRepresentation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItem(const StepAP242_GeometricItemSpecificUsage* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->IdentifiedItem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItem(const StepAP242_GeometricItemSpecificUsage* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->IdentifiedItem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> StepAP242_GeometricItemSpecificUsage_inherited_NbIdentifiedItem(const StepAP242_GeometricItemSpecificUsage* self) {
     try { return {self->NbIdentifiedItem(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(StepAP242_GeometricItemSpecificUsage* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
+extern "C" const char* StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(StepAP242_GeometricItemSpecificUsage* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theIdentifiedItem) {
     try { self->SetIdentifiedItem(theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21715,15 +21726,15 @@ extern "C" OcctResult<Handle(StepRepr_Representation)*> StepAP242_ItemIdentified
     try { return {new Handle(StepRepr_Representation)(self_->UsedRepresentation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepAP242_ItemIdentifiedRepresentationUsage_identified_item(const StepAP242_ItemIdentifiedRepresentationUsage* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self_->IdentifiedItem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepAP242_ItemIdentifiedRepresentationUsage_identified_item(const StepAP242_ItemIdentifiedRepresentationUsage* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self_->IdentifiedItem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepAP242_ItemIdentifiedRepresentationUsage_identified_item_value(const StepAP242_ItemIdentifiedRepresentationUsage* self_, int32_t num) {
     try { return {new Handle(StepRepr_RepresentationItem)(self_->IdentifiedItemValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_ItemIdentifiedRepresentationUsage_init(StepAP242_ItemIdentifiedRepresentationUsage* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const* theDefinition, Handle(StepRepr_Representation) const* theUsedRepresentation, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theIdentifiedItem) {
+extern "C" const char* StepAP242_ItemIdentifiedRepresentationUsage_init(StepAP242_ItemIdentifiedRepresentationUsage* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, StepAP242_ItemIdentifiedRepresentationUsageDefinition const* theDefinition, Handle(StepRepr_Representation) const* theUsedRepresentation, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theIdentifiedItem) {
     try { self_->Init(*theName, *theDescription, *theDefinition, *theUsedRepresentation, *theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21747,7 +21758,7 @@ extern "C" OcctResult<int32_t> StepAP242_ItemIdentifiedRepresentationUsage_nb_id
     try { return {self_->NbIdentifiedItem(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(StepAP242_ItemIdentifiedRepresentationUsage* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theIdentifiedItem) {
+extern "C" const char* StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(StepAP242_ItemIdentifiedRepresentationUsage* self_, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theIdentifiedItem) {
     try { self_->SetIdentifiedItem(*theIdentifiedItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -26405,19 +26416,19 @@ extern "C" OcctResult<StepBasic_DerivedUnit*> StepBasic_DerivedUnit_ctor() {
     try { return {new StepBasic_DerivedUnit(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement)*> StepBasic_DerivedUnit_elements(const StepBasic_DerivedUnit* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement)(self_->Elements()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement)*> StepBasic_DerivedUnit_elements(const StepBasic_DerivedUnit* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement)(self_->Elements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_DerivedUnitElement)*> StepBasic_DerivedUnit_elements_value(const StepBasic_DerivedUnit* self_, int32_t num) {
     try { return {new Handle(StepBasic_DerivedUnitElement)(self_->ElementsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_DerivedUnit_init(StepBasic_DerivedUnit* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement) const* elements) {
+extern "C" const char* StepBasic_DerivedUnit_init(StepBasic_DerivedUnit* self_, Handle(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement) const* elements) {
     try { self_->Init(*elements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_DerivedUnit_set_elements(StepBasic_DerivedUnit* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement) const* elements) {
+extern "C" const char* StepBasic_DerivedUnit_set_elements(StepBasic_DerivedUnit* self_, Handle(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement) const* elements) {
     try { self_->SetElements(*elements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31059,8 +31070,8 @@ extern "C" OcctResult<StepBasic_OrganizationalAddress*> StepBasic_Organizational
     try { return {new StepBasic_OrganizationalAddress(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Organization)*> StepBasic_OrganizationalAddress_organizations(const StepBasic_OrganizationalAddress* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Organization)(self_->Organizations()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Organization)*> StepBasic_OrganizationalAddress_organizations(const StepBasic_OrganizationalAddress* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Organization)(self_->Organizations()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Organization)*> StepBasic_OrganizationalAddress_organizations_value(const StepBasic_OrganizationalAddress* self_, int32_t num) {
@@ -31071,11 +31082,11 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Organizationa
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_OrganizationalAddress_init(StepBasic_OrganizationalAddress* self_, bool hasAinternalLocation, Handle(TCollection_HAsciiString) const* aInternalLocation, bool hasAstreetNumber, Handle(TCollection_HAsciiString) const* aStreetNumber, bool hasAstreet, Handle(TCollection_HAsciiString) const* aStreet, bool hasApostalBox, Handle(TCollection_HAsciiString) const* aPostalBox, bool hasAtown, Handle(TCollection_HAsciiString) const* aTown, bool hasAregion, Handle(TCollection_HAsciiString) const* aRegion, bool hasApostalCode, Handle(TCollection_HAsciiString) const* aPostalCode, bool hasAcountry, Handle(TCollection_HAsciiString) const* aCountry, bool hasAfacsimileNumber, Handle(TCollection_HAsciiString) const* aFacsimileNumber, bool hasAtelephoneNumber, Handle(TCollection_HAsciiString) const* aTelephoneNumber, bool hasAelectronicMailAddress, Handle(TCollection_HAsciiString) const* aElectronicMailAddress, bool hasAtelexNumber, Handle(TCollection_HAsciiString) const* aTelexNumber, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Organization) const* aOrganizations, Handle(TCollection_HAsciiString) const* aDescription) {
+extern "C" const char* StepBasic_OrganizationalAddress_init(StepBasic_OrganizationalAddress* self_, bool hasAinternalLocation, Handle(TCollection_HAsciiString) const* aInternalLocation, bool hasAstreetNumber, Handle(TCollection_HAsciiString) const* aStreetNumber, bool hasAstreet, Handle(TCollection_HAsciiString) const* aStreet, bool hasApostalBox, Handle(TCollection_HAsciiString) const* aPostalBox, bool hasAtown, Handle(TCollection_HAsciiString) const* aTown, bool hasAregion, Handle(TCollection_HAsciiString) const* aRegion, bool hasApostalCode, Handle(TCollection_HAsciiString) const* aPostalCode, bool hasAcountry, Handle(TCollection_HAsciiString) const* aCountry, bool hasAfacsimileNumber, Handle(TCollection_HAsciiString) const* aFacsimileNumber, bool hasAtelephoneNumber, Handle(TCollection_HAsciiString) const* aTelephoneNumber, bool hasAelectronicMailAddress, Handle(TCollection_HAsciiString) const* aElectronicMailAddress, bool hasAtelexNumber, Handle(TCollection_HAsciiString) const* aTelexNumber, Handle(NCollection_HArray1_Handle_StepBasic_Organization) const* aOrganizations, Handle(TCollection_HAsciiString) const* aDescription) {
     try { self_->Init(hasAinternalLocation, *aInternalLocation, hasAstreetNumber, *aStreetNumber, hasAstreet, *aStreet, hasApostalBox, *aPostalBox, hasAtown, *aTown, hasAregion, *aRegion, hasApostalCode, *aPostalCode, hasAcountry, *aCountry, hasAfacsimileNumber, *aFacsimileNumber, hasAtelephoneNumber, *aTelephoneNumber, hasAelectronicMailAddress, *aElectronicMailAddress, hasAtelexNumber, *aTelexNumber, *aOrganizations, *aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_OrganizationalAddress_set_organizations(StepBasic_OrganizationalAddress* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Organization) const* aOrganizations) {
+extern "C" const char* StepBasic_OrganizationalAddress_set_organizations(StepBasic_OrganizationalAddress* self_, Handle(NCollection_HArray1_Handle_StepBasic_Organization) const* aOrganizations) {
     try { self_->SetOrganizations(*aOrganizations); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31365,31 +31376,31 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Person_first_
     try { return {new Handle(TCollection_HAsciiString)(self_->FirstName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> StepBasic_Person_middle_names(const StepBasic_Person* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->MiddleNames()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> StepBasic_Person_middle_names(const StepBasic_Person* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->MiddleNames()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Person_middle_names_value(const StepBasic_Person* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->MiddleNamesValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> StepBasic_Person_prefix_titles(const StepBasic_Person* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->PrefixTitles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> StepBasic_Person_prefix_titles(const StepBasic_Person* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->PrefixTitles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Person_prefix_titles_value(const StepBasic_Person* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->PrefixTitlesValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)*> StepBasic_Person_suffix_titles(const StepBasic_Person* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)(self_->SuffixTitles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)*> StepBasic_Person_suffix_titles(const StepBasic_Person* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)(self_->SuffixTitles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Person_suffix_titles_value(const StepBasic_Person* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->SuffixTitlesValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_Person_init(StepBasic_Person* self_, Handle(TCollection_HAsciiString) const* aId, bool hasAlastName, Handle(TCollection_HAsciiString) const* aLastName, bool hasAfirstName, Handle(TCollection_HAsciiString) const* aFirstName, bool hasAmiddleNames, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aMiddleNames, bool hasAprefixTitles, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aPrefixTitles, bool hasAsuffixTitles, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aSuffixTitles) {
+extern "C" const char* StepBasic_Person_init(StepBasic_Person* self_, Handle(TCollection_HAsciiString) const* aId, bool hasAlastName, Handle(TCollection_HAsciiString) const* aLastName, bool hasAfirstName, Handle(TCollection_HAsciiString) const* aFirstName, bool hasAmiddleNames, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aMiddleNames, bool hasAprefixTitles, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aPrefixTitles, bool hasAsuffixTitles, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aSuffixTitles) {
     try { self_->Init(*aId, hasAlastName, *aLastName, hasAfirstName, *aFirstName, hasAmiddleNames, *aMiddleNames, hasAprefixTitles, *aPrefixTitles, hasAsuffixTitles, *aSuffixTitles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31421,7 +31432,7 @@ extern "C" OcctResult<bool> StepBasic_Person_has_first_name(const StepBasic_Pers
     try { return {self_->HasFirstName(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_Person_set_middle_names(StepBasic_Person* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aMiddleNames) {
+extern "C" const char* StepBasic_Person_set_middle_names(StepBasic_Person* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aMiddleNames) {
     try { self_->SetMiddleNames(*aMiddleNames); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31437,7 +31448,7 @@ extern "C" OcctResult<int32_t> StepBasic_Person_nb_middle_names(const StepBasic_
     try { return {self_->NbMiddleNames(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_Person_set_prefix_titles(StepBasic_Person* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aPrefixTitles) {
+extern "C" const char* StepBasic_Person_set_prefix_titles(StepBasic_Person* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aPrefixTitles) {
     try { self_->SetPrefixTitles(*aPrefixTitles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31453,7 +31464,7 @@ extern "C" OcctResult<int32_t> StepBasic_Person_nb_prefix_titles(const StepBasic
     try { return {self_->NbPrefixTitles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_Person_set_suffix_titles(StepBasic_Person* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aSuffixTitles) {
+extern "C" const char* StepBasic_Person_set_suffix_titles(StepBasic_Person* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aSuffixTitles) {
     try { self_->SetSuffixTitles(*aSuffixTitles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31925,8 +31936,8 @@ extern "C" OcctResult<StepBasic_PersonalAddress*> StepBasic_PersonalAddress_ctor
     try { return {new StepBasic_PersonalAddress(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Person)*> StepBasic_PersonalAddress_people(const StepBasic_PersonalAddress* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Person)(self_->People()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Person)*> StepBasic_PersonalAddress_people(const StepBasic_PersonalAddress* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Person)(self_->People()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Person)*> StepBasic_PersonalAddress_people_value(const StepBasic_PersonalAddress* self_, int32_t num) {
@@ -31937,11 +31948,11 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_PersonalAddre
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_PersonalAddress_init(StepBasic_PersonalAddress* self_, bool hasAinternalLocation, Handle(TCollection_HAsciiString) const* aInternalLocation, bool hasAstreetNumber, Handle(TCollection_HAsciiString) const* aStreetNumber, bool hasAstreet, Handle(TCollection_HAsciiString) const* aStreet, bool hasApostalBox, Handle(TCollection_HAsciiString) const* aPostalBox, bool hasAtown, Handle(TCollection_HAsciiString) const* aTown, bool hasAregion, Handle(TCollection_HAsciiString) const* aRegion, bool hasApostalCode, Handle(TCollection_HAsciiString) const* aPostalCode, bool hasAcountry, Handle(TCollection_HAsciiString) const* aCountry, bool hasAfacsimileNumber, Handle(TCollection_HAsciiString) const* aFacsimileNumber, bool hasAtelephoneNumber, Handle(TCollection_HAsciiString) const* aTelephoneNumber, bool hasAelectronicMailAddress, Handle(TCollection_HAsciiString) const* aElectronicMailAddress, bool hasAtelexNumber, Handle(TCollection_HAsciiString) const* aTelexNumber, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Person) const* aPeople, Handle(TCollection_HAsciiString) const* aDescription) {
+extern "C" const char* StepBasic_PersonalAddress_init(StepBasic_PersonalAddress* self_, bool hasAinternalLocation, Handle(TCollection_HAsciiString) const* aInternalLocation, bool hasAstreetNumber, Handle(TCollection_HAsciiString) const* aStreetNumber, bool hasAstreet, Handle(TCollection_HAsciiString) const* aStreet, bool hasApostalBox, Handle(TCollection_HAsciiString) const* aPostalBox, bool hasAtown, Handle(TCollection_HAsciiString) const* aTown, bool hasAregion, Handle(TCollection_HAsciiString) const* aRegion, bool hasApostalCode, Handle(TCollection_HAsciiString) const* aPostalCode, bool hasAcountry, Handle(TCollection_HAsciiString) const* aCountry, bool hasAfacsimileNumber, Handle(TCollection_HAsciiString) const* aFacsimileNumber, bool hasAtelephoneNumber, Handle(TCollection_HAsciiString) const* aTelephoneNumber, bool hasAelectronicMailAddress, Handle(TCollection_HAsciiString) const* aElectronicMailAddress, bool hasAtelexNumber, Handle(TCollection_HAsciiString) const* aTelexNumber, Handle(NCollection_HArray1_Handle_StepBasic_Person) const* aPeople, Handle(TCollection_HAsciiString) const* aDescription) {
     try { self_->Init(hasAinternalLocation, *aInternalLocation, hasAstreetNumber, *aStreetNumber, hasAstreet, *aStreet, hasApostalBox, *aPostalBox, hasAtown, *aTown, hasAregion, *aRegion, hasApostalCode, *aPostalCode, hasAcountry, *aCountry, hasAfacsimileNumber, *aFacsimileNumber, hasAtelephoneNumber, *aTelephoneNumber, hasAelectronicMailAddress, *aElectronicMailAddress, hasAtelexNumber, *aTelexNumber, *aPeople, *aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_PersonalAddress_set_people(StepBasic_PersonalAddress* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Person) const* aPeople) {
+extern "C" const char* StepBasic_PersonalAddress_set_people(StepBasic_PersonalAddress* self_, Handle(NCollection_HArray1_Handle_StepBasic_Person) const* aPeople) {
     try { self_->SetPeople(*aPeople); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -32529,15 +32540,15 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepBasic_Product_descr
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_ProductContext)*> StepBasic_Product_frame_of_reference(const StepBasic_Product* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_ProductContext)(self_->FrameOfReference()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_ProductContext)*> StepBasic_Product_frame_of_reference(const StepBasic_Product* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_ProductContext)(self_->FrameOfReference()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_ProductContext)*> StepBasic_Product_frame_of_reference_value(const StepBasic_Product* self_, int32_t num) {
     try { return {new Handle(StepBasic_ProductContext)(self_->FrameOfReferenceValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_Product_init(StepBasic_Product* self_, Handle(TCollection_HAsciiString) const* aId, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_opencascade_handle_StepBasic_ProductContext) const* aFrameOfReference) {
+extern "C" const char* StepBasic_Product_init(StepBasic_Product* self_, Handle(TCollection_HAsciiString) const* aId, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_Handle_StepBasic_ProductContext) const* aFrameOfReference) {
     try { self_->Init(*aId, *aName, *aDescription, *aFrameOfReference); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -32553,7 +32564,7 @@ extern "C" const char* StepBasic_Product_set_description(StepBasic_Product* self
     try { self_->SetDescription(*aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_Product_set_frame_of_reference(StepBasic_Product* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_ProductContext) const* aFrameOfReference) {
+extern "C" const char* StepBasic_Product_set_frame_of_reference(StepBasic_Product* self_, Handle(NCollection_HArray1_Handle_StepBasic_ProductContext) const* aFrameOfReference) {
     try { self_->SetFrameOfReference(*aFrameOfReference); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -34265,19 +34276,19 @@ extern "C" OcctResult<StepBasic_ProductDefinitionWithAssociatedDocuments*> StepB
     try { return {new StepBasic_ProductDefinitionWithAssociatedDocuments(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Document)*> StepBasic_ProductDefinitionWithAssociatedDocuments_doc_ids(const StepBasic_ProductDefinitionWithAssociatedDocuments* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Document)(self_->DocIds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Document)*> StepBasic_ProductDefinitionWithAssociatedDocuments_doc_ids(const StepBasic_ProductDefinitionWithAssociatedDocuments* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Document)(self_->DocIds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Document)*> StepBasic_ProductDefinitionWithAssociatedDocuments_doc_ids_value(const StepBasic_ProductDefinitionWithAssociatedDocuments* self_, int32_t num) {
     try { return {new Handle(StepBasic_Document)(self_->DocIdsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_ProductDefinitionWithAssociatedDocuments_init(StepBasic_ProductDefinitionWithAssociatedDocuments* self_, Handle(TCollection_HAsciiString) const* aId, Handle(TCollection_HAsciiString) const* aDescription, Handle(StepBasic_ProductDefinitionFormation) const* aFormation, Handle(StepBasic_ProductDefinitionContext) const* aFrame, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Document) const* aDocIds) {
+extern "C" const char* StepBasic_ProductDefinitionWithAssociatedDocuments_init(StepBasic_ProductDefinitionWithAssociatedDocuments* self_, Handle(TCollection_HAsciiString) const* aId, Handle(TCollection_HAsciiString) const* aDescription, Handle(StepBasic_ProductDefinitionFormation) const* aFormation, Handle(StepBasic_ProductDefinitionContext) const* aFrame, Handle(NCollection_HArray1_Handle_StepBasic_Document) const* aDocIds) {
     try { self_->Init(*aId, *aDescription, *aFormation, *aFrame, *aDocIds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_ProductDefinitionWithAssociatedDocuments_set_doc_ids(StepBasic_ProductDefinitionWithAssociatedDocuments* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Document) const* DocIds) {
+extern "C" const char* StepBasic_ProductDefinitionWithAssociatedDocuments_set_doc_ids(StepBasic_ProductDefinitionWithAssociatedDocuments* self_, Handle(NCollection_HArray1_Handle_StepBasic_Document) const* DocIds) {
     try { self_->SetDocIds(*DocIds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -34495,19 +34506,19 @@ extern "C" OcctResult<StepBasic_ProductRelatedProductCategory*> StepBasic_Produc
     try { return {new StepBasic_ProductRelatedProductCategory(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product)*> StepBasic_ProductRelatedProductCategory_products(const StepBasic_ProductRelatedProductCategory* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product)(self_->Products()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Product)*> StepBasic_ProductRelatedProductCategory_products(const StepBasic_ProductRelatedProductCategory* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Product)(self_->Products()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Product)*> StepBasic_ProductRelatedProductCategory_products_value(const StepBasic_ProductRelatedProductCategory* self_, int32_t num) {
     try { return {new Handle(StepBasic_Product)(self_->ProductsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_ProductRelatedProductCategory_init(StepBasic_ProductRelatedProductCategory* self_, Handle(TCollection_HAsciiString) const* aName, bool hasAdescription, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product) const* aProducts) {
+extern "C" const char* StepBasic_ProductRelatedProductCategory_init(StepBasic_ProductRelatedProductCategory* self_, Handle(TCollection_HAsciiString) const* aName, bool hasAdescription, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_Handle_StepBasic_Product) const* aProducts) {
     try { self_->Init(*aName, hasAdescription, *aDescription, *aProducts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_ProductRelatedProductCategory_set_products(StepBasic_ProductRelatedProductCategory* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product) const* aProducts) {
+extern "C" const char* StepBasic_ProductRelatedProductCategory_set_products(StepBasic_ProductRelatedProductCategory* self_, Handle(NCollection_HArray1_Handle_StepBasic_Product) const* aProducts) {
     try { self_->SetProducts(*aProducts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -34663,16 +34674,16 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepBasic_ProductType_t
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepBasic_ProductType_inherited_Init(StepBasic_ProductType* self, Handle(TCollection_HAsciiString) const& aName, bool hasAdescription, Handle(TCollection_HAsciiString) const& aDescription, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product) const& aProducts) {
+extern "C" const char* StepBasic_ProductType_inherited_Init(StepBasic_ProductType* self, Handle(TCollection_HAsciiString) const& aName, bool hasAdescription, Handle(TCollection_HAsciiString) const& aDescription, Handle(NCollection_HArray1_Handle_StepBasic_Product) const& aProducts) {
     try { self->Init(aName, hasAdescription, aDescription, aProducts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepBasic_ProductType_inherited_SetProducts(StepBasic_ProductType* self, Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product) const& aProducts) {
+extern "C" const char* StepBasic_ProductType_inherited_SetProducts(StepBasic_ProductType* self, Handle(NCollection_HArray1_Handle_StepBasic_Product) const& aProducts) {
     try { self->SetProducts(aProducts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product)*> StepBasic_ProductType_inherited_Products(const StepBasic_ProductType* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_Product)(self->Products()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_Product)*> StepBasic_ProductType_inherited_Products(const StepBasic_ProductType* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_Product)(self->Products()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_Product)*> StepBasic_ProductType_inherited_ProductsValue(const StepBasic_ProductType* self, int32_t num) {
@@ -42814,19 +42825,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_AngularityTo
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_AngularityTolerance_inherited_Init(StepDimTol_AngularityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_AngularityTolerance_inherited_Init(StepDimTol_AngularityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_AngularityTolerance_inherited_DatumSystem(const StepDimTol_AngularityTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_AngularityTolerance_inherited_DatumSystem(const StepDimTol_AngularityTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_AngularityTolerance_inherited_DatumSystemAP242(const StepDimTol_AngularityTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_AngularityTolerance_inherited_SetDatumSystem(StepDimTol_AngularityTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_AngularityTolerance_inherited_SetDatumSystem(StepDimTol_AngularityTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -42942,19 +42953,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_CircularRuno
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_CircularRunoutTolerance_inherited_Init(StepDimTol_CircularRunoutTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_CircularRunoutTolerance_inherited_Init(StepDimTol_CircularRunoutTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_CircularRunoutTolerance_inherited_DatumSystem(const StepDimTol_CircularRunoutTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_CircularRunoutTolerance_inherited_DatumSystem(const StepDimTol_CircularRunoutTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_CircularRunoutTolerance_inherited_DatumSystemAP242(const StepDimTol_CircularRunoutTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_CircularRunoutTolerance_inherited_SetDatumSystem(StepDimTol_CircularRunoutTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_CircularRunoutTolerance_inherited_SetDatumSystem(StepDimTol_CircularRunoutTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -43070,19 +43081,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_CoaxialityTo
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_CoaxialityTolerance_inherited_Init(StepDimTol_CoaxialityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_CoaxialityTolerance_inherited_Init(StepDimTol_CoaxialityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_CoaxialityTolerance_inherited_DatumSystem(const StepDimTol_CoaxialityTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_CoaxialityTolerance_inherited_DatumSystem(const StepDimTol_CoaxialityTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_CoaxialityTolerance_inherited_DatumSystemAP242(const StepDimTol_CoaxialityTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_CoaxialityTolerance_inherited_SetDatumSystem(StepDimTol_CoaxialityTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_CoaxialityTolerance_inherited_SetDatumSystem(StepDimTol_CoaxialityTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -43322,19 +43333,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_Concentricit
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ConcentricityTolerance_inherited_Init(StepDimTol_ConcentricityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_ConcentricityTolerance_inherited_Init(StepDimTol_ConcentricityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_ConcentricityTolerance_inherited_DatumSystem(const StepDimTol_ConcentricityTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_ConcentricityTolerance_inherited_DatumSystem(const StepDimTol_ConcentricityTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_ConcentricityTolerance_inherited_DatumSystemAP242(const StepDimTol_ConcentricityTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ConcentricityTolerance_inherited_SetDatumSystem(StepDimTol_ConcentricityTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_ConcentricityTolerance_inherited_SetDatumSystem(StepDimTol_ConcentricityTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -43750,8 +43761,8 @@ extern "C" OcctResult<Handle(StepDimTol_Datum)*> StepDimTol_DatumOrCommonDatum_d
     try { return {new Handle(StepDimTol_Datum)(self_->Datum()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement)*> StepDimTol_DatumOrCommonDatum_common_datum_list(const StepDimTol_DatumOrCommonDatum* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement)(self_->CommonDatumList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement)*> StepDimTol_DatumOrCommonDatum_common_datum_list(const StepDimTol_DatumOrCommonDatum* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement)(self_->CommonDatumList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> StepDimTol_DatumOrCommonDatum_case_num(const StepDimTol_DatumOrCommonDatum* self_, Handle(Standard_Transient) const* ent) {
@@ -44402,19 +44413,19 @@ extern "C" OcctResult<StepDimTol_DatumSystem*> StepDimTol_DatumSystem_ctor() {
     try { return {new StepDimTol_DatumSystem(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment)*> StepDimTol_DatumSystem_constituents(StepDimTol_DatumSystem* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment)(self_->Constituents()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment)*> StepDimTol_DatumSystem_constituents(StepDimTol_DatumSystem* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment)(self_->Constituents()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepDimTol_DatumReferenceCompartment)*> StepDimTol_DatumSystem_constituents_value_int(const StepDimTol_DatumSystem* self_, int32_t num) {
     try { return {new Handle(StepDimTol_DatumReferenceCompartment)(self_->ConstituentsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_DatumSystem_init(StepDimTol_DatumSystem* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, Handle(StepRepr_ProductDefinitionShape) const* theOfShape, int32_t theProductDefinitional, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment) const* theConstituents) {
+extern "C" const char* StepDimTol_DatumSystem_init(StepDimTol_DatumSystem* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, Handle(StepRepr_ProductDefinitionShape) const* theOfShape, int32_t theProductDefinitional, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment) const* theConstituents) {
     try { self_->Init(*theName, *theDescription, *theOfShape, static_cast<StepData_Logical>(theProductDefinitional), *theConstituents); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepDimTol_DatumSystem_set_constituents(StepDimTol_DatumSystem* self_, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment) const* theConstituents) {
+extern "C" const char* StepDimTol_DatumSystem_set_constituents(StepDimTol_DatumSystem* self_, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment) const* theConstituents) {
     try { self_->SetConstituents(*theConstituents); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -46574,15 +46585,15 @@ extern "C" OcctResult<StepDimTol_GeometricToleranceWithDatumReference*> StepDimT
     try { return {new StepDimTol_GeometricToleranceWithDatumReference(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_GeometricToleranceWithDatumReference_datum_system(const StepDimTol_GeometricToleranceWithDatumReference* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self_->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_GeometricToleranceWithDatumReference_datum_system(const StepDimTol_GeometricToleranceWithDatumReference* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self_->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_GeometricToleranceWithDatumReference_datum_system_ap242(const StepDimTol_GeometricToleranceWithDatumReference* self_) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self_->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_handlencollectionharray1opencascadehandlestepdimtoldatumreference(StepDimTol_GeometricToleranceWithDatumReference* self_, Handle(TCollection_HAsciiString) const* theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const* theGeometricTolerance_Description, Handle(Standard_Transient) const* theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const* theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const* theDatumSystem) {
+extern "C" const char* StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_harr1_stepdimtol_datumreference(StepDimTol_GeometricToleranceWithDatumReference* self_, Handle(TCollection_HAsciiString) const* theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const* theGeometricTolerance_Description, Handle(Standard_Transient) const* theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const* theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const* theDatumSystem) {
     try { self_->Init(*theGeometricTolerance_Name, *theGeometricTolerance_Description, *theGeometricTolerance_Magnitude, *theGeometricTolerance_TolerancedShapeAspect, *theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -46590,7 +46601,7 @@ extern "C" const char* StepDimTol_GeometricToleranceWithDatumReference_init_hand
     try { self_->Init(*theGeometricTolerance_Name, *theGeometricTolerance_Description, *theGeometricTolerance_Magnitude, *theGeometricTolerance_TolerancedShapeAspect, *theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_handlencollectionharray1opencascadehandlestepdimtoldatumreference(StepDimTol_GeometricToleranceWithDatumReference* self_, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const* theDatumSystem) {
+extern "C" const char* StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_harr1_stepdimtol_datumreference(StepDimTol_GeometricToleranceWithDatumReference* self_, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const* theDatumSystem) {
     try { self_->SetDatumSystem(*theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -47592,15 +47603,15 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_NonUniformZo
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_NonUniformZoneDefinition_inherited_Init(StepDimTol_NonUniformZoneDefinition* self, Handle(StepDimTol_ToleranceZone) const& theZone, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const& theBoundaries) {
+extern "C" const char* StepDimTol_NonUniformZoneDefinition_inherited_Init(StepDimTol_NonUniformZoneDefinition* self, Handle(StepDimTol_ToleranceZone) const& theZone, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const& theBoundaries) {
     try { self->Init(theZone, theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)*> StepDimTol_NonUniformZoneDefinition_inherited_Boundaries(const StepDimTol_NonUniformZoneDefinition* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)*> StepDimTol_NonUniformZoneDefinition_inherited_Boundaries(const StepDimTol_NonUniformZoneDefinition* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_NonUniformZoneDefinition_inherited_SetBoundaries(StepDimTol_NonUniformZoneDefinition* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const& theBoundaries) {
+extern "C" const char* StepDimTol_NonUniformZoneDefinition_inherited_SetBoundaries(StepDimTol_NonUniformZoneDefinition* self, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const& theBoundaries) {
     try { self->SetBoundaries(theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -47704,19 +47715,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_ParallelismT
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ParallelismTolerance_inherited_Init(StepDimTol_ParallelismTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_ParallelismTolerance_inherited_Init(StepDimTol_ParallelismTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_ParallelismTolerance_inherited_DatumSystem(const StepDimTol_ParallelismTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_ParallelismTolerance_inherited_DatumSystem(const StepDimTol_ParallelismTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_ParallelismTolerance_inherited_DatumSystemAP242(const StepDimTol_ParallelismTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ParallelismTolerance_inherited_SetDatumSystem(StepDimTol_ParallelismTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_ParallelismTolerance_inherited_SetDatumSystem(StepDimTol_ParallelismTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -47832,19 +47843,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_Perpendicula
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_PerpendicularityTolerance_inherited_Init(StepDimTol_PerpendicularityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_PerpendicularityTolerance_inherited_Init(StepDimTol_PerpendicularityTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_PerpendicularityTolerance_inherited_DatumSystem(const StepDimTol_PerpendicularityTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_PerpendicularityTolerance_inherited_DatumSystem(const StepDimTol_PerpendicularityTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_PerpendicularityTolerance_inherited_DatumSystemAP242(const StepDimTol_PerpendicularityTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_PerpendicularityTolerance_inherited_SetDatumSystem(StepDimTol_PerpendicularityTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_PerpendicularityTolerance_inherited_SetDatumSystem(StepDimTol_PerpendicularityTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -48160,7 +48171,7 @@ extern "C" OcctResult<Handle(StepBasic_LengthMeasureWithUnit)*> StepDimTol_Proje
     try { return {new Handle(StepBasic_LengthMeasureWithUnit)(self_->ProjectionLength()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ProjectedZoneDefinition_init(StepDimTol_ProjectedZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const* theBoundaries, Handle(StepRepr_ShapeAspect) const* theProjectionEnd, Handle(StepBasic_LengthMeasureWithUnit) const* theProjectionLength) {
+extern "C" const char* StepDimTol_ProjectedZoneDefinition_init(StepDimTol_ProjectedZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const* theBoundaries, Handle(StepRepr_ShapeAspect) const* theProjectionEnd, Handle(StepBasic_LengthMeasureWithUnit) const* theProjectionLength) {
     try { self_->Init(*theZone, *theBoundaries, *theProjectionEnd, *theProjectionLength); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -48208,11 +48219,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_ProjectedZon
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)*> StepDimTol_ProjectedZoneDefinition_inherited_Boundaries(const StepDimTol_ProjectedZoneDefinition* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)*> StepDimTol_ProjectedZoneDefinition_inherited_Boundaries(const StepDimTol_ProjectedZoneDefinition* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ProjectedZoneDefinition_inherited_SetBoundaries(StepDimTol_ProjectedZoneDefinition* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const& theBoundaries) {
+extern "C" const char* StepDimTol_ProjectedZoneDefinition_inherited_SetBoundaries(StepDimTol_ProjectedZoneDefinition* self, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const& theBoundaries) {
     try { self->SetBoundaries(theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -48388,7 +48399,7 @@ extern "C" OcctResult<Handle(StepDimTol_RunoutZoneOrientation)*> StepDimTol_Runo
     try { return {new Handle(StepDimTol_RunoutZoneOrientation)(self_->Orientation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_RunoutZoneDefinition_init(StepDimTol_RunoutZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const* theBoundaries, Handle(StepDimTol_RunoutZoneOrientation) const* theOrientation) {
+extern "C" const char* StepDimTol_RunoutZoneDefinition_init(StepDimTol_RunoutZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const* theBoundaries, Handle(StepDimTol_RunoutZoneOrientation) const* theOrientation) {
     try { self_->Init(*theZone, *theBoundaries, *theOrientation); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -48432,11 +48443,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_RunoutZoneDe
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)*> StepDimTol_RunoutZoneDefinition_inherited_Boundaries(const StepDimTol_RunoutZoneDefinition* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)*> StepDimTol_RunoutZoneDefinition_inherited_Boundaries(const StepDimTol_RunoutZoneDefinition* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)(self->Boundaries()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_RunoutZoneDefinition_inherited_SetBoundaries(StepDimTol_RunoutZoneDefinition* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const& theBoundaries) {
+extern "C" const char* StepDimTol_RunoutZoneDefinition_inherited_SetBoundaries(StepDimTol_RunoutZoneDefinition* self, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const& theBoundaries) {
     try { self->SetBoundaries(theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49100,19 +49111,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_SymmetryTole
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_SymmetryTolerance_inherited_Init(StepDimTol_SymmetryTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_SymmetryTolerance_inherited_Init(StepDimTol_SymmetryTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_SymmetryTolerance_inherited_DatumSystem(const StepDimTol_SymmetryTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_SymmetryTolerance_inherited_DatumSystem(const StepDimTol_SymmetryTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_SymmetryTolerance_inherited_DatumSystemAP242(const StepDimTol_SymmetryTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_SymmetryTolerance_inherited_SetDatumSystem(StepDimTol_SymmetryTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_SymmetryTolerance_inherited_SetDatumSystem(StepDimTol_SymmetryTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49324,8 +49335,8 @@ extern "C" OcctResult<StepDimTol_ToleranceZoneDefinition*> StepDimTol_ToleranceZ
     try { return {new StepDimTol_ToleranceZoneDefinition(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)*> StepDimTol_ToleranceZoneDefinition_boundaries(const StepDimTol_ToleranceZoneDefinition* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect)(self_->Boundaries()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)*> StepDimTol_ToleranceZoneDefinition_boundaries(const StepDimTol_ToleranceZoneDefinition* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect)(self_->Boundaries()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_ShapeAspect)*> StepDimTol_ToleranceZoneDefinition_boundaries_value(const StepDimTol_ToleranceZoneDefinition* self_, int32_t theNum) {
@@ -49336,11 +49347,11 @@ extern "C" OcctResult<Handle(StepDimTol_ToleranceZone)*> StepDimTol_ToleranceZon
     try { return {new Handle(StepDimTol_ToleranceZone)(self_->Zone()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_ToleranceZoneDefinition_init(StepDimTol_ToleranceZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const* theBoundaries) {
+extern "C" const char* StepDimTol_ToleranceZoneDefinition_init(StepDimTol_ToleranceZoneDefinition* self_, Handle(StepDimTol_ToleranceZone) const* theZone, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const* theBoundaries) {
     try { self_->Init(*theZone, *theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepDimTol_ToleranceZoneDefinition_set_boundaries(StepDimTol_ToleranceZoneDefinition* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect) const* theBoundaries) {
+extern "C" const char* StepDimTol_ToleranceZoneDefinition_set_boundaries(StepDimTol_ToleranceZoneDefinition* self_, Handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect) const* theBoundaries) {
     try { self_->SetBoundaries(*theBoundaries); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49674,19 +49685,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepDimTol_TotalRunoutT
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_TotalRunoutTolerance_inherited_Init(StepDimTol_TotalRunoutTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_TotalRunoutTolerance_inherited_Init(StepDimTol_TotalRunoutTolerance* self, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Name, Handle(TCollection_HAsciiString) const& theGeometricTolerance_Description, Handle(Standard_Transient) const& theGeometricTolerance_Magnitude, Handle(StepRepr_ShapeAspect) const& theGeometricTolerance_TolerancedShapeAspect, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->Init(theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)*> StepDimTol_TotalRunoutTolerance_inherited_DatumSystem(const StepDimTol_TotalRunoutTolerance* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)*> StepDimTol_TotalRunoutTolerance_inherited_DatumSystem(const StepDimTol_TotalRunoutTolerance* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference)(self->DatumSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)*> StepDimTol_TotalRunoutTolerance_inherited_DatumSystemAP242(const StepDimTol_TotalRunoutTolerance* self) {
     try { return {new Handle(NCollection_HArray1_StepDimTol_DatumSystemOrReference)(self->DatumSystemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepDimTol_TotalRunoutTolerance_inherited_SetDatumSystem(StepDimTol_TotalRunoutTolerance* self, Handle(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference) const& theDatumSystem) {
+extern "C" const char* StepDimTol_TotalRunoutTolerance_inherited_SetDatumSystem(StepDimTol_TotalRunoutTolerance* self, Handle(NCollection_HArray1_Handle_StepDimTol_DatumReference) const& theDatumSystem) {
     try { self->SetDatumSystem(theDatumSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49982,15 +49993,15 @@ extern "C" OcctResult<StepElement_Curve3dElementDescriptor*> StepElement_Curve3d
     try { return {new StepElement_Curve3dElementDescriptor(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember)*> StepElement_Curve3dElementDescriptor_purpose(const StepElement_Curve3dElementDescriptor* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember)(self_->Purpose()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember)*> StepElement_Curve3dElementDescriptor_purpose(const StepElement_Curve3dElementDescriptor* self_) {
+    try { return {new Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember)(self_->Purpose()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepElement_Curve3dElementDescriptor_init(StepElement_Curve3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember) const* aPurpose) {
+extern "C" const char* StepElement_Curve3dElementDescriptor_init(StepElement_Curve3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember) const* aPurpose) {
     try { self_->Init(static_cast<StepElement_ElementOrder>(aElementDescriptor_TopologyOrder), *aElementDescriptor_Description, *aPurpose); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepElement_Curve3dElementDescriptor_set_purpose(StepElement_Curve3dElementDescriptor* self_, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember) const* Purpose) {
+extern "C" const char* StepElement_Curve3dElementDescriptor_set_purpose(StepElement_Curve3dElementDescriptor* self_, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember) const* Purpose) {
     try { self_->SetPurpose(*Purpose); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -51418,11 +51429,11 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepElement_ElementMate
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation)*> StepElement_ElementMaterial_properties(const StepElement_ElementMaterial* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation)(self_->Properties()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation)*> StepElement_ElementMaterial_properties(const StepElement_ElementMaterial* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation)(self_->Properties()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepElement_ElementMaterial_init(StepElement_ElementMaterial* self_, Handle(TCollection_HAsciiString) const* aMaterialId, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation) const* aProperties) {
+extern "C" const char* StepElement_ElementMaterial_init(StepElement_ElementMaterial* self_, Handle(TCollection_HAsciiString) const* aMaterialId, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation) const* aProperties) {
     try { self_->Init(*aMaterialId, *aDescription, *aProperties); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -51434,7 +51445,7 @@ extern "C" const char* StepElement_ElementMaterial_set_description(StepElement_E
     try { self_->SetDescription(*Description); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepElement_ElementMaterial_set_properties(StepElement_ElementMaterial* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation) const* Properties) {
+extern "C" const char* StepElement_ElementMaterial_set_properties(StepElement_ElementMaterial* self_, Handle(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation) const* Properties) {
     try { self_->SetProperties(*Properties); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -51770,15 +51781,15 @@ extern "C" OcctResult<StepElement_Surface3dElementDescriptor*> StepElement_Surfa
     try { return {new StepElement_Surface3dElementDescriptor(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember)*> StepElement_Surface3dElementDescriptor_purpose(const StepElement_Surface3dElementDescriptor* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember)(self_->Purpose()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember)*> StepElement_Surface3dElementDescriptor_purpose(const StepElement_Surface3dElementDescriptor* self_) {
+    try { return {new Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember)(self_->Purpose()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepElement_Surface3dElementDescriptor_init(StepElement_Surface3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember) const* aPurpose, int32_t aShape) {
+extern "C" const char* StepElement_Surface3dElementDescriptor_init(StepElement_Surface3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember) const* aPurpose, int32_t aShape) {
     try { self_->Init(static_cast<StepElement_ElementOrder>(aElementDescriptor_TopologyOrder), *aElementDescriptor_Description, *aPurpose, static_cast<StepElement_Element2dShape>(aShape)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepElement_Surface3dElementDescriptor_set_purpose(StepElement_Surface3dElementDescriptor* self_, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember) const* Purpose) {
+extern "C" const char* StepElement_Surface3dElementDescriptor_set_purpose(StepElement_Surface3dElementDescriptor* self_, Handle(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember) const* Purpose) {
     try { self_->SetPurpose(*Purpose); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -52514,15 +52525,15 @@ extern "C" OcctResult<StepElement_SurfaceSectionFieldVarying*> StepElement_Surfa
     try { return {new StepElement_SurfaceSectionFieldVarying(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection)*> StepElement_SurfaceSectionFieldVarying_definitions(const StepElement_SurfaceSectionFieldVarying* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection)(self_->Definitions()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepElement_SurfaceSection)*> StepElement_SurfaceSectionFieldVarying_definitions(const StepElement_SurfaceSectionFieldVarying* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepElement_SurfaceSection)(self_->Definitions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepElement_SurfaceSectionFieldVarying_init(StepElement_SurfaceSectionFieldVarying* self_, Handle(NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection) const* aDefinitions, bool aAdditionalNodeValues) {
+extern "C" const char* StepElement_SurfaceSectionFieldVarying_init(StepElement_SurfaceSectionFieldVarying* self_, Handle(NCollection_HArray1_Handle_StepElement_SurfaceSection) const* aDefinitions, bool aAdditionalNodeValues) {
     try { self_->Init(*aDefinitions, aAdditionalNodeValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepElement_SurfaceSectionFieldVarying_set_definitions(StepElement_SurfaceSectionFieldVarying* self_, Handle(NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection) const* Definitions) {
+extern "C" const char* StepElement_SurfaceSectionFieldVarying_set_definitions(StepElement_SurfaceSectionFieldVarying* self_, Handle(NCollection_HArray1_Handle_StepElement_SurfaceSection) const* Definitions) {
     try { self_->SetDefinitions(*Definitions); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -52734,15 +52745,15 @@ extern "C" OcctResult<StepElement_Volume3dElementDescriptor*> StepElement_Volume
     try { return {new StepElement_Volume3dElementDescriptor(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember)*> StepElement_Volume3dElementDescriptor_purpose(const StepElement_Volume3dElementDescriptor* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember)(self_->Purpose()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember)*> StepElement_Volume3dElementDescriptor_purpose(const StepElement_Volume3dElementDescriptor* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember)(self_->Purpose()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepElement_Volume3dElementDescriptor_init(StepElement_Volume3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember) const* aPurpose, int32_t aShape) {
+extern "C" const char* StepElement_Volume3dElementDescriptor_init(StepElement_Volume3dElementDescriptor* self_, int32_t aElementDescriptor_TopologyOrder, Handle(TCollection_HAsciiString) const* aElementDescriptor_Description, Handle(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember) const* aPurpose, int32_t aShape) {
     try { self_->Init(static_cast<StepElement_ElementOrder>(aElementDescriptor_TopologyOrder), *aElementDescriptor_Description, *aPurpose, static_cast<StepElement_Volume3dElementShape>(aShape)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepElement_Volume3dElementDescriptor_set_purpose(StepElement_Volume3dElementDescriptor* self_, Handle(NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember) const* Purpose) {
+extern "C" const char* StepElement_Volume3dElementDescriptor_set_purpose(StepElement_Volume3dElementDescriptor* self_, Handle(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember) const* Purpose) {
     try { self_->SetPurpose(*Purpose); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53524,19 +53535,19 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_Curve3dElementP
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval)*> StepFEA_Curve3dElementProperty_interval_definitions(const StepFEA_Curve3dElementProperty* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval)(self_->IntervalDefinitions()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_CurveElementInterval)*> StepFEA_Curve3dElementProperty_interval_definitions(const StepFEA_Curve3dElementProperty* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_CurveElementInterval)(self_->IntervalDefinitions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset)*> StepFEA_Curve3dElementProperty_end_offsets(const StepFEA_Curve3dElementProperty* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset)(self_->EndOffsets()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset)*> StepFEA_Curve3dElementProperty_end_offsets(const StepFEA_Curve3dElementProperty* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset)(self_->EndOffsets()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease)*> StepFEA_Curve3dElementProperty_end_releases(const StepFEA_Curve3dElementProperty* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease)(self_->EndReleases()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease)*> StepFEA_Curve3dElementProperty_end_releases(const StepFEA_Curve3dElementProperty* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease)(self_->EndReleases()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Curve3dElementProperty_init(StepFEA_Curve3dElementProperty* self_, Handle(TCollection_HAsciiString) const* aPropertyId, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval) const* aIntervalDefinitions, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset) const* aEndOffsets, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease) const* aEndReleases) {
+extern "C" const char* StepFEA_Curve3dElementProperty_init(StepFEA_Curve3dElementProperty* self_, Handle(TCollection_HAsciiString) const* aPropertyId, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementInterval) const* aIntervalDefinitions, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset) const* aEndOffsets, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease) const* aEndReleases) {
     try { self_->Init(*aPropertyId, *aDescription, *aIntervalDefinitions, *aEndOffsets, *aEndReleases); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53548,15 +53559,15 @@ extern "C" const char* StepFEA_Curve3dElementProperty_set_description(StepFEA_Cu
     try { self_->SetDescription(*Description); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_Curve3dElementProperty_set_interval_definitions(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval) const* IntervalDefinitions) {
+extern "C" const char* StepFEA_Curve3dElementProperty_set_interval_definitions(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementInterval) const* IntervalDefinitions) {
     try { self_->SetIntervalDefinitions(*IntervalDefinitions); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_Curve3dElementProperty_set_end_offsets(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset) const* EndOffsets) {
+extern "C" const char* StepFEA_Curve3dElementProperty_set_end_offsets(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset) const* EndOffsets) {
     try { self_->SetEndOffsets(*EndOffsets); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_Curve3dElementProperty_set_end_releases(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease) const* EndReleases) {
+extern "C" const char* StepFEA_Curve3dElementProperty_set_end_releases(StepFEA_Curve3dElementProperty* self_, Handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease) const* EndReleases) {
     try { self_->SetEndReleases(*EndReleases); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53644,7 +53655,7 @@ extern "C" OcctResult<Handle(StepElement_ElementMaterial)*> StepFEA_Curve3dEleme
     try { return {new Handle(StepElement_ElementMaterial)(self_->Material()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Curve3dElementRepresentation_init(StepFEA_Curve3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Curve3dElementDescriptor) const* aElementDescriptor, Handle(StepFEA_Curve3dElementProperty) const* aProperty, Handle(StepElement_ElementMaterial) const* aMaterial) {
+extern "C" const char* StepFEA_Curve3dElementRepresentation_init(StepFEA_Curve3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Curve3dElementDescriptor) const* aElementDescriptor, Handle(StepFEA_Curve3dElementProperty) const* aProperty, Handle(StepElement_ElementMaterial) const* aMaterial) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aElementRepresentation_NodeList, *aModelRef, *aElementDescriptor, *aProperty, *aMaterial); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53706,11 +53717,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_Curve3dElementR
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_Curve3dElementRepresentation_inherited_NodeList(const StepFEA_Curve3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_Curve3dElementRepresentation_inherited_NodeList(const StepFEA_Curve3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Curve3dElementRepresentation_inherited_SetNodeList(StepFEA_Curve3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const& NodeList) {
+extern "C" const char* StepFEA_Curve3dElementRepresentation_inherited_SetNodeList(StepFEA_Curve3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const& NodeList) {
     try { self->SetNodeList(NodeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53722,12 +53733,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_Curve3dElementR
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Curve3dElementRepresentation_inherited_SetItems(StepFEA_Curve3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_Curve3dElementRepresentation_inherited_SetItems(StepFEA_Curve3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_Curve3dElementRepresentation_inherited_Items(const StepFEA_Curve3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_Curve3dElementRepresentation_inherited_Items(const StepFEA_Curve3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_Curve3dElementRepresentation_inherited_ItemsValue(const StepFEA_Curve3dElementRepresentation* self, int32_t num) {
@@ -53976,11 +53987,11 @@ extern "C" OcctResult<StepFEA_CurveElementEndCoordinateSystem*> StepFEA_CurveEle
     try { return {new StepFEA_CurveElementEndCoordinateSystem(self_->CoordinateSystem()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket)*> StepFEA_CurveElementEndRelease_releases(const StepFEA_CurveElementEndRelease* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket)(self_->Releases()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket)*> StepFEA_CurveElementEndRelease_releases(const StepFEA_CurveElementEndRelease* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket)(self_->Releases()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_CurveElementEndRelease_init(StepFEA_CurveElementEndRelease* self_, StepFEA_CurveElementEndCoordinateSystem const* aCoordinateSystem, Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket) const* aReleases) {
+extern "C" const char* StepFEA_CurveElementEndRelease_init(StepFEA_CurveElementEndRelease* self_, StepFEA_CurveElementEndCoordinateSystem const* aCoordinateSystem, Handle(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket) const* aReleases) {
     try { self_->Init(*aCoordinateSystem, *aReleases); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -53988,7 +53999,7 @@ extern "C" const char* StepFEA_CurveElementEndRelease_set_coordinate_system(Step
     try { self_->SetCoordinateSystem(*CoordinateSystem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_CurveElementEndRelease_set_releases(StepFEA_CurveElementEndRelease* self_, Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket) const* Releases) {
+extern "C" const char* StepFEA_CurveElementEndRelease_set_releases(StepFEA_CurveElementEndRelease* self_, Handle(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket) const* Releases) {
     try { self_->SetReleases(*Releases); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -54266,15 +54277,15 @@ extern "C" OcctResult<StepFEA_CurveElementIntervalLinearlyVarying*> StepFEA_Curv
     try { return {new StepFEA_CurveElementIntervalLinearlyVarying(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition)*> StepFEA_CurveElementIntervalLinearlyVarying_sections(const StepFEA_CurveElementIntervalLinearlyVarying* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition)(self_->Sections()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition)*> StepFEA_CurveElementIntervalLinearlyVarying_sections(const StepFEA_CurveElementIntervalLinearlyVarying* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition)(self_->Sections()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_CurveElementIntervalLinearlyVarying_init(StepFEA_CurveElementIntervalLinearlyVarying* self_, Handle(StepFEA_CurveElementLocation) const* aCurveElementInterval_FinishPosition, Handle(StepBasic_EulerAngles) const* aCurveElementInterval_EuAngles, Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition) const* aSections) {
+extern "C" const char* StepFEA_CurveElementIntervalLinearlyVarying_init(StepFEA_CurveElementIntervalLinearlyVarying* self_, Handle(StepFEA_CurveElementLocation) const* aCurveElementInterval_FinishPosition, Handle(StepBasic_EulerAngles) const* aCurveElementInterval_EuAngles, Handle(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition) const* aSections) {
     try { self_->Init(*aCurveElementInterval_FinishPosition, *aCurveElementInterval_EuAngles, *aSections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_CurveElementIntervalLinearlyVarying_set_sections(StepFEA_CurveElementIntervalLinearlyVarying* self_, Handle(NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition) const* Sections) {
+extern "C" const char* StepFEA_CurveElementIntervalLinearlyVarying_set_sections(StepFEA_CurveElementIntervalLinearlyVarying* self_, Handle(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition) const* Sections) {
     try { self_->SetSections(*Sections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -54754,7 +54765,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_DummyNode_to_Ha
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_DummyNode_inherited_Init(StepFEA_DummyNode* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
+extern "C" const char* StepFEA_DummyNode_inherited_Init(StepFEA_DummyNode* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -54774,12 +54785,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_DummyNode_inher
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_DummyNode_inherited_SetItems(StepFEA_DummyNode* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_DummyNode_inherited_SetItems(StepFEA_DummyNode* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_DummyNode_inherited_Items(const StepFEA_DummyNode* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_DummyNode_inherited_Items(const StepFEA_DummyNode* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_DummyNode_inherited_ItemsValue(const StepFEA_DummyNode* self, int32_t num) {
@@ -54932,15 +54943,15 @@ extern "C" OcctResult<StepFEA_ElementGroup*> StepFEA_ElementGroup_ctor() {
     try { return {new StepFEA_ElementGroup(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation)*> StepFEA_ElementGroup_elements(const StepFEA_ElementGroup* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation)(self_->Elements()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_ElementRepresentation)*> StepFEA_ElementGroup_elements(const StepFEA_ElementGroup* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_ElementRepresentation)(self_->Elements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_ElementGroup_init(StepFEA_ElementGroup* self_, Handle(TCollection_HAsciiString) const* aGroup_Name, Handle(TCollection_HAsciiString) const* aGroup_Description, Handle(StepFEA_FeaModel) const* aFeaGroup_ModelRef, Handle(NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation) const* aElements) {
+extern "C" const char* StepFEA_ElementGroup_init(StepFEA_ElementGroup* self_, Handle(TCollection_HAsciiString) const* aGroup_Name, Handle(TCollection_HAsciiString) const* aGroup_Description, Handle(StepFEA_FeaModel) const* aFeaGroup_ModelRef, Handle(NCollection_HArray1_Handle_StepFEA_ElementRepresentation) const* aElements) {
     try { self_->Init(*aGroup_Name, *aGroup_Description, *aFeaGroup_ModelRef, *aElements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_ElementGroup_set_elements(StepFEA_ElementGroup* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation) const* Elements) {
+extern "C" const char* StepFEA_ElementGroup_set_elements(StepFEA_ElementGroup* self_, Handle(NCollection_HArray1_Handle_StepFEA_ElementRepresentation) const* Elements) {
     try { self_->SetElements(*Elements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -55148,15 +55159,15 @@ extern "C" OcctResult<StepFEA_ElementRepresentation*> StepFEA_ElementRepresentat
     try { return {new StepFEA_ElementRepresentation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_ElementRepresentation_node_list(const StepFEA_ElementRepresentation* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self_->NodeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_ElementRepresentation_node_list(const StepFEA_ElementRepresentation* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self_->NodeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_ElementRepresentation_init(StepFEA_ElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aNodeList) {
+extern "C" const char* StepFEA_ElementRepresentation_init(StepFEA_ElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aNodeList) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aNodeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_ElementRepresentation_set_node_list(StepFEA_ElementRepresentation* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* NodeList) {
+extern "C" const char* StepFEA_ElementRepresentation_set_node_list(StepFEA_ElementRepresentation* self_, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* NodeList) {
     try { self_->SetNodeList(*NodeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -55228,12 +55239,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_ElementRepresen
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_ElementRepresentation_inherited_SetItems(StepFEA_ElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_ElementRepresentation_inherited_SetItems(StepFEA_ElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_ElementRepresentation_inherited_Items(const StepFEA_ElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_ElementRepresentation_inherited_Items(const StepFEA_ElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_ElementRepresentation_inherited_ItemsValue(const StepFEA_ElementRepresentation* self, int32_t num) {
@@ -56250,7 +56261,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_FeaModel_analys
     try { return {new Handle(TCollection_HAsciiString)(self_->AnalysisType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_FeaModel_init(StepFEA_FeaModel* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(TCollection_HAsciiString) const* aCreatingSoftware, Handle(NCollection_HArray1_TCollection_AsciiString) const* aIntendedAnalysisCode, Handle(TCollection_HAsciiString) const* aDescription, Handle(TCollection_HAsciiString) const* aAnalysisType) {
+extern "C" const char* StepFEA_FeaModel_init(StepFEA_FeaModel* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(TCollection_HAsciiString) const* aCreatingSoftware, Handle(NCollection_HArray1_TCollection_AsciiString) const* aIntendedAnalysisCode, Handle(TCollection_HAsciiString) const* aDescription, Handle(TCollection_HAsciiString) const* aAnalysisType) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aCreatingSoftware, *aIntendedAnalysisCode, *aDescription, *aAnalysisType); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -56322,12 +56333,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_FeaModel_inheri
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_FeaModel_inherited_SetItems(StepFEA_FeaModel* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_FeaModel_inherited_SetItems(StepFEA_FeaModel* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_FeaModel_inherited_Items(const StepFEA_FeaModel* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_FeaModel_inherited_Items(const StepFEA_FeaModel* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_FeaModel_inherited_ItemsValue(const StepFEA_FeaModel* self, int32_t num) {
@@ -56426,7 +56437,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_FeaModel3d_to_H
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_FeaModel3d_inherited_Init(StepFEA_FeaModel3d* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(TCollection_HAsciiString) const& aCreatingSoftware, Handle(NCollection_HArray1_TCollection_AsciiString) const& aIntendedAnalysisCode, Handle(TCollection_HAsciiString) const& aDescription, Handle(TCollection_HAsciiString) const& aAnalysisType) {
+extern "C" const char* StepFEA_FeaModel3d_inherited_Init(StepFEA_FeaModel3d* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(TCollection_HAsciiString) const& aCreatingSoftware, Handle(NCollection_HArray1_TCollection_AsciiString) const& aIntendedAnalysisCode, Handle(TCollection_HAsciiString) const& aDescription, Handle(TCollection_HAsciiString) const& aAnalysisType) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aCreatingSoftware, aIntendedAnalysisCode, aDescription, aAnalysisType); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -56470,12 +56481,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_FeaModel3d_inhe
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_FeaModel3d_inherited_SetItems(StepFEA_FeaModel3d* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_FeaModel3d_inherited_SetItems(StepFEA_FeaModel3d* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_FeaModel3d_inherited_Items(const StepFEA_FeaModel3d* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_FeaModel3d_inherited_Items(const StepFEA_FeaModel3d* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_FeaModel3d_inherited_ItemsValue(const StepFEA_FeaModel3d* self, int32_t num) {
@@ -57896,7 +57907,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_GeometricNode_t
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_GeometricNode_inherited_Init(StepFEA_GeometricNode* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
+extern "C" const char* StepFEA_GeometricNode_inherited_Init(StepFEA_GeometricNode* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -57916,12 +57927,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_GeometricNode_i
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_GeometricNode_inherited_SetItems(StepFEA_GeometricNode* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_GeometricNode_inherited_SetItems(StepFEA_GeometricNode* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_GeometricNode_inherited_Items(const StepFEA_GeometricNode* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_GeometricNode_inherited_Items(const StepFEA_GeometricNode* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_GeometricNode_inherited_ItemsValue(const StepFEA_GeometricNode* self, int32_t num) {
@@ -58036,7 +58047,7 @@ extern "C" OcctResult<Handle_StepFEA_NodeWithVector*> Handle_StepFEA_Node_downca
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Node_inherited_Init(StepFEA_Node* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
+extern "C" const char* StepFEA_Node_inherited_Init(StepFEA_Node* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58056,12 +58067,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_Node_inherited_
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Node_inherited_SetItems(StepFEA_Node* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_Node_inherited_SetItems(StepFEA_Node* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_Node_inherited_Items(const StepFEA_Node* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_Node_inherited_Items(const StepFEA_Node* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_Node_inherited_ItemsValue(const StepFEA_Node* self, int32_t num) {
@@ -58228,15 +58239,15 @@ extern "C" OcctResult<StepFEA_NodeGroup*> StepFEA_NodeGroup_ctor() {
     try { return {new StepFEA_NodeGroup(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_NodeGroup_nodes(const StepFEA_NodeGroup* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self_->Nodes()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_NodeGroup_nodes(const StepFEA_NodeGroup* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeGroup_init(StepFEA_NodeGroup* self_, Handle(TCollection_HAsciiString) const* aGroup_Name, Handle(TCollection_HAsciiString) const* aGroup_Description, Handle(StepFEA_FeaModel) const* aFeaGroup_ModelRef, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aNodes) {
+extern "C" const char* StepFEA_NodeGroup_init(StepFEA_NodeGroup* self_, Handle(TCollection_HAsciiString) const* aGroup_Name, Handle(TCollection_HAsciiString) const* aGroup_Description, Handle(StepFEA_FeaModel) const* aFeaGroup_ModelRef, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aNodes) {
     try { self_->Init(*aGroup_Name, *aGroup_Description, *aFeaGroup_ModelRef, *aNodes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_NodeGroup_set_nodes(StepFEA_NodeGroup* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* Nodes) {
+extern "C" const char* StepFEA_NodeGroup_set_nodes(StepFEA_NodeGroup* self_, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* Nodes) {
     try { self_->SetNodes(*Nodes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58352,7 +58363,7 @@ extern "C" OcctResult<Handle(StepFEA_FeaModel)*> StepFEA_NodeRepresentation_mode
     try { return {new Handle(StepFEA_FeaModel)(self_->ModelRef()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeRepresentation_init(StepFEA_NodeRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const* aModelRef) {
+extern "C" const char* StepFEA_NodeRepresentation_init(StepFEA_NodeRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const* aModelRef) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58444,12 +58455,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_NodeRepresentat
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeRepresentation_inherited_SetItems(StepFEA_NodeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_NodeRepresentation_inherited_SetItems(StepFEA_NodeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_NodeRepresentation_inherited_Items(const StepFEA_NodeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_NodeRepresentation_inherited_Items(const StepFEA_NodeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_NodeRepresentation_inherited_ItemsValue(const StepFEA_NodeRepresentation* self, int32_t num) {
@@ -58506,15 +58517,15 @@ extern "C" OcctResult<StepFEA_NodeSet*> StepFEA_NodeSet_ctor() {
     try { return {new StepFEA_NodeSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_NodeSet_nodes(const StepFEA_NodeSet* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self_->Nodes()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_NodeSet_nodes(const StepFEA_NodeSet* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeSet_init(StepFEA_NodeSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aNodes) {
+extern "C" const char* StepFEA_NodeSet_init(StepFEA_NodeSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aNodes) {
     try { self_->Init(*aRepresentationItem_Name, *aNodes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepFEA_NodeSet_set_nodes(StepFEA_NodeSet* self_, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* Nodes) {
+extern "C" const char* StepFEA_NodeSet_set_nodes(StepFEA_NodeSet* self_, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* Nodes) {
     try { self_->SetNodes(*Nodes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58654,7 +58665,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_NodeWithSolutio
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeWithSolutionCoordinateSystem_inherited_Init(StepFEA_NodeWithSolutionCoordinateSystem* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
+extern "C" const char* StepFEA_NodeWithSolutionCoordinateSystem_inherited_Init(StepFEA_NodeWithSolutionCoordinateSystem* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58674,12 +58685,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_NodeWithSolutio
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeWithSolutionCoordinateSystem_inherited_SetItems(StepFEA_NodeWithSolutionCoordinateSystem* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_NodeWithSolutionCoordinateSystem_inherited_SetItems(StepFEA_NodeWithSolutionCoordinateSystem* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_NodeWithSolutionCoordinateSystem_inherited_Items(const StepFEA_NodeWithSolutionCoordinateSystem* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_NodeWithSolutionCoordinateSystem_inherited_Items(const StepFEA_NodeWithSolutionCoordinateSystem* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_NodeWithSolutionCoordinateSystem_inherited_ItemsValue(const StepFEA_NodeWithSolutionCoordinateSystem* self, int32_t num) {
@@ -58784,7 +58795,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_NodeWithVector_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeWithVector_inherited_Init(StepFEA_NodeWithVector* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
+extern "C" const char* StepFEA_NodeWithVector_inherited_Init(StepFEA_NodeWithVector* self, Handle(TCollection_HAsciiString) const& aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aRepresentation_Items, Handle(StepRepr_RepresentationContext) const& aRepresentation_ContextOfItems, Handle(StepFEA_FeaModel) const& aModelRef) {
     try { self->Init(aRepresentation_Name, aRepresentation_Items, aRepresentation_ContextOfItems, aModelRef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -58804,12 +58815,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_NodeWithVector_
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_NodeWithVector_inherited_SetItems(StepFEA_NodeWithVector* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_NodeWithVector_inherited_SetItems(StepFEA_NodeWithVector* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_NodeWithVector_inherited_Items(const StepFEA_NodeWithVector* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_NodeWithVector_inherited_Items(const StepFEA_NodeWithVector* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_NodeWithVector_inherited_ItemsValue(const StepFEA_NodeWithVector* self, int32_t num) {
@@ -59190,7 +59201,7 @@ extern "C" OcctResult<Handle(StepElement_ElementMaterial)*> StepFEA_Surface3dEle
     try { return {new Handle(StepElement_ElementMaterial)(self_->Material()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Surface3dElementRepresentation_init(StepFEA_Surface3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Surface3dElementDescriptor) const* aElementDescriptor, Handle(StepElement_SurfaceElementProperty) const* aProperty, Handle(StepElement_ElementMaterial) const* aMaterial) {
+extern "C" const char* StepFEA_Surface3dElementRepresentation_init(StepFEA_Surface3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Surface3dElementDescriptor) const* aElementDescriptor, Handle(StepElement_SurfaceElementProperty) const* aProperty, Handle(StepElement_ElementMaterial) const* aMaterial) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aElementRepresentation_NodeList, *aModelRef, *aElementDescriptor, *aProperty, *aMaterial); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -59252,11 +59263,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_Surface3dElemen
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_Surface3dElementRepresentation_inherited_NodeList(const StepFEA_Surface3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_Surface3dElementRepresentation_inherited_NodeList(const StepFEA_Surface3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Surface3dElementRepresentation_inherited_SetNodeList(StepFEA_Surface3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const& NodeList) {
+extern "C" const char* StepFEA_Surface3dElementRepresentation_inherited_SetNodeList(StepFEA_Surface3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const& NodeList) {
     try { self->SetNodeList(NodeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -59268,12 +59279,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_Surface3dElemen
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Surface3dElementRepresentation_inherited_SetItems(StepFEA_Surface3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_Surface3dElementRepresentation_inherited_SetItems(StepFEA_Surface3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_Surface3dElementRepresentation_inherited_Items(const StepFEA_Surface3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_Surface3dElementRepresentation_inherited_Items(const StepFEA_Surface3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_Surface3dElementRepresentation_inherited_ItemsValue(const StepFEA_Surface3dElementRepresentation* self, int32_t num) {
@@ -60102,7 +60113,7 @@ extern "C" OcctResult<Handle(StepElement_ElementMaterial)*> StepFEA_Volume3dElem
     try { return {new Handle(StepElement_ElementMaterial)(self_->Material()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Volume3dElementRepresentation_init(StepFEA_Volume3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Volume3dElementDescriptor) const* aElementDescriptor, Handle(StepElement_ElementMaterial) const* aMaterial) {
+extern "C" const char* StepFEA_Volume3dElementRepresentation_init(StepFEA_Volume3dElementRepresentation* self_, Handle(TCollection_HAsciiString) const* aRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aRepresentation_Items, Handle(StepRepr_RepresentationContext) const* aRepresentation_ContextOfItems, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const* aElementRepresentation_NodeList, Handle(StepFEA_FeaModel3d) const* aModelRef, Handle(StepElement_Volume3dElementDescriptor) const* aElementDescriptor, Handle(StepElement_ElementMaterial) const* aMaterial) {
     try { self_->Init(*aRepresentation_Name, *aRepresentation_Items, *aRepresentation_ContextOfItems, *aElementRepresentation_NodeList, *aModelRef, *aElementDescriptor, *aMaterial); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -60160,11 +60171,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepFEA_Volume3dElement
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)*> StepFEA_Volume3dElementRepresentation_inherited_NodeList(const StepFEA_Volume3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)*> StepFEA_Volume3dElementRepresentation_inherited_NodeList(const StepFEA_Volume3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation)(self->NodeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Volume3dElementRepresentation_inherited_SetNodeList(StepFEA_Volume3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation) const& NodeList) {
+extern "C" const char* StepFEA_Volume3dElementRepresentation_inherited_SetNodeList(StepFEA_Volume3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation) const& NodeList) {
     try { self->SetNodeList(NodeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -60176,12 +60187,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepFEA_Volume3dElement
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepFEA_Volume3dElementRepresentation_inherited_SetItems(StepFEA_Volume3dElementRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepFEA_Volume3dElementRepresentation_inherited_SetItems(StepFEA_Volume3dElementRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepFEA_Volume3dElementRepresentation_inherited_Items(const StepFEA_Volume3dElementRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepFEA_Volume3dElementRepresentation_inherited_Items(const StepFEA_Volume3dElementRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepFEA_Volume3dElementRepresentation_inherited_ItemsValue(const StepFEA_Volume3dElementRepresentation* self, int32_t num) {
@@ -60830,15 +60841,15 @@ extern "C" OcctResult<StepGeom_BSplineCurve*> StepGeom_BSplineCurve_ctor() {
     try { return {new StepGeom_BSplineCurve(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurve_control_points_list(const StepGeom_BSplineCurve* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self_->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurve_control_points_list(const StepGeom_BSplineCurve* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self_->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineCurve_control_points_list_value(const StepGeom_BSplineCurve* self_, int32_t num) {
     try { return {new Handle(StepGeom_CartesianPoint)(self_->ControlPointsListValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurve_init(StepGeom_BSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_BSplineCurve_init(StepGeom_BSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -60850,7 +60861,7 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineCurve_degree(const StepGeom_BSpli
     try { return {self_->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurve_set_control_points_list(StepGeom_BSplineCurve* self_, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList) {
+extern "C" const char* StepGeom_BSplineCurve_set_control_points_list(StepGeom_BSplineCurve* self_, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList) {
     try { self_->SetControlPointsList(*aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61062,7 +61073,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_BSplineCurve
     try { return {new Handle(NCollection_HArray1_double)(self_->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurveWithKnots_init(StepGeom_BSplineCurveWithKnots* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aKnotMultiplicities, Handle(NCollection_HArray1_double) const* aKnots, int32_t aKnotSpec) {
+extern "C" const char* StepGeom_BSplineCurveWithKnots_init(StepGeom_BSplineCurveWithKnots* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aKnotMultiplicities, Handle(NCollection_HArray1_double) const* aKnots, int32_t aKnotSpec) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aKnotMultiplicities, *aKnots, static_cast<StepGeom_KnotType>(aKnotSpec)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61166,12 +61177,12 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineCurveWithKnots_inherited_Degree(c
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurveWithKnots_inherited_SetControlPointsList(StepGeom_BSplineCurveWithKnots* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BSplineCurveWithKnots_inherited_SetControlPointsList(StepGeom_BSplineCurveWithKnots* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnots_inherited_ControlPointsList(const StepGeom_BSplineCurveWithKnots* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnots_inherited_ControlPointsList(const StepGeom_BSplineCurveWithKnots* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnots_inherited_ControlPointsListValue(const StepGeom_BSplineCurveWithKnots* self, int32_t num) {
@@ -61272,11 +61283,11 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_BSplineCurve
     try { return {new Handle(NCollection_HArray1_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_BSplineCurveWithKnots) const* aBSplineCurveWithKnots, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
+extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_BSplineCurveWithKnots) const* aBSplineCurveWithKnots, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aBSplineCurveWithKnots, *aRationalBSplineCurve); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aKnotMultiplicities, Handle(NCollection_HArray1_double) const* aKnots, int32_t aKnotSpec, Handle(NCollection_HArray1_double) const* aWeightsData) {
+extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aKnotMultiplicities, Handle(NCollection_HArray1_double) const* aKnots, int32_t aKnotSpec, Handle(NCollection_HArray1_double) const* aWeightsData) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aKnotMultiplicities, *aKnots, static_cast<StepGeom_KnotType>(aKnotSpec), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61400,12 +61411,12 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineCurveWithKnotsAndRationalBSplineC
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsListValue(const StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve* self, int32_t num) {
@@ -61486,15 +61497,15 @@ extern "C" OcctResult<StepGeom_BSplineSurface*> StepGeom_BSplineSurface_ctor() {
     try { return {new StepGeom_BSplineSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurface_control_points_list(const StepGeom_BSplineSurface* self_) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self_->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurface_control_points_list(const StepGeom_BSplineSurface* self_) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self_->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineSurface_control_points_list_value(const StepGeom_BSplineSurface* self_, int32_t num1, int32_t num2) {
     try { return {new Handle(StepGeom_CartesianPoint)(self_->ControlPointsListValue(num1, num2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurface_init(StepGeom_BSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_BSplineSurface_init(StepGeom_BSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61514,7 +61525,7 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineSurface_v_degree(const StepGeom_B
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurface_set_control_points_list(StepGeom_BSplineSurface* self_, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList) {
+extern "C" const char* StepGeom_BSplineSurface_set_control_points_list(StepGeom_BSplineSurface* self_, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList) {
     try { self_->SetControlPointsList(*aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61746,7 +61757,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_BSplineSurfa
     try { return {new Handle(NCollection_HArray1_double)(self_->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurfaceWithKnots_init(StepGeom_BSplineSurfaceWithKnots* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aUMultiplicities, Handle(NCollection_HArray1_int) const* aVMultiplicities, Handle(NCollection_HArray1_double) const* aUKnots, Handle(NCollection_HArray1_double) const* aVKnots, int32_t aKnotSpec) {
+extern "C" const char* StepGeom_BSplineSurfaceWithKnots_init(StepGeom_BSplineSurfaceWithKnots* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aUMultiplicities, Handle(NCollection_HArray1_int) const* aVMultiplicities, Handle(NCollection_HArray1_double) const* aUKnots, Handle(NCollection_HArray1_double) const* aVKnots, int32_t aKnotSpec) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aUMultiplicities, *aVMultiplicities, *aUKnots, *aVKnots, static_cast<StepGeom_KnotType>(aKnotSpec)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -61882,12 +61893,12 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineSurfaceWithKnots_inherited_VDegre
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurfaceWithKnots_inherited_SetControlPointsList(StepGeom_BSplineSurfaceWithKnots* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BSplineSurfaceWithKnots_inherited_SetControlPointsList(StepGeom_BSplineSurfaceWithKnots* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsList(const StepGeom_BSplineSurfaceWithKnots* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsList(const StepGeom_BSplineSurfaceWithKnots* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsListValue(const StepGeom_BSplineSurfaceWithKnots* self, int32_t num1, int32_t num2) {
@@ -62008,11 +62019,11 @@ extern "C" OcctResult<Handle(NCollection_HArray2_double)*> StepGeom_BSplineSurfa
     try { return {new Handle(NCollection_HArray2_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_BSplineSurfaceWithKnots) const* aBSplineSurfaceWithKnots, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
+extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_BSplineSurfaceWithKnots) const* aBSplineSurfaceWithKnots, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aBSplineSurfaceWithKnots, *aRationalBSplineSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aUMultiplicities, Handle(NCollection_HArray1_int) const* aVMultiplicities, Handle(NCollection_HArray1_double) const* aUKnots, Handle(NCollection_HArray1_double) const* aVKnots, int32_t aKnotSpec, Handle(NCollection_HArray2_double) const* aWeightsData) {
+extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray1_int) const* aUMultiplicities, Handle(NCollection_HArray1_int) const* aVMultiplicities, Handle(NCollection_HArray1_double) const* aUKnots, Handle(NCollection_HArray1_double) const* aVKnots, int32_t aKnotSpec, Handle(NCollection_HArray2_double) const* aWeightsData) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aUMultiplicities, *aVMultiplicities, *aUKnots, *aVKnots, static_cast<StepGeom_KnotType>(aKnotSpec), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -62172,12 +62183,12 @@ extern "C" OcctResult<int32_t> StepGeom_BSplineSurfaceWithKnotsAndRationalBSplin
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsListValue(const StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface* self, int32_t num1, int32_t num2) {
@@ -62330,7 +62341,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_BezierCurve_to
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierCurve_inherited_Init(StepGeom_BezierCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_BezierCurve_inherited_Init(StepGeom_BezierCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
     try { self->Init(aName, aDegree, aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -62342,12 +62353,12 @@ extern "C" OcctResult<int32_t> StepGeom_BezierCurve_inherited_Degree(const StepG
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierCurve_inherited_SetControlPointsList(StepGeom_BezierCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BezierCurve_inherited_SetControlPointsList(StepGeom_BezierCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BezierCurve_inherited_ControlPointsList(const StepGeom_BezierCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_BezierCurve_inherited_ControlPointsList(const StepGeom_BezierCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BezierCurve_inherited_ControlPointsListValue(const StepGeom_BezierCurve* self, int32_t num) {
@@ -62440,11 +62451,11 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_BezierCurveA
     try { return {new Handle(NCollection_HArray1_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(StepGeom_BezierCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_BezierCurve) const* aBezierCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
+extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(StepGeom_BezierCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_BezierCurve) const* aBezierCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aBezierCurve, *aRationalBSplineCurve); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_BezierCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
+extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_BezierCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -62536,12 +62547,12 @@ extern "C" OcctResult<int32_t> StepGeom_BezierCurveAndRationalBSplineCurve_inher
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_BezierCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BezierCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_BezierCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_BezierCurveAndRationalBSplineCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_BezierCurveAndRationalBSplineCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(const StepGeom_BezierCurveAndRationalBSplineCurve* self, int32_t num) {
@@ -62682,7 +62693,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_BezierSurface_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierSurface_inherited_Init(StepGeom_BezierSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_BezierSurface_inherited_Init(StepGeom_BezierSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
     try { self->Init(aName, aUDegree, aVDegree, aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -62702,12 +62713,12 @@ extern "C" OcctResult<int32_t> StepGeom_BezierSurface_inherited_VDegree(const St
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierSurface_inherited_SetControlPointsList(StepGeom_BezierSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BezierSurface_inherited_SetControlPointsList(StepGeom_BezierSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BezierSurface_inherited_ControlPointsList(const StepGeom_BezierSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_BezierSurface_inherited_ControlPointsList(const StepGeom_BezierSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BezierSurface_inherited_ControlPointsListValue(const StepGeom_BezierSurface* self, int32_t num1, int32_t num2) {
@@ -62812,11 +62823,11 @@ extern "C" OcctResult<Handle(NCollection_HArray2_double)*> StepGeom_BezierSurfac
     try { return {new Handle(NCollection_HArray2_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(StepGeom_BezierSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_BezierSurface) const* aBezierSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
+extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(StepGeom_BezierSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_BezierSurface) const* aBezierSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aBezierSurface, *aRationalBSplineSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_BezierSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
+extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_BezierSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -62920,12 +62931,12 @@ extern "C" OcctResult<int32_t> StepGeom_BezierSurfaceAndRationalBSplineSurface_i
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_BezierSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_BezierSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_BezierSurfaceAndRationalBSplineSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_BezierSurfaceAndRationalBSplineSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(const StepGeom_BezierSurfaceAndRationalBSplineSurface* self, int32_t num1, int32_t num2) {
@@ -63092,16 +63103,16 @@ extern "C" OcctResult<Handle_StepGeom_OuterBoundaryCurve*> Handle_StepGeom_Bound
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_BoundaryCurve_inherited_Init(StepGeom_BoundaryCurve* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_BoundaryCurve_inherited_Init(StepGeom_BoundaryCurve* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
     try { self->Init(aName, aSegments, static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_BoundaryCurve_inherited_SetSegments(StepGeom_BoundaryCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments) {
+extern "C" const char* StepGeom_BoundaryCurve_inherited_SetSegments(StepGeom_BoundaryCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments) {
     try { self->SetSegments(aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)*> StepGeom_BoundaryCurve_inherited_Segments(const StepGeom_BoundaryCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)*> StepGeom_BoundaryCurve_inherited_Segments(const StepGeom_BoundaryCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CompositeCurveSegment)*> StepGeom_BoundaryCurve_inherited_SegmentsValue(const StepGeom_BoundaryCurve* self, int32_t num) {
@@ -64324,19 +64335,19 @@ extern "C" OcctResult<StepGeom_CompositeCurve*> StepGeom_CompositeCurve_ctor() {
     try { return {new StepGeom_CompositeCurve(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurve_segments(const StepGeom_CompositeCurve* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)(self_->Segments()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurve_segments(const StepGeom_CompositeCurve* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)(self_->Segments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurve_segments_value(const StepGeom_CompositeCurve* self_, int32_t num) {
     try { return {new Handle(StepGeom_CompositeCurveSegment)(self_->SegmentsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_CompositeCurve_init(StepGeom_CompositeCurve* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const* aSegments, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_CompositeCurve_init(StepGeom_CompositeCurve* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const* aSegments, int32_t aSelfIntersect) {
     try { self_->Init(*aName, *aSegments, static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_CompositeCurve_set_segments(StepGeom_CompositeCurve* self_, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const* aSegments) {
+extern "C" const char* StepGeom_CompositeCurve_set_segments(StepGeom_CompositeCurve* self_, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const* aSegments) {
     try { self_->SetSegments(*aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -64552,16 +64563,16 @@ extern "C" OcctResult<Handle_StepGeom_OuterBoundaryCurve*> Handle_StepGeom_Compo
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_CompositeCurveOnSurface_inherited_Init(StepGeom_CompositeCurveOnSurface* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_CompositeCurveOnSurface_inherited_Init(StepGeom_CompositeCurveOnSurface* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
     try { self->Init(aName, aSegments, static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_CompositeCurveOnSurface_inherited_SetSegments(StepGeom_CompositeCurveOnSurface* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments) {
+extern "C" const char* StepGeom_CompositeCurveOnSurface_inherited_SetSegments(StepGeom_CompositeCurveOnSurface* self, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments) {
     try { self->SetSegments(aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurveOnSurface_inherited_Segments(const StepGeom_CompositeCurveOnSurface* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurveOnSurface_inherited_Segments(const StepGeom_CompositeCurveOnSurface* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CompositeCurveSegment)*> StepGeom_CompositeCurveOnSurface_inherited_SegmentsValue(const StepGeom_CompositeCurveOnSurface* self, int32_t num) {
@@ -66592,16 +66603,16 @@ extern "C" OcctResult<Handle(StepRepr_GlobalUncertaintyAssignedContext)*> StepGe
     try { return {new Handle(StepRepr_GlobalUncertaintyAssignedContext)(self_->GlobalUncertaintyAssignedContext()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_NamedUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units_value(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, int32_t num) {
     try { return {new Handle(StepBasic_NamedUnit)(self_->UnitsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit)(self_->Uncertainty()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit)(self_->Uncertainty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_UncertaintyMeasureWithUnit)*> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty_value(const StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, int32_t num) {
@@ -66612,7 +66623,7 @@ extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaint
     try { self_->Init(*aContextIdentifier, *aContextType, *aGeometricRepresentationCtx, *aGlobalUnitAssignedCtx, *aGlobalUncertaintyAssignedCtx); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit_handlencollectionharray1opencascadehandlestepbasicuncertaintymeasurewithunit(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, int32_t aCoordinateSpaceDimension, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits, Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit) const* anUncertainty) {
+extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit_harr1_stepbasic_uncertaintymeasurewithunit(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, int32_t aCoordinateSpaceDimension, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits, Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit) const* anUncertainty) {
     try { self_->Init(*aContextIdentifier, *aContextType, aCoordinateSpaceDimension, *aUnits, *anUncertainty); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -66636,7 +66647,7 @@ extern "C" OcctResult<int32_t> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUn
     try { return {self_->CoordinateSpaceDimension(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_units(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits) {
+extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_units(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits) {
     try { self_->SetUnits(*aUnits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -66644,7 +66655,7 @@ extern "C" OcctResult<int32_t> StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUn
     try { return {self_->NbUnits(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_uncertainty(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
+extern "C" const char* StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_uncertainty(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx* self_, Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
     try { self_->SetUncertainty(*aUncertainty); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -66852,8 +66863,8 @@ extern "C" OcctResult<Handle(StepRepr_GlobalUnitAssignedContext)*> StepGeom_Geom
     try { return {new Handle(StepRepr_GlobalUnitAssignedContext)(self_->GlobalUnitAssignedContext()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)*> StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units(const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)*> StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units(const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_NamedUnit)*> StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units_value(const StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_, int32_t num) {
@@ -66864,7 +66875,7 @@ extern "C" const char* StepGeom_GeometricRepresentationContextAndGlobalUnitAssig
     try { self_->Init(*aContextIdentifier, *aContextType, *aGeometricRepresentationContext, *aGlobalUnitAssignedContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, int32_t aCoordinateSpaceDimension, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits) {
+extern "C" const char* StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, int32_t aCoordinateSpaceDimension, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits) {
     try { self_->Init(*aContextIdentifier, *aContextType, aCoordinateSpaceDimension, *aUnits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -66884,7 +66895,7 @@ extern "C" OcctResult<int32_t> StepGeom_GeometricRepresentationContextAndGlobalU
     try { return {self_->CoordinateSpaceDimension(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_set_units(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits) {
+extern "C" const char* StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_set_units(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext* self_, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits) {
     try { self_->SetUnits(*aUnits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -69638,16 +69649,16 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_OuterBoundaryC
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_OuterBoundaryCurve_inherited_Init(StepGeom_OuterBoundaryCurve* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_OuterBoundaryCurve_inherited_Init(StepGeom_OuterBoundaryCurve* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments, int32_t aSelfIntersect) {
     try { self->Init(aName, aSegments, static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_OuterBoundaryCurve_inherited_SetSegments(StepGeom_OuterBoundaryCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment) const& aSegments) {
+extern "C" const char* StepGeom_OuterBoundaryCurve_inherited_SetSegments(StepGeom_OuterBoundaryCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment) const& aSegments) {
     try { self->SetSegments(aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)*> StepGeom_OuterBoundaryCurve_inherited_Segments(const StepGeom_OuterBoundaryCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)*> StepGeom_OuterBoundaryCurve_inherited_Segments(const StepGeom_OuterBoundaryCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment)(self->Segments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CompositeCurveSegment)*> StepGeom_OuterBoundaryCurve_inherited_SegmentsValue(const StepGeom_OuterBoundaryCurve* self, int32_t num) {
@@ -70784,19 +70795,19 @@ extern "C" OcctResult<StepGeom_Polyline*> StepGeom_Polyline_ctor() {
     try { return {new StepGeom_Polyline(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_Polyline_points(const StepGeom_Polyline* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self_->Points()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_Polyline_points(const StepGeom_Polyline* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self_->Points()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_Polyline_points_value(const StepGeom_Polyline* self_, int32_t num) {
     try { return {new Handle(StepGeom_CartesianPoint)(self_->PointsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_Polyline_init(StepGeom_Polyline* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aPoints) {
+extern "C" const char* StepGeom_Polyline_init(StepGeom_Polyline* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aPoints) {
     try { self_->Init(*aName, *aPoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_Polyline_set_points(StepGeom_Polyline* self_, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aPoints) {
+extern "C" const char* StepGeom_Polyline_set_points(StepGeom_Polyline* self_, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aPoints) {
     try { self_->SetPoints(*aPoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -70964,7 +70975,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_QuasiUniformCu
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformCurve_inherited_Init(StepGeom_QuasiUniformCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_QuasiUniformCurve_inherited_Init(StepGeom_QuasiUniformCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
     try { self->Init(aName, aDegree, aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -70976,12 +70987,12 @@ extern "C" OcctResult<int32_t> StepGeom_QuasiUniformCurve_inherited_Degree(const
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformCurve_inherited_SetControlPointsList(StepGeom_QuasiUniformCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_QuasiUniformCurve_inherited_SetControlPointsList(StepGeom_QuasiUniformCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurve_inherited_ControlPointsList(const StepGeom_QuasiUniformCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurve_inherited_ControlPointsList(const StepGeom_QuasiUniformCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurve_inherited_ControlPointsListValue(const StepGeom_QuasiUniformCurve* self, int32_t num) {
@@ -71074,11 +71085,11 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_QuasiUniform
     try { return {new Handle(NCollection_HArray1_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_QuasiUniformCurve) const* aQuasiUniformCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
+extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_QuasiUniformCurve) const* aQuasiUniformCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aQuasiUniformCurve, *aRationalBSplineCurve); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
+extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -71170,12 +71181,12 @@ extern "C" OcctResult<int32_t> StepGeom_QuasiUniformCurveAndRationalBSplineCurve
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(const StepGeom_QuasiUniformCurveAndRationalBSplineCurve* self, int32_t num) {
@@ -71316,7 +71327,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_QuasiUniformSu
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformSurface_inherited_Init(StepGeom_QuasiUniformSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_QuasiUniformSurface_inherited_Init(StepGeom_QuasiUniformSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
     try { self->Init(aName, aUDegree, aVDegree, aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -71336,12 +71347,12 @@ extern "C" OcctResult<int32_t> StepGeom_QuasiUniformSurface_inherited_VDegree(co
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformSurface_inherited_SetControlPointsList(StepGeom_QuasiUniformSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_QuasiUniformSurface_inherited_SetControlPointsList(StepGeom_QuasiUniformSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurface_inherited_ControlPointsList(const StepGeom_QuasiUniformSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurface_inherited_ControlPointsList(const StepGeom_QuasiUniformSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurface_inherited_ControlPointsListValue(const StepGeom_QuasiUniformSurface* self, int32_t num1, int32_t num2) {
@@ -71446,11 +71457,11 @@ extern "C" OcctResult<Handle(NCollection_HArray2_double)*> StepGeom_QuasiUniform
     try { return {new Handle(NCollection_HArray2_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_QuasiUniformSurface) const* aQuasiUniformSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
+extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_QuasiUniformSurface) const* aQuasiUniformSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aQuasiUniformSurface, *aRationalBSplineSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
+extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -71554,12 +71565,12 @@ extern "C" OcctResult<int32_t> StepGeom_QuasiUniformSurfaceAndRationalBSplineSur
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(const StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface* self, int32_t num1, int32_t num2) {
@@ -71656,7 +71667,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_RationalBSpl
     try { return {new Handle(NCollection_HArray1_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_RationalBSplineCurve_init(StepGeom_RationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
+extern "C" const char* StepGeom_RationalBSplineCurve_init(StepGeom_RationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -71740,12 +71751,12 @@ extern "C" OcctResult<int32_t> StepGeom_RationalBSplineCurve_inherited_Degree(co
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_RationalBSplineCurve_inherited_SetControlPointsList(StepGeom_RationalBSplineCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_RationalBSplineCurve_inherited_SetControlPointsList(StepGeom_RationalBSplineCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_RationalBSplineCurve_inherited_ControlPointsList(const StepGeom_RationalBSplineCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_RationalBSplineCurve_inherited_ControlPointsList(const StepGeom_RationalBSplineCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_RationalBSplineCurve_inherited_ControlPointsListValue(const StepGeom_RationalBSplineCurve* self, int32_t num) {
@@ -71830,7 +71841,7 @@ extern "C" OcctResult<Handle(NCollection_HArray2_double)*> StepGeom_RationalBSpl
     try { return {new Handle(NCollection_HArray2_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_RationalBSplineSurface_init(StepGeom_RationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
+extern "C" const char* StepGeom_RationalBSplineSurface_init(StepGeom_RationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -71926,12 +71937,12 @@ extern "C" OcctResult<int32_t> StepGeom_RationalBSplineSurface_inherited_VDegree
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_RationalBSplineSurface_inherited_SetControlPointsList(StepGeom_RationalBSplineSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_RationalBSplineSurface_inherited_SetControlPointsList(StepGeom_RationalBSplineSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_RationalBSplineSurface_inherited_ControlPointsList(const StepGeom_RationalBSplineSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_RationalBSplineSurface_inherited_ControlPointsList(const StepGeom_RationalBSplineSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_RationalBSplineSurface_inherited_ControlPointsListValue(const StepGeom_RationalBSplineSurface* self, int32_t num1, int32_t num2) {
@@ -72024,19 +72035,19 @@ extern "C" OcctResult<StepGeom_RectangularCompositeSurface*> StepGeom_Rectangula
     try { return {new StepGeom_RectangularCompositeSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch)*> StepGeom_RectangularCompositeSurface_segments(const StepGeom_RectangularCompositeSurface* self_) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch)(self_->Segments()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_SurfacePatch)*> StepGeom_RectangularCompositeSurface_segments(const StepGeom_RectangularCompositeSurface* self_) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_SurfacePatch)(self_->Segments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_SurfacePatch)*> StepGeom_RectangularCompositeSurface_segments_value(const StepGeom_RectangularCompositeSurface* self_, int32_t num1, int32_t num2) {
     try { return {new Handle(StepGeom_SurfacePatch)(self_->SegmentsValue(num1, num2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_RectangularCompositeSurface_init(StepGeom_RectangularCompositeSurface* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch) const* aSegments) {
+extern "C" const char* StepGeom_RectangularCompositeSurface_init(StepGeom_RectangularCompositeSurface* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray2_Handle_StepGeom_SurfacePatch) const* aSegments) {
     try { self_->Init(*aName, *aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_RectangularCompositeSurface_set_segments(StepGeom_RectangularCompositeSurface* self_, Handle(NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch) const* aSegments) {
+extern "C" const char* StepGeom_RectangularCompositeSurface_set_segments(StepGeom_RectangularCompositeSurface* self_, Handle(NCollection_HArray2_Handle_StepGeom_SurfacePatch) const* aSegments) {
     try { self_->SetSegments(*aSegments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -74704,7 +74715,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_UniformCurve_t
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformCurve_inherited_Init(StepGeom_UniformCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_UniformCurve_inherited_Init(StepGeom_UniformCurve* self, Handle(TCollection_HAsciiString) const& aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect) {
     try { self->Init(aName, aDegree, aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -74716,12 +74727,12 @@ extern "C" OcctResult<int32_t> StepGeom_UniformCurve_inherited_Degree(const Step
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformCurve_inherited_SetControlPointsList(StepGeom_UniformCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_UniformCurve_inherited_SetControlPointsList(StepGeom_UniformCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_UniformCurve_inherited_ControlPointsList(const StepGeom_UniformCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_UniformCurve_inherited_ControlPointsList(const StepGeom_UniformCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_UniformCurve_inherited_ControlPointsListValue(const StepGeom_UniformCurve* self, int32_t num) {
@@ -74814,11 +74825,11 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepGeom_UniformCurve
     try { return {new Handle(NCollection_HArray1_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(StepGeom_UniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_UniformCurve) const* aUniformCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
+extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(StepGeom_UniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(StepGeom_UniformCurve) const* aUniformCurve, Handle(StepGeom_RationalBSplineCurve) const* aRationalBSplineCurve) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aUniformCurve, *aRationalBSplineCurve); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_UniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
+extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(StepGeom_UniformCurveAndRationalBSplineCurve* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aDegree, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aCurveForm, int32_t aClosedCurve, int32_t aSelfIntersect, Handle(NCollection_HArray1_double) const* aWeightsData) {
     try { self_->Init(*aName, aDegree, *aControlPointsList, static_cast<StepGeom_BSplineCurveForm>(aCurveForm), static_cast<StepData_Logical>(aClosedCurve), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -74910,12 +74921,12 @@ extern "C" OcctResult<int32_t> StepGeom_UniformCurveAndRationalBSplineCurve_inhe
     try { return {self->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_UniformCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_UniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(StepGeom_UniformCurveAndRationalBSplineCurve* self, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_UniformCurveAndRationalBSplineCurve* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(const StepGeom_UniformCurveAndRationalBSplineCurve* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsListValue(const StepGeom_UniformCurveAndRationalBSplineCurve* self, int32_t num) {
@@ -75056,7 +75067,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepGeom_UniformSurface
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformSurface_inherited_Init(StepGeom_UniformSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
+extern "C" const char* StepGeom_UniformSurface_inherited_Init(StepGeom_UniformSurface* self, Handle(TCollection_HAsciiString) const& aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect) {
     try { self->Init(aName, aUDegree, aVDegree, aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -75076,12 +75087,12 @@ extern "C" OcctResult<int32_t> StepGeom_UniformSurface_inherited_VDegree(const S
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformSurface_inherited_SetControlPointsList(StepGeom_UniformSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_UniformSurface_inherited_SetControlPointsList(StepGeom_UniformSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_UniformSurface_inherited_ControlPointsList(const StepGeom_UniformSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_UniformSurface_inherited_ControlPointsList(const StepGeom_UniformSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_UniformSurface_inherited_ControlPointsListValue(const StepGeom_UniformSurface* self, int32_t num1, int32_t num2) {
@@ -75186,11 +75197,11 @@ extern "C" OcctResult<Handle(NCollection_HArray2_double)*> StepGeom_UniformSurfa
     try { return {new Handle(NCollection_HArray2_double)(self_->WeightsData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(StepGeom_UniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_UniformSurface) const* aUniformSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
+extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(StepGeom_UniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(StepGeom_UniformSurface) const* aUniformSurface, Handle(StepGeom_RationalBSplineSurface) const* aRationalBSplineSurface) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aUniformSurface, *aRationalBSplineSurface); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_UniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
+extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(StepGeom_UniformSurfaceAndRationalBSplineSurface* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aUDegree, int32_t aVDegree, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const* aControlPointsList, int32_t aSurfaceForm, int32_t aUClosed, int32_t aVClosed, int32_t aSelfIntersect, Handle(NCollection_HArray2_double) const* aWeightsData) {
     try { self_->Init(*aName, aUDegree, aVDegree, *aControlPointsList, static_cast<StepGeom_BSplineSurfaceForm>(aSurfaceForm), static_cast<StepData_Logical>(aUClosed), static_cast<StepData_Logical>(aVClosed), static_cast<StepData_Logical>(aSelfIntersect), *aWeightsData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -75294,12 +75305,12 @@ extern "C" OcctResult<int32_t> StepGeom_UniformSurfaceAndRationalBSplineSurface_
     try { return {self->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_UniformSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint) const& aControlPointsList) {
+extern "C" const char* StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(StepGeom_UniformSurfaceAndRationalBSplineSurface* self, Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint) const& aControlPointsList) {
     try { self->SetControlPointsList(aControlPointsList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)*> StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_UniformSurfaceAndRationalBSplineSurface* self) {
-    try { return {new Handle(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)*> StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(const StepGeom_UniformSurfaceAndRationalBSplineSurface* self) {
+    try { return {new Handle(NCollection_HArray2_Handle_StepGeom_CartesianPoint)(self->ControlPointsList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsListValue(const StepGeom_UniformSurfaceAndRationalBSplineSurface* self, int32_t num1, int32_t num2) {
@@ -77780,7 +77791,7 @@ extern "C" OcctResult<Handle(StepKinematics_KinematicLink)*> StepKinematics_Kine
     try { return {new Handle(StepKinematics_KinematicLink)(self_->RepresentedLink()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicLinkRepresentation_init(StepKinematics_KinematicLinkRepresentation* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const* theRepresentedLink) {
+extern "C" const char* StepKinematics_KinematicLinkRepresentation_init(StepKinematics_KinematicLinkRepresentation* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const* theRepresentedLink) {
     try { self_->Init(*theRepresentation_Name, *theRepresentation_Items, *theRepresentation_ContextOfItems, *theRepresentedLink); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -77848,12 +77859,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Kinemati
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicLinkRepresentation_inherited_SetItems(StepKinematics_KinematicLinkRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_KinematicLinkRepresentation_inherited_SetItems(StepKinematics_KinematicLinkRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicLinkRepresentation_inherited_Items(const StepKinematics_KinematicLinkRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicLinkRepresentation_inherited_Items(const StepKinematics_KinematicLinkRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_KinematicLinkRepresentation_inherited_ItemsValue(const StepKinematics_KinematicLinkRepresentation* self, int32_t num) {
@@ -78690,7 +78701,7 @@ extern "C" OcctResult<Handle(StepKinematics_KinematicTopologyStructure)*> StepKi
     try { return {new Handle(StepKinematics_KinematicTopologyStructure)(self_->Parent()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyDirectedStructure_init(StepKinematics_KinematicTopologyDirectedStructure* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicTopologyStructure) const* theParent) {
+extern "C" const char* StepKinematics_KinematicTopologyDirectedStructure_init(StepKinematics_KinematicTopologyDirectedStructure* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicTopologyStructure) const* theParent) {
     try { self_->Init(*theRepresentation_Name, *theRepresentation_Items, *theRepresentation_ContextOfItems, *theParent); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -78742,12 +78753,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Kinemati
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyDirectedStructure_inherited_SetItems(StepKinematics_KinematicTopologyDirectedStructure* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_KinematicTopologyDirectedStructure_inherited_SetItems(StepKinematics_KinematicTopologyDirectedStructure* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyDirectedStructure_inherited_Items(const StepKinematics_KinematicTopologyDirectedStructure* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyDirectedStructure_inherited_Items(const StepKinematics_KinematicTopologyDirectedStructure* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyDirectedStructure_inherited_ItemsValue(const StepKinematics_KinematicTopologyDirectedStructure* self, int32_t num) {
@@ -78808,7 +78819,7 @@ extern "C" OcctResult<Handle(StepKinematics_KinematicTopologyStructure)*> StepKi
     try { return {new Handle(StepKinematics_KinematicTopologyStructure)(self_->Parent()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyNetworkStructure_init(StepKinematics_KinematicTopologyNetworkStructure* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicTopologyStructure) const* theParent) {
+extern "C" const char* StepKinematics_KinematicTopologyNetworkStructure_init(StepKinematics_KinematicTopologyNetworkStructure* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicTopologyStructure) const* theParent) {
     try { self_->Init(*theRepresentation_Name, *theRepresentation_Items, *theRepresentation_ContextOfItems, *theParent); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -78860,12 +78871,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Kinemati
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyNetworkStructure_inherited_SetItems(StepKinematics_KinematicTopologyNetworkStructure* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_KinematicTopologyNetworkStructure_inherited_SetItems(StepKinematics_KinematicTopologyNetworkStructure* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyNetworkStructure_inherited_Items(const StepKinematics_KinematicTopologyNetworkStructure* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyNetworkStructure_inherited_Items(const StepKinematics_KinematicTopologyNetworkStructure* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyNetworkStructure_inherited_ItemsValue(const StepKinematics_KinematicTopologyNetworkStructure* self, int32_t num) {
@@ -79058,7 +79069,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepKinematics_Kinemati
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyStructure_inherited_Init(StepKinematics_KinematicTopologyStructure* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepKinematics_KinematicTopologyStructure_inherited_Init(StepKinematics_KinematicTopologyStructure* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -79070,12 +79081,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Kinemati
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_KinematicTopologyStructure_inherited_SetItems(StepKinematics_KinematicTopologyStructure* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_KinematicTopologyStructure_inherited_SetItems(StepKinematics_KinematicTopologyStructure* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyStructure_inherited_Items(const StepKinematics_KinematicTopologyStructure* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyStructure_inherited_Items(const StepKinematics_KinematicTopologyStructure* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_KinematicTopologyStructure_inherited_ItemsValue(const StepKinematics_KinematicTopologyStructure* self, int32_t num) {
@@ -79438,7 +79449,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepKinematics_LinearFl
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_LinearFlexibleLinkRepresentation_inherited_Init(StepKinematics_LinearFlexibleLinkRepresentation* self, Handle(TCollection_HAsciiString) const& theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theRepresentation_Items, Handle(StepRepr_RepresentationContext) const& theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const& theRepresentedLink) {
+extern "C" const char* StepKinematics_LinearFlexibleLinkRepresentation_inherited_Init(StepKinematics_LinearFlexibleLinkRepresentation* self, Handle(TCollection_HAsciiString) const& theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theRepresentation_Items, Handle(StepRepr_RepresentationContext) const& theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const& theRepresentedLink) {
     try { self->Init(theRepresentation_Name, theRepresentation_Items, theRepresentation_ContextOfItems, theRepresentedLink); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -79458,12 +79469,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_LinearFl
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_LinearFlexibleLinkRepresentation_inherited_SetItems(StepKinematics_LinearFlexibleLinkRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_LinearFlexibleLinkRepresentation_inherited_SetItems(StepKinematics_LinearFlexibleLinkRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_LinearFlexibleLinkRepresentation_inherited_Items(const StepKinematics_LinearFlexibleLinkRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_LinearFlexibleLinkRepresentation_inherited_Items(const StepKinematics_LinearFlexibleLinkRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_LinearFlexibleLinkRepresentation_inherited_ItemsValue(const StepKinematics_LinearFlexibleLinkRepresentation* self, int32_t num) {
@@ -80466,7 +80477,7 @@ extern "C" OcctResult<StepKinematics_KinematicTopologyRepresentationSelect*> Ste
     try { return {new StepKinematics_KinematicTopologyRepresentationSelect(self_->RepresentedTopology()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_MechanismRepresentation_init(StepKinematics_MechanismRepresentation* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, StepKinematics_KinematicTopologyRepresentationSelect const* theRepresentedTopology) {
+extern "C" const char* StepKinematics_MechanismRepresentation_init(StepKinematics_MechanismRepresentation* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, StepKinematics_KinematicTopologyRepresentationSelect const* theRepresentedTopology) {
     try { self_->Init(*theRepresentation_Name, *theRepresentation_Items, *theRepresentation_ContextOfItems, *theRepresentedTopology); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -80518,12 +80529,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Mechanis
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_MechanismRepresentation_inherited_SetItems(StepKinematics_MechanismRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_MechanismRepresentation_inherited_SetItems(StepKinematics_MechanismRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_MechanismRepresentation_inherited_Items(const StepKinematics_MechanismRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_MechanismRepresentation_inherited_Items(const StepKinematics_MechanismRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_MechanismRepresentation_inherited_ItemsValue(const StepKinematics_MechanismRepresentation* self, int32_t num) {
@@ -80584,7 +80595,7 @@ extern "C" OcctResult<Handle(StepKinematics_MechanismRepresentation)*> StepKinem
     try { return {new Handle(StepKinematics_MechanismRepresentation)(self_->Mechanism()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_MechanismStateRepresentation_init(StepKinematics_MechanismStateRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems, Handle(StepKinematics_MechanismRepresentation) const* theMechanism) {
+extern "C" const char* StepKinematics_MechanismStateRepresentation_init(StepKinematics_MechanismStateRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems, Handle(StepKinematics_MechanismRepresentation) const* theMechanism) {
     try { self_->Init(*theName, *theItems, *theContextOfItems, *theMechanism); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -80636,12 +80647,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_Mechanis
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_MechanismStateRepresentation_inherited_SetItems(StepKinematics_MechanismStateRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_MechanismStateRepresentation_inherited_SetItems(StepKinematics_MechanismStateRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_MechanismStateRepresentation_inherited_Items(const StepKinematics_MechanismStateRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_MechanismStateRepresentation_inherited_Items(const StepKinematics_MechanismStateRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_MechanismStateRepresentation_inherited_ItemsValue(const StepKinematics_MechanismStateRepresentation* self, int32_t num) {
@@ -84654,7 +84665,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepKinematics_RigidLin
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_RigidLinkRepresentation_inherited_Init(StepKinematics_RigidLinkRepresentation* self, Handle(TCollection_HAsciiString) const& theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& theRepresentation_Items, Handle(StepRepr_RepresentationContext) const& theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const& theRepresentedLink) {
+extern "C" const char* StepKinematics_RigidLinkRepresentation_inherited_Init(StepKinematics_RigidLinkRepresentation* self, Handle(TCollection_HAsciiString) const& theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& theRepresentation_Items, Handle(StepRepr_RepresentationContext) const& theRepresentation_ContextOfItems, Handle(StepKinematics_KinematicLink) const& theRepresentedLink) {
     try { self->Init(theRepresentation_Name, theRepresentation_Items, theRepresentation_ContextOfItems, theRepresentedLink); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -84674,12 +84685,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepKinematics_RigidLin
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepKinematics_RigidLinkRepresentation_inherited_SetItems(StepKinematics_RigidLinkRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepKinematics_RigidLinkRepresentation_inherited_SetItems(StepKinematics_RigidLinkRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepKinematics_RigidLinkRepresentation_inherited_Items(const StepKinematics_RigidLinkRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepKinematics_RigidLinkRepresentation_inherited_Items(const StepKinematics_RigidLinkRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepKinematics_RigidLinkRepresentation_inherited_ItemsValue(const StepKinematics_RigidLinkRepresentation* self, int32_t num) {
@@ -89732,7 +89743,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_CharacterizedR
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_CharacterizedRepresentation_init(StepRepr_CharacterizedRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems) {
+extern "C" const char* StepRepr_CharacterizedRepresentation_init(StepRepr_CharacterizedRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems) {
     try { self_->Init(*theName, *theDescription, *theItems, *theContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -89784,12 +89795,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_CharacterizedR
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_CharacterizedRepresentation_inherited_SetItems(StepRepr_CharacterizedRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepRepr_CharacterizedRepresentation_inherited_SetItems(StepRepr_CharacterizedRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_CharacterizedRepresentation_inherited_Items(const StepRepr_CharacterizedRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_CharacterizedRepresentation_inherited_Items(const StepRepr_CharacterizedRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_CharacterizedRepresentation_inherited_ItemsValue(const StepRepr_CharacterizedRepresentation* self, int32_t num) {
@@ -90346,15 +90357,15 @@ extern "C" OcctResult<StepRepr_CompoundRepresentationItem*> StepRepr_CompoundRep
     try { return {new StepRepr_CompoundRepresentationItem(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_CompoundRepresentationItem_item_element(const StepRepr_CompoundRepresentationItem* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self_->ItemElement()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_CompoundRepresentationItem_item_element(const StepRepr_CompoundRepresentationItem* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self_->ItemElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_CompoundRepresentationItem_item_element_value(const StepRepr_CompoundRepresentationItem* self_, int32_t num) {
     try { return {new Handle(StepRepr_RepresentationItem)(self_->ItemElementValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_CompoundRepresentationItem_init(StepRepr_CompoundRepresentationItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* item_element) {
+extern "C" const char* StepRepr_CompoundRepresentationItem_init(StepRepr_CompoundRepresentationItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* item_element) {
     try { self_->Init(*aName, *item_element); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -90362,7 +90373,7 @@ extern "C" OcctResult<int32_t> StepRepr_CompoundRepresentationItem_nb_item_eleme
     try { return {self_->NbItemElement(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_CompoundRepresentationItem_set_item_element(StepRepr_CompoundRepresentationItem* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* item_element) {
+extern "C" const char* StepRepr_CompoundRepresentationItem_set_item_element(StepRepr_CompoundRepresentationItem* self_, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* item_element) {
     try { self_->SetItemElement(*item_element); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -90908,7 +90919,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepRepr_ConstructiveGe
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ConstructiveGeometryRepresentation_inherited_Init(StepRepr_ConstructiveGeometryRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepRepr_ConstructiveGeometryRepresentation_inherited_Init(StepRepr_ConstructiveGeometryRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -90920,12 +90931,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_ConstructiveGe
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ConstructiveGeometryRepresentation_inherited_SetItems(StepRepr_ConstructiveGeometryRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepRepr_ConstructiveGeometryRepresentation_inherited_SetItems(StepRepr_ConstructiveGeometryRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_ConstructiveGeometryRepresentation_inherited_Items(const StepRepr_ConstructiveGeometryRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_ConstructiveGeometryRepresentation_inherited_Items(const StepRepr_ConstructiveGeometryRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_ConstructiveGeometryRepresentation_inherited_ItemsValue(const StepRepr_ConstructiveGeometryRepresentation* self, int32_t num) {
@@ -91236,11 +91247,11 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_DataEnvironmen
     try { return {new Handle(TCollection_HAsciiString)(self_->Description()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation)*> StepRepr_DataEnvironment_elements(const StepRepr_DataEnvironment* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation)(self_->Elements()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation)*> StepRepr_DataEnvironment_elements(const StepRepr_DataEnvironment* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation)(self_->Elements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_DataEnvironment_init(StepRepr_DataEnvironment* self_, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation) const* aElements) {
+extern "C" const char* StepRepr_DataEnvironment_init(StepRepr_DataEnvironment* self_, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription, Handle(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation) const* aElements) {
     try { self_->Init(*aName, *aDescription, *aElements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -91252,7 +91263,7 @@ extern "C" const char* StepRepr_DataEnvironment_set_description(StepRepr_DataEnv
     try { self_->SetDescription(*Description); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepRepr_DataEnvironment_set_elements(StepRepr_DataEnvironment* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation) const* Elements) {
+extern "C" const char* StepRepr_DataEnvironment_set_elements(StepRepr_DataEnvironment* self_, Handle(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation) const* Elements) {
     try { self_->SetElements(*Elements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -91368,7 +91379,7 @@ extern "C" OcctResult<Handle_StepShape_DefinitionalRepresentationAndShapeReprese
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_DefinitionalRepresentation_inherited_Init(StepRepr_DefinitionalRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepRepr_DefinitionalRepresentation_inherited_Init(StepRepr_DefinitionalRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -91380,12 +91391,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_DefinitionalRe
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_DefinitionalRepresentation_inherited_SetItems(StepRepr_DefinitionalRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepRepr_DefinitionalRepresentation_inherited_SetItems(StepRepr_DefinitionalRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_DefinitionalRepresentation_inherited_Items(const StepRepr_DefinitionalRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_DefinitionalRepresentation_inherited_Items(const StepRepr_DefinitionalRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_DefinitionalRepresentation_inherited_ItemsValue(const StepRepr_DefinitionalRepresentation* self, int32_t num) {
@@ -91854,7 +91865,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepRepr_ExternallyDefi
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ExternallyDefinedRepresentation_inherited_Init(StepRepr_ExternallyDefinedRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepRepr_ExternallyDefinedRepresentation_inherited_Init(StepRepr_ExternallyDefinedRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -91866,12 +91877,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_ExternallyDefi
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ExternallyDefinedRepresentation_inherited_SetItems(StepRepr_ExternallyDefinedRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepRepr_ExternallyDefinedRepresentation_inherited_SetItems(StepRepr_ExternallyDefinedRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_ExternallyDefinedRepresentation_inherited_Items(const StepRepr_ExternallyDefinedRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_ExternallyDefinedRepresentation_inherited_Items(const StepRepr_ExternallyDefinedRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_ExternallyDefinedRepresentation_inherited_ItemsValue(const StepRepr_ExternallyDefinedRepresentation* self, int32_t num) {
@@ -92246,19 +92257,19 @@ extern "C" OcctResult<StepRepr_GlobalUncertaintyAssignedContext*> StepRepr_Globa
     try { return {new StepRepr_GlobalUncertaintyAssignedContext(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit)*> StepRepr_GlobalUncertaintyAssignedContext_uncertainty(const StepRepr_GlobalUncertaintyAssignedContext* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit)(self_->Uncertainty()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit)*> StepRepr_GlobalUncertaintyAssignedContext_uncertainty(const StepRepr_GlobalUncertaintyAssignedContext* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit)(self_->Uncertainty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_UncertaintyMeasureWithUnit)*> StepRepr_GlobalUncertaintyAssignedContext_uncertainty_value(const StepRepr_GlobalUncertaintyAssignedContext* self_, int32_t num) {
     try { return {new Handle(StepBasic_UncertaintyMeasureWithUnit)(self_->UncertaintyValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_GlobalUncertaintyAssignedContext_init(StepRepr_GlobalUncertaintyAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
+extern "C" const char* StepRepr_GlobalUncertaintyAssignedContext_init(StepRepr_GlobalUncertaintyAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
     try { self_->Init(*aContextIdentifier, *aContextType, *aUncertainty); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepRepr_GlobalUncertaintyAssignedContext_set_uncertainty(StepRepr_GlobalUncertaintyAssignedContext* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
+extern "C" const char* StepRepr_GlobalUncertaintyAssignedContext_set_uncertainty(StepRepr_GlobalUncertaintyAssignedContext* self_, Handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit) const* aUncertainty) {
     try { self_->SetUncertainty(*aUncertainty); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -92356,19 +92367,19 @@ extern "C" OcctResult<StepRepr_GlobalUnitAssignedContext*> StepRepr_GlobalUnitAs
     try { return {new StepRepr_GlobalUnitAssignedContext(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)*> StepRepr_GlobalUnitAssignedContext_units(const StepRepr_GlobalUnitAssignedContext* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)*> StepRepr_GlobalUnitAssignedContext_units(const StepRepr_GlobalUnitAssignedContext* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit)(self_->Units()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepBasic_NamedUnit)*> StepRepr_GlobalUnitAssignedContext_units_value(const StepRepr_GlobalUnitAssignedContext* self_, int32_t num) {
     try { return {new Handle(StepBasic_NamedUnit)(self_->UnitsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_GlobalUnitAssignedContext_init(StepRepr_GlobalUnitAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits) {
+extern "C" const char* StepRepr_GlobalUnitAssignedContext_init(StepRepr_GlobalUnitAssignedContext* self_, Handle(TCollection_HAsciiString) const* aContextIdentifier, Handle(TCollection_HAsciiString) const* aContextType, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits) {
     try { self_->Init(*aContextIdentifier, *aContextType, *aUnits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepRepr_GlobalUnitAssignedContext_set_units(StepRepr_GlobalUnitAssignedContext* self_, Handle(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit) const* aUnits) {
+extern "C" const char* StepRepr_GlobalUnitAssignedContext_set_units(StepRepr_GlobalUnitAssignedContext* self_, Handle(NCollection_HArray1_Handle_StepBasic_NamedUnit) const* aUnits) {
     try { self_->SetUnits(*aUnits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -95930,8 +95941,8 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepRepr_Representation
     try { return {new Handle(TCollection_HAsciiString)(self_->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_Representation_items(const StepRepr_Representation* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self_->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_Representation_items(const StepRepr_Representation* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self_->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepRepr_Representation_items_value(const StepRepr_Representation* self_, int32_t num) {
@@ -95942,7 +95953,7 @@ extern "C" OcctResult<Handle(StepRepr_RepresentationContext)*> StepRepr_Represen
     try { return {new Handle(StepRepr_RepresentationContext)(self_->ContextOfItems()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_Representation_init(StepRepr_Representation* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aItems, Handle(StepRepr_RepresentationContext) const* aContextOfItems) {
+extern "C" const char* StepRepr_Representation_init(StepRepr_Representation* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aItems, Handle(StepRepr_RepresentationContext) const* aContextOfItems) {
     try { self_->Init(*aName, *aItems, *aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -95950,7 +95961,7 @@ extern "C" const char* StepRepr_Representation_set_name(StepRepr_Representation*
     try { self_->SetName(*aName); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepRepr_Representation_set_items(StepRepr_Representation* self_, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* aItems) {
+extern "C" const char* StepRepr_Representation_set_items(StepRepr_Representation* self_, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* aItems) {
     try { self_->SetItems(*aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -101568,19 +101579,19 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepRepr_ValueRange_to_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ValueRange_inherited_Init(StepRepr_ValueRange* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& item_element) {
+extern "C" const char* StepRepr_ValueRange_inherited_Init(StepRepr_ValueRange* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& item_element) {
     try { self->Init(aName, item_element); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepRepr_ValueRange_inherited_ItemElement(const StepRepr_ValueRange* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->ItemElement()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepRepr_ValueRange_inherited_ItemElement(const StepRepr_ValueRange* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->ItemElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> StepRepr_ValueRange_inherited_NbItemElement(const StepRepr_ValueRange* self) {
     try { return {self->NbItemElement(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepRepr_ValueRange_inherited_SetItemElement(StepRepr_ValueRange* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& item_element) {
+extern "C" const char* StepRepr_ValueRange_inherited_SetItemElement(StepRepr_ValueRange* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& item_element) {
     try { self->SetItemElement(item_element); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -102466,7 +102477,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_AdvancedBrepS
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_AdvancedBrepShapeRepresentation_inherited_Init(StepShape_AdvancedBrepShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_AdvancedBrepShapeRepresentation_inherited_Init(StepShape_AdvancedBrepShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -102478,12 +102489,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_AdvancedBrepS
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_AdvancedBrepShapeRepresentation_inherited_SetItems(StepShape_AdvancedBrepShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_AdvancedBrepShapeRepresentation_inherited_SetItems(StepShape_AdvancedBrepShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_AdvancedBrepShapeRepresentation_inherited_Items(const StepShape_AdvancedBrepShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_AdvancedBrepShapeRepresentation_inherited_Items(const StepShape_AdvancedBrepShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_AdvancedBrepShapeRepresentation_inherited_ItemsValue(const StepShape_AdvancedBrepShapeRepresentation* self, int32_t num) {
@@ -102594,7 +102605,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_AdvancedFace_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_AdvancedFace_inherited_Init(StepShape_AdvancedFace* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const& aBounds, Handle(StepGeom_Surface) const& aFaceGeometry, bool aSameSense) {
+extern "C" const char* StepShape_AdvancedFace_inherited_Init(StepShape_AdvancedFace* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const& aBounds, Handle(StepGeom_Surface) const& aFaceGeometry, bool aSameSense) {
     try { self->Init(aName, aBounds, aFaceGeometry, aSameSense); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -102614,12 +102625,12 @@ extern "C" OcctResult<bool> StepShape_AdvancedFace_inherited_SameSense(const Ste
     try { return {self->SameSense(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_AdvancedFace_inherited_SetBounds(StepShape_AdvancedFace* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const& aBounds) {
+extern "C" const char* StepShape_AdvancedFace_inherited_SetBounds(StepShape_AdvancedFace* self, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const& aBounds) {
     try { self->SetBounds(aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)*> StepShape_AdvancedFace_inherited_Bounds(const StepShape_AdvancedFace* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_FaceBound)*> StepShape_AdvancedFace_inherited_Bounds(const StepShape_AdvancedFace* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_FaceBound)*> StepShape_AdvancedFace_inherited_BoundsValue(const StepShape_AdvancedFace* self, int32_t num) {
@@ -103422,19 +103433,19 @@ extern "C" OcctResult<StepShape_BrepWithVoids*> StepShape_BrepWithVoids_ctor() {
     try { return {new StepShape_BrepWithVoids(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell)*> StepShape_BrepWithVoids_voids(const StepShape_BrepWithVoids* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell)(self_->Voids()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell)*> StepShape_BrepWithVoids_voids(const StepShape_BrepWithVoids* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell)(self_->Voids()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedClosedShell)*> StepShape_BrepWithVoids_voids_value(const StepShape_BrepWithVoids* self_, int32_t num) {
     try { return {new Handle(StepShape_OrientedClosedShell)(self_->VoidsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_BrepWithVoids_init(StepShape_BrepWithVoids* self_, Handle(TCollection_HAsciiString) const* aName, Handle(StepShape_ClosedShell) const* aOuter, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell) const* aVoids) {
+extern "C" const char* StepShape_BrepWithVoids_init(StepShape_BrepWithVoids* self_, Handle(TCollection_HAsciiString) const* aName, Handle(StepShape_ClosedShell) const* aOuter, Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell) const* aVoids) {
     try { self_->Init(*aName, *aOuter, *aVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_BrepWithVoids_set_voids(StepShape_BrepWithVoids* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell) const* aVoids) {
+extern "C" const char* StepShape_BrepWithVoids_set_voids(StepShape_BrepWithVoids* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell) const* aVoids) {
     try { self_->SetVoids(*aVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -103606,16 +103617,16 @@ extern "C" OcctResult<Handle_StepShape_OrientedClosedShell*> Handle_StepShape_Cl
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ClosedShell_inherited_Init(StepShape_ClosedShell* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const& aCfsFaces) {
+extern "C" const char* StepShape_ClosedShell_inherited_Init(StepShape_ClosedShell* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepShape_Face) const& aCfsFaces) {
     try { self->Init(aName, aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_ClosedShell_inherited_SetCfsFaces(StepShape_ClosedShell* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const& aCfsFaces) {
+extern "C" const char* StepShape_ClosedShell_inherited_SetCfsFaces(StepShape_ClosedShell* self, Handle(NCollection_HArray1_Handle_StepShape_Face) const& aCfsFaces) {
     try { self->SetCfsFaces(aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_ClosedShell_inherited_CfsFaces(const StepShape_ClosedShell* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_ClosedShell_inherited_CfsFaces(const StepShape_ClosedShell* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_ClosedShell_inherited_CfsFacesValue(const StepShape_ClosedShell* self, int32_t num) {
@@ -103714,7 +103725,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_CompoundShape
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_CompoundShapeRepresentation_inherited_Init(StepShape_CompoundShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_CompoundShapeRepresentation_inherited_Init(StepShape_CompoundShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -103726,12 +103737,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_CompoundShape
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_CompoundShapeRepresentation_inherited_SetItems(StepShape_CompoundShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_CompoundShapeRepresentation_inherited_SetItems(StepShape_CompoundShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_CompoundShapeRepresentation_inherited_Items(const StepShape_CompoundShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_CompoundShapeRepresentation_inherited_Items(const StepShape_CompoundShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_CompoundShapeRepresentation_inherited_ItemsValue(const StepShape_CompoundShapeRepresentation* self, int32_t num) {
@@ -103788,15 +103799,15 @@ extern "C" OcctResult<StepShape_ConnectedEdgeSet*> StepShape_ConnectedEdgeSet_ct
     try { return {new StepShape_ConnectedEdgeSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Edge)*> StepShape_ConnectedEdgeSet_ces_edges(const StepShape_ConnectedEdgeSet* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Edge)(self_->CesEdges()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Edge)*> StepShape_ConnectedEdgeSet_ces_edges(const StepShape_ConnectedEdgeSet* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Edge)(self_->CesEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedEdgeSet_init(StepShape_ConnectedEdgeSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepShape_Edge) const* aCesEdges) {
+extern "C" const char* StepShape_ConnectedEdgeSet_init(StepShape_ConnectedEdgeSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepShape_Edge) const* aCesEdges) {
     try { self_->Init(*aRepresentationItem_Name, *aCesEdges); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_ConnectedEdgeSet_set_ces_edges(StepShape_ConnectedEdgeSet* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_Edge) const* CesEdges) {
+extern "C" const char* StepShape_ConnectedEdgeSet_set_ces_edges(StepShape_ConnectedEdgeSet* self_, Handle(NCollection_HArray1_Handle_StepShape_Edge) const* CesEdges) {
     try { self_->SetCesEdges(*CesEdges); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -103888,19 +103899,19 @@ extern "C" OcctResult<StepShape_ConnectedFaceSet*> StepShape_ConnectedFaceSet_ct
     try { return {new StepShape_ConnectedFaceSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_ConnectedFaceSet_cfs_faces(const StepShape_ConnectedFaceSet* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_ConnectedFaceSet_cfs_faces(const StepShape_ConnectedFaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_ConnectedFaceSet_cfs_faces_value(const StepShape_ConnectedFaceSet* self_, int32_t num) {
     try { return {new Handle(StepShape_Face)(self_->CfsFacesValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedFaceSet_init(StepShape_ConnectedFaceSet* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const* aCfsFaces) {
+extern "C" const char* StepShape_ConnectedFaceSet_init(StepShape_ConnectedFaceSet* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_Face) const* aCfsFaces) {
     try { self_->Init(*aName, *aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_ConnectedFaceSet_set_cfs_faces(StepShape_ConnectedFaceSet* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const* aCfsFaces) {
+extern "C" const char* StepShape_ConnectedFaceSet_set_cfs_faces(StepShape_ConnectedFaceSet* self_, Handle(NCollection_HArray1_Handle_StepShape_Face) const* aCfsFaces) {
     try { self_->SetCfsFaces(*aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -104072,7 +104083,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_ConnectedFace
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedFaceShapeRepresentation_inherited_Init(StepShape_ConnectedFaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_ConnectedFaceShapeRepresentation_inherited_Init(StepShape_ConnectedFaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -104084,12 +104095,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_ConnectedFace
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedFaceShapeRepresentation_inherited_SetItems(StepShape_ConnectedFaceShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_ConnectedFaceShapeRepresentation_inherited_SetItems(StepShape_ConnectedFaceShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_ConnectedFaceShapeRepresentation_inherited_Items(const StepShape_ConnectedFaceShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_ConnectedFaceShapeRepresentation_inherited_Items(const StepShape_ConnectedFaceShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_ConnectedFaceShapeRepresentation_inherited_ItemsValue(const StepShape_ConnectedFaceShapeRepresentation* self, int32_t num) {
@@ -104150,7 +104161,7 @@ extern "C" OcctResult<Handle(StepShape_ConnectedFaceSet)*> StepShape_ConnectedFa
     try { return {new Handle(StepShape_ConnectedFaceSet)(self_->ParentFaceSet()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedFaceSubSet_init(StepShape_ConnectedFaceSubSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const* aConnectedFaceSet_CfsFaces, Handle(StepShape_ConnectedFaceSet) const* aParentFaceSet) {
+extern "C" const char* StepShape_ConnectedFaceSubSet_init(StepShape_ConnectedFaceSubSet* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepShape_Face) const* aConnectedFaceSet_CfsFaces, Handle(StepShape_ConnectedFaceSet) const* aParentFaceSet) {
     try { self_->Init(*aRepresentationItem_Name, *aConnectedFaceSet_CfsFaces, *aParentFaceSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -104206,12 +104217,12 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_ConnectedFace
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ConnectedFaceSubSet_inherited_SetCfsFaces(StepShape_ConnectedFaceSubSet* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const& aCfsFaces) {
+extern "C" const char* StepShape_ConnectedFaceSubSet_inherited_SetCfsFaces(StepShape_ConnectedFaceSubSet* self, Handle(NCollection_HArray1_Handle_StepShape_Face) const& aCfsFaces) {
     try { self->SetCfsFaces(aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_ConnectedFaceSubSet_inherited_CfsFaces(const StepShape_ConnectedFaceSubSet* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_ConnectedFaceSubSet_inherited_CfsFaces(const StepShape_ConnectedFaceSubSet* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_ConnectedFaceSubSet_inherited_CfsFacesValue(const StepShape_ConnectedFaceSubSet* self, int32_t num) {
@@ -104544,7 +104555,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_CsgShapeRepre
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_CsgShapeRepresentation_inherited_Init(StepShape_CsgShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_CsgShapeRepresentation_inherited_Init(StepShape_CsgShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -104556,12 +104567,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_CsgShapeRepre
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_CsgShapeRepresentation_inherited_SetItems(StepShape_CsgShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_CsgShapeRepresentation_inherited_SetItems(StepShape_CsgShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_CsgShapeRepresentation_inherited_Items(const StepShape_CsgShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_CsgShapeRepresentation_inherited_Items(const StepShape_CsgShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_CsgShapeRepresentation_inherited_ItemsValue(const StepShape_CsgShapeRepresentation* self, int32_t num) {
@@ -104766,7 +104777,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_DefinitionalR
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Init(StepShape_DefinitionalRepresentationAndShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Init(StepShape_DefinitionalRepresentationAndShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -104778,12 +104789,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_DefinitionalR
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_SetItems(StepShape_DefinitionalRepresentationAndShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_SetItems(StepShape_DefinitionalRepresentationAndShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Items(const StepShape_DefinitionalRepresentationAndShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Items(const StepShape_DefinitionalRepresentationAndShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_ItemsValue(const StepShape_DefinitionalRepresentationAndShapeRepresentation* self, int32_t num) {
@@ -105772,15 +105783,15 @@ extern "C" OcctResult<StepShape_EdgeBasedWireframeModel*> StepShape_EdgeBasedWir
     try { return {new StepShape_EdgeBasedWireframeModel(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet)*> StepShape_EdgeBasedWireframeModel_ebwm_boundary(const StepShape_EdgeBasedWireframeModel* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet)(self_->EbwmBoundary()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet)*> StepShape_EdgeBasedWireframeModel_ebwm_boundary(const StepShape_EdgeBasedWireframeModel* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet)(self_->EbwmBoundary()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_EdgeBasedWireframeModel_init(StepShape_EdgeBasedWireframeModel* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet) const* aEbwmBoundary) {
+extern "C" const char* StepShape_EdgeBasedWireframeModel_init(StepShape_EdgeBasedWireframeModel* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet) const* aEbwmBoundary) {
     try { self_->Init(*aRepresentationItem_Name, *aEbwmBoundary); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_EdgeBasedWireframeModel_set_ebwm_boundary(StepShape_EdgeBasedWireframeModel* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet) const* EbwmBoundary) {
+extern "C" const char* StepShape_EdgeBasedWireframeModel_set_ebwm_boundary(StepShape_EdgeBasedWireframeModel* self_, Handle(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet) const* EbwmBoundary) {
     try { self_->SetEbwmBoundary(*EbwmBoundary); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -105914,7 +105925,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_EdgeBasedWire
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Init(StepShape_EdgeBasedWireframeShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Init(StepShape_EdgeBasedWireframeShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -105926,12 +105937,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_EdgeBasedWire
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_EdgeBasedWireframeShapeRepresentation_inherited_SetItems(StepShape_EdgeBasedWireframeShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_EdgeBasedWireframeShapeRepresentation_inherited_SetItems(StepShape_EdgeBasedWireframeShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Items(const StepShape_EdgeBasedWireframeShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Items(const StepShape_EdgeBasedWireframeShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_EdgeBasedWireframeShapeRepresentation_inherited_ItemsValue(const StepShape_EdgeBasedWireframeShapeRepresentation* self, int32_t num) {
@@ -106118,19 +106129,19 @@ extern "C" OcctResult<StepShape_EdgeLoop*> StepShape_EdgeLoop_ctor() {
     try { return {new StepShape_EdgeLoop(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)*> StepShape_EdgeLoop_edge_list(const StepShape_EdgeLoop* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)*> StepShape_EdgeLoop_edge_list(const StepShape_EdgeLoop* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedEdge)*> StepShape_EdgeLoop_edge_list_value(const StepShape_EdgeLoop* self_, int32_t num) {
     try { return {new Handle(StepShape_OrientedEdge)(self_->EdgeListValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_EdgeLoop_init(StepShape_EdgeLoop* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_EdgeLoop_init(StepShape_EdgeLoop* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->Init(*aName, *aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_EdgeLoop_set_edge_list(StepShape_EdgeLoop* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_EdgeLoop_set_edge_list(StepShape_EdgeLoop* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->SetEdgeList(*aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -106488,19 +106499,19 @@ extern "C" OcctResult<StepShape_Face*> StepShape_Face_ctor() {
     try { return {new StepShape_Face(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)*> StepShape_Face_bounds(const StepShape_Face* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)(self_->Bounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_FaceBound)*> StepShape_Face_bounds(const StepShape_Face* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_FaceBound)(self_->Bounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_FaceBound)*> StepShape_Face_bounds_value(const StepShape_Face* self_, int32_t num) {
     try { return {new Handle(StepShape_FaceBound)(self_->BoundsValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_Face_init(StepShape_Face* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const* aBounds) {
+extern "C" const char* StepShape_Face_init(StepShape_Face* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const* aBounds) {
     try { self_->Init(*aName, *aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_Face_set_bounds(StepShape_Face* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const* aBounds) {
+extern "C" const char* StepShape_Face_set_bounds(StepShape_Face* self_, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const* aBounds) {
     try { self_->SetBounds(*aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -106628,15 +106639,15 @@ extern "C" OcctResult<StepShape_FaceBasedSurfaceModel*> StepShape_FaceBasedSurfa
     try { return {new StepShape_FaceBasedSurfaceModel(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet)*> StepShape_FaceBasedSurfaceModel_fbsm_faces(const StepShape_FaceBasedSurfaceModel* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet)(self_->FbsmFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet)*> StepShape_FaceBasedSurfaceModel_fbsm_faces(const StepShape_FaceBasedSurfaceModel* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet)(self_->FbsmFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_FaceBasedSurfaceModel_init(StepShape_FaceBasedSurfaceModel* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet) const* aFbsmFaces) {
+extern "C" const char* StepShape_FaceBasedSurfaceModel_init(StepShape_FaceBasedSurfaceModel* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet) const* aFbsmFaces) {
     try { self_->Init(*aRepresentationItem_Name, *aFbsmFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_FaceBasedSurfaceModel_set_fbsm_faces(StepShape_FaceBasedSurfaceModel* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet) const* FbsmFaces) {
+extern "C" const char* StepShape_FaceBasedSurfaceModel_set_fbsm_faces(StepShape_FaceBasedSurfaceModel* self_, Handle(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet) const* FbsmFaces) {
     try { self_->SetFbsmFaces(*FbsmFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -106962,7 +106973,7 @@ extern "C" OcctResult<Handle(StepGeom_Surface)*> StepShape_FaceSurface_face_geom
     try { return {new Handle(StepGeom_Surface)(self_->FaceGeometry()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_FaceSurface_init(StepShape_FaceSurface* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const* aBounds, Handle(StepGeom_Surface) const* aFaceGeometry, bool aSameSense) {
+extern "C" const char* StepShape_FaceSurface_init(StepShape_FaceSurface* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const* aBounds, Handle(StepGeom_Surface) const* aFaceGeometry, bool aSameSense) {
     try { self_->Init(*aName, *aBounds, *aFaceGeometry, aSameSense); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107034,12 +107045,12 @@ extern "C" OcctResult<Handle_StepShape_AdvancedFace*> Handle_StepShape_FaceSurfa
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_FaceSurface_inherited_SetBounds(StepShape_FaceSurface* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const& aBounds) {
+extern "C" const char* StepShape_FaceSurface_inherited_SetBounds(StepShape_FaceSurface* self, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const& aBounds) {
     try { self->SetBounds(aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)*> StepShape_FaceSurface_inherited_Bounds(const StepShape_FaceSurface* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_FaceBound)*> StepShape_FaceSurface_inherited_Bounds(const StepShape_FaceSurface* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_FaceBound)*> StepShape_FaceSurface_inherited_BoundsValue(const StepShape_FaceSurface* self, int32_t num) {
@@ -107216,8 +107227,8 @@ extern "C" OcctResult<Handle(StepShape_BrepWithVoids)*> StepShape_FacetedBrepAnd
     try { return {new Handle(StepShape_BrepWithVoids)(self_->BrepWithVoids()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell)*> StepShape_FacetedBrepAndBrepWithVoids_voids(const StepShape_FacetedBrepAndBrepWithVoids* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell)(self_->Voids()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell)*> StepShape_FacetedBrepAndBrepWithVoids_voids(const StepShape_FacetedBrepAndBrepWithVoids* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell)(self_->Voids()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedClosedShell)*> StepShape_FacetedBrepAndBrepWithVoids_voids_value(const StepShape_FacetedBrepAndBrepWithVoids* self_, int32_t num) {
@@ -107228,7 +107239,7 @@ extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_init_handletcollect
     try { self_->Init(*aName, *aOuter, *aFacetedBrep, *aBrepWithVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_handlencollectionharray1opencascadehandlestepshapeorientedclosedshell(StepShape_FacetedBrepAndBrepWithVoids* self_, Handle(TCollection_HAsciiString) const* aName, Handle(StepShape_ClosedShell) const* aOuter, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell) const* aVoids) {
+extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_harr1_stepshape_orientedclosedshell(StepShape_FacetedBrepAndBrepWithVoids* self_, Handle(TCollection_HAsciiString) const* aName, Handle(StepShape_ClosedShell) const* aOuter, Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell) const* aVoids) {
     try { self_->Init(*aName, *aOuter, *aVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107240,7 +107251,7 @@ extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_set_brep_with_voids
     try { self_->SetBrepWithVoids(*aBrepWithVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_set_voids(StepShape_FacetedBrepAndBrepWithVoids* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell) const* aVoids) {
+extern "C" const char* StepShape_FacetedBrepAndBrepWithVoids_set_voids(StepShape_FacetedBrepAndBrepWithVoids* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell) const* aVoids) {
     try { self_->SetVoids(*aVoids); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107398,7 +107409,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_FacetedBrepSh
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_FacetedBrepShapeRepresentation_inherited_Init(StepShape_FacetedBrepShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_FacetedBrepShapeRepresentation_inherited_Init(StepShape_FacetedBrepShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107410,12 +107421,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_FacetedBrepSh
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_FacetedBrepShapeRepresentation_inherited_SetItems(StepShape_FacetedBrepShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_FacetedBrepShapeRepresentation_inherited_SetItems(StepShape_FacetedBrepShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_FacetedBrepShapeRepresentation_inherited_Items(const StepShape_FacetedBrepShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_FacetedBrepShapeRepresentation_inherited_Items(const StepShape_FacetedBrepShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_FacetedBrepShapeRepresentation_inherited_ItemsValue(const StepShape_FacetedBrepShapeRepresentation* self, int32_t num) {
@@ -107860,7 +107871,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_Geometrically
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Init(StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Init(StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107872,12 +107883,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_Geometrically
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_SetItems(StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_SetItems(StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Items(const StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Items(const StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_ItemsValue(const StepShape_GeometricallyBoundedSurfaceShapeRepresentation* self, int32_t num) {
@@ -107976,7 +107987,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_Geometrically
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Init(StepShape_GeometricallyBoundedWireframeShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Init(StepShape_GeometricallyBoundedWireframeShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -107988,12 +107999,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_Geometrically
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_SetItems(StepShape_GeometricallyBoundedWireframeShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_SetItems(StepShape_GeometricallyBoundedWireframeShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Items(const StepShape_GeometricallyBoundedWireframeShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Items(const StepShape_GeometricallyBoundedWireframeShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_ItemsValue(const StepShape_GeometricallyBoundedWireframeShapeRepresentation* self, int32_t num) {
@@ -108394,8 +108405,8 @@ extern "C" OcctResult<Handle(StepShape_Path)*> StepShape_LoopAndPath_path(const 
     try { return {new Handle(StepShape_Path)(self_->Path()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)*> StepShape_LoopAndPath_edge_list(const StepShape_LoopAndPath* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)*> StepShape_LoopAndPath_edge_list(const StepShape_LoopAndPath* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedEdge)*> StepShape_LoopAndPath_edge_list_value(const StepShape_LoopAndPath* self_, int32_t num) {
@@ -108406,7 +108417,7 @@ extern "C" const char* StepShape_LoopAndPath_init_handletcollectionhasciistring_
     try { self_->Init(*aName, *aLoop, *aPath); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_LoopAndPath_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepshapeorientededge(StepShape_LoopAndPath* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_LoopAndPath_init_handletcollectionhasciistring_harr1_stepshape_orientededge(StepShape_LoopAndPath* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->Init(*aName, *aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -108418,7 +108429,7 @@ extern "C" const char* StepShape_LoopAndPath_set_path(StepShape_LoopAndPath* sel
     try { self_->SetPath(*aPath); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_LoopAndPath_set_edge_list(StepShape_LoopAndPath* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_LoopAndPath_set_edge_list(StepShape_LoopAndPath* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->SetEdgeList(*aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -108690,7 +108701,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_ManifoldSurfa
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ManifoldSurfaceShapeRepresentation_inherited_Init(StepShape_ManifoldSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_ManifoldSurfaceShapeRepresentation_inherited_Init(StepShape_ManifoldSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -108702,12 +108713,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_ManifoldSurfa
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ManifoldSurfaceShapeRepresentation_inherited_SetItems(StepShape_ManifoldSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_ManifoldSurfaceShapeRepresentation_inherited_SetItems(StepShape_ManifoldSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_ManifoldSurfaceShapeRepresentation_inherited_Items(const StepShape_ManifoldSurfaceShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_ManifoldSurfaceShapeRepresentation_inherited_Items(const StepShape_ManifoldSurfaceShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_ManifoldSurfaceShapeRepresentation_inherited_ItemsValue(const StepShape_ManifoldSurfaceShapeRepresentation* self, int32_t num) {
@@ -109036,7 +109047,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_NonManifoldSu
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Init(StepShape_NonManifoldSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Init(StepShape_NonManifoldSurfaceShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -109048,12 +109059,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_NonManifoldSu
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_NonManifoldSurfaceShapeRepresentation_inherited_SetItems(StepShape_NonManifoldSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_NonManifoldSurfaceShapeRepresentation_inherited_SetItems(StepShape_NonManifoldSurfaceShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Items(const StepShape_NonManifoldSurfaceShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Items(const StepShape_NonManifoldSurfaceShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_NonManifoldSurfaceShapeRepresentation_inherited_ItemsValue(const StepShape_NonManifoldSurfaceShapeRepresentation* self, int32_t num) {
@@ -109166,16 +109177,16 @@ extern "C" OcctResult<Handle_StepShape_OrientedOpenShell*> Handle_StepShape_Open
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_OpenShell_inherited_Init(StepShape_OpenShell* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const& aCfsFaces) {
+extern "C" const char* StepShape_OpenShell_inherited_Init(StepShape_OpenShell* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepShape_Face) const& aCfsFaces) {
     try { self->Init(aName, aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_OpenShell_inherited_SetCfsFaces(StepShape_OpenShell* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const& aCfsFaces) {
+extern "C" const char* StepShape_OpenShell_inherited_SetCfsFaces(StepShape_OpenShell* self, Handle(NCollection_HArray1_Handle_StepShape_Face) const& aCfsFaces) {
     try { self->SetCfsFaces(aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_OpenShell_inherited_CfsFaces(const StepShape_OpenShell* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_OpenShell_inherited_CfsFaces(const StepShape_OpenShell* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_OpenShell_inherited_CfsFacesValue(const StepShape_OpenShell* self, int32_t num) {
@@ -109236,8 +109247,8 @@ extern "C" OcctResult<Handle(StepShape_ClosedShell)*> StepShape_OrientedClosedSh
     try { return {new Handle(StepShape_ClosedShell)(self_->ClosedShellElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_OrientedClosedShell_cfs_faces(const StepShape_OrientedClosedShell* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_OrientedClosedShell_cfs_faces(const StepShape_OrientedClosedShell* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_OrientedClosedShell_cfs_faces_value(const StepShape_OrientedClosedShell* self_, int32_t num) {
@@ -109260,7 +109271,7 @@ extern "C" OcctResult<bool> StepShape_OrientedClosedShell_orientation(const Step
     try { return {self_->Orientation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_OrientedClosedShell_set_cfs_faces(StepShape_OrientedClosedShell* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const* aCfsFaces) {
+extern "C" const char* StepShape_OrientedClosedShell_set_cfs_faces(StepShape_OrientedClosedShell* self_, Handle(NCollection_HArray1_Handle_StepShape_Face) const* aCfsFaces) {
     try { self_->SetCfsFaces(*aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -109518,8 +109529,8 @@ extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_OrientedFace_face_eleme
     try { return {new Handle(StepShape_Face)(self_->FaceElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)*> StepShape_OrientedFace_bounds(const StepShape_OrientedFace* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)(self_->Bounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_FaceBound)*> StepShape_OrientedFace_bounds(const StepShape_OrientedFace* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_FaceBound)(self_->Bounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_FaceBound)*> StepShape_OrientedFace_bounds_value(const StepShape_OrientedFace* self_, int32_t num) {
@@ -109542,7 +109553,7 @@ extern "C" OcctResult<bool> StepShape_OrientedFace_orientation(const StepShape_O
     try { return {self_->Orientation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_OrientedFace_set_bounds(StepShape_OrientedFace* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const* aBounds) {
+extern "C" const char* StepShape_OrientedFace_set_bounds(StepShape_OrientedFace* self_, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const* aBounds) {
     try { self_->SetBounds(*aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -109648,8 +109659,8 @@ extern "C" OcctResult<Handle(StepShape_OpenShell)*> StepShape_OrientedOpenShell_
     try { return {new Handle(StepShape_OpenShell)(self_->OpenShellElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)*> StepShape_OrientedOpenShell_cfs_faces(const StepShape_OrientedOpenShell* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_Face)*> StepShape_OrientedOpenShell_cfs_faces(const StepShape_OrientedOpenShell* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_Face)(self_->CfsFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_OrientedOpenShell_cfs_faces_value(const StepShape_OrientedOpenShell* self_, int32_t num) {
@@ -109672,7 +109683,7 @@ extern "C" OcctResult<bool> StepShape_OrientedOpenShell_orientation(const StepSh
     try { return {self_->Orientation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_OrientedOpenShell_set_cfs_faces(StepShape_OrientedOpenShell* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_Face) const* aCfsFaces) {
+extern "C" const char* StepShape_OrientedOpenShell_set_cfs_faces(StepShape_OrientedOpenShell* self_, Handle(NCollection_HArray1_Handle_StepShape_Face) const* aCfsFaces) {
     try { self_->SetCfsFaces(*aCfsFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -109784,8 +109795,8 @@ extern "C" OcctResult<Handle(StepShape_EdgeLoop)*> StepShape_OrientedPath_path_e
     try { return {new Handle(StepShape_EdgeLoop)(self_->PathElement()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)*> StepShape_OrientedPath_edge_list(const StepShape_OrientedPath* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)*> StepShape_OrientedPath_edge_list(const StepShape_OrientedPath* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedEdge)*> StepShape_OrientedPath_edge_list_value(const StepShape_OrientedPath* self_, int32_t num) {
@@ -109808,7 +109819,7 @@ extern "C" OcctResult<bool> StepShape_OrientedPath_orientation(const StepShape_O
     try { return {self_->Orientation(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_OrientedPath_set_edge_list(StepShape_OrientedPath* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_OrientedPath_set_edge_list(StepShape_OrientedPath* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->SetEdgeList(*aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -109910,19 +109921,19 @@ extern "C" OcctResult<StepShape_Path*> StepShape_Path_ctor() {
     try { return {new StepShape_Path(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)*> StepShape_Path_edge_list(const StepShape_Path* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)*> StepShape_Path_edge_list(const StepShape_Path* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge)(self_->EdgeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_OrientedEdge)*> StepShape_Path_edge_list_value(const StepShape_Path* self_, int32_t num) {
     try { return {new Handle(StepShape_OrientedEdge)(self_->EdgeListValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_Path_init(StepShape_Path* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_Path_init(StepShape_Path* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->Init(*aName, *aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_Path_set_edge_list(StepShape_Path* self_, Handle(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge) const* aEdgeList) {
+extern "C" const char* StepShape_Path_set_edge_list(StepShape_Path* self_, Handle(NCollection_HArray1_Handle_StepShape_OrientedEdge) const* aEdgeList) {
     try { self_->SetEdgeList(*aEdgeList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -110156,7 +110167,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_PointRepresen
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_PointRepresentation_inherited_Init(StepShape_PointRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_PointRepresentation_inherited_Init(StepShape_PointRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -110168,12 +110179,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_PointRepresen
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_PointRepresentation_inherited_SetItems(StepShape_PointRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_PointRepresentation_inherited_SetItems(StepShape_PointRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_PointRepresentation_inherited_Items(const StepShape_PointRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_PointRepresentation_inherited_Items(const StepShape_PointRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_PointRepresentation_inherited_ItemsValue(const StepShape_PointRepresentation* self, int32_t num) {
@@ -110230,19 +110241,19 @@ extern "C" OcctResult<StepShape_PolyLoop*> StepShape_PolyLoop_ctor() {
     try { return {new StepShape_PolyLoop(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)*> StepShape_PolyLoop_polygon(const StepShape_PolyLoop* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint)(self_->Polygon()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)*> StepShape_PolyLoop_polygon(const StepShape_PolyLoop* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint)(self_->Polygon()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepGeom_CartesianPoint)*> StepShape_PolyLoop_polygon_value(const StepShape_PolyLoop* self_, int32_t num) {
     try { return {new Handle(StepGeom_CartesianPoint)(self_->PolygonValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_PolyLoop_init(StepShape_PolyLoop* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aPolygon) {
+extern "C" const char* StepShape_PolyLoop_init(StepShape_PolyLoop* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aPolygon) {
     try { self_->Init(*aName, *aPolygon); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepShape_PolyLoop_set_polygon(StepShape_PolyLoop* self_, Handle(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint) const* aPolygon) {
+extern "C" const char* StepShape_PolyLoop_set_polygon(StepShape_PolyLoop* self_, Handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint) const* aPolygon) {
     try { self_->SetPolygon(*aPolygon); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -111516,7 +111527,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_StepShape_ShapeDimensionReprese
     try { return {new Handle(NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem)(self_->ItemsAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepreprrepresentationitem_handlestepreprrepresentationcontext(StepShape_ShapeDimensionRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems) {
+extern "C" const char* StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_harr1_steprepr_representationitem_handlestepreprrepresentationcontext(StepShape_ShapeDimensionRepresentation* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theItems, Handle(StepRepr_RepresentationContext) const* theContextOfItems) {
     try { self_->Init(*theName, *theItems, *theContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -111578,12 +111589,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_ShapeDimensio
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeDimensionRepresentation_inherited_SetItems(StepShape_ShapeDimensionRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_ShapeDimensionRepresentation_inherited_SetItems(StepShape_ShapeDimensionRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_ShapeDimensionRepresentation_inherited_Items(const StepShape_ShapeDimensionRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_ShapeDimensionRepresentation_inherited_Items(const StepShape_ShapeDimensionRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_ShapeDimensionRepresentation_inherited_ItemsValue(const StepShape_ShapeDimensionRepresentation* self, int32_t num) {
@@ -111900,7 +111911,7 @@ extern "C" OcctResult<Handle_StepVisual_TessellatedShapeRepresentationWithAccura
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeRepresentation_inherited_Init(StepShape_ShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_ShapeRepresentation_inherited_Init(StepShape_ShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -111912,12 +111923,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_ShapeRepresen
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeRepresentation_inherited_SetItems(StepShape_ShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_ShapeRepresentation_inherited_SetItems(StepShape_ShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_ShapeRepresentation_inherited_Items(const StepShape_ShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_ShapeRepresentation_inherited_Items(const StepShape_ShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_ShapeRepresentation_inherited_ItemsValue(const StepShape_ShapeRepresentation* self, int32_t num) {
@@ -112016,7 +112027,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_ShapeRepresen
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeRepresentationWithParameters_inherited_Init(StepShape_ShapeRepresentationWithParameters* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_ShapeRepresentationWithParameters_inherited_Init(StepShape_ShapeRepresentationWithParameters* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -112028,12 +112039,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_ShapeRepresen
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_ShapeRepresentationWithParameters_inherited_SetItems(StepShape_ShapeRepresentationWithParameters* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_ShapeRepresentationWithParameters_inherited_SetItems(StepShape_ShapeRepresentationWithParameters* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_ShapeRepresentationWithParameters_inherited_Items(const StepShape_ShapeRepresentationWithParameters* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_ShapeRepresentationWithParameters_inherited_Items(const StepShape_ShapeRepresentationWithParameters* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_ShapeRepresentationWithParameters_inherited_ItemsValue(const StepShape_ShapeRepresentationWithParameters* self, int32_t num) {
@@ -112830,7 +112841,7 @@ extern "C" OcctResult<Handle(StepShape_Face)*> StepShape_Subface_parent_face(con
     try { return {new Handle(StepShape_Face)(self_->ParentFace()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_Subface_init(StepShape_Subface* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const* aFace_Bounds, Handle(StepShape_Face) const* aParentFace) {
+extern "C" const char* StepShape_Subface_init(StepShape_Subface* self_, Handle(TCollection_HAsciiString) const* aRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const* aFace_Bounds, Handle(StepShape_Face) const* aParentFace) {
     try { self_->Init(*aRepresentationItem_Name, *aFace_Bounds, *aParentFace); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -112886,12 +112897,12 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_Subface_to_Ha
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_Subface_inherited_SetBounds(StepShape_Subface* self, Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound) const& aBounds) {
+extern "C" const char* StepShape_Subface_inherited_SetBounds(StepShape_Subface* self, Handle(NCollection_HArray1_Handle_StepShape_FaceBound) const& aBounds) {
     try { self->SetBounds(aBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)*> StepShape_Subface_inherited_Bounds(const StepShape_Subface* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepShape_FaceBound)*> StepShape_Subface_inherited_Bounds(const StepShape_Subface* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepShape_FaceBound)(self->Bounds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepShape_FaceBound)*> StepShape_Subface_inherited_BoundsValue(const StepShape_Subface* self, int32_t num) {
@@ -113960,7 +113971,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepShape_TransitionalS
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_TransitionalShapeRepresentation_inherited_Init(StepShape_TransitionalShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepShape_TransitionalShapeRepresentation_inherited_Init(StepShape_TransitionalShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -113972,12 +113983,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepShape_TransitionalS
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepShape_TransitionalShapeRepresentation_inherited_SetItems(StepShape_TransitionalShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepShape_TransitionalShapeRepresentation_inherited_SetItems(StepShape_TransitionalShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepShape_TransitionalShapeRepresentation_inherited_Items(const StepShape_TransitionalShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepShape_TransitionalShapeRepresentation_inherited_Items(const StepShape_TransitionalShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepShape_TransitionalShapeRepresentation_inherited_ItemsValue(const StepShape_TransitionalShapeRepresentation* self, int32_t num) {
@@ -114794,6 +114805,14 @@ extern "C" OcctResult<StepToTopoDS_NMTool*> StepToTopoDS_NMTool_ctor() {
     try { return {new StepToTopoDS_NMTool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<StepToTopoDS_NMTool*> StepToTopoDS_NMTool_ctor_dmap_steprepr_representationitem_shape_dmap_asciistring_shape(NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape const* MapOfRI, NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape const* MapOfRINames) {
+    try { return {new StepToTopoDS_NMTool(*MapOfRI, *MapOfRINames), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* StepToTopoDS_NMTool_init(StepToTopoDS_NMTool* self_, NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape const* MapOfRI, NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape const* MapOfRINames) {
+    try { self_->Init(*MapOfRI, *MapOfRINames); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* StepToTopoDS_NMTool_set_active(StepToTopoDS_NMTool* self_, bool isActive) {
     try { self_->SetActive(isActive); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -114904,9 +114923,17 @@ extern "C" OcctResult<StepToTopoDS_Tool*> StepToTopoDS_Tool_ctor() {
     try { return {new StepToTopoDS_Tool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<StepToTopoDS_Tool*> StepToTopoDS_Tool_ctor_dmap_stepshape_topologicalrepresentationitem_shape_handletransfertransientprocess(NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape const* Map, Handle(Transfer_TransientProcess) const* TP) {
+    try { return {new StepToTopoDS_Tool(*Map, *TP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Transfer_TransientProcess)*> StepToTopoDS_Tool_transient_process(const StepToTopoDS_Tool* self_) {
     try { return {new Handle(Transfer_TransientProcess)(self_->TransientProcess()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* StepToTopoDS_Tool_init(StepToTopoDS_Tool* self_, NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape const* Map, Handle(Transfer_TransientProcess) const* TP) {
+    try { self_->Init(*Map, *TP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> StepToTopoDS_Tool_is_bound(StepToTopoDS_Tool* self_, Handle(StepShape_TopologicalRepresentationItem) const* TRI) {
     try { return {self_->IsBound(*TRI), nullptr}; }
@@ -115578,15 +115605,15 @@ extern "C" OcctResult<Handle_StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationCurveOccurrence_inherited_Init(StepVisual_AnnotationCurveOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_AnnotationCurveOccurrence_inherited_Init(StepVisual_AnnotationCurveOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_AnnotationCurveOccurrence_inherited_SetStyles(StepVisual_AnnotationCurveOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationCurveOccurrence_inherited_SetStyles(StepVisual_AnnotationCurveOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationCurveOccurrence_inherited_Styles(const StepVisual_AnnotationCurveOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationCurveOccurrence_inherited_Styles(const StepVisual_AnnotationCurveOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -115710,15 +115737,15 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_AnnotationCu
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Init(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Init(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_SetStyles(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_SetStyles(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Styles(const StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Styles(const StepVisual_AnnotationCurveOccurrenceAndGeomReprItem* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -115912,7 +115939,7 @@ extern "C" OcctResult<Handle(StepGeom_GeometricRepresentationItem)*> StepVisual_
     try { return {new Handle(StepGeom_GeometricRepresentationItem)(self_->FillStyleTarget()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationFillAreaOccurrence_init(StepVisual_AnnotationFillAreaOccurrence* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* theStyles, Handle(Standard_Transient) const* theItem, Handle(StepGeom_GeometricRepresentationItem) const* theFillStyleTarget) {
+extern "C" const char* StepVisual_AnnotationFillAreaOccurrence_init(StepVisual_AnnotationFillAreaOccurrence* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* theStyles, Handle(Standard_Transient) const* theItem, Handle(StepGeom_GeometricRepresentationItem) const* theFillStyleTarget) {
     try { self_->Init(*theName, *theStyles, *theItem, *theFillStyleTarget); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -115968,11 +115995,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_AnnotationFi
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationFillAreaOccurrence_inherited_SetStyles(StepVisual_AnnotationFillAreaOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationFillAreaOccurrence_inherited_SetStyles(StepVisual_AnnotationFillAreaOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationFillAreaOccurrence_inherited_Styles(const StepVisual_AnnotationFillAreaOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationFillAreaOccurrence_inherited_Styles(const StepVisual_AnnotationFillAreaOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -116132,15 +116159,15 @@ extern "C" OcctResult<Handle_StepVisual_DraughtingAnnotationOccurrence*> Handle_
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationOccurrence_inherited_Init(StepVisual_AnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_AnnotationOccurrence_inherited_Init(StepVisual_AnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_AnnotationOccurrence_inherited_SetStyles(StepVisual_AnnotationOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationOccurrence_inherited_SetStyles(StepVisual_AnnotationOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationOccurrence_inherited_Styles(const StepVisual_AnnotationOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationOccurrence_inherited_Styles(const StepVisual_AnnotationOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -116218,7 +116245,7 @@ extern "C" OcctResult<StepVisual_AnnotationPlaneElement*> StepVisual_AnnotationP
     try { return {new StepVisual_AnnotationPlaneElement(self_->ElementsValue(theNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationPlane_init(StepVisual_AnnotationPlane* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* theStyles, Handle(Standard_Transient) const* theItem, Handle(NCollection_HArray1_StepVisual_AnnotationPlaneElement) const* theElements) {
+extern "C" const char* StepVisual_AnnotationPlane_init(StepVisual_AnnotationPlane* self_, Handle(TCollection_HAsciiString) const* theName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* theStyles, Handle(Standard_Transient) const* theItem, Handle(NCollection_HArray1_StepVisual_AnnotationPlaneElement) const* theElements) {
     try { self_->Init(*theName, *theStyles, *theItem, *theElements); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -116282,11 +116309,11 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_AnnotationPl
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationPlane_inherited_SetStyles(StepVisual_AnnotationPlane* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationPlane_inherited_SetStyles(StepVisual_AnnotationPlane* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationPlane_inherited_Styles(const StepVisual_AnnotationPlane* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationPlane_inherited_Styles(const StepVisual_AnnotationPlane* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -116608,15 +116635,15 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_AnnotationTe
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_AnnotationTextOccurrence_inherited_Init(StepVisual_AnnotationTextOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_AnnotationTextOccurrence_inherited_Init(StepVisual_AnnotationTextOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_AnnotationTextOccurrence_inherited_SetStyles(StepVisual_AnnotationTextOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_AnnotationTextOccurrence_inherited_SetStyles(StepVisual_AnnotationTextOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationTextOccurrence_inherited_Styles(const StepVisual_AnnotationTextOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_AnnotationTextOccurrence_inherited_Styles(const StepVisual_AnnotationTextOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -118342,7 +118369,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_Characterize
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Init(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Init(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118354,12 +118381,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_Characterize
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_SetItems(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_SetItems(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Items(const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Items(const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_ItemsValue(const StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel* self, int32_t num) {
@@ -118738,15 +118765,15 @@ extern "C" OcctResult<Handle(NCollection_HArray1_int)*> StepVisual_ComplexTriang
     try { return {new Handle(NCollection_HArray1_int)(self_->Pnindex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)*> StepVisual_ComplexTriangulatedFace_triangle_strips(const StepVisual_ComplexTriangulatedFace* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)(self_->TriangleStrips()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Standard_Transient)*> StepVisual_ComplexTriangulatedFace_triangle_strips(const StepVisual_ComplexTriangulatedFace* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_Standard_Transient)(self_->TriangleStrips()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)*> StepVisual_ComplexTriangulatedFace_triangle_fans(const StepVisual_ComplexTriangulatedFace* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)(self_->TriangleFans()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Standard_Transient)*> StepVisual_ComplexTriangulatedFace_triangle_fans(const StepVisual_ComplexTriangulatedFace* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_Standard_Transient)(self_->TriangleFans()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedFace_init(StepVisual_ComplexTriangulatedFace* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(StepVisual_CoordinatesList) const* theTessellatedFace_Coordinates, int32_t theTessellatedFace_Pnmax, Handle(NCollection_HArray2_double) const* theTessellatedFace_Normals, bool theHasTessellatedFace_GeometricLink, StepVisual_FaceOrSurface const* theTessellatedFace_GeometricLink, Handle(NCollection_HArray1_int) const* thePnindex, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleStrips, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleFans) {
+extern "C" const char* StepVisual_ComplexTriangulatedFace_init(StepVisual_ComplexTriangulatedFace* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(StepVisual_CoordinatesList) const* theTessellatedFace_Coordinates, int32_t theTessellatedFace_Pnmax, Handle(NCollection_HArray2_double) const* theTessellatedFace_Normals, bool theHasTessellatedFace_GeometricLink, StepVisual_FaceOrSurface const* theTessellatedFace_GeometricLink, Handle(NCollection_HArray1_int) const* thePnindex, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleStrips, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleFans) {
     try { self_->Init(*theRepresentationItem_Name, *theTessellatedFace_Coordinates, theTessellatedFace_Pnmax, *theTessellatedFace_Normals, theHasTessellatedFace_GeometricLink, *theTessellatedFace_GeometricLink, *thePnindex, *theTriangleStrips, *theTriangleFans); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118762,7 +118789,7 @@ extern "C" OcctResult<int32_t> StepVisual_ComplexTriangulatedFace_pnindex_value(
     try { return {self_->PnindexValue(theNum), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedFace_set_triangle_strips(StepVisual_ComplexTriangulatedFace* self_, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleStrips) {
+extern "C" const char* StepVisual_ComplexTriangulatedFace_set_triangle_strips(StepVisual_ComplexTriangulatedFace* self_, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleStrips) {
     try { self_->SetTriangleStrips(*theTriangleStrips); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118770,7 +118797,7 @@ extern "C" OcctResult<int32_t> StepVisual_ComplexTriangulatedFace_nb_triangle_st
     try { return {self_->NbTriangleStrips(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedFace_set_triangle_fans(StepVisual_ComplexTriangulatedFace* self_, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleFans) {
+extern "C" const char* StepVisual_ComplexTriangulatedFace_set_triangle_fans(StepVisual_ComplexTriangulatedFace* self_, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleFans) {
     try { self_->SetTriangleFans(*theTriangleFans); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118928,15 +118955,15 @@ extern "C" OcctResult<Handle(NCollection_HArray1_int)*> StepVisual_ComplexTriang
     try { return {new Handle(NCollection_HArray1_int)(self_->Pnindex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)*> StepVisual_ComplexTriangulatedSurfaceSet_triangle_strips(const StepVisual_ComplexTriangulatedSurfaceSet* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)(self_->TriangleStrips()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Standard_Transient)*> StepVisual_ComplexTriangulatedSurfaceSet_triangle_strips(const StepVisual_ComplexTriangulatedSurfaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_Standard_Transient)(self_->TriangleStrips()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)*> StepVisual_ComplexTriangulatedSurfaceSet_triangle_fans(const StepVisual_ComplexTriangulatedSurfaceSet* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_Standard_Transient)(self_->TriangleFans()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Standard_Transient)*> StepVisual_ComplexTriangulatedSurfaceSet_triangle_fans(const StepVisual_ComplexTriangulatedSurfaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_Standard_Transient)(self_->TriangleFans()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_init(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(StepVisual_CoordinatesList) const* theTessellatedSurfaceSet_Coordinates, int32_t theTessellatedSurfaceSet_Pnmax, Handle(NCollection_HArray2_double) const* theTessellatedSurfaceSet_Normals, Handle(NCollection_HArray1_int) const* thePnindex, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleStrips, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleFans) {
+extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_init(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(StepVisual_CoordinatesList) const* theTessellatedSurfaceSet_Coordinates, int32_t theTessellatedSurfaceSet_Pnmax, Handle(NCollection_HArray2_double) const* theTessellatedSurfaceSet_Normals, Handle(NCollection_HArray1_int) const* thePnindex, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleStrips, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleFans) {
     try { self_->Init(*theRepresentationItem_Name, *theTessellatedSurfaceSet_Coordinates, theTessellatedSurfaceSet_Pnmax, *theTessellatedSurfaceSet_Normals, *thePnindex, *theTriangleStrips, *theTriangleFans); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118952,7 +118979,7 @@ extern "C" OcctResult<int32_t> StepVisual_ComplexTriangulatedSurfaceSet_pnindex_
     try { return {self_->PnindexValue(theNum), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_strips(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleStrips) {
+extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_strips(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleStrips) {
     try { self_->SetTriangleStrips(*theTriangleStrips); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -118960,7 +118987,7 @@ extern "C" OcctResult<int32_t> StepVisual_ComplexTriangulatedSurfaceSet_nb_trian
     try { return {self_->NbTriangleStrips(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_fans(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* theTriangleFans) {
+extern "C" const char* StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_fans(StepVisual_ComplexTriangulatedSurfaceSet* self_, Handle(NCollection_HArray1_Handle_Standard_Transient) const* theTriangleFans) {
     try { self_->SetTriangleFans(*theTriangleFans); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -119444,7 +119471,7 @@ extern "C" OcctResult<StepVisual_StyleContextSelect*> StepVisual_ContextDependen
     try { return {new StepVisual_StyleContextSelect(self_->StyleContextValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ContextDependentOverRidingStyledItem_init(StepVisual_ContextDependentOverRidingStyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem, Handle(StepVisual_StyledItem) const* aOverRiddenStyle, Handle(NCollection_HArray1_StepVisual_StyleContextSelect) const* aStyleContext) {
+extern "C" const char* StepVisual_ContextDependentOverRidingStyledItem_init(StepVisual_ContextDependentOverRidingStyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem, Handle(StepVisual_StyledItem) const* aOverRiddenStyle, Handle(NCollection_HArray1_StepVisual_StyleContextSelect) const* aStyleContext) {
     try { self_->Init(*aName, *aStyles, *aItem, *aOverRiddenStyle, *aStyleContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -119512,11 +119539,11 @@ extern "C" OcctResult<Handle(StepVisual_StyledItem)*> StepVisual_ContextDependen
     try { return {new Handle(StepVisual_StyledItem)(self->OverRiddenStyle()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_ContextDependentOverRidingStyledItem_inherited_SetStyles(StepVisual_ContextDependentOverRidingStyledItem* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_ContextDependentOverRidingStyledItem_inherited_SetStyles(StepVisual_ContextDependentOverRidingStyledItem* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_ContextDependentOverRidingStyledItem_inherited_Styles(const StepVisual_ContextDependentOverRidingStyledItem* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_ContextDependentOverRidingStyledItem_inherited_Styles(const StepVisual_ContextDependentOverRidingStyledItem* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -120104,15 +120131,15 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_CurveStyleFo
     try { return {new Handle(TCollection_HAsciiString)(self_->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern)*> StepVisual_CurveStyleFont_pattern_list(const StepVisual_CurveStyleFont* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern)(self_->PatternList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern)*> StepVisual_CurveStyleFont_pattern_list(const StepVisual_CurveStyleFont* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern)(self_->PatternList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepVisual_CurveStyleFontPattern)*> StepVisual_CurveStyleFont_pattern_list_value(const StepVisual_CurveStyleFont* self_, int32_t num) {
     try { return {new Handle(StepVisual_CurveStyleFontPattern)(self_->PatternListValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_CurveStyleFont_init(StepVisual_CurveStyleFont* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern) const* aPatternList) {
+extern "C" const char* StepVisual_CurveStyleFont_init(StepVisual_CurveStyleFont* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern) const* aPatternList) {
     try { self_->Init(*aName, *aPatternList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -120120,7 +120147,7 @@ extern "C" const char* StepVisual_CurveStyleFont_set_name(StepVisual_CurveStyleF
     try { self_->SetName(*aName); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_CurveStyleFont_set_pattern_list(StepVisual_CurveStyleFont* self_, Handle(NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern) const* aPatternList) {
+extern "C" const char* StepVisual_CurveStyleFont_set_pattern_list(StepVisual_CurveStyleFont* self_, Handle(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern) const* aPatternList) {
     try { self_->SetPatternList(*aPatternList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -120466,15 +120493,15 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_DraughtingAn
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_DraughtingAnnotationOccurrence_inherited_Init(StepVisual_DraughtingAnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_DraughtingAnnotationOccurrence_inherited_Init(StepVisual_DraughtingAnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_DraughtingAnnotationOccurrence_inherited_SetStyles(StepVisual_DraughtingAnnotationOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_DraughtingAnnotationOccurrence_inherited_SetStyles(StepVisual_DraughtingAnnotationOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_DraughtingAnnotationOccurrence_inherited_Styles(const StepVisual_DraughtingAnnotationOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_DraughtingAnnotationOccurrence_inherited_Styles(const StepVisual_DraughtingAnnotationOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -120804,7 +120831,7 @@ extern "C" OcctResult<Handle_StepVisual_CharacterizedObjAndRepresentationAndDrau
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_DraughtingModel_inherited_Init(StepVisual_DraughtingModel* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_DraughtingModel_inherited_Init(StepVisual_DraughtingModel* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -120816,12 +120843,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_DraughtingMo
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_DraughtingModel_inherited_SetItems(StepVisual_DraughtingModel* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_DraughtingModel_inherited_SetItems(StepVisual_DraughtingModel* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_DraughtingModel_inherited_Items(const StepVisual_DraughtingModel* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_DraughtingModel_inherited_Items(const StepVisual_DraughtingModel* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_DraughtingModel_inherited_ItemsValue(const StepVisual_DraughtingModel* self, int32_t num) {
@@ -122506,7 +122533,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_MechanicalDe
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Init(StepVisual_MechanicalDesignGeometricPresentationArea* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Init(StepVisual_MechanicalDesignGeometricPresentationArea* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -122518,12 +122545,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_MechanicalDe
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationArea_inherited_SetItems(StepVisual_MechanicalDesignGeometricPresentationArea* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationArea_inherited_SetItems(StepVisual_MechanicalDesignGeometricPresentationArea* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Items(const StepVisual_MechanicalDesignGeometricPresentationArea* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Items(const StepVisual_MechanicalDesignGeometricPresentationArea* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationArea_inherited_ItemsValue(const StepVisual_MechanicalDesignGeometricPresentationArea* self, int32_t num) {
@@ -122622,7 +122649,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_MechanicalDe
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Init(StepVisual_MechanicalDesignGeometricPresentationRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Init(StepVisual_MechanicalDesignGeometricPresentationRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -122634,12 +122661,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_MechanicalDe
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_SetItems(StepVisual_MechanicalDesignGeometricPresentationRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_SetItems(StepVisual_MechanicalDesignGeometricPresentationRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Items(const StepVisual_MechanicalDesignGeometricPresentationRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Items(const StepVisual_MechanicalDesignGeometricPresentationRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_ItemsValue(const StepVisual_MechanicalDesignGeometricPresentationRepresentation* self, int32_t num) {
@@ -122864,7 +122891,7 @@ extern "C" OcctResult<Handle(StepVisual_StyledItem)*> StepVisual_OverRidingStyle
     try { return {new Handle(StepVisual_StyledItem)(self_->OverRiddenStyle()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_OverRidingStyledItem_init(StepVisual_OverRidingStyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem, Handle(StepVisual_StyledItem) const* aOverRiddenStyle) {
+extern "C" const char* StepVisual_OverRidingStyledItem_init(StepVisual_OverRidingStyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem, Handle(StepVisual_StyledItem) const* aOverRiddenStyle) {
     try { self_->Init(*aName, *aStyles, *aItem, *aOverRiddenStyle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -122922,11 +122949,11 @@ extern "C" OcctResult<Handle_StepVisual_ContextDependentOverRidingStyledItem*> H
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_OverRidingStyledItem_inherited_SetStyles(StepVisual_OverRidingStyledItem* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_OverRidingStyledItem_inherited_SetStyles(StepVisual_OverRidingStyledItem* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_OverRidingStyledItem_inherited_Styles(const StepVisual_OverRidingStyledItem* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_OverRidingStyledItem_inherited_Styles(const StepVisual_OverRidingStyledItem* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -123858,7 +123885,7 @@ extern "C" OcctResult<Handle_StepVisual_MechanicalDesignGeometricPresentationAre
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationArea_inherited_Init(StepVisual_PresentationArea* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_PresentationArea_inherited_Init(StepVisual_PresentationArea* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -123870,12 +123897,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_Presentation
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationArea_inherited_SetItems(StepVisual_PresentationArea* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_PresentationArea_inherited_SetItems(StepVisual_PresentationArea* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_PresentationArea_inherited_Items(const StepVisual_PresentationArea* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_PresentationArea_inherited_Items(const StepVisual_PresentationArea* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_PresentationArea_inherited_ItemsValue(const StepVisual_PresentationArea* self, int32_t num) {
@@ -124192,7 +124219,7 @@ extern "C" OcctResult<Handle_StepVisual_PresentationView*> Handle_StepVisual_Pre
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationRepresentation_inherited_Init(StepVisual_PresentationRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_PresentationRepresentation_inherited_Init(StepVisual_PresentationRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -124204,12 +124231,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_Presentation
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationRepresentation_inherited_SetItems(StepVisual_PresentationRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_PresentationRepresentation_inherited_SetItems(StepVisual_PresentationRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_PresentationRepresentation_inherited_Items(const StepVisual_PresentationRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_PresentationRepresentation_inherited_Items(const StepVisual_PresentationRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_PresentationRepresentation_inherited_ItemsValue(const StepVisual_PresentationRepresentation* self, int32_t num) {
@@ -124962,7 +124989,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_Presentation
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationView_inherited_Init(StepVisual_PresentationView* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_PresentationView_inherited_Init(StepVisual_PresentationView* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -124974,12 +125001,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_Presentation
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_PresentationView_inherited_SetItems(StepVisual_PresentationView* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_PresentationView_inherited_SetItems(StepVisual_PresentationView* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_PresentationView_inherited_Items(const StepVisual_PresentationView* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_PresentationView_inherited_Items(const StepVisual_PresentationView* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_PresentationView_inherited_ItemsValue(const StepVisual_PresentationView* self, int32_t num) {
@@ -125622,15 +125649,15 @@ extern "C" OcctResult<StepVisual_StyledItemTarget*> StepVisual_StyledItem_item_a
     try { return {new StepVisual_StyledItemTarget(self_->ItemAP242()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_StyledItem_init(StepVisual_StyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem) {
+extern "C" const char* StepVisual_StyledItem_init(StepVisual_StyledItem* self_, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* aStyles, Handle(Standard_Transient) const* aItem) {
     try { self_->Init(*aName, *aStyles, *aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_StyledItem_set_styles(StepVisual_StyledItem* self_, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const* aStyles) {
+extern "C" const char* StepVisual_StyledItem_set_styles(StepVisual_StyledItem* self_, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const* aStyles) {
     try { self_->SetStyles(*aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_StyledItem_styles(const StepVisual_StyledItem* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_StyledItem_styles(const StepVisual_StyledItem* self_) {
     try { return {&(self_->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -127340,7 +127367,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_Template_to_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_Template_inherited_Init(StepVisual_Template* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_Template_inherited_Init(StepVisual_Template* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -127352,12 +127379,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_Template_inh
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_Template_inherited_SetItems(StepVisual_Template* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_Template_inherited_SetItems(StepVisual_Template* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_Template_inherited_Items(const StepVisual_Template* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_Template_inherited_Items(const StepVisual_Template* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_Template_inherited_ItemsValue(const StepVisual_Template* self, int32_t num) {
@@ -127564,15 +127591,15 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_StepVisual_TessellatedA
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedAnnotationOccurrence_inherited_Init(StepVisual_TessellatedAnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
+extern "C" const char* StepVisual_TessellatedAnnotationOccurrence_inherited_Init(StepVisual_TessellatedAnnotationOccurrence* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles, Handle(Standard_Transient) const& aItem) {
     try { self->Init(aName, aStyles, aItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_TessellatedAnnotationOccurrence_inherited_SetStyles(StepVisual_TessellatedAnnotationOccurrence* self, Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
+extern "C" const char* StepVisual_TessellatedAnnotationOccurrence_inherited_SetStyles(StepVisual_TessellatedAnnotationOccurrence* self, Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const& aStyles) {
     try { self->SetStyles(aStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_TessellatedAnnotationOccurrence_inherited_Styles(const StepVisual_TessellatedAnnotationOccurrence* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment) const*> StepVisual_TessellatedAnnotationOccurrence_inherited_Styles(const StepVisual_TessellatedAnnotationOccurrence* self) {
     try { return {&(self->Styles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -128896,7 +128923,7 @@ extern "C" OcctResult<Handle_StepVisual_TessellatedShapeRepresentationWithAccura
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedShapeRepresentation_inherited_Init(StepVisual_TessellatedShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
+extern "C" const char* StepVisual_TessellatedShapeRepresentation_inherited_Init(StepVisual_TessellatedShapeRepresentation* self, Handle(TCollection_HAsciiString) const& aName, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems, Handle(StepRepr_RepresentationContext) const& aContextOfItems) {
     try { self->Init(aName, aItems, aContextOfItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -128908,12 +128935,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_TessellatedS
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedShapeRepresentation_inherited_SetItems(StepVisual_TessellatedShapeRepresentation* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_TessellatedShapeRepresentation_inherited_SetItems(StepVisual_TessellatedShapeRepresentation* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentation_inherited_Items(const StepVisual_TessellatedShapeRepresentation* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentation_inherited_Items(const StepVisual_TessellatedShapeRepresentation* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentation_inherited_ItemsValue(const StepVisual_TessellatedShapeRepresentation* self, int32_t num) {
@@ -128974,7 +129001,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> StepVisual_Tessellate
     try { return {new Handle(NCollection_HArray1_double)(self_->TessellationAccuracyParameters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_init(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(NCollection_HArray1_double) const* theTessellationAccuracyParameters) {
+extern "C" const char* StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_init(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self_, Handle(TCollection_HAsciiString) const* theRepresentation_Name, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const* theRepresentation_Items, Handle(StepRepr_RepresentationContext) const* theRepresentation_ContextOfItems, Handle(NCollection_HArray1_double) const* theTessellationAccuracyParameters) {
     try { self_->Init(*theRepresentation_Name, *theRepresentation_Items, *theRepresentation_ContextOfItems, *theTessellationAccuracyParameters); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -129046,12 +129073,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> StepVisual_TessellatedS
     try { return {new Handle(TCollection_HAsciiString)(self->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_SetItems(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self, Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem) const& aItems) {
+extern "C" const char* StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_SetItems(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self, Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem) const& aItems) {
     try { self->SetItems(aItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_Items(const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_Items(const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem)(self->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepRepr_RepresentationItem)*> StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_ItemsValue(const StepVisual_TessellatedShapeRepresentationWithAccuracyParameters* self, int32_t num) {
@@ -129108,8 +129135,8 @@ extern "C" OcctResult<StepVisual_TessellatedShell*> StepVisual_TessellatedShell_
     try { return {new StepVisual_TessellatedShell(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedShell_items(const StepVisual_TessellatedShell* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem)(self_->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedShell_items(const StepVisual_TessellatedShell* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem)(self_->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedShell_items_value(const StepVisual_TessellatedShell* self_, int32_t theNum) {
@@ -129120,11 +129147,11 @@ extern "C" OcctResult<Handle(StepShape_ConnectedFaceSet)*> StepVisual_Tessellate
     try { return {new Handle(StepShape_ConnectedFaceSet)(self_->TopologicalLink()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedShell_init(StepVisual_TessellatedShell* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem) const* theItems, bool theHasTopologicalLink, Handle(StepShape_ConnectedFaceSet) const* theTopologicalLink) {
+extern "C" const char* StepVisual_TessellatedShell_init(StepVisual_TessellatedShell* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem) const* theItems, bool theHasTopologicalLink, Handle(StepShape_ConnectedFaceSet) const* theTopologicalLink) {
     try { self_->Init(*theRepresentationItem_Name, *theItems, theHasTopologicalLink, *theTopologicalLink); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_TessellatedShell_set_items(StepVisual_TessellatedShell* self_, Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem) const* theItems) {
+extern "C" const char* StepVisual_TessellatedShell_set_items(StepVisual_TessellatedShell* self_, Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem) const* theItems) {
     try { self_->SetItems(*theItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -129234,8 +129261,8 @@ extern "C" OcctResult<StepVisual_TessellatedSolid*> StepVisual_TessellatedSolid_
     try { return {new StepVisual_TessellatedSolid(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedSolid_items(const StepVisual_TessellatedSolid* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem)(self_->Items()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedSolid_items(const StepVisual_TessellatedSolid* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem)(self_->Items()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StepVisual_TessellatedStructuredItem)*> StepVisual_TessellatedSolid_items_value(const StepVisual_TessellatedSolid* self_, int32_t theNum) {
@@ -129246,11 +129273,11 @@ extern "C" OcctResult<Handle(StepShape_ManifoldSolidBrep)*> StepVisual_Tessellat
     try { return {new Handle(StepShape_ManifoldSolidBrep)(self_->GeometricLink()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* StepVisual_TessellatedSolid_init(StepVisual_TessellatedSolid* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem) const* theItems, bool theHasGeometricLink, Handle(StepShape_ManifoldSolidBrep) const* theGeometricLink) {
+extern "C" const char* StepVisual_TessellatedSolid_init(StepVisual_TessellatedSolid* self_, Handle(TCollection_HAsciiString) const* theRepresentationItem_Name, Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem) const* theItems, bool theHasGeometricLink, Handle(StepShape_ManifoldSolidBrep) const* theGeometricLink) {
     try { self_->Init(*theRepresentationItem_Name, *theItems, theHasGeometricLink, *theGeometricLink); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* StepVisual_TessellatedSolid_set_items(StepVisual_TessellatedSolid* self_, Handle(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem) const* theItems) {
+extern "C" const char* StepVisual_TessellatedSolid_set_items(StepVisual_TessellatedSolid* self_, Handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem) const* theItems) {
     try { self_->SetItems(*theItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -131354,9 +131381,17 @@ extern "C" OcctResult<TopoDSToStep_Tool*> TopoDSToStep_Tool_ctor_handlestepdatas
     try { return {new TopoDSToStep_Tool(*theModel), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<TopoDSToStep_Tool*> TopoDSToStep_Tool_ctor_dmap_shape_standard_transient_bool_int(NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher const* M, bool FacetedContext, int32_t theSurfCurveMode) {
+    try { return {new TopoDSToStep_Tool(*M, FacetedContext, theSurfCurveMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(StepShape_TopologicalRepresentationItem)*> TopoDSToStep_Tool_find(TopoDSToStep_Tool* self_, TopoDS_Shape const* S) {
     try { return {new Handle(StepShape_TopologicalRepresentationItem)(self_->Find(*S)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TopoDSToStep_Tool_init(TopoDSToStep_Tool* self_, NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher const* M, bool FacetedContext, int32_t theSurfCurveMode) {
+    try { self_->Init(*M, FacetedContext, theSurfCurveMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> TopoDSToStep_Tool_is_bound(TopoDSToStep_Tool* self_, TopoDS_Shape const* S) {
     try { return {self_->IsBound(*S), nullptr}; }
@@ -131422,6 +131457,10 @@ extern "C" OcctResult<bool> TopoDSToStep_Tool_surface_reversed(const TopoDSToSte
     try { return {self_->SurfaceReversed(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher const*> TopoDSToStep_Tool_map(const TopoDSToStep_Tool* self_) {
+    try { return {&(self_->Map()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> TopoDSToStep_Tool_p_curve_mode(const TopoDSToStep_Tool* self_) {
     try { return {self_->PCurveMode(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -131448,8 +131487,20 @@ extern "C" OcctResult<int32_t> TopoDSToStep_WireframeBuilder_error(const TopoDST
     try { return {static_cast<int32_t>(self_->Error()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const*> TopoDSToStep_WireframeBuilder_value(const TopoDSToStep_WireframeBuilder* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient) const*> TopoDSToStep_WireframeBuilder_value(const TopoDSToStep_WireframeBuilder* self_) {
     try { return {&(self_->Value()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(const TopoDSToStep_WireframeBuilder* self_, TopoDS_Edge const* E, TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* M, Handle(NCollection_HSequence_Handle_Standard_Transient)* L, StepData_Factors const* theLocalFactors) {
+    try { return {self_->GetTrimmedCurveFromEdge(*E, *F, *M, *L, *theLocalFactors), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(const TopoDSToStep_WireframeBuilder* self_, TopoDS_Face const* F, NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* M, Handle(NCollection_HSequence_Handle_Standard_Transient)* L, StepData_Factors const* theLocalFactors) {
+    try { return {self_->GetTrimmedCurveFromFace(*F, *M, *L, *theLocalFactors), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(const TopoDSToStep_WireframeBuilder* self_, TopoDS_Shape const* S, NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* M, Handle(NCollection_HSequence_Handle_Standard_Transient)* L, StepData_Factors const* theLocalFactors) {
+    try { return {self_->GetTrimmedCurveFromShape(*S, *M, *L, *theLocalFactors), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const TopoDSToStep_Root*> TopoDSToStep_WireframeBuilder_as_TopoDSToStep_Root(const TopoDSToStep_WireframeBuilder* self_) { return {static_cast<const TopoDSToStep_Root*>(self_), nullptr}; }

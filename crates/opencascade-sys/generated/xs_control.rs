@@ -142,9 +142,8 @@ impl ConnectedShapes {
         ashape: &crate::topo_ds::Shape,
         TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
         type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_adjacent_entities(
@@ -1529,9 +1528,8 @@ impl Reader {
         &mut self,
         first: &str,
         second: &str,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_first = std::ffi::CString::new(first).unwrap();
         let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
@@ -1555,9 +1553,8 @@ impl Reader {
         &mut self,
         first: &str,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_first = std::ffi::CString::new(first).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Reader_give_list_charptr_handlestandardtransient(self as *mut Self, c_first.as_ptr(), ent)))
@@ -1648,7 +1645,7 @@ impl Reader {
     /// Warning - This function does not clear the existing output shapes.
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -1851,7 +1848,7 @@ impl Reader {
     /// Gives statistics about Transfer
     pub fn get_stats_transfer(
         &self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         nbMapped: &mut i32,
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
@@ -3348,9 +3345,8 @@ impl TransferReader {
     /// attached (i.e. processed by RecordResult)
     pub fn recorded_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_TransferReader_recorded_list(
@@ -3567,9 +3563,8 @@ impl TransferReader {
         &self,
         theRes: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
         theMode: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_TransferReader_entities_from_shape_list(
@@ -3648,9 +3643,8 @@ impl TransferReader {
         theEnt: &crate::ffi_types::Handle_Standard_Transient,
         WithCheck: crate::interface::CheckStatus,
         theResult: bool,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_TransferReader_checked_list(
@@ -3713,7 +3707,7 @@ impl TransferReader {
     /// If <rec> is True (D), the results are recorded by RecordResult
     pub fn transfer_list(
         &mut self,
-        theList: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        theList: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         theRec: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
@@ -3804,9 +3798,8 @@ impl TransferReader {
     pub fn last_transfer_list(
         &self,
         theRoots: bool,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_TransferReader_last_transfer_list(
@@ -3896,7 +3889,7 @@ impl TransferReader {
     /// entities which are in <list> (filter)
     pub fn print_stats_on_list(
         theTP: &crate::ffi_types::Handle_Transfer_TransientProcess,
-        theList: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        theList: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         theWhat: i32,
         theMode: i32,
     ) {
@@ -4634,9 +4627,8 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:87 - `XSControl_Utils::NewSeqTra()`
     pub fn new_seq_tra(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_tra(self as *const Self),
@@ -4647,7 +4639,7 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:90 - `XSControl_Utils::AppendTra()`
     pub fn append_tra(
         &self,
-        seqval: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        seqval: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         traval: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -4888,7 +4880,7 @@ impl Utils {
     pub fn new_seq_c_str(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4900,7 +4892,7 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendCStr()`
     pub fn append_c_str(
         &self,
-        seqval: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        seqval: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         strval: &str,
     ) {
         let c_strval = std::ffi::CString::new(strval).unwrap();
@@ -4914,7 +4906,11 @@ impl Utils {
     }
 
     /// **Source:** `XSControl_Utils.hxx`:147 - `XSControl_Utils::NewSeqEStr()`
-    pub fn new_seq_e_str(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn new_seq_e_str(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_e_str(self as *const Self),
@@ -4925,7 +4921,7 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:149 - `XSControl_Utils::AppendEStr()`
     pub unsafe fn append_e_str(
         &self,
-        seqval: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
+        seqval: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
         strval: *const u16,
     ) {
         crate::check_void_result(unsafe {
@@ -6214,9 +6210,8 @@ impl WorkSession {
     pub fn shareds(
         &mut self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Shareds(
@@ -6231,9 +6226,8 @@ impl WorkSession {
     pub fn sharings(
         &mut self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Sharings(
@@ -6446,7 +6440,7 @@ impl WorkSession {
         &self,
         type_: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6592,9 +6586,8 @@ impl WorkSession {
     pub fn selection_result(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SelectionResult(
@@ -6609,10 +6602,9 @@ impl WorkSession {
     pub fn selection_result_from_list(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SelectionResultFromList(
@@ -6701,7 +6693,7 @@ impl WorkSession {
     pub fn compute_counter_from_list(
         &mut self,
         counter: &crate::ffi_types::Handle_IFSelect_SignCounter,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         clear: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -7102,7 +7094,7 @@ impl WorkSession {
     pub fn sent_files(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7283,7 +7275,7 @@ impl WorkSession {
     pub fn set_select_pointed(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -7300,9 +7292,8 @@ impl WorkSession {
     pub fn give_list(
         &self,
         obj: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GiveList(
@@ -7316,12 +7307,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:989 - `IFSelect_WorkSession::GiveListCombined()`
     pub fn give_list_combined(
         &self,
-        l1: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-        l2: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        l1: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+        l2: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GiveListCombined(
@@ -7365,6 +7355,21 @@ impl WorkSession {
                 self as *const Self,
                 entdad,
                 entson,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1030 - `IFSelect_WorkSession::SetParams()`
+    pub fn set_params(
+        &mut self,
+        params: &crate::ffi_types::NCollection_DynamicArray_Handle_Standard_Transient,
+        uselist: &crate::ffi_types::NCollection_DynamicArray_int,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetParams(
+                self as *mut Self,
+                params,
+                uselist,
             )
         })
     }

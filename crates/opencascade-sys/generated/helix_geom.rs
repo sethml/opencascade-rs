@@ -98,6 +98,16 @@ impl BuilderApproxCurve {
         })
     }
 
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    /// Gets sequence of BSpline curves representing helix coils
+    pub fn curves(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_misc::HelixGeom_BuilderApproxCurve_curves(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
     /// Returns error status of algorithm
     pub fn error_status(&self) -> i32 {
@@ -123,13 +133,6 @@ impl BuilderApproxCurve {
         })
     }
 }
-
-// ── Skipped symbols for BuilderApproxCurve (1 total) ──
-// SKIPPED: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves`
-//   method: Gets sequence of BSpline curves representing helix coils
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn curves(&self) -> /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */;
-//
 
 // ========================
 // From HelixGeom_BuilderHelix.hxx
@@ -318,6 +321,17 @@ impl BuilderHelix {
         })
     }
 
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    pub fn curves(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_misc::HelixGeom_BuilderHelix_inherited_Curves(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
     pub fn error_status(&self) -> i32 {
         crate::check_result(unsafe {
@@ -502,6 +516,17 @@ impl BuilderHelixCoil {
                 self as *const Self,
             )
         })
+    }
+
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    pub fn curves(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_misc::HelixGeom_BuilderHelixCoil_inherited_Curves(
+                    self as *const Self,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`

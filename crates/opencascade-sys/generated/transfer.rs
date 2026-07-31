@@ -5396,7 +5396,7 @@ impl IteratorOfProcessForFinder {
     /// Does nothing if <withstarts> was False
     pub fn filter(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Transfer_Finder,
         keep: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -5684,7 +5684,7 @@ impl IteratorOfProcessForTransient {
     /// Does nothing if <withstarts> was False
     pub fn filter(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         keep: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -5924,6 +5924,32 @@ impl MapContainer {
         }
     }
 
+    /// **Source:** `Transfer_MapContainer.hxx`:32 - `Transfer_MapContainer::SetMapObjects()`
+    /// Set map already translated geometry objects.
+    pub fn set_map_objects(
+        &mut self,
+        theMapObjects: &mut crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_set_map_objects(
+                self as *mut Self,
+                theMapObjects,
+            )
+        })
+    }
+
+    /// **Source:** `Transfer_MapContainer.hxx`:39 - `Transfer_MapContainer::GetMapObjects()`
+    /// Get map already translated geometry objects.
+    pub fn get_map_objects(&mut self) -> &mut crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient{
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_get_map_objects(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `Transfer_MapContainer.hxx`:41 - `Transfer_MapContainer::DynamicType()`
     pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
@@ -6111,18 +6137,6 @@ impl Handle_Transfer_MapContainer {
     }
 }
 
-// ── Skipped symbols for MapContainer (2 total) ──
-// SKIPPED: **Source:** `Transfer_MapContainer.hxx`:32 - `Transfer_MapContainer::SetMapObjects`
-//   method: Set map already translated geometry objects.
-//   Reason: has unbindable types: param 'theMapObjects': unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn set_map_objects(&mut self, theMapObjects: /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */);
-//
-// SKIPPED: **Source:** `Transfer_MapContainer.hxx`:39 - `Transfer_MapContainer::GetMapObjects`
-//   method: Get map already translated geometry objects.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>&)
-//   // pub fn get_map_objects(&mut self) -> /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>>& */;
-//
-
 // ========================
 // From Transfer_MultipleBinder.hxx
 // ========================
@@ -6240,9 +6254,8 @@ impl MultipleBinder {
     /// Item). Else, returns a Null Handle
     pub fn multiple_result(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_multiple_result(
@@ -6257,7 +6270,7 @@ impl MultipleBinder {
     /// Error if a Unique Result has yet been defined
     pub fn set_multiple_result(
         &mut self,
-        mulres: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        mulres: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_set_multiple_result(
@@ -9285,9 +9298,8 @@ impl ResultFromModel {
     pub fn results(
         &self,
         level: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_results(
@@ -9307,9 +9319,8 @@ impl ResultFromModel {
     pub fn transferred_list(
         &self,
         level: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_transferred_list(
@@ -9334,9 +9345,8 @@ impl ResultFromModel {
         &self,
         check: crate::interface::CheckStatus,
         result: bool,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_checked_list(
@@ -9760,6 +9770,22 @@ impl ResultFromTransient {
         }
     }
 
+    /// **Source:** `Transfer_ResultFromTransient.hxx`:89 - `Transfer_ResultFromTransient::FillMap()`
+    /// This method is used by ResultFromModel to collate the list of
+    /// ResultFromTransient, avoiding duplications with a map
+    /// Remark : <me> is already in the map and has not to be bound
+    pub fn fill_map(
+        &self,
+        map: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_fill_map(
+                self as *const Self,
+                map,
+            )
+        })
+    }
+
     /// **Source:** `Transfer_ResultFromTransient.hxx`:94 - `Transfer_ResultFromTransient::Fill()`
     /// Fills from a TransientProcess, with the starting entity which
     /// must have been set before. It works with scopes, calls Fill
@@ -9992,15 +10018,6 @@ impl Handle_Transfer_ResultFromTransient {
         }
     }
 }
-
-// ── Skipped symbols for ResultFromTransient (1 total) ──
-// SKIPPED: **Source:** `Transfer_ResultFromTransient.hxx`:89 - `Transfer_ResultFromTransient::FillMap`
-//   method: This method is used by ResultFromModel to collate the list of
-//   method: ResultFromTransient, avoiding duplications with a map
-//   method: Remark : <me> is already in the map and has not to be bound
-//   Reason: has unbindable types: param 'map': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn fill_map(&self, map: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
 
 // ========================
 // From Transfer_SimpleBinderOfTransient.hxx
@@ -11427,11 +11444,11 @@ impl TransientListBinder {
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:40 - `Transfer_TransientListBinder::Transfer_TransientListBinder()`
-    pub fn new_handlencollectionhsequenceopencascadehandlestandardtransient(
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    pub fn new_hseq_standard_transient(
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(list)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_ctor_hseq_standard_transient(list)))
         }
     }
 
@@ -11482,9 +11499,8 @@ impl TransientListBinder {
     /// **Source:** `Transfer_TransientListBinder.hxx`:52 - `Transfer_TransientListBinder::Result()`
     pub fn result(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_result(
@@ -12412,9 +12428,8 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:115 - `Transfer_TransientProcess::RootsForTransfer()`
     pub fn roots_for_transfer(
         &mut self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Transfer_TransientProcess_roots_for_transfer(

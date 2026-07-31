@@ -591,6 +591,20 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::AppStdL_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {

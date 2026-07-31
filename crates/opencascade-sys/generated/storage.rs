@@ -1971,9 +1971,7 @@ impl Data {
     /// -   An empty sequence is returned if there is no root in this set of data.
     pub fn roots(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Storage_Root,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Storage_Root> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Storage_Data_roots(self as *const Self),
@@ -3044,8 +3042,7 @@ impl InternalData {
     /// **Source:** `Storage_InternalData.hxx`:36 - `Storage_InternalData::ReadArray()`
     pub fn read_array(
         &mut self,
-    ) -> &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent
-    {
+    ) -> &mut crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Persistent {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKernel::Storage_InternalData_read_array(
                 self as *mut Self,
@@ -3618,9 +3615,7 @@ impl RootData {
     /// **Source:** `Storage_RootData.hxx`:50 - `Storage_RootData::Roots()`
     pub fn roots(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Storage_Root,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Storage_Root> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Storage_RootData_roots(self as *const Self),

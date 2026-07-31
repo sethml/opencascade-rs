@@ -38,6 +38,13 @@ unsafe extern "C" {
         theFace: *mut TopoDS_Face,
         theTriangulation: *const Handle_Poly_Triangulation,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRep_Builder.hxx`:84 - `BRep_Builder::MakeFace()`
+    pub fn BRep_Builder_make_face_face_list_poly_triangulation_handlepolytriangulation(
+        self_: *const BRep_Builder,
+        theFace: *mut TopoDS_Face,
+        theTriangulations: *const NCollection_List_Handle_Poly_Triangulation,
+        theActiveTriangulation: *const Handle_Poly_Triangulation,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRep_Builder.hxx`:92 - `BRep_Builder::UpdateFace()`
     pub fn BRep_Builder_update_face_face_handlegeomsurface_location_real(
         self_: *const BRep_Builder,
@@ -3696,6 +3703,14 @@ unsafe extern "C" {
     pub fn BRep_TEdge_degenerated(self_: *const BRep_TEdge) -> crate::OcctResult<bool>;
     /// **Source:** `BRep_TEdge.hxx`:64 - `BRep_TEdge::Degenerated()`
     pub fn BRep_TEdge_degenerated_bool(self_: *mut BRep_TEdge, S: bool) -> *const std::ffi::c_char;
+    /// **Source:** `BRep_TEdge.hxx`:66 - `BRep_TEdge::Curves()`
+    pub fn BRep_TEdge_curves(
+        self_: *const BRep_TEdge,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BRep_CurveRepresentation>;
+    /// **Source:** `BRep_TEdge.hxx`:68 - `BRep_TEdge::ChangeCurves()`
+    pub fn BRep_TEdge_change_curves(
+        self_: *mut BRep_TEdge,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_BRep_CurveRepresentation>;
     /// **Source:** `BRep_TEdge.hxx`:71 - `BRep_TEdge::EmptyCopy()`
     pub fn BRep_TEdge_empty_copy(
         self_: *const BRep_TEdge,
@@ -3859,6 +3874,16 @@ unsafe extern "C" {
     pub fn BRep_TFace_empty_copy(
         self_: *const BRep_TFace,
     ) -> crate::OcctResult<*mut Handle_TopoDS_TShape>;
+    /// **Source:** `BRep_TFace.hxx`:112 - `BRep_TFace::Triangulations()`
+    pub fn BRep_TFace_triangulations(
+        self_: *const BRep_TFace,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_Poly_Triangulation>;
+    /// **Source:** `BRep_TFace.hxx`:123 - `BRep_TFace::Triangulations()`
+    pub fn BRep_TFace_triangulations_list_poly_triangulation_handlepolytriangulation(
+        self_: *mut BRep_TFace,
+        theTriangulations: *const NCollection_List_Handle_Poly_Triangulation,
+        theActiveTriangulation: *const Handle_Poly_Triangulation,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRep_TFace.hxx`:128 - `BRep_TFace::NbTriangulations()`
     pub fn BRep_TFace_nb_triangulations(self_: *const BRep_TFace) -> crate::OcctResult<i32>;
     /// **Source:** `BRep_TFace.hxx`:131 - `BRep_TFace::ActiveTriangulation()`
@@ -3994,6 +4019,14 @@ unsafe extern "C" {
         self_: *mut BRep_TVertex,
         P: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRep_TVertex.hxx`:51 - `BRep_TVertex::Points()`
+    pub fn BRep_TVertex_points(
+        self_: *const BRep_TVertex,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BRep_PointRepresentation>;
+    /// **Source:** `BRep_TVertex.hxx`:53 - `BRep_TVertex::ChangePoints()`
+    pub fn BRep_TVertex_change_points(
+        self_: *mut BRep_TVertex,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_BRep_PointRepresentation>;
     /// **Source:** `BRep_TVertex.hxx`:56 - `BRep_TVertex::EmptyCopy()`
     pub fn BRep_TVertex_empty_copy(
         self_: *const BRep_TVertex,
@@ -4131,6 +4164,11 @@ unsafe extern "C" {
         theLocation: *mut TopLoc_Location,
         theMeshPurpose: u32,
     ) -> crate::OcctResult<*const Handle_Poly_Triangulation>;
+    /// **Source:** `BRep_Tool.hxx`:82 - `BRep_Tool::Triangulations()`
+    pub fn BRep_Tool_triangulations(
+        theFace: *const TopoDS_Face,
+        theLocation: *mut TopLoc_Location,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_Poly_Triangulation>;
     /// **Source:** `BRep_Tool.hxx`:87 - `BRep_Tool::Tolerance()`
     pub fn BRep_Tool_tolerance_face(F: *const TopoDS_Face) -> crate::OcctResult<f64>;
     /// **Source:** `BRep_Tool.hxx`:90 - `BRep_Tool::NaturalRestriction()`

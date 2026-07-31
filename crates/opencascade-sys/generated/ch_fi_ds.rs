@@ -491,6 +491,32 @@ impl ChamfSpine {
         }
     }
 
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn change_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ChangeElSpines(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn change_offset_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         crate::check_void_result(unsafe {
@@ -2652,6 +2678,32 @@ impl FilSpine {
         }
     }
 
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn change_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ChangeElSpines(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn change_offset_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -3530,6 +3582,28 @@ impl Spine {
         }
     }
 
+    /// **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn change_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_change_el_spines(
+                self as *mut Self,
+            )))
+        }
+    }
+
+    /// **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn change_offset_el_spines(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_ChFiDS_ElSpine {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_change_offset_el_spines(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         crate::check_void_result(unsafe {
@@ -4206,16 +4280,6 @@ impl Handle_ChFiDS_Spine {
     }
 }
 
-// ── Skipped symbols for Spine (2 total) ──
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<ChFiDS_ElSpine>>&)
-//   // pub fn change_el_spines(&mut self) -> /* NCollection_List<occ::handle<ChFiDS_ElSpine>>& */;
-//
-// SKIPPED: **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<ChFiDS_ElSpine>>&)
-//   // pub fn change_offset_el_spines(&mut self) -> /* NCollection_List<occ::handle<ChFiDS_ElSpine>>& */;
-//
-
 // ========================
 // From ChFiDS_Stripe.hxx
 // ========================
@@ -4253,7 +4317,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:42 - `ChFiDS_Stripe::SetOfSurfData()`
     pub fn set_of_surf_data(
         &self,
-    ) -> &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
+    ) -> &crate::ffi_types::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_of_surf_data(
                 self as *const Self,
@@ -4296,8 +4360,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:52 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
     pub fn change_set_of_surf_data(
         &mut self,
-    ) -> &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData
-    {
+    ) -> &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_set_of_surf_data(
@@ -4920,6 +4983,38 @@ impl StripeMap {
         })
     }
 
+    /// **Source:** `ChFiDS_StripeMap.hxx`:45 - `ChFiDS_StripeMap::FindFromKey()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn find_from_key(
+        &self,
+        V: &crate::topo_ds::Vertex,
+    ) -> &crate::ffi_types::NCollection_List_Handle_ChFiDS_Stripe {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_StripeMap_find_from_key(
+                self as *const Self,
+                V,
+            )))
+        }
+    }
+
+    /// **Source:** `ChFiDS_StripeMap.hxx`:53 - `ChFiDS_StripeMap::FindFromIndex()`
+    pub fn find_from_index(
+        &self,
+        I: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_ChFiDS_Stripe {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_StripeMap_find_from_index(
+                self as *const Self,
+                I,
+            )))
+        }
+    }
+
     /// **Source:** `ChFiDS_StripeMap.hxx`:61 - `ChFiDS_StripeMap::FindKey()`
     pub fn find_key(&self, I: i32) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -4937,16 +5032,6 @@ impl StripeMap {
         })
     }
 }
-
-// ── Skipped symbols for StripeMap (2 total) ──
-// SKIPPED: **Source:** `ChFiDS_StripeMap.hxx`:45 - `ChFiDS_StripeMap::FindFromKey`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<ChFiDS_Stripe>> const&)
-//   // pub fn find_from_key(&self, V: &Vertex) -> /* NCollection_List<occ::handle<ChFiDS_Stripe>> const& */;
-//
-// SKIPPED: **Source:** `ChFiDS_StripeMap.hxx`:53 - `ChFiDS_StripeMap::FindFromIndex`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<ChFiDS_Stripe>> const&)
-//   // pub fn find_from_index(&self, I: i32) -> /* NCollection_List<occ::handle<ChFiDS_Stripe>> const& */;
-//
 
 // ========================
 // From ChFiDS_SurfData.hxx

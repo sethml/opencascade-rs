@@ -12,6 +12,102 @@ unsafe extern "C" {
     pub fn ShapePersistent_BRep_destructor(self_: *mut ShapePersistent_BRep);
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep::ShapePersistent_BRep()`
     pub fn ShapePersistent_BRep_ctor() -> crate::OcctResult<*mut ShapePersistent_BRep>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:524 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_real_handlegeomcurve_location_dmap_standard_transient_stdobjmgt_persistent(
+        theParam: f64,
+        theCurve: *const Handle_Geom_Curve,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurve>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:531 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(
+        theParam: f64,
+        theCurve: *const Handle_Geom2d_Curve,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurveOnSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:539 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_real2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(
+        theParam: f64,
+        theParam2: f64,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:547 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Curve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:556 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Curve,
+        theCurve2: *const Handle_Geom2d_Curve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theContinuity: i32,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnClosedSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:567 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_Surface,
+        theSurf2: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theLoc2: *const TopLoc_Location,
+        theContinuity: i32,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOn2Surfaces>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:576 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlegeomcurve_real2_location_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Curve,
+        theFirstParam: f64,
+        theLastParam: f64,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Curve3D>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:584 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlepolypolygon3d_location_dmap_standard_transient_stdobjmgt_persistent(
+        thePoly: *const Handle_Poly_Polygon3D,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Polygon3D>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:590 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(
+        thePoly: *const Handle_Poly_Polygon2D,
+        thePoly2: *const Handle_Poly_Polygon2D,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:598 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(
+        thePoly: *const Handle_Poly_Polygon2D,
+        theSurf: *const Handle_Geom_Surface,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnSurface>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:605 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_dmap_standard_transient_stdobjmgt_persistent(
+        thePolyOnTriang: *const Handle_Poly_PolygonOnTriangulation,
+        thePolyOnTriang2: *const Handle_Poly_PolygonOnTriangulation,
+        thePolyTriang: *const Handle_Poly_Triangulation,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:613 - `ShapePersistent_BRep::Translate()`
+    pub fn ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_dmap_standard_transient_stdobjmgt_persistent(
+        thePolyOnTriang: *const Handle_Poly_PolygonOnTriangulation,
+        thePolyTriang: *const Handle_Poly_Triangulation,
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnTriangulation>;
     /// Upcast ShapePersistent_BRep to ShapePersistent_TopoDS
     pub fn ShapePersistent_BRep_as_ShapePersistent_TopoDS(
         self_: *const ShapePersistent_BRep,
@@ -46,6 +142,11 @@ unsafe extern "C" {
     pub fn ShapePersistent_BRep_PointRepresentation_p_name(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:64 - `ShapePersistent_BRep_PointRepresentation::Import()`
+    pub fn ShapePersistent_BRep_PointRepresentation_import(
+        self_: *const ShapePersistent_BRep_PointRepresentation,
+        thePoints: *mut NCollection_List_Handle_BRep_PointRepresentation,
+    ) -> *const std::ffi::c_char;
     /// Upcast ShapePersistent_BRep_PointRepresentation to StdObjMgt_Persistent
     pub fn ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent(
         self_: *const ShapePersistent_BRep_PointRepresentation,
@@ -375,6 +476,11 @@ unsafe extern "C" {
     pub fn ShapePersistent_BRep_CurveRepresentation_p_name(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `ShapePersistent_BRep.hxx`:164 - `ShapePersistent_BRep_CurveRepresentation::Import()`
+    pub fn ShapePersistent_BRep_CurveRepresentation_import(
+        self_: *const ShapePersistent_BRep_CurveRepresentation,
+        theCurves: *mut NCollection_List_Handle_BRep_CurveRepresentation,
+    ) -> *const std::ffi::c_char;
     /// Upcast ShapePersistent_BRep_CurveRepresentation to StdObjMgt_Persistent
     pub fn ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
@@ -999,6 +1105,16 @@ unsafe extern "C" {
     pub fn ShapePersistent_Geom_destructor(self_: *mut ShapePersistent_Geom);
     /// **Source:** `ShapePersistent_Geom.hxx` - `ShapePersistent_Geom::ShapePersistent_Geom()`
     pub fn ShapePersistent_Geom_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom>;
+    /// **Source:** `ShapePersistent_Geom.hxx`:177 - `ShapePersistent_Geom::Translate()`
+    pub fn ShapePersistent_Geom_translate_handlegeomcurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Curve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom.hxx`:182 - `ShapePersistent_Geom::Translate()`
+    pub fn ShapePersistent_Geom_translate_handlegeomsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_Surface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
     // ======================== ShapePersistent_Geom_Geometry ========================
     pub fn ShapePersistent_Geom_Geometry_destructor(self_: *mut ShapePersistent_Geom_Geometry);
     /// **Source:** `ShapePersistent_Geom.hxx` - `ShapePersistent_Geom_Geometry::ShapePersistent_Geom_Geometry()`
@@ -1147,6 +1263,11 @@ unsafe extern "C" {
     pub fn ShapePersistent_Geom2d_destructor(self_: *mut ShapePersistent_Geom2d);
     /// **Source:** `ShapePersistent_Geom2d.hxx` - `ShapePersistent_Geom2d::ShapePersistent_Geom2d()`
     pub fn ShapePersistent_Geom2d_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom2d>;
+    /// **Source:** `ShapePersistent_Geom2d.hxx`:49 - `ShapePersistent_Geom2d::Translate()`
+    pub fn ShapePersistent_Geom2d_translate(
+        theCurve: *const Handle_Geom2d_Curve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
     /// Upcast ShapePersistent_Geom2d to ShapePersistent_Geom
     pub fn ShapePersistent_Geom2d_as_ShapePersistent_Geom(
         self_: *const ShapePersistent_Geom2d,
@@ -1160,6 +1281,51 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx` - `ShapePersistent_Geom2d_Curve::ShapePersistent_Geom2d_Curve()`
     pub fn ShapePersistent_Geom2d_Curve_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:212 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Line,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:217 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Circle,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:222 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Ellipse,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:227 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Hyperbola,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:232 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_Parabola,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:237 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_BezierCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:242 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_BSplineCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:247 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_TrimmedCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
+    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:252 - `ShapePersistent_Geom2d_Curve::Translate()`
+    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom2d_OffsetCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom2d_Curve>;
     /// Upcast ShapePersistent_Geom2d_Curve to ShapePersistent_Geom2d
     pub fn ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d(
         self_: *const ShapePersistent_Geom2d_Curve,
@@ -1180,11 +1346,111 @@ unsafe extern "C" {
     pub fn ShapePersistent_Geom_Curve_destructor(self_: *mut ShapePersistent_Geom_Curve);
     /// **Source:** `ShapePersistent_Geom_Curve.hxx` - `ShapePersistent_Geom_Curve::ShapePersistent_Geom_Curve()`
     pub fn ShapePersistent_Geom_Curve_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:217 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomline_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Line,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:222 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomcircle_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Circle,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:227 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomellipse_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Ellipse,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:232 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Hyperbola,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:237 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomparabola_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_Parabola,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:242 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_BezierCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:247 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_BSplineCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:252 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_TrimmedCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
+    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:257 - `ShapePersistent_Geom_Curve::Translate()`
+    pub fn ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_dmap_standard_transient_stdobjmgt_persistent(
+        theCurve: *const Handle_Geom_OffsetCurve,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Curve>;
     // ======================== ShapePersistent_Geom_Surface ========================
     pub fn ShapePersistent_Geom_Surface_destructor(self_: *mut ShapePersistent_Geom_Surface);
     /// **Source:** `ShapePersistent_Geom_Surface.hxx` - `ShapePersistent_Geom_Surface::ShapePersistent_Geom_Surface()`
     pub fn ShapePersistent_Geom_Surface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:311 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomplane_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_Plane,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:316 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_CylindricalSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:321 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_ConicalSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:326 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_SphericalSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:331 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_ToroidalSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:336 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_SurfaceOfLinearExtrusion,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:341 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_SurfaceOfRevolution,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:346 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_BezierSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:351 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_BSplineSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:356 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_RectangularTrimmedSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
+    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:361 - `ShapePersistent_Geom_Surface::Translate()`
+    pub fn ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_dmap_standard_transient_stdobjmgt_persistent(
+        theSurf: *const Handle_Geom_OffsetSurface,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Surface>;
     // ======================== ShapePersistent_Poly ========================
     pub fn ShapePersistent_Poly_destructor(self_: *mut ShapePersistent_Poly);
     /// **Source:** `ShapePersistent_Poly.hxx` - `ShapePersistent_Poly::ShapePersistent_Poly()`
@@ -1193,6 +1459,12 @@ unsafe extern "C" {
     pub fn ShapePersistent_TopoDS_destructor(self_: *mut ShapePersistent_TopoDS);
     /// **Source:** `ShapePersistent_TopoDS.hxx` - `ShapePersistent_TopoDS::ShapePersistent_TopoDS()`
     pub fn ShapePersistent_TopoDS_ctor() -> crate::OcctResult<*mut ShapePersistent_TopoDS>;
+    /// **Source:** `ShapePersistent_TopoDS.hxx`:133 - `ShapePersistent_TopoDS::Translate()`
+    pub fn ShapePersistent_TopoDS_translate(
+        theShape: *const TopoDS_Shape,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+        theTriangleMode: i32,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_TopoDS_HShape>;
     // ======================== ShapePersistent_TopoDS_HShape ========================
     pub fn ShapePersistent_TopoDS_HShape_destructor(self_: *mut ShapePersistent_TopoDS_HShape);
     /// **Source:** `ShapePersistent_TopoDS.hxx` - `ShapePersistent_TopoDS_HShape::ShapePersistent_TopoDS_HShape()`
@@ -1503,6 +1775,11 @@ unsafe extern "C" {
     pub fn StdObject_Location_import(
         self_: *const StdObject_Location,
     ) -> crate::OcctResult<*mut TopLoc_Location>;
+    /// **Source:** `StdObject_Location.hxx`:36 - `StdObject_Location::Translate()`
+    pub fn StdObject_Location_translate(
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut StdObject_Location>;
     // ======================== StdObject_Shape ========================
     pub fn StdObject_Shape_destructor(self_: *mut StdObject_Shape);
     /// **Source:** `StdObject_Shape.hxx`:28 - `StdObject_Shape::StdObject_Shape()`
@@ -1922,6 +2199,16 @@ unsafe extern "C" {
     pub fn StdPersistent_TopLoc_destructor(self_: *mut StdPersistent_TopLoc);
     /// **Source:** `StdPersistent_TopLoc.hxx` - `StdPersistent_TopLoc::StdPersistent_TopLoc()`
     pub fn StdPersistent_TopLoc_ctor() -> crate::OcctResult<*mut StdPersistent_TopLoc>;
+    /// **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate()`
+    pub fn StdPersistent_TopLoc_translate_location_dmap_standard_transient_stdobjmgt_persistent(
+        theLoc: *const TopLoc_Location,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_ItemLocation>;
+    /// **Source:** `StdPersistent_TopLoc.hxx`:74 - `StdPersistent_TopLoc::Translate()`
+    pub fn StdPersistent_TopLoc_translate_handletoplocdatum3d_dmap_standard_transient_stdobjmgt_persistent(
+        theDatum: *const Handle_TopLoc_Datum3D,
+        theMap: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_Datum3D>;
     // ======================== StdPersistent_TopLoc_Datum3D ========================
     pub fn StdPersistent_TopLoc_Datum3D_destructor(self_: *mut StdPersistent_TopLoc_Datum3D);
     /// **Source:** `StdPersistent_TopLoc.hxx` - `StdPersistent_TopLoc_Datum3D::StdPersistent_TopLoc_Datum3D()`
@@ -2584,7 +2871,7 @@ unsafe extern "C" {
     /// **Source:** `StdStorage_RootData.hxx`:59 - `StdStorage_RootData::Roots()`
     pub fn StdStorage_RootData_roots(
         self_: *const StdStorage_RootData,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StdStorage_Root>;
     /// **Source:** `StdStorage_RootData.hxx`:62 - `StdStorage_RootData::Find()`
     pub fn StdStorage_RootData_find(
         self_: *const StdStorage_RootData,

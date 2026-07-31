@@ -1093,7 +1093,7 @@ impl ElementResults {
         nbResults: i32,
         aResRepFlag: i32,
         allElementIdents: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allFiniteElems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
+        allFiniteElems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
         allTopTypes: &crate::ffi_types::Handle_NCollection_HArray1_int,
         nbLayers: &crate::ffi_types::Handle_NCollection_HArray1_int,
         allDataLayerFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
@@ -2305,7 +2305,7 @@ impl FiniteElement {
     pub fn init(
         &mut self,
         aType: i32,
-        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
@@ -3317,12 +3317,12 @@ impl Flow {
         nbContextFlags: i32,
         aFlowType: i32,
         aFuncFlag: i32,
-        allFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-        allJoins: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allFlowNames: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allTextDisps: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-        allContFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        allJoins: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allFlowNames: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allTextDisps: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        allContFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESAppli_Flow_init(
@@ -4394,7 +4394,7 @@ impl FlowLineSpec {
     /// - allProperties : primary flow line specification and modifiers
     pub fn init(
         &mut self,
-        allProperties: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allProperties: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESAppli_FlowLineSpec_init(
@@ -7079,9 +7079,9 @@ impl LevelToPWBLayerMap {
         &mut self,
         nbPropVal: i32,
         allExchLevels: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allNativeLevels: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allNativeLevels: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         allPhysLevels: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allExchIdents: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allExchIdents: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESAppli_LevelToPWBLayerMap_init(
@@ -9164,7 +9164,7 @@ impl NodalConstraint {
         &mut self,
         aType: i32,
         aNode: &crate::ffi_types::Handle_IGESAppli_Node,
-        allTabData: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
+        allTabData: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESAppli_NodalConstraint_init(
@@ -10182,9 +10182,9 @@ impl NodalDisplAndRot {
     /// and allTransParam are not same
     pub fn init(
         &mut self,
-        allNotes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
+        allNotes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
         allIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         allRotParams: &crate::ffi_types::Handle_IGESBasic_HArray1OfHArray1OfXYZ,
         allTransParams: &crate::ffi_types::Handle_IGESBasic_HArray1OfHArray1OfXYZ,
     ) {
@@ -11263,7 +11263,7 @@ impl NodalResults {
         aNumber: i32,
         aTime: f64,
         allNodeIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         allData: &crate::ffi_types::Handle_NCollection_HArray2_double,
     ) {
         crate::check_void_result(unsafe {
@@ -17237,12 +17237,12 @@ impl PipingFlow {
         &mut self,
         nbContextFlags: i32,
         aFlowType: i32,
-        allFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-        allJoins: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allFlowNames: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allTextDisps: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-        allContFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        allJoins: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allFlowNames: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allTextDisps: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        allContFlowAssocs: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESAppli_PipingFlow_init(

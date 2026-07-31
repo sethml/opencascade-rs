@@ -9900,7 +9900,7 @@ impl AutoDesignSecurityClassificationAssignment {
     pub fn init(
         &mut self,
         aAssignedSecurityClassification: &crate::ffi_types::Handle_StepBasic_SecurityClassification,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Approval,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP214_AutoDesignSecurityClassificationAssignment_init(
@@ -9914,7 +9914,7 @@ impl AutoDesignSecurityClassificationAssignment {
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:43 - `StepAP214_AutoDesignSecurityClassificationAssignment::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Approval,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP214_AutoDesignSecurityClassificationAssignment_set_items(self as *mut Self, aItems)
@@ -9924,9 +9924,8 @@ impl AutoDesignSecurityClassificationAssignment {
     /// **Source:** `StepAP214_AutoDesignSecurityClassificationAssignment.hxx`:46 - `StepAP214_AutoDesignSecurityClassificationAssignment::Items()`
     pub fn items(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Approval>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP214_AutoDesignSecurityClassificationAssignment_items(self as *const Self)))
         }

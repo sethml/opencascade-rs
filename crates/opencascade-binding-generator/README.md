@@ -408,6 +408,16 @@ module under a canonical mangled name (`NCollection_List<TopoDS_Shape>` →
 The canonical names are the same ones method signatures resolve to, so a returned
 `&NCollection_List<TopoDS_Shape>` and the collection's own methods refer to one type.
 
+Elements may themselves be handles. `NCollection_List<occ::handle<Geom_Curve>>` becomes
+`n_collection::List_Handle_Geom_Curve`, storing `ffi_types::Handle_Geom_Curve` elements —
+`append(&Handle_Geom_Curve)`, `value(i) -> &Handle_Geom_Curve`, and an `iter()` yielding
+owned handles. The handle argument is collapsed to the `Handle_X` token in
+`config::template_alias_name`, which both collection discovery and handle-type
+registration go through, so the collection and its own `Handle_NCollection_...` type agree
+on a name. The element's header is resolved through the pointee class, and the collection's
+C++ block re-emits `typedef opencascade::handle<X> Handle_X;` (a repeated identical typedef
+is legal) since the per-toolkit handle typedefs need not cover another group's element.
+
 In overload suffixes, collection parameters use a short registered token (`imap_shape`,
 `arr1_pnt`, `harr1_pnt`, `dmap_shape_int` — dropping the hasher argument) rather than the
 full mangled type, so an overloaded `TopExp::MapShapes` reads
@@ -506,7 +516,7 @@ canonical types rather than the deprecated aliases.
 
 ## Skipped Symbols
 
-The binding generator currently skips **~720** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI — out of ~144,000 bound functions. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips **~336** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI — out of ~144,000 bound functions. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -525,14 +535,21 @@ Example from `select_mgr.rs`:
 
 | Approx. count | Category | Description |
 |------:|----------|-------------|
-| ~460 | **Unbindable types** | A parameter/return type isn't in the resolved known-type set — internal helper types, unresolved templates, or platform/external-dependency types (X11 `GLXFBConfig`/`Aspect_XDisplay*`, macOS `NSOpenGLContext*`, FFmpeg/glTF writer types, etc.). |
-| ~120 | **`BRepGraphInc` graph API** | New-in-8.0 experimental graph package with private nested types. |
-| ~33 | **`std::` types** | e.g. `std::string_view` parameters. |
+| ~149 | **`BRepGraph`/`BRepGraphInc` graph API** | New-in-8.0 experimental graph package with private nested types and `std::optional` parameters. |
+| ~49 | **`std::` types** | `std::string_view`, `std::optional<T>`, `std::array<T, N>` parameters. |
+| ~41 | **`Extrema_PC`** | Internal helper types. |
+| ~33 | **`TCollection`** | Deprecated string-utility class. |
 | ~14 | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist. |
 
-Handle-wrapped `NCollection_H*<T>` instantiations (`Handle(NCollection_HArray1<T>)`, etc.)
-used to dominate this list; they are now auto-registered as handle-able (see the
-[handle collections](#handle-support) note below), leaving only a handful of skips.
+Two categories that used to dominate this list are gone. Handle-wrapped
+`NCollection_H*<T>` instantiations are auto-registered as handle-able (see
+[Handle Support](#handle-support)), and collections whose *element* is a handle
+(`NCollection_List<occ::handle<T>>`, …) are now discovered like any other — that
+second fix alone removed ~385 skips.
+
+Of the ~55 remaining template skips, most are collection `::Iterator` parameters
+(OCCT's own iterator types, which the generated `iter()` supersedes) and `std::`
+templates; only a handful are collections proper.
 
 Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are bindable; there are **no** remaining skips categorized as C-style arrays. Core geometry (`gp`/`Geom`/`Geom2d`) and topology/modeling modules are essentially fully bound.
 

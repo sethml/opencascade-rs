@@ -262,6 +262,10 @@ unsafe extern "C" {
     pub fn AppStd_Application_inherited_Version(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn AppStd_Application_inherited_MetaDataLookUpTable(
+        self_: *mut AppStd_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn AppStd_Application_inherited_IsInstance(
         self_: *const AppStd_Application,
@@ -517,6 +521,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Axis_inherited_References(
         self_: *const TDataXtd_Axis,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Axis_inherited_ExtendedDump(
+        self_: *const TDataXtd_Axis,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Axis_inherited_Forget(
@@ -884,6 +895,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Constraint_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Constraint_inherited_ExtendedDump(
+        self_: *const TDataXtd_Constraint,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Constraint_inherited_Forget(
         self_: *mut TDataXtd_Constraint,
@@ -1218,6 +1236,13 @@ unsafe extern "C" {
         self_: *const TDataXtd_Geometry,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Geometry_inherited_ExtendedDump(
+        self_: *const TDataXtd_Geometry,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Geometry_inherited_Forget(
         self_: *mut TDataXtd_Geometry,
@@ -1468,6 +1493,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Pattern_inherited_References(
         self_: *const TDataXtd_Pattern,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Pattern_inherited_ExtendedDump(
+        self_: *const TDataXtd_Pattern,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Pattern_inherited_Forget(
@@ -1836,6 +1868,13 @@ unsafe extern "C" {
     pub fn TDataXtd_PatternStd_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_PatternStd_inherited_ExtendedDump(
+        self_: *const TDataXtd_PatternStd,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_PatternStd_inherited_Forget(
         self_: *mut TDataXtd_PatternStd,
@@ -2098,6 +2137,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Placement_inherited_References(
         self_: *const TDataXtd_Placement,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Placement_inherited_ExtendedDump(
+        self_: *const TDataXtd_Placement,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Placement_inherited_Forget(
@@ -2363,6 +2409,13 @@ unsafe extern "C" {
         self_: *const TDataXtd_Plane,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Plane_inherited_ExtendedDump(
+        self_: *const TDataXtd_Plane,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Plane_inherited_Forget(
         self_: *mut TDataXtd_Plane,
@@ -2625,6 +2678,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Point_inherited_References(
         self_: *const TDataXtd_Point,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Point_inherited_ExtendedDump(
+        self_: *const TDataXtd_Point,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Point_inherited_Forget(
@@ -2889,6 +2949,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Position_inherited_References(
         self_: *const TDataXtd_Position,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Position_inherited_ExtendedDump(
+        self_: *const TDataXtd_Position,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Position_inherited_Forget(
@@ -3281,6 +3348,13 @@ unsafe extern "C" {
         self_: *const TDataXtd_Presentation,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Presentation_inherited_ExtendedDump(
+        self_: *const TDataXtd_Presentation,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Presentation_inherited_Forget(
         self_: *mut TDataXtd_Presentation,
@@ -3552,6 +3626,13 @@ unsafe extern "C" {
     pub fn TDataXtd_Shape_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Shape_inherited_ExtendedDump(
+        self_: *const TDataXtd_Shape,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Shape_inherited_Forget(
         self_: *mut TDataXtd_Shape,
@@ -3892,6 +3973,13 @@ unsafe extern "C" {
         self_: *const TDataXtd_Triangulation,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TDataXtd_Triangulation_inherited_ExtendedDump(
+        self_: *const TDataXtd_Triangulation,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Triangulation_inherited_Forget(
         self_: *mut TDataXtd_Triangulation,
@@ -3969,6 +4057,24 @@ unsafe extern "C" {
     pub fn TNaming_CopyShape_destructor(self_: *mut TNaming_CopyShape);
     /// **Source:** `TNaming_CopyShape.hxx` - `TNaming_CopyShape::TNaming_CopyShape()`
     pub fn TNaming_CopyShape_ctor() -> crate::OcctResult<*mut TNaming_CopyShape>;
+    /// **Source:** `TNaming_CopyShape.hxx`:35 - `TNaming_CopyShape::CopyTool()`
+    pub fn TNaming_CopyShape_copy_tool(
+        aShape: *const TopoDS_Shape,
+        aMap: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        aResult: *mut TopoDS_Shape,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_CopyShape.hxx`:42 - `TNaming_CopyShape::Translate()`
+    pub fn TNaming_CopyShape_translate_shape_idmap_standard_transient_standard_transient_shape_handletnamingtranslatetool(
+        aShape: *const TopoDS_Shape,
+        aMap: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        aResult: *mut TopoDS_Shape,
+        TrTool: *const Handle_TNaming_TranslateTool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_CopyShape.hxx`:51 - `TNaming_CopyShape::Translate()`
+    pub fn TNaming_CopyShape_translate_location_idmap_standard_transient_standard_transient(
+        L: *const TopLoc_Location,
+        aMap: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut TopLoc_Location>;
     // ======================== TNaming_DeltaOnModification ========================
     pub fn TNaming_DeltaOnModification_destructor(self_: *mut TNaming_DeltaOnModification);
     /// **Source:** `TNaming_DeltaOnModification.hxx`:39 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification()`
@@ -4371,6 +4477,23 @@ unsafe extern "C" {
         In: *const TopoDS_Shape,
         AncInFeatures: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_Localizer.hxx`:61 - `TNaming_Localizer::GoBack()`
+    pub fn TNaming_Localizer_go_back(
+        self_: *mut TNaming_Localizer,
+        S: *const TopoDS_Shape,
+        Lab: *const TDF_Label,
+        Evol: i32,
+        OldS: *mut NCollection_List_TopoDS_Shape,
+        OldLab: *mut NCollection_List_Handle_TNaming_NamedShape,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_Localizer.hxx`:67 - `TNaming_Localizer::Backward()`
+    pub fn TNaming_Localizer_backward(
+        self_: *mut TNaming_Localizer,
+        NS: *const Handle_TNaming_NamedShape,
+        S: *const TopoDS_Shape,
+        Primitives: *mut NCollection_Map_Handle_TNaming_NamedShape,
+        ValidShapes: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Localizer.hxx`:73 - `TNaming_Localizer::FindNeighbourg()`
     pub fn TNaming_Localizer_find_neighbourg(
         self_: *mut TNaming_Localizer,
@@ -4442,6 +4565,10 @@ unsafe extern "C" {
     pub fn TNaming_Name_shape_type(self_: *const TNaming_Name) -> crate::OcctResult<i32>;
     /// **Source:** `TNaming_Name.hxx`:64 - `TNaming_Name::Shape()`
     pub fn TNaming_Name_shape(self_: *const TNaming_Name) -> crate::OcctResult<*mut TopoDS_Shape>;
+    /// **Source:** `TNaming_Name.hxx`:66 - `TNaming_Name::Arguments()`
+    pub fn TNaming_Name_arguments(
+        self_: *const TNaming_Name,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TNaming_NamedShape>;
     /// **Source:** `TNaming_Name.hxx`:68 - `TNaming_Name::StopNamedShape()`
     pub fn TNaming_Name_stop_named_shape(
         self_: *const TNaming_Name,
@@ -4702,6 +4829,13 @@ unsafe extern "C" {
     pub fn TNaming_NamedShape_inherited_DeltaOnResume(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TNaming_NamedShape_inherited_ExtendedDump(
+        self_: *const TNaming_NamedShape,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TNaming_NamedShape_inherited_Forget(
         self_: *mut TNaming_NamedShape,
@@ -4790,6 +4924,13 @@ unsafe extern "C" {
         self_: *mut TNaming_Naming,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
+    /// **Source:** `TNaming_Naming.hxx`:104 - `TNaming_Naming::ExtendedDump()`
+    pub fn TNaming_Naming_extended_dump(
+        self_: *const TNaming_Naming,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Naming.hxx`:112 - `TNaming_Naming::DynamicType()`
     pub fn TNaming_Naming_dynamic_type(
         self_: *const TNaming_Naming,
@@ -5255,6 +5396,11 @@ unsafe extern "C" {
         self_: *const TNaming_Selector,
         Valid: *mut NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TNaming_Selector.hxx`:122 - `TNaming_Selector::Arguments()`
+    pub fn TNaming_Selector_arguments(
+        self_: *const TNaming_Selector,
+        args: *mut NCollection_Map_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Selector.hxx`:126 - `TNaming_Selector::NamedShape()`
     pub fn TNaming_Selector_named_shape(
         self_: *const TNaming_Selector,
@@ -5359,6 +5505,12 @@ unsafe extern "C" {
         S: *const TopoDS_Shape,
         Generation: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
+    /// **Source:** `TNaming_Tool.hxx`:134 - `TNaming_Tool::Collect()`
+    pub fn TNaming_Tool_collect(
+        NS: *const Handle_TNaming_NamedShape,
+        Labels: *mut NCollection_Map_Handle_TNaming_NamedShape,
+        OnlyModif: bool,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Tool.hxx`:139 - `TNaming_Tool::HasLabel()`
     pub fn TNaming_Tool_has_label(
         access: *const TDF_Label,
@@ -5437,6 +5589,27 @@ unsafe extern "C" {
     pub fn TNaming_TranslateTool_make_compound(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_TranslateTool.hxx`:53 - `TNaming_TranslateTool::UpdateVertex()`
+    pub fn TNaming_TranslateTool_update_vertex(
+        self_: *const TNaming_TranslateTool,
+        S1: *const TopoDS_Shape,
+        S2: *mut TopoDS_Shape,
+        M: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_TranslateTool.hxx`:59 - `TNaming_TranslateTool::UpdateEdge()`
+    pub fn TNaming_TranslateTool_update_edge(
+        self_: *const TNaming_TranslateTool,
+        S1: *const TopoDS_Shape,
+        S2: *mut TopoDS_Shape,
+        M: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming_TranslateTool.hxx`:65 - `TNaming_TranslateTool::UpdateFace()`
+    pub fn TNaming_TranslateTool_update_face(
+        self_: *const TNaming_TranslateTool,
+        S1: *const TopoDS_Shape,
+        S2: *mut TopoDS_Shape,
+        M: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_TranslateTool.hxx`:71 - `TNaming_TranslateTool::UpdateShape()`
     pub fn TNaming_TranslateTool_update_shape(
@@ -5763,6 +5936,13 @@ unsafe extern "C" {
         self_: *const TNaming_UsedShapes,
         anOldAttribute: *const Handle_TDF_Attribute,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn TNaming_UsedShapes_inherited_ExtendedDump(
+        self_: *const TNaming_UsedShapes,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TNaming_UsedShapes_inherited_Forget(
         self_: *mut TNaming_UsedShapes,

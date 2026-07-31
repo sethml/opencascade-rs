@@ -3150,6 +3150,18 @@ unsafe extern "C" {
         self_: *mut BRepFill_Sweep,
         ForceApproxC1: bool,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFill_Sweep.hxx`:93 - `BRepFill_Sweep::Build()`
+    pub fn BRepFill_Sweep_build(
+        self_: *mut BRepFill_Sweep,
+        ReversedEdges: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Tapes: *mut NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Rails: *mut NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Transition: i32,
+        Continuity: i32,
+        Approx: i32,
+        Degmax: i32,
+        Segmax: i32,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFill_Sweep.hxx`:107 - `BRepFill_Sweep::IsDone()`
     pub fn BRepFill_Sweep_is_done(self_: *const BRepFill_Sweep) -> crate::OcctResult<bool>;
     /// **Source:** `BRepFill_Sweep.hxx`:110 - `BRepFill_Sweep::Shape()`
@@ -5472,6 +5484,26 @@ unsafe extern "C" {
         LC: *mut TopOpeBRepBuild_LoopClassifier,
         ForceClass: bool,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
+        self_: *const TopOpeBRepBuild_Area1dBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
+        self_: *const TopOpeBRepBuild_Area1dBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList()`
+    pub fn TopOpeBRepBuild_Area1dBuilder_dump_list(
+        L: *const NCollection_List_Handle_TopOpeBRepBuild_Loop,
+    ) -> *const std::ffi::c_char;
     /// Upcast TopOpeBRepBuild_Area1dBuilder to TopOpeBRepBuild_AreaBuilder
     pub fn TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder(
         self_: *const TopOpeBRepBuild_Area1dBuilder,
@@ -5562,6 +5594,22 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_Area2dBuilder_inherited_Loop(
         self_: *const TopOpeBRepBuild_Area2dBuilder,
     ) -> crate::OcctResult<*const Handle_TopOpeBRepBuild_Loop>;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_Area2dBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_Area2dBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     // ======================== TopOpeBRepBuild_Area3dBuilder ========================
     pub fn TopOpeBRepBuild_Area3dBuilder_destructor(self_: *mut TopOpeBRepBuild_Area3dBuilder);
     /// **Source:** `TopOpeBRepBuild_Area3dBuilder.hxx`:42 - `TopOpeBRepBuild_Area3dBuilder::TopOpeBRepBuild_Area3dBuilder()`
@@ -5616,6 +5664,22 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_Area3dBuilder_inherited_Loop(
         self_: *const TopOpeBRepBuild_Area3dBuilder,
     ) -> crate::OcctResult<*const Handle_TopOpeBRepBuild_Loop>;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_Area3dBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_Area3dBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     // ======================== TopOpeBRepBuild_AreaBuilder ========================
     pub fn TopOpeBRepBuild_AreaBuilder_destructor(self_: *mut TopOpeBRepBuild_AreaBuilder);
     /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:56 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
@@ -5661,6 +5725,22 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_AreaBuilder_loop_(
         self_: *const TopOpeBRepBuild_AreaBuilder,
     ) -> crate::OcctResult<*const Handle_TopOpeBRepBuild_Loop>;
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
+        self_: *const TopOpeBRepBuild_AreaBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
+        self_: *const TopOpeBRepBuild_AreaBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     // ======================== TopOpeBRepBuild_BlockBuilder ========================
     pub fn TopOpeBRepBuild_BlockBuilder_destructor(self_: *mut TopOpeBRepBuild_BlockBuilder);
     /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:39 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
@@ -8074,6 +8154,22 @@ unsafe extern "C" {
         LC: *mut TopOpeBRepBuild_LoopClassifier,
         ForceClass: bool,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_EdgeBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_EdgeBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(
         self_: *mut TopOpeBRepBuild_EdgeBuilder,
@@ -8171,6 +8267,22 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(
         self_: *const TopOpeBRepBuild_FaceAreaBuilder,
     ) -> crate::OcctResult<*const Handle_TopOpeBRepBuild_Loop>;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_FaceAreaBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_FaceAreaBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     // ======================== TopOpeBRepBuild_FaceBuilder ========================
     pub fn TopOpeBRepBuild_FaceBuilder_destructor(self_: *mut TopOpeBRepBuild_FaceBuilder);
     /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:43 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
@@ -8959,6 +9071,10 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_LoopSet_destructor(self_: *mut TopOpeBRepBuild_LoopSet);
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:35 - `TopOpeBRepBuild_LoopSet::TopOpeBRepBuild_LoopSet()`
     pub fn TopOpeBRepBuild_LoopSet_ctor() -> crate::OcctResult<*mut TopOpeBRepBuild_LoopSet>;
+    /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
+    pub fn TopOpeBRepBuild_LoopSet_change_list_of_loop(
+        self_: *mut TopOpeBRepBuild_LoopSet,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepBuild_Loop>;
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:41 - `TopOpeBRepBuild_LoopSet::InitLoop()`
     pub fn TopOpeBRepBuild_LoopSet_init_loop(
         self_: *mut TopOpeBRepBuild_LoopSet,
@@ -9207,6 +9323,11 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_PaveSet_closed_vertices(
         self_: *mut TopOpeBRepBuild_PaveSet,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:63 - `TopOpeBRepBuild_PaveSet::SortPave()`
+    pub fn TopOpeBRepBuild_PaveSet_sort_pave(
+        Lin: *const NCollection_List_Handle_TopOpeBRepBuild_Pave,
+        Lout: *mut NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    ) -> *const std::ffi::c_char;
     /// Upcast TopOpeBRepBuild_PaveSet to TopOpeBRepBuild_LoopSet
     pub fn TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet(
         self_: *const TopOpeBRepBuild_PaveSet,
@@ -9215,6 +9336,10 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet_mut(
         self_: *mut TopOpeBRepBuild_PaveSet,
     ) -> crate::OcctResult<*mut TopOpeBRepBuild_LoopSet>;
+    /// Inherited: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
+    pub fn TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(
+        self_: *mut TopOpeBRepBuild_PaveSet,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepBuild_Loop>;
     // ======================== TopOpeBRepBuild_ShapeListOfShape ========================
     pub fn TopOpeBRepBuild_ShapeListOfShape_destructor(
         self_: *mut TopOpeBRepBuild_ShapeListOfShape,
@@ -9748,6 +9873,22 @@ unsafe extern "C" {
     pub fn TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(
         self_: *const TopOpeBRepBuild_SolidAreaBuilder,
     ) -> crate::OcctResult<*const Handle_TopOpeBRepBuild_Loop>;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_SolidAreaBuilder,
+        L: *const Handle_TopOpeBRepBuild_Loop,
+        LOL: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(
+        self_: *const TopOpeBRepBuild_SolidAreaBuilder,
+        LOL1: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) -> *const std::ffi::c_char;
     // ======================== TopOpeBRepBuild_SolidBuilder ========================
     pub fn TopOpeBRepBuild_SolidBuilder_destructor(self_: *mut TopOpeBRepBuild_SolidBuilder);
     /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:37 - `TopOpeBRepBuild_SolidBuilder::TopOpeBRepBuild_SolidBuilder()`
@@ -10324,16 +10465,27 @@ unsafe extern "C" {
     /// **Source:** `TopOpeBRepDS_Association.hxx`:33 - `TopOpeBRepDS_Association::TopOpeBRepDS_Association()`
     pub fn TopOpeBRepDS_Association_ctor() -> crate::OcctResult<*mut TopOpeBRepDS_Association>;
     /// **Source:** `TopOpeBRepDS_Association.hxx`:35 - `TopOpeBRepDS_Association::Associate()`
-    pub fn TopOpeBRepDS_Association_associate(
+    pub fn TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(
         self_: *mut TopOpeBRepDS_Association,
         I: *const Handle_TopOpeBRepDS_Interference,
         K: *const Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:38 - `TopOpeBRepDS_Association::Associate()`
+    pub fn TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_list_topopebrepds_interference(
+        self_: *mut TopOpeBRepDS_Association,
+        I: *const Handle_TopOpeBRepDS_Interference,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TopOpeBRepDS_Association.hxx`:42 - `TopOpeBRepDS_Association::HasAssociation()`
     pub fn TopOpeBRepDS_Association_has_association(
         self_: *const TopOpeBRepDS_Association,
         I: *const Handle_TopOpeBRepDS_Interference,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:44 - `TopOpeBRepDS_Association::Associated()`
+    pub fn TopOpeBRepDS_Association_associated(
+        self_: *mut TopOpeBRepDS_Association,
+        I: *const Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_Association.hxx`:47 - `TopOpeBRepDS_Association::AreAssociated()`
     pub fn TopOpeBRepDS_Association_are_associated(
         self_: *const TopOpeBRepDS_Association,
@@ -10703,6 +10855,11 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopOpeBRepDS_Check>;
     /// **Source:** `TopOpeBRepDS_Check.hxx`:46 - `TopOpeBRepDS_Check::ChkIntg()`
     pub fn TopOpeBRepDS_Check_chk_intg(self_: *mut TopOpeBRepDS_Check) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:50 - `TopOpeBRepDS_Check::ChkIntgInterf()`
+    pub fn TopOpeBRepDS_Check_chk_intg_interf(
+        self_: *mut TopOpeBRepDS_Check,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `TopOpeBRepDS_Check.hxx`:56 - `TopOpeBRepDS_Check::CheckDS()`
     pub fn TopOpeBRepDS_Check_check_ds(
         self_: *mut TopOpeBRepDS_Check,
@@ -10983,6 +11140,14 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_CurveData,
         Other: *const TopOpeBRepDS_GeometryData,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn TopOpeBRepDS_CurveData_inherited_Interferences(
+        self_: *const TopOpeBRepDS_CurveData,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn TopOpeBRepDS_CurveData_inherited_ChangeInterferences(
+        self_: *mut TopOpeBRepDS_CurveData,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn TopOpeBRepDS_CurveData_inherited_AddInterference(
         self_: *mut TopOpeBRepDS_CurveData,
@@ -11040,6 +11205,10 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== TopOpeBRepDS_CurveIterator ========================
     pub fn TopOpeBRepDS_CurveIterator_destructor(self_: *mut TopOpeBRepDS_CurveIterator);
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:40 - `TopOpeBRepDS_CurveIterator::TopOpeBRepDS_CurveIterator()`
+    pub fn TopOpeBRepDS_CurveIterator_ctor_list_topopebrepds_interference(
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut TopOpeBRepDS_CurveIterator>;
     /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:46 - `TopOpeBRepDS_CurveIterator::MatchInterference()`
     pub fn TopOpeBRepDS_CurveIterator_match_interference(
         self_: *const TopOpeBRepDS_CurveIterator,
@@ -11066,6 +11235,11 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
         self_: *mut TopOpeBRepDS_CurveIterator,
     ) -> crate::OcctResult<*mut TopOpeBRepDS_InterferenceIterator>;
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn TopOpeBRepDS_CurveIterator_inherited_Init(
+        self_: *mut TopOpeBRepDS_CurveIterator,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn TopOpeBRepDS_CurveIterator_inherited_GeometryKind(
         self_: *mut TopOpeBRepDS_CurveIterator,
@@ -11406,6 +11580,58 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_DataStructure,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:125 - `TopOpeBRepDS_DataStructure::SurfaceInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_surface_interferences(
+        self_: *const TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:128 - `TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_change_surface_interferences(
+        self_: *mut TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:131 - `TopOpeBRepDS_DataStructure::CurveInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_curve_interferences(
+        self_: *const TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:134 - `TopOpeBRepDS_DataStructure::ChangeCurveInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_change_curve_interferences(
+        self_: *mut TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:137 - `TopOpeBRepDS_DataStructure::PointInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_point_interferences(
+        self_: *const TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:140 - `TopOpeBRepDS_DataStructure::ChangePointInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_change_point_interferences(
+        self_: *mut TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:143 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_shape_interferences_shape_bool(
+        self_: *const TopOpeBRepDS_DataStructure,
+        S: *const TopoDS_Shape,
+        FindKeep: bool,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:146 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_change_shape_interferences_shape(
+        self_: *mut TopOpeBRepDS_DataStructure,
+        S: *const TopoDS_Shape,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:149 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_shape_interferences_int_bool(
+        self_: *const TopOpeBRepDS_DataStructure,
+        I: i32,
+        FindKeep: bool,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:152 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    pub fn TopOpeBRepDS_DataStructure_change_shape_interferences_int(
+        self_: *mut TopOpeBRepDS_DataStructure,
+        I: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:154 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
     pub fn TopOpeBRepDS_DataStructure_shape_same_domain_shape(
         self_: *const TopOpeBRepDS_DataStructure,
@@ -12342,6 +12568,48 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_GapFiller_perform(
         self_: *mut TopOpeBRepDS_GapFiller,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:47 - `TopOpeBRepDS_GapFiller::FindAssociatedPoints()`
+    pub fn TopOpeBRepDS_GapFiller_find_associated_points(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        I: *const Handle_TopOpeBRepDS_Interference,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:55 - `TopOpeBRepDS_GapFiller::CheckConnexity()`
+    pub fn TopOpeBRepDS_GapFiller_check_connexity(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:57 - `TopOpeBRepDS_GapFiller::AddPointsOnShape()`
+    pub fn TopOpeBRepDS_GapFiller_add_points_on_shape(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        S: *const TopoDS_Shape,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:63 - `TopOpeBRepDS_GapFiller::AddPointsOnConnexShape()`
+    pub fn TopOpeBRepDS_GapFiller_add_points_on_connex_shape(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        F: *const TopoDS_Shape,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:67 - `TopOpeBRepDS_GapFiller::FilterByFace()`
+    pub fn TopOpeBRepDS_GapFiller_filter_by_face(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        F: *const TopoDS_Face,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:70 - `TopOpeBRepDS_GapFiller::FilterByEdge()`
+    pub fn TopOpeBRepDS_GapFiller_filter_by_edge(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        E: *const TopoDS_Edge,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:73 - `TopOpeBRepDS_GapFiller::FilterByIncidentDistance()`
+    pub fn TopOpeBRepDS_GapFiller_filter_by_incident_distance(
+        self_: *mut TopOpeBRepDS_GapFiller,
+        F: *const TopoDS_Face,
+        I: *const Handle_TopOpeBRepDS_Interference,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:80 - `TopOpeBRepDS_GapFiller::IsOnFace()`
     pub fn TopOpeBRepDS_GapFiller_is_on_face(
         self_: *const TopOpeBRepDS_GapFiller,
@@ -12377,6 +12645,21 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_GapTool,
         HDS: *const Handle_TopOpeBRepDS_HDataStructure,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:44 - `TopOpeBRepDS_GapTool::Interferences()`
+    pub fn TopOpeBRepDS_GapTool_interferences(
+        self_: *const TopOpeBRepDS_GapTool,
+        IndexPoint: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:47 - `TopOpeBRepDS_GapTool::SameInterferences()`
+    pub fn TopOpeBRepDS_GapTool_same_interferences(
+        self_: *const TopOpeBRepDS_GapTool,
+        I: *const Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:50 - `TopOpeBRepDS_GapTool::ChangeSameInterferences()`
+    pub fn TopOpeBRepDS_GapTool_change_same_interferences(
+        self_: *mut TopOpeBRepDS_GapTool,
+        I: *const Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:53 - `TopOpeBRepDS_GapTool::Curve()`
     pub fn TopOpeBRepDS_GapTool_curve(
         self_: *const TopOpeBRepDS_GapTool,
@@ -12496,6 +12779,14 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_GeometryData,
         Other: *const TopOpeBRepDS_GeometryData,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn TopOpeBRepDS_GeometryData_interferences(
+        self_: *const TopOpeBRepDS_GeometryData,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn TopOpeBRepDS_GeometryData_change_interferences(
+        self_: *mut TopOpeBRepDS_GeometryData,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn TopOpeBRepDS_GeometryData_add_interference(
         self_: *mut TopOpeBRepDS_GeometryData,
@@ -12672,6 +12963,31 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_HDataStructure_edges_same_parameter(
         self_: *const TopOpeBRepDS_HDataStructure,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:157 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference2(
+        self_: *const TopOpeBRepDS_HDataStructure,
+        L1: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+        L2: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:161 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference(
+        self_: *const TopOpeBRepDS_HDataStructure,
+        L: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:164 - `TopOpeBRepDS_HDataStructure::MinMaxOnParameter()`
+    pub fn TopOpeBRepDS_HDataStructure_min_max_on_parameter(
+        self_: *const TopOpeBRepDS_HDataStructure,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+        Min: *mut f64,
+        Max: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:190 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
+    pub fn TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_list_topopebrepds_interference_asciistring(
+        self_: *mut TopOpeBRepDS_HDataStructure,
+        I: *const Handle_TopOpeBRepDS_Interference,
+        LI: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+        str: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:196 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
     pub fn TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_shape_asciistring(
         self_: *mut TopOpeBRepDS_HDataStructure,
@@ -12683,6 +12999,34 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(
         self_: *mut TopOpeBRepDS_HDataStructure,
         I: *const Handle_TopOpeBRepDS_Interference,
+        IS: i32,
+        str: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:205 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_shape_asciistring(
+        self_: *mut TopOpeBRepDS_HDataStructure,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+        S: *const TopoDS_Shape,
+        str: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:210 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_int_asciistring(
+        self_: *mut TopOpeBRepDS_HDataStructure,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+        IS: i32,
+        str: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:215 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_shape_asciistring(
+        self_: *mut TopOpeBRepDS_HDataStructure,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+        S: *const TopoDS_Shape,
+        str: *const TCollection_AsciiString,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:220 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_int_asciistring(
+        self_: *mut TopOpeBRepDS_HDataStructure,
+        LI: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
         IS: i32,
         str: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
@@ -12955,6 +13299,15 @@ unsafe extern "C" {
     /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:46 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator()`
     pub fn TopOpeBRepDS_InterferenceIterator_ctor(
     ) -> crate::OcctResult<*mut TopOpeBRepDS_InterferenceIterator>;
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:49 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator()`
+    pub fn TopOpeBRepDS_InterferenceIterator_ctor_list_topopebrepds_interference(
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut TopOpeBRepDS_InterferenceIterator>;
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn TopOpeBRepDS_InterferenceIterator_init(
+        self_: *mut TopOpeBRepDS_InterferenceIterator,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn TopOpeBRepDS_InterferenceIterator_geometry_kind(
         self_: *mut TopOpeBRepDS_InterferenceIterator,
@@ -13270,6 +13623,14 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_PointData,
         Other: *const TopOpeBRepDS_GeometryData,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn TopOpeBRepDS_PointData_inherited_Interferences(
+        self_: *const TopOpeBRepDS_PointData,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn TopOpeBRepDS_PointData_inherited_ChangeInterferences(
+        self_: *mut TopOpeBRepDS_PointData,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn TopOpeBRepDS_PointData_inherited_AddInterference(
         self_: *mut TopOpeBRepDS_PointData,
@@ -13327,6 +13688,10 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== TopOpeBRepDS_PointIterator ========================
     pub fn TopOpeBRepDS_PointIterator_destructor(self_: *mut TopOpeBRepDS_PointIterator);
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:39 - `TopOpeBRepDS_PointIterator::TopOpeBRepDS_PointIterator()`
+    pub fn TopOpeBRepDS_PointIterator_ctor_list_topopebrepds_interference(
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut TopOpeBRepDS_PointIterator>;
     /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:45 - `TopOpeBRepDS_PointIterator::MatchInterference()`
     pub fn TopOpeBRepDS_PointIterator_match_interference(
         self_: *const TopOpeBRepDS_PointIterator,
@@ -13373,6 +13738,11 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
         self_: *mut TopOpeBRepDS_PointIterator,
     ) -> crate::OcctResult<*mut TopOpeBRepDS_InterferenceIterator>;
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn TopOpeBRepDS_PointIterator_inherited_Init(
+        self_: *mut TopOpeBRepDS_PointIterator,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn TopOpeBRepDS_PointIterator_inherited_GeometryKind(
         self_: *mut TopOpeBRepDS_PointIterator,
@@ -13423,6 +13793,14 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_ShapeData_destructor(self_: *mut TopOpeBRepDS_ShapeData);
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:35 - `TopOpeBRepDS_ShapeData::TopOpeBRepDS_ShapeData()`
     pub fn TopOpeBRepDS_ShapeData_ctor() -> crate::OcctResult<*mut TopOpeBRepDS_ShapeData>;
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:37 - `TopOpeBRepDS_ShapeData::Interferences()`
+    pub fn TopOpeBRepDS_ShapeData_interferences(
+        self_: *const TopOpeBRepDS_ShapeData,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:40 - `TopOpeBRepDS_ShapeData::ChangeInterferences()`
+    pub fn TopOpeBRepDS_ShapeData_change_interferences(
+        self_: *mut TopOpeBRepDS_ShapeData,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:42 - `TopOpeBRepDS_ShapeData::Keep()`
     pub fn TopOpeBRepDS_ShapeData_keep(
         self_: *const TopOpeBRepDS_ShapeData,
@@ -13988,6 +14366,14 @@ unsafe extern "C" {
         self_: *mut TopOpeBRepDS_SurfaceData,
         Other: *const TopOpeBRepDS_GeometryData,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn TopOpeBRepDS_SurfaceData_inherited_Interferences(
+        self_: *const TopOpeBRepDS_SurfaceData,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn TopOpeBRepDS_SurfaceData_inherited_ChangeInterferences(
+        self_: *mut TopOpeBRepDS_SurfaceData,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn TopOpeBRepDS_SurfaceData_inherited_AddInterference(
         self_: *mut TopOpeBRepDS_SurfaceData,
@@ -14046,6 +14432,10 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== TopOpeBRepDS_SurfaceIterator ========================
     pub fn TopOpeBRepDS_SurfaceIterator_destructor(self_: *mut TopOpeBRepDS_SurfaceIterator);
+    /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:37 - `TopOpeBRepDS_SurfaceIterator::TopOpeBRepDS_SurfaceIterator()`
+    pub fn TopOpeBRepDS_SurfaceIterator_ctor_list_topopebrepds_interference(
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OcctResult<*mut TopOpeBRepDS_SurfaceIterator>;
     /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:41 - `TopOpeBRepDS_SurfaceIterator::Current()`
     pub fn TopOpeBRepDS_SurfaceIterator_current(
         self_: *const TopOpeBRepDS_SurfaceIterator,
@@ -14063,6 +14453,11 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
         self_: *mut TopOpeBRepDS_SurfaceIterator,
     ) -> crate::OcctResult<*mut TopOpeBRepDS_InterferenceIterator>;
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn TopOpeBRepDS_SurfaceIterator_inherited_Init(
+        self_: *mut TopOpeBRepDS_SurfaceIterator,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn TopOpeBRepDS_SurfaceIterator_inherited_GeometryKind(
         self_: *mut TopOpeBRepDS_SurfaceIterator,
@@ -14110,12 +14505,34 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_TKI_ctor() -> crate::OcctResult<*mut TopOpeBRepDS_TKI>;
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:41 - `TopOpeBRepDS_TKI::Clear()`
     pub fn TopOpeBRepDS_TKI_clear(self_: *mut TopOpeBRepDS_TKI) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:43 - `TopOpeBRepDS_TKI::FillOnGeometry()`
+    pub fn TopOpeBRepDS_TKI_fill_on_geometry(
+        self_: *mut TopOpeBRepDS_TKI,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:46 - `TopOpeBRepDS_TKI::FillOnSupport()`
+    pub fn TopOpeBRepDS_TKI_fill_on_support(
+        self_: *mut TopOpeBRepDS_TKI,
+        L: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:49 - `TopOpeBRepDS_TKI::IsBound()`
     pub fn TopOpeBRepDS_TKI_is_bound(
         self_: *const TopOpeBRepDS_TKI,
         K: i32,
         G: i32,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:51 - `TopOpeBRepDS_TKI::Interferences()`
+    pub fn TopOpeBRepDS_TKI_interferences(
+        self_: *const TopOpeBRepDS_TKI,
+        K: i32,
+        G: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:55 - `TopOpeBRepDS_TKI::ChangeInterferences()`
+    pub fn TopOpeBRepDS_TKI_change_interferences(
+        self_: *mut TopOpeBRepDS_TKI,
+        K: i32,
+        G: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:59 - `TopOpeBRepDS_TKI::HasInterferences()`
     pub fn TopOpeBRepDS_TKI_has_interferences(
         self_: *const TopOpeBRepDS_TKI,
@@ -14147,6 +14564,18 @@ unsafe extern "C" {
     pub fn TopOpeBRepDS_TKI_more(self_: *const TopOpeBRepDS_TKI) -> crate::OcctResult<bool>;
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:74 - `TopOpeBRepDS_TKI::Next()`
     pub fn TopOpeBRepDS_TKI_next(self_: *mut TopOpeBRepDS_TKI) -> *const std::ffi::c_char;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:76 - `TopOpeBRepDS_TKI::Value()`
+    pub fn TopOpeBRepDS_TKI_value(
+        self_: *const TopOpeBRepDS_TKI,
+        K: &mut i32,
+        G: *mut i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_TopOpeBRepDS_Interference>;
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:80 - `TopOpeBRepDS_TKI::ChangeValue()`
+    pub fn TopOpeBRepDS_TKI_change_value(
+        self_: *mut TopOpeBRepDS_TKI,
+        K: &mut i32,
+        G: *mut i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_TopOpeBRepDS_Interference>;
     // ======================== TopOpeBRepDS_TOOL ========================
     pub fn TopOpeBRepDS_TOOL_destructor(self_: *mut TopOpeBRepDS_TOOL);
     /// **Source:** `TopOpeBRepDS_TOOL.hxx` - `TopOpeBRepDS_TOOL::TopOpeBRepDS_TOOL()`

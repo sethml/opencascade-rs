@@ -1926,6 +1926,15 @@ impl Composite {
         }
     }
 
+    /// **Source:** `Law_Composite.hxx`:87 - `Law_Composite::ChangeLaws()`
+    pub fn change_laws(&mut self) -> &mut crate::ffi_types::NCollection_List_Handle_Law_Function {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Composite_change_laws(
+                self as *mut Self,
+            )))
+        }
+    }
+
     /// **Source:** `Law_Composite.hxx`:89 - `Law_Composite::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
@@ -2153,12 +2162,6 @@ impl Handle_Law_Composite {
         }
     }
 }
-
-// ── Skipped symbols for Composite (1 total) ──
-// SKIPPED: **Source:** `Law_Composite.hxx`:87 - `Law_Composite::ChangeLaws`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Law_Function>>&)
-//   // pub fn change_laws(&mut self) -> /* NCollection_List<occ::handle<Law_Function>>& */;
-//
 
 // ========================
 // From Law_Constant.hxx

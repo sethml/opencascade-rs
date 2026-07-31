@@ -115,7 +115,7 @@ impl DraughtingModelItemAssociation {
         theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_Init(
@@ -206,7 +206,7 @@ impl DraughtingModelItemAssociation {
     pub fn identified_item(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItem(self as *const Self)))
@@ -223,7 +223,7 @@ impl DraughtingModelItemAssociation {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(self as *mut Self, theIdentifiedItem)
@@ -495,7 +495,7 @@ impl GeometricItemSpecificUsage {
         theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_Init(
@@ -589,7 +589,7 @@ impl GeometricItemSpecificUsage {
     pub fn identified_item(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItem(self as *const Self)))
@@ -606,7 +606,7 @@ impl GeometricItemSpecificUsage {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(self as *mut Self, theIdentifiedItem)
@@ -1479,7 +1479,7 @@ impl ItemIdentifiedRepresentationUsage {
         theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
         theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_init(
@@ -1593,7 +1593,7 @@ impl ItemIdentifiedRepresentationUsage {
     pub fn identified_item(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_identified_item(self as *const Self)))
@@ -1612,7 +1612,7 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field IdentifiedItem
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(self as *mut Self, theIdentifiedItem)

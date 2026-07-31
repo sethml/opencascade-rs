@@ -28,20 +28,17 @@
 #include <StdLPersistent_Value.hxx>
 #include <StdLPersistent_Variable.hxx>
 #include <StdLPersistent_XLink.hxx>
-#include <StdObjMgt_Persistent.hxx>
 #include <StdObjMgt_ReadData.hxx>
 #include <StdObjMgt_WriteData.hxx>
 #include <StdPersistent_Naming.hxx>
 #include <StdPersistent_TopLoc.hxx>
 #include <Storage_BaseDriver.hxx>
 #include <Storage_Data.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDF_Data.hxx>
 #include <TDataStd_NamedData.hxx>
 #include <TDataStd_Real.hxx>
 #include <TDataStd_Variable.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_Document.hxx>
 #include <TDocStd_XLink.hxx>
 #include <TFunction_Function.hxx>
 

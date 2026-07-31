@@ -60,19 +60,26 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:44 - `BinMNaming_NamedShapeDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:48 - `BinMNaming_NamedShapeDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -467,12 +474,6 @@ impl Handle_BinMNaming_NamedShapeDriver {
     }
 }
 
-// ── Skipped symbols for NamedShapeDriver (1 total) ──
-// SKIPPED: **Source:** `BinMNaming_NamedShapeDriver.hxx`:48 - `BinMNaming_NamedShapeDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//
-
 // ========================
 // From BinMNaming_NamingDriver.hxx
 // ========================
@@ -513,19 +514,26 @@ impl NamingDriver {
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:39 - `BinMNaming_NamingDriver::Paste()`
-    pub fn paste(
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
         Target: &crate::ffi_types::Handle_TDF_Attribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_paste(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+        })
+    }
+
+    /// **Source:** `BinMNaming_NamingDriver.hxx`:43 - `BinMNaming_NamingDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_imap_standard_transient(
+        &self,
+        Source: &crate::ffi_types::Handle_TDF_Attribute,
+        Target: &mut crate::bin_obj_mgt::Persistent,
+        RelocTable: &mut crate::ffi_types::NCollection_IndexedMap_Handle_Standard_Transient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_paste_handletdfattribute_persistent_imap_standard_transient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -779,9 +787,3 @@ impl Handle_BinMNaming_NamingDriver {
         }
     }
 }
-
-// ── Skipped symbols for NamingDriver (1 total) ──
-// SKIPPED: **Source:** `BinMNaming_NamingDriver.hxx`:43 - `BinMNaming_NamingDriver::Paste`
-//   Reason: has unbindable types: param 'RelocTable': unresolved template type (NCollection_IndexedMap<occ::handle<Standard_Transient>>&)
-//   // pub fn paste(&self, Source: &HandleAttribute, Target: &mut Persistent, RelocTable: /* NCollection_IndexedMap<occ::handle<Standard_Transient>>& */);
-//

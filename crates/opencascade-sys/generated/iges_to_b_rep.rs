@@ -85,7 +85,7 @@ pub fn is_b_rep_entity(start: &crate::ffi_types::Handle_IGESData_IGESEntity) -> 
 /// **Source:** `IGESToBRep.hxx`:88 - `IGESToBRep::IGESCurveToSequenceOfIGESCurve`
 pub fn iges_curve_to_sequence_of_iges_curve(
     curve: &crate::ffi_types::Handle_IGESData_IGESEntity,
-    sequence: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    sequence: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
 ) -> i32 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKDEIGES::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence)
@@ -3566,18 +3566,18 @@ impl IGESBoundary {
     /// <curves2d>: 1 parameter space curve for 142 or list of
     /// them for current model space curves for 141,
     /// <number>: 1 for 142 and rank number of model space curve for 141.
-    pub fn transfer_bool3_handleigesdataigesentity_bool_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn transfer_bool3_handleigesdataigesentity_bool_harr1_igesdata_igesentity_int(
         &mut self,
         okCurve: &mut bool,
         okCurve3d: &mut bool,
         okCurve2d: &mut bool,
         curve3d: &crate::ffi_types::Handle_IGESData_IGESEntity,
         toreverse3d: bool,
-        curves2d: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        curves2d: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         number: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handlencollectionharray1opencascadehandleigesdataigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_harr1_igesdata_igesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
         })
     }
 
@@ -3596,19 +3596,19 @@ impl IGESBoundary {
     /// to its model space curve,
     /// <number>: rank number of edge,
     /// <lsewd>: returns the result of translation of current edge.
-    pub fn transfer_bool3_handleshapeextendwiredata_handlencollectionharray1opencascadehandleigesdataigesentity_bool_int_handleshapeextendwiredata(
+    pub fn transfer_bool3_handleshapeextendwiredata_harr1_igesdata_igesentity_bool_int_handleshapeextendwiredata(
         &mut self,
         okCurve: &mut bool,
         okCurve3d: &mut bool,
         okCurve2d: &mut bool,
         curve3d: &crate::ffi_types::Handle_ShapeExtend_WireData,
-        curves2d: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        curves2d: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         toreverse2d: bool,
         number: i32,
         lsewd: &mut crate::ffi_types::Handle_ShapeExtend_WireData,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handlencollectionharray1opencascadehandleigesdataigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_harr1_igesdata_igesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
         })
     }
 

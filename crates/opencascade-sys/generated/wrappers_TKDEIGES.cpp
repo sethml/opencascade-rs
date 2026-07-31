@@ -31,8 +31,6 @@
 #include <GeomToIGES_GeomSurface.hxx>
 #include <GeomToIGES_GeomVector.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_BoundedSurface.hxx>
 #include <Geom_CartesianPoint.hxx>
 #include <Geom_Circle.hxx>
@@ -76,7 +74,6 @@
 #include <IFSelect_SelectDeduct.hxx>
 #include <IFSelect_SelectExplore.hxx>
 #include <IFSelect_SelectExtract.hxx>
-#include <IFSelect_Selection.hxx>
 #include <IFSelect_SelectionIterator.hxx>
 #include <IFSelect_SessionDumper.hxx>
 #include <IFSelect_SessionFile.hxx>
@@ -537,7 +534,6 @@
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <TopoDS_CompSolid.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
@@ -899,38 +895,38 @@ typedef opencascade::handle<Interface_SignType> Handle_Interface_SignType;
 typedef opencascade::handle<Interface_UndefinedContent> Handle_Interface_UndefinedContent;
 typedef opencascade::handle<MoniTool_SignText> Handle_MoniTool_SignText;
 typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESAppli_FiniteElement> Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESAppli_Node> Handle_NCollection_HArray1_Handle_IGESAppli_Node;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESData_IGESEntity> Handle_NCollection_HArray1_Handle_IGESData_IGESEntity;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESData_LineFontEntity> Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESData_ViewKindEntity> Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESDefs_TabularData> Handle_NCollection_HArray1_Handle_IGESDefs_TabularData;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESDimen_GeneralNote> Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESDimen_LeaderArrow> Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESDraw_ConnectPoint> Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGeom_Boundary> Handle_NCollection_HArray1_Handle_IGESGeom_Boundary;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGeom_CurveOnSurface> Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGeom_TransformationMatrix> Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGraph_Color> Handle_NCollection_HArray1_Handle_IGESGraph_Color;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate> Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESGraph_TextFontDef> Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESSolid_Face> Handle_NCollection_HArray1_Handle_IGESSolid_Face;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESSolid_Loop> Handle_NCollection_HArray1_Handle_IGESSolid_Loop;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESSolid_Shell> Handle_NCollection_HArray1_Handle_IGESSolid_Shell;
+typedef opencascade::handle<NCollection_HArray1_Handle_IGESSolid_VertexList> Handle_NCollection_HArray1_Handle_IGESSolid_VertexList;
+typedef opencascade::handle<NCollection_HArray1_Handle_Standard_Transient> Handle_NCollection_HArray1_Handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HArray1_Handle_TCollection_HAsciiString> Handle_NCollection_HArray1_Handle_TCollection_HAsciiString;
 typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
 typedef opencascade::handle<NCollection_HArray1_gp_XY> Handle_NCollection_HArray1_gp_XY;
 typedef opencascade::handle<NCollection_HArray1_gp_XYZ> Handle_NCollection_HArray1_gp_XYZ;
 typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement> Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESAppli_Node> Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESData_IGESEntity> Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity> Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity> Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESDefs_TabularData> Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote> Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow> Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint> Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGeom_Boundary> Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface> Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix> Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGraph_Color> Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate> Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef> Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESSolid_Face> Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESSolid_Loop> Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESSolid_Shell> Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_IGESSolid_VertexList> Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Standard_Transient> Handle_NCollection_HArray1_opencascade_handle_Standard_Transient;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString;
+typedef opencascade::handle<NCollection_HArray2_Handle_Standard_Transient> Handle_NCollection_HArray2_Handle_Standard_Transient;
 typedef opencascade::handle<NCollection_HArray2_double> Handle_NCollection_HArray2_double;
 typedef opencascade::handle<NCollection_HArray2_gp_XYZ> Handle_NCollection_HArray2_gp_XYZ;
 typedef opencascade::handle<NCollection_HArray2_opencascade_handle_NCollection_HArray1_double> Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_double;
-typedef opencascade::handle<NCollection_HArray2_opencascade_handle_Standard_Transient> Handle_NCollection_HArray2_opencascade_handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HSequence_Handle_Standard_Transient> Handle_NCollection_HSequence_Handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HSequence_Handle_TCollection_HAsciiString> Handle_NCollection_HSequence_Handle_TCollection_HAsciiString;
 typedef opencascade::handle<NCollection_HSequence_int> Handle_NCollection_HSequence_int;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Standard_Transient> Handle_NCollection_HSequence_opencascade_handle_Standard_Transient;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString;
 typedef opencascade::handle<ShapeExtend_WireData> Handle_ShapeExtend_WireData;
 typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
 typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
@@ -4139,7 +4135,7 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double)*> IGESAppli_ElementResu
     try { return {new Handle(NCollection_HArray1_double)(self_->ResultList(NElem)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_ElementResults_init(IGESAppli_ElementResults* self_, Handle(IGESDimen_GeneralNote) const* aNote, int32_t aSubCase, double aTime, int32_t nbResults, int32_t aResRepFlag, Handle(NCollection_HArray1_int) const* allElementIdents, Handle(NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement) const* allFiniteElems, Handle(NCollection_HArray1_int) const* allTopTypes, Handle(NCollection_HArray1_int) const* nbLayers, Handle(NCollection_HArray1_int) const* allDataLayerFlags, Handle(NCollection_HArray1_int) const* allnbResDataLocs, Handle(IGESBasic_HArray1OfHArray1OfInteger) const* allResDataLocs, Handle(IGESBasic_HArray1OfHArray1OfReal) const* allResults) {
+extern "C" const char* IGESAppli_ElementResults_init(IGESAppli_ElementResults* self_, Handle(IGESDimen_GeneralNote) const* aNote, int32_t aSubCase, double aTime, int32_t nbResults, int32_t aResRepFlag, Handle(NCollection_HArray1_int) const* allElementIdents, Handle(NCollection_HArray1_Handle_IGESAppli_FiniteElement) const* allFiniteElems, Handle(NCollection_HArray1_int) const* allTopTypes, Handle(NCollection_HArray1_int) const* nbLayers, Handle(NCollection_HArray1_int) const* allDataLayerFlags, Handle(NCollection_HArray1_int) const* allnbResDataLocs, Handle(IGESBasic_HArray1OfHArray1OfInteger) const* allResDataLocs, Handle(IGESBasic_HArray1OfHArray1OfReal) const* allResults) {
     try { self_->Init(*aNote, aSubCase, aTime, nbResults, aResRepFlag, *allElementIdents, *allFiniteElems, *allTopTypes, *nbLayers, *allDataLayerFlags, *allnbResDataLocs, *allResDataLocs, *allResults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4545,7 +4541,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESAppli_FiniteElement
     try { return {new Handle(TCollection_HAsciiString)(self_->Name()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_FiniteElement_init(IGESAppli_FiniteElement* self_, int32_t aType, Handle(NCollection_HArray1_opencascade_handle_IGESAppli_Node) const* allNodes, Handle(TCollection_HAsciiString) const* aName) {
+extern "C" const char* IGESAppli_FiniteElement_init(IGESAppli_FiniteElement* self_, int32_t aType, Handle(NCollection_HArray1_Handle_IGESAppli_Node) const* allNodes, Handle(TCollection_HAsciiString) const* aName) {
     try { self_->Init(aType, *allNodes, *aName); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4911,7 +4907,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESAppli_Flow_cont_flow_ass
     try { return {new Handle(IGESData_IGESEntity)(self_->ContFlowAssociativity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_Flow_init(IGESAppli_Flow* self_, int32_t nbContextFlags, int32_t aFlowType, int32_t aFuncFlag, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allFlowAssocs, Handle(NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint) const* allConnectPoints, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allJoins, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* allFlowNames, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate) const* allTextDisps, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allContFlowAssocs) {
+extern "C" const char* IGESAppli_Flow_init(IGESAppli_Flow* self_, int32_t nbContextFlags, int32_t aFlowType, int32_t aFuncFlag, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allFlowAssocs, Handle(NCollection_HArray1_Handle_IGESDraw_ConnectPoint) const* allConnectPoints, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allJoins, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* allFlowNames, Handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate) const* allTextDisps, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allContFlowAssocs) {
     try { self_->Init(nbContextFlags, aFlowType, aFuncFlag, *allFlowAssocs, *allConnectPoints, *allJoins, *allFlowNames, *allTextDisps, *allContFlowAssocs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5293,7 +5289,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESAppli_FlowLineSpec_
     try { return {new Handle(TCollection_HAsciiString)(self_->Modifier(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_FlowLineSpec_init(IGESAppli_FlowLineSpec* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* allProperties) {
+extern "C" const char* IGESAppli_FlowLineSpec_init(IGESAppli_FlowLineSpec* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* allProperties) {
     try { self_->Init(*allProperties); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6153,7 +6149,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESAppli_LevelToPWBLay
     try { return {new Handle(TCollection_HAsciiString)(self_->ExchangeFileLevelIdent(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_LevelToPWBLayerMap_init(IGESAppli_LevelToPWBLayerMap* self_, int32_t nbPropVal, Handle(NCollection_HArray1_int) const* allExchLevels, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* allNativeLevels, Handle(NCollection_HArray1_int) const* allPhysLevels, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* allExchIdents) {
+extern "C" const char* IGESAppli_LevelToPWBLayerMap_init(IGESAppli_LevelToPWBLayerMap* self_, int32_t nbPropVal, Handle(NCollection_HArray1_int) const* allExchLevels, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* allNativeLevels, Handle(NCollection_HArray1_int) const* allPhysLevels, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* allExchIdents) {
     try { self_->Init(nbPropVal, *allExchLevels, *allNativeLevels, *allPhysLevels, *allExchIdents); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6869,7 +6865,7 @@ extern "C" OcctResult<Handle(IGESDefs_TabularData)*> IGESAppli_NodalConstraint_t
     try { return {new Handle(IGESDefs_TabularData)(self_->TabularData(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_NodalConstraint_init(IGESAppli_NodalConstraint* self_, int32_t aType, Handle(IGESAppli_Node) const* aNode, Handle(NCollection_HArray1_opencascade_handle_IGESDefs_TabularData) const* allTabData) {
+extern "C" const char* IGESAppli_NodalConstraint_init(IGESAppli_NodalConstraint* self_, int32_t aType, Handle(IGESAppli_Node) const* aNode, Handle(NCollection_HArray1_Handle_IGESDefs_TabularData) const* allTabData) {
     try { self_->Init(aType, *aNode, *allTabData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7227,7 +7223,7 @@ extern "C" OcctResult<gp_XYZ*> IGESAppli_NodalDisplAndRot_rotational_parameter(c
     try { return {new gp_XYZ(self_->RotationalParameter(NodeNum, CaseNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_NodalDisplAndRot_init(IGESAppli_NodalDisplAndRot* self_, Handle(NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote) const* allNotes, Handle(NCollection_HArray1_int) const* allIdentifiers, Handle(NCollection_HArray1_opencascade_handle_IGESAppli_Node) const* allNodes, Handle(IGESBasic_HArray1OfHArray1OfXYZ) const* allRotParams, Handle(IGESBasic_HArray1OfHArray1OfXYZ) const* allTransParams) {
+extern "C" const char* IGESAppli_NodalDisplAndRot_init(IGESAppli_NodalDisplAndRot* self_, Handle(NCollection_HArray1_Handle_IGESDimen_GeneralNote) const* allNotes, Handle(NCollection_HArray1_int) const* allIdentifiers, Handle(NCollection_HArray1_Handle_IGESAppli_Node) const* allNodes, Handle(IGESBasic_HArray1OfHArray1OfXYZ) const* allRotParams, Handle(IGESBasic_HArray1OfHArray1OfXYZ) const* allTransParams) {
     try { self_->Init(*allNotes, *allIdentifiers, *allNodes, *allRotParams, *allTransParams); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7581,7 +7577,7 @@ extern "C" OcctResult<Handle(IGESAppli_Node)*> IGESAppli_NodalResults_node(const
     try { return {new Handle(IGESAppli_Node)(self_->Node(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_NodalResults_init(IGESAppli_NodalResults* self_, Handle(IGESDimen_GeneralNote) const* aNote, int32_t aNumber, double aTime, Handle(NCollection_HArray1_int) const* allNodeIdentifiers, Handle(NCollection_HArray1_opencascade_handle_IGESAppli_Node) const* allNodes, Handle(NCollection_HArray2_double) const* allData) {
+extern "C" const char* IGESAppli_NodalResults_init(IGESAppli_NodalResults* self_, Handle(IGESDimen_GeneralNote) const* aNote, int32_t aNumber, double aTime, Handle(NCollection_HArray1_int) const* allNodeIdentifiers, Handle(NCollection_HArray1_Handle_IGESAppli_Node) const* allNodes, Handle(NCollection_HArray2_double) const* allData) {
     try { self_->Init(*aNote, aNumber, aTime, *allNodeIdentifiers, *allNodes, *allData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9713,7 +9709,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESAppli_PipingFlow_cont_fl
     try { return {new Handle(IGESData_IGESEntity)(self_->ContFlowAssociativity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESAppli_PipingFlow_init(IGESAppli_PipingFlow* self_, int32_t nbContextFlags, int32_t aFlowType, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allFlowAssocs, Handle(NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint) const* allConnectPoints, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allJoins, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* allFlowNames, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate) const* allTextDisps, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allContFlowAssocs) {
+extern "C" const char* IGESAppli_PipingFlow_init(IGESAppli_PipingFlow* self_, int32_t nbContextFlags, int32_t aFlowType, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allFlowAssocs, Handle(NCollection_HArray1_Handle_IGESDraw_ConnectPoint) const* allConnectPoints, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allJoins, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* allFlowNames, Handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate) const* allTextDisps, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allContFlowAssocs) {
     try { self_->Init(nbContextFlags, aFlowType, *allFlowAssocs, *allConnectPoints, *allJoins, *allFlowNames, *allTextDisps, *allContFlowAssocs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12543,7 +12539,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESBasic_ExternalRefFileInd
     try { return {new Handle(IGESData_IGESEntity)(self_->Entity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_ExternalRefFileIndex_init(IGESBasic_ExternalRefFileIndex* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aNameArray, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities) {
+extern "C" const char* IGESBasic_ExternalRefFileIndex_init(IGESBasic_ExternalRefFileIndex* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aNameArray, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities) {
     try { self_->Init(*aNameArray, *allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13911,7 +13907,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESBasic_ExternalRefer
     try { return {new Handle(TCollection_HAsciiString)(self_->Name(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_ExternalReferenceFile_init(IGESBasic_ExternalReferenceFile* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* aNameArray) {
+extern "C" const char* IGESBasic_ExternalReferenceFile_init(IGESBasic_ExternalReferenceFile* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* aNameArray) {
     try { self_->Init(*aNameArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14429,7 +14425,7 @@ extern "C" OcctResult<Handle(Standard_Transient)*> IGESBasic_Group_value(const I
     try { return {new Handle(Standard_Transient)(self_->Value(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_Group_init(IGESBasic_Group* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities) {
+extern "C" const char* IGESBasic_Group_init(IGESBasic_Group* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities) {
     try { self_->Init(*allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14861,7 +14857,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_IGESBasic_GroupWithoutB
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_GroupWithoutBackP_inherited_Init(IGESBasic_GroupWithoutBackP* self, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const& allEntities) {
+extern "C" const char* IGESBasic_GroupWithoutBackP_inherited_Init(IGESBasic_GroupWithoutBackP* self, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const& allEntities) {
     try { self->Init(allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15199,8 +15195,8 @@ extern "C" OcctResult<IGESBasic_HArray1OfHArray1OfIGESEntity*> IGESBasic_HArray1
     try { return {new IGESBasic_HArray1OfHArray1OfIGESEntity(low, up), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)*> IGESBasic_HArray1OfHArray1OfIGESEntity_value(const IGESBasic_HArray1OfHArray1OfIGESEntity* self_, int32_t num) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)(self_->Value(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)*> IGESBasic_HArray1OfHArray1OfIGESEntity_value(const IGESBasic_HArray1OfHArray1OfIGESEntity* self_, int32_t num) {
+    try { return {new Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)(self_->Value(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IGESBasic_HArray1OfHArray1OfIGESEntity_lower(const IGESBasic_HArray1OfHArray1OfIGESEntity* self_) {
@@ -15215,7 +15211,7 @@ extern "C" OcctResult<int32_t> IGESBasic_HArray1OfHArray1OfIGESEntity_length(con
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_HArray1OfHArray1OfIGESEntity_set_value(IGESBasic_HArray1OfHArray1OfIGESEntity* self_, int32_t num, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* val) {
+extern "C" const char* IGESBasic_HArray1OfHArray1OfIGESEntity_set_value(IGESBasic_HArray1OfHArray1OfIGESEntity* self_, int32_t num, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* val) {
     try { self_->SetValue(num, *val); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16391,7 +16387,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_IGESBasic_OrderedGroup_
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_OrderedGroup_inherited_Init(IGESBasic_OrderedGroup* self, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const& allEntities) {
+extern "C" const char* IGESBasic_OrderedGroup_inherited_Init(IGESBasic_OrderedGroup* self, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const& allEntities) {
     try { self->Init(allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16771,7 +16767,7 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_IGESBasic_OrderedGroupW
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_OrderedGroupWithoutBackP_inherited_Init(IGESBasic_OrderedGroupWithoutBackP* self, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const& allEntities) {
+extern "C" const char* IGESBasic_OrderedGroupWithoutBackP_inherited_Init(IGESBasic_OrderedGroupWithoutBackP* self, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const& allEntities) {
     try { self->Init(allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17349,7 +17345,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESBasic_SingleParent_child
     try { return {new Handle(IGESData_IGESEntity)(self_->Child(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_SingleParent_init(IGESBasic_SingleParent* self_, int32_t nbParentEntities, Handle(IGESData_IGESEntity) const* aParentEntity, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allChildren) {
+extern "C" const char* IGESBasic_SingleParent_init(IGESBasic_SingleParent* self_, int32_t nbParentEntities, Handle(IGESData_IGESEntity) const* aParentEntity, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allChildren) {
     try { self_->Init(nbParentEntities, *aParentEntity, *allChildren); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -18145,7 +18141,7 @@ extern "C" OcctResult<Handle(Standard_Transient)*> IGESBasic_SubfigureDef_value(
     try { return {new Handle(Standard_Transient)(self_->Value(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESBasic_SubfigureDef_init(IGESBasic_SubfigureDef* self_, int32_t aDepth, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allAssocEntities) {
+extern "C" const char* IGESBasic_SubfigureDef_init(IGESBasic_SubfigureDef* self_, int32_t aDepth, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allAssocEntities) {
     try { self_->Init(aDepth, *aName, *allAssocEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -19219,7 +19215,7 @@ extern "C" OcctResult<bool> IGESCAFControl_Reader_inherited_TransferEntity(IGESC
     try { return {self->TransferEntity(start, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IGESCAFControl_Reader_inherited_TransferList(IGESCAFControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
+extern "C" OcctResult<int32_t> IGESCAFControl_Reader_inherited_TransferList(IGESCAFControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
     try { return {self->TransferList(list, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -19255,7 +19251,7 @@ extern "C" const char* IGESCAFControl_Reader_inherited_PrintStatsTransfer(const 
     try { self->PrintStatsTransfer(what, mode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESCAFControl_Reader_inherited_GetStatsTransfer(const IGESCAFControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
+extern "C" const char* IGESCAFControl_Reader_inherited_GetStatsTransfer(const IGESCAFControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
     try { self->GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -19909,7 +19905,7 @@ extern "C" OcctResult<bool> IGESControl_Reader_inherited_TransferEntity(IGESCont
     try { return {self->TransferEntity(start, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IGESControl_Reader_inherited_TransferList(IGESControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
+extern "C" OcctResult<int32_t> IGESControl_Reader_inherited_TransferList(IGESControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Message_ProgressRange const& theProgress) {
     try { return {self->TransferList(list, theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -19945,7 +19941,7 @@ extern "C" const char* IGESControl_Reader_inherited_PrintStatsTransfer(const IGE
     try { self->PrintStatsTransfer(what, mode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESControl_Reader_inherited_GetStatsTransfer(const IGESControl_Reader* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
+extern "C" const char* IGESControl_Reader_inherited_GetStatsTransfer(const IGESControl_Reader* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, int32_t& nbMapped, int32_t& nbWithResult, int32_t& nbWithFail) {
     try { self->GetStatsTransfer(list, nbMapped, nbWithResult, nbWithFail); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21290,7 +21286,7 @@ extern "C" const char* IGESData_FreeFormatEntity_add_entity(IGESData_FreeFormatE
     try { self_->AddEntity(static_cast<Interface_ParamType>(ptype), *ent, negative); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESData_FreeFormatEntity_add_entities(IGESData_FreeFormatEntity* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* ents) {
+extern "C" const char* IGESData_FreeFormatEntity_add_entities(IGESData_FreeFormatEntity* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* ents) {
     try { self_->AddEntities(*ents); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23856,8 +23852,8 @@ extern "C" OcctResult<IGESData_IGESModel*> IGESData_IGESModel_ctor() {
     try { return {new IGESData_IGESModel(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESData_IGESModel_start_section(const IGESData_IGESModel* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->StartSection()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESData_IGESModel_start_section(const IGESData_IGESModel* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->StartSection()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESData_IGESModel_entity(const IGESData_IGESModel* self_, int32_t num) {
@@ -23892,7 +23888,7 @@ extern "C" const char* IGESData_IGESModel_clear_start_section(IGESData_IGESModel
     try { self_->ClearStartSection(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESData_IGESModel_set_start_section(IGESData_IGESModel* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list, bool copy) {
+extern "C" const char* IGESData_IGESModel_set_start_section(IGESData_IGESModel* self_, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* list, bool copy) {
     try { self_->SetStartSection(*list, copy); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24190,8 +24186,8 @@ extern "C" OcctResult<IGESData_IGESReaderData*> IGESData_IGESReaderData_ctor_int
     try { return {new IGESData_IGESReaderData(nbe, nbp), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESData_IGESReaderData_start_section(const IGESData_IGESReaderData* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->StartSection()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESData_IGESReaderData_start_section(const IGESData_IGESReaderData* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->StartSection()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<IGESData_IGESType*> IGESData_IGESReaderData_dir_type(const IGESData_IGESReaderData* self_, int32_t num) {
@@ -24550,8 +24546,8 @@ extern "C" OcctResult<IGESData_IGESWriter*> IGESData_IGESWriter_ctor() {
     try { return {new IGESData_IGESWriter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESData_IGESWriter_section_strings(const IGESData_IGESWriter* self_, int32_t numsec) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SectionStrings(numsec)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESData_IGESWriter_section_strings(const IGESData_IGESWriter* self_, int32_t numsec) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->SectionStrings(numsec)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_FloatWriter*> IGESData_IGESWriter_float_writer(IGESData_IGESWriter* self_) {
@@ -26408,19 +26404,19 @@ extern "C" OcctResult<bool> IGESData_ParamReader_read_reals_paramcursor_charptr_
     try { return {self_->ReadReals(*PC, mess, *val, index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESData_ParamReader_read_texts_paramcursor_msg_handlencollectionharray1opencascadehandletcollectionhasciistring_int(IGESData_ParamReader* self_, IGESData_ParamCursor const* PC, Message_Msg const* amsg, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)* val, int32_t index) {
+extern "C" OcctResult<bool> IGESData_ParamReader_read_texts_paramcursor_msg_harr1_tcollection_hasciistring_int(IGESData_ParamReader* self_, IGESData_ParamCursor const* PC, Message_Msg const* amsg, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)* val, int32_t index) {
     try { return {self_->ReadTexts(*PC, *amsg, *val, index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESData_ParamReader_read_texts_paramcursor_charptr_handlencollectionharray1opencascadehandletcollectionhasciistring_int(IGESData_ParamReader* self_, IGESData_ParamCursor const* PC, const char* mess, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString)* val, int32_t index) {
+extern "C" OcctResult<bool> IGESData_ParamReader_read_texts_paramcursor_charptr_harr1_tcollection_hasciistring_int(IGESData_ParamReader* self_, IGESData_ParamCursor const* PC, const char* mess, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString)* val, int32_t index) {
     try { return {self_->ReadTexts(*PC, mess, *val, index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_handlencollectionharray1opencascadehandleigesdataigesentity_int(IGESData_ParamReader* self_, Handle(IGESData_IGESReaderData) const* IR, IGESData_ParamCursor const* PC, Message_Msg const* amsg, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)* val, int32_t index) {
+extern "C" OcctResult<bool> IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_harr1_igesdata_igesentity_int(IGESData_ParamReader* self_, Handle(IGESData_IGESReaderData) const* IR, IGESData_ParamCursor const* PC, Message_Msg const* amsg, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)* val, int32_t index) {
     try { return {self_->ReadEnts(*IR, *PC, *amsg, *val, index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handlencollectionharray1opencascadehandleigesdataigesentity_int(IGESData_ParamReader* self_, Handle(IGESData_IGESReaderData) const* IR, IGESData_ParamCursor const* PC, const char* mess, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)* val, int32_t index) {
+extern "C" OcctResult<bool> IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_harr1_igesdata_igesentity_int(IGESData_ParamReader* self_, Handle(IGESData_IGESReaderData) const* IR, IGESData_ParamCursor const* PC, const char* mess, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)* val, int32_t index) {
     try { return {self_->ReadEnts(*IR, *PC, mess, *val, index), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -29048,7 +29044,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDefs_AttributeDef_attrib
     try { return {new Handle(IGESData_IGESEntity)(self_->AttributeAsEntity(AttrNum, ValueNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_AttributeDef_init(IGESDefs_AttributeDef* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aListType, Handle(NCollection_HArray1_int) const* attrTypes, Handle(NCollection_HArray1_int) const* attrValueDataTypes, Handle(NCollection_HArray1_int) const* attrValueCounts, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* attrValues, Handle(IGESDefs_HArray1OfHArray1OfTextDisplayTemplate) const* attrValuePointers) {
+extern "C" const char* IGESDefs_AttributeDef_init(IGESDefs_AttributeDef* self_, Handle(TCollection_HAsciiString) const* aName, int32_t aListType, Handle(NCollection_HArray1_int) const* attrTypes, Handle(NCollection_HArray1_int) const* attrValueDataTypes, Handle(NCollection_HArray1_int) const* attrValueCounts, Handle(NCollection_HArray1_Handle_Standard_Transient) const* attrValues, Handle(IGESDefs_HArray1OfHArray1OfTextDisplayTemplate) const* attrValuePointers) {
     try { self_->Init(*aName, aListType, *attrTypes, *attrValueDataTypes, *attrValueCounts, *attrValues, *attrValuePointers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -29442,7 +29438,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDefs_AttributeTable_attr
     try { return {new Handle(IGESData_IGESEntity)(self_->AttributeAsEntity(AtNum, Rownum, ValNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_AttributeTable_init(IGESDefs_AttributeTable* self_, Handle(NCollection_HArray2_opencascade_handle_Standard_Transient) const* attributes) {
+extern "C" const char* IGESDefs_AttributeTable_init(IGESDefs_AttributeTable* self_, Handle(NCollection_HArray2_Handle_Standard_Transient) const* attributes) {
     try { self_->Init(*attributes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -29992,7 +29988,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDefs_GenericData_value_a
     try { return {new Handle(IGESData_IGESEntity)(self_->ValueAsEntity(ValueNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_GenericData_init(IGESDefs_GenericData* self_, int32_t nbPropVal, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_int) const* allTypes, Handle(NCollection_HArray1_opencascade_handle_Standard_Transient) const* allValues) {
+extern "C" const char* IGESDefs_GenericData_init(IGESDefs_GenericData* self_, int32_t nbPropVal, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_int) const* allTypes, Handle(NCollection_HArray1_Handle_Standard_Transient) const* allValues) {
     try { self_->Init(nbPropVal, *aName, *allTypes, *allValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -30350,8 +30346,8 @@ extern "C" OcctResult<IGESDefs_HArray1OfHArray1OfTextDisplayTemplate*> IGESDefs_
     try { return {new IGESDefs_HArray1OfHArray1OfTextDisplayTemplate(low, up), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate)*> IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_value(const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate* self_, int32_t num) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate)(self_->Value(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate)*> IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_value(const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate* self_, int32_t num) {
+    try { return {new Handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate)(self_->Value(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_lower(const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate* self_) {
@@ -30366,7 +30362,7 @@ extern "C" OcctResult<int32_t> IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_le
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_set_value(IGESDefs_HArray1OfHArray1OfTextDisplayTemplate* self_, int32_t num, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate) const* val) {
+extern "C" const char* IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_set_value(IGESDefs_HArray1OfHArray1OfTextDisplayTemplate* self_, int32_t num, Handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate) const* val) {
     try { self_->SetValue(num, *val); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -30450,7 +30446,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESDefs_MacroDef_endma
     try { return {new Handle(TCollection_HAsciiString)(self_->ENDMACRO()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_MacroDef_init(IGESDefs_MacroDef* self_, Handle(TCollection_HAsciiString) const* macro, int32_t entityTypeID, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* langStatements, Handle(TCollection_HAsciiString) const* endMacro) {
+extern "C" const char* IGESDefs_MacroDef_init(IGESDefs_MacroDef* self_, Handle(TCollection_HAsciiString) const* macro, int32_t entityTypeID, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* langStatements, Handle(TCollection_HAsciiString) const* endMacro) {
     try { self_->Init(*macro, entityTypeID, *langStatements, *endMacro); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -31758,7 +31754,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESDefs_UnitsData_unit
     try { return {new Handle(TCollection_HAsciiString)(self_->UnitValue(UnitNum)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDefs_UnitsData_init(IGESDefs_UnitsData* self_, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* unitTypes, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* unitValues, Handle(NCollection_HArray1_double) const* unitScales) {
+extern "C" const char* IGESDefs_UnitsData_init(IGESDefs_UnitsData* self_, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* unitTypes, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* unitValues, Handle(NCollection_HArray1_double) const* unitScales) {
     try { self_->Init(*unitTypes, *unitValues, *unitScales); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -35060,7 +35056,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDimen_DimensionedGeometr
     try { return {new Handle(IGESData_IGESEntity)(self_->GeometryEntity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_DimensionedGeometry_init(IGESDimen_DimensionedGeometry* self_, int32_t nbDims, Handle(IGESData_IGESEntity) const* aDimension, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* entities) {
+extern "C" const char* IGESDimen_DimensionedGeometry_init(IGESDimen_DimensionedGeometry* self_, int32_t nbDims, Handle(IGESData_IGESEntity) const* aDimension, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* entities) {
     try { self_->Init(nbDims, *aDimension, *entities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -35418,7 +35414,7 @@ extern "C" OcctResult<Handle(IGESDimen_LeaderArrow)*> IGESDimen_FlagNote_leader(
     try { return {new Handle(IGESDimen_LeaderArrow)(self_->Leader(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_FlagNote_init(IGESDimen_FlagNote* self_, gp_XYZ const* leftCorner, double anAngle, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow) const* someLeaders) {
+extern "C" const char* IGESDimen_FlagNote_init(IGESDimen_FlagNote* self_, gp_XYZ const* leftCorner, double anAngle, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_Handle_IGESDimen_LeaderArrow) const* someLeaders) {
     try { self_->Init(*leftCorner, anAngle, *aNote, *someLeaders); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -35788,7 +35784,7 @@ extern "C" OcctResult<Handle(IGESDimen_LeaderArrow)*> IGESDimen_GeneralLabel_lea
     try { return {new Handle(IGESDimen_LeaderArrow)(self_->Leader(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_GeneralLabel_init(IGESDimen_GeneralLabel* self_, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow) const* someLeaders) {
+extern "C" const char* IGESDimen_GeneralLabel_init(IGESDimen_GeneralLabel* self_, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_Handle_IGESDimen_LeaderArrow) const* someLeaders) {
     try { self_->Init(*aNote, *someLeaders); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -36310,7 +36306,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESDimen_GeneralNote_t
     try { return {new Handle(TCollection_HAsciiString)(self_->Text(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_GeneralNote_init(IGESDimen_GeneralNote* self_, Handle(NCollection_HArray1_int) const* nbChars, Handle(NCollection_HArray1_double) const* widths, Handle(NCollection_HArray1_double) const* heights, Handle(NCollection_HArray1_int) const* fontCodes, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef) const* fonts, Handle(NCollection_HArray1_double) const* slants, Handle(NCollection_HArray1_double) const* rotations, Handle(NCollection_HArray1_int) const* mirrorFlags, Handle(NCollection_HArray1_int) const* rotFlags, Handle(NCollection_HArray1_gp_XYZ) const* start, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* texts) {
+extern "C" const char* IGESDimen_GeneralNote_init(IGESDimen_GeneralNote* self_, Handle(NCollection_HArray1_int) const* nbChars, Handle(NCollection_HArray1_double) const* widths, Handle(NCollection_HArray1_double) const* heights, Handle(NCollection_HArray1_int) const* fontCodes, Handle(NCollection_HArray1_Handle_IGESGraph_TextFontDef) const* fonts, Handle(NCollection_HArray1_double) const* slants, Handle(NCollection_HArray1_double) const* rotations, Handle(NCollection_HArray1_int) const* mirrorFlags, Handle(NCollection_HArray1_int) const* rotFlags, Handle(NCollection_HArray1_gp_XYZ) const* start, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* texts) {
     try { self_->Init(*nbChars, *widths, *heights, *fontCodes, *fonts, *slants, *rotations, *mirrorFlags, *rotFlags, *start, *texts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -36704,7 +36700,7 @@ extern "C" OcctResult<Handle(IGESDimen_LeaderArrow)*> IGESDimen_GeneralSymbol_le
     try { return {new Handle(IGESDimen_LeaderArrow)(self_->LeaderArrow(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_GeneralSymbol_init(IGESDimen_GeneralSymbol* self_, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allGeoms, Handle(NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow) const* allLeaders) {
+extern "C" const char* IGESDimen_GeneralSymbol_init(IGESDimen_GeneralSymbol* self_, Handle(IGESDimen_GeneralNote) const* aNote, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allGeoms, Handle(NCollection_HArray1_Handle_IGESDimen_LeaderArrow) const* allLeaders) {
     try { self_->Init(*aNote, *allGeoms, *allLeaders); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -37806,7 +37802,7 @@ extern "C" OcctResult<gp_Pnt*> IGESDimen_NewDimensionedGeometry_transformed_poin
     try { return {new gp_Pnt(self_->TransformedPoint(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_NewDimensionedGeometry_init(IGESDimen_NewDimensionedGeometry* self_, int32_t nbDimens, Handle(IGESData_IGESEntity) const* aDimen, int32_t anOrientation, double anAngle, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities, Handle(NCollection_HArray1_int) const* allLocations, Handle(NCollection_HArray1_gp_XYZ) const* allPoints) {
+extern "C" const char* IGESDimen_NewDimensionedGeometry_init(IGESDimen_NewDimensionedGeometry* self_, int32_t nbDimens, Handle(IGESData_IGESEntity) const* aDimen, int32_t anOrientation, double anAngle, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities, Handle(NCollection_HArray1_int) const* allLocations, Handle(NCollection_HArray1_gp_XYZ) const* allPoints) {
     try { self_->Init(nbDimens, *aDimen, anOrientation, anAngle, *allEntities, *allLocations, *allPoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -38196,7 +38192,7 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IGESDimen_NewGeneralNot
     try { return {new Handle(TCollection_HAsciiString)(self_->Text(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_NewGeneralNote_init(IGESDimen_NewGeneralNote* self_, double width, double height, int32_t justifyCode, gp_XYZ const* areaLoc, double areaRotationAngle, gp_XYZ const* baseLinePos, double normalInterlineSpace, Handle(NCollection_HArray1_int) const* charDisplays, Handle(NCollection_HArray1_double) const* charWidths, Handle(NCollection_HArray1_double) const* charHeights, Handle(NCollection_HArray1_double) const* interCharSpc, Handle(NCollection_HArray1_double) const* interLineSpc, Handle(NCollection_HArray1_int) const* fontStyles, Handle(NCollection_HArray1_double) const* charAngles, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* controlCodeStrings, Handle(NCollection_HArray1_int) const* nbChars, Handle(NCollection_HArray1_double) const* boxWidths, Handle(NCollection_HArray1_double) const* boxHeights, Handle(NCollection_HArray1_int) const* charSetCodes, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* charSetEntities, Handle(NCollection_HArray1_double) const* slAngles, Handle(NCollection_HArray1_double) const* rotAngles, Handle(NCollection_HArray1_int) const* mirrorFlags, Handle(NCollection_HArray1_int) const* rotateFlags, Handle(NCollection_HArray1_gp_XYZ) const* startPoints, Handle(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString) const* texts) {
+extern "C" const char* IGESDimen_NewGeneralNote_init(IGESDimen_NewGeneralNote* self_, double width, double height, int32_t justifyCode, gp_XYZ const* areaLoc, double areaRotationAngle, gp_XYZ const* baseLinePos, double normalInterlineSpace, Handle(NCollection_HArray1_int) const* charDisplays, Handle(NCollection_HArray1_double) const* charWidths, Handle(NCollection_HArray1_double) const* charHeights, Handle(NCollection_HArray1_double) const* interCharSpc, Handle(NCollection_HArray1_double) const* interLineSpc, Handle(NCollection_HArray1_int) const* fontStyles, Handle(NCollection_HArray1_double) const* charAngles, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* controlCodeStrings, Handle(NCollection_HArray1_int) const* nbChars, Handle(NCollection_HArray1_double) const* boxWidths, Handle(NCollection_HArray1_double) const* boxHeights, Handle(NCollection_HArray1_int) const* charSetCodes, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* charSetEntities, Handle(NCollection_HArray1_double) const* slAngles, Handle(NCollection_HArray1_double) const* rotAngles, Handle(NCollection_HArray1_int) const* mirrorFlags, Handle(NCollection_HArray1_int) const* rotateFlags, Handle(NCollection_HArray1_gp_XYZ) const* startPoints, Handle(NCollection_HArray1_Handle_TCollection_HAsciiString) const* texts) {
     try { self_->Init(width, height, justifyCode, *areaLoc, areaRotationAngle, *baseLinePos, normalInterlineSpace, *charDisplays, *charWidths, *charHeights, *interCharSpc, *interLineSpc, *fontStyles, *charAngles, *controlCodeStrings, *nbChars, *boxWidths, *boxHeights, *charSetCodes, *charSetEntities, *slAngles, *rotAngles, *mirrorFlags, *rotateFlags, *startPoints, *texts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -40318,7 +40314,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDimen_SectionedArea_isla
     try { return {new Handle(IGESData_IGESEntity)(self_->IslandCurve(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDimen_SectionedArea_init(IGESDimen_SectionedArea* self_, Handle(IGESData_IGESEntity) const* aCurve, int32_t aPattern, gp_XYZ const* aPoint, double aDistance, double anAngle, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* someIslands) {
+extern "C" const char* IGESDimen_SectionedArea_init(IGESDimen_SectionedArea* self_, Handle(IGESData_IGESEntity) const* aCurve, int32_t aPattern, gp_XYZ const* aPoint, double aDistance, double anAngle, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* someIslands) {
     try { self_->Init(*aCurve, aPattern, *aPoint, aDistance, anAngle, *someIslands); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -42826,7 +42822,7 @@ extern "C" OcctResult<gp_XY*> IGESDraw_Drawing_view_to_drawing(const IGESDraw_Dr
     try { return {new gp_XY(self_->ViewToDrawing(NumView, *ViewCoords)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_Drawing_init(IGESDraw_Drawing* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XY) const* allViewOrigins, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allAnnotations) {
+extern "C" const char* IGESDraw_Drawing_init(IGESDraw_Drawing* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XY) const* allViewOrigins, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allAnnotations) {
     try { self_->Init(*allViews, *allViewOrigins, *allAnnotations); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -43192,7 +43188,7 @@ extern "C" OcctResult<gp_XY*> IGESDraw_DrawingWithRotation_view_to_drawing(const
     try { return {new gp_XY(self_->ViewToDrawing(NumView, *ViewCoords)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_DrawingWithRotation_init(IGESDraw_DrawingWithRotation* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XY) const* allViewOrigins, Handle(NCollection_HArray1_double) const* allOrientationAngles, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allAnnotations) {
+extern "C" const char* IGESDraw_DrawingWithRotation_init(IGESDraw_DrawingWithRotation* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XY) const* allViewOrigins, Handle(NCollection_HArray1_double) const* allOrientationAngles, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allAnnotations) {
     try { self_->Init(*allViews, *allViewOrigins, *allOrientationAngles, *allAnnotations); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -43734,7 +43730,7 @@ extern "C" OcctResult<gp_Pnt*> IGESDraw_LabelDisplay_transformed_text_location(c
     try { return {new gp_Pnt(self_->TransformedTextLocation(ViewIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_LabelDisplay_init(IGESDraw_LabelDisplay* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XYZ) const* allTextLocations, Handle(NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow) const* allLeaderEntities, Handle(NCollection_HArray1_int) const* allLabelLevels, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allDisplayedEntities) {
+extern "C" const char* IGESDraw_LabelDisplay_init(IGESDraw_LabelDisplay* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_gp_XYZ) const* allTextLocations, Handle(NCollection_HArray1_Handle_IGESDimen_LeaderArrow) const* allLeaderEntities, Handle(NCollection_HArray1_int) const* allLabelLevels, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allDisplayedEntities) {
     try { self_->Init(*allViews, *allTextLocations, *allLeaderEntities, *allLabelLevels, *allDisplayedEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -44110,7 +44106,7 @@ extern "C" OcctResult<Handle(IGESDraw_ConnectPoint)*> IGESDraw_NetworkSubfigure_
     try { return {new Handle(IGESDraw_ConnectPoint)(self_->ConnectPoint(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_NetworkSubfigure_init(IGESDraw_NetworkSubfigure* self_, Handle(IGESDraw_NetworkSubfigureDef) const* aDefinition, gp_XYZ const* aTranslation, gp_XYZ const* aScaleFactor, int32_t aTypeFlag, Handle(TCollection_HAsciiString) const* aDesignator, Handle(IGESGraph_TextDisplayTemplate) const* aTemplate, Handle(NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint) const* allConnectPoints) {
+extern "C" const char* IGESDraw_NetworkSubfigure_init(IGESDraw_NetworkSubfigure* self_, Handle(IGESDraw_NetworkSubfigureDef) const* aDefinition, gp_XYZ const* aTranslation, gp_XYZ const* aScaleFactor, int32_t aTypeFlag, Handle(TCollection_HAsciiString) const* aDesignator, Handle(IGESGraph_TextDisplayTemplate) const* aTemplate, Handle(NCollection_HArray1_Handle_IGESDraw_ConnectPoint) const* allConnectPoints) {
     try { self_->Init(*aDefinition, *aTranslation, *aScaleFactor, aTypeFlag, *aDesignator, *aTemplate, *allConnectPoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -44476,7 +44472,7 @@ extern "C" OcctResult<Handle(IGESDraw_ConnectPoint)*> IGESDraw_NetworkSubfigureD
     try { return {new Handle(IGESDraw_ConnectPoint)(self_->PointEntity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_NetworkSubfigureDef_init(IGESDraw_NetworkSubfigureDef* self_, int32_t aDepth, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities, int32_t aTypeFlag, Handle(TCollection_HAsciiString) const* aDesignator, Handle(IGESGraph_TextDisplayTemplate) const* aTemplate, Handle(NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint) const* allPointEntities) {
+extern "C" const char* IGESDraw_NetworkSubfigureDef_init(IGESDraw_NetworkSubfigureDef* self_, int32_t aDepth, Handle(TCollection_HAsciiString) const* aName, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities, int32_t aTypeFlag, Handle(TCollection_HAsciiString) const* aDesignator, Handle(IGESGraph_TextDisplayTemplate) const* aTemplate, Handle(NCollection_HArray1_Handle_IGESDraw_ConnectPoint) const* allPointEntities) {
     try { self_->Init(aDepth, *aName, *allEntities, aTypeFlag, *aDesignator, *aTemplate, *allPointEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -45250,7 +45246,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDraw_Planar_entity(const
     try { return {new Handle(IGESData_IGESEntity)(self_->Entity(EntityIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_Planar_init(IGESDraw_Planar* self_, int32_t nbMats, Handle(IGESGeom_TransformationMatrix) const* aTransformationMatrix, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities) {
+extern "C" const char* IGESDraw_Planar_init(IGESDraw_Planar* self_, int32_t nbMats, Handle(IGESGeom_TransformationMatrix) const* aTransformationMatrix, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities) {
     try { self_->Init(nbMats, *aTransformationMatrix, *allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -46230,7 +46226,7 @@ extern "C" OcctResult<Handle(IGESData_LineFontEntity)*> IGESDraw_SegmentedViewsV
     try { return {new Handle(IGESData_LineFontEntity)(self_->LineFontDefinition(FontIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_SegmentedViewsVisible_init(IGESDraw_SegmentedViewsVisible* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_double) const* allBreakpointParameters, Handle(NCollection_HArray1_int) const* allDisplayFlags, Handle(NCollection_HArray1_int) const* allColorValues, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_Color) const* allColorDefinitions, Handle(NCollection_HArray1_int) const* allLineFontValues, Handle(NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity) const* allLineFontDefinitions, Handle(NCollection_HArray1_int) const* allLineWeights) {
+extern "C" const char* IGESDraw_SegmentedViewsVisible_init(IGESDraw_SegmentedViewsVisible* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViews, Handle(NCollection_HArray1_double) const* allBreakpointParameters, Handle(NCollection_HArray1_int) const* allDisplayFlags, Handle(NCollection_HArray1_int) const* allColorValues, Handle(NCollection_HArray1_Handle_IGESGraph_Color) const* allColorDefinitions, Handle(NCollection_HArray1_int) const* allLineFontValues, Handle(NCollection_HArray1_Handle_IGESData_LineFontEntity) const* allLineFontDefinitions, Handle(NCollection_HArray1_int) const* allLineWeights) {
     try { self_->Init(*allViews, *allBreakpointParameters, *allDisplayFlags, *allColorValues, *allColorDefinitions, *allLineFontValues, *allLineFontDefinitions, *allLineWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -47692,11 +47688,11 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDraw_ViewsVisible_displa
     try { return {new Handle(IGESData_IGESEntity)(self_->DisplayedEntity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_ViewsVisible_init(IGESDraw_ViewsVisible* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViewEntities, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allDisplayEntity) {
+extern "C" const char* IGESDraw_ViewsVisible_init(IGESDraw_ViewsVisible* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViewEntities, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allDisplayEntity) {
     try { self_->Init(*allViewEntities, *allDisplayEntity); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESDraw_ViewsVisible_init_implied(IGESDraw_ViewsVisible* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allDisplayEntity) {
+extern "C" const char* IGESDraw_ViewsVisible_init_implied(IGESDraw_ViewsVisible* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allDisplayEntity) {
     try { self_->InitImplied(*allDisplayEntity); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -48064,11 +48060,11 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESDraw_ViewsVisibleWithAtt
     try { return {new Handle(IGESData_IGESEntity)(self_->DisplayedEntity(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESDraw_ViewsVisibleWithAttr_init(IGESDraw_ViewsVisibleWithAttr* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity) const* allViewEntities, Handle(NCollection_HArray1_int) const* allLineFonts, Handle(NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity) const* allLineDefinitions, Handle(NCollection_HArray1_int) const* allColorValues, Handle(NCollection_HArray1_opencascade_handle_IGESGraph_Color) const* allColorDefinitions, Handle(NCollection_HArray1_int) const* allLineWeights, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allDisplayEntities) {
+extern "C" const char* IGESDraw_ViewsVisibleWithAttr_init(IGESDraw_ViewsVisibleWithAttr* self_, Handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity) const* allViewEntities, Handle(NCollection_HArray1_int) const* allLineFonts, Handle(NCollection_HArray1_Handle_IGESData_LineFontEntity) const* allLineDefinitions, Handle(NCollection_HArray1_int) const* allColorValues, Handle(NCollection_HArray1_Handle_IGESGraph_Color) const* allColorDefinitions, Handle(NCollection_HArray1_int) const* allLineWeights, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allDisplayEntities) {
     try { self_->Init(*allViewEntities, *allLineFonts, *allLineDefinitions, *allColorValues, *allColorDefinitions, *allLineWeights, *allDisplayEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESDraw_ViewsVisibleWithAttr_init_implied(IGESDraw_ViewsVisibleWithAttr* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allDisplayEntity) {
+extern "C" const char* IGESDraw_ViewsVisibleWithAttr_init_implied(IGESDraw_ViewsVisibleWithAttr* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allDisplayEntity) {
     try { self_->InitImplied(*allDisplayEntity); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49272,15 +49268,15 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESGeom_Boundary_model_spac
     try { return {new Handle(IGESData_IGESEntity)(self_->ModelSpaceCurve(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)*> IGESGeom_Boundary_parameter_curves(const IGESGeom_Boundary* self_, int32_t Index) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity)(self_->ParameterCurves(Index)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)*> IGESGeom_Boundary_parameter_curves(const IGESGeom_Boundary* self_, int32_t Index) {
+    try { return {new Handle(NCollection_HArray1_Handle_IGESData_IGESEntity)(self_->ParameterCurves(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESGeom_Boundary_parameter_curve(const IGESGeom_Boundary* self_, int32_t Index, int32_t Num) {
     try { return {new Handle(IGESData_IGESEntity)(self_->ParameterCurve(Index, Num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESGeom_Boundary_init(IGESGeom_Boundary* self_, int32_t aType, int32_t aPreference, Handle(IGESData_IGESEntity) const* aSurface, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allModelCurves, Handle(NCollection_HArray1_int) const* allSenses, Handle(IGESBasic_HArray1OfHArray1OfIGESEntity) const* allParameterCurves) {
+extern "C" const char* IGESGeom_Boundary_init(IGESGeom_Boundary* self_, int32_t aType, int32_t aPreference, Handle(IGESData_IGESEntity) const* aSurface, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allModelCurves, Handle(NCollection_HArray1_int) const* allSenses, Handle(IGESBasic_HArray1OfHArray1OfIGESEntity) const* allParameterCurves) {
     try { self_->Init(aType, aPreference, *aSurface, *allModelCurves, *allSenses, *allParameterCurves); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -49642,7 +49638,7 @@ extern "C" OcctResult<Handle(IGESGeom_Boundary)*> IGESGeom_BoundedSurface_bounda
     try { return {new Handle(IGESGeom_Boundary)(self_->Boundary(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESGeom_BoundedSurface_init(IGESGeom_BoundedSurface* self_, int32_t aType, Handle(IGESData_IGESEntity) const* aSurface, Handle(NCollection_HArray1_opencascade_handle_IGESGeom_Boundary) const* allBounds) {
+extern "C" const char* IGESGeom_BoundedSurface_init(IGESGeom_BoundedSurface* self_, int32_t aType, Handle(IGESData_IGESEntity) const* aSurface, Handle(NCollection_HArray1_Handle_IGESGeom_Boundary) const* allBounds) {
     try { self_->Init(aType, *aSurface, *allBounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -50370,7 +50366,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESGeom_CompositeCurve_curv
     try { return {new Handle(IGESData_IGESEntity)(self_->Curve(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESGeom_CompositeCurve_init(IGESGeom_CompositeCurve* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allEntities) {
+extern "C" const char* IGESGeom_CompositeCurve_init(IGESGeom_CompositeCurve* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allEntities) {
     try { self_->Init(*allEntities); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -57934,7 +57930,7 @@ extern "C" OcctResult<Handle(IGESGeom_CurveOnSurface)*> IGESGeom_TrimmedSurface_
     try { return {new Handle(IGESGeom_CurveOnSurface)(self_->InnerContour(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESGeom_TrimmedSurface_init(IGESGeom_TrimmedSurface* self_, Handle(IGESData_IGESEntity) const* aSurface, int32_t aFlag, Handle(IGESGeom_CurveOnSurface) const* anOuter, Handle(NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface) const* allInners) {
+extern "C" const char* IGESGeom_TrimmedSurface_init(IGESGeom_TrimmedSurface* self_, Handle(IGESData_IGESEntity) const* aSurface, int32_t aFlag, Handle(IGESGeom_CurveOnSurface) const* anOuter, Handle(NCollection_HArray1_Handle_IGESGeom_CurveOnSurface) const* allInners) {
     try { self_->Init(*aSurface, aFlag, *anOuter, *allInners); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -64396,8 +64392,8 @@ extern "C" OcctResult<IGESSelect_AddFileComment*> IGESSelect_AddFileComment_ctor
     try { return {new IGESSelect_AddFileComment(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESSelect_AddFileComment_lines(const IGESSelect_AddFileComment* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->Lines()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESSelect_AddFileComment_lines(const IGESSelect_AddFileComment* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->Lines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> IGESSelect_AddFileComment_label(const IGESSelect_AddFileComment* self_) {
@@ -64412,7 +64408,7 @@ extern "C" const char* IGESSelect_AddFileComment_add_line(IGESSelect_AddFileComm
     try { self_->AddLine(line); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESSelect_AddFileComment_add_lines(IGESSelect_AddFileComment* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* lines) {
+extern "C" const char* IGESSelect_AddFileComment_add_lines(IGESSelect_AddFileComment* self_, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* lines) {
     try { self_->AddLines(*lines); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -65340,11 +65336,11 @@ extern "C" OcctResult<bool> IGESSelect_CounterOfLevelNumber_inherited_AddEntity(
     try { return {self->AddEntity(ent, model), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSelect_CounterOfLevelNumber_inherited_AddList(IGESSelect_CounterOfLevelNumber* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Handle(Interface_InterfaceModel) const& model) {
+extern "C" const char* IGESSelect_CounterOfLevelNumber_inherited_AddList(IGESSelect_CounterOfLevelNumber* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Handle(Interface_InterfaceModel) const& model) {
     try { self->AddList(list, model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IGESSelect_CounterOfLevelNumber_inherited_AddWithGraph(IGESSelect_CounterOfLevelNumber* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Interface_Graph const& graph) {
+extern "C" const char* IGESSelect_CounterOfLevelNumber_inherited_AddWithGraph(IGESSelect_CounterOfLevelNumber* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Interface_Graph const& graph) {
     try { self->AddWithGraph(list, graph); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -65880,11 +65876,11 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IGESSelect_EditDirPart_inher
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESSelect_EditDirPart_inherited_ListValue(const IGESSelect_EditDirPart* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESSelect_EditDirPart_inherited_ListValue(const IGESSelect_EditDirPart* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESSelect_EditDirPart_inherited_UpdateList(const IGESSelect_EditDirPart* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> IGESSelect_EditDirPart_inherited_UpdateList(const IGESSelect_EditDirPart* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -66030,11 +66026,11 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IGESSelect_EditHeader_inheri
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IGESSelect_EditHeader_inherited_ListValue(const IGESSelect_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IGESSelect_EditHeader_inherited_ListValue(const IGESSelect_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESSelect_EditHeader_inherited_UpdateList(const IGESSelect_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> IGESSelect_EditHeader_inherited_UpdateList(const IGESSelect_EditHeader* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -70334,7 +70330,7 @@ extern "C" OcctResult<bool> IGESSelect_ViewSorter_add_entity(IGESSelect_ViewSort
     try { return {self_->AddEntity(*igesent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSelect_ViewSorter_add_list(IGESSelect_ViewSorter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" const char* IGESSelect_ViewSorter_add_list(IGESSelect_ViewSorter* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { self_->AddList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -70914,7 +70910,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESSolid_BooleanTree_operan
     try { return {new Handle(IGESData_IGESEntity)(self_->Operand(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_BooleanTree_init(IGESSolid_BooleanTree* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* operands, Handle(NCollection_HArray1_int) const* operations) {
+extern "C" const char* IGESSolid_BooleanTree_init(IGESSolid_BooleanTree* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* operands, Handle(NCollection_HArray1_int) const* operations) {
     try { self_->Init(*operands, *operations); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -72704,7 +72700,7 @@ extern "C" OcctResult<Handle(IGESSolid_VertexList)*> IGESSolid_EdgeList_end_vert
     try { return {new Handle(IGESSolid_VertexList)(self_->EndVertexList(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_EdgeList_init(IGESSolid_EdgeList* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* curves, Handle(NCollection_HArray1_opencascade_handle_IGESSolid_VertexList) const* startVertexList, Handle(NCollection_HArray1_int) const* startVertexIndex, Handle(NCollection_HArray1_opencascade_handle_IGESSolid_VertexList) const* endVertexList, Handle(NCollection_HArray1_int) const* endVertexIndex) {
+extern "C" const char* IGESSolid_EdgeList_init(IGESSolid_EdgeList* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* curves, Handle(NCollection_HArray1_Handle_IGESSolid_VertexList) const* startVertexList, Handle(NCollection_HArray1_int) const* startVertexIndex, Handle(NCollection_HArray1_Handle_IGESSolid_VertexList) const* endVertexList, Handle(NCollection_HArray1_int) const* endVertexIndex) {
     try { self_->Init(*curves, *startVertexList, *startVertexIndex, *endVertexList, *endVertexIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -73440,7 +73436,7 @@ extern "C" OcctResult<Handle(IGESSolid_Loop)*> IGESSolid_Face_loop_(const IGESSo
     try { return {new Handle(IGESSolid_Loop)(self_->Loop(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_Face_init(IGESSolid_Face* self_, Handle(IGESData_IGESEntity) const* aSurface, bool outerLoopFlag, Handle(NCollection_HArray1_opencascade_handle_IGESSolid_Loop) const* loops) {
+extern "C" const char* IGESSolid_Face_init(IGESSolid_Face* self_, Handle(IGESData_IGESEntity) const* aSurface, bool outerLoopFlag, Handle(NCollection_HArray1_Handle_IGESSolid_Loop) const* loops) {
     try { self_->Init(*aSurface, outerLoopFlag, *loops); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -73958,7 +73954,7 @@ extern "C" OcctResult<Handle(IGESData_IGESEntity)*> IGESSolid_Loop_parametric_cu
     try { return {new Handle(IGESData_IGESEntity)(self_->ParametricCurve(EdgeIndex, CurveIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_Loop_init(IGESSolid_Loop* self_, Handle(NCollection_HArray1_int) const* types, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* edges, Handle(NCollection_HArray1_int) const* index, Handle(NCollection_HArray1_int) const* orient, Handle(NCollection_HArray1_int) const* nbParameterCurves, Handle(IGESBasic_HArray1OfHArray1OfInteger) const* isoparametricFlags, Handle(IGESBasic_HArray1OfHArray1OfIGESEntity) const* curves) {
+extern "C" const char* IGESSolid_Loop_init(IGESSolid_Loop* self_, Handle(NCollection_HArray1_int) const* types, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* edges, Handle(NCollection_HArray1_int) const* index, Handle(NCollection_HArray1_int) const* orient, Handle(NCollection_HArray1_int) const* nbParameterCurves, Handle(IGESBasic_HArray1OfHArray1OfInteger) const* isoparametricFlags, Handle(IGESBasic_HArray1OfHArray1OfIGESEntity) const* curves) {
     try { self_->Init(*types, *edges, *index, *orient, *nbParameterCurves, *isoparametricFlags, *curves); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -74332,7 +74328,7 @@ extern "C" OcctResult<Handle(IGESSolid_Shell)*> IGESSolid_ManifoldSolid_void_she
     try { return {new Handle(IGESSolid_Shell)(self_->VoidShell(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_ManifoldSolid_init(IGESSolid_ManifoldSolid* self_, Handle(IGESSolid_Shell) const* aShell, bool shellflag, Handle(NCollection_HArray1_opencascade_handle_IGESSolid_Shell) const* voidShells, Handle(NCollection_HArray1_int) const* voidShellFlags) {
+extern "C" const char* IGESSolid_ManifoldSolid_init(IGESSolid_ManifoldSolid* self_, Handle(IGESSolid_Shell) const* aShell, bool shellflag, Handle(NCollection_HArray1_Handle_IGESSolid_Shell) const* voidShells, Handle(NCollection_HArray1_int) const* voidShellFlags) {
     try { self_->Init(*aShell, shellflag, *voidShells, *voidShellFlags); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -75996,7 +75992,7 @@ extern "C" OcctResult<Handle(IGESSolid_Face)*> IGESSolid_Shell_face(const IGESSo
     try { return {new Handle(IGESSolid_Face)(self_->Face(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_Shell_init(IGESSolid_Shell* self_, Handle(NCollection_HArray1_opencascade_handle_IGESSolid_Face) const* allFaces, Handle(NCollection_HArray1_int) const* allOrient) {
+extern "C" const char* IGESSolid_Shell_init(IGESSolid_Shell* self_, Handle(NCollection_HArray1_Handle_IGESSolid_Face) const* allFaces, Handle(NCollection_HArray1_int) const* allOrient) {
     try { self_->Init(*allFaces, *allOrient); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -76354,7 +76350,7 @@ extern "C" OcctResult<Handle(IGESGeom_TransformationMatrix)*> IGESSolid_SolidAss
     try { return {new Handle(IGESGeom_TransformationMatrix)(self_->TransfMatrix(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IGESSolid_SolidAssembly_init(IGESSolid_SolidAssembly* self_, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* allItems, Handle(NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix) const* allMatrices) {
+extern "C" const char* IGESSolid_SolidAssembly_init(IGESSolid_SolidAssembly* self_, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* allItems, Handle(NCollection_HArray1_Handle_IGESGeom_TransformationMatrix) const* allMatrices) {
     try { self_->Init(*allItems, *allMatrices); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -81722,11 +81718,11 @@ extern "C" const char* IGESToBRep_IGESBoundary_init(IGESToBRep_IGESBoundary* sel
     try { self_->Init(*CS, *entity, *face, *trans, uFact, filepreference); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handlencollectionharray1opencascadehandleigesdataigesentity_int(IGESToBRep_IGESBoundary* self_, bool* okCurve, bool* okCurve3d, bool* okCurve2d, Handle(IGESData_IGESEntity) const* curve3d, bool toreverse3d, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* curves2d, int32_t number) {
+extern "C" OcctResult<bool> IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_harr1_igesdata_igesentity_int(IGESToBRep_IGESBoundary* self_, bool* okCurve, bool* okCurve3d, bool* okCurve2d, Handle(IGESData_IGESEntity) const* curve3d, bool toreverse3d, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* curves2d, int32_t number) {
     try { return {self_->Transfer(*okCurve, *okCurve3d, *okCurve2d, *curve3d, toreverse3d, *curves2d, number), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handlencollectionharray1opencascadehandleigesdataigesentity_bool_int_handleshapeextendwiredata(IGESToBRep_IGESBoundary* self_, bool* okCurve, bool* okCurve3d, bool* okCurve2d, Handle(ShapeExtend_WireData) const* curve3d, Handle(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity) const* curves2d, bool toreverse2d, int32_t number, Handle(ShapeExtend_WireData)* lsewd) {
+extern "C" OcctResult<bool> IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_harr1_igesdata_igesentity_bool_int_handleshapeextendwiredata(IGESToBRep_IGESBoundary* self_, bool* okCurve, bool* okCurve3d, bool* okCurve2d, Handle(ShapeExtend_WireData) const* curve3d, Handle(NCollection_HArray1_Handle_IGESData_IGESEntity) const* curves2d, bool toreverse2d, int32_t number, Handle(ShapeExtend_WireData)* lsewd) {
     try { return {self_->Transfer(*okCurve, *okCurve3d, *okCurve2d, *curve3d, *curves2d, toreverse2d, number, *lsewd), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -82667,7 +82663,7 @@ extern "C" OcctResult<bool> IGESToBRep_is_b_rep_entity(Handle(IGESData_IGESEntit
     try { return {IGESToBRep::IsBRepEntity(*start), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IGESToBRep_iges_curve_to_sequence_of_iges_curve(Handle(IGESData_IGESEntity) const* curve, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)* sequence) {
+extern "C" OcctResult<int32_t> IGESToBRep_iges_curve_to_sequence_of_iges_curve(Handle(IGESData_IGESEntity) const* curve, Handle(NCollection_HSequence_Handle_Standard_Transient)* sequence) {
     try { return {IGESToBRep::IGESCurveToSequenceOfIGESCurve(*curve, *sequence), nullptr}; }
     OCCT_CATCH_RETURN
 }

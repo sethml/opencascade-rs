@@ -26,7 +26,6 @@
 #include <CDM_Application.hxx>
 #include <CDM_CanCloseStatus.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_MetaData.hxx>
 #include <CDM_Reference.hxx>
 #include <CDM_ReferenceIterator.hxx>
 #include <LDOM_Attr.hxx>
@@ -55,7 +54,6 @@
 #include <OSD_Path.hxx>
 #include <PCDM.hxx>
 #include <PCDM_DOMHeaderParser.hxx>
-#include <PCDM_Document.hxx>
 #include <PCDM_DriverError.hxx>
 #include <PCDM_ReadWriter.hxx>
 #include <PCDM_ReadWriter_1.hxx>
@@ -80,7 +78,6 @@
 #include <Storage_Error.hxx>
 #include <Storage_OpenMode.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
 #include <UTL.hxx>
 #include <XCAFApp_Application.hxx>
@@ -441,6 +438,10 @@ extern "C" OcctResult<TCollection_AsciiString*> CDF_Application_inherited_Versio
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> CDF_Application_inherited_MetaDataLookUpTable(CDF_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> CDF_Application_inherited_IsInstance(const CDF_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -593,6 +594,10 @@ extern "C" void CDF_DirectoryIterator_destructor(CDF_DirectoryIterator* self_) {
 // CDF_FWOSDriver wrappers
 // ========================
 
+extern "C" OcctResult<CDF_FWOSDriver*> CDF_FWOSDriver_ctor_dmap_extendedstring_cdm_metadata(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* theLookUpTable) {
+    try { return {new CDF_FWOSDriver(*theLookUpTable), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<TCollection_ExtendedString*> CDF_FWOSDriver_default_folder(CDF_FWOSDriver* self_) {
     try { return {new TCollection_ExtendedString(self_->DefaultFolder()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1137,6 +1142,10 @@ extern "C" const char* CDM_Application_write(CDM_Application* self_, char16_t co
     try { self_->Write(aString); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> CDM_Application_meta_data_look_up_table(CDM_Application* self_) {
+    try { return {&(self_->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> CDM_Application_dynamic_type(const CDM_Application* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1622,6 +1631,14 @@ extern "C" const char* CDM_MetaData_unset_is_read_only(CDM_MetaData* self_) {
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> CDM_MetaData_dynamic_type(const CDM_MetaData* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(CDM_MetaData)*> CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring4_bool(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* theLookUpTable, TCollection_ExtendedString const* aFolder, TCollection_ExtendedString const* aName, TCollection_ExtendedString const* aPath, TCollection_ExtendedString const* aFileName, bool ReadOnly) {
+    try { return {new Handle(CDM_MetaData)(CDM_MetaData::LookUp(*theLookUpTable, *aFolder, *aName, *aPath, *aFileName, ReadOnly)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(CDM_MetaData)*> CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring5_bool(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* theLookUpTable, TCollection_ExtendedString const* aFolder, TCollection_ExtendedString const* aName, TCollection_ExtendedString const* aPath, TCollection_ExtendedString const* aVersion, TCollection_ExtendedString const* aFileName, bool ReadOnly) {
+    try { return {new Handle(CDM_MetaData)(CDM_MetaData::LookUp(*theLookUpTable, *aFolder, *aName, *aPath, *aVersion, *aFileName, ReadOnly)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> CDM_MetaData_get_type_name() {
@@ -3756,13 +3773,17 @@ extern "C" OcctResult<PCDM_StorageDriver*> PCDM_StorageDriver_ctor() {
     try { return {new PCDM_StorageDriver(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(PCDM_Document)*> PCDM_StorageDriver_make(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument) {
+extern "C" OcctResult<Handle(PCDM_Document)*> PCDM_StorageDriver_make_handlecdmdocument(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument) {
     try { return {new Handle(PCDM_Document)(self_->Make(*aDocument)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString*> PCDM_StorageDriver_get_format(const PCDM_StorageDriver* self_) {
     try { return {new TCollection_ExtendedString(self_->GetFormat()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* PCDM_StorageDriver_make_handlecdmdocument_seq_pcdm_document(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument, NCollection_Sequence_Handle_PCDM_Document* Documents) {
+    try { self_->Make(*aDocument, *Documents); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument, TCollection_ExtendedString const* aFileName, Message_ProgressRange const* theRange) {
     try { self_->Write(*aDocument, *aFileName, *theRange); return nullptr; }

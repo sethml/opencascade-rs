@@ -120,6 +120,10 @@ unsafe extern "C" {
     pub fn HelixGeom_BuilderApproxCurve_tolerance_reached(
         self_: *const HelixGeom_BuilderApproxCurve,
     ) -> crate::OcctResult<f64>;
+    /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    pub fn HelixGeom_BuilderApproxCurve_curves(
+        self_: *const HelixGeom_BuilderApproxCurve,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom_Curve>;
     /// **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
     pub fn HelixGeom_BuilderApproxCurve_error_status(
         self_: *const HelixGeom_BuilderApproxCurve,
@@ -205,6 +209,10 @@ unsafe extern "C" {
     pub fn HelixGeom_BuilderHelix_inherited_ToleranceReached(
         self_: *const HelixGeom_BuilderHelix,
     ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    pub fn HelixGeom_BuilderHelix_inherited_Curves(
+        self_: *const HelixGeom_BuilderHelix,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom_Curve>;
     /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
     pub fn HelixGeom_BuilderHelix_inherited_ErrorStatus(
         self_: *const HelixGeom_BuilderHelix,
@@ -277,6 +285,10 @@ unsafe extern "C" {
     pub fn HelixGeom_BuilderHelixCoil_inherited_ToleranceReached(
         self_: *const HelixGeom_BuilderHelixCoil,
     ) -> crate::OcctResult<f64>;
+    /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:64 - `HelixGeom_BuilderApproxCurve::Curves()`
+    pub fn HelixGeom_BuilderHelixCoil_inherited_Curves(
+        self_: *const HelixGeom_BuilderHelixCoil,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom_Curve>;
     /// Inherited: **Source:** `HelixGeom_BuilderApproxCurve.hxx`:67 - `HelixGeom_BuilderApproxCurve::ErrorStatus()`
     pub fn HelixGeom_BuilderHelixCoil_inherited_ErrorStatus(
         self_: *const HelixGeom_BuilderHelixCoil,

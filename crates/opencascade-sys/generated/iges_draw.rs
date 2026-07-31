@@ -2367,9 +2367,9 @@ impl Drawing {
     /// not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allViewOrigins: &crate::ffi_types::Handle_NCollection_HArray1_gp_XY,
-        allAnnotations: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAnnotations: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_init(
@@ -3394,10 +3394,10 @@ impl DrawingWithRotation {
     /// allOrientationAngles are not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allViewOrigins: &crate::ffi_types::Handle_NCollection_HArray1_gp_XY,
         allOrientationAngles: &crate::ffi_types::Handle_NCollection_HArray1_double,
-        allAnnotations: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAnnotations: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_init(
@@ -5170,11 +5170,11 @@ impl LabelDisplay {
     /// not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allTextLocations: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
-        allLeaderEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        allLeaderEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
         allLabelLevels: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allDisplayedEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayedEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_init(
@@ -6268,7 +6268,7 @@ impl NetworkSubfigure {
         aTypeFlag: i32,
         aDesignator: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aTemplate: &crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate,
-        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
+        allConnectPoints: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_init(
@@ -7385,11 +7385,11 @@ impl NetworkSubfigureDef {
         &mut self,
         aDepth: i32,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         aTypeFlag: i32,
         aDesignator: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aTemplate: &crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate,
-        allPointEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
+        allPointEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_init(
@@ -9713,7 +9713,7 @@ impl Planar {
         &mut self,
         nbMats: i32,
         aTransformationMatrix: &crate::ffi_types::Handle_IGESGeom_TransformationMatrix,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_Planar_init(
@@ -12621,13 +12621,13 @@ impl SegmentedViewsVisible {
     /// are not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allBreakpointParameters: &crate::ffi_types::Handle_NCollection_HArray1_double,
         allDisplayFlags: &crate::ffi_types::Handle_NCollection_HArray1_int,
         allColorValues: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allColorDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
+        allColorDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_Color,
         allLineFontValues: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allLineFontDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
+        allLineFontDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
         allLineWeights: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
@@ -17454,8 +17454,8 @@ impl ViewsVisible {
     /// - allDisplayEntity : All entities whose display is specified
     pub fn init(
         &mut self,
-        allViewEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allViewEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_init(
@@ -17470,7 +17470,7 @@ impl ViewsVisible {
     /// Changes only the list of Displayed Entities (Null allowed)
     pub fn init_implied(
         &mut self,
-        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_init_implied(
@@ -18520,13 +18520,13 @@ impl ViewsVisibleWithAttr {
     /// allColorValues,allColorDefinitions, allLineWeights are not same
     pub fn init(
         &mut self,
-        allViewEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViewEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allLineFonts: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allLineDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
+        allLineDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
         allColorValues: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allColorDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
+        allColorDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_Color,
         allLineWeights: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        allDisplayEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_init(
@@ -18546,7 +18546,7 @@ impl ViewsVisibleWithAttr {
     /// Changes only the list of Displayed Entities (Null allowed)
     pub fn init_implied(
         &mut self,
-        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntity: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_init_implied(

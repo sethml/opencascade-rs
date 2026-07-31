@@ -602,6 +602,13 @@ unsafe extern "C" {
         theMergeAngle: f64,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:89 - `RWStl::ReadFile`
+    pub fn RWStl_read_file_charptr_real_seq_poly_triangulation_progressrange(
+        theFile: *const std::ffi::c_char,
+        theMergeAngle: f64,
+        theTriangList: *mut NCollection_Sequence_Handle_Poly_Triangulation,
+        theProgress: *const Message_ProgressRange,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `RWStl.hxx`:97 - `RWStl::ReadBinary`
     pub fn RWStl_read_binary(
         thePath: *const OSD_Path,

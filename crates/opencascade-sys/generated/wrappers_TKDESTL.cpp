@@ -11,7 +11,6 @@
 #include <Message_ProgressRange.hxx>
 #include <NCollection_Buffer.hxx>
 #include <OSD_Path.hxx>
-#include <Poly_Triangulation.hxx>
 #include <RWStl.hxx>
 #include <RWStl_Reader.hxx>
 #include <Standard_Handle.hxx>
@@ -22,7 +21,6 @@
 #include <StlAPI.hxx>
 #include <StlAPI_Reader.hxx>
 #include <StlAPI_Writer.hxx>
-#include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases
@@ -540,6 +538,10 @@ extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_file_charptr_progr
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_file_charptr_real_progressrange(const char* theFile, double theMergeAngle, Message_ProgressRange const* theProgress) {
     try { return {new Handle(Poly_Triangulation)(RWStl::ReadFile(theFile, theMergeAngle, *theProgress)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* RWStl_read_file_charptr_real_seq_poly_triangulation_progressrange(const char* theFile, double theMergeAngle, NCollection_Sequence_Handle_Poly_Triangulation* theTriangList, Message_ProgressRange const* theProgress) {
+    try { RWStl::ReadFile(theFile, theMergeAngle, *theTriangList, *theProgress); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_binary(OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
     try { return {new Handle(Poly_Triangulation)(RWStl::ReadBinary(*thePath, *theProgress)), nullptr}; }

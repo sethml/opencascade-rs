@@ -264,6 +264,10 @@ unsafe extern "C" {
     pub fn XCAFApp_Application_inherited_Version(
         self_: *const XCAFApp_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn XCAFApp_Application_inherited_MetaDataLookUpTable(
+        self_: *mut XCAFApp_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XCAFApp_Application_inherited_IsInstance(
         self_: *const XCAFApp_Application,
@@ -1228,6 +1232,32 @@ unsafe extern "C" {
     pub fn XCAFDimTolObjects_Tool_ctor_handletdocstddocument(
         theDoc: *const Handle_TDocStd_Document,
     ) -> crate::OcctResult<*mut XCAFDimTolObjects_Tool>;
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:46 - `XCAFDimTolObjects_Tool::GetDimensions()`
+    pub fn XCAFDimTolObjects_Tool_get_dimensions(
+        self_: *const XCAFDimTolObjects_Tool,
+        theDimensionObjectSequence: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:51 - `XCAFDimTolObjects_Tool::GetRefDimensions()`
+    pub fn XCAFDimTolObjects_Tool_get_ref_dimensions(
+        self_: *const XCAFDimTolObjects_Tool,
+        theShape: *const TopoDS_Shape,
+        theDimensions: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:57 - `XCAFDimTolObjects_Tool::GetGeomTolerances()`
+    pub fn XCAFDimTolObjects_Tool_get_geom_tolerances(
+        self_: *const XCAFDimTolObjects_Tool,
+        theGeomToleranceObjectSequence: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        theDatumObjectSequence: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        theMap: *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `XCAFDimTolObjects_Tool.hxx`:65 - `XCAFDimTolObjects_Tool::GetRefGeomTolerances()`
+    pub fn XCAFDimTolObjects_Tool_get_ref_geom_tolerances(
+        self_: *const XCAFDimTolObjects_Tool,
+        theShape: *const TopoDS_Shape,
+        theGeomToleranceObjectSequence: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        theDatumObjectSequence: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        theMap: *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `XCAFDimTolObjects_Tool.hxx`:74 - `XCAFDimTolObjects_Tool::GetRefDatum()`
     pub fn XCAFDimTolObjects_Tool_get_ref_datum(
         self_: *const XCAFDimTolObjects_Tool,
@@ -1461,6 +1491,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Area_inherited_References(
         self_: *const XCAFDoc_Area,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Area_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Area,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Area_inherited_Forget(
@@ -1991,6 +2028,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_AssemblyItemRef,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_AssemblyItemRef_inherited_ExtendedDump(
+        self_: *const XCAFDoc_AssemblyItemRef,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_AssemblyItemRef_inherited_Forget(
         self_: *mut XCAFDoc_AssemblyItemRef,
@@ -2279,6 +2323,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Centroid_inherited_References(
         self_: *const XCAFDoc_Centroid,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Centroid_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Centroid,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Centroid_inherited_Forget(
@@ -2628,6 +2679,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_ClippingPlaneTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_ClippingPlaneTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_ClippingPlaneTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_ClippingPlaneTool_inherited_Forget(
         self_: *mut XCAFDoc_ClippingPlaneTool,
@@ -2927,6 +2985,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Color_inherited_References(
         self_: *const XCAFDoc_Color,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Color_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Color,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Color_inherited_Forget(
@@ -3416,6 +3481,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_ColorTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_ColorTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_ColorTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_ColorTool_inherited_Forget(
         self_: *mut XCAFDoc_ColorTool,
@@ -3690,6 +3762,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_Datum,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Datum_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Datum,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Datum_inherited_Forget(
         self_: *mut XCAFDoc_Datum,
@@ -3955,6 +4034,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_DimTol_inherited_References(
         self_: *const XCAFDoc_DimTol,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_DimTol_inherited_ExtendedDump(
+        self_: *const XCAFDoc_DimTol,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_DimTol_inherited_Forget(
@@ -4463,6 +4549,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_DimTolTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_DimTolTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_DimTolTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_DimTolTool_inherited_Forget(
         self_: *mut XCAFDoc_DimTolTool,
@@ -4729,6 +4822,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Dimension_inherited_References(
         self_: *const XCAFDoc_Dimension,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Dimension_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Dimension,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Dimension_inherited_Forget(
@@ -5131,6 +5231,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_DocumentTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_DocumentTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_DocumentTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_DocumentTool_inherited_Forget(
         self_: *mut XCAFDoc_DocumentTool,
@@ -5200,6 +5307,17 @@ unsafe extern "C" {
         theDstShapeTool: *const Handle_XCAFDoc_ShapeTool,
         theMap: *mut NCollection_DataMap_TDF_Label_TDF_Label,
     ) -> crate::OcctResult<*mut TDF_Label>;
+    /// **Source:** `XCAFDoc_Editor.hxx`:93 - `XCAFDoc_Editor::CloneMetaData()`
+    pub fn XCAFDoc_Editor_clone_meta_data(
+        theSrcLabel: *const TDF_Label,
+        theDstLabel: *const TDF_Label,
+        theVisMatMap: *mut NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+        theToCopyColor: bool,
+        theToCopyLayer: bool,
+        theToCopyMaterial: bool,
+        theToCopyVisMaterial: bool,
+        theToCopyAttributes: bool,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `XCAFDoc_Editor.hxx`:107 - `XCAFDoc_Editor::GetParentShapeLabels()`
     pub fn XCAFDoc_Editor_get_parent_shape_labels(
         theLabel: *const TDF_Label,
@@ -5458,6 +5576,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_GeomTolerance_inherited_References(
         self_: *const XCAFDoc_GeomTolerance,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_GeomTolerance_inherited_ExtendedDump(
+        self_: *const XCAFDoc_GeomTolerance,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_GeomTolerance_inherited_Forget(
@@ -5790,6 +5915,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_GraphNode_inherited_DeltaOnRemoval(
         self_: *const XCAFDoc_GraphNode,
     ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_GraphNode_inherited_ExtendedDump(
+        self_: *const XCAFDoc_GraphNode,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_GraphNode_inherited_Forget(
         self_: *mut XCAFDoc_GraphNode,
@@ -6237,6 +6369,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_LayerTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_LayerTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_LayerTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_LayerTool_inherited_Forget(
         self_: *mut XCAFDoc_LayerTool,
@@ -6519,6 +6658,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_LengthUnit,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_LengthUnit_inherited_ExtendedDump(
+        self_: *const XCAFDoc_LengthUnit,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_LengthUnit_inherited_Forget(
         self_: *mut XCAFDoc_LengthUnit,
@@ -6774,6 +6920,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Location_inherited_References(
         self_: *const XCAFDoc_Location,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Location_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Location,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Location_inherited_Forget(
@@ -7052,6 +7205,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Material_inherited_References(
         self_: *const XCAFDoc_Material,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Material_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Material,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Material_inherited_Forget(
@@ -7368,6 +7528,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_MaterialTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_MaterialTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_MaterialTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_MaterialTool_inherited_Forget(
         self_: *mut XCAFDoc_MaterialTool,
@@ -7638,6 +7805,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Note_inherited_References(
         self_: *const XCAFDoc_Note,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Note_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Note,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Note_inherited_Forget(
@@ -7938,6 +8112,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_NoteBalloon_inherited_References(
         self_: *const XCAFDoc_NoteBalloon,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_NoteBalloon_inherited_ExtendedDump(
+        self_: *const XCAFDoc_NoteBalloon,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_NoteBalloon_inherited_Forget(
@@ -8250,6 +8431,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_NoteBinData,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_NoteBinData_inherited_ExtendedDump(
+        self_: *const XCAFDoc_NoteBinData,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_NoteBinData_inherited_Forget(
         self_: *mut XCAFDoc_NoteBinData,
@@ -8554,6 +8742,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_NoteComment_inherited_References(
         self_: *const XCAFDoc_NoteComment,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_NoteComment_inherited_ExtendedDump(
+        self_: *const XCAFDoc_NoteComment,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_NoteComment_inherited_Forget(
@@ -9088,6 +9283,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_NotesTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_NotesTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_NotesTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_NotesTool_inherited_Forget(
         self_: *mut XCAFDoc_NotesTool,
@@ -9349,6 +9551,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_ShapeMapTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_ShapeMapTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_ShapeMapTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_ShapeMapTool_inherited_Forget(
         self_: *mut XCAFDoc_ShapeMapTool,
@@ -9549,6 +9758,17 @@ unsafe extern "C" {
     pub fn XCAFDoc_ShapeTool_id(
         self_: *const XCAFDoc_ShapeTool,
     ) -> crate::OcctResult<*const Standard_GUID>;
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:372 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    pub fn XCAFDoc_ShapeTool_set_extern_refs_seq_tcollection_hasciistring(
+        self_: *const XCAFDoc_ShapeTool,
+        SHAS: *const NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> crate::OcctResult<*mut TDF_Label>;
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:375 - `XCAFDoc_ShapeTool::SetExternRefs()`
+    pub fn XCAFDoc_ShapeTool_set_extern_refs_label_seq_tcollection_hasciistring(
+        self_: *const XCAFDoc_ShapeTool,
+        L: *const TDF_Label,
+        SHAS: *const NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:388 - `XCAFDoc_ShapeTool::SetSHUO()`
     pub fn XCAFDoc_ShapeTool_set_shuo(
         self_: *const XCAFDoc_ShapeTool,
@@ -9693,10 +9913,20 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:368 - `XCAFDoc_ShapeTool::IsExternRef()`
     pub fn XCAFDoc_ShapeTool_is_extern_ref(L: *const TDF_Label) -> crate::OcctResult<bool>;
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:380 - `XCAFDoc_ShapeTool::GetExternRefs()`
+    pub fn XCAFDoc_ShapeTool_get_extern_refs(
+        L: *const TDF_Label,
+        SHAS: *mut NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:393 - `XCAFDoc_ShapeTool::GetSHUO()`
     pub fn XCAFDoc_ShapeTool_get_shuo(
         SHUOLabel: *const TDF_Label,
         aSHUOAttr: *mut Handle_XCAFDoc_GraphNode,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `XCAFDoc_ShapeTool.hxx`:398 - `XCAFDoc_ShapeTool::GetAllComponentSHUO()`
+    pub fn XCAFDoc_ShapeTool_get_all_component_shuo(
+        CompLabel: *const TDF_Label,
+        SHUOAttrs: *mut NCollection_Sequence_Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `XCAFDoc_ShapeTool.hxx`:407 - `XCAFDoc_ShapeTool::GetSHUOUpperUsage()`
     pub fn XCAFDoc_ShapeTool_get_shuo_upper_usage(
@@ -9913,6 +10143,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_ShapeTool_inherited_References(
         self_: *const XCAFDoc_ShapeTool,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_ShapeTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_ShapeTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_ShapeTool_inherited_Forget(
@@ -10167,6 +10404,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_View_inherited_References(
         self_: *const XCAFDoc_View,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_View_inherited_ExtendedDump(
+        self_: *const XCAFDoc_View,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_View_inherited_Forget(
@@ -10552,6 +10796,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_ViewTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_ViewTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_ViewTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_ViewTool_inherited_Forget(
         self_: *mut XCAFDoc_ViewTool,
@@ -10867,6 +11118,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_VisMaterial_inherited_References(
         self_: *const XCAFDoc_VisMaterial,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_VisMaterial_inherited_ExtendedDump(
+        self_: *const XCAFDoc_VisMaterial,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_VisMaterial_inherited_Forget(
@@ -11225,6 +11483,13 @@ unsafe extern "C" {
         self_: *const XCAFDoc_VisMaterialTool,
         aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_VisMaterialTool_inherited_ExtendedDump(
+        self_: *const XCAFDoc_VisMaterialTool,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_VisMaterialTool_inherited_Forget(
         self_: *mut XCAFDoc_VisMaterialTool,
@@ -11497,6 +11762,13 @@ unsafe extern "C" {
     pub fn XCAFDoc_Volume_inherited_References(
         self_: *const XCAFDoc_Volume,
         aDataSet: *const Handle_TDF_DataSet,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn XCAFDoc_Volume_inherited_ExtendedDump(
+        self_: *const XCAFDoc_Volume,
+        anOS: *mut Standard_OStream,
+        aFilter: *const TDF_IDFilter,
+        aMap: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn XCAFDoc_Volume_inherited_Forget(

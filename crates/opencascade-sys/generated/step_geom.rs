@@ -1818,7 +1818,7 @@ impl BSplineCurve {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -1853,7 +1853,7 @@ impl BSplineCurve {
     /// **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurve_set_control_points_list(
@@ -1866,9 +1866,8 @@ impl BSplineCurve {
     /// **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurve_control_points_list(
@@ -2464,7 +2463,7 @@ impl BSplineCurveWithKnots {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -2763,7 +2762,7 @@ impl BSplineCurveWithKnots {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnots_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -2773,9 +2772,8 @@ impl BSplineCurveWithKnots {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnots_inherited_ControlPointsList(self as *const Self)))
         }
@@ -3084,11 +3082,11 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:42 - `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -3096,16 +3094,16 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
         aRationalBSplineCurve: &crate::ffi_types::Handle_StepGeom_RationalBSplineCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aBSplineCurveWithKnots, aRationalBSplineCurve)
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombsplinecurvewithknots_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aBSplineCurveWithKnots, aRationalBSplineCurve)
         })
     }
 
     /// **Source:** `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:53 - `StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -3115,7 +3113,7 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aKnotMultiplicities, aKnots, aKnotSpec.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_int_harr1_double_knottype_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aKnotMultiplicities, aKnots, aKnotSpec.into(), aWeightsData)
         })
     }
 
@@ -3396,7 +3394,7 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -3406,9 +3404,8 @@ impl BSplineCurveWithKnotsAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_inherited_ControlPointsList(self as *const Self)))
         }
@@ -3665,7 +3662,7 @@ impl BSplineSurface {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -3723,7 +3720,7 @@ impl BSplineSurface {
     /// **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurface_set_control_points_list(
@@ -3736,9 +3733,8 @@ impl BSplineSurface {
     /// **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurface_control_points_list(
@@ -4371,7 +4367,7 @@ impl BSplineSurfaceWithKnots {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -4771,7 +4767,7 @@ impl BSplineSurfaceWithKnots {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnots_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -4781,9 +4777,8 @@ impl BSplineSurfaceWithKnots {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnots_inherited_ControlPointsList(self as *const Self)))
         }
@@ -5114,12 +5109,12 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:44 - `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -5128,17 +5123,17 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
         aRationalBSplineSurface: &crate::ffi_types::Handle_StepGeom_RationalBSplineSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aBSplineSurfaceWithKnots, aRationalBSplineSurface)
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombsplinesurfacewithknots_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aBSplineSurfaceWithKnots, aRationalBSplineSurface)
         })
     }
 
     /// **Source:** `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:57 - `StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -5151,7 +5146,7 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray2_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aUMultiplicities, aVMultiplicities, aUKnots, aVKnots, aKnotSpec.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_harr1_int2_harr1_double2_knottype_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aUMultiplicities, aVMultiplicities, aUKnots, aVKnots, aKnotSpec.into(), aWeightsData)
         })
     }
 
@@ -5514,7 +5509,7 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -5524,9 +5519,8 @@ impl BSplineSurfaceWithKnotsAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_ControlPointsList(self as *const Self)))
         }
@@ -5974,7 +5968,7 @@ impl BezierCurve {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -6012,7 +6006,7 @@ impl BezierCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BezierCurve_inherited_SetControlPointsList(
@@ -6025,9 +6019,8 @@ impl BezierCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_BezierCurve_inherited_ControlPointsList(
@@ -6339,11 +6332,11 @@ impl BezierCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_BezierCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_BezierCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -6351,23 +6344,23 @@ impl BezierCurveAndRationalBSplineCurve {
         aRationalBSplineCurve: &crate::ffi_types::Handle_StepGeom_RationalBSplineCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aBezierCurve, aRationalBSplineCurve)
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeombeziercurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aBezierCurve, aRationalBSplineCurve)
         })
     }
 
     /// **Source:** `StepGeom_BezierCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_BezierCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -6585,7 +6578,7 @@ impl BezierCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -6595,9 +6588,8 @@ impl BezierCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BezierCurveAndRationalBSplineCurve_inherited_ControlPointsList(self as *const Self)))
         }
@@ -7029,7 +7021,7 @@ impl BezierSurface {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -7091,7 +7083,7 @@ impl BezierSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BezierSurface_inherited_SetControlPointsList(
@@ -7104,9 +7096,8 @@ impl BezierSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_BezierSurface_inherited_ControlPointsList(
@@ -7453,12 +7444,12 @@ impl BezierSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_BezierSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -7467,17 +7458,17 @@ impl BezierSurfaceAndRationalBSplineSurface {
         aRationalBSplineSurface: &crate::ffi_types::Handle_StepGeom_RationalBSplineSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aBezierSurface, aRationalBSplineSurface)
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeombeziersurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aBezierSurface, aRationalBSplineSurface)
         })
     }
 
     /// **Source:** `StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_BezierSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -7485,7 +7476,7 @@ impl BezierSurfaceAndRationalBSplineSurface {
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray2_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -7713,7 +7704,7 @@ impl BezierSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -7723,9 +7714,8 @@ impl BezierSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_BezierSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(self as *const Self)))
         }
@@ -8178,7 +8168,7 @@ impl BoundaryCurve {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: crate::step_data::Logical,
     ) {
         crate::check_void_result(unsafe {
@@ -8194,7 +8184,7 @@ impl BoundaryCurve {
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn set_segments(
         &mut self,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_BoundaryCurve_inherited_SetSegments(
@@ -8205,7 +8195,11 @@ impl BoundaryCurve {
     }
 
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
-    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment>{
+    pub fn segments(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_BoundaryCurve_inherited_Segments(
@@ -11853,7 +11847,7 @@ impl CompositeCurve {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: crate::step_data::Logical,
     ) {
         crate::check_void_result(unsafe {
@@ -11869,7 +11863,7 @@ impl CompositeCurve {
     /// **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn set_segments(
         &mut self,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurve_set_segments(
@@ -11880,7 +11874,11 @@ impl CompositeCurve {
     }
 
     /// **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
-    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment>{
+    pub fn segments(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurve_segments(self as *const Self),
@@ -12480,7 +12478,7 @@ impl CompositeCurveOnSurface {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: crate::step_data::Logical,
     ) {
         crate::check_void_result(unsafe {
@@ -12496,7 +12494,7 @@ impl CompositeCurveOnSurface {
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn set_segments(
         &mut self,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveOnSurface_inherited_SetSegments(
@@ -12507,7 +12505,11 @@ impl CompositeCurveOnSurface {
     }
 
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
-    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment>{
+    pub fn segments(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_CompositeCurveOnSurface_inherited_Segments(
@@ -18797,16 +18799,16 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     }
 
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:50 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Init()`
-    pub fn init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit_handlencollectionharray1opencascadehandlestepbasicuncertaintymeasurewithunit(
+    pub fn init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit_harr1_stepbasic_uncertaintymeasurewithunit(
         &mut self,
         aContextIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aContextType: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aCoordinateSpaceDimension: i32,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-        anUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+        anUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit_handlencollectionharray1opencascadehandlestepbasicuncertaintymeasurewithunit(self as *mut Self, aContextIdentifier, aContextType, aCoordinateSpaceDimension, aUnits, anUncertainty)
+            crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit_harr1_stepbasic_uncertaintymeasurewithunit(self as *mut Self, aContextIdentifier, aContextType, aCoordinateSpaceDimension, aUnits, anUncertainty)
         })
     }
 
@@ -18884,7 +18886,7 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:79 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUnits()`
     pub fn set_units(
         &mut self,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_units(self as *mut Self, aUnits)
@@ -18894,9 +18896,8 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:82 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Units()`
     pub fn units(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_units(self as *const Self)))
         }
@@ -18922,7 +18923,7 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:88 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUncertainty()`
     pub fn set_uncertainty(
         &mut self,
-        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
+        aUncertainty: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_set_uncertainty(self as *mut Self, aUncertainty)
@@ -18930,7 +18931,11 @@ impl GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
     }
 
     /// **Source:** `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx.hxx`:94 - `StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Uncertainty()`
-    pub fn uncertainty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit>{
+    pub fn uncertainty(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx_uncertainty(self as *const Self)))
         }
@@ -19523,15 +19528,15 @@ impl GeometricRepresentationContextAndGlobalUnitAssignedContext {
     }
 
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:47 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Init()`
-    pub fn init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit(
+    pub fn init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit(
         &mut self,
         aContextIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aContextType: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aCoordinateSpaceDimension: i32,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_handlencollectionharray1opencascadehandlestepbasicnamedunit(self as *mut Self, aContextIdentifier, aContextType, aCoordinateSpaceDimension, aUnits)
+            crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_init_handletcollectionhasciistring2_int_harr1_stepbasic_namedunit(self as *mut Self, aContextIdentifier, aContextType, aCoordinateSpaceDimension, aUnits)
         })
     }
 
@@ -19590,7 +19595,7 @@ impl GeometricRepresentationContextAndGlobalUnitAssignedContext {
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:68 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetUnits()`
     pub fn set_units(
         &mut self,
-        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
+        aUnits: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_set_units(self as *mut Self, aUnits)
@@ -19600,9 +19605,8 @@ impl GeometricRepresentationContextAndGlobalUnitAssignedContext {
     /// **Source:** `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx`:71 - `StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Units()`
     pub fn units(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_units(self as *const Self)))
         }
@@ -26415,7 +26419,7 @@ impl OuterBoundaryCurve {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
         aSelfIntersect: crate::step_data::Logical,
     ) {
         crate::check_void_result(unsafe {
@@ -26431,7 +26435,7 @@ impl OuterBoundaryCurve {
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:44 - `StepGeom_CompositeCurve::SetSegments()`
     pub fn set_segments(
         &mut self,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_OuterBoundaryCurve_inherited_SetSegments(
@@ -26442,7 +26446,11 @@ impl OuterBoundaryCurve {
     }
 
     /// Inherited: **Source:** `StepGeom_CompositeCurve.hxx`:48 - `StepGeom_CompositeCurve::Segments()`
-    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment>{
+    pub fn segments(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_OuterBoundaryCurve_inherited_Segments(
@@ -30096,7 +30104,7 @@ impl Polyline {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPoints: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPoints: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_Polyline_init(self as *mut Self, aName, aPoints)
@@ -30106,7 +30114,7 @@ impl Polyline {
     /// **Source:** `StepGeom_Polyline.hxx`:42 - `StepGeom_Polyline::SetPoints()`
     pub fn set_points(
         &mut self,
-        aPoints: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPoints: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_Polyline_set_points(self as *mut Self, aPoints)
@@ -30116,9 +30124,8 @@ impl Polyline {
     /// **Source:** `StepGeom_Polyline.hxx`:45 - `StepGeom_Polyline::Points()`
     pub fn points(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_Polyline_points(self as *const Self),
@@ -30661,7 +30668,7 @@ impl QuasiUniformCurve {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -30701,7 +30708,7 @@ impl QuasiUniformCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurve_inherited_SetControlPointsList(
@@ -30714,9 +30721,8 @@ impl QuasiUniformCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurve_inherited_ControlPointsList(
@@ -31032,11 +31038,11 @@ impl QuasiUniformCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_QuasiUniformCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -31044,23 +31050,23 @@ impl QuasiUniformCurveAndRationalBSplineCurve {
         aRationalBSplineCurve: &crate::ffi_types::Handle_StepGeom_RationalBSplineCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aQuasiUniformCurve, aRationalBSplineCurve)
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomquasiuniformcurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aQuasiUniformCurve, aRationalBSplineCurve)
         })
     }
 
     /// **Source:** `StepGeom_QuasiUniformCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -31267,7 +31273,7 @@ impl QuasiUniformCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -31277,9 +31283,8 @@ impl QuasiUniformCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(self as *const Self)))
         }
@@ -31688,7 +31693,7 @@ impl QuasiUniformSurface {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -31750,7 +31755,7 @@ impl QuasiUniformSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurface_inherited_SetControlPointsList(
@@ -31763,9 +31768,8 @@ impl QuasiUniformSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurface_inherited_ControlPointsList(self as *const Self)))
         }
@@ -32104,12 +32108,12 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -32118,17 +32122,17 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
         aRationalBSplineSurface: &crate::ffi_types::Handle_StepGeom_RationalBSplineSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aQuasiUniformSurface, aRationalBSplineSurface)
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomquasiuniformsurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aQuasiUniformSurface, aRationalBSplineSurface)
         })
     }
 
     /// **Source:** `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -32136,7 +32140,7 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray2_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -32365,7 +32369,7 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -32375,9 +32379,8 @@ impl QuasiUniformSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(self as *const Self)))
         }
@@ -32653,7 +32656,7 @@ impl RationalBSplineCurve {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -32892,7 +32895,7 @@ impl RationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineCurve_inherited_SetControlPointsList(
@@ -32905,9 +32908,8 @@ impl RationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineCurve_inherited_ControlPointsList(self as *const Self)))
         }
@@ -33223,7 +33225,7 @@ impl RationalBSplineSurface {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -33484,7 +33486,7 @@ impl RationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineSurface_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -33494,9 +33496,8 @@ impl RationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_RationalBSplineSurface_inherited_ControlPointsList(self as *const Self)))
         }
@@ -33832,7 +33833,7 @@ impl RectangularCompositeSurface {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_RectangularCompositeSurface_init(
@@ -33846,7 +33847,7 @@ impl RectangularCompositeSurface {
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:42 - `StepGeom_RectangularCompositeSurface::SetSegments()`
     pub fn set_segments(
         &mut self,
-        aSegments: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+        aSegments: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_RectangularCompositeSurface_set_segments(
@@ -33859,9 +33860,8 @@ impl RectangularCompositeSurface {
     /// **Source:** `StepGeom_RectangularCompositeSurface.hxx`:45 - `StepGeom_RectangularCompositeSurface::Segments()`
     pub fn segments(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_RectangularCompositeSurface_segments(
@@ -41932,7 +41932,7 @@ impl UniformCurve {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -41970,7 +41970,7 @@ impl UniformCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_UniformCurve_inherited_SetControlPointsList(
@@ -41983,9 +41983,8 @@ impl UniformCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_UniformCurve_inherited_ControlPointsList(
@@ -42301,11 +42300,11 @@ impl UniformCurveAndRationalBSplineCurve {
     }
 
     /// **Source:** `StepGeom_UniformCurveAndRationalBSplineCurve.hxx`:41 - `StepGeom_UniformCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
@@ -42313,23 +42312,23 @@ impl UniformCurveAndRationalBSplineCurve {
         aRationalBSplineCurve: &crate::ffi_types::Handle_StepGeom_RationalBSplineCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aUniformCurve, aRationalBSplineCurve)
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_handlestepgeomuniformcurve_handlestepgeomrationalbsplinecurve(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aUniformCurve, aRationalBSplineCurve)
         })
     }
 
     /// **Source:** `StepGeom_UniformCurveAndRationalBSplineCurve.hxx`:52 - `StepGeom_UniformCurveAndRationalBSplineCurve::Init()`
-    pub fn init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(
+    pub fn init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
         aCurveForm: crate::step_geom::BSplineCurveForm,
         aClosedCurve: crate::step_data::Logical,
         aSelfIntersect: crate::step_data::Logical,
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_handlencollectionharray1opencascadehandlestepgeomcartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_init_handletcollectionhasciistring_int_harr1_stepgeom_cartesianpoint_bsplinecurveform_logical2_harr1_double(self as *mut Self, aName, aDegree, aControlPointsList, aCurveForm.into(), aClosedCurve.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -42540,7 +42539,7 @@ impl UniformCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:53 - `StepGeom_BSplineCurve::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -42550,9 +42549,8 @@ impl UniformCurveAndRationalBSplineCurve {
     /// Inherited: **Source:** `StepGeom_BSplineCurve.hxx`:58 - `StepGeom_BSplineCurve::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_UniformCurveAndRationalBSplineCurve_inherited_ControlPointsList(self as *const Self)))
         }
@@ -42979,7 +42977,7 @@ impl UniformSurface {
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -43041,7 +43039,7 @@ impl UniformSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_UniformSurface_inherited_SetControlPointsList(
@@ -43054,9 +43052,8 @@ impl UniformSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepGeom_UniformSurface_inherited_ControlPointsList(
@@ -43399,12 +43396,12 @@ impl UniformSurfaceAndRationalBSplineSurface {
     }
 
     /// **Source:** `StepGeom_UniformSurfaceAndRationalBSplineSurface.hxx`:41 - `StepGeom_UniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -43413,17 +43410,17 @@ impl UniformSurfaceAndRationalBSplineSurface {
         aRationalBSplineSurface: &crate::ffi_types::Handle_StepGeom_RationalBSplineSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aUniformSurface, aRationalBSplineSurface)
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlestepgeomuniformsurface_handlestepgeomrationalbsplinesurface(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aUniformSurface, aRationalBSplineSurface)
         })
     }
 
     /// **Source:** `StepGeom_UniformSurfaceAndRationalBSplineSurface.hxx`:54 - `StepGeom_UniformSurfaceAndRationalBSplineSurface::Init()`
-    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
+    pub fn init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aUDegree: i32,
         aVDegree: i32,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
         aSurfaceForm: crate::step_geom::BSplineSurfaceForm,
         aUClosed: crate::step_data::Logical,
         aVClosed: crate::step_data::Logical,
@@ -43431,7 +43428,7 @@ impl UniformSurfaceAndRationalBSplineSurface {
         aWeightsData: &crate::ffi_types::Handle_NCollection_HArray2_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2opencascadehandlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
+            crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_init_handletcollectionhasciistring_int2_handlencollectionharray2handlestepgeomcartesianpoint_bsplinesurfaceform_logical3_handlencollectionharray2double(self as *mut Self, aName, aUDegree, aVDegree, aControlPointsList, aSurfaceForm.into(), aUClosed.into(), aVClosed.into(), aSelfIntersect.into(), aWeightsData)
         })
     }
 
@@ -43659,7 +43656,7 @@ impl UniformSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:59 - `StepGeom_BSplineSurface::SetControlPointsList()`
     pub fn set_control_points_list(
         &mut self,
-        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+        aControlPointsList: &crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_SetControlPointsList(self as *mut Self, aControlPointsList)
@@ -43669,9 +43666,8 @@ impl UniformSurfaceAndRationalBSplineSurface {
     /// Inherited: **Source:** `StepGeom_BSplineSurface.hxx`:64 - `StepGeom_BSplineSurface::ControlPointsList()`
     pub fn control_points_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepGeom_UniformSurfaceAndRationalBSplineSurface_inherited_ControlPointsList(self as *const Self)))
         }

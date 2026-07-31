@@ -6,6 +6,25 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `Poly.hxx`:56 - `Poly::Catenate`
+/// Computes and stores the link from nodes to
+/// triangles and from triangles to neighbouring
+/// triangles.
+/// This tool is obsolete, replaced by Poly_CoherentTriangulation
+/// Algorithm to make minimal loops in a graph
+/// Join several triangulations to one new triangulation object.
+/// The new triangulation is just a mechanical sum of input
+/// triangulations, without node sharing. UV coordinates are
+/// dropped in the result.
+pub fn catenate(
+    lstTri: &crate::ffi_types::NCollection_List_Handle_Poly_Triangulation,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Poly_catenate(
+            lstTri,
+        )))
+    }
+}
 /// **Source:** `Poly.hxx`:64 - `Poly::Write`
 /// Writes the content of the triangulation <T> on the
 /// stream <OS>. If <Compact> is true this is a "save"

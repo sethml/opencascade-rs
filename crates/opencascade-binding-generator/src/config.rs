@@ -10,8 +10,29 @@ use std::path::{Path, PathBuf};
 /// e.g. `BVH_Builder<double, 3>` → `BVH_Builder_double_3`
 /// e.g. `NCollection_Shared<NCollection_List<gp_Pnt2d>>` → `NCollection_Shared_NCollection_List_gp_Pnt2d`
 /// e.g. `NCollection_Sequence<const gp_Pnt2d *>` → `NCollection_Sequence_constgp_Pnt2d_ptr`
+/// Collapse OCCT handle spellings inside a template argument list, so
+/// `NCollection_HArray1<occ::handle<Geom_Curve>>` mangles to
+/// `NCollection_HArray1_Handle_Geom_Curve` rather than the unreadable
+/// `NCollection_HArray1_occ_handle_Geom_Curve`.
+///
+/// Both collection discovery and handle-type registration name themselves through
+/// `template_alias_name`, so doing this here keeps the two in agreement — a
+/// collection named `..._Handle_Geom_Curve` needs its handle type to be called
+/// `Handle_NCollection_HArray1_Handle_Geom_Curve`.
+fn collapse_handle_args(spelling: &str) -> String {
+    use std::sync::OnceLock;
+    static RE: OnceLock<regex::Regex> = OnceLock::new();
+    let re = RE.get_or_init(|| {
+        regex::Regex::new(r"(?:occ|opencascade)::handle<\s*([A-Za-z_][A-Za-z0-9_:]*)\s*>").unwrap()
+    });
+    re.replace_all(spelling, |caps: &regex::Captures| {
+        format!("Handle_{}", caps[1].replace("::", "_"))
+    })
+    .into_owned()
+}
+
 pub fn template_alias_name(template_spelling: &str) -> String {
-    template_spelling
+    collapse_handle_args(template_spelling)
         .replace("::", "_")
         .replace('<', "_")
         .replace('>', "")

@@ -389,6 +389,11 @@ unsafe extern "C" {
     /// **Source:** `BRepFeat_Form.hxx`:128 - `BRepFeat_Form::PerfSelectionValid()`
     pub fn BRepFeat_Form_perf_selection_valid(self_: *mut BRepFeat_Form)
         -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_Form.hxx`:130 - `BRepFeat_Form::Curves()`
+    pub fn BRepFeat_Form_curves(
+        self_: *mut BRepFeat_Form,
+        S: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_Form.hxx`:132 - `BRepFeat_Form::BarycCurve()`
     pub fn BRepFeat_Form_baryc_curve(
         self_: *mut BRepFeat_Form,
@@ -936,6 +941,11 @@ unsafe extern "C" {
         Until: *const TopoDS_Shape,
         Height: f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_MakeDPrism.hxx`:129 - `BRepFeat_MakeDPrism::Curves()`
+    pub fn BRepFeat_MakeDPrism_curves(
+        self_: *mut BRepFeat_MakeDPrism,
+        S: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_MakeDPrism.hxx`:131 - `BRepFeat_MakeDPrism::BarycCurve()`
     pub fn BRepFeat_MakeDPrism_baryc_curve(
         self_: *mut BRepFeat_MakeDPrism,
@@ -1208,6 +1218,11 @@ unsafe extern "C" {
         From: *const TopoDS_Shape,
         Until: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_MakePipe.hxx`:106 - `BRepFeat_MakePipe::Curves()`
+    pub fn BRepFeat_MakePipe_curves(
+        self_: *mut BRepFeat_MakePipe,
+        S: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_MakePipe.hxx`:108 - `BRepFeat_MakePipe::BarycCurve()`
     pub fn BRepFeat_MakePipe_baryc_curve(
         self_: *mut BRepFeat_MakePipe,
@@ -1370,6 +1385,11 @@ unsafe extern "C" {
         Until: *const TopoDS_Shape,
         Length: f64,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_MakePrism.hxx`:132 - `BRepFeat_MakePrism::Curves()`
+    pub fn BRepFeat_MakePrism_curves(
+        self_: *mut BRepFeat_MakePrism,
+        S: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_MakePrism.hxx`:135 - `BRepFeat_MakePrism::BarycCurve()`
     pub fn BRepFeat_MakePrism_baryc_curve(
         self_: *mut BRepFeat_MakePrism,
@@ -1522,6 +1542,11 @@ unsafe extern "C" {
         self_: *mut BRepFeat_MakeRevol,
         Until: *const TopoDS_Shape,
         Angle: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepFeat_MakeRevol.hxx`:89 - `BRepFeat_MakeRevol::Curves()`
+    pub fn BRepFeat_MakeRevol_curves(
+        self_: *mut BRepFeat_MakeRevol,
+        S: *mut NCollection_Sequence_Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepFeat_MakeRevol.hxx`:91 - `BRepFeat_MakeRevol::BarycCurve()`
     pub fn BRepFeat_MakeRevol_baryc_curve(
@@ -1987,6 +2012,11 @@ unsafe extern "C" {
         self_: *mut LocOpe_CSIntersector,
         Scir: *const NCollection_Sequence_gp_Circ,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `LocOpe_CSIntersector.hxx`:55 - `LocOpe_CSIntersector::Perform()`
+    pub fn LocOpe_CSIntersector_perform_seq_geom_curve(
+        self_: *mut LocOpe_CSIntersector,
+        Scur: *const NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `LocOpe_CSIntersector.hxx`:59 - `LocOpe_CSIntersector::IsDone()`
     pub fn LocOpe_CSIntersector_is_done(
         self_: *const LocOpe_CSIntersector,
@@ -2160,6 +2190,11 @@ unsafe extern "C" {
         self_: *const LocOpe_DPrism,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves()`
+    pub fn LocOpe_DPrism_curves(
+        self_: *const LocOpe_DPrism,
+        SCurves: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `LocOpe_DPrism.hxx`:66 - `LocOpe_DPrism::BarycCurve()`
     pub fn LocOpe_DPrism_baryc_curve(
         self_: *const LocOpe_DPrism,
@@ -2605,6 +2640,11 @@ unsafe extern "C" {
         self_: *mut LocOpe_Pipe,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::Curves()`
+    pub fn LocOpe_Pipe_curves(
+        self_: *mut LocOpe_Pipe,
+        Spt: *const NCollection_Sequence_gp_Pnt,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom_Curve>;
     /// **Source:** `LocOpe_Pipe.hxx`:59 - `LocOpe_Pipe::BarycCurve()`
     pub fn LocOpe_Pipe_baryc_curve(
         self_: *mut LocOpe_Pipe,
@@ -2684,6 +2724,11 @@ unsafe extern "C" {
         self_: *const LocOpe_Prism,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::Curves()`
+    pub fn LocOpe_Prism_curves(
+        self_: *const LocOpe_Prism,
+        SCurves: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `LocOpe_Prism.hxx`:60 - `LocOpe_Prism::BarycCurve()`
     pub fn LocOpe_Prism_baryc_curve(
         self_: *const LocOpe_Prism,
@@ -2736,6 +2781,11 @@ unsafe extern "C" {
         self_: *const LocOpe_Revol,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Curves()`
+    pub fn LocOpe_Revol_curves(
+        self_: *const LocOpe_Revol,
+        SCurves: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::BarycCurve()`
     pub fn LocOpe_Revol_baryc_curve(
         self_: *const LocOpe_Revol,

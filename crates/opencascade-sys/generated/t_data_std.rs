@@ -594,6 +594,23 @@ impl AsciiString {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_AsciiString_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -1298,6 +1315,23 @@ impl BooleanArray {
             crate::ffi_extern_TKLCAF::TDataStd_BooleanArray_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_BooleanArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -2048,6 +2082,23 @@ impl BooleanList {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_BooleanList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -2760,6 +2811,23 @@ impl ByteArray {
             crate::ffi_extern_TKLCAF::TDataStd_ByteArray_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ByteArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -3560,6 +3628,23 @@ impl Comment {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Comment_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -4194,6 +4279,23 @@ impl Current {
             crate::ffi_extern_TKLCAF::TDataStd_Current_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Current_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -6359,6 +6461,23 @@ impl Directory {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Directory_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -6572,6 +6691,17 @@ impl Expression {
             &*(crate::check_result(crate::ffi_extern_TKLCAF::TDataStd_Expression_get_expression(
                 self as *const Self,
             )))
+        }
+    }
+
+    /// **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetVariables()`
+    pub fn get_variables(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TDF_Attribute {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_Expression_get_variables(self as *mut Self),
+            ))
         }
     }
 
@@ -7014,6 +7144,23 @@ impl Expression {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Expression_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -7173,12 +7320,6 @@ impl Handle_TDataStd_Expression {
         }
     }
 }
-
-// ── Skipped symbols for Expression (1 total) ──
-// SKIPPED: **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetVariables`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TDF_Attribute>>&)
-//   // pub fn get_variables(&mut self) -> /* NCollection_List<occ::handle<TDF_Attribute>>& */;
-//
 
 // ========================
 // From TDataStd_ExtStringArray.hxx
@@ -7808,6 +7949,23 @@ impl ExtStringArray {
             crate::ffi_extern_TKLCAF::TDataStd_ExtStringArray_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ExtStringArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -8611,6 +8769,23 @@ impl ExtStringList {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ExtStringList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -9173,6 +9348,23 @@ impl GenericEmpty {
             crate::ffi_extern_TKLCAF::TDataStd_GenericEmpty_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_GenericEmpty_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -10109,6 +10301,23 @@ impl GenericExtString {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_GenericExtString_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -10584,6 +10793,15 @@ impl HDataMapOfStringHArray1OfInteger {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
+    pub fn new_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_int(
+        theOther: &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_int(theOther)))
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:34 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -10595,6 +10813,28 @@ impl HDataMapOfStringHArray1OfInteger {
             &*(crate::check_result(
                 crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(
                     self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map()`
+    pub fn map(&self) -> &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int{
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_map(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int{
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfInteger_change_map(
+                    self as *mut Self,
                 ),
             ))
         }
@@ -10778,20 +11018,6 @@ impl Handle_TDataStd_HDataMapOfStringHArray1OfInteger {
     }
 }
 
-// ── Skipped symbols for HDataMapOfStringHArray1OfInteger (3 total) ──
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const&)
-//   // pub fn new_harray1<int>>>(theOther: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfInteger::Map`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const&)
-//   // pub fn map(&self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const& */;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfInteger.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>>&)
-//   // pub fn change_map(&mut self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>>& */;
-//
-
 // ========================
 // From TDataStd_HDataMapOfStringHArray1OfReal.hxx
 // ========================
@@ -10821,6 +11047,15 @@ impl HDataMapOfStringHArray1OfReal {
         }
     }
 
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
+    pub fn new_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_double(
+        theOther: &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_double(theOther)))
+        }
+    }
+
     /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:34 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(1)
@@ -10832,6 +11067,28 @@ impl HDataMapOfStringHArray1OfReal {
             &*(crate::check_result(
                 crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(
                     self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfReal::Map()`
+    pub fn map(&self) -> &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double{
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_map(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap()`
+    pub fn change_map(&mut self) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double{
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_HDataMapOfStringHArray1OfReal_change_map(
+                    self as *mut Self,
                 ),
             ))
         }
@@ -11012,20 +11269,6 @@ impl Handle_TDataStd_HDataMapOfStringHArray1OfReal {
         }
     }
 }
-
-// ── Skipped symbols for HDataMapOfStringHArray1OfReal (3 total) ──
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:36 - `TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal`
-//   Reason: has unbindable types: param 'theOther': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const&)
-//   // pub fn new_harray1<double>>>(theOther: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:41 - `TDataStd_HDataMapOfStringHArray1OfReal::Map`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const&)
-//   // pub fn map(&self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const& */;
-//
-// SKIPPED: **Source:** `TDataStd_HDataMapOfStringHArray1OfReal.hxx`:47 - `TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>>&)
-//   // pub fn change_map(&mut self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>>& */;
-//
 
 // ========================
 // From TDataStd_HDataMapOfStringInteger.hxx
@@ -12397,6 +12640,23 @@ impl IntPackedMap {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntPackedMap_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -13050,6 +13310,23 @@ impl Integer {
             crate::ffi_extern_TKLCAF::TDataStd_Integer_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Integer_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -13812,6 +14089,23 @@ impl IntegerArray {
             crate::ffi_extern_TKLCAF::TDataStd_IntegerArray_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntegerArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -14582,6 +14876,23 @@ impl IntegerList {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_IntegerList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -15268,6 +15579,23 @@ impl Name {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Name_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -15781,6 +16109,32 @@ impl NamedData {
         })
     }
 
+    /// **Source:** `TDataStd_NamedData.hxx`:169 - `TDataStd_NamedData::GetArraysOfIntegersContainer()`
+    /// Returns the internal container of named arrays of integer values.
+    pub fn get_arrays_of_integers_container(&mut self) -> &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int{
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_NamedData_get_arrays_of_integers_container(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:172 - `TDataStd_NamedData::ChangeArraysOfIntegers()`
+    /// Replace the container content by new content of the <theArraysOfIntegers>.
+    pub fn change_arrays_of_integers(
+        &mut self,
+        theArraysOfIntegers: &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NamedData_change_arrays_of_integers(
+                self as *mut Self,
+                theArraysOfIntegers,
+            )
+        })
+    }
+
     /// **Source:** `TDataStd_NamedData.hxx`:177 - `TDataStd_NamedData::HasArraysOfReals()`
     /// Returns true if there are some named arrays of real values in the attribute.
     pub fn has_arrays_of_reals(&self) -> bool {
@@ -15839,6 +16193,32 @@ impl NamedData {
                 self as *mut Self,
                 theName,
                 theArrayOfReals,
+            )
+        })
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:202 - `TDataStd_NamedData::GetArraysOfRealsContainer()`
+    /// Returns the internal container of named arrays of real values.
+    pub fn get_arrays_of_reals_container(&mut self) -> &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double{
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_NamedData_get_arrays_of_reals_container(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDataStd_NamedData.hxx`:205 - `TDataStd_NamedData::ChangeArraysOfReals()`
+    /// Replace the container content by new content of the <theArraysOfReals>.
+    pub fn change_arrays_of_reals(
+        &mut self,
+        theArraysOfReals: &crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NamedData_change_arrays_of_reals(
+                self as *mut Self,
+                theArraysOfReals,
             )
         })
     }
@@ -16445,6 +16825,23 @@ impl NamedData {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NamedData_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -16588,28 +16985,6 @@ impl Handle_TDataStd_NamedData {
         }
     }
 }
-
-// ── Skipped symbols for NamedData (4 total) ──
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:169 - `TDataStd_NamedData::GetArraysOfIntegersContainer`
-//   method: Returns the internal container of named arrays of integer values.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const&)
-//   // pub fn get_arrays_of_integers_container(&mut self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const& */;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:172 - `TDataStd_NamedData::ChangeArraysOfIntegers`
-//   method: Replace the container content by new content of the <theArraysOfIntegers>.
-//   Reason: has unbindable types: param 'theArraysOfIntegers': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const&)
-//   // pub fn change_arrays_of_integers(&mut self, theArraysOfIntegers: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<int>>> const& */);
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:202 - `TDataStd_NamedData::GetArraysOfRealsContainer`
-//   method: Returns the internal container of named arrays of real values.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const&)
-//   // pub fn get_arrays_of_reals_container(&mut self) -> /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const& */;
-//
-// SKIPPED: **Source:** `TDataStd_NamedData.hxx`:205 - `TDataStd_NamedData::ChangeArraysOfReals`
-//   method: Replace the container content by new content of the <theArraysOfReals>.
-//   Reason: has unbindable types: param 'theArraysOfReals': unresolved template type (NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const&)
-//   // pub fn change_arrays_of_reals(&mut self, theArraysOfReals: /* NCollection_DataMap<TCollection_ExtendedString, occ::handle<NCollection_HArray1<double>>> const& */);
-//
 
 // ========================
 // From TDataStd_NoteBook.hxx
@@ -17148,6 +17523,23 @@ impl NoteBook {
             crate::ffi_extern_TKLCAF::TDataStd_NoteBook_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_NoteBook_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -17809,6 +18201,23 @@ impl Real {
             crate::ffi_extern_TKLCAF::TDataStd_Real_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Real_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -18586,6 +18995,23 @@ impl RealArray {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_RealArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -19338,6 +19764,23 @@ impl RealList {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_RealList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -20077,6 +20520,23 @@ impl ReferenceArray {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ReferenceArray_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
@@ -20869,6 +21329,23 @@ impl ReferenceList {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_ReferenceList_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -21252,6 +21729,19 @@ impl Relation {
         }
     }
 
+    /// Inherited: **Source:** `TDataStd_Expression.hxx`:61 - `TDataStd_Expression::GetVariables()`
+    pub fn get_variables(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TDF_Attribute {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDataStd_Relation_inherited_GetVariables(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TDataStd_Expression.hxx`:65 - `TDataStd_Expression::Restore()`
     pub fn restore(&mut self, With: &crate::ffi_types::Handle_TDF_Attribute) {
         crate::check_void_result(unsafe {
@@ -21551,6 +22041,23 @@ impl Relation {
             crate::ffi_extern_TKLCAF::TDataStd_Relation_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Relation_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -22180,6 +22687,23 @@ impl Tick {
             crate::ffi_extern_TKLCAF::TDataStd_Tick_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Tick_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -23108,6 +23632,23 @@ impl TreeNode {
         }
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_TreeNode_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -23708,6 +24249,23 @@ impl UAttribute {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_UAttribute_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
@@ -24466,6 +25024,23 @@ impl Variable {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDataStd_Variable_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`

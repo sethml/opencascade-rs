@@ -6,13 +6,11 @@
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_HVertex.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <AdvApp2Var_Context.hxx>
 #include <AdvApp2Var_Criterion.hxx>
 #include <AdvApp2Var_CriterionRepartition.hxx>
 #include <AdvApp2Var_CriterionType.hxx>
-#include <AdvApp2Var_Patch.hxx>
 #include <AppBlend_Approx.hxx>
 #include <AppParCurves_Constraint.hxx>
 #include <AppParCurves_MultiBSpCurve.hxx>
@@ -126,7 +124,6 @@
 #include <Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx>
 #include <Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx>
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Point.hxx>
 #include <GeomAPI.hxx>
 #include <GeomAPI_ExtremaCurveCurve.hxx>
@@ -243,8 +240,6 @@
 #include <GeomPlate_PointConstraint.hxx>
 #include <GeomPlate_Surface.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_Geometry.hxx>
 #include <Geom_Line.hxx>
 #include <Geom_Plane.hxx>
@@ -299,7 +294,6 @@
 #include <IntPatch_ImpPrmIntersection.hxx>
 #include <IntPatch_InterferencePolyhedron.hxx>
 #include <IntPatch_Intersection.hxx>
-#include <IntPatch_Line.hxx>
 #include <IntPatch_LineConstructor.hxx>
 #include <IntPatch_PointLine.hxx>
 #include <IntPatch_PolyArc.hxx>
@@ -375,7 +369,6 @@
 #include <Law_BSplineKnotSplitting.hxx>
 #include <Law_Composite.hxx>
 #include <Law_Constant.hxx>
-#include <Law_Function.hxx>
 #include <Law_Interpol.hxx>
 #include <Law_Interpolate.hxx>
 #include <Law_Linear.hxx>
@@ -522,13 +515,13 @@ typedef opencascade::handle<Law_S> Handle_Law_S;
 typedef opencascade::handle<NCollection_BaseAllocator> Handle_NCollection_BaseAllocator;
 typedef opencascade::handle<NCollection_HArray1_AppParCurves_ConstraintCouple> Handle_NCollection_HArray1_AppParCurves_ConstraintCouple;
 typedef opencascade::handle<NCollection_HArray1_Bnd_Box> Handle_NCollection_HArray1_Bnd_Box;
+typedef opencascade::handle<NCollection_HArray1_Handle_Adaptor3d_Curve> Handle_NCollection_HArray1_Handle_Adaptor3d_Curve;
+typedef opencascade::handle<NCollection_HArray1_Handle_Geom2d_Curve> Handle_NCollection_HArray1_Handle_Geom2d_Curve;
 typedef opencascade::handle<NCollection_HArray1_bool> Handle_NCollection_HArray1_bool;
 typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
 typedef opencascade::handle<NCollection_HArray1_gp_Pnt> Handle_NCollection_HArray1_gp_Pnt;
 typedef opencascade::handle<NCollection_HArray1_gp_Pnt2d> Handle_NCollection_HArray1_gp_Pnt2d;
 typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Adaptor3d_Curve> Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom2d_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve;
 typedef opencascade::handle<NCollection_HArray2_gp_XYZ> Handle_NCollection_HArray2_gp_XYZ;
 typedef opencascade::handle<NLPlate_HGPPConstraint> Handle_NLPlate_HGPPConstraint;
 typedef opencascade::handle<NLPlate_HPG0Constraint> Handle_NLPlate_HPG0Constraint;
@@ -9278,6 +9271,10 @@ extern "C" OcctResult<GeomFill_Gordon::ResultStatus*> GeomFill_Gordon_status(con
     try { return {new GeomFill_Gordon::ResultStatus(self_->Status()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomFill_Gordon_init(GeomFill_Gordon* self_, NCollection_Array1_Handle_Geom_Curve const* theProfiles, NCollection_Array1_Handle_Geom_Curve const* theGuides, double theTolerance) {
+    try { self_->Init(*theProfiles, *theGuides, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomFill_Gordon_perform(GeomFill_Gordon* self_) {
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10292,6 +10289,26 @@ extern "C" void GeomFill_LocationLaw_destructor(GeomFill_LocationLaw* self_) { d
 // GeomFill_NSections wrappers
 // ========================
 
+extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_seq_geom_curve(NCollection_Sequence_Handle_Geom_Curve const* NC) {
+    try { return {new GeomFill_NSections(*NC), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_seq_geom_curve_seq_double(NCollection_Sequence_Handle_Geom_Curve const* NC, NCollection_Sequence_double const* NP) {
+    try { return {new GeomFill_NSections(*NC, *NP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_seq_geom_curve_seq_double_real2(NCollection_Sequence_Handle_Geom_Curve const* NC, NCollection_Sequence_double const* NP, double UF, double UL) {
+    try { return {new GeomFill_NSections(*NC, *NP, UF, UL), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_seq_geom_curve_seq_double_real4(NCollection_Sequence_Handle_Geom_Curve const* NC, NCollection_Sequence_double const* NP, double UF, double UL, double VF, double VL) {
+    try { return {new GeomFill_NSections(*NC, *NP, UF, UL, VF, VL), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_seq_geom_curve_seq_trsf_seq_double_real4_handlegeombsplinesurface(NCollection_Sequence_Handle_Geom_Curve const* NC, NCollection_Sequence_gp_Trsf const* Trsfs, NCollection_Sequence_double const* NP, double UF, double UL, double VF, double VL, Handle(Geom_BSplineSurface) const* Surf) {
+    try { return {new GeomFill_NSections(*NC, *Trsfs, *NP, UF, UL, VF, VL, *Surf), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Geom_BSplineSurface)*> GeomFill_NSections_b_spline_surface(const GeomFill_NSections* self_) {
     try { return {new Handle(Geom_BSplineSurface)(self_->BSplineSurface()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10474,6 +10491,10 @@ extern "C" OcctResult<GeomFill_NetworkSurface::ResultStatus*> GeomFill_NetworkSu
     try { return {new GeomFill_NetworkSurface::ResultStatus(self_->Status()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* GeomFill_NetworkSurface_init(GeomFill_NetworkSurface* self_, NCollection_Array1_Handle_Geom_BSplineCurve const* theProfiles, NCollection_Array1_Handle_Geom_BSplineCurve const* theGuides, NCollection_Array1_double const* theProfileParameters, NCollection_Array1_double const* theGuideParameters, NCollection_Array2_gp_Pnt const* theIntersectionPoints, NCollection_Array2_double const* theIntersectionWeights, double theTolerance, bool theIsUClosed, bool theIsVClosed) {
+    try { self_->Init(*theProfiles, *theGuides, *theProfileParameters, *theGuideParameters, *theIntersectionPoints, *theIntersectionWeights, theTolerance, theIsUClosed, theIsVClosed); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* GeomFill_NetworkSurface_perform(GeomFill_NetworkSurface* self_) {
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10516,6 +10537,10 @@ extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve3(Handle
     try { return {new GeomFill_Pipe(*Path, *FirstSect, *LastSect), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve_seq_geom_curve(Handle(Geom_Curve) const* Path, NCollection_Sequence_Handle_Geom_Curve const* NSections) {
+    try { return {new GeomFill_Pipe(*Path, *NSections), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve3_real(Handle(Geom_Curve) const* Path, Handle(Geom_Curve) const* Curve1, Handle(Geom_Curve) const* Curve2, double Radius) {
     try { return {new GeomFill_Pipe(*Path, *Curve1, *Curve2, Radius), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10546,6 +10571,10 @@ extern "C" const char* GeomFill_Pipe_init_handlegeomcurve2_dir(GeomFill_Pipe* se
 }
 extern "C" const char* GeomFill_Pipe_init_handlegeomcurve3(GeomFill_Pipe* self_, Handle(Geom_Curve) const* Path, Handle(Geom_Curve) const* FirstSect, Handle(Geom_Curve) const* LastSect) {
     try { self_->Init(*Path, *FirstSect, *LastSect); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_Pipe_init_handlegeomcurve_seq_geom_curve(GeomFill_Pipe* self_, Handle(Geom_Curve) const* Path, NCollection_Sequence_Handle_Geom_Curve const* NSections) {
+    try { self_->Init(*Path, *NSections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* GeomFill_Pipe_init_handleadaptor3dcurve3_real(GeomFill_Pipe* self_, Handle(Adaptor3d_Curve) const* Path, Handle(Adaptor3d_Curve) const* Curve1, Handle(Adaptor3d_Curve) const* Curve2, double Radius) {
@@ -12934,6 +12963,10 @@ extern "C" OcctResult<double> GeomInt_LineTool_last_parameter(Handle(IntPatch_Li
     try { return {GeomInt_LineTool::LastParameter(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> GeomInt_LineTool_decomposition_of_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(GeomAdaptor_Surface) const* theSurface1, Handle(GeomAdaptor_Surface) const* theSurface2, double aTolSum, GeomInt_LineConstructor const* theLConstructor, NCollection_Sequence_Handle_IntPatch_Line* theNewLines) {
+    try { return {GeomInt_LineTool::DecompositionOfWLine(*theWLine, *theSurface1, *theSurface2, aTolSum, *theLConstructor, *theNewLines), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void GeomInt_LineTool_destructor(GeomInt_LineTool* self_) { delete self_; }
 
 // ========================
@@ -14197,7 +14230,7 @@ extern "C" void GeomPlate_BuildAveragePlane_destructor(GeomPlate_BuildAveragePla
 // GeomPlate_BuildPlateSurface wrappers
 // ========================
 
-extern "C" OcctResult<GeomPlate_BuildPlateSurface*> GeomPlate_BuildPlateSurface_ctor_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(Handle(NCollection_HArray1_int) const* NPoints, Handle(NCollection_HArray1_opencascade_handle_Adaptor3d_Curve) const* TabCurve, Handle(NCollection_HArray1_int) const* Tang, int32_t Degree, int32_t NbIter, double Tol2d, double Tol3d, double TolAng, double TolCurv, bool Anisotropie) {
+extern "C" OcctResult<GeomPlate_BuildPlateSurface*> GeomPlate_BuildPlateSurface_ctor_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(Handle(NCollection_HArray1_int) const* NPoints, Handle(NCollection_HArray1_Handle_Adaptor3d_Curve) const* TabCurve, Handle(NCollection_HArray1_int) const* Tang, int32_t Degree, int32_t NbIter, double Tol2d, double Tol3d, double TolAng, double TolCurv, bool Anisotropie) {
     try { return {new GeomPlate_BuildPlateSurface(*NPoints, *TabCurve, *Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14229,8 +14262,8 @@ extern "C" OcctResult<Handle(NCollection_HArray1_int)*> GeomPlate_BuildPlateSurf
     try { return {new Handle(NCollection_HArray1_int)(self_->Sense()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve)*> GeomPlate_BuildPlateSurface_curves2d(const GeomPlate_BuildPlateSurface* self_) {
-    try { return {new Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve)(self_->Curves2d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Geom2d_Curve)*> GeomPlate_BuildPlateSurface_curves2d(const GeomPlate_BuildPlateSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_Handle_Geom2d_Curve)(self_->Curves2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HArray1_int)*> GeomPlate_BuildPlateSurface_order(const GeomPlate_BuildPlateSurface* self_) {
@@ -16944,6 +16977,14 @@ extern "C" OcctResult<double> IntPatch_ALineToWLine_tol3_d(const IntPatch_ALineT
     try { return {self_->Tol3D(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* IntPatch_ALineToWLine_make_w_line_handleintpatchaline_seq_intpatch_line(const IntPatch_ALineToWLine* self_, Handle(IntPatch_ALine) const* aline, NCollection_Sequence_Handle_IntPatch_Line* theLines) {
+    try { self_->MakeWLine(*aline, *theLines); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_seq_intpatch_line(const IntPatch_ALineToWLine* self_, Handle(IntPatch_ALine) const* aline, double paraminf, double paramsup, NCollection_Sequence_Handle_IntPatch_Line* theLines) {
+    try { self_->MakeWLine(*aline, paraminf, paramsup, *theLines); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void IntPatch_ALineToWLine_destructor(IntPatch_ALineToWLine* self_) { delete self_; }
 
 // ========================
@@ -17816,6 +17857,10 @@ extern "C" OcctResult<Handle(IntPatch_Line) const*> IntPatch_Intersection_line(c
     try { return {&(self_->Line(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_IntPatch_Line const*> IntPatch_Intersection_sequence_of_line(const IntPatch_Intersection* self_) {
+    try { return {&(self_->SequenceOfLine()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* IntPatch_Intersection_dump(const IntPatch_Intersection* self_, int32_t Mode, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2) {
     try { self_->Dump(Mode, *S1, *D1, *S2, *D2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -17827,6 +17872,10 @@ extern "C" OcctResult<bool> IntPatch_Intersection_check_singular_points(Handle(A
 extern "C" OcctResult<double> IntPatch_Intersection_define_uv_max_step(Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_TopolTool) const* theD1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theD2) {
     try { return {IntPatch_Intersection::DefineUVMaxStep(*theS1, *theD1, *theS2, *theD2), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_Intersection_prepare_surfaces(Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_TopolTool) const* theD1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theD2, double Tol, NCollection_DynamicArray_Handle_Adaptor3d_Surface* theSeqHS1, NCollection_DynamicArray_Handle_Adaptor3d_Surface* theSeqHS2) {
+    try { IntPatch_Intersection::PrepareSurfaces(*theS1, *theD1, *theS2, *theD2, Tol, *theSeqHS1, *theSeqHS2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void IntPatch_Intersection_destructor(IntPatch_Intersection* self_) { delete self_; }
 
@@ -17981,6 +18030,10 @@ extern "C" OcctResult<IntPatch_LineConstructor*> IntPatch_LineConstructor_ctor_i
 extern "C" OcctResult<Handle(IntPatch_Line)*> IntPatch_LineConstructor_line(const IntPatch_LineConstructor* self_, int32_t index) {
     try { return {new Handle(IntPatch_Line)(self_->Line(index)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_LineConstructor_perform(IntPatch_LineConstructor* self_, NCollection_Sequence_Handle_IntPatch_Line const* SL, Handle(IntPatch_Line) const* L, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2, double Tol) {
+    try { self_->Perform(*SL, *L, *S1, *D1, *S2, *D2, Tol); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> IntPatch_LineConstructor_nb_lines(const IntPatch_LineConstructor* self_) {
     try { return {self_->NbLines(), nullptr}; }
@@ -19917,6 +19970,14 @@ extern "C" OcctResult<IntPatch_WLineTool*> IntPatch_WLineTool_ctor() {
 extern "C" OcctResult<Handle(IntPatch_WLine)*> IntPatch_WLineTool_compute_purged_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theDom1, Handle(Adaptor3d_TopolTool) const* theDom2) {
     try { return {new Handle(IntPatch_WLine)(IntPatch_WLineTool::ComputePurgedWLine(*theWLine, *theS1, *theS2, *theDom1, *theDom2)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_WLineTool_join_w_lines(NCollection_Sequence_Handle_IntPatch_Line* theSlin, NCollection_Sequence_IntPatch_Point* theSPnt, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, double theTol3D) {
+    try { IntPatch_WLineTool::JoinWLines(*theSlin, *theSPnt, *theS1, *theS2, theTol3D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* IntPatch_WLineTool_extend_two_w_lines(NCollection_Sequence_Handle_IntPatch_Line* theSlin, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, double theToler3D, double const* theArrPeriods, Bnd_Box2d const* theBoxS1, Bnd_Box2d const* theBoxS2, NCollection_List_gp_Pnt const* theListOfCriticalPoints) {
+    try { IntPatch_WLineTool::ExtendTwoWLines(*theSlin, *theS1, *theS2, theToler3D, theArrPeriods, *theBoxS1, *theBoxS2, *theListOfCriticalPoints); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void IntPatch_WLineTool_destructor(IntPatch_WLineTool* self_) { delete self_; }
 
@@ -22769,6 +22830,10 @@ extern "C" const char* Law_Composite_bounds(Law_Composite* self_, double* PFirst
 }
 extern "C" OcctResult<Handle(Law_Function)*> Law_Composite_change_elementary_law(Law_Composite* self_, double W) {
     try { return {&(self_->ChangeElementaryLaw(W)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_Law_Function*> Law_Composite_change_laws(Law_Composite* self_) {
+    try { return {&(self_->ChangeLaws()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_Composite_is_periodic(const Law_Composite* self_) {

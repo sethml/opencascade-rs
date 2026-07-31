@@ -120,27 +120,49 @@ impl AlgoContainer {
         })
     }
 
+    /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:73 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
+    pub fn approx_b_spline_curve_handlegeombsplinecurve_seq_geom_curve(
+        &self,
+        bspline: &crate::ffi_types::Handle_Geom_BSplineCurve,
+        seq: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_seq_geom_curve(self as *const Self, bspline, seq)
+        })
+    }
+
+    /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:77 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
+    pub fn approx_b_spline_curve_handlegeom2dbsplinecurve_seq_geom2d_curve(
+        &self,
+        bspline: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
+        seq: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom2d_Curve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_seq_geom2d_curve(self as *const Self, bspline, seq)
+        })
+    }
+
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:81 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
-    pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(
+    pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(
         &self,
         BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
-        seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
+        seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(self as *const Self, BS, seqBS)
+            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(self as *const Self, BS, seqBS)
         })
     }
 
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:87 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
     /// Converts C0 B-Spline curve into sequence of C1 B-Spline curves.
     /// Calls ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve.
-    pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(
+    pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(
         &self,
         BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
-        seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
+        seqBS: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(self as *const Self, BS, seqBS)
+            crate::ffi_extern_TKShHealing::ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(self as *const Self, BS, seqBS)
         })
     }
 
@@ -489,16 +511,6 @@ impl Handle_ShapeAlgo_AlgoContainer {
         }
     }
 }
-
-// ── Skipped symbols for AlgoContainer (2 total) ──
-// SKIPPED: **Source:** `ShapeAlgo_AlgoContainer.hxx`:73 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve`
-//   Reason: has unbindable types: param 'seq': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn approx_b_spline_curve(&self, bspline: &HandleBSplineCurve, seq: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
-// SKIPPED: **Source:** `ShapeAlgo_AlgoContainer.hxx`:77 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve`
-//   Reason: has unbindable types: param 'seq': unresolved template type (NCollection_Sequence<occ::handle<Geom2d_Curve>>&)
-//   // pub fn approx_b_spline_curve(&self, bspline: &HandleBSplineCurve, seq: /* NCollection_Sequence<occ::handle<Geom2d_Curve>>& */);
-//
 
 // ========================
 // From ShapeAlgo_ToolContainer.hxx

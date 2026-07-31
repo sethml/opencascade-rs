@@ -121,6 +121,21 @@ impl Absolute {
         }
     }
 
+    /// **Source:** `Expr_Absolute.hxx`:57 - `Expr_Absolute::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Absolute_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_Absolute.hxx`:61 - `Expr_Absolute::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -492,15 +507,6 @@ impl Handle_Expr_Absolute {
     }
 }
 
-// ── Skipped symbols for Absolute (1 total) ──
-// SKIPPED: **Source:** `Expr_Absolute.hxx`:57 - `Expr_Absolute::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArcCosine.hxx
 // ========================
@@ -580,6 +586,21 @@ impl ArcCosine {
                 crate::ffi_extern_TKExpress::Expr_ArcCosine_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArcCosine.hxx`:57 - `Expr_ArcCosine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArcCosine_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArcCosine.hxx`:61 - `Expr_ArcCosine::String()`
@@ -959,15 +980,6 @@ impl Handle_Expr_ArcCosine {
     }
 }
 
-// ── Skipped symbols for ArcCosine (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcCosine.hxx`:57 - `Expr_ArcCosine::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArcSine.hxx
 // ========================
@@ -1047,6 +1059,21 @@ impl ArcSine {
                 crate::ffi_extern_TKExpress::Expr_ArcSine_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArcSine.hxx`:57 - `Expr_ArcSine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArcSine_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArcSine.hxx`:61 - `Expr_ArcSine::String()`
@@ -1413,15 +1440,6 @@ impl Handle_Expr_ArcSine {
     }
 }
 
-// ── Skipped symbols for ArcSine (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcSine.hxx`:57 - `Expr_ArcSine::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArcTangent.hxx
 // ========================
@@ -1503,6 +1521,21 @@ impl ArcTangent {
                 crate::ffi_extern_TKExpress::Expr_ArcTangent_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArcTangent.hxx`:57 - `Expr_ArcTangent::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArcTangent_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArcTangent.hxx`:61 - `Expr_ArcTangent::String()`
@@ -1884,15 +1917,6 @@ impl Handle_Expr_ArcTangent {
     }
 }
 
-// ── Skipped symbols for ArcTangent (1 total) ──
-// SKIPPED: **Source:** `Expr_ArcTangent.hxx`:57 - `Expr_ArcTangent::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArgCosh.hxx
 // ========================
@@ -1972,6 +1996,21 @@ impl ArgCosh {
                 crate::ffi_extern_TKExpress::Expr_ArgCosh_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArgCosh.hxx`:57 - `Expr_ArgCosh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArgCosh_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArgCosh.hxx`:61 - `Expr_ArgCosh::String()`
@@ -2338,15 +2377,6 @@ impl Handle_Expr_ArgCosh {
     }
 }
 
-// ── Skipped symbols for ArgCosh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgCosh.hxx`:57 - `Expr_ArgCosh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArgSinh.hxx
 // ========================
@@ -2426,6 +2456,21 @@ impl ArgSinh {
                 crate::ffi_extern_TKExpress::Expr_ArgSinh_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArgSinh.hxx`:57 - `Expr_ArgSinh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArgSinh_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArgSinh.hxx`:61 - `Expr_ArgSinh::String()`
@@ -2792,15 +2837,6 @@ impl Handle_Expr_ArgSinh {
     }
 }
 
-// ── Skipped symbols for ArgSinh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgSinh.hxx`:57 - `Expr_ArgSinh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ArgTanh.hxx
 // ========================
@@ -2880,6 +2916,21 @@ impl ArgTanh {
                 crate::ffi_extern_TKExpress::Expr_ArgTanh_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_ArgTanh.hxx`:57 - `Expr_ArgTanh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_ArgTanh_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_ArgTanh.hxx`:61 - `Expr_ArgTanh::String()`
@@ -3246,15 +3297,6 @@ impl Handle_Expr_ArgTanh {
     }
 }
 
-// ── Skipped symbols for ArgTanh (1 total) ──
-// SKIPPED: **Source:** `Expr_ArgTanh.hxx`:57 - `Expr_ArgTanh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_BinaryExpression.hxx
 // ========================
@@ -3544,6 +3586,21 @@ impl BinaryExpression {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_BinaryExpression_inherited_Evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
@@ -3865,6 +3922,25 @@ impl BinaryFunction {
                 crate::ffi_extern_TKExpress::Expr_BinaryFunction_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_BinaryFunction.hxx`:67 - `Expr_BinaryFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_BinaryFunction_evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
     }
 
     /// **Source:** `Expr_BinaryFunction.hxx`:71 - `Expr_BinaryFunction::String()`
@@ -4267,15 +4343,6 @@ impl Handle_Expr_BinaryFunction {
     }
 }
 
-// ── Skipped symbols for BinaryFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_BinaryFunction.hxx`:67 - `Expr_BinaryFunction::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Cosh.hxx
 // ========================
@@ -4355,6 +4422,21 @@ impl Cosh {
                 crate::ffi_extern_TKExpress::Expr_Cosh_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Cosh.hxx`:58 - `Expr_Cosh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Cosh_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Cosh.hxx`:62 - `Expr_Cosh::String()`
@@ -4701,15 +4783,6 @@ impl Handle_Expr_Cosh {
     }
 }
 
-// ── Skipped symbols for Cosh (1 total) ──
-// SKIPPED: **Source:** `Expr_Cosh.hxx`:58 - `Expr_Cosh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Cosine.hxx
 // ========================
@@ -4789,6 +4862,21 @@ impl Cosine {
                 crate::ffi_extern_TKExpress::Expr_Cosine_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Cosine.hxx`:58 - `Expr_Cosine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Cosine_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Cosine.hxx`:62 - `Expr_Cosine::String()`
@@ -5145,15 +5233,6 @@ impl Handle_Expr_Cosine {
     }
 }
 
-// ── Skipped symbols for Cosine (1 total) ──
-// SKIPPED: **Source:** `Expr_Cosine.hxx`:58 - `Expr_Cosine::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Difference.hxx
 // ========================
@@ -5257,6 +5336,21 @@ impl Difference {
                 ),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Difference.hxx`:65 - `Expr_Difference::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Difference_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Difference.hxx`:69 - `Expr_Difference::String()`
@@ -5643,15 +5737,6 @@ impl Handle_Expr_Difference {
         }
     }
 }
-
-// ── Skipped symbols for Difference (1 total) ──
-// SKIPPED: **Source:** `Expr_Difference.hxx`:65 - `Expr_Difference::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_Different.hxx
@@ -6178,6 +6263,21 @@ impl Division {
         }
     }
 
+    /// **Source:** `Expr_Division.hxx`:59 - `Expr_Division::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Division_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_Division.hxx`:63 - `Expr_Division::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -6574,15 +6674,6 @@ impl Handle_Expr_Division {
         }
     }
 }
-
-// ── Skipped symbols for Division (1 total) ──
-// SKIPPED: **Source:** `Expr_Division.hxx`:59 - `Expr_Division::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_Equal.hxx
@@ -7077,6 +7168,21 @@ impl Exponential {
         }
     }
 
+    /// **Source:** `Expr_Exponential.hxx`:57 - `Expr_Exponential::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Exponential_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_Exponential.hxx`:61 - `Expr_Exponential::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -7458,15 +7564,6 @@ impl Handle_Expr_Exponential {
     }
 }
 
-// ── Skipped symbols for Exponential (1 total) ──
-// SKIPPED: **Source:** `Expr_Exponential.hxx`:57 - `Expr_Exponential::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Exponentiate.hxx
 // ========================
@@ -7551,6 +7648,21 @@ impl Exponentiate {
                 crate::ffi_extern_TKExpress::Expr_Exponentiate_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Exponentiate.hxx`:59 - `Expr_Exponentiate::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Exponentiate_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Exponentiate.hxx`:63 - `Expr_Exponentiate::String()`
@@ -7957,15 +8069,6 @@ impl Handle_Expr_Exponentiate {
     }
 }
 
-// ── Skipped symbols for Exponentiate (1 total) ──
-// SKIPPED: **Source:** `Expr_Exponentiate.hxx`:59 - `Expr_Exponentiate::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_ExprFailure.hxx
 // ========================
@@ -8106,6 +8209,24 @@ impl FunctionDerivative {
                 ),
             ))
         }
+    }
+
+    /// **Source:** `Expr_FunctionDerivative.hxx`:53 - `Expr_FunctionDerivative::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises DimensionMismatch if Length(vars) is different from
+    /// Length(values).
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        values: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_FunctionDerivative_evaluate(
+                self as *const Self,
+                vars,
+                values,
+            )
+        })
     }
 
     /// **Source:** `Expr_FunctionDerivative.hxx`:57 - `Expr_FunctionDerivative::Copy()`
@@ -8452,15 +8573,6 @@ impl Handle_Expr_FunctionDerivative {
     }
 }
 
-// ── Skipped symbols for FunctionDerivative (1 total) ──
-// SKIPPED: **Source:** `Expr_FunctionDerivative.hxx`:53 - `Expr_FunctionDerivative::Evaluate`
-//   method: Computes the value of <me> with the given variables.
-//   method: Raises DimensionMismatch if Length(vars) is different from
-//   method: Length(values).
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, values: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_GeneralExpression.hxx
 // ========================
@@ -8642,6 +8754,25 @@ impl GeneralExpression {
                 self as *mut Self,
                 var,
                 with,
+            )
+        })
+    }
+
+    /// **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_GeneralExpression_evaluate(
+                self as *const Self,
+                vars,
+                vals,
             )
         })
     }
@@ -9413,15 +9544,6 @@ impl Handle_Expr_GeneralExpression {
     }
 }
 
-// ── Skipped symbols for GeneralExpression (1 total) ──
-// SKIPPED: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_GeneralFunction.hxx
 // ========================
@@ -9501,6 +9623,24 @@ impl GeneralFunction {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKExpress::Expr_GeneralFunction_derivative_handleexprnamedunknown_int(self as *const Self, var, deg)))
         }
+    }
+
+    /// **Source:** `Expr_GeneralFunction.hxx`:58 - `Expr_GeneralFunction::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises NotEvaluable if <vars> does not match all variables
+    /// of <me>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_GeneralFunction_evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
     }
 
     /// **Source:** `Expr_GeneralFunction.hxx`:64 - `Expr_GeneralFunction::IsIdentical()`
@@ -9744,15 +9884,6 @@ impl Handle_Expr_GeneralFunction {
         }
     }
 }
-
-// ── Skipped symbols for GeneralFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_GeneralFunction.hxx`:58 - `Expr_GeneralFunction::Evaluate`
-//   method: Computes the value of <me> with the given variables.
-//   method: Raises NotEvaluable if <vars> does not match all variables
-//   method: of <me>.
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_GeneralRelation.hxx
@@ -12366,6 +12497,21 @@ impl LogOf10 {
         }
     }
 
+    /// **Source:** `Expr_LogOf10.hxx`:58 - `Expr_LogOf10::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_LogOf10_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_LogOf10.hxx`:62 - `Expr_LogOf10::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -12730,15 +12876,6 @@ impl Handle_Expr_LogOf10 {
     }
 }
 
-// ── Skipped symbols for LogOf10 (1 total) ──
-// SKIPPED: **Source:** `Expr_LogOf10.hxx`:58 - `Expr_LogOf10::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_LogOfe.hxx
 // ========================
@@ -12818,6 +12955,21 @@ impl LogOfe {
                 crate::ffi_extern_TKExpress::Expr_LogOfe_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_LogOfe.hxx`:58 - `Expr_LogOfe::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_LogOfe_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_LogOfe.hxx`:62 - `Expr_LogOfe::String()`
@@ -13174,15 +13326,6 @@ impl Handle_Expr_LogOfe {
     }
 }
 
-// ── Skipped symbols for LogOfe (1 total) ──
-// SKIPPED: **Source:** `Expr_LogOfe.hxx`:58 - `Expr_LogOfe::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_NamedConstant.hxx
 // ========================
@@ -13344,6 +13487,23 @@ impl NamedConstant {
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKExpress::Expr_NamedConstant_replace(self as *mut Self, var, with)
+        })
+    }
+
+    /// **Source:** `Expr_NamedConstant.hxx`:87 - `Expr_NamedConstant::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_NamedConstant_evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
         })
     }
 
@@ -13658,14 +13818,6 @@ impl Handle_Expr_NamedConstant {
     }
 }
 
-// ── Skipped symbols for NamedConstant (1 total) ──
-// SKIPPED: **Source:** `Expr_NamedConstant.hxx`:87 - `Expr_NamedConstant::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_NamedExpression.hxx
 // ========================
@@ -13939,6 +14091,21 @@ impl NamedExpression {
         })
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_NamedExpression_inherited_Evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         crate::check_result(unsafe {
@@ -14130,6 +14297,19 @@ unsafe impl crate::CppDeletable for NamedFunction {
 }
 
 impl NamedFunction {
+    /// **Source:** `Expr_NamedFunction.hxx`:36 - `Expr_NamedFunction::Expr_NamedFunction()`
+    /// Creates a function of given variables <vars> with name
+    /// <name> defined by the expression <exp>.
+    pub fn new_asciistring_handleexprgeneralexpression_arr1_expr_namedunknown(
+        name: &crate::t_collection::AsciiString,
+        exp: &crate::ffi_types::Handle_Expr_GeneralExpression,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKExpress::Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_arr1_expr_namedunknown(name, exp, vars)))
+        }
+    }
+
     /// **Source:** `Expr_NamedFunction.hxx`:42 - `Expr_NamedFunction::SetName()`
     /// Sets the name <newname> to <me>.
     pub fn set_name(&mut self, newname: &crate::t_collection::AsciiString) {
@@ -14172,6 +14352,24 @@ impl NamedFunction {
                 ),
             ))
         }
+    }
+
+    /// **Source:** `Expr_NamedFunction.hxx`:58 - `Expr_NamedFunction::Evaluate()`
+    /// Computes the value of <me> with the given variables.
+    /// Raises DimensionMismatch if Length(vars) is different from
+    /// Length(values).
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        values: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_NamedFunction_evaluate(
+                self as *const Self,
+                vars,
+                values,
+            )
+        })
     }
 
     /// **Source:** `Expr_NamedFunction.hxx`:62 - `Expr_NamedFunction::Copy()`
@@ -14483,21 +14681,6 @@ impl Handle_Expr_NamedFunction {
     }
 }
 
-// ── Skipped symbols for NamedFunction (2 total) ──
-// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:36 - `Expr_NamedFunction::Expr_NamedFunction`
-//   constructor: Creates a function of given variables <vars> with name
-//   constructor: <name> defined by the expression <exp>.
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn new_asciistring_handleexprgeneralexpression_namedunknown>>(name: &AsciiString, exp: &HandleGeneralExpression, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Expr_NamedFunction.hxx`:58 - `Expr_NamedFunction::Evaluate`
-//   method: Computes the value of <me> with the given variables.
-//   method: Raises DimensionMismatch if Length(vars) is different from
-//   method: Length(values).
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, values: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_NamedUnknown.hxx
 // ========================
@@ -14667,6 +14850,21 @@ impl NamedUnknown {
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKExpress::Expr_NamedUnknown_replace(self as *mut Self, var, with)
+        })
+    }
+
+    /// **Source:** `Expr_NamedUnknown.hxx`:93 - `Expr_NamedUnknown::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_NamedUnknown_evaluate(self as *const Self, vars, vals)
         })
     }
 
@@ -14997,15 +15195,6 @@ impl Handle_Expr_NamedUnknown {
         }
     }
 }
-
-// ── Skipped symbols for NamedUnknown (1 total) ──
-// SKIPPED: **Source:** `Expr_NamedUnknown.hxx`:93 - `Expr_NamedUnknown::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_NotAssigned.hxx
@@ -15395,6 +15584,19 @@ impl NumericValue {
         })
     }
 
+    /// **Source:** `Expr_NumericValue.hxx`:91 - `Expr_NumericValue::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_NumericValue_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_NumericValue.hxx`:95 - `Expr_NumericValue::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -15642,14 +15844,6 @@ impl Handle_Expr_NumericValue {
         }
     }
 }
-
-// ── Skipped symbols for NumericValue (1 total) ──
-// SKIPPED: **Source:** `Expr_NumericValue.hxx`:91 - `Expr_NumericValue::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_PolyExpression.hxx
@@ -15924,6 +16118,21 @@ impl PolyExpression {
         }
     }
 
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_PolyExpression_inherited_Evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn evaluate_numeric(&self) -> f64 {
         crate::check_result(unsafe {
@@ -16144,6 +16353,17 @@ unsafe impl crate::CppDeletable for PolyFunction {
 }
 
 impl PolyFunction {
+    /// **Source:** `Expr_PolyFunction.hxx`:38 - `Expr_PolyFunction::Expr_PolyFunction()`
+    /// Creates <me> as <func>(<exps_1>,<exps_2>,...,<exps_n>)
+    pub fn new_handleexprgeneralfunction_arr1_expr_generalexpression(
+        func: &crate::ffi_types::Handle_Expr_GeneralFunction,
+        exps: &crate::ffi_types::NCollection_Array1_Handle_Expr_GeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKExpress::Expr_PolyFunction_ctor_handleexprgeneralfunction_arr1_expr_generalexpression(func, exps)))
+        }
+    }
+
     /// **Source:** `Expr_PolyFunction.hxx`:43 - `Expr_PolyFunction::Function()`
     /// Returns the function defining <me>.
     pub fn function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Expr_GeneralFunction> {
@@ -16207,6 +16427,21 @@ impl PolyFunction {
                 crate::ffi_extern_TKExpress::Expr_PolyFunction_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_PolyFunction.hxx`:67 - `Expr_PolyFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_PolyFunction_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::String()`
@@ -16609,20 +16844,6 @@ impl Handle_Expr_PolyFunction {
     }
 }
 
-// ── Skipped symbols for PolyFunction (2 total) ──
-// SKIPPED: **Source:** `Expr_PolyFunction.hxx`:38 - `Expr_PolyFunction::Expr_PolyFunction`
-//   constructor: Creates <me> as <func>(<exps_1>,<exps_2>,...,<exps_n>)
-//   Reason: has unbindable types: param 'exps': unresolved template type (NCollection_Array1<occ::handle<Expr_GeneralExpression>> const&)
-//   // pub fn new_handleexprgeneralfunction_generalexpression>>(func: &HandleGeneralFunction, exps: /* NCollection_Array1<occ::handle<Expr_GeneralExpression>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Expr_PolyFunction.hxx`:67 - `Expr_PolyFunction::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Product.hxx
 // ========================
@@ -16639,6 +16860,18 @@ unsafe impl crate::CppDeletable for Product {
 }
 
 impl Product {
+    /// **Source:** `Expr_Product.hxx`:36 - `Expr_Product::Expr_Product()`
+    /// Creates the product of all members of sequence <exps>
+    pub fn new_seq_expr_generalexpression(
+        exps: &crate::ffi_types::NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::Expr_Product_ctor_seq_expr_generalexpression(exps),
+            ))
+        }
+    }
+
     /// **Source:** `Expr_Product.hxx`:40 - `Expr_Product::Expr_Product()`
     /// Creates the product of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(
@@ -16705,6 +16938,21 @@ impl Product {
                 crate::ffi_extern_TKExpress::Expr_Product_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Product.hxx`:65 - `Expr_Product::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Product_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Product.hxx`:69 - `Expr_Product::String()`
@@ -17085,20 +17333,6 @@ impl Handle_Expr_Product {
     }
 }
 
-// ── Skipped symbols for Product (2 total) ──
-// SKIPPED: **Source:** `Expr_Product.hxx`:36 - `Expr_Product::Expr_Product`
-//   constructor: Creates the product of all members of sequence <exps>
-//   Reason: has unbindable types: param 'exps': unresolved template type (NCollection_Sequence<occ::handle<Expr_GeneralExpression>> const&)
-//   // pub fn new_generalexpression>>(exps: /* NCollection_Sequence<occ::handle<Expr_GeneralExpression>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Expr_Product.hxx`:65 - `Expr_Product::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_RUIterator.hxx
 // ========================
@@ -17293,6 +17527,21 @@ impl Sign {
                 crate::ffi_extern_TKExpress::Expr_Sign_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Sign.hxx`:58 - `Expr_Sign::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Sign_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Sign.hxx`:62 - `Expr_Sign::String()`
@@ -17639,15 +17888,6 @@ impl Handle_Expr_Sign {
     }
 }
 
-// ── Skipped symbols for Sign (1 total) ──
-// SKIPPED: **Source:** `Expr_Sign.hxx`:58 - `Expr_Sign::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Sine.hxx
 // ========================
@@ -17727,6 +17967,21 @@ impl Sine {
                 crate::ffi_extern_TKExpress::Expr_Sine_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Sine.hxx`:58 - `Expr_Sine::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Sine_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Sine.hxx`:62 - `Expr_Sine::String()`
@@ -18072,15 +18327,6 @@ impl Handle_Expr_Sine {
         }
     }
 }
-
-// ── Skipped symbols for Sine (1 total) ──
-// SKIPPED: **Source:** `Expr_Sine.hxx`:58 - `Expr_Sine::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_SingleRelation.hxx
@@ -18643,6 +18889,21 @@ impl Sinh {
         }
     }
 
+    /// **Source:** `Expr_Sinh.hxx`:58 - `Expr_Sinh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Sinh_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_Sinh.hxx`:62 - `Expr_Sinh::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -18987,15 +19248,6 @@ impl Handle_Expr_Sinh {
     }
 }
 
-// ── Skipped symbols for Sinh (1 total) ──
-// SKIPPED: **Source:** `Expr_Sinh.hxx`:58 - `Expr_Sinh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Square.hxx
 // ========================
@@ -19075,6 +19327,21 @@ impl Square {
                 crate::ffi_extern_TKExpress::Expr_Square_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Square.hxx`:58 - `Expr_Square::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Square_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Square.hxx`:62 - `Expr_Square::String()`
@@ -19431,15 +19698,6 @@ impl Handle_Expr_Square {
     }
 }
 
-// ── Skipped symbols for Square (1 total) ──
-// SKIPPED: **Source:** `Expr_Square.hxx`:58 - `Expr_Square::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_SquareRoot.hxx
 // ========================
@@ -19521,6 +19779,21 @@ impl SquareRoot {
                 crate::ffi_extern_TKExpress::Expr_SquareRoot_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_SquareRoot.hxx`:58 - `Expr_SquareRoot::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_SquareRoot_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_SquareRoot.hxx`:62 - `Expr_SquareRoot::String()`
@@ -19902,15 +20175,6 @@ impl Handle_Expr_SquareRoot {
     }
 }
 
-// ── Skipped symbols for SquareRoot (1 total) ──
-// SKIPPED: **Source:** `Expr_SquareRoot.hxx`:58 - `Expr_SquareRoot::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Sum.hxx
 // ========================
@@ -19927,6 +20191,18 @@ unsafe impl crate::CppDeletable for Sum {
 }
 
 impl Sum {
+    /// **Source:** `Expr_Sum.hxx`:37 - `Expr_Sum::Expr_Sum()`
+    /// Creates the sum of all the members of sequence <exps>.
+    pub fn new_seq_expr_generalexpression(
+        exps: &crate::ffi_types::NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::Expr_Sum_ctor_seq_expr_generalexpression(exps),
+            ))
+        }
+    }
+
     /// **Source:** `Expr_Sum.hxx`:40 - `Expr_Sum::Expr_Sum()`
     /// Creates the sum of <exp1> and <exp2>.
     pub fn new_handleexprgeneralexpression2(
@@ -20006,6 +20282,21 @@ impl Sum {
                 crate::ffi_extern_TKExpress::Expr_Sum_n_derivative(self as *const Self, X, N),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Sum.hxx`:71 - `Expr_Sum::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Sum_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::String()`
@@ -20345,20 +20636,6 @@ impl Handle_Expr_Sum {
         }
     }
 }
-
-// ── Skipped symbols for Sum (2 total) ──
-// SKIPPED: **Source:** `Expr_Sum.hxx`:37 - `Expr_Sum::Expr_Sum`
-//   constructor: Creates the sum of all the members of sequence <exps>.
-//   Reason: has unbindable types: param 'exps': unresolved template type (NCollection_Sequence<occ::handle<Expr_GeneralExpression>> const&)
-//   // pub fn new_generalexpression>>(exps: /* NCollection_Sequence<occ::handle<Expr_GeneralExpression>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `Expr_Sum.hxx`:71 - `Expr_Sum::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_SystemRelation.hxx
@@ -20816,6 +21093,21 @@ impl Tangent {
         }
     }
 
+    /// **Source:** `Expr_Tangent.hxx`:58 - `Expr_Tangent::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Tangent_evaluate(self as *const Self, vars, vals)
+        })
+    }
+
     /// **Source:** `Expr_Tangent.hxx`:62 - `Expr_Tangent::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -21180,15 +21472,6 @@ impl Handle_Expr_Tangent {
     }
 }
 
-// ── Skipped symbols for Tangent (1 total) ──
-// SKIPPED: **Source:** `Expr_Tangent.hxx`:58 - `Expr_Tangent::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_Tanh.hxx
 // ========================
@@ -21268,6 +21551,21 @@ impl Tanh {
                 crate::ffi_extern_TKExpress::Expr_Tanh_derivative(self as *const Self, X),
             ))
         }
+    }
+
+    /// **Source:** `Expr_Tanh.hxx`:58 - `Expr_Tanh::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_Tanh_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_Tanh.hxx`:62 - `Expr_Tanh::String()`
@@ -21614,15 +21912,6 @@ impl Handle_Expr_Tanh {
     }
 }
 
-// ── Skipped symbols for Tanh (1 total) ──
-// SKIPPED: **Source:** `Expr_Tanh.hxx`:58 - `Expr_Tanh::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_UnaryExpression.hxx
 // ========================
@@ -21879,6 +22168,21 @@ impl UnaryExpression {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:100 - `Expr_GeneralExpression::Evaluate()`
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_UnaryExpression_inherited_Evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
     }
 
     /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
@@ -22484,6 +22788,25 @@ impl UnaryFunction {
         }
     }
 
+    /// **Source:** `Expr_UnaryFunction.hxx`:66 - `Expr_UnaryFunction::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_UnaryFunction_evaluate(
+                self as *const Self,
+                vars,
+                vals,
+            )
+        })
+    }
+
     /// **Source:** `Expr_UnaryFunction.hxx`:70 - `Expr_UnaryFunction::String()`
     /// returns a string representing <me> in a readable way.
     pub fn string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -22867,15 +23190,6 @@ impl Handle_Expr_UnaryFunction {
     }
 }
 
-// ── Skipped symbols for UnaryFunction (1 total) ──
-// SKIPPED: **Source:** `Expr_UnaryFunction.hxx`:66 - `Expr_UnaryFunction::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
-
 // ========================
 // From Expr_UnaryMinus.hxx
 // ========================
@@ -22976,6 +23290,21 @@ impl UnaryMinus {
                 ),
             ))
         }
+    }
+
+    /// **Source:** `Expr_UnaryMinus.hxx`:65 - `Expr_UnaryMinus::Evaluate()`
+    /// Returns the value of <me> (as a Real) by
+    /// replacement of <vars> by <vals>.
+    /// Raises NotEvaluable if <me> contains NamedUnknown not
+    /// in <vars> or NumericError if result cannot be computed.
+    pub fn evaluate(
+        &self,
+        vars: &crate::ffi_types::NCollection_Array1_Handle_Expr_NamedUnknown,
+        vals: &crate::ffi_types::NCollection_Array1_double,
+    ) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::Expr_UnaryMinus_evaluate(self as *const Self, vars, vals)
+        })
     }
 
     /// **Source:** `Expr_UnaryMinus.hxx`:69 - `Expr_UnaryMinus::String()`
@@ -23339,15 +23668,6 @@ impl Handle_Expr_UnaryMinus {
         }
     }
 }
-
-// ── Skipped symbols for UnaryMinus (1 total) ──
-// SKIPPED: **Source:** `Expr_UnaryMinus.hxx`:65 - `Expr_UnaryMinus::Evaluate`
-//   method: Returns the value of <me> (as a Real) by
-//   method: replacement of <vars> by <vals>.
-//   method: Raises NotEvaluable if <me> contains NamedUnknown not
-//   Reason: has unbindable types: param 'vars': unresolved template type (NCollection_Array1<occ::handle<Expr_NamedUnknown>> const&)
-//   // pub fn evaluate(&self, vars: /* NCollection_Array1<occ::handle<Expr_NamedUnknown>> const& */, vals: &Array1_double) -> f64;
-//
 
 // ========================
 // From Expr_UnknownIterator.hxx

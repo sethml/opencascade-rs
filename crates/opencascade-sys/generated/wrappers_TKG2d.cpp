@@ -30,7 +30,6 @@
 #include <Geom2dGridEval_Parabola.hxx>
 #include <Geom2dHash_CurveHasher.hxx>
 #include <Geom2d_AxisPlacement.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_CartesianPoint.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_Conic.hxx>

@@ -1315,9 +1315,8 @@ impl RootData {
     /// Returns a sequence of all roots
     pub fn roots(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_StdStorage_Root>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStd::StdStorage_RootData_roots(self as *const Self),

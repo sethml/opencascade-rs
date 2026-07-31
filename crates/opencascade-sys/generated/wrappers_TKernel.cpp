@@ -10,18 +10,14 @@
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor3d_IsoCurve.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <AdvApp2Var_Iso.hxx>
-#include <AdvApp2Var_Node.hxx>
-#include <AdvApp2Var_Patch.hxx>
 #include <AppDef_LinearCriteria.hxx>
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
 #include <Approx_CurvlinFunc.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BOPDS_CommonBlock.hxx>
-#include <BOPDS_PaveBlock.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
@@ -96,7 +92,6 @@
 #include <BRep_PointOnCurve.hxx>
 #include <BRep_PointOnCurveOnSurface.hxx>
 #include <BRep_PointOnSurface.hxx>
-#include <BRep_PointRepresentation.hxx>
 #include <BRep_PointsOnSurface.hxx>
 #include <BRep_Polygon3D.hxx>
 #include <BRep_PolygonOnClosedSurface.hxx>
@@ -188,13 +183,10 @@
 #include <CDF_Directory.hxx>
 #include <CDF_FWOSDriver.hxx>
 #include <CDF_StoreList.hxx>
-#include <CDM_MetaData.hxx>
 #include <CDM_Reference.hxx>
 #include <ChFiDS_ChamfSpine.hxx>
-#include <ChFiDS_ElSpine.hxx>
 #include <ChFiDS_FilSpine.hxx>
 #include <ChFiDS_Spine.hxx>
-#include <ChFiDS_Stripe.hxx>
 #include <Contap_TheIWLineOfTheIWalking.hxx>
 #include <DEBREP_ConfigurationNode.hxx>
 #include <DEBREP_Provider.hxx>
@@ -245,9 +237,6 @@
 #include <Expr_LogOf10.hxx>
 #include <Expr_LogOfe.hxx>
 #include <Expr_NamedConstant.hxx>
-#include <Expr_NamedExpression.hxx>
-#include <Expr_NamedFunction.hxx>
-#include <Expr_NamedUnknown.hxx>
 #include <Expr_NumericValue.hxx>
 #include <Expr_PolyExpression.hxx>
 #include <Expr_PolyFunction.hxx>
@@ -291,7 +280,6 @@
 #include <Geom2dEval_SineWaveCurve.hxx>
 #include <Geom2dEval_TBezierCurve.hxx>
 #include <Geom2d_AxisPlacement.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_CartesianPoint.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_Direction.hxx>
@@ -351,8 +339,6 @@
 #include <Geom_Axis1Placement.hxx>
 #include <Geom_Axis2Placement.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_BoundedSurface.hxx>
 #include <Geom_CartesianPoint.hxx>
 #include <Geom_Circle.hxx>
@@ -377,10 +363,7 @@
 #include <Geom_VectorWithMagnitude.hxx>
 #include <HLRAlgo_EdgesBlock.hxx>
 #include <HLRAlgo_PolyAlgo.hxx>
-#include <HLRAlgo_PolyData.hxx>
 #include <HLRAlgo_PolyInternalData.hxx>
-#include <HLRAlgo_PolyInternalNode.hxx>
-#include <HLRAlgo_PolyShellData.hxx>
 #include <HLRAlgo_WiresBlock.hxx>
 #include <HLRBRep_Algo.hxx>
 #include <HLRBRep_AreaLimit.hxx>
@@ -687,7 +670,6 @@
 #include <IntCurvesFace_Intersector.hxx>
 #include <IntPatch_ALine.hxx>
 #include <IntPatch_GLine.hxx>
-#include <IntPatch_Line.hxx>
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_TheIWLineOfTheIWalking.hxx>
 #include <IntPatch_WLine.hxx>
@@ -722,9 +704,6 @@
 #include <LocOpe_GluedShape.hxx>
 #include <LocOpe_WiresOnShape.hxx>
 #include <MAT2d_Circuit.hxx>
-#include <MAT2d_Connexion.hxx>
-#include <MAT_Arc.hxx>
-#include <MAT_BasicElt.hxx>
 #include <MAT_Bisector.hxx>
 #include <MAT_Edge.hxx>
 #include <MAT_Graph.hxx>
@@ -735,7 +714,6 @@
 #include <MAT_TListNodeOfListOfEdge.hxx>
 #include <MAT_Zone.hxx>
 #include <Message.hxx>
-#include <Message_Alert.hxx>
 #include <Message_AlertExtended.hxx>
 #include <Message_Algorithm.hxx>
 #include <Message_Attribute.hxx>
@@ -750,7 +728,6 @@
 #include <Message_Level.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_MsgFile.hxx>
-#include <Message_Printer.hxx>
 #include <Message_PrinterOStream.hxx>
 #include <Message_PrinterSystemLog.hxx>
 #include <Message_PrinterToReport.hxx>
@@ -843,7 +820,6 @@
 #include <OSD_ThreadFunction.hxx>
 #include <OSD_ThreadPool.hxx>
 #include <OSD_Timer.hxx>
-#include <PCDM_Document.hxx>
 #include <PCDM_ReadWriter_1.hxx>
 #include <PCDM_ReaderFilter.hxx>
 #include <PCDM_ReferenceIterator.hxx>
@@ -856,7 +832,6 @@
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Poly_TriangulationParameters.hxx>
 #include <Precision.hxx>
 #include <ProjLib_CompProjectedCurve.hxx>
@@ -884,7 +859,6 @@
 #include <Resource_Unicode.hxx>
 #include <STEPCAFControl_ActorWrite.hxx>
 #include <STEPCAFControl_Controller.hxx>
-#include <STEPCAFControl_ExternFile.hxx>
 #include <STEPControl_ActorRead.hxx>
 #include <STEPControl_ActorWrite.hxx>
 #include <STEPControl_Controller.hxx>
@@ -1633,7 +1607,6 @@
 #include <StepShape_SweptAreaSolid.hxx>
 #include <StepShape_SweptFaceSolid.hxx>
 #include <StepShape_ToleranceValue.hxx>
-#include <StepShape_TopologicalRepresentationItem.hxx>
 #include <StepShape_Torus.hxx>
 #include <StepShape_TransitionalShapeRepresentation.hxx>
 #include <StepShape_TypeQualifier.hxx>
@@ -1775,7 +1748,6 @@
 #include <TDF_DataSet.hxx>
 #include <TDF_DefaultDeltaOnModification.hxx>
 #include <TDF_DefaultDeltaOnRemoval.hxx>
-#include <TDF_Delta.hxx>
 #include <TDF_DeltaOnAddition.hxx>
 #include <TDF_DeltaOnForget.hxx>
 #include <TDF_DeltaOnModification.hxx>
@@ -1837,9 +1809,7 @@
 #include <TDataXtd_Shape.hxx>
 #include <TDataXtd_Triangulation.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_ApplicationDelta.hxx>
 #include <TDocStd_CompoundDelta.hxx>
-#include <TDocStd_Document.hxx>
 #include <TDocStd_Modified.hxx>
 #include <TDocStd_MultiTransactionManager.hxx>
 #include <TDocStd_Owner.hxx>
@@ -1852,7 +1822,6 @@
 #include <TFunction_Scope.hxx>
 #include <TNaming_DeltaOnModification.hxx>
 #include <TNaming_DeltaOnRemoval.hxx>
-#include <TNaming_NamedShape.hxx>
 #include <TNaming_Naming.hxx>
 #include <TNaming_TranslateTool.hxx>
 #include <TNaming_UsedShapes.hxx>
@@ -1883,8 +1852,6 @@
 #include <TopLoc_Datum3D.hxx>
 #include <TopLoc_SListNodeOfItemLocation.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopOpeBRepBuild_Loop.hxx>
-#include <TopOpeBRepBuild_Pave.hxx>
 #include <TopOpeBRepDS_Association.hxx>
 #include <TopOpeBRepDS_Check.hxx>
 #include <TopOpeBRepDS_CurvePointInterference.hxx>
@@ -1892,7 +1859,6 @@
 #include <TopOpeBRepDS_FaceEdgeInterference.hxx>
 #include <TopOpeBRepDS_GapTool.hxx>
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
 #include <TopOpeBRepDS_Marker.hxx>
 #include <TopOpeBRepDS_ShapeShapeInterference.hxx>
 #include <TopOpeBRepDS_SolidSurfaceInterference.hxx>
@@ -1961,7 +1927,6 @@
 #include <VrmlConverter_PointAspect.hxx>
 #include <VrmlConverter_Projector.hxx>
 #include <VrmlConverter_ShadingAspect.hxx>
-#include <VrmlData_Appearance.hxx>
 #include <VrmlData_ArrayVec3d.hxx>
 #include <VrmlData_Box.hxx>
 #include <VrmlData_Color.hxx>
@@ -1993,9 +1958,6 @@
 #include <Vrml_TextureCoordinate2.hxx>
 #include <XBRepMesh_Factory.hxx>
 #include <XCAFApp_Application.hxx>
-#include <XCAFDimTolObjects_DatumObject.hxx>
-#include <XCAFDimTolObjects_DimensionObject.hxx>
-#include <XCAFDimTolObjects_GeomToleranceObject.hxx>
 #include <XCAFDoc_Area.hxx>
 #include <XCAFDoc_AssemblyGraph.hxx>
 #include <XCAFDoc_AssemblyItemRef.hxx>
@@ -2024,7 +1986,6 @@
 #include <XCAFDoc_ShapeTool.hxx>
 #include <XCAFDoc_View.hxx>
 #include <XCAFDoc_ViewTool.hxx>
-#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
 #include <XCAFDoc_Volume.hxx>
 #include <XCAFNoteObjects_NoteObject.hxx>
@@ -2922,15 +2883,15 @@ typedef opencascade::handle<NCollection_AccAllocator> Handle_NCollection_AccAllo
 typedef opencascade::handle<NCollection_AlignedAllocator> Handle_NCollection_AlignedAllocator;
 typedef opencascade::handle<NCollection_BaseAllocator> Handle_NCollection_BaseAllocator;
 typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
-typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Standard_Persistent> Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent;
+typedef opencascade::handle<NCollection_HArray1_Handle_Standard_Persistent> Handle_NCollection_HArray1_Handle_Standard_Persistent;
+typedef opencascade::handle<NCollection_HSequence_Handle_Storage_Root> Handle_NCollection_HSequence_Handle_Storage_Root;
+typedef opencascade::handle<NCollection_HSequence_Handle_TCollection_HAsciiString> Handle_NCollection_HSequence_Handle_TCollection_HAsciiString;
+typedef opencascade::handle<NCollection_HSequence_Handle_TCollection_HExtendedString> Handle_NCollection_HSequence_Handle_TCollection_HExtendedString;
+typedef opencascade::handle<NCollection_HSequence_Handle_Units_Quantity> Handle_NCollection_HSequence_Handle_Units_Quantity;
+typedef opencascade::handle<NCollection_HSequence_Handle_Units_Token> Handle_NCollection_HSequence_Handle_Units_Token;
+typedef opencascade::handle<NCollection_HSequence_Handle_Units_Unit> Handle_NCollection_HSequence_Handle_Units_Unit;
 typedef opencascade::handle<NCollection_HSequence_TCollection_AsciiString> Handle_NCollection_HSequence_TCollection_AsciiString;
 typedef opencascade::handle<NCollection_HSequence_int> Handle_NCollection_HSequence_int;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Storage_Root> Handle_NCollection_HSequence_opencascade_handle_Storage_Root;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HExtendedString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Units_Quantity> Handle_NCollection_HSequence_opencascade_handle_Units_Quantity;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Units_Token> Handle_NCollection_HSequence_opencascade_handle_Units_Token;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Units_Unit> Handle_NCollection_HSequence_opencascade_handle_Units_Unit;
 typedef opencascade::handle<NCollection_HeapAllocator> Handle_NCollection_HeapAllocator;
 typedef opencascade::handle<NCollection_IncAllocator> Handle_NCollection_IncAllocator;
 typedef opencascade::handle<NCollection_WinHeapAllocator> Handle_NCollection_WinHeapAllocator;
@@ -4313,48 +4274,6 @@ extern "C" OcctResult<Handle_NCollection_Buffer*> Handle_NCollection_Buffer_clon
     OCCT_CATCH_RETURN
 }
 extern "C" bool Handle_NCollection_Buffer_is_null(const Handle_NCollection_Buffer* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent*> Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_clone(const Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent* self_) {
-    try { return {new Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_is_null(const Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_Storage_Root_destructor(Handle_NCollection_HSequence_opencascade_handle_Storage_Root* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_Storage_Root*> Handle_NCollection_HSequence_opencascade_handle_Storage_Root_clone(const Handle_NCollection_HSequence_opencascade_handle_Storage_Root* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_Storage_Root(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_Storage_Root_is_null(const Handle_NCollection_HSequence_opencascade_handle_Storage_Root* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString*> Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_clone(const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_is_null(const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString*> Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_clone(const Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_is_null(const Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(Handle_NCollection_HSequence_opencascade_handle_Units_Quantity* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_Units_Quantity*> Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_clone(const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_Units_Quantity(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_is_null(const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_Units_Token_destructor(Handle_NCollection_HSequence_opencascade_handle_Units_Token* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_Units_Token*> Handle_NCollection_HSequence_opencascade_handle_Units_Token_clone(const Handle_NCollection_HSequence_opencascade_handle_Units_Token* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_Units_Token(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_Units_Token_is_null(const Handle_NCollection_HSequence_opencascade_handle_Units_Token* self_) { return self_->IsNull(); }
-extern "C" void Handle_NCollection_HSequence_opencascade_handle_Units_Unit_destructor(Handle_NCollection_HSequence_opencascade_handle_Units_Unit* self_) { delete self_; }
-extern "C" OcctResult<Handle_NCollection_HSequence_opencascade_handle_Units_Unit*> Handle_NCollection_HSequence_opencascade_handle_Units_Unit_clone(const Handle_NCollection_HSequence_opencascade_handle_Units_Unit* self_) {
-    try { return {new Handle_NCollection_HSequence_opencascade_handle_Units_Unit(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool Handle_NCollection_HSequence_opencascade_handle_Units_Unit_is_null(const Handle_NCollection_HSequence_opencascade_handle_Units_Unit* self_) { return self_->IsNull(); }
 extern "C" void Handle_NCollection_HeapAllocator_destructor(Handle_NCollection_HeapAllocator* self_) { delete self_; }
 extern "C" OcctResult<Handle_NCollection_HeapAllocator*> Handle_NCollection_HeapAllocator_clone(const Handle_NCollection_HeapAllocator* self_) {
     try { return {new Handle_NCollection_HeapAllocator(*self_), nullptr}; }
@@ -6356,8 +6275,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> Message_Algorithm_ge
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self_->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> Message_Algorithm_get_message_strings(const Message_Algorithm* self_, int32_t theStatus) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self_->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> Message_Algorithm_get_message_strings(const Message_Algorithm* self_, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self_->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Message_Algorithm_set_status_status(Message_Algorithm* self_, int32_t theStat) {
@@ -6428,8 +6347,12 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Message_Algorithm_dynamic_ty
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_ExtendedString*> Message_Algorithm_prepare_report(Handle(TColStd_HPackedMapOfInteger) const* theError, int32_t theMaxCount) {
+extern "C" OcctResult<TCollection_ExtendedString*> Message_Algorithm_prepare_report_handletcolstdhpackedmapofinteger_int(Handle(TColStd_HPackedMapOfInteger) const* theError, int32_t theMaxCount) {
     try { return {new TCollection_ExtendedString(Message_Algorithm::PrepareReport(*theError, theMaxCount)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_ExtendedString*> Message_Algorithm_prepare_report_seq_tcollection_hextendedstring_int(NCollection_Sequence_Handle_TCollection_HExtendedString const* theReportSeq, int32_t theMaxCount) {
+    try { return {new TCollection_ExtendedString(Message_Algorithm::PrepareReport(*theReportSeq, theMaxCount)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> Message_Algorithm_get_type_name() {
@@ -6946,6 +6869,10 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Message_CompositeAlerts_dyna
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_Message_Alert const*> Message_CompositeAlerts_alerts(const Message_CompositeAlerts* self_, int32_t theGravity) {
+    try { return {&(self_->Alerts(static_cast<Message_Gravity>(theGravity))), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> Message_CompositeAlerts_add_alert(Message_CompositeAlerts* self_, int32_t theGravity, Handle(Message_Alert) const* theAlert) {
     try { return {self_->AddAlert(static_cast<Message_Gravity>(theGravity), *theAlert), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7209,6 +7136,14 @@ extern "C" OcctResult<bool> Message_Messenger_remove_printer(Message_Messenger* 
 }
 extern "C" OcctResult<int32_t> Message_Messenger_remove_printers(Message_Messenger* self_, Handle(Standard_Type) const* theType) {
     try { return {self_->RemovePrinters(*theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Message_Printer const*> Message_Messenger_printers(const Message_Messenger* self_) {
+    try { return {&(self_->Printers()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Message_Printer*> Message_Messenger_change_printers(Message_Messenger* self_) {
+    try { return {&(self_->ChangePrinters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Message_Messenger_send_charptr_gravity(const Message_Messenger* self_, const char* theString, int32_t theGravity) {
@@ -8050,6 +7985,10 @@ extern "C" OcctResult<Message_Report*> Message_Report_ctor() {
 extern "C" const char* Message_Report_add_alert(Message_Report* self_, int32_t theGravity, Handle(Message_Alert) const* theAlert) {
     try { self_->AddAlert(static_cast<Message_Gravity>(theGravity), *theAlert); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_Message_Alert const*> Message_Report_get_alerts(const Message_Report* self_, int32_t theGravity) {
+    try { return {&(self_->GetAlerts(static_cast<Message_Gravity>(theGravity))), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Message_Report_has_alert_handlestandardtype(Message_Report* self_, Handle(Standard_Type) const* theType) {
     try { return {self_->HasAlert(*theType), nullptr}; }
@@ -30669,8 +30608,8 @@ extern "C" OcctResult<TCollection_ExtendedString*> Storage_Data_data_type(const 
     try { return {new TCollection_ExtendedString(self_->DataType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Storage_Root)*> Storage_Data_roots(const Storage_Data* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Storage_Root)(self_->Roots()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Storage_Root)*> Storage_Data_roots(const Storage_Data* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Storage_Root)(self_->Roots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Storage_Root)*> Storage_Data_find(const Storage_Data* self_, TCollection_AsciiString const* aName) {
@@ -31095,7 +31034,7 @@ extern "C" OcctResult<Storage_InternalData*> Storage_InternalData_ctor() {
     try { return {new Storage_InternalData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Standard_Persistent)*> Storage_InternalData_read_array(Storage_InternalData* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Handle_Standard_Persistent)*> Storage_InternalData_read_array(Storage_InternalData* self_) {
     try { return {&(self_->ReadArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -31279,8 +31218,8 @@ extern "C" OcctResult<Storage_RootData*> Storage_RootData_ctor() {
     try { return {new Storage_RootData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Storage_Root)*> Storage_RootData_roots(const Storage_RootData* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Storage_Root)(self_->Roots()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Storage_Root)*> Storage_RootData_roots(const Storage_RootData* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Storage_Root)(self_->Roots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Storage_Root)*> Storage_RootData_find(const Storage_RootData* self_, TCollection_AsciiString const* aName) {
@@ -33611,8 +33550,8 @@ extern "C" OcctResult<Units_Lexicon*> Units_Lexicon_ctor() {
     try { return {new Units_Lexicon(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Token)*> Units_Lexicon_sequence(const Units_Lexicon* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Token)(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Token)*> Units_Lexicon_sequence(const Units_Lexicon* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Token)(self_->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Units_Lexicon_creates(Units_Lexicon* self_) {
@@ -33709,8 +33648,8 @@ extern "C" const char* Units_MathSentence_inherited_SetConstants(Units_MathSente
     try { self->SetConstants(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Token)*> Units_MathSentence_inherited_Sequence(const Units_MathSentence* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Token)(self->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Token)*> Units_MathSentence_inherited_Sequence(const Units_MathSentence* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Token)(self->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Units_Token)*> Units_MathSentence_inherited_Evaluate(Units_MathSentence* self) {
@@ -33861,7 +33800,7 @@ extern "C" void Units_NoSuchUnit_destructor(Units_NoSuchUnit* self_) { delete se
 // Units_Quantity wrappers
 // ========================
 
-extern "C" OcctResult<Units_Quantity*> Units_Quantity_ctor_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(const char* aname, Handle(Units_Dimensions) const* adimensions, Handle(NCollection_HSequence_opencascade_handle_Units_Unit) const* aunitssequence) {
+extern "C" OcctResult<Units_Quantity*> Units_Quantity_ctor_charptr_handleunitsdimensions_hseq_units_unit(const char* aname, Handle(Units_Dimensions) const* adimensions, Handle(NCollection_HSequence_Handle_Units_Unit) const* aunitssequence) {
     try { return {new Units_Quantity(aname, *adimensions, *aunitssequence), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -33873,8 +33812,8 @@ extern "C" OcctResult<Handle(Units_Dimensions)*> Units_Quantity_dimensions(const
     try { return {new Handle(Units_Dimensions)(self_->Dimensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Unit)*> Units_Quantity_sequence(const Units_Quantity* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Unit)(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Unit)*> Units_Quantity_sequence(const Units_Quantity* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Unit)(self_->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Units_Quantity_is_equal(const Units_Quantity* self_, const char* astring) {
@@ -33953,8 +33892,8 @@ extern "C" OcctResult<Units_Sentence*> Units_Sentence_ctor_handleunitslexicon_ch
     try { return {new Units_Sentence(*alexicon, astring), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Token)*> Units_Sentence_sequence(const Units_Sentence* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Token)(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Token)*> Units_Sentence_sequence(const Units_Sentence* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Token)(self_->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Units_Token)*> Units_Sentence_evaluate(Units_Sentence* self_) {
@@ -33965,7 +33904,7 @@ extern "C" const char* Units_Sentence_set_constants(Units_Sentence* self_) {
     try { self_->SetConstants(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Units_Sentence_sequence_handlencollectionhsequenceopencascadehandleunitstoken(Units_Sentence* self_, Handle(NCollection_HSequence_opencascade_handle_Units_Token) const* asequenceoftokens) {
+extern "C" const char* Units_Sentence_sequence_hseq_units_token(Units_Sentence* self_, Handle(NCollection_HSequence_Handle_Units_Token) const* asequenceoftokens) {
     try { self_->Sequence(*asequenceoftokens); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -34197,8 +34136,8 @@ extern "C" OcctResult<Handle(Units_Quantity)*> Units_ShiftedUnit_inherited_Quant
     try { return {new Handle(Units_Quantity)(self->Quantity()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Units_ShiftedUnit_inherited_SymbolsSequence(const Units_ShiftedUnit* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->SymbolsSequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Units_ShiftedUnit_inherited_SymbolsSequence(const Units_ShiftedUnit* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->SymbolsSequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Units_ShiftedUnit_inherited_IsInstance(const Units_ShiftedUnit* self, Handle(Standard_Type) const& theType) {
@@ -34467,8 +34406,8 @@ extern "C" OcctResult<Handle(Units_Quantity)*> Units_Unit_quantity(const Units_U
     try { return {new Handle(Units_Quantity)(self_->Quantity()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Units_Unit_symbols_sequence(const Units_Unit* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SymbolsSequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Units_Unit_symbols_sequence(const Units_Unit* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->SymbolsSequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Units_Token)*> Units_Unit_token(const Units_Unit* self_) {
@@ -34575,7 +34514,7 @@ extern "C" OcctResult<Units_UnitSentence*> Units_UnitSentence_ctor_charptr(const
     try { return {new Units_UnitSentence(astring), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Units_UnitSentence*> Units_UnitSentence_ctor_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(const char* astring, Handle(NCollection_HSequence_opencascade_handle_Units_Quantity) const* aquantitiessequence) {
+extern "C" OcctResult<Units_UnitSentence*> Units_UnitSentence_ctor_charptr_hseq_units_quantity(const char* astring, Handle(NCollection_HSequence_Handle_Units_Quantity) const* aquantitiessequence) {
     try { return {new Units_UnitSentence(astring, *aquantitiessequence), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -34583,7 +34522,7 @@ extern "C" const char* Units_UnitSentence_analyse(Units_UnitSentence* self_) {
     try { self_->Analyse(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Units_UnitSentence_set_units(Units_UnitSentence* self_, Handle(NCollection_HSequence_opencascade_handle_Units_Quantity) const* aquantitiessequence) {
+extern "C" const char* Units_UnitSentence_set_units(Units_UnitSentence* self_, Handle(NCollection_HSequence_Handle_Units_Quantity) const* aquantitiessequence) {
     try { self_->SetUnits(*aquantitiessequence); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -34593,8 +34532,8 @@ extern "C" const char* Units_UnitSentence_inherited_SetConstants(Units_UnitSente
     try { self->SetConstants(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Token)*> Units_UnitSentence_inherited_Sequence(const Units_UnitSentence* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Token)(self->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Token)*> Units_UnitSentence_inherited_Sequence(const Units_UnitSentence* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Token)(self->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Units_Token)*> Units_UnitSentence_inherited_Evaluate(Units_UnitSentence* self) {
@@ -34619,8 +34558,8 @@ extern "C" OcctResult<Units_UnitsDictionary*> Units_UnitsDictionary_ctor() {
     try { return {new Units_UnitsDictionary(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Quantity)*> Units_UnitsDictionary_sequence(const Units_UnitsDictionary* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Quantity)(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Quantity)*> Units_UnitsDictionary_sequence(const Units_UnitsDictionary* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Quantity)(self_->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString*> Units_UnitsDictionary_active_unit(const Units_UnitsDictionary* self_, const char* aquantity) {
@@ -34751,8 +34690,8 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_Units_UnitsLexicon_to_H
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Token)*> Units_UnitsLexicon_inherited_Sequence(const Units_UnitsLexicon* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Token)(self->Sequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Token)*> Units_UnitsLexicon_inherited_Sequence(const Units_UnitsLexicon* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Token)(self->Sequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Units_UnitsLexicon_inherited_IsInstance(const Units_UnitsLexicon* self, Handle(Standard_Type) const& theType) {
@@ -34797,8 +34736,8 @@ extern "C" OcctResult<Units_UnitsSystem*> Units_UnitsSystem_ctor_charptr_bool(co
     try { return {new Units_UnitsSystem(aName, Verbose), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Units_Quantity)*> Units_UnitsSystem_quantities_sequence(const Units_UnitsSystem* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Units_Quantity)(self_->QuantitiesSequence()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Units_Quantity)*> Units_UnitsSystem_quantities_sequence(const Units_UnitsSystem* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Units_Quantity)(self_->QuantitiesSequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HSequence_int)*> Units_UnitsSystem_active_units_sequence(const Units_UnitsSystem* self_) {
@@ -35434,12 +35373,16 @@ extern "C" void NCollection_Array1_NCollection_Vec3_float_destructor(NCollection
 extern "C" void NCollection_Array2_GeomGridEval_SurfD1_destructor(NCollection_Array2_GeomGridEval_SurfD1* self_) { delete self_; }
 extern "C" void NCollection_Array2_GeomGridEval_SurfD2_destructor(NCollection_Array2_GeomGridEval_SurfD2* self_) { delete self_; }
 extern "C" void NCollection_Array2_GeomGridEval_SurfD3_destructor(NCollection_Array2_GeomGridEval_SurfD3* self_) { delete self_; }
+extern "C" void NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg_destructor(NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg* self_) { delete self_; }
+extern "C" void NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double_destructor(NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double* self_) { delete self_; }
+extern "C" void NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int_destructor(NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TCollection_ExtendedString_uint8_t_destructor(NCollection_DataMap_TCollection_ExtendedString_uint8_t* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher* self_) { delete self_; }
+extern "C" void NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_DataMap_int_NCollection_List_TopoDS_Shape_destructor(NCollection_DataMap_int_NCollection_List_TopoDS_Shape* self_) { delete self_; }
 extern "C" void NCollection_DataMap_int_TColStd_PackedMapOfInteger_destructor(NCollection_DataMap_int_TColStd_PackedMapOfInteger* self_) { delete self_; }
 extern "C" void NCollection_DoubleMap_int_TDF_Label_destructor(NCollection_DoubleMap_int_TDF_Label* self_) { delete self_; }
@@ -35456,6 +35399,8 @@ extern "C" void NCollection_DynamicArray_BOPDS_InterfVV_destructor(NCollection_D
 extern "C" void NCollection_DynamicArray_BOPDS_InterfVZ_destructor(NCollection_DynamicArray_BOPDS_InterfVZ* self_) { delete self_; }
 extern "C" void NCollection_DynamicArray_BOPDS_InterfZZ_destructor(NCollection_DynamicArray_BOPDS_InterfZZ* self_) { delete self_; }
 extern "C" void NCollection_DynamicArray_BOPDS_Point_destructor(NCollection_DynamicArray_BOPDS_Point* self_) { delete self_; }
+extern "C" void NCollection_DynamicArray_Handle_Adaptor3d_Surface_destructor(NCollection_DynamicArray_Handle_Adaptor3d_Surface* self_) { delete self_; }
+extern "C" void NCollection_DynamicArray_Handle_Standard_Transient_destructor(NCollection_DynamicArray_Handle_Standard_Transient* self_) { delete self_; }
 extern "C" void NCollection_DynamicArray_ProxPnt_Status_destructor(NCollection_DynamicArray_ProxPnt_Status* self_) { delete self_; }
 extern "C" void NCollection_DynamicArray_TopoDS_Shape_destructor(NCollection_DynamicArray_TopoDS_Shape* self_) { delete self_; }
 extern "C" void NCollection_DynamicArray_double_destructor(NCollection_DynamicArray_double* self_) { delete self_; }
@@ -35468,105 +35413,22 @@ extern "C" void NCollection_FlatMap_BRepGraph_NodeId_destructor(NCollection_Flat
 extern "C" void NCollection_FlatMap_BRepGraph_UID_destructor(NCollection_FlatMap_BRepGraph_UID* self_) { delete self_; }
 extern "C" void NCollection_HArray1_NCollection_List_int_destructor(NCollection_HArray1_NCollection_List_int* self_) { delete self_; }
 extern "C" void NCollection_HArray1_StepDimTol_GeometricToleranceModifier_destructor(NCollection_HArray1_StepDimTol_GeometricToleranceModifier* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_destructor(NCollection_HArray1_opencascade_handle_Adaptor3d_Curve* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_destructor(NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Geom2d_Curve_destructor(NCollection_HArray1_opencascade_handle_Geom2d_Curve* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_destructor(NCollection_HArray1_opencascade_handle_Geom_BSplineCurve* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Geom_Curve_destructor(NCollection_HArray1_opencascade_handle_Geom_Curve* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_destructor(NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESAppli_Node_destructor(NCollection_HArray1_opencascade_handle_IGESAppli_Node* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_destructor(NCollection_HArray1_opencascade_handle_IGESData_IGESEntity* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_destructor(NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_destructor(NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_destructor(NCollection_HArray1_opencascade_handle_IGESDefs_TabularData* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_destructor(NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_destructor(NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_destructor(NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_destructor(NCollection_HArray1_opencascade_handle_IGESGeom_Boundary* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_destructor(NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_destructor(NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGraph_Color_destructor(NCollection_HArray1_opencascade_handle_IGESGraph_Color* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_destructor(NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_destructor(NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESSolid_Face_destructor(NCollection_HArray1_opencascade_handle_IGESSolid_Face* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESSolid_Loop_destructor(NCollection_HArray1_opencascade_handle_IGESSolid_Loop* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESSolid_Shell_destructor(NCollection_HArray1_opencascade_handle_IGESSolid_Shell* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_destructor(NCollection_HArray1_opencascade_handle_IGESSolid_VertexList* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_destructor(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_destructor(NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(NCollection_HArray1_opencascade_handle_Standard_Persistent* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_Standard_Transient_destructor(NCollection_HArray1_opencascade_handle_Standard_Transient* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_Approval_destructor(NCollection_HArray1_opencascade_handle_StepBasic_Approval* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_destructor(NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_Document_destructor(NCollection_HArray1_opencascade_handle_StepBasic_Document* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_destructor(NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_Organization_destructor(NCollection_HArray1_opencascade_handle_StepBasic_Organization* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_Person_destructor(NCollection_HArray1_opencascade_handle_StepBasic_Person* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_Product_destructor(NCollection_HArray1_opencascade_handle_StepBasic_Product* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_destructor(NCollection_HArray1_opencascade_handle_StepBasic_ProductContext* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_destructor(NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_destructor(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_destructor(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_destructor(NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_destructor(NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_destructor(NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_destructor(NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_destructor(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_destructor(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_destructor(NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_destructor(NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_destructor(NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_destructor(NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_destructor(NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_destructor(NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_destructor(NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_destructor(NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_destructor(NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_destructor(NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_destructor(NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_Edge_destructor(NCollection_HArray1_opencascade_handle_StepShape_Edge* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_Face_destructor(NCollection_HArray1_opencascade_handle_StepShape_Face* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_FaceBound_destructor(NCollection_HArray1_opencascade_handle_StepShape_FaceBound* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_destructor(NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_destructor(NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_destructor(NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_destructor(NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_destructor(NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem* self_) { delete self_; }
-extern "C" void NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_destructor(NCollection_HArray1_opencascade_handle_TCollection_HAsciiString* self_) { delete self_; }
+extern "C" void NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_destructor(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember* self_) { delete self_; }
+extern "C" void NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_destructor(NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember* self_) { delete self_; }
+extern "C" void NCollection_HArray2_Handle_Geom_Surface_destructor(NCollection_HArray2_Handle_Geom_Surface* self_) { delete self_; }
+extern "C" void NCollection_HArray2_Handle_Standard_Transient_destructor(NCollection_HArray2_Handle_Standard_Transient* self_) { delete self_; }
+extern "C" void NCollection_HArray2_Handle_StepGeom_CartesianPoint_destructor(NCollection_HArray2_Handle_StepGeom_CartesianPoint* self_) { delete self_; }
+extern "C" void NCollection_HArray2_Handle_StepGeom_SurfacePatch_destructor(NCollection_HArray2_Handle_StepGeom_SurfacePatch* self_) { delete self_; }
 extern "C" void NCollection_HArray2_TopoDS_Shape_destructor(NCollection_HArray2_TopoDS_Shape* self_) { delete self_; }
 extern "C" void NCollection_HArray2_double_destructor(NCollection_HArray2_double* self_) { delete self_; }
 extern "C" void NCollection_HArray2_gp_Pnt_destructor(NCollection_HArray2_gp_Pnt* self_) { delete self_; }
 extern "C" void NCollection_HArray2_gp_Pnt2d_destructor(NCollection_HArray2_gp_Pnt2d* self_) { delete self_; }
 extern "C" void NCollection_HArray2_gp_XYZ_destructor(NCollection_HArray2_gp_XYZ* self_) { delete self_; }
 extern "C" void NCollection_HArray2_int_destructor(NCollection_HArray2_int* self_) { delete self_; }
-extern "C" void NCollection_HArray2_opencascade_handle_Geom_Surface_destructor(NCollection_HArray2_opencascade_handle_Geom_Surface* self_) { delete self_; }
 extern "C" void NCollection_HArray2_opencascade_handle_NCollection_HArray1_double_destructor(NCollection_HArray2_opencascade_handle_NCollection_HArray1_double* self_) { delete self_; }
 extern "C" void NCollection_HArray2_opencascade_handle_NCollection_HArray1_int_destructor(NCollection_HArray2_opencascade_handle_NCollection_HArray1_int* self_) { delete self_; }
-extern "C" void NCollection_HArray2_opencascade_handle_Standard_Transient_destructor(NCollection_HArray2_opencascade_handle_Standard_Transient* self_) { delete self_; }
-extern "C" void NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_destructor(NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint* self_) { delete self_; }
-extern "C" void NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_destructor(NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_destructor(NCollection_HSequence_opencascade_handle_ChFiDS_SurfData* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_destructor(NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_destructor(NCollection_HSequence_opencascade_handle_Geom_BoundedCurve* self_) { delete self_; }
 extern "C" void NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt_destructor(NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_destructor(NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_destructor(NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Standard_Transient_destructor(NCollection_HSequence_opencascade_handle_Standard_Transient* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_StdStorage_Root_destructor(NCollection_HSequence_opencascade_handle_StdStorage_Root* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_destructor(NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_destructor(NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_destructor(NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Storage_Root_destructor(NCollection_HSequence_opencascade_handle_Storage_Root* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_TObj_Object_destructor(NCollection_HSequence_opencascade_handle_TObj_Object* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_destructor(NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Transfer_Finder_destructor(NCollection_HSequence_opencascade_handle_Transfer_Finder* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(NCollection_HSequence_opencascade_handle_Units_Quantity* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Units_Token_destructor(NCollection_HSequence_opencascade_handle_Units_Token* self_) { delete self_; }
-extern "C" void NCollection_HSequence_opencascade_handle_Units_Unit_destructor(NCollection_HSequence_opencascade_handle_Units_Unit* self_) { delete self_; }
+extern "C" void NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int_destructor(NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int* self_) { delete self_; }
 extern "C" void NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* self_) { delete self_; }
 extern "C" void NCollection_IndexedMap_Message_MetricType_destructor(NCollection_IndexedMap_Message_MetricType* self_) { delete self_; }
 extern "C" void NCollection_LinearVector_BRepGraph_ChildRefId_destructor(NCollection_LinearVector_BRepGraph_ChildRefId* self_) { delete self_; }
@@ -36134,6 +35996,496 @@ extern "C" void NCollection_Array1_HLRBRep_FaceData_set_value(NCollection_Array1
 }
 
 extern "C" void NCollection_Array1_HLRBRep_FaceData_init(NCollection_Array1_HLRBRep_FaceData* arr, const HLRBRep_FaceData* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Expr_GeneralExpression - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Expr_GeneralExpression> Handle_Expr_GeneralExpression;
+typedef NCollection_Array1<occ::handle<Expr_GeneralExpression>> NCollection_Array1_Handle_Expr_GeneralExpression;
+
+extern "C" NCollection_Array1_Handle_Expr_GeneralExpression* NCollection_Array1_Handle_Expr_GeneralExpression_new() {
+    return new NCollection_Array1_Handle_Expr_GeneralExpression();
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_GeneralExpression_destructor(NCollection_Array1_Handle_Expr_GeneralExpression* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Expr_GeneralExpression* NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Expr_GeneralExpression(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Expr_GeneralExpression* NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2_value(int theLower, int theUpper, const Handle_Expr_GeneralExpression* theValue) {
+    auto arr = new NCollection_Array1_Handle_Expr_GeneralExpression(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_GeneralExpression_length(const NCollection_Array1_Handle_Expr_GeneralExpression* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_GeneralExpression_lower(const NCollection_Array1_Handle_Expr_GeneralExpression* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_GeneralExpression_upper(const NCollection_Array1_Handle_Expr_GeneralExpression* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Expr_GeneralExpression* NCollection_Array1_Handle_Expr_GeneralExpression_value(const NCollection_Array1_Handle_Expr_GeneralExpression* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_GeneralExpression_set_value(NCollection_Array1_Handle_Expr_GeneralExpression* arr, int theIndex, const Handle_Expr_GeneralExpression* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_GeneralExpression_init(NCollection_Array1_Handle_Expr_GeneralExpression* arr, const Handle_Expr_GeneralExpression* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Expr_NamedUnknown - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Expr_NamedUnknown> Handle_Expr_NamedUnknown;
+typedef NCollection_Array1<occ::handle<Expr_NamedUnknown>> NCollection_Array1_Handle_Expr_NamedUnknown;
+
+extern "C" NCollection_Array1_Handle_Expr_NamedUnknown* NCollection_Array1_Handle_Expr_NamedUnknown_new() {
+    return new NCollection_Array1_Handle_Expr_NamedUnknown();
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_NamedUnknown_destructor(NCollection_Array1_Handle_Expr_NamedUnknown* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Expr_NamedUnknown* NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Expr_NamedUnknown(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Expr_NamedUnknown* NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2_value(int theLower, int theUpper, const Handle_Expr_NamedUnknown* theValue) {
+    auto arr = new NCollection_Array1_Handle_Expr_NamedUnknown(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_NamedUnknown_length(const NCollection_Array1_Handle_Expr_NamedUnknown* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_NamedUnknown_lower(const NCollection_Array1_Handle_Expr_NamedUnknown* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Expr_NamedUnknown_upper(const NCollection_Array1_Handle_Expr_NamedUnknown* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Expr_NamedUnknown* NCollection_Array1_Handle_Expr_NamedUnknown_value(const NCollection_Array1_Handle_Expr_NamedUnknown* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_NamedUnknown_set_value(NCollection_Array1_Handle_Expr_NamedUnknown* arr, int theIndex, const Handle_Expr_NamedUnknown* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Expr_NamedUnknown_init(NCollection_Array1_Handle_Expr_NamedUnknown* arr, const Handle_Expr_NamedUnknown* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Geom2d_BSplineCurve - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef NCollection_Array1<occ::handle<Geom2d_BSplineCurve>> NCollection_Array1_Handle_Geom2d_BSplineCurve;
+
+extern "C" NCollection_Array1_Handle_Geom2d_BSplineCurve* NCollection_Array1_Handle_Geom2d_BSplineCurve_new() {
+    return new NCollection_Array1_Handle_Geom2d_BSplineCurve();
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BSplineCurve_destructor(NCollection_Array1_Handle_Geom2d_BSplineCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Geom2d_BSplineCurve* NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Geom2d_BSplineCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Geom2d_BSplineCurve* NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom2d_BSplineCurve* theValue) {
+    auto arr = new NCollection_Array1_Handle_Geom2d_BSplineCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BSplineCurve_length(const NCollection_Array1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BSplineCurve_lower(const NCollection_Array1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BSplineCurve_upper(const NCollection_Array1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom2d_BSplineCurve* NCollection_Array1_Handle_Geom2d_BSplineCurve_value(const NCollection_Array1_Handle_Geom2d_BSplineCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BSplineCurve_set_value(NCollection_Array1_Handle_Geom2d_BSplineCurve* arr, int theIndex, const Handle_Geom2d_BSplineCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BSplineCurve_init(NCollection_Array1_Handle_Geom2d_BSplineCurve* arr, const Handle_Geom2d_BSplineCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Geom2d_BezierCurve - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_BezierCurve> Handle_Geom2d_BezierCurve;
+typedef NCollection_Array1<occ::handle<Geom2d_BezierCurve>> NCollection_Array1_Handle_Geom2d_BezierCurve;
+
+extern "C" NCollection_Array1_Handle_Geom2d_BezierCurve* NCollection_Array1_Handle_Geom2d_BezierCurve_new() {
+    return new NCollection_Array1_Handle_Geom2d_BezierCurve();
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BezierCurve_destructor(NCollection_Array1_Handle_Geom2d_BezierCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Geom2d_BezierCurve* NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Geom2d_BezierCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Geom2d_BezierCurve* NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom2d_BezierCurve* theValue) {
+    auto arr = new NCollection_Array1_Handle_Geom2d_BezierCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BezierCurve_length(const NCollection_Array1_Handle_Geom2d_BezierCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BezierCurve_lower(const NCollection_Array1_Handle_Geom2d_BezierCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom2d_BezierCurve_upper(const NCollection_Array1_Handle_Geom2d_BezierCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom2d_BezierCurve* NCollection_Array1_Handle_Geom2d_BezierCurve_value(const NCollection_Array1_Handle_Geom2d_BezierCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BezierCurve_set_value(NCollection_Array1_Handle_Geom2d_BezierCurve* arr, int theIndex, const Handle_Geom2d_BezierCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom2d_BezierCurve_init(NCollection_Array1_Handle_Geom2d_BezierCurve* arr, const Handle_Geom2d_BezierCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Geom_BSplineCurve - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef NCollection_Array1<occ::handle<Geom_BSplineCurve>> NCollection_Array1_Handle_Geom_BSplineCurve;
+
+extern "C" NCollection_Array1_Handle_Geom_BSplineCurve* NCollection_Array1_Handle_Geom_BSplineCurve_new() {
+    return new NCollection_Array1_Handle_Geom_BSplineCurve();
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BSplineCurve_destructor(NCollection_Array1_Handle_Geom_BSplineCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Geom_BSplineCurve* NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Geom_BSplineCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Geom_BSplineCurve* NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom_BSplineCurve* theValue) {
+    auto arr = new NCollection_Array1_Handle_Geom_BSplineCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BSplineCurve_length(const NCollection_Array1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BSplineCurve_lower(const NCollection_Array1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BSplineCurve_upper(const NCollection_Array1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom_BSplineCurve* NCollection_Array1_Handle_Geom_BSplineCurve_value(const NCollection_Array1_Handle_Geom_BSplineCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BSplineCurve_set_value(NCollection_Array1_Handle_Geom_BSplineCurve* arr, int theIndex, const Handle_Geom_BSplineCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BSplineCurve_init(NCollection_Array1_Handle_Geom_BSplineCurve* arr, const Handle_Geom_BSplineCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Geom_BezierCurve - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef NCollection_Array1<occ::handle<Geom_BezierCurve>> NCollection_Array1_Handle_Geom_BezierCurve;
+
+extern "C" NCollection_Array1_Handle_Geom_BezierCurve* NCollection_Array1_Handle_Geom_BezierCurve_new() {
+    return new NCollection_Array1_Handle_Geom_BezierCurve();
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BezierCurve_destructor(NCollection_Array1_Handle_Geom_BezierCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Geom_BezierCurve* NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Geom_BezierCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Geom_BezierCurve* NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom_BezierCurve* theValue) {
+    auto arr = new NCollection_Array1_Handle_Geom_BezierCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BezierCurve_length(const NCollection_Array1_Handle_Geom_BezierCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BezierCurve_lower(const NCollection_Array1_Handle_Geom_BezierCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_BezierCurve_upper(const NCollection_Array1_Handle_Geom_BezierCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom_BezierCurve* NCollection_Array1_Handle_Geom_BezierCurve_value(const NCollection_Array1_Handle_Geom_BezierCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BezierCurve_set_value(NCollection_Array1_Handle_Geom_BezierCurve* arr, int theIndex, const Handle_Geom_BezierCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_BezierCurve_init(NCollection_Array1_Handle_Geom_BezierCurve* arr, const Handle_Geom_BezierCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_Geom_Curve - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef NCollection_Array1<occ::handle<Geom_Curve>> NCollection_Array1_Handle_Geom_Curve;
+
+extern "C" NCollection_Array1_Handle_Geom_Curve* NCollection_Array1_Handle_Geom_Curve_new() {
+    return new NCollection_Array1_Handle_Geom_Curve();
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_Curve_destructor(NCollection_Array1_Handle_Geom_Curve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_Geom_Curve* NCollection_Array1_Handle_Geom_Curve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_Geom_Curve(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_Geom_Curve* NCollection_Array1_Handle_Geom_Curve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom_Curve* theValue) {
+    auto arr = new NCollection_Array1_Handle_Geom_Curve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_Curve_length(const NCollection_Array1_Handle_Geom_Curve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_Curve_lower(const NCollection_Array1_Handle_Geom_Curve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_Geom_Curve_upper(const NCollection_Array1_Handle_Geom_Curve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom_Curve* NCollection_Array1_Handle_Geom_Curve_value(const NCollection_Array1_Handle_Geom_Curve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_Curve_set_value(NCollection_Array1_Handle_Geom_Curve* arr, int theIndex, const Handle_Geom_Curve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_Geom_Curve_init(NCollection_Array1_Handle_Geom_Curve* arr, const Handle_Geom_Curve* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_HLRAlgo_PolyData - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<HLRAlgo_PolyData> Handle_HLRAlgo_PolyData;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyData>> NCollection_Array1_Handle_HLRAlgo_PolyData;
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyData* NCollection_Array1_Handle_HLRAlgo_PolyData_new() {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyData();
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyData_destructor(NCollection_Array1_Handle_HLRAlgo_PolyData* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyData* NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyData(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyData* NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2_value(int theLower, int theUpper, const Handle_HLRAlgo_PolyData* theValue) {
+    auto arr = new NCollection_Array1_Handle_HLRAlgo_PolyData(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyData_length(const NCollection_Array1_Handle_HLRAlgo_PolyData* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyData_lower(const NCollection_Array1_Handle_HLRAlgo_PolyData* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyData_upper(const NCollection_Array1_Handle_HLRAlgo_PolyData* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_HLRAlgo_PolyData* NCollection_Array1_Handle_HLRAlgo_PolyData_value(const NCollection_Array1_Handle_HLRAlgo_PolyData* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyData_set_value(NCollection_Array1_Handle_HLRAlgo_PolyData* arr, int theIndex, const Handle_HLRAlgo_PolyData* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyData_init(NCollection_Array1_Handle_HLRAlgo_PolyData* arr, const Handle_HLRAlgo_PolyData* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_HLRAlgo_PolyInternalNode - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<HLRAlgo_PolyInternalNode> Handle_HLRAlgo_PolyInternalNode;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>> NCollection_Array1_Handle_HLRAlgo_PolyInternalNode;
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_new() {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyInternalNode();
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_destructor(NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyInternalNode(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2_value(int theLower, int theUpper, const Handle_HLRAlgo_PolyInternalNode* theValue) {
+    auto arr = new NCollection_Array1_Handle_HLRAlgo_PolyInternalNode(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_length(const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_lower(const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_upper(const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_HLRAlgo_PolyInternalNode* NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_value(const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_set_value(NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr, int theIndex, const Handle_HLRAlgo_PolyInternalNode* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_init(NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* arr, const Handle_HLRAlgo_PolyInternalNode* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
+// NCollection_Array1_Handle_HLRAlgo_PolyShellData - Fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<HLRAlgo_PolyShellData> Handle_HLRAlgo_PolyShellData;
+typedef NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> NCollection_Array1_Handle_HLRAlgo_PolyShellData;
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyShellData* NCollection_Array1_Handle_HLRAlgo_PolyShellData_new() {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyShellData();
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyShellData_destructor(NCollection_Array1_Handle_HLRAlgo_PolyShellData* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyShellData* NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_Array1_Handle_HLRAlgo_PolyShellData(theLower, theUpper);
+}
+
+extern "C" NCollection_Array1_Handle_HLRAlgo_PolyShellData* NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2_value(int theLower, int theUpper, const Handle_HLRAlgo_PolyShellData* theValue) {
+    auto arr = new NCollection_Array1_Handle_HLRAlgo_PolyShellData(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyShellData_length(const NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyShellData_lower(const NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_Array1_Handle_HLRAlgo_PolyShellData_upper(const NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_HLRAlgo_PolyShellData* NCollection_Array1_Handle_HLRAlgo_PolyShellData_value(const NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyShellData_set_value(NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr, int theIndex, const Handle_HLRAlgo_PolyShellData* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_Array1_Handle_HLRAlgo_PolyShellData_init(NCollection_Array1_Handle_HLRAlgo_PolyShellData* arr, const Handle_HLRAlgo_PolyShellData* theValue) {
     arr->Init(*theValue);
 }
 
@@ -36858,6 +37210,71 @@ extern "C" void NCollection_Array1_int_init(NCollection_Array1_int* arr, const i
 }
 
 // ========================
+// NCollection_Array2_Handle_Geom_BezierSurface - Fixed-size 2D array (row/col indexed)
+// ========================
+
+typedef opencascade::handle<Geom_BezierSurface> Handle_Geom_BezierSurface;
+typedef NCollection_Array2<occ::handle<Geom_BezierSurface>> NCollection_Array2_Handle_Geom_BezierSurface;
+
+extern "C" NCollection_Array2_Handle_Geom_BezierSurface* NCollection_Array2_Handle_Geom_BezierSurface_new() {
+    return new NCollection_Array2_Handle_Geom_BezierSurface();
+}
+
+extern "C" void NCollection_Array2_Handle_Geom_BezierSurface_destructor(NCollection_Array2_Handle_Geom_BezierSurface* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_Array2_Handle_Geom_BezierSurface* NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
+    return new NCollection_Array2_Handle_Geom_BezierSurface(theRowLower, theRowUpper, theColLower, theColUpper);
+}
+
+extern "C" NCollection_Array2_Handle_Geom_BezierSurface* NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const Handle_Geom_BezierSurface* theValue) {
+    auto arr = new NCollection_Array2_Handle_Geom_BezierSurface(theRowLower, theRowUpper, theColLower, theColUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_nb_rows(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->NbRows();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_nb_columns(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->NbColumns();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_lower_row(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->LowerRow();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_upper_row(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->UpperRow();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_lower_col(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->LowerCol();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_upper_col(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->UpperCol();
+}
+
+extern "C" int NCollection_Array2_Handle_Geom_BezierSurface_length(const NCollection_Array2_Handle_Geom_BezierSurface* arr) {
+    return arr->Length();
+}
+
+extern "C" const Handle_Geom_BezierSurface* NCollection_Array2_Handle_Geom_BezierSurface_value(const NCollection_Array2_Handle_Geom_BezierSurface* arr, int theRow, int theCol) {
+    return &arr->Value(theRow, theCol);
+}
+
+extern "C" void NCollection_Array2_Handle_Geom_BezierSurface_set_value(NCollection_Array2_Handle_Geom_BezierSurface* arr, int theRow, int theCol, const Handle_Geom_BezierSurface* theItem) {
+    arr->SetValue(theRow, theCol, *theItem);
+}
+
+extern "C" void NCollection_Array2_Handle_Geom_BezierSurface_init(NCollection_Array2_Handle_Geom_BezierSurface* arr, const Handle_Geom_BezierSurface* theValue) {
+    arr->Init(*theValue);
+}
+
+// ========================
 // NCollection_Array2_double - Fixed-size 2D array (row/col indexed)
 // ========================
 
@@ -37178,6 +37595,694 @@ extern "C" void NCollection_Array2_int_init(NCollection_Array2_int* arr, const i
 }
 
 // ========================
+// NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient - Key-value map
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>> NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient;
+
+extern "C" NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_new() {
+    return new NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    auto iter = new DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_Standard_Transient* NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_find(const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_Standard_Transient(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_bind(NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key, const Handle_Standard_Transient* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent - Key-value map
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<StdObjMgt_Persistent> Handle_StdObjMgt_Persistent;
+typedef NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>> NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent;
+
+extern "C" NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_new() {
+    return new NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent();
+}
+
+extern "C" void NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_destructor(NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator {
+    NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_destructor(DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator* NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_iter(const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll) {
+    auto iter = new DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_next_key(DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_StdObjMgt_Persistent* NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_find(const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll, const Handle_Standard_Transient* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_StdObjMgt_Persistent(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_contains(const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll, const Handle_Standard_Transient* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_bind(NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll, const Handle_Standard_Transient* key, const Handle_StdObjMgt_Persistent* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_size(const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_clear(NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape - Key-value map
+// ========================
+
+typedef opencascade::handle<StepRepr_RepresentationItem> Handle_StepRepr_RepresentationItem;
+typedef NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape;
+
+extern "C" NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_new() {
+    return new NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape();
+}
+
+extern "C" void NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_destructor(NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator {
+    NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_destructor(DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator* NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_iter(const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll) {
+    auto iter = new DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_StepRepr_RepresentationItem* DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_next_key(DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_StepRepr_RepresentationItem(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" TopoDS_Shape* NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_find(const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll, const Handle_StepRepr_RepresentationItem* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new TopoDS_Shape(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_contains(const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll, const Handle_StepRepr_RepresentationItem* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_bind(NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll, const Handle_StepRepr_RepresentationItem* key, const TopoDS_Shape* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_size(const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_clear(NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape - Key-value map
+// ========================
+
+typedef opencascade::handle<StepShape_TopologicalRepresentationItem> Handle_StepShape_TopologicalRepresentationItem;
+typedef NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape;
+
+extern "C" NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_new() {
+    return new NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape();
+}
+
+extern "C" void NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_destructor(NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator {
+    NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_destructor(DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator* NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_iter(const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll) {
+    auto iter = new DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_StepShape_TopologicalRepresentationItem* DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_next_key(DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_StepShape_TopologicalRepresentationItem(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" TopoDS_Shape* NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_find(const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll, const Handle_StepShape_TopologicalRepresentationItem* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new TopoDS_Shape(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_contains(const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll, const Handle_StepShape_TopologicalRepresentationItem* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_bind(NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll, const Handle_StepShape_TopologicalRepresentationItem* key, const TopoDS_Shape* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_size(const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_clear(NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label - Key-value map
+// ========================
+
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef NCollection_DataMap<occ::handle<TCollection_HExtendedString>, TDF_Label> NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label;
+
+extern "C" NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_new() {
+    return new NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label();
+}
+
+extern "C" void NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_destructor(NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator {
+    NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_destructor(DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator* NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_iter(const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll) {
+    auto iter = new DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_TCollection_HExtendedString* DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_next_key(DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_TCollection_HExtendedString(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" TDF_Label* NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_find(const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll, const Handle_TCollection_HExtendedString* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new TDF_Label(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_contains(const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll, const Handle_TCollection_HExtendedString* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_bind(NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll, const Handle_TCollection_HExtendedString* key, const TDF_Label* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_size(const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_clear(NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute - Key-value map
+// ========================
+
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef NCollection_DataMap<occ::handle<TDF_Attribute>, occ::handle<TDF_Attribute>> NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute;
+
+extern "C" NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_new() {
+    return new NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute();
+}
+
+extern "C" void NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_destructor(NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator {
+    NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_destructor(DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator* NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_iter(const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll) {
+    auto iter = new DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_TDF_Attribute* DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_next_key(DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Attribute(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_TDF_Attribute* NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_find(const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_TDF_Attribute(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_contains(const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_bind(NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* key, const Handle_TDF_Attribute* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_size(const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_clear(NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance - Key-value map
+// ========================
+
+typedef opencascade::handle<TopoDS_TShape> Handle_TopoDS_TShape;
+typedef opencascade::handle<VrmlData_Appearance> Handle_VrmlData_Appearance;
+typedef NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>> NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance;
+
+extern "C" NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_new() {
+    return new NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance();
+}
+
+extern "C" void NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_destructor(NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator {
+    NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_destructor(DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator* NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_iter(const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll) {
+    auto iter = new DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_TopoDS_TShape* DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_next_key(DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_TopoDS_TShape(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_VrmlData_Appearance* NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_find(const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll, const Handle_TopoDS_TShape* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_VrmlData_Appearance(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_contains(const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll, const Handle_TopoDS_TShape* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_bind(NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll, const Handle_TopoDS_TShape* key, const Handle_VrmlData_Appearance* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_size(const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_clear(NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject - Key-value map
+// ========================
+
+typedef opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> Handle_XCAFDimTolObjects_GeomToleranceObject;
+typedef opencascade::handle<XCAFDimTolObjects_DatumObject> Handle_XCAFDimTolObjects_DatumObject;
+typedef NCollection_DataMap<occ::handle<XCAFDimTolObjects_GeomToleranceObject>, occ::handle<XCAFDimTolObjects_DatumObject>> NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject;
+
+extern "C" NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_new() {
+    return new NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject();
+}
+
+extern "C" void NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_destructor(NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator* NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_iter(const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    auto iter = new DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_XCAFDimTolObjects_GeomToleranceObject* DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_next_key(DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_XCAFDimTolObjects_GeomToleranceObject(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_XCAFDimTolObjects_DatumObject* NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_find(const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll, const Handle_XCAFDimTolObjects_GeomToleranceObject* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_XCAFDimTolObjects_DatumObject(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_contains(const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll, const Handle_XCAFDimTolObjects_GeomToleranceObject* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_bind(NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll, const Handle_XCAFDimTolObjects_GeomToleranceObject* key, const Handle_XCAFDimTolObjects_DatumObject* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_size(const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_clear(NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial - Key-value map
+// ========================
+
+typedef opencascade::handle<XCAFDoc_VisMaterial> Handle_XCAFDoc_VisMaterial;
+typedef opencascade::handle<XCAFDoc_VisMaterial> Handle_XCAFDoc_VisMaterial;
+typedef NCollection_DataMap<occ::handle<XCAFDoc_VisMaterial>, occ::handle<XCAFDoc_VisMaterial>> NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial;
+
+extern "C" NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_new() {
+    return new NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial();
+}
+
+extern "C" void NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_destructor(NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* self_) {
+    delete self_;
+}
+
+struct DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator {
+    NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial::Iterator inner;
+};
+
+extern "C" void DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_destructor(DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator* NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_iter(const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll) {
+    auto iter = new DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" Handle_XCAFDoc_VisMaterial* DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_next_key(DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new Handle_XCAFDoc_VisMaterial(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_XCAFDoc_VisMaterial* NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_find(const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll, const Handle_XCAFDoc_VisMaterial* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_XCAFDoc_VisMaterial(*found);
+}
+
+extern "C" bool NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_contains(const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll, const Handle_XCAFDoc_VisMaterial* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_bind(NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll, const Handle_XCAFDoc_VisMaterial* key, const Handle_XCAFDoc_VisMaterial* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_size(const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_clear(NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile - Key-value map
+// ========================
+
+typedef opencascade::handle<STEPCAFControl_ExternFile> Handle_STEPCAFControl_ExternFile;
+typedef NCollection_DataMap<TCollection_AsciiString, occ::handle<STEPCAFControl_ExternFile>> NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile;
+
+extern "C" NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_new() {
+    return new NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile();
+}
+
+extern "C" void NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_destructor(NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* self_) {
+    delete self_;
+}
+
+struct DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator {
+    NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile::Iterator inner;
+};
+
+extern "C" void DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_destructor(DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator* NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_iter(const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll) {
+    auto iter = new DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" TCollection_AsciiString* DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_next_key(DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new TCollection_AsciiString(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_STEPCAFControl_ExternFile* NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_find(const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll, const TCollection_AsciiString* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_STEPCAFControl_ExternFile(*found);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_contains(const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll, const TCollection_AsciiString* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_bind(NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll, const TCollection_AsciiString* key, const Handle_STEPCAFControl_ExternFile* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_size(const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_clear(NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver - Key-value map
+// ========================
+
+typedef opencascade::handle<XmlMDF_ADriver> Handle_XmlMDF_ADriver;
+typedef NCollection_DataMap<TCollection_AsciiString, occ::handle<XmlMDF_ADriver>> NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver;
+
+extern "C" NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_new() {
+    return new NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver();
+}
+
+extern "C" void NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_destructor(NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* self_) {
+    delete self_;
+}
+
+struct DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator {
+    NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver::Iterator inner;
+};
+
+extern "C" void DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_destructor(DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator* NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_iter(const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll) {
+    auto iter = new DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" TCollection_AsciiString* DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_next_key(DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new TCollection_AsciiString(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_XmlMDF_ADriver* NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_find(const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll, const TCollection_AsciiString* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_XmlMDF_ADriver(*found);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_contains(const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll, const TCollection_AsciiString* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_bind(NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll, const TCollection_AsciiString* key, const Handle_XmlMDF_ADriver* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_size(const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_clear(NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver* coll) {
+    coll->Clear();
+}
+
+// ========================
 // NCollection_DataMap_TCollection_AsciiString_RWObj_Material - Key-value map
 // ========================
 
@@ -37418,6 +38523,68 @@ extern "C" int NCollection_DataMap_TCollection_AsciiString_int_size(const NColle
 }
 
 extern "C" void NCollection_DataMap_TCollection_AsciiString_int_clear(NCollection_DataMap_TCollection_AsciiString_int* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData - Key-value map
+// ========================
+
+typedef opencascade::handle<CDM_MetaData> Handle_CDM_MetaData;
+typedef NCollection_DataMap<TCollection_ExtendedString, occ::handle<CDM_MetaData>> NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData;
+
+extern "C" NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_new() {
+    return new NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData();
+}
+
+extern "C" void NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_destructor(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* self_) {
+    delete self_;
+}
+
+struct DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator {
+    NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData::Iterator inner;
+};
+
+extern "C" void DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_destructor(DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator* NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_iter(const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll) {
+    auto iter = new DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" TCollection_ExtendedString* DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_next_key(DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new TCollection_ExtendedString(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_CDM_MetaData* NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_find(const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll, const TCollection_ExtendedString* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_CDM_MetaData(*found);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_contains(const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll, const TCollection_ExtendedString* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_bind(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll, const TCollection_ExtendedString* key, const Handle_CDM_MetaData* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_size(const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_clear(NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData* coll) {
     coll->Clear();
 }
 
@@ -37971,6 +39138,68 @@ extern "C" void NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher
 }
 
 // ========================
+// NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher - Key-value map
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher;
+
+extern "C" NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_new() {
+    return new NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher();
+}
+
+extern "C" void NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_destructor(NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* self_) {
+    delete self_;
+}
+
+struct DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator {
+    NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher::Iterator inner;
+};
+
+extern "C" void DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_destructor(DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator* NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_iter(const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll) {
+    auto iter = new DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" TopoDS_Shape* DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_next_key(DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new TopoDS_Shape(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_Standard_Transient* NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_find(const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll, const TopoDS_Shape* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_Standard_Transient(*found);
+}
+
+extern "C" bool NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_contains(const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll, const TopoDS_Shape* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_bind(NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll, const TopoDS_Shape* key, const Handle_Standard_Transient* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_size(const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_clear(NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher* coll) {
+    coll->Clear();
+}
+
+// ========================
 // NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher - Key-value map
 // ========================
 
@@ -38333,6 +39562,130 @@ extern "C" int NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher_size
 }
 
 extern "C" void NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher_clear(NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_gp_Pnt_Handle_Standard_Transient - Key-value map
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_DataMap<gp_Pnt, occ::handle<Standard_Transient>> NCollection_DataMap_gp_Pnt_Handle_Standard_Transient;
+
+extern "C" NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_new() {
+    return new NCollection_DataMap_gp_Pnt_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_destructor(NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct DataMap_gp_Pnt_Handle_Standard_TransientIterator {
+    NCollection_DataMap_gp_Pnt_Handle_Standard_Transient::Iterator inner;
+};
+
+extern "C" void DataMap_gp_Pnt_Handle_Standard_TransientIterator_destructor(DataMap_gp_Pnt_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_gp_Pnt_Handle_Standard_TransientIterator* NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_iter(const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll) {
+    auto iter = new DataMap_gp_Pnt_Handle_Standard_TransientIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" gp_Pnt* DataMap_gp_Pnt_Handle_Standard_TransientIterator_next_key(DataMap_gp_Pnt_Handle_Standard_TransientIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto result = new gp_Pnt(iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_Standard_Transient* NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_find(const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll, const gp_Pnt* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_Standard_Transient(*found);
+}
+
+extern "C" bool NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_contains(const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll, const gp_Pnt* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_bind(NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll, const gp_Pnt* key, const Handle_Standard_Transient* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_size(const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_clear(NCollection_DataMap_gp_Pnt_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_DataMap_int_Handle_MAT_BasicElt - Key-value map
+// ========================
+
+typedef opencascade::handle<MAT_BasicElt> Handle_MAT_BasicElt;
+typedef NCollection_DataMap<int, occ::handle<MAT_BasicElt>> NCollection_DataMap_int_Handle_MAT_BasicElt;
+
+extern "C" NCollection_DataMap_int_Handle_MAT_BasicElt* NCollection_DataMap_int_Handle_MAT_BasicElt_new() {
+    return new NCollection_DataMap_int_Handle_MAT_BasicElt();
+}
+
+extern "C" void NCollection_DataMap_int_Handle_MAT_BasicElt_destructor(NCollection_DataMap_int_Handle_MAT_BasicElt* self_) {
+    delete self_;
+}
+
+struct DataMap_int_Handle_MAT_BasicEltIterator {
+    NCollection_DataMap_int_Handle_MAT_BasicElt::Iterator inner;
+};
+
+extern "C" void DataMap_int_Handle_MAT_BasicEltIterator_destructor(DataMap_int_Handle_MAT_BasicEltIterator* self_) {
+    delete self_;
+}
+
+extern "C" DataMap_int_Handle_MAT_BasicEltIterator* NCollection_DataMap_int_Handle_MAT_BasicElt_iter(const NCollection_DataMap_int_Handle_MAT_BasicElt* coll) {
+    auto iter = new DataMap_int_Handle_MAT_BasicEltIterator();
+    iter->inner.Initialize(*coll);
+    return iter;
+}
+
+extern "C" int* DataMap_int_Handle_MAT_BasicEltIterator_next_key(DataMap_int_Handle_MAT_BasicEltIterator* iter) {
+    if (!iter->inner.More()) {
+        return nullptr;
+    }
+    auto* result = const_cast<int*>(&iter->inner.Key());
+    iter->inner.Next();
+    return result;
+}
+
+extern "C" Handle_MAT_BasicElt* NCollection_DataMap_int_Handle_MAT_BasicElt_find(const NCollection_DataMap_int_Handle_MAT_BasicElt* coll, const int* key) {
+    const auto* found = coll->Seek(*key);
+    if (found == nullptr) {
+        return nullptr;
+    }
+    return new Handle_MAT_BasicElt(*found);
+}
+
+extern "C" bool NCollection_DataMap_int_Handle_MAT_BasicElt_contains(const NCollection_DataMap_int_Handle_MAT_BasicElt* coll, const int* key) {
+    return coll->IsBound(*key);
+}
+
+extern "C" bool NCollection_DataMap_int_Handle_MAT_BasicElt_bind(NCollection_DataMap_int_Handle_MAT_BasicElt* coll, const int* key, const Handle_MAT_BasicElt* value) {
+    return coll->Bind(*key, *value);
+}
+
+extern "C" int NCollection_DataMap_int_Handle_MAT_BasicElt_size(const NCollection_DataMap_int_Handle_MAT_BasicElt* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_DataMap_int_Handle_MAT_BasicElt_clear(NCollection_DataMap_int_Handle_MAT_BasicElt* coll) {
     coll->Clear();
 }
 
@@ -38747,6 +40100,3782 @@ extern "C" NCollection_HArray1_HLRAlgo_TriangleData* Handle_NCollection_HArray1_
 extern "C" void Handle_NCollection_HArray1_HLRAlgo_TriangleData_destructor(opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>>* self_) { delete self_; }
 extern "C" OcctResult<opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>>*> Handle_NCollection_HArray1_HLRAlgo_TriangleData_clone(const opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
 extern "C" bool Handle_NCollection_HArray1_HLRAlgo_TriangleData_is_null(const opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Adaptor3d_Curve - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>> NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+extern "C" NCollection_HArray1_Handle_Adaptor3d_Curve* NCollection_HArray1_Handle_Adaptor3d_Curve_new() {
+    return new NCollection_HArray1_Handle_Adaptor3d_Curve();
+}
+
+extern "C" void NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(NCollection_HArray1_Handle_Adaptor3d_Curve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Adaptor3d_Curve* NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Adaptor3d_Curve(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Adaptor3d_Curve* NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2_value(int theLower, int theUpper, const Handle_Adaptor3d_Curve* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Adaptor3d_Curve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Adaptor3d_Curve_length(const NCollection_HArray1_Handle_Adaptor3d_Curve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Adaptor3d_Curve_lower(const NCollection_HArray1_Handle_Adaptor3d_Curve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Adaptor3d_Curve_upper(const NCollection_HArray1_Handle_Adaptor3d_Curve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Adaptor3d_Curve* NCollection_HArray1_Handle_Adaptor3d_Curve_value(const NCollection_HArray1_Handle_Adaptor3d_Curve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Adaptor3d_Curve_set_value(NCollection_HArray1_Handle_Adaptor3d_Curve* arr, int theIndex, const Handle_Adaptor3d_Curve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Adaptor3d_Curve_init(NCollection_HArray1_Handle_Adaptor3d_Curve* arr, const Handle_Adaptor3d_Curve* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* NCollection_HArray1_Handle_Adaptor3d_Curve_to_handle(NCollection_HArray1_Handle_Adaptor3d_Curve* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Adaptor3d_Curve* Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Adaptor3d_Curve* Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>*> Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Geom2d_BSplineCurve - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>> NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+extern "C" NCollection_HArray1_Handle_Geom2d_BSplineCurve* NCollection_HArray1_Handle_Geom2d_BSplineCurve_new() {
+    return new NCollection_HArray1_Handle_Geom2d_BSplineCurve();
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(NCollection_HArray1_Handle_Geom2d_BSplineCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Geom2d_BSplineCurve* NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Geom2d_BSplineCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Geom2d_BSplineCurve* NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom2d_BSplineCurve* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Geom2d_BSplineCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_BSplineCurve_length(const NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_BSplineCurve_lower(const NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_BSplineCurve_upper(const NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom2d_BSplineCurve* NCollection_HArray1_Handle_Geom2d_BSplineCurve_value(const NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_BSplineCurve_set_value(NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr, int theIndex, const Handle_Geom2d_BSplineCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_BSplineCurve_init(NCollection_HArray1_Handle_Geom2d_BSplineCurve* arr, const Handle_Geom2d_BSplineCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* NCollection_HArray1_Handle_Geom2d_BSplineCurve_to_handle(NCollection_HArray1_Handle_Geom2d_BSplineCurve* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Geom2d_BSplineCurve* Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Geom2d_BSplineCurve* Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>*> Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Geom2d_Curve - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef NCollection_HArray1<opencascade::handle<Geom2d_Curve>> NCollection_HArray1_Handle_Geom2d_Curve;
+
+extern "C" NCollection_HArray1_Handle_Geom2d_Curve* NCollection_HArray1_Handle_Geom2d_Curve_new() {
+    return new NCollection_HArray1_Handle_Geom2d_Curve();
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_Curve_destructor(NCollection_HArray1_Handle_Geom2d_Curve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Geom2d_Curve* NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Geom2d_Curve(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Geom2d_Curve* NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom2d_Curve* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Geom2d_Curve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_Curve_length(const NCollection_HArray1_Handle_Geom2d_Curve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_Curve_lower(const NCollection_HArray1_Handle_Geom2d_Curve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom2d_Curve_upper(const NCollection_HArray1_Handle_Geom2d_Curve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom2d_Curve* NCollection_HArray1_Handle_Geom2d_Curve_value(const NCollection_HArray1_Handle_Geom2d_Curve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_Curve_set_value(NCollection_HArray1_Handle_Geom2d_Curve* arr, int theIndex, const Handle_Geom2d_Curve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom2d_Curve_init(NCollection_HArray1_Handle_Geom2d_Curve* arr, const Handle_Geom2d_Curve* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* NCollection_HArray1_Handle_Geom2d_Curve_to_handle(NCollection_HArray1_Handle_Geom2d_Curve* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Geom2d_Curve* Handle_NCollection_HArray1_Handle_Geom2d_Curve_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Geom2d_Curve* Handle_NCollection_HArray1_Handle_Geom2d_Curve_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Geom2d_Curve_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>*> Handle_NCollection_HArray1_Handle_Geom2d_Curve_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Geom2d_Curve_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Geom_BSplineCurve - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>> NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+extern "C" NCollection_HArray1_Handle_Geom_BSplineCurve* NCollection_HArray1_Handle_Geom_BSplineCurve_new() {
+    return new NCollection_HArray1_Handle_Geom_BSplineCurve();
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(NCollection_HArray1_Handle_Geom_BSplineCurve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Geom_BSplineCurve* NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Geom_BSplineCurve(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Geom_BSplineCurve* NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom_BSplineCurve* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Geom_BSplineCurve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_BSplineCurve_length(const NCollection_HArray1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_BSplineCurve_lower(const NCollection_HArray1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_BSplineCurve_upper(const NCollection_HArray1_Handle_Geom_BSplineCurve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom_BSplineCurve* NCollection_HArray1_Handle_Geom_BSplineCurve_value(const NCollection_HArray1_Handle_Geom_BSplineCurve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_BSplineCurve_set_value(NCollection_HArray1_Handle_Geom_BSplineCurve* arr, int theIndex, const Handle_Geom_BSplineCurve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_BSplineCurve_init(NCollection_HArray1_Handle_Geom_BSplineCurve* arr, const Handle_Geom_BSplineCurve* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* NCollection_HArray1_Handle_Geom_BSplineCurve_to_handle(NCollection_HArray1_Handle_Geom_BSplineCurve* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Geom_BSplineCurve* Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Geom_BSplineCurve* Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>*> Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Geom_Curve - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef NCollection_HArray1<opencascade::handle<Geom_Curve>> NCollection_HArray1_Handle_Geom_Curve;
+
+extern "C" NCollection_HArray1_Handle_Geom_Curve* NCollection_HArray1_Handle_Geom_Curve_new() {
+    return new NCollection_HArray1_Handle_Geom_Curve();
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_Curve_destructor(NCollection_HArray1_Handle_Geom_Curve* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Geom_Curve* NCollection_HArray1_Handle_Geom_Curve_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Geom_Curve(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Geom_Curve* NCollection_HArray1_Handle_Geom_Curve_ctor_int2_value(int theLower, int theUpper, const Handle_Geom_Curve* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Geom_Curve(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_Curve_length(const NCollection_HArray1_Handle_Geom_Curve* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_Curve_lower(const NCollection_HArray1_Handle_Geom_Curve* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Geom_Curve_upper(const NCollection_HArray1_Handle_Geom_Curve* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Geom_Curve* NCollection_HArray1_Handle_Geom_Curve_value(const NCollection_HArray1_Handle_Geom_Curve* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_Curve_set_value(NCollection_HArray1_Handle_Geom_Curve* arr, int theIndex, const Handle_Geom_Curve* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Geom_Curve_init(NCollection_HArray1_Handle_Geom_Curve* arr, const Handle_Geom_Curve* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* NCollection_HArray1_Handle_Geom_Curve_to_handle(NCollection_HArray1_Handle_Geom_Curve* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Geom_Curve* Handle_NCollection_HArray1_Handle_Geom_Curve_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Geom_Curve* Handle_NCollection_HArray1_Handle_Geom_Curve_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Geom_Curve_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>*> Handle_NCollection_HArray1_Handle_Geom_Curve_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Geom_Curve_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESAppli_FiniteElement - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESAppli_FiniteElement> Handle_IGESAppli_FiniteElement;
+typedef NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>> NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_FiniteElement* NCollection_HArray1_Handle_IGESAppli_FiniteElement_new() {
+    return new NCollection_HArray1_Handle_IGESAppli_FiniteElement();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(NCollection_HArray1_Handle_IGESAppli_FiniteElement* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_FiniteElement* NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESAppli_FiniteElement(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_FiniteElement* NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2_value(int theLower, int theUpper, const Handle_IGESAppli_FiniteElement* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESAppli_FiniteElement(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_FiniteElement_length(const NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_FiniteElement_lower(const NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_FiniteElement_upper(const NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESAppli_FiniteElement* NCollection_HArray1_Handle_IGESAppli_FiniteElement_value(const NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_FiniteElement_set_value(NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr, int theIndex, const Handle_IGESAppli_FiniteElement* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_FiniteElement_init(NCollection_HArray1_Handle_IGESAppli_FiniteElement* arr, const Handle_IGESAppli_FiniteElement* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* NCollection_HArray1_Handle_IGESAppli_FiniteElement_to_handle(NCollection_HArray1_Handle_IGESAppli_FiniteElement* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESAppli_FiniteElement* Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESAppli_FiniteElement* Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>*> Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_FiniteElement>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESAppli_Node - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESAppli_Node> Handle_IGESAppli_Node;
+typedef NCollection_HArray1<opencascade::handle<IGESAppli_Node>> NCollection_HArray1_Handle_IGESAppli_Node;
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_Node* NCollection_HArray1_Handle_IGESAppli_Node_new() {
+    return new NCollection_HArray1_Handle_IGESAppli_Node();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_Node_destructor(NCollection_HArray1_Handle_IGESAppli_Node* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_Node* NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESAppli_Node(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESAppli_Node* NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2_value(int theLower, int theUpper, const Handle_IGESAppli_Node* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESAppli_Node(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_Node_length(const NCollection_HArray1_Handle_IGESAppli_Node* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_Node_lower(const NCollection_HArray1_Handle_IGESAppli_Node* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESAppli_Node_upper(const NCollection_HArray1_Handle_IGESAppli_Node* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESAppli_Node* NCollection_HArray1_Handle_IGESAppli_Node_value(const NCollection_HArray1_Handle_IGESAppli_Node* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_Node_set_value(NCollection_HArray1_Handle_IGESAppli_Node* arr, int theIndex, const Handle_IGESAppli_Node* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESAppli_Node_init(NCollection_HArray1_Handle_IGESAppli_Node* arr, const Handle_IGESAppli_Node* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* NCollection_HArray1_Handle_IGESAppli_Node_to_handle(NCollection_HArray1_Handle_IGESAppli_Node* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESAppli_Node* Handle_NCollection_HArray1_Handle_IGESAppli_Node_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESAppli_Node* Handle_NCollection_HArray1_Handle_IGESAppli_Node_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESAppli_Node_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>*> Handle_NCollection_HArray1_Handle_IGESAppli_Node_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESAppli_Node_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESAppli_Node>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESData_IGESEntity - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESData_IGESEntity> Handle_IGESData_IGESEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+extern "C" NCollection_HArray1_Handle_IGESData_IGESEntity* NCollection_HArray1_Handle_IGESData_IGESEntity_new() {
+    return new NCollection_HArray1_Handle_IGESData_IGESEntity();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(NCollection_HArray1_Handle_IGESData_IGESEntity* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_IGESEntity* NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESData_IGESEntity(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_IGESEntity* NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2_value(int theLower, int theUpper, const Handle_IGESData_IGESEntity* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESData_IGESEntity(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_IGESEntity_length(const NCollection_HArray1_Handle_IGESData_IGESEntity* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_IGESEntity_lower(const NCollection_HArray1_Handle_IGESData_IGESEntity* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_IGESEntity_upper(const NCollection_HArray1_Handle_IGESData_IGESEntity* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESData_IGESEntity* NCollection_HArray1_Handle_IGESData_IGESEntity_value(const NCollection_HArray1_Handle_IGESData_IGESEntity* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_IGESEntity_set_value(NCollection_HArray1_Handle_IGESData_IGESEntity* arr, int theIndex, const Handle_IGESData_IGESEntity* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_IGESEntity_init(NCollection_HArray1_Handle_IGESData_IGESEntity* arr, const Handle_IGESData_IGESEntity* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* NCollection_HArray1_Handle_IGESData_IGESEntity_to_handle(NCollection_HArray1_Handle_IGESData_IGESEntity* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESData_IGESEntity* Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESData_IGESEntity* Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>*> Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESData_LineFontEntity - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESData_LineFontEntity> Handle_IGESData_LineFontEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>> NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+extern "C" NCollection_HArray1_Handle_IGESData_LineFontEntity* NCollection_HArray1_Handle_IGESData_LineFontEntity_new() {
+    return new NCollection_HArray1_Handle_IGESData_LineFontEntity();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(NCollection_HArray1_Handle_IGESData_LineFontEntity* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_LineFontEntity* NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESData_LineFontEntity(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_LineFontEntity* NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2_value(int theLower, int theUpper, const Handle_IGESData_LineFontEntity* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESData_LineFontEntity(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_LineFontEntity_length(const NCollection_HArray1_Handle_IGESData_LineFontEntity* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_LineFontEntity_lower(const NCollection_HArray1_Handle_IGESData_LineFontEntity* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_LineFontEntity_upper(const NCollection_HArray1_Handle_IGESData_LineFontEntity* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESData_LineFontEntity* NCollection_HArray1_Handle_IGESData_LineFontEntity_value(const NCollection_HArray1_Handle_IGESData_LineFontEntity* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_LineFontEntity_set_value(NCollection_HArray1_Handle_IGESData_LineFontEntity* arr, int theIndex, const Handle_IGESData_LineFontEntity* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_LineFontEntity_init(NCollection_HArray1_Handle_IGESData_LineFontEntity* arr, const Handle_IGESData_LineFontEntity* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* NCollection_HArray1_Handle_IGESData_LineFontEntity_to_handle(NCollection_HArray1_Handle_IGESData_LineFontEntity* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESData_LineFontEntity* Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESData_LineFontEntity* Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>*> Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_LineFontEntity>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESData_ViewKindEntity - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESData_ViewKindEntity> Handle_IGESData_ViewKindEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>> NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+extern "C" NCollection_HArray1_Handle_IGESData_ViewKindEntity* NCollection_HArray1_Handle_IGESData_ViewKindEntity_new() {
+    return new NCollection_HArray1_Handle_IGESData_ViewKindEntity();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(NCollection_HArray1_Handle_IGESData_ViewKindEntity* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_ViewKindEntity* NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESData_ViewKindEntity(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESData_ViewKindEntity* NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2_value(int theLower, int theUpper, const Handle_IGESData_ViewKindEntity* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESData_ViewKindEntity(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_ViewKindEntity_length(const NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_ViewKindEntity_lower(const NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESData_ViewKindEntity_upper(const NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESData_ViewKindEntity* NCollection_HArray1_Handle_IGESData_ViewKindEntity_value(const NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_ViewKindEntity_set_value(NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr, int theIndex, const Handle_IGESData_ViewKindEntity* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESData_ViewKindEntity_init(NCollection_HArray1_Handle_IGESData_ViewKindEntity* arr, const Handle_IGESData_ViewKindEntity* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* NCollection_HArray1_Handle_IGESData_ViewKindEntity_to_handle(NCollection_HArray1_Handle_IGESData_ViewKindEntity* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESData_ViewKindEntity* Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESData_ViewKindEntity* Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>*> Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_ViewKindEntity>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESDefs_TabularData - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESDefs_TabularData> Handle_IGESDefs_TabularData;
+typedef NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>> NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+extern "C" NCollection_HArray1_Handle_IGESDefs_TabularData* NCollection_HArray1_Handle_IGESDefs_TabularData_new() {
+    return new NCollection_HArray1_Handle_IGESDefs_TabularData();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(NCollection_HArray1_Handle_IGESDefs_TabularData* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDefs_TabularData* NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESDefs_TabularData(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDefs_TabularData* NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2_value(int theLower, int theUpper, const Handle_IGESDefs_TabularData* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESDefs_TabularData(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDefs_TabularData_length(const NCollection_HArray1_Handle_IGESDefs_TabularData* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDefs_TabularData_lower(const NCollection_HArray1_Handle_IGESDefs_TabularData* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDefs_TabularData_upper(const NCollection_HArray1_Handle_IGESDefs_TabularData* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESDefs_TabularData* NCollection_HArray1_Handle_IGESDefs_TabularData_value(const NCollection_HArray1_Handle_IGESDefs_TabularData* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDefs_TabularData_set_value(NCollection_HArray1_Handle_IGESDefs_TabularData* arr, int theIndex, const Handle_IGESDefs_TabularData* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDefs_TabularData_init(NCollection_HArray1_Handle_IGESDefs_TabularData* arr, const Handle_IGESDefs_TabularData* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* NCollection_HArray1_Handle_IGESDefs_TabularData_to_handle(NCollection_HArray1_Handle_IGESDefs_TabularData* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESDefs_TabularData* Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESDefs_TabularData* Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>*> Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDefs_TabularData>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESDimen_GeneralNote - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESDimen_GeneralNote> Handle_IGESDimen_GeneralNote;
+typedef NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>> NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_GeneralNote* NCollection_HArray1_Handle_IGESDimen_GeneralNote_new() {
+    return new NCollection_HArray1_Handle_IGESDimen_GeneralNote();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(NCollection_HArray1_Handle_IGESDimen_GeneralNote* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_GeneralNote* NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESDimen_GeneralNote(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_GeneralNote* NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2_value(int theLower, int theUpper, const Handle_IGESDimen_GeneralNote* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESDimen_GeneralNote(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_GeneralNote_length(const NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_GeneralNote_lower(const NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_GeneralNote_upper(const NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESDimen_GeneralNote* NCollection_HArray1_Handle_IGESDimen_GeneralNote_value(const NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_GeneralNote_set_value(NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr, int theIndex, const Handle_IGESDimen_GeneralNote* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_GeneralNote_init(NCollection_HArray1_Handle_IGESDimen_GeneralNote* arr, const Handle_IGESDimen_GeneralNote* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* NCollection_HArray1_Handle_IGESDimen_GeneralNote_to_handle(NCollection_HArray1_Handle_IGESDimen_GeneralNote* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESDimen_GeneralNote* Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESDimen_GeneralNote* Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>*> Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_GeneralNote>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESDimen_LeaderArrow - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESDimen_LeaderArrow> Handle_IGESDimen_LeaderArrow;
+typedef NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>> NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_LeaderArrow* NCollection_HArray1_Handle_IGESDimen_LeaderArrow_new() {
+    return new NCollection_HArray1_Handle_IGESDimen_LeaderArrow();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(NCollection_HArray1_Handle_IGESDimen_LeaderArrow* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_LeaderArrow* NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESDimen_LeaderArrow(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDimen_LeaderArrow* NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2_value(int theLower, int theUpper, const Handle_IGESDimen_LeaderArrow* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESDimen_LeaderArrow(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_LeaderArrow_length(const NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_LeaderArrow_lower(const NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDimen_LeaderArrow_upper(const NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESDimen_LeaderArrow* NCollection_HArray1_Handle_IGESDimen_LeaderArrow_value(const NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_LeaderArrow_set_value(NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr, int theIndex, const Handle_IGESDimen_LeaderArrow* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDimen_LeaderArrow_init(NCollection_HArray1_Handle_IGESDimen_LeaderArrow* arr, const Handle_IGESDimen_LeaderArrow* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* NCollection_HArray1_Handle_IGESDimen_LeaderArrow_to_handle(NCollection_HArray1_Handle_IGESDimen_LeaderArrow* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESDimen_LeaderArrow* Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESDimen_LeaderArrow* Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>*> Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDimen_LeaderArrow>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESDraw_ConnectPoint - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESDraw_ConnectPoint> Handle_IGESDraw_ConnectPoint;
+typedef NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>> NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+extern "C" NCollection_HArray1_Handle_IGESDraw_ConnectPoint* NCollection_HArray1_Handle_IGESDraw_ConnectPoint_new() {
+    return new NCollection_HArray1_Handle_IGESDraw_ConnectPoint();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(NCollection_HArray1_Handle_IGESDraw_ConnectPoint* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDraw_ConnectPoint* NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESDraw_ConnectPoint(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESDraw_ConnectPoint* NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2_value(int theLower, int theUpper, const Handle_IGESDraw_ConnectPoint* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESDraw_ConnectPoint(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDraw_ConnectPoint_length(const NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDraw_ConnectPoint_lower(const NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESDraw_ConnectPoint_upper(const NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESDraw_ConnectPoint* NCollection_HArray1_Handle_IGESDraw_ConnectPoint_value(const NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDraw_ConnectPoint_set_value(NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr, int theIndex, const Handle_IGESDraw_ConnectPoint* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESDraw_ConnectPoint_init(NCollection_HArray1_Handle_IGESDraw_ConnectPoint* arr, const Handle_IGESDraw_ConnectPoint* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* NCollection_HArray1_Handle_IGESDraw_ConnectPoint_to_handle(NCollection_HArray1_Handle_IGESDraw_ConnectPoint* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESDraw_ConnectPoint* Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESDraw_ConnectPoint* Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>*> Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESDraw_ConnectPoint>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGeom_Boundary - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGeom_Boundary> Handle_IGESGeom_Boundary;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>> NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_Boundary* NCollection_HArray1_Handle_IGESGeom_Boundary_new() {
+    return new NCollection_HArray1_Handle_IGESGeom_Boundary();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(NCollection_HArray1_Handle_IGESGeom_Boundary* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_Boundary* NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGeom_Boundary(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_Boundary* NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGeom_Boundary* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGeom_Boundary(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_Boundary_length(const NCollection_HArray1_Handle_IGESGeom_Boundary* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_Boundary_lower(const NCollection_HArray1_Handle_IGESGeom_Boundary* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_Boundary_upper(const NCollection_HArray1_Handle_IGESGeom_Boundary* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGeom_Boundary* NCollection_HArray1_Handle_IGESGeom_Boundary_value(const NCollection_HArray1_Handle_IGESGeom_Boundary* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_Boundary_set_value(NCollection_HArray1_Handle_IGESGeom_Boundary* arr, int theIndex, const Handle_IGESGeom_Boundary* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_Boundary_init(NCollection_HArray1_Handle_IGESGeom_Boundary* arr, const Handle_IGESGeom_Boundary* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* NCollection_HArray1_Handle_IGESGeom_Boundary_to_handle(NCollection_HArray1_Handle_IGESGeom_Boundary* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGeom_Boundary* Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGeom_Boundary* Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>*> Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_Boundary>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGeom_CurveOnSurface - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGeom_CurveOnSurface> Handle_IGESGeom_CurveOnSurface;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>> NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_new() {
+    return new NCollection_HArray1_Handle_IGESGeom_CurveOnSurface();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGeom_CurveOnSurface(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGeom_CurveOnSurface* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGeom_CurveOnSurface(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_length(const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_lower(const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_upper(const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGeom_CurveOnSurface* NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_value(const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_set_value(NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr, int theIndex, const Handle_IGESGeom_CurveOnSurface* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_init(NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* arr, const Handle_IGESGeom_CurveOnSurface* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_to_handle(NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGeom_CurveOnSurface* Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>*> Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_CurveOnSurface>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGeom_TransformationMatrix - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGeom_TransformationMatrix> Handle_IGESGeom_TransformationMatrix;
+typedef NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>> NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_new() {
+    return new NCollection_HArray1_Handle_IGESGeom_TransformationMatrix();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGeom_TransformationMatrix(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGeom_TransformationMatrix* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGeom_TransformationMatrix(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_length(const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_lower(const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_upper(const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGeom_TransformationMatrix* NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_value(const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_set_value(NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr, int theIndex, const Handle_IGESGeom_TransformationMatrix* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_init(NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* arr, const Handle_IGESGeom_TransformationMatrix* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_to_handle(NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGeom_TransformationMatrix* Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>*> Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGeom_TransformationMatrix>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGraph_Color - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGraph_Color> Handle_IGESGraph_Color;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_Color>> NCollection_HArray1_Handle_IGESGraph_Color;
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_Color* NCollection_HArray1_Handle_IGESGraph_Color_new() {
+    return new NCollection_HArray1_Handle_IGESGraph_Color();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_Color_destructor(NCollection_HArray1_Handle_IGESGraph_Color* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_Color* NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGraph_Color(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_Color* NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGraph_Color* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGraph_Color(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_Color_length(const NCollection_HArray1_Handle_IGESGraph_Color* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_Color_lower(const NCollection_HArray1_Handle_IGESGraph_Color* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_Color_upper(const NCollection_HArray1_Handle_IGESGraph_Color* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGraph_Color* NCollection_HArray1_Handle_IGESGraph_Color_value(const NCollection_HArray1_Handle_IGESGraph_Color* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_Color_set_value(NCollection_HArray1_Handle_IGESGraph_Color* arr, int theIndex, const Handle_IGESGraph_Color* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_Color_init(NCollection_HArray1_Handle_IGESGraph_Color* arr, const Handle_IGESGraph_Color* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* NCollection_HArray1_Handle_IGESGraph_Color_to_handle(NCollection_HArray1_Handle_IGESGraph_Color* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGraph_Color* Handle_NCollection_HArray1_Handle_IGESGraph_Color_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGraph_Color* Handle_NCollection_HArray1_Handle_IGESGraph_Color_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGraph_Color_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>*> Handle_NCollection_HArray1_Handle_IGESGraph_Color_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGraph_Color_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_Color>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGraph_TextDisplayTemplate> Handle_IGESGraph_TextDisplayTemplate;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>> NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_new() {
+    return new NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGraph_TextDisplayTemplate* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_length(const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_lower(const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_upper(const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGraph_TextDisplayTemplate* NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_value(const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_set_value(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr, int theIndex, const Handle_IGESGraph_TextDisplayTemplate* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_init(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* arr, const Handle_IGESGraph_TextDisplayTemplate* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_to_handle(NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate* Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>*> Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextDisplayTemplate>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESGraph_TextFontDef - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESGraph_TextFontDef> Handle_IGESGraph_TextFontDef;
+typedef NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>> NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextFontDef* NCollection_HArray1_Handle_IGESGraph_TextFontDef_new() {
+    return new NCollection_HArray1_Handle_IGESGraph_TextFontDef();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(NCollection_HArray1_Handle_IGESGraph_TextFontDef* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextFontDef* NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESGraph_TextFontDef(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextFontDef* NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2_value(int theLower, int theUpper, const Handle_IGESGraph_TextFontDef* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESGraph_TextFontDef(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextFontDef_length(const NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextFontDef_lower(const NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESGraph_TextFontDef_upper(const NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESGraph_TextFontDef* NCollection_HArray1_Handle_IGESGraph_TextFontDef_value(const NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextFontDef_set_value(NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr, int theIndex, const Handle_IGESGraph_TextFontDef* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESGraph_TextFontDef_init(NCollection_HArray1_Handle_IGESGraph_TextFontDef* arr, const Handle_IGESGraph_TextFontDef* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* NCollection_HArray1_Handle_IGESGraph_TextFontDef_to_handle(NCollection_HArray1_Handle_IGESGraph_TextFontDef* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESGraph_TextFontDef* Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESGraph_TextFontDef* Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>*> Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESGraph_TextFontDef>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESSolid_Face - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESSolid_Face> Handle_IGESSolid_Face;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Face>> NCollection_HArray1_Handle_IGESSolid_Face;
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Face* NCollection_HArray1_Handle_IGESSolid_Face_new() {
+    return new NCollection_HArray1_Handle_IGESSolid_Face();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Face_destructor(NCollection_HArray1_Handle_IGESSolid_Face* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Face* NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESSolid_Face(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Face* NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2_value(int theLower, int theUpper, const Handle_IGESSolid_Face* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESSolid_Face(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Face_length(const NCollection_HArray1_Handle_IGESSolid_Face* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Face_lower(const NCollection_HArray1_Handle_IGESSolid_Face* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Face_upper(const NCollection_HArray1_Handle_IGESSolid_Face* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESSolid_Face* NCollection_HArray1_Handle_IGESSolid_Face_value(const NCollection_HArray1_Handle_IGESSolid_Face* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Face_set_value(NCollection_HArray1_Handle_IGESSolid_Face* arr, int theIndex, const Handle_IGESSolid_Face* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Face_init(NCollection_HArray1_Handle_IGESSolid_Face* arr, const Handle_IGESSolid_Face* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* NCollection_HArray1_Handle_IGESSolid_Face_to_handle(NCollection_HArray1_Handle_IGESSolid_Face* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESSolid_Face* Handle_NCollection_HArray1_Handle_IGESSolid_Face_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESSolid_Face* Handle_NCollection_HArray1_Handle_IGESSolid_Face_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESSolid_Face_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>*> Handle_NCollection_HArray1_Handle_IGESSolid_Face_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESSolid_Face_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Face>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESSolid_Loop - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESSolid_Loop> Handle_IGESSolid_Loop;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Loop>> NCollection_HArray1_Handle_IGESSolid_Loop;
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Loop* NCollection_HArray1_Handle_IGESSolid_Loop_new() {
+    return new NCollection_HArray1_Handle_IGESSolid_Loop();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Loop_destructor(NCollection_HArray1_Handle_IGESSolid_Loop* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Loop* NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESSolid_Loop(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Loop* NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2_value(int theLower, int theUpper, const Handle_IGESSolid_Loop* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESSolid_Loop(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Loop_length(const NCollection_HArray1_Handle_IGESSolid_Loop* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Loop_lower(const NCollection_HArray1_Handle_IGESSolid_Loop* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Loop_upper(const NCollection_HArray1_Handle_IGESSolid_Loop* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESSolid_Loop* NCollection_HArray1_Handle_IGESSolid_Loop_value(const NCollection_HArray1_Handle_IGESSolid_Loop* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Loop_set_value(NCollection_HArray1_Handle_IGESSolid_Loop* arr, int theIndex, const Handle_IGESSolid_Loop* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Loop_init(NCollection_HArray1_Handle_IGESSolid_Loop* arr, const Handle_IGESSolid_Loop* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* NCollection_HArray1_Handle_IGESSolid_Loop_to_handle(NCollection_HArray1_Handle_IGESSolid_Loop* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESSolid_Loop* Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESSolid_Loop* Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESSolid_Loop_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>*> Handle_NCollection_HArray1_Handle_IGESSolid_Loop_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESSolid_Loop_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Loop>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESSolid_Shell - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESSolid_Shell> Handle_IGESSolid_Shell;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_Shell>> NCollection_HArray1_Handle_IGESSolid_Shell;
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Shell* NCollection_HArray1_Handle_IGESSolid_Shell_new() {
+    return new NCollection_HArray1_Handle_IGESSolid_Shell();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Shell_destructor(NCollection_HArray1_Handle_IGESSolid_Shell* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Shell* NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESSolid_Shell(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_Shell* NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2_value(int theLower, int theUpper, const Handle_IGESSolid_Shell* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESSolid_Shell(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Shell_length(const NCollection_HArray1_Handle_IGESSolid_Shell* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Shell_lower(const NCollection_HArray1_Handle_IGESSolid_Shell* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_Shell_upper(const NCollection_HArray1_Handle_IGESSolid_Shell* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESSolid_Shell* NCollection_HArray1_Handle_IGESSolid_Shell_value(const NCollection_HArray1_Handle_IGESSolid_Shell* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Shell_set_value(NCollection_HArray1_Handle_IGESSolid_Shell* arr, int theIndex, const Handle_IGESSolid_Shell* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_Shell_init(NCollection_HArray1_Handle_IGESSolid_Shell* arr, const Handle_IGESSolid_Shell* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* NCollection_HArray1_Handle_IGESSolid_Shell_to_handle(NCollection_HArray1_Handle_IGESSolid_Shell* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESSolid_Shell* Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESSolid_Shell* Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESSolid_Shell_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>*> Handle_NCollection_HArray1_Handle_IGESSolid_Shell_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESSolid_Shell_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_Shell>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_IGESSolid_VertexList - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IGESSolid_VertexList> Handle_IGESSolid_VertexList;
+typedef NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>> NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_VertexList* NCollection_HArray1_Handle_IGESSolid_VertexList_new() {
+    return new NCollection_HArray1_Handle_IGESSolid_VertexList();
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(NCollection_HArray1_Handle_IGESSolid_VertexList* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_VertexList* NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_IGESSolid_VertexList(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_IGESSolid_VertexList* NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2_value(int theLower, int theUpper, const Handle_IGESSolid_VertexList* theValue) {
+    auto arr = new NCollection_HArray1_Handle_IGESSolid_VertexList(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_VertexList_length(const NCollection_HArray1_Handle_IGESSolid_VertexList* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_VertexList_lower(const NCollection_HArray1_Handle_IGESSolid_VertexList* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_IGESSolid_VertexList_upper(const NCollection_HArray1_Handle_IGESSolid_VertexList* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_IGESSolid_VertexList* NCollection_HArray1_Handle_IGESSolid_VertexList_value(const NCollection_HArray1_Handle_IGESSolid_VertexList* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_VertexList_set_value(NCollection_HArray1_Handle_IGESSolid_VertexList* arr, int theIndex, const Handle_IGESSolid_VertexList* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_IGESSolid_VertexList_init(NCollection_HArray1_Handle_IGESSolid_VertexList* arr, const Handle_IGESSolid_VertexList* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* NCollection_HArray1_Handle_IGESSolid_VertexList_to_handle(NCollection_HArray1_Handle_IGESSolid_VertexList* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_IGESSolid_VertexList* Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_IGESSolid_VertexList* Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>*> Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESSolid_VertexList>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Standard_Persistent - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Persistent> Handle_Standard_Persistent;
+typedef NCollection_HArray1<opencascade::handle<Standard_Persistent>> NCollection_HArray1_Handle_Standard_Persistent;
+
+extern "C" NCollection_HArray1_Handle_Standard_Persistent* NCollection_HArray1_Handle_Standard_Persistent_new() {
+    return new NCollection_HArray1_Handle_Standard_Persistent();
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Persistent_destructor(NCollection_HArray1_Handle_Standard_Persistent* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Standard_Persistent* NCollection_HArray1_Handle_Standard_Persistent_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Standard_Persistent(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Standard_Persistent* NCollection_HArray1_Handle_Standard_Persistent_ctor_int2_value(int theLower, int theUpper, const Handle_Standard_Persistent* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Standard_Persistent(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Persistent_length(const NCollection_HArray1_Handle_Standard_Persistent* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Persistent_lower(const NCollection_HArray1_Handle_Standard_Persistent* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Persistent_upper(const NCollection_HArray1_Handle_Standard_Persistent* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Standard_Persistent* NCollection_HArray1_Handle_Standard_Persistent_value(const NCollection_HArray1_Handle_Standard_Persistent* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Persistent_set_value(NCollection_HArray1_Handle_Standard_Persistent* arr, int theIndex, const Handle_Standard_Persistent* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Persistent_init(NCollection_HArray1_Handle_Standard_Persistent* arr, const Handle_Standard_Persistent* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* NCollection_HArray1_Handle_Standard_Persistent_to_handle(NCollection_HArray1_Handle_Standard_Persistent* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Standard_Persistent* Handle_NCollection_HArray1_Handle_Standard_Persistent_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Standard_Persistent* Handle_NCollection_HArray1_Handle_Standard_Persistent_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Standard_Persistent_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>*> Handle_NCollection_HArray1_Handle_Standard_Persistent_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Standard_Persistent_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Persistent>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_Standard_Transient - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_HArray1<opencascade::handle<Standard_Transient>> NCollection_HArray1_Handle_Standard_Transient;
+
+extern "C" NCollection_HArray1_Handle_Standard_Transient* NCollection_HArray1_Handle_Standard_Transient_new() {
+    return new NCollection_HArray1_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Transient_destructor(NCollection_HArray1_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_Standard_Transient* NCollection_HArray1_Handle_Standard_Transient_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_Standard_Transient(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_Standard_Transient* NCollection_HArray1_Handle_Standard_Transient_ctor_int2_value(int theLower, int theUpper, const Handle_Standard_Transient* theValue) {
+    auto arr = new NCollection_HArray1_Handle_Standard_Transient(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Transient_length(const NCollection_HArray1_Handle_Standard_Transient* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Transient_lower(const NCollection_HArray1_Handle_Standard_Transient* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_Standard_Transient_upper(const NCollection_HArray1_Handle_Standard_Transient* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_HArray1_Handle_Standard_Transient_value(const NCollection_HArray1_Handle_Standard_Transient* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Transient_set_value(NCollection_HArray1_Handle_Standard_Transient* arr, int theIndex, const Handle_Standard_Transient* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_Standard_Transient_init(NCollection_HArray1_Handle_Standard_Transient* arr, const Handle_Standard_Transient* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* NCollection_HArray1_Handle_Standard_Transient_to_handle(NCollection_HArray1_Handle_Standard_Transient* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_Standard_Transient* Handle_NCollection_HArray1_Handle_Standard_Transient_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_Standard_Transient* Handle_NCollection_HArray1_Handle_Standard_Transient_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_Standard_Transient_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>*> Handle_NCollection_HArray1_Handle_Standard_Transient_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_Standard_Transient_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_Approval - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_Approval> Handle_StepBasic_Approval;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Approval>> NCollection_HArray1_Handle_StepBasic_Approval;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Approval* NCollection_HArray1_Handle_StepBasic_Approval_new() {
+    return new NCollection_HArray1_Handle_StepBasic_Approval();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Approval_destructor(NCollection_HArray1_Handle_StepBasic_Approval* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Approval* NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_Approval(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Approval* NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_Approval* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_Approval(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Approval_length(const NCollection_HArray1_Handle_StepBasic_Approval* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Approval_lower(const NCollection_HArray1_Handle_StepBasic_Approval* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Approval_upper(const NCollection_HArray1_Handle_StepBasic_Approval* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_Approval* NCollection_HArray1_Handle_StepBasic_Approval_value(const NCollection_HArray1_Handle_StepBasic_Approval* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Approval_set_value(NCollection_HArray1_Handle_StepBasic_Approval* arr, int theIndex, const Handle_StepBasic_Approval* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Approval_init(NCollection_HArray1_Handle_StepBasic_Approval* arr, const Handle_StepBasic_Approval* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* NCollection_HArray1_Handle_StepBasic_Approval_to_handle(NCollection_HArray1_Handle_StepBasic_Approval* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_Approval* Handle_NCollection_HArray1_Handle_StepBasic_Approval_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_Approval* Handle_NCollection_HArray1_Handle_StepBasic_Approval_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_Approval_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>*> Handle_NCollection_HArray1_Handle_StepBasic_Approval_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_Approval_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_DerivedUnitElement - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_DerivedUnitElement> Handle_StepBasic_DerivedUnitElement;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_new() {
+    return new NCollection_HArray1_Handle_StepBasic_DerivedUnitElement();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_DerivedUnitElement(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_DerivedUnitElement* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_DerivedUnitElement(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_length(const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_lower(const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_upper(const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_DerivedUnitElement* NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_value(const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_set_value(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr, int theIndex, const Handle_StepBasic_DerivedUnitElement* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_init(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* arr, const Handle_StepBasic_DerivedUnitElement* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_to_handle(NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_DerivedUnitElement* Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>*> Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_Document - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_Document> Handle_StepBasic_Document;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Document>> NCollection_HArray1_Handle_StepBasic_Document;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Document* NCollection_HArray1_Handle_StepBasic_Document_new() {
+    return new NCollection_HArray1_Handle_StepBasic_Document();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Document_destructor(NCollection_HArray1_Handle_StepBasic_Document* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Document* NCollection_HArray1_Handle_StepBasic_Document_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_Document(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Document* NCollection_HArray1_Handle_StepBasic_Document_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_Document* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_Document(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Document_length(const NCollection_HArray1_Handle_StepBasic_Document* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Document_lower(const NCollection_HArray1_Handle_StepBasic_Document* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Document_upper(const NCollection_HArray1_Handle_StepBasic_Document* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_Document* NCollection_HArray1_Handle_StepBasic_Document_value(const NCollection_HArray1_Handle_StepBasic_Document* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Document_set_value(NCollection_HArray1_Handle_StepBasic_Document* arr, int theIndex, const Handle_StepBasic_Document* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Document_init(NCollection_HArray1_Handle_StepBasic_Document* arr, const Handle_StepBasic_Document* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* NCollection_HArray1_Handle_StepBasic_Document_to_handle(NCollection_HArray1_Handle_StepBasic_Document* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_Document* Handle_NCollection_HArray1_Handle_StepBasic_Document_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_Document* Handle_NCollection_HArray1_Handle_StepBasic_Document_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_Document_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>*> Handle_NCollection_HArray1_Handle_StepBasic_Document_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_Document_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_NamedUnit - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_NamedUnit> Handle_StepBasic_NamedUnit;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_NamedUnit* NCollection_HArray1_Handle_StepBasic_NamedUnit_new() {
+    return new NCollection_HArray1_Handle_StepBasic_NamedUnit();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(NCollection_HArray1_Handle_StepBasic_NamedUnit* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_NamedUnit* NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_NamedUnit(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_NamedUnit* NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_NamedUnit* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_NamedUnit(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_NamedUnit_length(const NCollection_HArray1_Handle_StepBasic_NamedUnit* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_NamedUnit_lower(const NCollection_HArray1_Handle_StepBasic_NamedUnit* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_NamedUnit_upper(const NCollection_HArray1_Handle_StepBasic_NamedUnit* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_NamedUnit* NCollection_HArray1_Handle_StepBasic_NamedUnit_value(const NCollection_HArray1_Handle_StepBasic_NamedUnit* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_NamedUnit_set_value(NCollection_HArray1_Handle_StepBasic_NamedUnit* arr, int theIndex, const Handle_StepBasic_NamedUnit* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_NamedUnit_init(NCollection_HArray1_Handle_StepBasic_NamedUnit* arr, const Handle_StepBasic_NamedUnit* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* NCollection_HArray1_Handle_StepBasic_NamedUnit_to_handle(NCollection_HArray1_Handle_StepBasic_NamedUnit* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_NamedUnit* Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_NamedUnit* Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>*> Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_Organization - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_Organization> Handle_StepBasic_Organization;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Organization>> NCollection_HArray1_Handle_StepBasic_Organization;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Organization* NCollection_HArray1_Handle_StepBasic_Organization_new() {
+    return new NCollection_HArray1_Handle_StepBasic_Organization();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Organization_destructor(NCollection_HArray1_Handle_StepBasic_Organization* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Organization* NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_Organization(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Organization* NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_Organization* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_Organization(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Organization_length(const NCollection_HArray1_Handle_StepBasic_Organization* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Organization_lower(const NCollection_HArray1_Handle_StepBasic_Organization* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Organization_upper(const NCollection_HArray1_Handle_StepBasic_Organization* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_Organization* NCollection_HArray1_Handle_StepBasic_Organization_value(const NCollection_HArray1_Handle_StepBasic_Organization* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Organization_set_value(NCollection_HArray1_Handle_StepBasic_Organization* arr, int theIndex, const Handle_StepBasic_Organization* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Organization_init(NCollection_HArray1_Handle_StepBasic_Organization* arr, const Handle_StepBasic_Organization* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* NCollection_HArray1_Handle_StepBasic_Organization_to_handle(NCollection_HArray1_Handle_StepBasic_Organization* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_Organization* Handle_NCollection_HArray1_Handle_StepBasic_Organization_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_Organization* Handle_NCollection_HArray1_Handle_StepBasic_Organization_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_Organization_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>*> Handle_NCollection_HArray1_Handle_StepBasic_Organization_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_Organization_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_Person - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_Person> Handle_StepBasic_Person;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Person>> NCollection_HArray1_Handle_StepBasic_Person;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Person* NCollection_HArray1_Handle_StepBasic_Person_new() {
+    return new NCollection_HArray1_Handle_StepBasic_Person();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Person_destructor(NCollection_HArray1_Handle_StepBasic_Person* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Person* NCollection_HArray1_Handle_StepBasic_Person_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_Person(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Person* NCollection_HArray1_Handle_StepBasic_Person_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_Person* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_Person(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Person_length(const NCollection_HArray1_Handle_StepBasic_Person* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Person_lower(const NCollection_HArray1_Handle_StepBasic_Person* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Person_upper(const NCollection_HArray1_Handle_StepBasic_Person* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_Person* NCollection_HArray1_Handle_StepBasic_Person_value(const NCollection_HArray1_Handle_StepBasic_Person* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Person_set_value(NCollection_HArray1_Handle_StepBasic_Person* arr, int theIndex, const Handle_StepBasic_Person* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Person_init(NCollection_HArray1_Handle_StepBasic_Person* arr, const Handle_StepBasic_Person* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* NCollection_HArray1_Handle_StepBasic_Person_to_handle(NCollection_HArray1_Handle_StepBasic_Person* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_Person* Handle_NCollection_HArray1_Handle_StepBasic_Person_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_Person* Handle_NCollection_HArray1_Handle_StepBasic_Person_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_Person_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>*> Handle_NCollection_HArray1_Handle_StepBasic_Person_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_Person_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_Product - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_Product> Handle_StepBasic_Product;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Product>> NCollection_HArray1_Handle_StepBasic_Product;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Product* NCollection_HArray1_Handle_StepBasic_Product_new() {
+    return new NCollection_HArray1_Handle_StepBasic_Product();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Product_destructor(NCollection_HArray1_Handle_StepBasic_Product* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Product* NCollection_HArray1_Handle_StepBasic_Product_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_Product(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_Product* NCollection_HArray1_Handle_StepBasic_Product_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_Product* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_Product(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Product_length(const NCollection_HArray1_Handle_StepBasic_Product* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Product_lower(const NCollection_HArray1_Handle_StepBasic_Product* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_Product_upper(const NCollection_HArray1_Handle_StepBasic_Product* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_Product* NCollection_HArray1_Handle_StepBasic_Product_value(const NCollection_HArray1_Handle_StepBasic_Product* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Product_set_value(NCollection_HArray1_Handle_StepBasic_Product* arr, int theIndex, const Handle_StepBasic_Product* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_Product_init(NCollection_HArray1_Handle_StepBasic_Product* arr, const Handle_StepBasic_Product* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* NCollection_HArray1_Handle_StepBasic_Product_to_handle(NCollection_HArray1_Handle_StepBasic_Product* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_Product* Handle_NCollection_HArray1_Handle_StepBasic_Product_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_Product* Handle_NCollection_HArray1_Handle_StepBasic_Product_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_Product_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>*> Handle_NCollection_HArray1_Handle_StepBasic_Product_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_Product_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_ProductContext - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_ProductContext> Handle_StepBasic_ProductContext;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_ProductContext* NCollection_HArray1_Handle_StepBasic_ProductContext_new() {
+    return new NCollection_HArray1_Handle_StepBasic_ProductContext();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(NCollection_HArray1_Handle_StepBasic_ProductContext* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_ProductContext* NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_ProductContext(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_ProductContext* NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_ProductContext* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_ProductContext(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_ProductContext_length(const NCollection_HArray1_Handle_StepBasic_ProductContext* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_ProductContext_lower(const NCollection_HArray1_Handle_StepBasic_ProductContext* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_ProductContext_upper(const NCollection_HArray1_Handle_StepBasic_ProductContext* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_ProductContext* NCollection_HArray1_Handle_StepBasic_ProductContext_value(const NCollection_HArray1_Handle_StepBasic_ProductContext* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_ProductContext_set_value(NCollection_HArray1_Handle_StepBasic_ProductContext* arr, int theIndex, const Handle_StepBasic_ProductContext* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_ProductContext_init(NCollection_HArray1_Handle_StepBasic_ProductContext* arr, const Handle_StepBasic_ProductContext* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* NCollection_HArray1_Handle_StepBasic_ProductContext_to_handle(NCollection_HArray1_Handle_StepBasic_ProductContext* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_ProductContext* Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_ProductContext* Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>*> Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> Handle_StepBasic_UncertaintyMeasureWithUnit;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+extern "C" NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_new() {
+    return new NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2_value(int theLower, int theUpper, const Handle_StepBasic_UncertaintyMeasureWithUnit* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_length(const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_lower(const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_upper(const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepBasic_UncertaintyMeasureWithUnit* NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_value(const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_set_value(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr, int theIndex, const Handle_StepBasic_UncertaintyMeasureWithUnit* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_init(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* arr, const Handle_StepBasic_UncertaintyMeasureWithUnit* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_to_handle(NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit* Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>*> Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepDimTol_DatumReference - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepDimTol_DatumReference> Handle_StepDimTol_DatumReference;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>> NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReference* NCollection_HArray1_Handle_StepDimTol_DatumReference_new() {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReference();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(NCollection_HArray1_Handle_StepDimTol_DatumReference* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReference* NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReference(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReference* NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2_value(int theLower, int theUpper, const Handle_StepDimTol_DatumReference* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepDimTol_DatumReference(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReference_length(const NCollection_HArray1_Handle_StepDimTol_DatumReference* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReference_lower(const NCollection_HArray1_Handle_StepDimTol_DatumReference* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReference_upper(const NCollection_HArray1_Handle_StepDimTol_DatumReference* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepDimTol_DatumReference* NCollection_HArray1_Handle_StepDimTol_DatumReference_value(const NCollection_HArray1_Handle_StepDimTol_DatumReference* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReference_set_value(NCollection_HArray1_Handle_StepDimTol_DatumReference* arr, int theIndex, const Handle_StepDimTol_DatumReference* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReference_init(NCollection_HArray1_Handle_StepDimTol_DatumReference* arr, const Handle_StepDimTol_DatumReference* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* NCollection_HArray1_Handle_StepDimTol_DatumReference_to_handle(NCollection_HArray1_Handle_StepDimTol_DatumReference* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepDimTol_DatumReference* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReference* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>*> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepDimTol_DatumReferenceCompartment> Handle_StepDimTol_DatumReferenceCompartment;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>> NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_new() {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2_value(int theLower, int theUpper, const Handle_StepDimTol_DatumReferenceCompartment* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_length(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_lower(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_upper(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepDimTol_DatumReferenceCompartment* NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_value(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_set_value(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr, int theIndex, const Handle_StepDimTol_DatumReferenceCompartment* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_init(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* arr, const Handle_StepDimTol_DatumReferenceCompartment* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_to_handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>*> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepDimTol_DatumReferenceElement> Handle_StepDimTol_DatumReferenceElement;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>> NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_new() {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2_value(int theLower, int theUpper, const Handle_StepDimTol_DatumReferenceElement* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_length(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_lower(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_upper(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepDimTol_DatumReferenceElement* NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_value(const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_set_value(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr, int theIndex, const Handle_StepDimTol_DatumReferenceElement* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_init(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* arr, const Handle_StepDimTol_DatumReferenceElement* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_to_handle(NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement* Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>*> Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_CurveElementEndReleasePacket> Handle_StepElement_CurveElementEndReleasePacket;
+typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>> NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_new() {
+    return new NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2_value(int theLower, int theUpper, const Handle_StepElement_CurveElementEndReleasePacket* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_length(const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_lower(const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_upper(const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepElement_CurveElementEndReleasePacket* NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_value(const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_set_value(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr, int theIndex, const Handle_StepElement_CurveElementEndReleasePacket* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_init(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* arr, const Handle_StepElement_CurveElementEndReleasePacket* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_to_handle(NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket* Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>*> Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_CurveElementSectionDefinition> Handle_StepElement_CurveElementSectionDefinition;
+typedef NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_new() {
+    return new NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2_value(int theLower, int theUpper, const Handle_StepElement_CurveElementSectionDefinition* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_length(const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_lower(const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_upper(const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepElement_CurveElementSectionDefinition* NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_value(const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_set_value(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr, int theIndex, const Handle_StepElement_CurveElementSectionDefinition* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_init(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* arr, const Handle_StepElement_CurveElementSectionDefinition* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_to_handle(NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition* Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>*> Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepElement_SurfaceSection - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_SurfaceSection> Handle_StepElement_SurfaceSection;
+typedef NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>> NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+extern "C" NCollection_HArray1_Handle_StepElement_SurfaceSection* NCollection_HArray1_Handle_StepElement_SurfaceSection_new() {
+    return new NCollection_HArray1_Handle_StepElement_SurfaceSection();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(NCollection_HArray1_Handle_StepElement_SurfaceSection* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_SurfaceSection* NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepElement_SurfaceSection(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_SurfaceSection* NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2_value(int theLower, int theUpper, const Handle_StepElement_SurfaceSection* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepElement_SurfaceSection(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_SurfaceSection_length(const NCollection_HArray1_Handle_StepElement_SurfaceSection* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_SurfaceSection_lower(const NCollection_HArray1_Handle_StepElement_SurfaceSection* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_SurfaceSection_upper(const NCollection_HArray1_Handle_StepElement_SurfaceSection* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepElement_SurfaceSection* NCollection_HArray1_Handle_StepElement_SurfaceSection_value(const NCollection_HArray1_Handle_StepElement_SurfaceSection* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_SurfaceSection_set_value(NCollection_HArray1_Handle_StepElement_SurfaceSection* arr, int theIndex, const Handle_StepElement_SurfaceSection* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_SurfaceSection_init(NCollection_HArray1_Handle_StepElement_SurfaceSection* arr, const Handle_StepElement_SurfaceSection* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* NCollection_HArray1_Handle_StepElement_SurfaceSection_to_handle(NCollection_HArray1_Handle_StepElement_SurfaceSection* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepElement_SurfaceSection* Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepElement_SurfaceSection* Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>*> Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_VolumeElementPurposeMember> Handle_StepElement_VolumeElementPurposeMember;
+typedef NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>> NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+extern "C" NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_new() {
+    return new NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2_value(int theLower, int theUpper, const Handle_StepElement_VolumeElementPurposeMember* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_length(const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_lower(const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_upper(const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepElement_VolumeElementPurposeMember* NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_value(const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_set_value(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr, int theIndex, const Handle_StepElement_VolumeElementPurposeMember* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_init(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* arr, const Handle_StepElement_VolumeElementPurposeMember* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_to_handle(NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember* Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>*> Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_CurveElementEndOffset> Handle_StepFEA_CurveElementEndOffset;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>> NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_new() {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2_value(int theLower, int theUpper, const Handle_StepFEA_CurveElementEndOffset* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_length(const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_lower(const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_upper(const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepFEA_CurveElementEndOffset* NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_value(const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_set_value(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr, int theIndex, const Handle_StepFEA_CurveElementEndOffset* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_init(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* arr, const Handle_StepFEA_CurveElementEndOffset* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_to_handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>*> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_CurveElementEndRelease> Handle_StepFEA_CurveElementEndRelease;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>> NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_new() {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2_value(int theLower, int theUpper, const Handle_StepFEA_CurveElementEndRelease* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_length(const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_lower(const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_upper(const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepFEA_CurveElementEndRelease* NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_value(const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_set_value(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr, int theIndex, const Handle_StepFEA_CurveElementEndRelease* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_init(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* arr, const Handle_StepFEA_CurveElementEndRelease* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_to_handle(NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>*> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepFEA_CurveElementInterval - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_CurveElementInterval> Handle_StepFEA_CurveElementInterval;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>> NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementInterval* NCollection_HArray1_Handle_StepFEA_CurveElementInterval_new() {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementInterval();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(NCollection_HArray1_Handle_StepFEA_CurveElementInterval* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementInterval* NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepFEA_CurveElementInterval(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementInterval* NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2_value(int theLower, int theUpper, const Handle_StepFEA_CurveElementInterval* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepFEA_CurveElementInterval(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementInterval_length(const NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementInterval_lower(const NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_CurveElementInterval_upper(const NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepFEA_CurveElementInterval* NCollection_HArray1_Handle_StepFEA_CurveElementInterval_value(const NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementInterval_set_value(NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr, int theIndex, const Handle_StepFEA_CurveElementInterval* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_CurveElementInterval_init(NCollection_HArray1_Handle_StepFEA_CurveElementInterval* arr, const Handle_StepFEA_CurveElementInterval* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* NCollection_HArray1_Handle_StepFEA_CurveElementInterval_to_handle(NCollection_HArray1_Handle_StepFEA_CurveElementInterval* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepFEA_CurveElementInterval* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepFEA_CurveElementInterval* Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>*> Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepFEA_ElementRepresentation - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_ElementRepresentation> Handle_StepFEA_ElementRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+extern "C" NCollection_HArray1_Handle_StepFEA_ElementRepresentation* NCollection_HArray1_Handle_StepFEA_ElementRepresentation_new() {
+    return new NCollection_HArray1_Handle_StepFEA_ElementRepresentation();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(NCollection_HArray1_Handle_StepFEA_ElementRepresentation* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_ElementRepresentation* NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepFEA_ElementRepresentation(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_ElementRepresentation* NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2_value(int theLower, int theUpper, const Handle_StepFEA_ElementRepresentation* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepFEA_ElementRepresentation(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_ElementRepresentation_length(const NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_ElementRepresentation_lower(const NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_ElementRepresentation_upper(const NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepFEA_ElementRepresentation* NCollection_HArray1_Handle_StepFEA_ElementRepresentation_value(const NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_ElementRepresentation_set_value(NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr, int theIndex, const Handle_StepFEA_ElementRepresentation* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_ElementRepresentation_init(NCollection_HArray1_Handle_StepFEA_ElementRepresentation* arr, const Handle_StepFEA_ElementRepresentation* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* NCollection_HArray1_Handle_StepFEA_ElementRepresentation_to_handle(NCollection_HArray1_Handle_StepFEA_ElementRepresentation* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepFEA_ElementRepresentation* Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepFEA_ElementRepresentation* Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>*> Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepFEA_NodeRepresentation - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_NodeRepresentation> Handle_StepFEA_NodeRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>> NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+extern "C" NCollection_HArray1_Handle_StepFEA_NodeRepresentation* NCollection_HArray1_Handle_StepFEA_NodeRepresentation_new() {
+    return new NCollection_HArray1_Handle_StepFEA_NodeRepresentation();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(NCollection_HArray1_Handle_StepFEA_NodeRepresentation* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_NodeRepresentation* NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepFEA_NodeRepresentation(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepFEA_NodeRepresentation* NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2_value(int theLower, int theUpper, const Handle_StepFEA_NodeRepresentation* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepFEA_NodeRepresentation(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_NodeRepresentation_length(const NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_NodeRepresentation_lower(const NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepFEA_NodeRepresentation_upper(const NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepFEA_NodeRepresentation* NCollection_HArray1_Handle_StepFEA_NodeRepresentation_value(const NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_NodeRepresentation_set_value(NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr, int theIndex, const Handle_StepFEA_NodeRepresentation* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepFEA_NodeRepresentation_init(NCollection_HArray1_Handle_StepFEA_NodeRepresentation* arr, const Handle_StepFEA_NodeRepresentation* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* NCollection_HArray1_Handle_StepFEA_NodeRepresentation_to_handle(NCollection_HArray1_Handle_StepFEA_NodeRepresentation* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepFEA_NodeRepresentation* Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepFEA_NodeRepresentation* Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>*> Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepGeom_CartesianPoint - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepGeom_CartesianPoint> Handle_StepGeom_CartesianPoint;
+typedef NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CartesianPoint* NCollection_HArray1_Handle_StepGeom_CartesianPoint_new() {
+    return new NCollection_HArray1_Handle_StepGeom_CartesianPoint();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(NCollection_HArray1_Handle_StepGeom_CartesianPoint* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CartesianPoint* NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepGeom_CartesianPoint(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CartesianPoint* NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2_value(int theLower, int theUpper, const Handle_StepGeom_CartesianPoint* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepGeom_CartesianPoint(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CartesianPoint_length(const NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CartesianPoint_lower(const NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CartesianPoint_upper(const NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepGeom_CartesianPoint* NCollection_HArray1_Handle_StepGeom_CartesianPoint_value(const NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CartesianPoint_set_value(NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr, int theIndex, const Handle_StepGeom_CartesianPoint* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CartesianPoint_init(NCollection_HArray1_Handle_StepGeom_CartesianPoint* arr, const Handle_StepGeom_CartesianPoint* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* NCollection_HArray1_Handle_StepGeom_CartesianPoint_to_handle(NCollection_HArray1_Handle_StepGeom_CartesianPoint* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepGeom_CartesianPoint* Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepGeom_CartesianPoint* Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>*> Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepGeom_CompositeCurveSegment> Handle_StepGeom_CompositeCurveSegment;
+typedef NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>> NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_new() {
+    return new NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2_value(int theLower, int theUpper, const Handle_StepGeom_CompositeCurveSegment* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_length(const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_lower(const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_upper(const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepGeom_CompositeCurveSegment* NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_value(const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_set_value(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr, int theIndex, const Handle_StepGeom_CompositeCurveSegment* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_init(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* arr, const Handle_StepGeom_CompositeCurveSegment* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_to_handle(NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment* Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>*> Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepRepr_MaterialPropertyRepresentation> Handle_StepRepr_MaterialPropertyRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+extern "C" NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_new() {
+    return new NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2_value(int theLower, int theUpper, const Handle_StepRepr_MaterialPropertyRepresentation* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_length(const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_lower(const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_upper(const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepRepr_MaterialPropertyRepresentation* NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_value(const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_set_value(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr, int theIndex, const Handle_StepRepr_MaterialPropertyRepresentation* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_init(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* arr, const Handle_StepRepr_MaterialPropertyRepresentation* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_to_handle(NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation* Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>*> Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepRepr_PropertyDefinitionRepresentation> Handle_StepRepr_PropertyDefinitionRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+extern "C" NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_new() {
+    return new NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2_value(int theLower, int theUpper, const Handle_StepRepr_PropertyDefinitionRepresentation* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_length(const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_lower(const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_upper(const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepRepr_PropertyDefinitionRepresentation* NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_value(const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_set_value(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr, int theIndex, const Handle_StepRepr_PropertyDefinitionRepresentation* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_init(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* arr, const Handle_StepRepr_PropertyDefinitionRepresentation* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_to_handle(NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation* Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>*> Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepRepr_RepresentationItem - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepRepr_RepresentationItem> Handle_StepRepr_RepresentationItem;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+extern "C" NCollection_HArray1_Handle_StepRepr_RepresentationItem* NCollection_HArray1_Handle_StepRepr_RepresentationItem_new() {
+    return new NCollection_HArray1_Handle_StepRepr_RepresentationItem();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(NCollection_HArray1_Handle_StepRepr_RepresentationItem* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_RepresentationItem* NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepRepr_RepresentationItem(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_RepresentationItem* NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2_value(int theLower, int theUpper, const Handle_StepRepr_RepresentationItem* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepRepr_RepresentationItem(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_RepresentationItem_length(const NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_RepresentationItem_lower(const NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_RepresentationItem_upper(const NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepRepr_RepresentationItem* NCollection_HArray1_Handle_StepRepr_RepresentationItem_value(const NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_RepresentationItem_set_value(NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr, int theIndex, const Handle_StepRepr_RepresentationItem* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_RepresentationItem_init(NCollection_HArray1_Handle_StepRepr_RepresentationItem* arr, const Handle_StepRepr_RepresentationItem* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* NCollection_HArray1_Handle_StepRepr_RepresentationItem_to_handle(NCollection_HArray1_Handle_StepRepr_RepresentationItem* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepRepr_RepresentationItem* Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepRepr_RepresentationItem* Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>*> Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepRepr_ShapeAspect - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepRepr_ShapeAspect> Handle_StepRepr_ShapeAspect;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>> NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+extern "C" NCollection_HArray1_Handle_StepRepr_ShapeAspect* NCollection_HArray1_Handle_StepRepr_ShapeAspect_new() {
+    return new NCollection_HArray1_Handle_StepRepr_ShapeAspect();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(NCollection_HArray1_Handle_StepRepr_ShapeAspect* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_ShapeAspect* NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepRepr_ShapeAspect(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepRepr_ShapeAspect* NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2_value(int theLower, int theUpper, const Handle_StepRepr_ShapeAspect* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepRepr_ShapeAspect(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_ShapeAspect_length(const NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_ShapeAspect_lower(const NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepRepr_ShapeAspect_upper(const NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepRepr_ShapeAspect* NCollection_HArray1_Handle_StepRepr_ShapeAspect_value(const NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_ShapeAspect_set_value(NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr, int theIndex, const Handle_StepRepr_ShapeAspect* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepRepr_ShapeAspect_init(NCollection_HArray1_Handle_StepRepr_ShapeAspect* arr, const Handle_StepRepr_ShapeAspect* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* NCollection_HArray1_Handle_StepRepr_ShapeAspect_to_handle(NCollection_HArray1_Handle_StepRepr_ShapeAspect* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepRepr_ShapeAspect* Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepRepr_ShapeAspect* Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>*> Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_ConnectedEdgeSet> Handle_StepShape_ConnectedEdgeSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_new() {
+    return new NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_ConnectedEdgeSet* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_length(const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_lower(const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_upper(const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_ConnectedEdgeSet* NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_value(const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_set_value(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr, int theIndex, const Handle_StepShape_ConnectedEdgeSet* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_init(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* arr, const Handle_StepShape_ConnectedEdgeSet* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_to_handle(NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet* Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>*> Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_ConnectedFaceSet - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_ConnectedFaceSet> Handle_StepShape_ConnectedFaceSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_new() {
+    return new NCollection_HArray1_Handle_StepShape_ConnectedFaceSet();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_ConnectedFaceSet(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_ConnectedFaceSet* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_ConnectedFaceSet(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_length(const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_lower(const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_upper(const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_ConnectedFaceSet* NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_value(const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_set_value(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr, int theIndex, const Handle_StepShape_ConnectedFaceSet* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_init(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* arr, const Handle_StepShape_ConnectedFaceSet* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_to_handle(NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_ConnectedFaceSet* Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>*> Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_Edge - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_Edge> Handle_StepShape_Edge;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Edge>> NCollection_HArray1_Handle_StepShape_Edge;
+
+extern "C" NCollection_HArray1_Handle_StepShape_Edge* NCollection_HArray1_Handle_StepShape_Edge_new() {
+    return new NCollection_HArray1_Handle_StepShape_Edge();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Edge_destructor(NCollection_HArray1_Handle_StepShape_Edge* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_Edge* NCollection_HArray1_Handle_StepShape_Edge_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_Edge(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_Edge* NCollection_HArray1_Handle_StepShape_Edge_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_Edge* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_Edge(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Edge_length(const NCollection_HArray1_Handle_StepShape_Edge* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Edge_lower(const NCollection_HArray1_Handle_StepShape_Edge* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Edge_upper(const NCollection_HArray1_Handle_StepShape_Edge* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_Edge* NCollection_HArray1_Handle_StepShape_Edge_value(const NCollection_HArray1_Handle_StepShape_Edge* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Edge_set_value(NCollection_HArray1_Handle_StepShape_Edge* arr, int theIndex, const Handle_StepShape_Edge* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Edge_init(NCollection_HArray1_Handle_StepShape_Edge* arr, const Handle_StepShape_Edge* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* NCollection_HArray1_Handle_StepShape_Edge_to_handle(NCollection_HArray1_Handle_StepShape_Edge* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_Edge* Handle_NCollection_HArray1_Handle_StepShape_Edge_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_Edge* Handle_NCollection_HArray1_Handle_StepShape_Edge_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_Edge_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>*> Handle_NCollection_HArray1_Handle_StepShape_Edge_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_Edge_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_Face - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_Face> Handle_StepShape_Face;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Face>> NCollection_HArray1_Handle_StepShape_Face;
+
+extern "C" NCollection_HArray1_Handle_StepShape_Face* NCollection_HArray1_Handle_StepShape_Face_new() {
+    return new NCollection_HArray1_Handle_StepShape_Face();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Face_destructor(NCollection_HArray1_Handle_StepShape_Face* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_Face* NCollection_HArray1_Handle_StepShape_Face_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_Face(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_Face* NCollection_HArray1_Handle_StepShape_Face_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_Face* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_Face(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Face_length(const NCollection_HArray1_Handle_StepShape_Face* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Face_lower(const NCollection_HArray1_Handle_StepShape_Face* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_Face_upper(const NCollection_HArray1_Handle_StepShape_Face* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_Face* NCollection_HArray1_Handle_StepShape_Face_value(const NCollection_HArray1_Handle_StepShape_Face* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Face_set_value(NCollection_HArray1_Handle_StepShape_Face* arr, int theIndex, const Handle_StepShape_Face* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_Face_init(NCollection_HArray1_Handle_StepShape_Face* arr, const Handle_StepShape_Face* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* NCollection_HArray1_Handle_StepShape_Face_to_handle(NCollection_HArray1_Handle_StepShape_Face* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_Face* Handle_NCollection_HArray1_Handle_StepShape_Face_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_Face* Handle_NCollection_HArray1_Handle_StepShape_Face_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_Face_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>*> Handle_NCollection_HArray1_Handle_StepShape_Face_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_Face_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_FaceBound - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_FaceBound> Handle_StepShape_FaceBound;
+typedef NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> NCollection_HArray1_Handle_StepShape_FaceBound;
+
+extern "C" NCollection_HArray1_Handle_StepShape_FaceBound* NCollection_HArray1_Handle_StepShape_FaceBound_new() {
+    return new NCollection_HArray1_Handle_StepShape_FaceBound();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_FaceBound_destructor(NCollection_HArray1_Handle_StepShape_FaceBound* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_FaceBound* NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_FaceBound(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_FaceBound* NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_FaceBound* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_FaceBound(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_FaceBound_length(const NCollection_HArray1_Handle_StepShape_FaceBound* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_FaceBound_lower(const NCollection_HArray1_Handle_StepShape_FaceBound* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_FaceBound_upper(const NCollection_HArray1_Handle_StepShape_FaceBound* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_FaceBound* NCollection_HArray1_Handle_StepShape_FaceBound_value(const NCollection_HArray1_Handle_StepShape_FaceBound* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_FaceBound_set_value(NCollection_HArray1_Handle_StepShape_FaceBound* arr, int theIndex, const Handle_StepShape_FaceBound* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_FaceBound_init(NCollection_HArray1_Handle_StepShape_FaceBound* arr, const Handle_StepShape_FaceBound* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* NCollection_HArray1_Handle_StepShape_FaceBound_to_handle(NCollection_HArray1_Handle_StepShape_FaceBound* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_FaceBound* Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_FaceBound* Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_FaceBound_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>*> Handle_NCollection_HArray1_Handle_StepShape_FaceBound_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_FaceBound_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_OrientedClosedShell - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_OrientedClosedShell> Handle_StepShape_OrientedClosedShell;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedClosedShell* NCollection_HArray1_Handle_StepShape_OrientedClosedShell_new() {
+    return new NCollection_HArray1_Handle_StepShape_OrientedClosedShell();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(NCollection_HArray1_Handle_StepShape_OrientedClosedShell* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedClosedShell* NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_OrientedClosedShell(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedClosedShell* NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_OrientedClosedShell* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_OrientedClosedShell(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedClosedShell_length(const NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedClosedShell_lower(const NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedClosedShell_upper(const NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_OrientedClosedShell* NCollection_HArray1_Handle_StepShape_OrientedClosedShell_value(const NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedClosedShell_set_value(NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr, int theIndex, const Handle_StepShape_OrientedClosedShell* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedClosedShell_init(NCollection_HArray1_Handle_StepShape_OrientedClosedShell* arr, const Handle_StepShape_OrientedClosedShell* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* NCollection_HArray1_Handle_StepShape_OrientedClosedShell_to_handle(NCollection_HArray1_Handle_StepShape_OrientedClosedShell* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_OrientedClosedShell* Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedClosedShell* Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>*> Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepShape_OrientedEdge - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepShape_OrientedEdge> Handle_StepShape_OrientedEdge;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedEdge* NCollection_HArray1_Handle_StepShape_OrientedEdge_new() {
+    return new NCollection_HArray1_Handle_StepShape_OrientedEdge();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(NCollection_HArray1_Handle_StepShape_OrientedEdge* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedEdge* NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepShape_OrientedEdge(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedEdge* NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2_value(int theLower, int theUpper, const Handle_StepShape_OrientedEdge* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepShape_OrientedEdge(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedEdge_length(const NCollection_HArray1_Handle_StepShape_OrientedEdge* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedEdge_lower(const NCollection_HArray1_Handle_StepShape_OrientedEdge* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepShape_OrientedEdge_upper(const NCollection_HArray1_Handle_StepShape_OrientedEdge* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepShape_OrientedEdge* NCollection_HArray1_Handle_StepShape_OrientedEdge_value(const NCollection_HArray1_Handle_StepShape_OrientedEdge* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedEdge_set_value(NCollection_HArray1_Handle_StepShape_OrientedEdge* arr, int theIndex, const Handle_StepShape_OrientedEdge* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepShape_OrientedEdge_init(NCollection_HArray1_Handle_StepShape_OrientedEdge* arr, const Handle_StepShape_OrientedEdge* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* NCollection_HArray1_Handle_StepShape_OrientedEdge_to_handle(NCollection_HArray1_Handle_StepShape_OrientedEdge* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepShape_OrientedEdge* Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepShape_OrientedEdge* Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>*> Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepVisual_CurveStyleFontPattern> Handle_StepVisual_CurveStyleFontPattern;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>> NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+extern "C" NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_new() {
+    return new NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2_value(int theLower, int theUpper, const Handle_StepVisual_CurveStyleFontPattern* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_length(const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_lower(const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_upper(const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepVisual_CurveStyleFontPattern* NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_value(const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_set_value(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr, int theIndex, const Handle_StepVisual_CurveStyleFontPattern* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_init(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* arr, const Handle_StepVisual_CurveStyleFontPattern* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_to_handle(NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern* Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>*> Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepVisual_PresentationStyleAssignment> Handle_StepVisual_PresentationStyleAssignment;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>> NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+extern "C" NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_new() {
+    return new NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2_value(int theLower, int theUpper, const Handle_StepVisual_PresentationStyleAssignment* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_length(const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_lower(const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_upper(const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepVisual_PresentationStyleAssignment* NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_value(const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_set_value(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr, int theIndex, const Handle_StepVisual_PresentationStyleAssignment* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_init(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* arr, const Handle_StepVisual_PresentationStyleAssignment* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_to_handle(NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment* Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>*> Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepVisual_TessellatedStructuredItem> Handle_StepVisual_TessellatedStructuredItem;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>> NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+extern "C" NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_new() {
+    return new NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem();
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2_value(int theLower, int theUpper, const Handle_StepVisual_TessellatedStructuredItem* theValue) {
+    auto arr = new NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_length(const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_lower(const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_upper(const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_StepVisual_TessellatedStructuredItem* NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_value(const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_set_value(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr, int theIndex, const Handle_StepVisual_TessellatedStructuredItem* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_init(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* arr, const Handle_StepVisual_TessellatedStructuredItem* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_to_handle(NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem* Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>*> Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HArray1_Handle_TCollection_HAsciiString - Handle-managed fixed-size 1D array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>> NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+extern "C" NCollection_HArray1_Handle_TCollection_HAsciiString* NCollection_HArray1_Handle_TCollection_HAsciiString_new() {
+    return new NCollection_HArray1_Handle_TCollection_HAsciiString();
+}
+
+extern "C" void NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(NCollection_HArray1_Handle_TCollection_HAsciiString* self_) {
+    delete self_;
+}
+
+extern "C" NCollection_HArray1_Handle_TCollection_HAsciiString* NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2(int theLower, int theUpper) {
+    return new NCollection_HArray1_Handle_TCollection_HAsciiString(theLower, theUpper);
+}
+
+extern "C" NCollection_HArray1_Handle_TCollection_HAsciiString* NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2_value(int theLower, int theUpper, const Handle_TCollection_HAsciiString* theValue) {
+    auto arr = new NCollection_HArray1_Handle_TCollection_HAsciiString(theLower, theUpper);
+    arr->Init(*theValue);
+    return arr;
+}
+
+extern "C" int NCollection_HArray1_Handle_TCollection_HAsciiString_length(const NCollection_HArray1_Handle_TCollection_HAsciiString* arr) {
+    return arr->Length();
+}
+
+extern "C" int NCollection_HArray1_Handle_TCollection_HAsciiString_lower(const NCollection_HArray1_Handle_TCollection_HAsciiString* arr) {
+    return arr->Lower();
+}
+
+extern "C" int NCollection_HArray1_Handle_TCollection_HAsciiString_upper(const NCollection_HArray1_Handle_TCollection_HAsciiString* arr) {
+    return arr->Upper();
+}
+
+extern "C" const Handle_TCollection_HAsciiString* NCollection_HArray1_Handle_TCollection_HAsciiString_value(const NCollection_HArray1_Handle_TCollection_HAsciiString* arr, int theIndex) {
+    return &arr->Value(theIndex);
+}
+
+extern "C" void NCollection_HArray1_Handle_TCollection_HAsciiString_set_value(NCollection_HArray1_Handle_TCollection_HAsciiString* arr, int theIndex, const Handle_TCollection_HAsciiString* theItem) {
+    arr->SetValue(theIndex, *theItem);
+}
+
+extern "C" void NCollection_HArray1_Handle_TCollection_HAsciiString_init(NCollection_HArray1_Handle_TCollection_HAsciiString* arr, const Handle_TCollection_HAsciiString* theValue) {
+    arr->Init(*theValue);
+}
+
+extern "C" opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* NCollection_HArray1_Handle_TCollection_HAsciiString_to_handle(NCollection_HArray1_Handle_TCollection_HAsciiString* self_) {
+    return new opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>(self_);
+}
+
+extern "C" const NCollection_HArray1_Handle_TCollection_HAsciiString* Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Handle_TCollection_HAsciiString* Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get_mut(opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>*> Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_clone(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_is_null(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>* self_) { return self_->IsNull(); }
 
 // ========================
 // NCollection_HArray1_Poly_Triangle - Handle-managed fixed-size 1D array (1-indexed)
@@ -42925,6 +48054,1206 @@ extern "C" OcctResult<opencascade::handle<NCollection_HArray1<int>>*> Handle_NCo
 extern "C" bool Handle_NCollection_HArray1_int_is_null(const opencascade::handle<NCollection_HArray1<int>>* self_) { return self_->IsNull(); }
 
 // ========================
+// NCollection_HSequence_Handle_ChFiDS_SurfData - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<ChFiDS_SurfData> Handle_ChFiDS_SurfData;
+typedef NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>> NCollection_HSequence_Handle_ChFiDS_SurfData;
+
+extern "C" NCollection_HSequence_Handle_ChFiDS_SurfData* NCollection_HSequence_Handle_ChFiDS_SurfData_new() {
+    return new NCollection_HSequence_Handle_ChFiDS_SurfData();
+}
+
+extern "C" void NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(NCollection_HSequence_Handle_ChFiDS_SurfData* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_ChFiDS_SurfDataIterator {
+    const NCollection_HSequence_Handle_ChFiDS_SurfData* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_ChFiDS_SurfDataIterator_destructor(HSequence_Handle_ChFiDS_SurfDataIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_ChFiDS_SurfDataIterator* NCollection_HSequence_Handle_ChFiDS_SurfData_iter(const NCollection_HSequence_Handle_ChFiDS_SurfData* coll) {
+    auto iter = new HSequence_Handle_ChFiDS_SurfDataIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_ChFiDS_SurfData* HSequence_Handle_ChFiDS_SurfDataIterator_next(HSequence_Handle_ChFiDS_SurfDataIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_ChFiDS_SurfData(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_ChFiDS_SurfData_size(const NCollection_HSequence_Handle_ChFiDS_SurfData* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_ChFiDS_SurfData_clear(NCollection_HSequence_Handle_ChFiDS_SurfData* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* NCollection_HSequence_Handle_ChFiDS_SurfData_to_handle(NCollection_HSequence_Handle_ChFiDS_SurfData* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_ChFiDS_SurfData* Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_ChFiDS_SurfData* Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>*> Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Geom2d_BoundedCurve - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_BoundedCurve> Handle_Geom2d_BoundedCurve;
+typedef NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>> NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+
+extern "C" NCollection_HSequence_Handle_Geom2d_BoundedCurve* NCollection_HSequence_Handle_Geom2d_BoundedCurve_new() {
+    return new NCollection_HSequence_Handle_Geom2d_BoundedCurve();
+}
+
+extern "C" void NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(NCollection_HSequence_Handle_Geom2d_BoundedCurve* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Geom2d_BoundedCurveIterator {
+    const NCollection_HSequence_Handle_Geom2d_BoundedCurve* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Geom2d_BoundedCurveIterator_destructor(HSequence_Handle_Geom2d_BoundedCurveIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Geom2d_BoundedCurveIterator* NCollection_HSequence_Handle_Geom2d_BoundedCurve_iter(const NCollection_HSequence_Handle_Geom2d_BoundedCurve* coll) {
+    auto iter = new HSequence_Handle_Geom2d_BoundedCurveIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Geom2d_BoundedCurve* HSequence_Handle_Geom2d_BoundedCurveIterator_next(HSequence_Handle_Geom2d_BoundedCurveIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Geom2d_BoundedCurve(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Geom2d_BoundedCurve_size(const NCollection_HSequence_Handle_Geom2d_BoundedCurve* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Geom2d_BoundedCurve_clear(NCollection_HSequence_Handle_Geom2d_BoundedCurve* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* NCollection_HSequence_Handle_Geom2d_BoundedCurve_to_handle(NCollection_HSequence_Handle_Geom2d_BoundedCurve* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Geom2d_BoundedCurve* Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Geom2d_BoundedCurve* Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>*> Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Geom_BoundedCurve - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_BoundedCurve> Handle_Geom_BoundedCurve;
+typedef NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>> NCollection_HSequence_Handle_Geom_BoundedCurve;
+
+extern "C" NCollection_HSequence_Handle_Geom_BoundedCurve* NCollection_HSequence_Handle_Geom_BoundedCurve_new() {
+    return new NCollection_HSequence_Handle_Geom_BoundedCurve();
+}
+
+extern "C" void NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(NCollection_HSequence_Handle_Geom_BoundedCurve* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Geom_BoundedCurveIterator {
+    const NCollection_HSequence_Handle_Geom_BoundedCurve* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Geom_BoundedCurveIterator_destructor(HSequence_Handle_Geom_BoundedCurveIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Geom_BoundedCurveIterator* NCollection_HSequence_Handle_Geom_BoundedCurve_iter(const NCollection_HSequence_Handle_Geom_BoundedCurve* coll) {
+    auto iter = new HSequence_Handle_Geom_BoundedCurveIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Geom_BoundedCurve* HSequence_Handle_Geom_BoundedCurveIterator_next(HSequence_Handle_Geom_BoundedCurveIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Geom_BoundedCurve(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Geom_BoundedCurve_size(const NCollection_HSequence_Handle_Geom_BoundedCurve* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Geom_BoundedCurve_clear(NCollection_HSequence_Handle_Geom_BoundedCurve* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* NCollection_HSequence_Handle_Geom_BoundedCurve_to_handle(NCollection_HSequence_Handle_Geom_BoundedCurve* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Geom_BoundedCurve* Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Geom_BoundedCurve* Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>*> Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_STEPSelections_AssemblyLink - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<STEPSelections_AssemblyLink> Handle_STEPSelections_AssemblyLink;
+typedef NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+
+extern "C" NCollection_HSequence_Handle_STEPSelections_AssemblyLink* NCollection_HSequence_Handle_STEPSelections_AssemblyLink_new() {
+    return new NCollection_HSequence_Handle_STEPSelections_AssemblyLink();
+}
+
+extern "C" void NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(NCollection_HSequence_Handle_STEPSelections_AssemblyLink* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_STEPSelections_AssemblyLinkIterator {
+    const NCollection_HSequence_Handle_STEPSelections_AssemblyLink* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_STEPSelections_AssemblyLinkIterator_destructor(HSequence_Handle_STEPSelections_AssemblyLinkIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_STEPSelections_AssemblyLinkIterator* NCollection_HSequence_Handle_STEPSelections_AssemblyLink_iter(const NCollection_HSequence_Handle_STEPSelections_AssemblyLink* coll) {
+    auto iter = new HSequence_Handle_STEPSelections_AssemblyLinkIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_STEPSelections_AssemblyLink* HSequence_Handle_STEPSelections_AssemblyLinkIterator_next(HSequence_Handle_STEPSelections_AssemblyLinkIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_STEPSelections_AssemblyLink(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_STEPSelections_AssemblyLink_size(const NCollection_HSequence_Handle_STEPSelections_AssemblyLink* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clear(NCollection_HSequence_Handle_STEPSelections_AssemblyLink* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* NCollection_HSequence_Handle_STEPSelections_AssemblyLink_to_handle(NCollection_HSequence_Handle_STEPSelections_AssemblyLink* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_STEPSelections_AssemblyLink* Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_STEPSelections_AssemblyLink* Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>*> Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<ShapeAnalysis_FreeBoundData> Handle_ShapeAnalysis_FreeBoundData;
+typedef NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+
+extern "C" NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_new() {
+    return new NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData();
+}
+
+extern "C" void NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator {
+    const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_destructor(HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator* NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_iter(const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* coll) {
+    auto iter = new HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_ShapeAnalysis_FreeBoundData* HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_next(HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_ShapeAnalysis_FreeBoundData(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_size(const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clear(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_to_handle(NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData* Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>*> Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Standard_Transient - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_HSequence<opencascade::handle<Standard_Transient>> NCollection_HSequence_Handle_Standard_Transient;
+
+extern "C" NCollection_HSequence_Handle_Standard_Transient* NCollection_HSequence_Handle_Standard_Transient_new() {
+    return new NCollection_HSequence_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_HSequence_Handle_Standard_Transient_destructor(NCollection_HSequence_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Standard_TransientIterator {
+    const NCollection_HSequence_Handle_Standard_Transient* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Standard_TransientIterator_destructor(HSequence_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Standard_TransientIterator* NCollection_HSequence_Handle_Standard_Transient_iter(const NCollection_HSequence_Handle_Standard_Transient* coll) {
+    auto iter = new HSequence_Handle_Standard_TransientIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* HSequence_Handle_Standard_TransientIterator_next(HSequence_Handle_Standard_TransientIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Standard_Transient_size(const NCollection_HSequence_Handle_Standard_Transient* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Standard_Transient_clear(NCollection_HSequence_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* NCollection_HSequence_Handle_Standard_Transient_to_handle(NCollection_HSequence_Handle_Standard_Transient* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Standard_Transient* Handle_NCollection_HSequence_Handle_Standard_Transient_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Standard_Transient* Handle_NCollection_HSequence_Handle_Standard_Transient_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Standard_Transient_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>*> Handle_NCollection_HSequence_Handle_Standard_Transient_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Standard_Transient_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_StdStorage_Root - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<StdStorage_Root> Handle_StdStorage_Root;
+typedef NCollection_HSequence<opencascade::handle<StdStorage_Root>> NCollection_HSequence_Handle_StdStorage_Root;
+
+extern "C" NCollection_HSequence_Handle_StdStorage_Root* NCollection_HSequence_Handle_StdStorage_Root_new() {
+    return new NCollection_HSequence_Handle_StdStorage_Root();
+}
+
+extern "C" void NCollection_HSequence_Handle_StdStorage_Root_destructor(NCollection_HSequence_Handle_StdStorage_Root* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_StdStorage_RootIterator {
+    const NCollection_HSequence_Handle_StdStorage_Root* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_StdStorage_RootIterator_destructor(HSequence_Handle_StdStorage_RootIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_StdStorage_RootIterator* NCollection_HSequence_Handle_StdStorage_Root_iter(const NCollection_HSequence_Handle_StdStorage_Root* coll) {
+    auto iter = new HSequence_Handle_StdStorage_RootIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_StdStorage_Root* HSequence_Handle_StdStorage_RootIterator_next(HSequence_Handle_StdStorage_RootIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_StdStorage_Root(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_StdStorage_Root_size(const NCollection_HSequence_Handle_StdStorage_Root* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_StdStorage_Root_clear(NCollection_HSequence_Handle_StdStorage_Root* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* NCollection_HSequence_Handle_StdStorage_Root_to_handle(NCollection_HSequence_Handle_StdStorage_Root* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_StdStorage_Root* Handle_NCollection_HSequence_Handle_StdStorage_Root_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_StdStorage_Root* Handle_NCollection_HSequence_Handle_StdStorage_Root_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_StdStorage_Root_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>*> Handle_NCollection_HSequence_Handle_StdStorage_Root_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_StdStorage_Root_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<StdStorage_Root>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_CurveElementSectionDefinition> Handle_StepElement_CurveElementSectionDefinition;
+typedef NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>> NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+
+extern "C" NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_new() {
+    return new NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator {
+    const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_destructor(HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator* NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_iter(const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* coll) {
+    auto iter = new HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_StepElement_CurveElementSectionDefinition* HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_next(HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_StepElement_CurveElementSectionDefinition(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_size(const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clear(NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_to_handle(NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition* Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>*> Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_StepElement_ElementMaterial - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepElement_ElementMaterial> Handle_StepElement_ElementMaterial;
+typedef NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>> NCollection_HSequence_Handle_StepElement_ElementMaterial;
+
+extern "C" NCollection_HSequence_Handle_StepElement_ElementMaterial* NCollection_HSequence_Handle_StepElement_ElementMaterial_new() {
+    return new NCollection_HSequence_Handle_StepElement_ElementMaterial();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(NCollection_HSequence_Handle_StepElement_ElementMaterial* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_StepElement_ElementMaterialIterator {
+    const NCollection_HSequence_Handle_StepElement_ElementMaterial* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_StepElement_ElementMaterialIterator_destructor(HSequence_Handle_StepElement_ElementMaterialIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_StepElement_ElementMaterialIterator* NCollection_HSequence_Handle_StepElement_ElementMaterial_iter(const NCollection_HSequence_Handle_StepElement_ElementMaterial* coll) {
+    auto iter = new HSequence_Handle_StepElement_ElementMaterialIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_StepElement_ElementMaterial* HSequence_Handle_StepElement_ElementMaterialIterator_next(HSequence_Handle_StepElement_ElementMaterialIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_StepElement_ElementMaterial(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_StepElement_ElementMaterial_size(const NCollection_HSequence_Handle_StepElement_ElementMaterial* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepElement_ElementMaterial_clear(NCollection_HSequence_Handle_StepElement_ElementMaterial* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* NCollection_HSequence_Handle_StepElement_ElementMaterial_to_handle(NCollection_HSequence_Handle_StepElement_ElementMaterial* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_StepElement_ElementMaterial* Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_StepElement_ElementMaterial* Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>*> Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_ElementGeometricRelationship> Handle_StepFEA_ElementGeometricRelationship;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+
+extern "C" NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_new() {
+    return new NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator {
+    const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_destructor(HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator* NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_iter(const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* coll) {
+    auto iter = new HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_StepFEA_ElementGeometricRelationship* HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_next(HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_StepFEA_ElementGeometricRelationship(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_size(const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clear(NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_to_handle(NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship* Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>*> Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_StepFEA_ElementRepresentation - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<StepFEA_ElementRepresentation> Handle_StepFEA_ElementRepresentation;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>> NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+
+extern "C" NCollection_HSequence_Handle_StepFEA_ElementRepresentation* NCollection_HSequence_Handle_StepFEA_ElementRepresentation_new() {
+    return new NCollection_HSequence_Handle_StepFEA_ElementRepresentation();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(NCollection_HSequence_Handle_StepFEA_ElementRepresentation* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_StepFEA_ElementRepresentationIterator {
+    const NCollection_HSequence_Handle_StepFEA_ElementRepresentation* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_StepFEA_ElementRepresentationIterator_destructor(HSequence_Handle_StepFEA_ElementRepresentationIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_StepFEA_ElementRepresentationIterator* NCollection_HSequence_Handle_StepFEA_ElementRepresentation_iter(const NCollection_HSequence_Handle_StepFEA_ElementRepresentation* coll) {
+    auto iter = new HSequence_Handle_StepFEA_ElementRepresentationIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_StepFEA_ElementRepresentation* HSequence_Handle_StepFEA_ElementRepresentationIterator_next(HSequence_Handle_StepFEA_ElementRepresentationIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_StepFEA_ElementRepresentation(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_StepFEA_ElementRepresentation_size(const NCollection_HSequence_Handle_StepFEA_ElementRepresentation* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clear(NCollection_HSequence_Handle_StepFEA_ElementRepresentation* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* NCollection_HSequence_Handle_StepFEA_ElementRepresentation_to_handle(NCollection_HSequence_Handle_StepFEA_ElementRepresentation* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_StepFEA_ElementRepresentation* Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_StepFEA_ElementRepresentation* Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>*> Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Storage_Root - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Storage_Root> Handle_Storage_Root;
+typedef NCollection_HSequence<opencascade::handle<Storage_Root>> NCollection_HSequence_Handle_Storage_Root;
+
+extern "C" NCollection_HSequence_Handle_Storage_Root* NCollection_HSequence_Handle_Storage_Root_new() {
+    return new NCollection_HSequence_Handle_Storage_Root();
+}
+
+extern "C" void NCollection_HSequence_Handle_Storage_Root_destructor(NCollection_HSequence_Handle_Storage_Root* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Storage_RootIterator {
+    const NCollection_HSequence_Handle_Storage_Root* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Storage_RootIterator_destructor(HSequence_Handle_Storage_RootIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Storage_RootIterator* NCollection_HSequence_Handle_Storage_Root_iter(const NCollection_HSequence_Handle_Storage_Root* coll) {
+    auto iter = new HSequence_Handle_Storage_RootIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Storage_Root* HSequence_Handle_Storage_RootIterator_next(HSequence_Handle_Storage_RootIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Storage_Root(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Storage_Root_size(const NCollection_HSequence_Handle_Storage_Root* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Storage_Root_clear(NCollection_HSequence_Handle_Storage_Root* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* NCollection_HSequence_Handle_Storage_Root_to_handle(NCollection_HSequence_Handle_Storage_Root* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Storage_Root* Handle_NCollection_HSequence_Handle_Storage_Root_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Storage_Root* Handle_NCollection_HSequence_Handle_Storage_Root_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Storage_Root_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>*> Handle_NCollection_HSequence_Handle_Storage_Root_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Storage_Root_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Storage_Root>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_TCollection_HAsciiString - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>> NCollection_HSequence_Handle_TCollection_HAsciiString;
+
+extern "C" NCollection_HSequence_Handle_TCollection_HAsciiString* NCollection_HSequence_Handle_TCollection_HAsciiString_new() {
+    return new NCollection_HSequence_Handle_TCollection_HAsciiString();
+}
+
+extern "C" void NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(NCollection_HSequence_Handle_TCollection_HAsciiString* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_TCollection_HAsciiStringIterator {
+    const NCollection_HSequence_Handle_TCollection_HAsciiString* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_TCollection_HAsciiStringIterator_destructor(HSequence_Handle_TCollection_HAsciiStringIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_TCollection_HAsciiStringIterator* NCollection_HSequence_Handle_TCollection_HAsciiString_iter(const NCollection_HSequence_Handle_TCollection_HAsciiString* coll) {
+    auto iter = new HSequence_Handle_TCollection_HAsciiStringIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_TCollection_HAsciiString* HSequence_Handle_TCollection_HAsciiStringIterator_next(HSequence_Handle_TCollection_HAsciiStringIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TCollection_HAsciiString(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_TCollection_HAsciiString_size(const NCollection_HSequence_Handle_TCollection_HAsciiString* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_TCollection_HAsciiString_clear(NCollection_HSequence_Handle_TCollection_HAsciiString* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* NCollection_HSequence_Handle_TCollection_HAsciiString_to_handle(NCollection_HSequence_Handle_TCollection_HAsciiString* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_TCollection_HAsciiString* Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_TCollection_HAsciiString* Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>*> Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_TCollection_HExtendedString - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>> NCollection_HSequence_Handle_TCollection_HExtendedString;
+
+extern "C" NCollection_HSequence_Handle_TCollection_HExtendedString* NCollection_HSequence_Handle_TCollection_HExtendedString_new() {
+    return new NCollection_HSequence_Handle_TCollection_HExtendedString();
+}
+
+extern "C" void NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(NCollection_HSequence_Handle_TCollection_HExtendedString* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_TCollection_HExtendedStringIterator {
+    const NCollection_HSequence_Handle_TCollection_HExtendedString* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_TCollection_HExtendedStringIterator_destructor(HSequence_Handle_TCollection_HExtendedStringIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_TCollection_HExtendedStringIterator* NCollection_HSequence_Handle_TCollection_HExtendedString_iter(const NCollection_HSequence_Handle_TCollection_HExtendedString* coll) {
+    auto iter = new HSequence_Handle_TCollection_HExtendedStringIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_TCollection_HExtendedString* HSequence_Handle_TCollection_HExtendedStringIterator_next(HSequence_Handle_TCollection_HExtendedStringIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TCollection_HExtendedString(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_TCollection_HExtendedString_size(const NCollection_HSequence_Handle_TCollection_HExtendedString* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_TCollection_HExtendedString_clear(NCollection_HSequence_Handle_TCollection_HExtendedString* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* NCollection_HSequence_Handle_TCollection_HExtendedString_to_handle(NCollection_HSequence_Handle_TCollection_HExtendedString* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_TCollection_HExtendedString* Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_TCollection_HExtendedString* Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>*> Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_TObj_Object - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<TObj_Object> Handle_TObj_Object;
+typedef NCollection_HSequence<opencascade::handle<TObj_Object>> NCollection_HSequence_Handle_TObj_Object;
+
+extern "C" NCollection_HSequence_Handle_TObj_Object* NCollection_HSequence_Handle_TObj_Object_new() {
+    return new NCollection_HSequence_Handle_TObj_Object();
+}
+
+extern "C" void NCollection_HSequence_Handle_TObj_Object_destructor(NCollection_HSequence_Handle_TObj_Object* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_TObj_ObjectIterator {
+    const NCollection_HSequence_Handle_TObj_Object* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_TObj_ObjectIterator_destructor(HSequence_Handle_TObj_ObjectIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_TObj_ObjectIterator* NCollection_HSequence_Handle_TObj_Object_iter(const NCollection_HSequence_Handle_TObj_Object* coll) {
+    auto iter = new HSequence_Handle_TObj_ObjectIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_TObj_Object* HSequence_Handle_TObj_ObjectIterator_next(HSequence_Handle_TObj_ObjectIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TObj_Object(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_TObj_Object_size(const NCollection_HSequence_Handle_TObj_Object* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_TObj_Object_clear(NCollection_HSequence_Handle_TObj_Object* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* NCollection_HSequence_Handle_TObj_Object_to_handle(NCollection_HSequence_Handle_TObj_Object* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_TObj_Object* Handle_NCollection_HSequence_Handle_TObj_Object_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_TObj_Object* Handle_NCollection_HSequence_Handle_TObj_Object_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_TObj_Object_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>*> Handle_NCollection_HSequence_Handle_TObj_Object_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_TObj_Object_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_TransferBRep_TransferResultInfo - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<TransferBRep_TransferResultInfo> Handle_TransferBRep_TransferResultInfo;
+typedef NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+
+extern "C" NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_new() {
+    return new NCollection_HSequence_Handle_TransferBRep_TransferResultInfo();
+}
+
+extern "C" void NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_TransferBRep_TransferResultInfoIterator {
+    const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_TransferBRep_TransferResultInfoIterator_destructor(HSequence_Handle_TransferBRep_TransferResultInfoIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_TransferBRep_TransferResultInfoIterator* NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_iter(const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* coll) {
+    auto iter = new HSequence_Handle_TransferBRep_TransferResultInfoIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_TransferBRep_TransferResultInfo* HSequence_Handle_TransferBRep_TransferResultInfoIterator_next(HSequence_Handle_TransferBRep_TransferResultInfoIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TransferBRep_TransferResultInfo(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_size(const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clear(NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_to_handle(NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_TransferBRep_TransferResultInfo* Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>*> Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Transfer_Finder - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Transfer_Finder> Handle_Transfer_Finder;
+typedef NCollection_HSequence<opencascade::handle<Transfer_Finder>> NCollection_HSequence_Handle_Transfer_Finder;
+
+extern "C" NCollection_HSequence_Handle_Transfer_Finder* NCollection_HSequence_Handle_Transfer_Finder_new() {
+    return new NCollection_HSequence_Handle_Transfer_Finder();
+}
+
+extern "C" void NCollection_HSequence_Handle_Transfer_Finder_destructor(NCollection_HSequence_Handle_Transfer_Finder* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Transfer_FinderIterator {
+    const NCollection_HSequence_Handle_Transfer_Finder* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Transfer_FinderIterator_destructor(HSequence_Handle_Transfer_FinderIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Transfer_FinderIterator* NCollection_HSequence_Handle_Transfer_Finder_iter(const NCollection_HSequence_Handle_Transfer_Finder* coll) {
+    auto iter = new HSequence_Handle_Transfer_FinderIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Transfer_Finder* HSequence_Handle_Transfer_FinderIterator_next(HSequence_Handle_Transfer_FinderIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Transfer_Finder(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Transfer_Finder_size(const NCollection_HSequence_Handle_Transfer_Finder* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Transfer_Finder_clear(NCollection_HSequence_Handle_Transfer_Finder* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* NCollection_HSequence_Handle_Transfer_Finder_to_handle(NCollection_HSequence_Handle_Transfer_Finder* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Transfer_Finder* Handle_NCollection_HSequence_Handle_Transfer_Finder_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Transfer_Finder* Handle_NCollection_HSequence_Handle_Transfer_Finder_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Transfer_Finder_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>*> Handle_NCollection_HSequence_Handle_Transfer_Finder_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Transfer_Finder_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Units_Quantity - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Units_Quantity> Handle_Units_Quantity;
+typedef NCollection_HSequence<opencascade::handle<Units_Quantity>> NCollection_HSequence_Handle_Units_Quantity;
+
+extern "C" NCollection_HSequence_Handle_Units_Quantity* NCollection_HSequence_Handle_Units_Quantity_new() {
+    return new NCollection_HSequence_Handle_Units_Quantity();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Quantity_destructor(NCollection_HSequence_Handle_Units_Quantity* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Units_QuantityIterator {
+    const NCollection_HSequence_Handle_Units_Quantity* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Units_QuantityIterator_destructor(HSequence_Handle_Units_QuantityIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Units_QuantityIterator* NCollection_HSequence_Handle_Units_Quantity_iter(const NCollection_HSequence_Handle_Units_Quantity* coll) {
+    auto iter = new HSequence_Handle_Units_QuantityIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Units_Quantity* HSequence_Handle_Units_QuantityIterator_next(HSequence_Handle_Units_QuantityIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Units_Quantity(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Units_Quantity_size(const NCollection_HSequence_Handle_Units_Quantity* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Quantity_clear(NCollection_HSequence_Handle_Units_Quantity* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* NCollection_HSequence_Handle_Units_Quantity_to_handle(NCollection_HSequence_Handle_Units_Quantity* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Units_Quantity* Handle_NCollection_HSequence_Handle_Units_Quantity_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Units_Quantity* Handle_NCollection_HSequence_Handle_Units_Quantity_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Units_Quantity_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>*> Handle_NCollection_HSequence_Handle_Units_Quantity_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Units_Quantity_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Units_Token - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Units_Token> Handle_Units_Token;
+typedef NCollection_HSequence<opencascade::handle<Units_Token>> NCollection_HSequence_Handle_Units_Token;
+
+extern "C" NCollection_HSequence_Handle_Units_Token* NCollection_HSequence_Handle_Units_Token_new() {
+    return new NCollection_HSequence_Handle_Units_Token();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Token_destructor(NCollection_HSequence_Handle_Units_Token* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Units_TokenIterator {
+    const NCollection_HSequence_Handle_Units_Token* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Units_TokenIterator_destructor(HSequence_Handle_Units_TokenIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Units_TokenIterator* NCollection_HSequence_Handle_Units_Token_iter(const NCollection_HSequence_Handle_Units_Token* coll) {
+    auto iter = new HSequence_Handle_Units_TokenIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Units_Token* HSequence_Handle_Units_TokenIterator_next(HSequence_Handle_Units_TokenIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Units_Token(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Units_Token_size(const NCollection_HSequence_Handle_Units_Token* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Token_clear(NCollection_HSequence_Handle_Units_Token* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* NCollection_HSequence_Handle_Units_Token_to_handle(NCollection_HSequence_Handle_Units_Token* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Units_Token* Handle_NCollection_HSequence_Handle_Units_Token_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Units_Token* Handle_NCollection_HSequence_Handle_Units_Token_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Units_Token_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>*> Handle_NCollection_HSequence_Handle_Units_Token_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Units_Token_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_HSequence_Handle_Units_Unit - Handle-managed dynamic sequence (1-indexed)
+// ========================
+
+typedef opencascade::handle<Units_Unit> Handle_Units_Unit;
+typedef NCollection_HSequence<opencascade::handle<Units_Unit>> NCollection_HSequence_Handle_Units_Unit;
+
+extern "C" NCollection_HSequence_Handle_Units_Unit* NCollection_HSequence_Handle_Units_Unit_new() {
+    return new NCollection_HSequence_Handle_Units_Unit();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Unit_destructor(NCollection_HSequence_Handle_Units_Unit* self_) {
+    delete self_;
+}
+
+struct HSequence_Handle_Units_UnitIterator {
+    const NCollection_HSequence_Handle_Units_Unit* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void HSequence_Handle_Units_UnitIterator_destructor(HSequence_Handle_Units_UnitIterator* self_) {
+    delete self_;
+}
+
+extern "C" HSequence_Handle_Units_UnitIterator* NCollection_HSequence_Handle_Units_Unit_iter(const NCollection_HSequence_Handle_Units_Unit* coll) {
+    auto iter = new HSequence_Handle_Units_UnitIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Size();
+    return iter;
+}
+
+extern "C" Handle_Units_Unit* HSequence_Handle_Units_UnitIterator_next(HSequence_Handle_Units_UnitIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Units_Unit(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_HSequence_Handle_Units_Unit_size(const NCollection_HSequence_Handle_Units_Unit* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_HSequence_Handle_Units_Unit_clear(NCollection_HSequence_Handle_Units_Unit* coll) {
+    coll->Clear();
+}
+
+extern "C" opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* NCollection_HSequence_Handle_Units_Unit_to_handle(NCollection_HSequence_Handle_Units_Unit* self_) {
+    return new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>(self_);
+}
+
+extern "C" const NCollection_HSequence_Handle_Units_Unit* Handle_NCollection_HSequence_Handle_Units_Unit_get(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* h) { return h->get(); }
+extern "C" NCollection_HSequence_Handle_Units_Unit* Handle_NCollection_HSequence_Handle_Units_Unit_get_mut(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HSequence_Handle_Units_Unit_destructor(opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>*> Handle_NCollection_HSequence_Handle_Units_Unit_clone(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HSequence_Handle_Units_Unit_is_null(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>>>* self_) { return self_->IsNull(); }
+
+// ========================
 // NCollection_HSequence_TCollection_AsciiString - Handle-managed dynamic sequence (1-indexed)
 // ========================
 
@@ -43218,6 +49547,155 @@ extern "C" NCollection_HSequence_int* Handle_NCollection_HSequence_int_get_mut(o
 extern "C" void Handle_NCollection_HSequence_int_destructor(opencascade::handle<NCollection_HSequence<int>>* self_) { delete self_; }
 extern "C" OcctResult<opencascade::handle<NCollection_HSequence<int>>*> Handle_NCollection_HSequence_int_clone(const opencascade::handle<NCollection_HSequence<int>>* self_) { try { return {new opencascade::handle<NCollection_HSequence<int>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
 extern "C" bool Handle_NCollection_HSequence_int_is_null(const opencascade::handle<NCollection_HSequence<int>>* self_) { return self_->IsNull(); }
+
+// ========================
+// NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient - Key-value map with index access (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_IndexedDataMap<occ::handle<Standard_Transient>, occ::handle<Standard_Transient>> NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient;
+
+extern "C" NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_new() {
+    return new NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    auto iter = new IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Extent();
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->coll->FindKey(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_key(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key) {
+    return &coll->FindFromKey(*key);
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_index(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, int index) {
+    return &coll->FindFromIndex(index);
+}
+
+extern "C" Handle_Standard_Transient* NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_key(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, int index) {
+    return new Handle_Standard_Transient(coll->FindKey(index));
+}
+
+extern "C" int NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_index(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key) {
+    return coll->FindIndex(*key);
+}
+
+extern "C" bool NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key) {
+    return coll->Contains(*key);
+}
+
+extern "C" int NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_add(NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll, const Handle_Standard_Transient* key, const Handle_Standard_Transient* value) {
+    return coll->Add(*key, *value);
+}
+
+extern "C" int NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+// ========================
+// NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient - Key-value map with index access (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<Standard_Transient>> NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient;
+
+extern "C" NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_new() {
+    return new NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_destructor(NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator {
+    const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_destructor(IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator* NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_iter(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll) {
+    auto iter = new IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Extent();
+    return iter;
+}
+
+extern "C" TCollection_AsciiString* IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_next_key(IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new TCollection_AsciiString(iter->coll->FindKey(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_key(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, const TCollection_AsciiString* key) {
+    return &coll->FindFromKey(*key);
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_index(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, int index) {
+    return &coll->FindFromIndex(index);
+}
+
+extern "C" TCollection_AsciiString* NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_key(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, int index) {
+    return new TCollection_AsciiString(coll->FindKey(index));
+}
+
+extern "C" int NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_index(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, const TCollection_AsciiString* key) {
+    return coll->FindIndex(*key);
+}
+
+extern "C" bool NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_contains(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, const TCollection_AsciiString* key) {
+    return coll->Contains(*key);
+}
+
+extern "C" int NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_add(NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll, const TCollection_AsciiString* key, const Handle_Standard_Transient* value) {
+    return coll->Add(*key, *value);
+}
+
+extern "C" int NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_size(const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_clear(NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
 
 // ========================
 // NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue - Key-value map with index access (1-indexed)
@@ -44023,6 +50501,192 @@ extern "C" void NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMap
 }
 
 // ========================
+// NCollection_IndexedMap_Handle_BOPDS_PaveBlock - Set with integer index access (1-indexed)
+// ========================
+
+typedef opencascade::handle<BOPDS_PaveBlock> Handle_BOPDS_PaveBlock;
+typedef NCollection_IndexedMap<occ::handle<BOPDS_PaveBlock>> NCollection_IndexedMap_Handle_BOPDS_PaveBlock;
+
+extern "C" NCollection_IndexedMap_Handle_BOPDS_PaveBlock* NCollection_IndexedMap_Handle_BOPDS_PaveBlock_new() {
+    return new NCollection_IndexedMap_Handle_BOPDS_PaveBlock();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_BOPDS_PaveBlock_destructor(NCollection_IndexedMap_Handle_BOPDS_PaveBlock* self_) {
+    delete self_;
+}
+
+struct IndexedMap_Handle_BOPDS_PaveBlockIterator {
+    const NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void IndexedMap_Handle_BOPDS_PaveBlockIterator_destructor(IndexedMap_Handle_BOPDS_PaveBlockIterator* self_) {
+    delete self_;
+}
+
+extern "C" IndexedMap_Handle_BOPDS_PaveBlockIterator* NCollection_IndexedMap_Handle_BOPDS_PaveBlock_iter(const NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll) {
+    auto iter = new IndexedMap_Handle_BOPDS_PaveBlockIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Extent();
+    return iter;
+}
+
+extern "C" Handle_BOPDS_PaveBlock* IndexedMap_Handle_BOPDS_PaveBlockIterator_next(IndexedMap_Handle_BOPDS_PaveBlockIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_BOPDS_PaveBlock(iter->coll->FindKey(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_IndexedMap_Handle_BOPDS_PaveBlock_size(const NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_BOPDS_PaveBlock_clear(NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_IndexedMap_Handle_BOPDS_PaveBlock_add(NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    return coll->Add(*item);
+}
+
+extern "C" const Handle_BOPDS_PaveBlock* NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_key(const NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll, int index) {
+    return &coll->FindKey(index);
+}
+
+extern "C" int NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_index(const NCollection_IndexedMap_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    return coll->FindIndex(*item);
+}
+
+// ========================
+// NCollection_IndexedMap_Handle_Standard_Transient - Set with integer index access (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_IndexedMap<occ::handle<Standard_Transient>> NCollection_IndexedMap_Handle_Standard_Transient;
+
+extern "C" NCollection_IndexedMap_Handle_Standard_Transient* NCollection_IndexedMap_Handle_Standard_Transient_new() {
+    return new NCollection_IndexedMap_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_Standard_Transient_destructor(NCollection_IndexedMap_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct IndexedMap_Handle_Standard_TransientIterator {
+    const NCollection_IndexedMap_Handle_Standard_Transient* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void IndexedMap_Handle_Standard_TransientIterator_destructor(IndexedMap_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" IndexedMap_Handle_Standard_TransientIterator* NCollection_IndexedMap_Handle_Standard_Transient_iter(const NCollection_IndexedMap_Handle_Standard_Transient* coll) {
+    auto iter = new IndexedMap_Handle_Standard_TransientIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Extent();
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* IndexedMap_Handle_Standard_TransientIterator_next(IndexedMap_Handle_Standard_TransientIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->coll->FindKey(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_IndexedMap_Handle_Standard_Transient_size(const NCollection_IndexedMap_Handle_Standard_Transient* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_Standard_Transient_clear(NCollection_IndexedMap_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_IndexedMap_Handle_Standard_Transient_add(NCollection_IndexedMap_Handle_Standard_Transient* coll, const Handle_Standard_Transient* item) {
+    return coll->Add(*item);
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_IndexedMap_Handle_Standard_Transient_find_key(const NCollection_IndexedMap_Handle_Standard_Transient* coll, int index) {
+    return &coll->FindKey(index);
+}
+
+extern "C" int NCollection_IndexedMap_Handle_Standard_Transient_find_index(const NCollection_IndexedMap_Handle_Standard_Transient* coll, const Handle_Standard_Transient* item) {
+    return coll->FindIndex(*item);
+}
+
+// ========================
+// NCollection_IndexedMap_Handle_TDF_Attribute - Set with integer index access (1-indexed)
+// ========================
+
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef NCollection_IndexedMap<occ::handle<TDF_Attribute>> NCollection_IndexedMap_Handle_TDF_Attribute;
+
+extern "C" NCollection_IndexedMap_Handle_TDF_Attribute* NCollection_IndexedMap_Handle_TDF_Attribute_new() {
+    return new NCollection_IndexedMap_Handle_TDF_Attribute();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_TDF_Attribute_destructor(NCollection_IndexedMap_Handle_TDF_Attribute* self_) {
+    delete self_;
+}
+
+struct IndexedMap_Handle_TDF_AttributeIterator {
+    const NCollection_IndexedMap_Handle_TDF_Attribute* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void IndexedMap_Handle_TDF_AttributeIterator_destructor(IndexedMap_Handle_TDF_AttributeIterator* self_) {
+    delete self_;
+}
+
+extern "C" IndexedMap_Handle_TDF_AttributeIterator* NCollection_IndexedMap_Handle_TDF_Attribute_iter(const NCollection_IndexedMap_Handle_TDF_Attribute* coll) {
+    auto iter = new IndexedMap_Handle_TDF_AttributeIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Extent();
+    return iter;
+}
+
+extern "C" Handle_TDF_Attribute* IndexedMap_Handle_TDF_AttributeIterator_next(IndexedMap_Handle_TDF_AttributeIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Attribute(iter->coll->FindKey(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_IndexedMap_Handle_TDF_Attribute_size(const NCollection_IndexedMap_Handle_TDF_Attribute* coll) {
+    return coll->Extent();
+}
+
+extern "C" void NCollection_IndexedMap_Handle_TDF_Attribute_clear(NCollection_IndexedMap_Handle_TDF_Attribute* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_IndexedMap_Handle_TDF_Attribute_add(NCollection_IndexedMap_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    return coll->Add(*item);
+}
+
+extern "C" const Handle_TDF_Attribute* NCollection_IndexedMap_Handle_TDF_Attribute_find_key(const NCollection_IndexedMap_Handle_TDF_Attribute* coll, int index) {
+    return &coll->FindKey(index);
+}
+
+extern "C" int NCollection_IndexedMap_Handle_TDF_Attribute_find_index(const NCollection_IndexedMap_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    return coll->FindIndex(*item);
+}
+
+// ========================
 // NCollection_IndexedMap_TCollection_AsciiString - Set with integer index access (1-indexed)
 // ========================
 
@@ -44703,6 +51367,902 @@ extern "C" void NCollection_List_HLRAlgo_Interference_append(NCollection_List_HL
 }
 
 extern "C" void NCollection_List_HLRAlgo_Interference_prepend(NCollection_List_HLRAlgo_Interference* coll, const HLRAlgo_Interference* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_BOPDS_PaveBlock - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<BOPDS_PaveBlock> Handle_BOPDS_PaveBlock;
+typedef NCollection_List<occ::handle<BOPDS_PaveBlock>> NCollection_List_Handle_BOPDS_PaveBlock;
+
+extern "C" NCollection_List_Handle_BOPDS_PaveBlock* NCollection_List_Handle_BOPDS_PaveBlock_new() {
+    return new NCollection_List_Handle_BOPDS_PaveBlock();
+}
+
+extern "C" void NCollection_List_Handle_BOPDS_PaveBlock_destructor(NCollection_List_Handle_BOPDS_PaveBlock* self_) {
+    delete self_;
+}
+
+struct List_Handle_BOPDS_PaveBlockIterator {
+    NCollection_List_Handle_BOPDS_PaveBlock::const_iterator current;
+    NCollection_List_Handle_BOPDS_PaveBlock::const_iterator end;
+};
+
+extern "C" void List_Handle_BOPDS_PaveBlockIterator_destructor(List_Handle_BOPDS_PaveBlockIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_BOPDS_PaveBlockIterator* NCollection_List_Handle_BOPDS_PaveBlock_iter(const NCollection_List_Handle_BOPDS_PaveBlock* coll) {
+    auto iter = new List_Handle_BOPDS_PaveBlockIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_BOPDS_PaveBlock* List_Handle_BOPDS_PaveBlockIterator_next(List_Handle_BOPDS_PaveBlockIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_BOPDS_PaveBlock(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_BOPDS_PaveBlock_size(const NCollection_List_Handle_BOPDS_PaveBlock* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_BOPDS_PaveBlock_clear(NCollection_List_Handle_BOPDS_PaveBlock* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_BOPDS_PaveBlock_append(NCollection_List_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_BOPDS_PaveBlock_prepend(NCollection_List_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_BRepMesh_DiscretAlgoFactory - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<BRepMesh_DiscretAlgoFactory> Handle_BRepMesh_DiscretAlgoFactory;
+typedef NCollection_List<occ::handle<BRepMesh_DiscretAlgoFactory>> NCollection_List_Handle_BRepMesh_DiscretAlgoFactory;
+
+extern "C" NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_new() {
+    return new NCollection_List_Handle_BRepMesh_DiscretAlgoFactory();
+}
+
+extern "C" void NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_destructor(NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* self_) {
+    delete self_;
+}
+
+struct List_Handle_BRepMesh_DiscretAlgoFactoryIterator {
+    NCollection_List_Handle_BRepMesh_DiscretAlgoFactory::const_iterator current;
+    NCollection_List_Handle_BRepMesh_DiscretAlgoFactory::const_iterator end;
+};
+
+extern "C" void List_Handle_BRepMesh_DiscretAlgoFactoryIterator_destructor(List_Handle_BRepMesh_DiscretAlgoFactoryIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_BRepMesh_DiscretAlgoFactoryIterator* NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_iter(const NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* coll) {
+    auto iter = new List_Handle_BRepMesh_DiscretAlgoFactoryIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_BRepMesh_DiscretAlgoFactory* List_Handle_BRepMesh_DiscretAlgoFactoryIterator_next(List_Handle_BRepMesh_DiscretAlgoFactoryIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_BRepMesh_DiscretAlgoFactory(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_size(const NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_clear(NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_append(NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* coll, const Handle_BRepMesh_DiscretAlgoFactory* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_prepend(NCollection_List_Handle_BRepMesh_DiscretAlgoFactory* coll, const Handle_BRepMesh_DiscretAlgoFactory* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_BRep_CurveRepresentation - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<BRep_CurveRepresentation> Handle_BRep_CurveRepresentation;
+typedef NCollection_List<occ::handle<BRep_CurveRepresentation>> NCollection_List_Handle_BRep_CurveRepresentation;
+
+extern "C" NCollection_List_Handle_BRep_CurveRepresentation* NCollection_List_Handle_BRep_CurveRepresentation_new() {
+    return new NCollection_List_Handle_BRep_CurveRepresentation();
+}
+
+extern "C" void NCollection_List_Handle_BRep_CurveRepresentation_destructor(NCollection_List_Handle_BRep_CurveRepresentation* self_) {
+    delete self_;
+}
+
+struct List_Handle_BRep_CurveRepresentationIterator {
+    NCollection_List_Handle_BRep_CurveRepresentation::const_iterator current;
+    NCollection_List_Handle_BRep_CurveRepresentation::const_iterator end;
+};
+
+extern "C" void List_Handle_BRep_CurveRepresentationIterator_destructor(List_Handle_BRep_CurveRepresentationIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_BRep_CurveRepresentationIterator* NCollection_List_Handle_BRep_CurveRepresentation_iter(const NCollection_List_Handle_BRep_CurveRepresentation* coll) {
+    auto iter = new List_Handle_BRep_CurveRepresentationIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_BRep_CurveRepresentation* List_Handle_BRep_CurveRepresentationIterator_next(List_Handle_BRep_CurveRepresentationIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_BRep_CurveRepresentation(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_BRep_CurveRepresentation_size(const NCollection_List_Handle_BRep_CurveRepresentation* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_BRep_CurveRepresentation_clear(NCollection_List_Handle_BRep_CurveRepresentation* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_BRep_CurveRepresentation_append(NCollection_List_Handle_BRep_CurveRepresentation* coll, const Handle_BRep_CurveRepresentation* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_BRep_CurveRepresentation_prepend(NCollection_List_Handle_BRep_CurveRepresentation* coll, const Handle_BRep_CurveRepresentation* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_BRep_PointRepresentation - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<BRep_PointRepresentation> Handle_BRep_PointRepresentation;
+typedef NCollection_List<occ::handle<BRep_PointRepresentation>> NCollection_List_Handle_BRep_PointRepresentation;
+
+extern "C" NCollection_List_Handle_BRep_PointRepresentation* NCollection_List_Handle_BRep_PointRepresentation_new() {
+    return new NCollection_List_Handle_BRep_PointRepresentation();
+}
+
+extern "C" void NCollection_List_Handle_BRep_PointRepresentation_destructor(NCollection_List_Handle_BRep_PointRepresentation* self_) {
+    delete self_;
+}
+
+struct List_Handle_BRep_PointRepresentationIterator {
+    NCollection_List_Handle_BRep_PointRepresentation::const_iterator current;
+    NCollection_List_Handle_BRep_PointRepresentation::const_iterator end;
+};
+
+extern "C" void List_Handle_BRep_PointRepresentationIterator_destructor(List_Handle_BRep_PointRepresentationIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_BRep_PointRepresentationIterator* NCollection_List_Handle_BRep_PointRepresentation_iter(const NCollection_List_Handle_BRep_PointRepresentation* coll) {
+    auto iter = new List_Handle_BRep_PointRepresentationIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_BRep_PointRepresentation* List_Handle_BRep_PointRepresentationIterator_next(List_Handle_BRep_PointRepresentationIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_BRep_PointRepresentation(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_BRep_PointRepresentation_size(const NCollection_List_Handle_BRep_PointRepresentation* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_BRep_PointRepresentation_clear(NCollection_List_Handle_BRep_PointRepresentation* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_BRep_PointRepresentation_append(NCollection_List_Handle_BRep_PointRepresentation* coll, const Handle_BRep_PointRepresentation* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_BRep_PointRepresentation_prepend(NCollection_List_Handle_BRep_PointRepresentation* coll, const Handle_BRep_PointRepresentation* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_ChFiDS_ElSpine - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<ChFiDS_ElSpine> Handle_ChFiDS_ElSpine;
+typedef NCollection_List<occ::handle<ChFiDS_ElSpine>> NCollection_List_Handle_ChFiDS_ElSpine;
+
+extern "C" NCollection_List_Handle_ChFiDS_ElSpine* NCollection_List_Handle_ChFiDS_ElSpine_new() {
+    return new NCollection_List_Handle_ChFiDS_ElSpine();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_ElSpine_destructor(NCollection_List_Handle_ChFiDS_ElSpine* self_) {
+    delete self_;
+}
+
+struct List_Handle_ChFiDS_ElSpineIterator {
+    NCollection_List_Handle_ChFiDS_ElSpine::const_iterator current;
+    NCollection_List_Handle_ChFiDS_ElSpine::const_iterator end;
+};
+
+extern "C" void List_Handle_ChFiDS_ElSpineIterator_destructor(List_Handle_ChFiDS_ElSpineIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_ChFiDS_ElSpineIterator* NCollection_List_Handle_ChFiDS_ElSpine_iter(const NCollection_List_Handle_ChFiDS_ElSpine* coll) {
+    auto iter = new List_Handle_ChFiDS_ElSpineIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_ChFiDS_ElSpine* List_Handle_ChFiDS_ElSpineIterator_next(List_Handle_ChFiDS_ElSpineIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_ChFiDS_ElSpine(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_ChFiDS_ElSpine_size(const NCollection_List_Handle_ChFiDS_ElSpine* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_ElSpine_clear(NCollection_List_Handle_ChFiDS_ElSpine* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_ElSpine_append(NCollection_List_Handle_ChFiDS_ElSpine* coll, const Handle_ChFiDS_ElSpine* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_ElSpine_prepend(NCollection_List_Handle_ChFiDS_ElSpine* coll, const Handle_ChFiDS_ElSpine* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_ChFiDS_Stripe - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<ChFiDS_Stripe> Handle_ChFiDS_Stripe;
+typedef NCollection_List<occ::handle<ChFiDS_Stripe>> NCollection_List_Handle_ChFiDS_Stripe;
+
+extern "C" NCollection_List_Handle_ChFiDS_Stripe* NCollection_List_Handle_ChFiDS_Stripe_new() {
+    return new NCollection_List_Handle_ChFiDS_Stripe();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_Stripe_destructor(NCollection_List_Handle_ChFiDS_Stripe* self_) {
+    delete self_;
+}
+
+struct List_Handle_ChFiDS_StripeIterator {
+    NCollection_List_Handle_ChFiDS_Stripe::const_iterator current;
+    NCollection_List_Handle_ChFiDS_Stripe::const_iterator end;
+};
+
+extern "C" void List_Handle_ChFiDS_StripeIterator_destructor(List_Handle_ChFiDS_StripeIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_ChFiDS_StripeIterator* NCollection_List_Handle_ChFiDS_Stripe_iter(const NCollection_List_Handle_ChFiDS_Stripe* coll) {
+    auto iter = new List_Handle_ChFiDS_StripeIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_ChFiDS_Stripe* List_Handle_ChFiDS_StripeIterator_next(List_Handle_ChFiDS_StripeIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_ChFiDS_Stripe(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_ChFiDS_Stripe_size(const NCollection_List_Handle_ChFiDS_Stripe* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_Stripe_clear(NCollection_List_Handle_ChFiDS_Stripe* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_Stripe_append(NCollection_List_Handle_ChFiDS_Stripe* coll, const Handle_ChFiDS_Stripe* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_ChFiDS_Stripe_prepend(NCollection_List_Handle_ChFiDS_Stripe* coll, const Handle_ChFiDS_Stripe* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_Law_Function - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<Law_Function> Handle_Law_Function;
+typedef NCollection_List<occ::handle<Law_Function>> NCollection_List_Handle_Law_Function;
+
+extern "C" NCollection_List_Handle_Law_Function* NCollection_List_Handle_Law_Function_new() {
+    return new NCollection_List_Handle_Law_Function();
+}
+
+extern "C" void NCollection_List_Handle_Law_Function_destructor(NCollection_List_Handle_Law_Function* self_) {
+    delete self_;
+}
+
+struct List_Handle_Law_FunctionIterator {
+    NCollection_List_Handle_Law_Function::const_iterator current;
+    NCollection_List_Handle_Law_Function::const_iterator end;
+};
+
+extern "C" void List_Handle_Law_FunctionIterator_destructor(List_Handle_Law_FunctionIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_Law_FunctionIterator* NCollection_List_Handle_Law_Function_iter(const NCollection_List_Handle_Law_Function* coll) {
+    auto iter = new List_Handle_Law_FunctionIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_Law_Function* List_Handle_Law_FunctionIterator_next(List_Handle_Law_FunctionIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_Law_Function(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_Law_Function_size(const NCollection_List_Handle_Law_Function* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_Law_Function_clear(NCollection_List_Handle_Law_Function* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_Law_Function_append(NCollection_List_Handle_Law_Function* coll, const Handle_Law_Function* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_Law_Function_prepend(NCollection_List_Handle_Law_Function* coll, const Handle_Law_Function* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_Message_Alert - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<Message_Alert> Handle_Message_Alert;
+typedef NCollection_List<occ::handle<Message_Alert>> NCollection_List_Handle_Message_Alert;
+
+extern "C" NCollection_List_Handle_Message_Alert* NCollection_List_Handle_Message_Alert_new() {
+    return new NCollection_List_Handle_Message_Alert();
+}
+
+extern "C" void NCollection_List_Handle_Message_Alert_destructor(NCollection_List_Handle_Message_Alert* self_) {
+    delete self_;
+}
+
+struct List_Handle_Message_AlertIterator {
+    NCollection_List_Handle_Message_Alert::const_iterator current;
+    NCollection_List_Handle_Message_Alert::const_iterator end;
+};
+
+extern "C" void List_Handle_Message_AlertIterator_destructor(List_Handle_Message_AlertIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_Message_AlertIterator* NCollection_List_Handle_Message_Alert_iter(const NCollection_List_Handle_Message_Alert* coll) {
+    auto iter = new List_Handle_Message_AlertIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_Message_Alert* List_Handle_Message_AlertIterator_next(List_Handle_Message_AlertIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_Message_Alert(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_Message_Alert_size(const NCollection_List_Handle_Message_Alert* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_Message_Alert_clear(NCollection_List_Handle_Message_Alert* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_Message_Alert_append(NCollection_List_Handle_Message_Alert* coll, const Handle_Message_Alert* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_Message_Alert_prepend(NCollection_List_Handle_Message_Alert* coll, const Handle_Message_Alert* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_Poly_Triangulation - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef NCollection_List<occ::handle<Poly_Triangulation>> NCollection_List_Handle_Poly_Triangulation;
+
+extern "C" NCollection_List_Handle_Poly_Triangulation* NCollection_List_Handle_Poly_Triangulation_new() {
+    return new NCollection_List_Handle_Poly_Triangulation();
+}
+
+extern "C" void NCollection_List_Handle_Poly_Triangulation_destructor(NCollection_List_Handle_Poly_Triangulation* self_) {
+    delete self_;
+}
+
+struct List_Handle_Poly_TriangulationIterator {
+    NCollection_List_Handle_Poly_Triangulation::const_iterator current;
+    NCollection_List_Handle_Poly_Triangulation::const_iterator end;
+};
+
+extern "C" void List_Handle_Poly_TriangulationIterator_destructor(List_Handle_Poly_TriangulationIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_Poly_TriangulationIterator* NCollection_List_Handle_Poly_Triangulation_iter(const NCollection_List_Handle_Poly_Triangulation* coll) {
+    auto iter = new List_Handle_Poly_TriangulationIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_Poly_Triangulation* List_Handle_Poly_TriangulationIterator_next(List_Handle_Poly_TriangulationIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_Poly_Triangulation(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_Poly_Triangulation_size(const NCollection_List_Handle_Poly_Triangulation* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_Poly_Triangulation_clear(NCollection_List_Handle_Poly_Triangulation* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_Poly_Triangulation_append(NCollection_List_Handle_Poly_Triangulation* coll, const Handle_Poly_Triangulation* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_Poly_Triangulation_prepend(NCollection_List_Handle_Poly_Triangulation* coll, const Handle_Poly_Triangulation* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TDF_Attribute - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef NCollection_List<occ::handle<TDF_Attribute>> NCollection_List_Handle_TDF_Attribute;
+
+extern "C" NCollection_List_Handle_TDF_Attribute* NCollection_List_Handle_TDF_Attribute_new() {
+    return new NCollection_List_Handle_TDF_Attribute();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Attribute_destructor(NCollection_List_Handle_TDF_Attribute* self_) {
+    delete self_;
+}
+
+struct List_Handle_TDF_AttributeIterator {
+    NCollection_List_Handle_TDF_Attribute::const_iterator current;
+    NCollection_List_Handle_TDF_Attribute::const_iterator end;
+};
+
+extern "C" void List_Handle_TDF_AttributeIterator_destructor(List_Handle_TDF_AttributeIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TDF_AttributeIterator* NCollection_List_Handle_TDF_Attribute_iter(const NCollection_List_Handle_TDF_Attribute* coll) {
+    auto iter = new List_Handle_TDF_AttributeIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TDF_Attribute* List_Handle_TDF_AttributeIterator_next(List_Handle_TDF_AttributeIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Attribute(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TDF_Attribute_size(const NCollection_List_Handle_TDF_Attribute* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Attribute_clear(NCollection_List_Handle_TDF_Attribute* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Attribute_append(NCollection_List_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TDF_Attribute_prepend(NCollection_List_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TDF_AttributeDelta - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TDF_AttributeDelta> Handle_TDF_AttributeDelta;
+typedef NCollection_List<occ::handle<TDF_AttributeDelta>> NCollection_List_Handle_TDF_AttributeDelta;
+
+extern "C" NCollection_List_Handle_TDF_AttributeDelta* NCollection_List_Handle_TDF_AttributeDelta_new() {
+    return new NCollection_List_Handle_TDF_AttributeDelta();
+}
+
+extern "C" void NCollection_List_Handle_TDF_AttributeDelta_destructor(NCollection_List_Handle_TDF_AttributeDelta* self_) {
+    delete self_;
+}
+
+struct List_Handle_TDF_AttributeDeltaIterator {
+    NCollection_List_Handle_TDF_AttributeDelta::const_iterator current;
+    NCollection_List_Handle_TDF_AttributeDelta::const_iterator end;
+};
+
+extern "C" void List_Handle_TDF_AttributeDeltaIterator_destructor(List_Handle_TDF_AttributeDeltaIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TDF_AttributeDeltaIterator* NCollection_List_Handle_TDF_AttributeDelta_iter(const NCollection_List_Handle_TDF_AttributeDelta* coll) {
+    auto iter = new List_Handle_TDF_AttributeDeltaIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TDF_AttributeDelta* List_Handle_TDF_AttributeDeltaIterator_next(List_Handle_TDF_AttributeDeltaIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_AttributeDelta(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TDF_AttributeDelta_size(const NCollection_List_Handle_TDF_AttributeDelta* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TDF_AttributeDelta_clear(NCollection_List_Handle_TDF_AttributeDelta* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TDF_AttributeDelta_append(NCollection_List_Handle_TDF_AttributeDelta* coll, const Handle_TDF_AttributeDelta* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TDF_AttributeDelta_prepend(NCollection_List_Handle_TDF_AttributeDelta* coll, const Handle_TDF_AttributeDelta* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TDF_Delta - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TDF_Delta> Handle_TDF_Delta;
+typedef NCollection_List<occ::handle<TDF_Delta>> NCollection_List_Handle_TDF_Delta;
+
+extern "C" NCollection_List_Handle_TDF_Delta* NCollection_List_Handle_TDF_Delta_new() {
+    return new NCollection_List_Handle_TDF_Delta();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Delta_destructor(NCollection_List_Handle_TDF_Delta* self_) {
+    delete self_;
+}
+
+struct List_Handle_TDF_DeltaIterator {
+    NCollection_List_Handle_TDF_Delta::const_iterator current;
+    NCollection_List_Handle_TDF_Delta::const_iterator end;
+};
+
+extern "C" void List_Handle_TDF_DeltaIterator_destructor(List_Handle_TDF_DeltaIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TDF_DeltaIterator* NCollection_List_Handle_TDF_Delta_iter(const NCollection_List_Handle_TDF_Delta* coll) {
+    auto iter = new List_Handle_TDF_DeltaIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TDF_Delta* List_Handle_TDF_DeltaIterator_next(List_Handle_TDF_DeltaIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Delta(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TDF_Delta_size(const NCollection_List_Handle_TDF_Delta* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Delta_clear(NCollection_List_Handle_TDF_Delta* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TDF_Delta_append(NCollection_List_Handle_TDF_Delta* coll, const Handle_TDF_Delta* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TDF_Delta_prepend(NCollection_List_Handle_TDF_Delta* coll, const Handle_TDF_Delta* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TNaming_NamedShape - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TNaming_NamedShape> Handle_TNaming_NamedShape;
+typedef NCollection_List<occ::handle<TNaming_NamedShape>> NCollection_List_Handle_TNaming_NamedShape;
+
+extern "C" NCollection_List_Handle_TNaming_NamedShape* NCollection_List_Handle_TNaming_NamedShape_new() {
+    return new NCollection_List_Handle_TNaming_NamedShape();
+}
+
+extern "C" void NCollection_List_Handle_TNaming_NamedShape_destructor(NCollection_List_Handle_TNaming_NamedShape* self_) {
+    delete self_;
+}
+
+struct List_Handle_TNaming_NamedShapeIterator {
+    NCollection_List_Handle_TNaming_NamedShape::const_iterator current;
+    NCollection_List_Handle_TNaming_NamedShape::const_iterator end;
+};
+
+extern "C" void List_Handle_TNaming_NamedShapeIterator_destructor(List_Handle_TNaming_NamedShapeIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TNaming_NamedShapeIterator* NCollection_List_Handle_TNaming_NamedShape_iter(const NCollection_List_Handle_TNaming_NamedShape* coll) {
+    auto iter = new List_Handle_TNaming_NamedShapeIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TNaming_NamedShape* List_Handle_TNaming_NamedShapeIterator_next(List_Handle_TNaming_NamedShapeIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TNaming_NamedShape(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TNaming_NamedShape_size(const NCollection_List_Handle_TNaming_NamedShape* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TNaming_NamedShape_clear(NCollection_List_Handle_TNaming_NamedShape* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TNaming_NamedShape_append(NCollection_List_Handle_TNaming_NamedShape* coll, const Handle_TNaming_NamedShape* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TNaming_NamedShape_prepend(NCollection_List_Handle_TNaming_NamedShape* coll, const Handle_TNaming_NamedShape* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TopOpeBRepBuild_Loop - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TopOpeBRepBuild_Loop> Handle_TopOpeBRepBuild_Loop;
+typedef NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> NCollection_List_Handle_TopOpeBRepBuild_Loop;
+
+extern "C" NCollection_List_Handle_TopOpeBRepBuild_Loop* NCollection_List_Handle_TopOpeBRepBuild_Loop_new() {
+    return new NCollection_List_Handle_TopOpeBRepBuild_Loop();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Loop_destructor(NCollection_List_Handle_TopOpeBRepBuild_Loop* self_) {
+    delete self_;
+}
+
+struct List_Handle_TopOpeBRepBuild_LoopIterator {
+    NCollection_List_Handle_TopOpeBRepBuild_Loop::const_iterator current;
+    NCollection_List_Handle_TopOpeBRepBuild_Loop::const_iterator end;
+};
+
+extern "C" void List_Handle_TopOpeBRepBuild_LoopIterator_destructor(List_Handle_TopOpeBRepBuild_LoopIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TopOpeBRepBuild_LoopIterator* NCollection_List_Handle_TopOpeBRepBuild_Loop_iter(const NCollection_List_Handle_TopOpeBRepBuild_Loop* coll) {
+    auto iter = new List_Handle_TopOpeBRepBuild_LoopIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TopOpeBRepBuild_Loop* List_Handle_TopOpeBRepBuild_LoopIterator_next(List_Handle_TopOpeBRepBuild_LoopIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TopOpeBRepBuild_Loop(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TopOpeBRepBuild_Loop_size(const NCollection_List_Handle_TopOpeBRepBuild_Loop* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Loop_clear(NCollection_List_Handle_TopOpeBRepBuild_Loop* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Loop_append(NCollection_List_Handle_TopOpeBRepBuild_Loop* coll, const Handle_TopOpeBRepBuild_Loop* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Loop_prepend(NCollection_List_Handle_TopOpeBRepBuild_Loop* coll, const Handle_TopOpeBRepBuild_Loop* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TopOpeBRepBuild_Pave - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TopOpeBRepBuild_Pave> Handle_TopOpeBRepBuild_Pave;
+typedef NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> NCollection_List_Handle_TopOpeBRepBuild_Pave;
+
+extern "C" NCollection_List_Handle_TopOpeBRepBuild_Pave* NCollection_List_Handle_TopOpeBRepBuild_Pave_new() {
+    return new NCollection_List_Handle_TopOpeBRepBuild_Pave();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Pave_destructor(NCollection_List_Handle_TopOpeBRepBuild_Pave* self_) {
+    delete self_;
+}
+
+struct List_Handle_TopOpeBRepBuild_PaveIterator {
+    NCollection_List_Handle_TopOpeBRepBuild_Pave::const_iterator current;
+    NCollection_List_Handle_TopOpeBRepBuild_Pave::const_iterator end;
+};
+
+extern "C" void List_Handle_TopOpeBRepBuild_PaveIterator_destructor(List_Handle_TopOpeBRepBuild_PaveIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TopOpeBRepBuild_PaveIterator* NCollection_List_Handle_TopOpeBRepBuild_Pave_iter(const NCollection_List_Handle_TopOpeBRepBuild_Pave* coll) {
+    auto iter = new List_Handle_TopOpeBRepBuild_PaveIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TopOpeBRepBuild_Pave* List_Handle_TopOpeBRepBuild_PaveIterator_next(List_Handle_TopOpeBRepBuild_PaveIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TopOpeBRepBuild_Pave(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TopOpeBRepBuild_Pave_size(const NCollection_List_Handle_TopOpeBRepBuild_Pave* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Pave_clear(NCollection_List_Handle_TopOpeBRepBuild_Pave* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Pave_append(NCollection_List_Handle_TopOpeBRepBuild_Pave* coll, const Handle_TopOpeBRepBuild_Pave* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepBuild_Pave_prepend(NCollection_List_Handle_TopOpeBRepBuild_Pave* coll, const Handle_TopOpeBRepBuild_Pave* item) {
+    coll->Prepend(*item);
+}
+
+// ========================
+// NCollection_List_Handle_TopOpeBRepDS_Interference - Doubly-linked list
+// ========================
+
+typedef opencascade::handle<TopOpeBRepDS_Interference> Handle_TopOpeBRepDS_Interference;
+typedef NCollection_List<occ::handle<TopOpeBRepDS_Interference>> NCollection_List_Handle_TopOpeBRepDS_Interference;
+
+extern "C" NCollection_List_Handle_TopOpeBRepDS_Interference* NCollection_List_Handle_TopOpeBRepDS_Interference_new() {
+    return new NCollection_List_Handle_TopOpeBRepDS_Interference();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepDS_Interference_destructor(NCollection_List_Handle_TopOpeBRepDS_Interference* self_) {
+    delete self_;
+}
+
+struct List_Handle_TopOpeBRepDS_InterferenceIterator {
+    NCollection_List_Handle_TopOpeBRepDS_Interference::const_iterator current;
+    NCollection_List_Handle_TopOpeBRepDS_Interference::const_iterator end;
+};
+
+extern "C" void List_Handle_TopOpeBRepDS_InterferenceIterator_destructor(List_Handle_TopOpeBRepDS_InterferenceIterator* self_) {
+    delete self_;
+}
+
+extern "C" List_Handle_TopOpeBRepDS_InterferenceIterator* NCollection_List_Handle_TopOpeBRepDS_Interference_iter(const NCollection_List_Handle_TopOpeBRepDS_Interference* coll) {
+    auto iter = new List_Handle_TopOpeBRepDS_InterferenceIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TopOpeBRepDS_Interference* List_Handle_TopOpeBRepDS_InterferenceIterator_next(List_Handle_TopOpeBRepDS_InterferenceIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TopOpeBRepDS_Interference(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_List_Handle_TopOpeBRepDS_Interference_size(const NCollection_List_Handle_TopOpeBRepDS_Interference* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepDS_Interference_clear(NCollection_List_Handle_TopOpeBRepDS_Interference* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepDS_Interference_append(NCollection_List_Handle_TopOpeBRepDS_Interference* coll, const Handle_TopOpeBRepDS_Interference* item) {
+    coll->Append(*item);
+}
+
+extern "C" void NCollection_List_Handle_TopOpeBRepDS_Interference_prepend(NCollection_List_Handle_TopOpeBRepDS_Interference* coll, const Handle_TopOpeBRepDS_Interference* item) {
     coll->Prepend(*item);
 }
 
@@ -45477,6 +53037,174 @@ extern "C" bool NCollection_Map_BOPDS_Pair_contains(const NCollection_Map_BOPDS_
 }
 
 // ========================
+// NCollection_Map_Handle_BOPDS_PaveBlock - Unordered set
+// ========================
+
+typedef opencascade::handle<BOPDS_PaveBlock> Handle_BOPDS_PaveBlock;
+typedef NCollection_Map<occ::handle<BOPDS_PaveBlock>> NCollection_Map_Handle_BOPDS_PaveBlock;
+
+extern "C" NCollection_Map_Handle_BOPDS_PaveBlock* NCollection_Map_Handle_BOPDS_PaveBlock_new() {
+    return new NCollection_Map_Handle_BOPDS_PaveBlock();
+}
+
+extern "C" void NCollection_Map_Handle_BOPDS_PaveBlock_destructor(NCollection_Map_Handle_BOPDS_PaveBlock* self_) {
+    delete self_;
+}
+
+struct Map_Handle_BOPDS_PaveBlockIterator {
+    NCollection_Map_Handle_BOPDS_PaveBlock::const_iterator current;
+    NCollection_Map_Handle_BOPDS_PaveBlock::const_iterator end;
+};
+
+extern "C" void Map_Handle_BOPDS_PaveBlockIterator_destructor(Map_Handle_BOPDS_PaveBlockIterator* self_) {
+    delete self_;
+}
+
+extern "C" Map_Handle_BOPDS_PaveBlockIterator* NCollection_Map_Handle_BOPDS_PaveBlock_iter(const NCollection_Map_Handle_BOPDS_PaveBlock* coll) {
+    auto iter = new Map_Handle_BOPDS_PaveBlockIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_BOPDS_PaveBlock* Map_Handle_BOPDS_PaveBlockIterator_next(Map_Handle_BOPDS_PaveBlockIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_BOPDS_PaveBlock(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_Map_Handle_BOPDS_PaveBlock_size(const NCollection_Map_Handle_BOPDS_PaveBlock* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_Map_Handle_BOPDS_PaveBlock_clear(NCollection_Map_Handle_BOPDS_PaveBlock* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_Map_Handle_BOPDS_PaveBlock_add(NCollection_Map_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    return coll->Add(*item);
+}
+
+extern "C" bool NCollection_Map_Handle_BOPDS_PaveBlock_contains(const NCollection_Map_Handle_BOPDS_PaveBlock* coll, const Handle_BOPDS_PaveBlock* item) {
+    return coll->Contains(*item);
+}
+
+// ========================
+// NCollection_Map_Handle_TDF_Attribute - Unordered set
+// ========================
+
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef NCollection_Map<occ::handle<TDF_Attribute>> NCollection_Map_Handle_TDF_Attribute;
+
+extern "C" NCollection_Map_Handle_TDF_Attribute* NCollection_Map_Handle_TDF_Attribute_new() {
+    return new NCollection_Map_Handle_TDF_Attribute();
+}
+
+extern "C" void NCollection_Map_Handle_TDF_Attribute_destructor(NCollection_Map_Handle_TDF_Attribute* self_) {
+    delete self_;
+}
+
+struct Map_Handle_TDF_AttributeIterator {
+    NCollection_Map_Handle_TDF_Attribute::const_iterator current;
+    NCollection_Map_Handle_TDF_Attribute::const_iterator end;
+};
+
+extern "C" void Map_Handle_TDF_AttributeIterator_destructor(Map_Handle_TDF_AttributeIterator* self_) {
+    delete self_;
+}
+
+extern "C" Map_Handle_TDF_AttributeIterator* NCollection_Map_Handle_TDF_Attribute_iter(const NCollection_Map_Handle_TDF_Attribute* coll) {
+    auto iter = new Map_Handle_TDF_AttributeIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TDF_Attribute* Map_Handle_TDF_AttributeIterator_next(Map_Handle_TDF_AttributeIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Attribute(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_Map_Handle_TDF_Attribute_size(const NCollection_Map_Handle_TDF_Attribute* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_Map_Handle_TDF_Attribute_clear(NCollection_Map_Handle_TDF_Attribute* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_Map_Handle_TDF_Attribute_add(NCollection_Map_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    return coll->Add(*item);
+}
+
+extern "C" bool NCollection_Map_Handle_TDF_Attribute_contains(const NCollection_Map_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    return coll->Contains(*item);
+}
+
+// ========================
+// NCollection_Map_Handle_TNaming_NamedShape - Unordered set
+// ========================
+
+typedef opencascade::handle<TNaming_NamedShape> Handle_TNaming_NamedShape;
+typedef NCollection_Map<occ::handle<TNaming_NamedShape>> NCollection_Map_Handle_TNaming_NamedShape;
+
+extern "C" NCollection_Map_Handle_TNaming_NamedShape* NCollection_Map_Handle_TNaming_NamedShape_new() {
+    return new NCollection_Map_Handle_TNaming_NamedShape();
+}
+
+extern "C" void NCollection_Map_Handle_TNaming_NamedShape_destructor(NCollection_Map_Handle_TNaming_NamedShape* self_) {
+    delete self_;
+}
+
+struct Map_Handle_TNaming_NamedShapeIterator {
+    NCollection_Map_Handle_TNaming_NamedShape::const_iterator current;
+    NCollection_Map_Handle_TNaming_NamedShape::const_iterator end;
+};
+
+extern "C" void Map_Handle_TNaming_NamedShapeIterator_destructor(Map_Handle_TNaming_NamedShapeIterator* self_) {
+    delete self_;
+}
+
+extern "C" Map_Handle_TNaming_NamedShapeIterator* NCollection_Map_Handle_TNaming_NamedShape_iter(const NCollection_Map_Handle_TNaming_NamedShape* coll) {
+    auto iter = new Map_Handle_TNaming_NamedShapeIterator();
+    iter->current = coll->cbegin();
+    iter->end = coll->cend();
+    return iter;
+}
+
+extern "C" Handle_TNaming_NamedShape* Map_Handle_TNaming_NamedShapeIterator_next(Map_Handle_TNaming_NamedShapeIterator* iter) {
+    if (iter->current == iter->end) {
+        return nullptr;
+    }
+    auto result = new Handle_TNaming_NamedShape(*iter->current);
+    ++iter->current;
+    return result;
+}
+
+extern "C" int NCollection_Map_Handle_TNaming_NamedShape_size(const NCollection_Map_Handle_TNaming_NamedShape* coll) {
+    return coll->Size();
+}
+
+extern "C" void NCollection_Map_Handle_TNaming_NamedShape_clear(NCollection_Map_Handle_TNaming_NamedShape* coll) {
+    coll->Clear();
+}
+
+extern "C" int NCollection_Map_Handle_TNaming_NamedShape_add(NCollection_Map_Handle_TNaming_NamedShape* coll, const Handle_TNaming_NamedShape* item) {
+    return coll->Add(*item);
+}
+
+extern "C" bool NCollection_Map_Handle_TNaming_NamedShape_contains(const NCollection_Map_Handle_TNaming_NamedShape* coll, const Handle_TNaming_NamedShape* item) {
+    return coll->Contains(*item);
+}
+
+// ========================
 // NCollection_Map_TCollection_AsciiString - Unordered set
 // ========================
 
@@ -46035,6 +53763,1456 @@ extern "C" void NCollection_Sequence_HLRBRep_ShapeBounds_append(NCollection_Sequ
 }
 
 extern "C" const HLRBRep_ShapeBounds* NCollection_Sequence_HLRBRep_ShapeBounds_value(const NCollection_Sequence_HLRBRep_ShapeBounds* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_AdvApp2Var_Node - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<AdvApp2Var_Node> Handle_AdvApp2Var_Node;
+typedef NCollection_Sequence<occ::handle<AdvApp2Var_Node>> NCollection_Sequence_Handle_AdvApp2Var_Node;
+
+extern "C" NCollection_Sequence_Handle_AdvApp2Var_Node* NCollection_Sequence_Handle_AdvApp2Var_Node_new() {
+    return new NCollection_Sequence_Handle_AdvApp2Var_Node();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Node_destructor(NCollection_Sequence_Handle_AdvApp2Var_Node* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_AdvApp2Var_NodeIterator {
+    const NCollection_Sequence_Handle_AdvApp2Var_Node* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_AdvApp2Var_NodeIterator_destructor(Sequence_Handle_AdvApp2Var_NodeIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_AdvApp2Var_NodeIterator* NCollection_Sequence_Handle_AdvApp2Var_Node_iter(const NCollection_Sequence_Handle_AdvApp2Var_Node* coll) {
+    auto iter = new Sequence_Handle_AdvApp2Var_NodeIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_AdvApp2Var_Node* Sequence_Handle_AdvApp2Var_NodeIterator_next(Sequence_Handle_AdvApp2Var_NodeIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_AdvApp2Var_Node(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_AdvApp2Var_Node_size(const NCollection_Sequence_Handle_AdvApp2Var_Node* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Node_clear(NCollection_Sequence_Handle_AdvApp2Var_Node* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Node_append(NCollection_Sequence_Handle_AdvApp2Var_Node* coll, const Handle_AdvApp2Var_Node* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_AdvApp2Var_Node* NCollection_Sequence_Handle_AdvApp2Var_Node_value(const NCollection_Sequence_Handle_AdvApp2Var_Node* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_AdvApp2Var_Patch - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<AdvApp2Var_Patch> Handle_AdvApp2Var_Patch;
+typedef NCollection_Sequence<occ::handle<AdvApp2Var_Patch>> NCollection_Sequence_Handle_AdvApp2Var_Patch;
+
+extern "C" NCollection_Sequence_Handle_AdvApp2Var_Patch* NCollection_Sequence_Handle_AdvApp2Var_Patch_new() {
+    return new NCollection_Sequence_Handle_AdvApp2Var_Patch();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Patch_destructor(NCollection_Sequence_Handle_AdvApp2Var_Patch* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_AdvApp2Var_PatchIterator {
+    const NCollection_Sequence_Handle_AdvApp2Var_Patch* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_AdvApp2Var_PatchIterator_destructor(Sequence_Handle_AdvApp2Var_PatchIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_AdvApp2Var_PatchIterator* NCollection_Sequence_Handle_AdvApp2Var_Patch_iter(const NCollection_Sequence_Handle_AdvApp2Var_Patch* coll) {
+    auto iter = new Sequence_Handle_AdvApp2Var_PatchIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_AdvApp2Var_Patch* Sequence_Handle_AdvApp2Var_PatchIterator_next(Sequence_Handle_AdvApp2Var_PatchIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_AdvApp2Var_Patch(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_AdvApp2Var_Patch_size(const NCollection_Sequence_Handle_AdvApp2Var_Patch* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Patch_clear(NCollection_Sequence_Handle_AdvApp2Var_Patch* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_AdvApp2Var_Patch_append(NCollection_Sequence_Handle_AdvApp2Var_Patch* coll, const Handle_AdvApp2Var_Patch* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_AdvApp2Var_Patch* NCollection_Sequence_Handle_AdvApp2Var_Patch_value(const NCollection_Sequence_Handle_AdvApp2Var_Patch* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_ChFiDS_SurfData - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<ChFiDS_SurfData> Handle_ChFiDS_SurfData;
+typedef NCollection_Sequence<occ::handle<ChFiDS_SurfData>> NCollection_Sequence_Handle_ChFiDS_SurfData;
+
+extern "C" NCollection_Sequence_Handle_ChFiDS_SurfData* NCollection_Sequence_Handle_ChFiDS_SurfData_new() {
+    return new NCollection_Sequence_Handle_ChFiDS_SurfData();
+}
+
+extern "C" void NCollection_Sequence_Handle_ChFiDS_SurfData_destructor(NCollection_Sequence_Handle_ChFiDS_SurfData* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_ChFiDS_SurfDataIterator {
+    const NCollection_Sequence_Handle_ChFiDS_SurfData* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_ChFiDS_SurfDataIterator_destructor(Sequence_Handle_ChFiDS_SurfDataIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_ChFiDS_SurfDataIterator* NCollection_Sequence_Handle_ChFiDS_SurfData_iter(const NCollection_Sequence_Handle_ChFiDS_SurfData* coll) {
+    auto iter = new Sequence_Handle_ChFiDS_SurfDataIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_ChFiDS_SurfData* Sequence_Handle_ChFiDS_SurfDataIterator_next(Sequence_Handle_ChFiDS_SurfDataIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_ChFiDS_SurfData(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_ChFiDS_SurfData_size(const NCollection_Sequence_Handle_ChFiDS_SurfData* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_ChFiDS_SurfData_clear(NCollection_Sequence_Handle_ChFiDS_SurfData* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_ChFiDS_SurfData_append(NCollection_Sequence_Handle_ChFiDS_SurfData* coll, const Handle_ChFiDS_SurfData* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_ChFiDS_SurfData* NCollection_Sequence_Handle_ChFiDS_SurfData_value(const NCollection_Sequence_Handle_ChFiDS_SurfData* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Expr_GeneralExpression - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Expr_GeneralExpression> Handle_Expr_GeneralExpression;
+typedef NCollection_Sequence<occ::handle<Expr_GeneralExpression>> NCollection_Sequence_Handle_Expr_GeneralExpression;
+
+extern "C" NCollection_Sequence_Handle_Expr_GeneralExpression* NCollection_Sequence_Handle_Expr_GeneralExpression_new() {
+    return new NCollection_Sequence_Handle_Expr_GeneralExpression();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_GeneralExpression_destructor(NCollection_Sequence_Handle_Expr_GeneralExpression* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Expr_GeneralExpressionIterator {
+    const NCollection_Sequence_Handle_Expr_GeneralExpression* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Expr_GeneralExpressionIterator_destructor(Sequence_Handle_Expr_GeneralExpressionIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Expr_GeneralExpressionIterator* NCollection_Sequence_Handle_Expr_GeneralExpression_iter(const NCollection_Sequence_Handle_Expr_GeneralExpression* coll) {
+    auto iter = new Sequence_Handle_Expr_GeneralExpressionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Expr_GeneralExpression* Sequence_Handle_Expr_GeneralExpressionIterator_next(Sequence_Handle_Expr_GeneralExpressionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Expr_GeneralExpression(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Expr_GeneralExpression_size(const NCollection_Sequence_Handle_Expr_GeneralExpression* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_GeneralExpression_clear(NCollection_Sequence_Handle_Expr_GeneralExpression* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_GeneralExpression_append(NCollection_Sequence_Handle_Expr_GeneralExpression* coll, const Handle_Expr_GeneralExpression* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Expr_GeneralExpression* NCollection_Sequence_Handle_Expr_GeneralExpression_value(const NCollection_Sequence_Handle_Expr_GeneralExpression* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Expr_NamedExpression - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Expr_NamedExpression> Handle_Expr_NamedExpression;
+typedef NCollection_Sequence<occ::handle<Expr_NamedExpression>> NCollection_Sequence_Handle_Expr_NamedExpression;
+
+extern "C" NCollection_Sequence_Handle_Expr_NamedExpression* NCollection_Sequence_Handle_Expr_NamedExpression_new() {
+    return new NCollection_Sequence_Handle_Expr_NamedExpression();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedExpression_destructor(NCollection_Sequence_Handle_Expr_NamedExpression* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Expr_NamedExpressionIterator {
+    const NCollection_Sequence_Handle_Expr_NamedExpression* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Expr_NamedExpressionIterator_destructor(Sequence_Handle_Expr_NamedExpressionIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Expr_NamedExpressionIterator* NCollection_Sequence_Handle_Expr_NamedExpression_iter(const NCollection_Sequence_Handle_Expr_NamedExpression* coll) {
+    auto iter = new Sequence_Handle_Expr_NamedExpressionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Expr_NamedExpression* Sequence_Handle_Expr_NamedExpressionIterator_next(Sequence_Handle_Expr_NamedExpressionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Expr_NamedExpression(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Expr_NamedExpression_size(const NCollection_Sequence_Handle_Expr_NamedExpression* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedExpression_clear(NCollection_Sequence_Handle_Expr_NamedExpression* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedExpression_append(NCollection_Sequence_Handle_Expr_NamedExpression* coll, const Handle_Expr_NamedExpression* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Expr_NamedExpression* NCollection_Sequence_Handle_Expr_NamedExpression_value(const NCollection_Sequence_Handle_Expr_NamedExpression* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Expr_NamedFunction - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Expr_NamedFunction> Handle_Expr_NamedFunction;
+typedef NCollection_Sequence<occ::handle<Expr_NamedFunction>> NCollection_Sequence_Handle_Expr_NamedFunction;
+
+extern "C" NCollection_Sequence_Handle_Expr_NamedFunction* NCollection_Sequence_Handle_Expr_NamedFunction_new() {
+    return new NCollection_Sequence_Handle_Expr_NamedFunction();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedFunction_destructor(NCollection_Sequence_Handle_Expr_NamedFunction* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Expr_NamedFunctionIterator {
+    const NCollection_Sequence_Handle_Expr_NamedFunction* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Expr_NamedFunctionIterator_destructor(Sequence_Handle_Expr_NamedFunctionIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Expr_NamedFunctionIterator* NCollection_Sequence_Handle_Expr_NamedFunction_iter(const NCollection_Sequence_Handle_Expr_NamedFunction* coll) {
+    auto iter = new Sequence_Handle_Expr_NamedFunctionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Expr_NamedFunction* Sequence_Handle_Expr_NamedFunctionIterator_next(Sequence_Handle_Expr_NamedFunctionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Expr_NamedFunction(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Expr_NamedFunction_size(const NCollection_Sequence_Handle_Expr_NamedFunction* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedFunction_clear(NCollection_Sequence_Handle_Expr_NamedFunction* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Expr_NamedFunction_append(NCollection_Sequence_Handle_Expr_NamedFunction* coll, const Handle_Expr_NamedFunction* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Expr_NamedFunction* NCollection_Sequence_Handle_Expr_NamedFunction_value(const NCollection_Sequence_Handle_Expr_NamedFunction* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Geom2d_Curve - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef NCollection_Sequence<occ::handle<Geom2d_Curve>> NCollection_Sequence_Handle_Geom2d_Curve;
+
+extern "C" NCollection_Sequence_Handle_Geom2d_Curve* NCollection_Sequence_Handle_Geom2d_Curve_new() {
+    return new NCollection_Sequence_Handle_Geom2d_Curve();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom2d_Curve_destructor(NCollection_Sequence_Handle_Geom2d_Curve* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Geom2d_CurveIterator {
+    const NCollection_Sequence_Handle_Geom2d_Curve* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Geom2d_CurveIterator_destructor(Sequence_Handle_Geom2d_CurveIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Geom2d_CurveIterator* NCollection_Sequence_Handle_Geom2d_Curve_iter(const NCollection_Sequence_Handle_Geom2d_Curve* coll) {
+    auto iter = new Sequence_Handle_Geom2d_CurveIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Geom2d_Curve* Sequence_Handle_Geom2d_CurveIterator_next(Sequence_Handle_Geom2d_CurveIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Geom2d_Curve(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Geom2d_Curve_size(const NCollection_Sequence_Handle_Geom2d_Curve* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom2d_Curve_clear(NCollection_Sequence_Handle_Geom2d_Curve* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom2d_Curve_append(NCollection_Sequence_Handle_Geom2d_Curve* coll, const Handle_Geom2d_Curve* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Geom2d_Curve* NCollection_Sequence_Handle_Geom2d_Curve_value(const NCollection_Sequence_Handle_Geom2d_Curve* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Geom_Curve - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef NCollection_Sequence<occ::handle<Geom_Curve>> NCollection_Sequence_Handle_Geom_Curve;
+
+extern "C" NCollection_Sequence_Handle_Geom_Curve* NCollection_Sequence_Handle_Geom_Curve_new() {
+    return new NCollection_Sequence_Handle_Geom_Curve();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom_Curve_destructor(NCollection_Sequence_Handle_Geom_Curve* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Geom_CurveIterator {
+    const NCollection_Sequence_Handle_Geom_Curve* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Geom_CurveIterator_destructor(Sequence_Handle_Geom_CurveIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Geom_CurveIterator* NCollection_Sequence_Handle_Geom_Curve_iter(const NCollection_Sequence_Handle_Geom_Curve* coll) {
+    auto iter = new Sequence_Handle_Geom_CurveIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Geom_Curve* Sequence_Handle_Geom_CurveIterator_next(Sequence_Handle_Geom_CurveIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Geom_Curve(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Geom_Curve_size(const NCollection_Sequence_Handle_Geom_Curve* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom_Curve_clear(NCollection_Sequence_Handle_Geom_Curve* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Geom_Curve_append(NCollection_Sequence_Handle_Geom_Curve* coll, const Handle_Geom_Curve* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Geom_Curve* NCollection_Sequence_Handle_Geom_Curve_value(const NCollection_Sequence_Handle_Geom_Curve* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_IFSelect_Selection - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IFSelect_Selection> Handle_IFSelect_Selection;
+typedef NCollection_Sequence<occ::handle<IFSelect_Selection>> NCollection_Sequence_Handle_IFSelect_Selection;
+
+extern "C" NCollection_Sequence_Handle_IFSelect_Selection* NCollection_Sequence_Handle_IFSelect_Selection_new() {
+    return new NCollection_Sequence_Handle_IFSelect_Selection();
+}
+
+extern "C" void NCollection_Sequence_Handle_IFSelect_Selection_destructor(NCollection_Sequence_Handle_IFSelect_Selection* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_IFSelect_SelectionIterator {
+    const NCollection_Sequence_Handle_IFSelect_Selection* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_IFSelect_SelectionIterator_destructor(Sequence_Handle_IFSelect_SelectionIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_IFSelect_SelectionIterator* NCollection_Sequence_Handle_IFSelect_Selection_iter(const NCollection_Sequence_Handle_IFSelect_Selection* coll) {
+    auto iter = new Sequence_Handle_IFSelect_SelectionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_IFSelect_Selection* Sequence_Handle_IFSelect_SelectionIterator_next(Sequence_Handle_IFSelect_SelectionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_IFSelect_Selection(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_IFSelect_Selection_size(const NCollection_Sequence_Handle_IFSelect_Selection* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_IFSelect_Selection_clear(NCollection_Sequence_Handle_IFSelect_Selection* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_IFSelect_Selection_append(NCollection_Sequence_Handle_IFSelect_Selection* coll, const Handle_IFSelect_Selection* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_IFSelect_Selection* NCollection_Sequence_Handle_IFSelect_Selection_value(const NCollection_Sequence_Handle_IFSelect_Selection* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_IntPatch_Line - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<IntPatch_Line> Handle_IntPatch_Line;
+typedef NCollection_Sequence<occ::handle<IntPatch_Line>> NCollection_Sequence_Handle_IntPatch_Line;
+
+extern "C" NCollection_Sequence_Handle_IntPatch_Line* NCollection_Sequence_Handle_IntPatch_Line_new() {
+    return new NCollection_Sequence_Handle_IntPatch_Line();
+}
+
+extern "C" void NCollection_Sequence_Handle_IntPatch_Line_destructor(NCollection_Sequence_Handle_IntPatch_Line* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_IntPatch_LineIterator {
+    const NCollection_Sequence_Handle_IntPatch_Line* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_IntPatch_LineIterator_destructor(Sequence_Handle_IntPatch_LineIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_IntPatch_LineIterator* NCollection_Sequence_Handle_IntPatch_Line_iter(const NCollection_Sequence_Handle_IntPatch_Line* coll) {
+    auto iter = new Sequence_Handle_IntPatch_LineIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_IntPatch_Line* Sequence_Handle_IntPatch_LineIterator_next(Sequence_Handle_IntPatch_LineIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_IntPatch_Line(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_IntPatch_Line_size(const NCollection_Sequence_Handle_IntPatch_Line* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_IntPatch_Line_clear(NCollection_Sequence_Handle_IntPatch_Line* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_IntPatch_Line_append(NCollection_Sequence_Handle_IntPatch_Line* coll, const Handle_IntPatch_Line* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_IntPatch_Line* NCollection_Sequence_Handle_IntPatch_Line_value(const NCollection_Sequence_Handle_IntPatch_Line* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_MAT2d_Connexion - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<MAT2d_Connexion> Handle_MAT2d_Connexion;
+typedef NCollection_Sequence<occ::handle<MAT2d_Connexion>> NCollection_Sequence_Handle_MAT2d_Connexion;
+
+extern "C" NCollection_Sequence_Handle_MAT2d_Connexion* NCollection_Sequence_Handle_MAT2d_Connexion_new() {
+    return new NCollection_Sequence_Handle_MAT2d_Connexion();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT2d_Connexion_destructor(NCollection_Sequence_Handle_MAT2d_Connexion* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_MAT2d_ConnexionIterator {
+    const NCollection_Sequence_Handle_MAT2d_Connexion* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_MAT2d_ConnexionIterator_destructor(Sequence_Handle_MAT2d_ConnexionIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_MAT2d_ConnexionIterator* NCollection_Sequence_Handle_MAT2d_Connexion_iter(const NCollection_Sequence_Handle_MAT2d_Connexion* coll) {
+    auto iter = new Sequence_Handle_MAT2d_ConnexionIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_MAT2d_Connexion* Sequence_Handle_MAT2d_ConnexionIterator_next(Sequence_Handle_MAT2d_ConnexionIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_MAT2d_Connexion(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_MAT2d_Connexion_size(const NCollection_Sequence_Handle_MAT2d_Connexion* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT2d_Connexion_clear(NCollection_Sequence_Handle_MAT2d_Connexion* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT2d_Connexion_append(NCollection_Sequence_Handle_MAT2d_Connexion* coll, const Handle_MAT2d_Connexion* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_MAT2d_Connexion* NCollection_Sequence_Handle_MAT2d_Connexion_value(const NCollection_Sequence_Handle_MAT2d_Connexion* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_MAT_Arc - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<MAT_Arc> Handle_MAT_Arc;
+typedef NCollection_Sequence<occ::handle<MAT_Arc>> NCollection_Sequence_Handle_MAT_Arc;
+
+extern "C" NCollection_Sequence_Handle_MAT_Arc* NCollection_Sequence_Handle_MAT_Arc_new() {
+    return new NCollection_Sequence_Handle_MAT_Arc();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_Arc_destructor(NCollection_Sequence_Handle_MAT_Arc* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_MAT_ArcIterator {
+    const NCollection_Sequence_Handle_MAT_Arc* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_MAT_ArcIterator_destructor(Sequence_Handle_MAT_ArcIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_MAT_ArcIterator* NCollection_Sequence_Handle_MAT_Arc_iter(const NCollection_Sequence_Handle_MAT_Arc* coll) {
+    auto iter = new Sequence_Handle_MAT_ArcIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_MAT_Arc* Sequence_Handle_MAT_ArcIterator_next(Sequence_Handle_MAT_ArcIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_MAT_Arc(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_MAT_Arc_size(const NCollection_Sequence_Handle_MAT_Arc* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_Arc_clear(NCollection_Sequence_Handle_MAT_Arc* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_Arc_append(NCollection_Sequence_Handle_MAT_Arc* coll, const Handle_MAT_Arc* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_MAT_Arc* NCollection_Sequence_Handle_MAT_Arc_value(const NCollection_Sequence_Handle_MAT_Arc* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_MAT_BasicElt - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<MAT_BasicElt> Handle_MAT_BasicElt;
+typedef NCollection_Sequence<occ::handle<MAT_BasicElt>> NCollection_Sequence_Handle_MAT_BasicElt;
+
+extern "C" NCollection_Sequence_Handle_MAT_BasicElt* NCollection_Sequence_Handle_MAT_BasicElt_new() {
+    return new NCollection_Sequence_Handle_MAT_BasicElt();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_BasicElt_destructor(NCollection_Sequence_Handle_MAT_BasicElt* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_MAT_BasicEltIterator {
+    const NCollection_Sequence_Handle_MAT_BasicElt* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_MAT_BasicEltIterator_destructor(Sequence_Handle_MAT_BasicEltIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_MAT_BasicEltIterator* NCollection_Sequence_Handle_MAT_BasicElt_iter(const NCollection_Sequence_Handle_MAT_BasicElt* coll) {
+    auto iter = new Sequence_Handle_MAT_BasicEltIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_MAT_BasicElt* Sequence_Handle_MAT_BasicEltIterator_next(Sequence_Handle_MAT_BasicEltIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_MAT_BasicElt(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_MAT_BasicElt_size(const NCollection_Sequence_Handle_MAT_BasicElt* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_BasicElt_clear(NCollection_Sequence_Handle_MAT_BasicElt* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_MAT_BasicElt_append(NCollection_Sequence_Handle_MAT_BasicElt* coll, const Handle_MAT_BasicElt* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_MAT_BasicElt* NCollection_Sequence_Handle_MAT_BasicElt_value(const NCollection_Sequence_Handle_MAT_BasicElt* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Message_Printer - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Message_Printer> Handle_Message_Printer;
+typedef NCollection_Sequence<occ::handle<Message_Printer>> NCollection_Sequence_Handle_Message_Printer;
+
+extern "C" NCollection_Sequence_Handle_Message_Printer* NCollection_Sequence_Handle_Message_Printer_new() {
+    return new NCollection_Sequence_Handle_Message_Printer();
+}
+
+extern "C" void NCollection_Sequence_Handle_Message_Printer_destructor(NCollection_Sequence_Handle_Message_Printer* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Message_PrinterIterator {
+    const NCollection_Sequence_Handle_Message_Printer* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Message_PrinterIterator_destructor(Sequence_Handle_Message_PrinterIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Message_PrinterIterator* NCollection_Sequence_Handle_Message_Printer_iter(const NCollection_Sequence_Handle_Message_Printer* coll) {
+    auto iter = new Sequence_Handle_Message_PrinterIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Message_Printer* Sequence_Handle_Message_PrinterIterator_next(Sequence_Handle_Message_PrinterIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Message_Printer(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Message_Printer_size(const NCollection_Sequence_Handle_Message_Printer* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Message_Printer_clear(NCollection_Sequence_Handle_Message_Printer* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Message_Printer_append(NCollection_Sequence_Handle_Message_Printer* coll, const Handle_Message_Printer* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Message_Printer* NCollection_Sequence_Handle_Message_Printer_value(const NCollection_Sequence_Handle_Message_Printer* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_PCDM_Document - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<PCDM_Document> Handle_PCDM_Document;
+typedef NCollection_Sequence<occ::handle<PCDM_Document>> NCollection_Sequence_Handle_PCDM_Document;
+
+extern "C" NCollection_Sequence_Handle_PCDM_Document* NCollection_Sequence_Handle_PCDM_Document_new() {
+    return new NCollection_Sequence_Handle_PCDM_Document();
+}
+
+extern "C" void NCollection_Sequence_Handle_PCDM_Document_destructor(NCollection_Sequence_Handle_PCDM_Document* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_PCDM_DocumentIterator {
+    const NCollection_Sequence_Handle_PCDM_Document* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_PCDM_DocumentIterator_destructor(Sequence_Handle_PCDM_DocumentIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_PCDM_DocumentIterator* NCollection_Sequence_Handle_PCDM_Document_iter(const NCollection_Sequence_Handle_PCDM_Document* coll) {
+    auto iter = new Sequence_Handle_PCDM_DocumentIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_PCDM_Document* Sequence_Handle_PCDM_DocumentIterator_next(Sequence_Handle_PCDM_DocumentIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_PCDM_Document(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_PCDM_Document_size(const NCollection_Sequence_Handle_PCDM_Document* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_PCDM_Document_clear(NCollection_Sequence_Handle_PCDM_Document* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_PCDM_Document_append(NCollection_Sequence_Handle_PCDM_Document* coll, const Handle_PCDM_Document* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_PCDM_Document* NCollection_Sequence_Handle_PCDM_Document_value(const NCollection_Sequence_Handle_PCDM_Document* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Poly_Triangulation - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef NCollection_Sequence<occ::handle<Poly_Triangulation>> NCollection_Sequence_Handle_Poly_Triangulation;
+
+extern "C" NCollection_Sequence_Handle_Poly_Triangulation* NCollection_Sequence_Handle_Poly_Triangulation_new() {
+    return new NCollection_Sequence_Handle_Poly_Triangulation();
+}
+
+extern "C" void NCollection_Sequence_Handle_Poly_Triangulation_destructor(NCollection_Sequence_Handle_Poly_Triangulation* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Poly_TriangulationIterator {
+    const NCollection_Sequence_Handle_Poly_Triangulation* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Poly_TriangulationIterator_destructor(Sequence_Handle_Poly_TriangulationIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Poly_TriangulationIterator* NCollection_Sequence_Handle_Poly_Triangulation_iter(const NCollection_Sequence_Handle_Poly_Triangulation* coll) {
+    auto iter = new Sequence_Handle_Poly_TriangulationIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Poly_Triangulation* Sequence_Handle_Poly_TriangulationIterator_next(Sequence_Handle_Poly_TriangulationIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Poly_Triangulation(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Poly_Triangulation_size(const NCollection_Sequence_Handle_Poly_Triangulation* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Poly_Triangulation_clear(NCollection_Sequence_Handle_Poly_Triangulation* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Poly_Triangulation_append(NCollection_Sequence_Handle_Poly_Triangulation* coll, const Handle_Poly_Triangulation* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Poly_Triangulation* NCollection_Sequence_Handle_Poly_Triangulation_value(const NCollection_Sequence_Handle_Poly_Triangulation* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_Standard_Transient - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef NCollection_Sequence<occ::handle<Standard_Transient>> NCollection_Sequence_Handle_Standard_Transient;
+
+extern "C" NCollection_Sequence_Handle_Standard_Transient* NCollection_Sequence_Handle_Standard_Transient_new() {
+    return new NCollection_Sequence_Handle_Standard_Transient();
+}
+
+extern "C" void NCollection_Sequence_Handle_Standard_Transient_destructor(NCollection_Sequence_Handle_Standard_Transient* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_Standard_TransientIterator {
+    const NCollection_Sequence_Handle_Standard_Transient* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_Standard_TransientIterator_destructor(Sequence_Handle_Standard_TransientIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_Standard_TransientIterator* NCollection_Sequence_Handle_Standard_Transient_iter(const NCollection_Sequence_Handle_Standard_Transient* coll) {
+    auto iter = new Sequence_Handle_Standard_TransientIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_Standard_Transient* Sequence_Handle_Standard_TransientIterator_next(Sequence_Handle_Standard_TransientIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_Standard_Transient(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_Standard_Transient_size(const NCollection_Sequence_Handle_Standard_Transient* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_Standard_Transient_clear(NCollection_Sequence_Handle_Standard_Transient* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_Standard_Transient_append(NCollection_Sequence_Handle_Standard_Transient* coll, const Handle_Standard_Transient* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_Standard_Transient* NCollection_Sequence_Handle_Standard_Transient_value(const NCollection_Sequence_Handle_Standard_Transient* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_TCollection_HAsciiString - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef NCollection_Sequence<occ::handle<TCollection_HAsciiString>> NCollection_Sequence_Handle_TCollection_HAsciiString;
+
+extern "C" NCollection_Sequence_Handle_TCollection_HAsciiString* NCollection_Sequence_Handle_TCollection_HAsciiString_new() {
+    return new NCollection_Sequence_Handle_TCollection_HAsciiString();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HAsciiString_destructor(NCollection_Sequence_Handle_TCollection_HAsciiString* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_TCollection_HAsciiStringIterator {
+    const NCollection_Sequence_Handle_TCollection_HAsciiString* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_TCollection_HAsciiStringIterator_destructor(Sequence_Handle_TCollection_HAsciiStringIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_TCollection_HAsciiStringIterator* NCollection_Sequence_Handle_TCollection_HAsciiString_iter(const NCollection_Sequence_Handle_TCollection_HAsciiString* coll) {
+    auto iter = new Sequence_Handle_TCollection_HAsciiStringIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_TCollection_HAsciiString* Sequence_Handle_TCollection_HAsciiStringIterator_next(Sequence_Handle_TCollection_HAsciiStringIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TCollection_HAsciiString(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_TCollection_HAsciiString_size(const NCollection_Sequence_Handle_TCollection_HAsciiString* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HAsciiString_clear(NCollection_Sequence_Handle_TCollection_HAsciiString* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HAsciiString_append(NCollection_Sequence_Handle_TCollection_HAsciiString* coll, const Handle_TCollection_HAsciiString* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_TCollection_HAsciiString* NCollection_Sequence_Handle_TCollection_HAsciiString_value(const NCollection_Sequence_Handle_TCollection_HAsciiString* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_TCollection_HExtendedString - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef NCollection_Sequence<occ::handle<TCollection_HExtendedString>> NCollection_Sequence_Handle_TCollection_HExtendedString;
+
+extern "C" NCollection_Sequence_Handle_TCollection_HExtendedString* NCollection_Sequence_Handle_TCollection_HExtendedString_new() {
+    return new NCollection_Sequence_Handle_TCollection_HExtendedString();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HExtendedString_destructor(NCollection_Sequence_Handle_TCollection_HExtendedString* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_TCollection_HExtendedStringIterator {
+    const NCollection_Sequence_Handle_TCollection_HExtendedString* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_TCollection_HExtendedStringIterator_destructor(Sequence_Handle_TCollection_HExtendedStringIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_TCollection_HExtendedStringIterator* NCollection_Sequence_Handle_TCollection_HExtendedString_iter(const NCollection_Sequence_Handle_TCollection_HExtendedString* coll) {
+    auto iter = new Sequence_Handle_TCollection_HExtendedStringIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_TCollection_HExtendedString* Sequence_Handle_TCollection_HExtendedStringIterator_next(Sequence_Handle_TCollection_HExtendedStringIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TCollection_HExtendedString(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_TCollection_HExtendedString_size(const NCollection_Sequence_Handle_TCollection_HExtendedString* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HExtendedString_clear(NCollection_Sequence_Handle_TCollection_HExtendedString* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_TCollection_HExtendedString_append(NCollection_Sequence_Handle_TCollection_HExtendedString* coll, const Handle_TCollection_HExtendedString* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_TCollection_HExtendedString* NCollection_Sequence_Handle_TCollection_HExtendedString_value(const NCollection_Sequence_Handle_TCollection_HExtendedString* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_TDF_Attribute - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef NCollection_Sequence<occ::handle<TDF_Attribute>> NCollection_Sequence_Handle_TDF_Attribute;
+
+extern "C" NCollection_Sequence_Handle_TDF_Attribute* NCollection_Sequence_Handle_TDF_Attribute_new() {
+    return new NCollection_Sequence_Handle_TDF_Attribute();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDF_Attribute_destructor(NCollection_Sequence_Handle_TDF_Attribute* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_TDF_AttributeIterator {
+    const NCollection_Sequence_Handle_TDF_Attribute* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_TDF_AttributeIterator_destructor(Sequence_Handle_TDF_AttributeIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_TDF_AttributeIterator* NCollection_Sequence_Handle_TDF_Attribute_iter(const NCollection_Sequence_Handle_TDF_Attribute* coll) {
+    auto iter = new Sequence_Handle_TDF_AttributeIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_TDF_Attribute* Sequence_Handle_TDF_AttributeIterator_next(Sequence_Handle_TDF_AttributeIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TDF_Attribute(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_TDF_Attribute_size(const NCollection_Sequence_Handle_TDF_Attribute* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDF_Attribute_clear(NCollection_Sequence_Handle_TDF_Attribute* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDF_Attribute_append(NCollection_Sequence_Handle_TDF_Attribute* coll, const Handle_TDF_Attribute* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_TDF_Attribute* NCollection_Sequence_Handle_TDF_Attribute_value(const NCollection_Sequence_Handle_TDF_Attribute* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_TDocStd_ApplicationDelta - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TDocStd_ApplicationDelta> Handle_TDocStd_ApplicationDelta;
+typedef NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> NCollection_Sequence_Handle_TDocStd_ApplicationDelta;
+
+extern "C" NCollection_Sequence_Handle_TDocStd_ApplicationDelta* NCollection_Sequence_Handle_TDocStd_ApplicationDelta_new() {
+    return new NCollection_Sequence_Handle_TDocStd_ApplicationDelta();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_ApplicationDelta_destructor(NCollection_Sequence_Handle_TDocStd_ApplicationDelta* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_TDocStd_ApplicationDeltaIterator {
+    const NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_TDocStd_ApplicationDeltaIterator_destructor(Sequence_Handle_TDocStd_ApplicationDeltaIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_TDocStd_ApplicationDeltaIterator* NCollection_Sequence_Handle_TDocStd_ApplicationDelta_iter(const NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll) {
+    auto iter = new Sequence_Handle_TDocStd_ApplicationDeltaIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_TDocStd_ApplicationDelta* Sequence_Handle_TDocStd_ApplicationDeltaIterator_next(Sequence_Handle_TDocStd_ApplicationDeltaIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TDocStd_ApplicationDelta(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_TDocStd_ApplicationDelta_size(const NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_ApplicationDelta_clear(NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_ApplicationDelta_append(NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll, const Handle_TDocStd_ApplicationDelta* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_TDocStd_ApplicationDelta* NCollection_Sequence_Handle_TDocStd_ApplicationDelta_value(const NCollection_Sequence_Handle_TDocStd_ApplicationDelta* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_TDocStd_Document - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef NCollection_Sequence<occ::handle<TDocStd_Document>> NCollection_Sequence_Handle_TDocStd_Document;
+
+extern "C" NCollection_Sequence_Handle_TDocStd_Document* NCollection_Sequence_Handle_TDocStd_Document_new() {
+    return new NCollection_Sequence_Handle_TDocStd_Document();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_Document_destructor(NCollection_Sequence_Handle_TDocStd_Document* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_TDocStd_DocumentIterator {
+    const NCollection_Sequence_Handle_TDocStd_Document* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_TDocStd_DocumentIterator_destructor(Sequence_Handle_TDocStd_DocumentIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_TDocStd_DocumentIterator* NCollection_Sequence_Handle_TDocStd_Document_iter(const NCollection_Sequence_Handle_TDocStd_Document* coll) {
+    auto iter = new Sequence_Handle_TDocStd_DocumentIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_TDocStd_Document* Sequence_Handle_TDocStd_DocumentIterator_next(Sequence_Handle_TDocStd_DocumentIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_TDocStd_Document(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_TDocStd_Document_size(const NCollection_Sequence_Handle_TDocStd_Document* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_Document_clear(NCollection_Sequence_Handle_TDocStd_Document* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_TDocStd_Document_append(NCollection_Sequence_Handle_TDocStd_Document* coll, const Handle_TDocStd_Document* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_TDocStd_Document* NCollection_Sequence_Handle_TDocStd_Document_value(const NCollection_Sequence_Handle_TDocStd_Document* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<XCAFDimTolObjects_DatumObject> Handle_XCAFDimTolObjects_DatumObject;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_DatumObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject;
+
+extern "C" NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_new() {
+    return new NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_destructor(NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator* NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_iter(const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    auto iter = new Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_XCAFDimTolObjects_DatumObject* Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_next(Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_XCAFDimTolObjects_DatumObject(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_size(const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_clear(NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_append(NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll, const Handle_XCAFDimTolObjects_DatumObject* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_XCAFDimTolObjects_DatumObject* NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_value(const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<XCAFDimTolObjects_DimensionObject> Handle_XCAFDimTolObjects_DimensionObject;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_DimensionObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject;
+
+extern "C" NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_new() {
+    return new NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_destructor(NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator {
+    const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_destructor(Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator* NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_iter(const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll) {
+    auto iter = new Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_XCAFDimTolObjects_DimensionObject* Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_next(Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_XCAFDimTolObjects_DimensionObject(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_size(const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_clear(NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_append(NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll, const Handle_XCAFDimTolObjects_DimensionObject* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_XCAFDimTolObjects_DimensionObject* NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_value(const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* coll, int index) {
+    return &coll->Value(index);
+}
+
+// ========================
+// NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject - Dynamic array (1-indexed)
+// ========================
+
+typedef opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> Handle_XCAFDimTolObjects_GeomToleranceObject;
+typedef NCollection_Sequence<occ::handle<XCAFDimTolObjects_GeomToleranceObject>> NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject;
+
+extern "C" NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_new() {
+    return new NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_destructor(NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* self_) {
+    delete self_;
+}
+
+struct Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator {
+    const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll;
+    int index;  // 1-indexed (OCCT convention)
+    int extent;
+};
+
+extern "C" void Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_destructor(Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator* self_) {
+    delete self_;
+}
+
+extern "C" Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator* NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_iter(const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll) {
+    auto iter = new Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator();
+    iter->coll = coll;
+    iter->index = 1;
+    iter->extent = coll->Length();
+    return iter;
+}
+
+extern "C" Handle_XCAFDimTolObjects_GeomToleranceObject* Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_next(Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator* iter) {
+    if (iter->index > iter->extent) {
+        return nullptr;
+    }
+    auto result = new Handle_XCAFDimTolObjects_GeomToleranceObject(iter->coll->Value(iter->index));
+    ++iter->index;
+    return result;
+}
+
+extern "C" int NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_size(const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll) {
+    return coll->Length();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_clear(NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll) {
+    coll->Clear();
+}
+
+extern "C" void NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_append(NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll, const Handle_XCAFDimTolObjects_GeomToleranceObject* item) {
+    coll->Append(*item);
+}
+
+extern "C" const Handle_XCAFDimTolObjects_GeomToleranceObject* NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_value(const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* coll, int index) {
     return &coll->Value(index);
 }
 

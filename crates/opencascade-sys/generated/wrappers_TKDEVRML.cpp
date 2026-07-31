@@ -19,9 +19,7 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopoDS_TShape.hxx>
 #include <Vrml.hxx>
 #include <VrmlAPI.hxx>
 #include <VrmlAPI_CafReader.hxx>
@@ -43,7 +41,6 @@
 #include <VrmlConverter_WFDeflectionShape.hxx>
 #include <VrmlConverter_WFRestrictedFace.hxx>
 #include <VrmlConverter_WFShape.hxx>
-#include <VrmlData_Appearance.hxx>
 #include <VrmlData_ArrayVec3d.hxx>
 #include <VrmlData_Box.hxx>
 #include <VrmlData_Color.hxx>
@@ -5159,6 +5156,10 @@ extern "C" OcctResult<int32_t> VrmlData_Group_write(const VrmlData_Group* self_,
     try { return {static_cast<int32_t>(self_->Write(thePrefix)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* VrmlData_Group_shape(VrmlData_Group* self_, TopoDS_Shape* theShape, NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* pMapApp) {
+    try { self_->Shape(*theShape, pMapApp); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> VrmlData_Group_dynamic_type(const VrmlData_Group* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6390,6 +6391,10 @@ extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_Scene_find_node_charptr_h
 }
 extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_Scene_find_node_charptr_trsf(const VrmlData_Scene* self_, const char* theName, gp_Trsf* theLocation) {
     try { return {new Handle(VrmlData_Node)(self_->FindNode(theName, *theLocation)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> VrmlData_Scene_get_shape(VrmlData_Scene* self_, NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance* M) {
+    try { return {new TopoDS_Shape(self_->GetShape(*M)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> VrmlData_Scene_status(const VrmlData_Scene* self_) {

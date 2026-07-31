@@ -2026,8 +2026,8 @@ impl ExternalRefFileIndex {
     /// if size of aNameArray is not equal to size of allEntities
     pub fn init(
         &mut self,
-        aNameArray: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        aNameArray: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_ExternalRefFileIndex_init(
@@ -5952,7 +5952,7 @@ impl ExternalReferenceFile {
     /// - aNameArray : External Reference File Names
     pub fn init(
         &mut self,
-        aNameArray: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aNameArray: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_ExternalReferenceFile_init(
@@ -7601,7 +7601,7 @@ impl Group {
     /// the Group.
     pub fn init(
         &mut self,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_Group_init(self as *mut Self, allEntities)
@@ -8742,7 +8742,7 @@ impl GroupWithoutBackP {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn init(
         &mut self,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_GroupWithoutBackP_inherited_Init(
@@ -9752,7 +9752,7 @@ impl HArray1OfHArray1OfIGESEntity {
     pub fn set_value(
         &mut self,
         num: i32,
-        val: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_HArray1OfHArray1OfIGESEntity_set_value(
@@ -9767,9 +9767,8 @@ impl HArray1OfHArray1OfIGESEntity {
     pub fn value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESBasic_HArray1OfHArray1OfIGESEntity_value(
@@ -13139,7 +13138,7 @@ impl OrderedGroup {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn init(
         &mut self,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_OrderedGroup_inherited_Init(
@@ -14219,7 +14218,7 @@ impl OrderedGroupWithoutBackP {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn init(
         &mut self,
-        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_OrderedGroupWithoutBackP_inherited_Init(
@@ -15973,7 +15972,7 @@ impl SingleParent {
         &mut self,
         nbParentEntities: i32,
         aParentEntity: &crate::ffi_types::Handle_IGESData_IGESEntity,
-        allChildren: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allChildren: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_SingleParent_init(
@@ -18325,7 +18324,7 @@ impl SubfigureDef {
         &mut self,
         aDepth: i32,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        allAssocEntities: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAssocEntities: &crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESBasic_SubfigureDef_init(

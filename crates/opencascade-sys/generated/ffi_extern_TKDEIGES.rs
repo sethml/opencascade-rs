@@ -2006,7 +2006,7 @@ unsafe extern "C" {
         nbResults: i32,
         aResRepFlag: i32,
         allElementIdents: *const Handle_NCollection_HArray1_int,
-        allFiniteElems: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
+        allFiniteElems: *const Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
         allTopTypes: *const Handle_NCollection_HArray1_int,
         nbLayers: *const Handle_NCollection_HArray1_int,
         allDataLayerFlags: *const Handle_NCollection_HArray1_int,
@@ -2492,7 +2492,7 @@ unsafe extern "C" {
     pub fn IGESAppli_FiniteElement_init(
         self_: *mut IGESAppli_FiniteElement,
         aType: i32,
-        allNodes: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         aName: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_FiniteElement.hxx`:51 - `IGESAppli_FiniteElement::Topology()`
@@ -2895,12 +2895,12 @@ unsafe extern "C" {
         nbContextFlags: i32,
         aFlowType: i32,
         aFuncFlag: i32,
-        allFlowAssocs: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allConnectPoints: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-        allJoins: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allFlowNames: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allTextDisps: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-        allContFlowAssocs: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allFlowAssocs: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allConnectPoints: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        allJoins: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allFlowNames: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allTextDisps: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        allContFlowAssocs: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_Flow.hxx`:67 - `IGESAppli_Flow::OwnCorrect()`
     pub fn IGESAppli_Flow_own_correct(self_: *mut IGESAppli_Flow) -> crate::OcctResult<bool>;
@@ -3331,7 +3331,7 @@ unsafe extern "C" {
     /// **Source:** `IGESAppli_FlowLineSpec.hxx`:42 - `IGESAppli_FlowLineSpec::Init()`
     pub fn IGESAppli_FlowLineSpec_init(
         self_: *mut IGESAppli_FlowLineSpec,
-        allProperties: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allProperties: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_FlowLineSpec.hxx`:46 - `IGESAppli_FlowLineSpec::NbPropertyValues()`
     pub fn IGESAppli_FlowLineSpec_nb_property_values(
@@ -4385,9 +4385,9 @@ unsafe extern "C" {
         self_: *mut IGESAppli_LevelToPWBLayerMap,
         nbPropVal: i32,
         allExchLevels: *const Handle_NCollection_HArray1_int,
-        allNativeLevels: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allNativeLevels: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         allPhysLevels: *const Handle_NCollection_HArray1_int,
-        allExchIdents: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        allExchIdents: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_LevelToPWBLayerMap.hxx`:58 - `IGESAppli_LevelToPWBLayerMap::NbPropertyValues()`
     pub fn IGESAppli_LevelToPWBLayerMap_nb_property_values(
@@ -5212,7 +5212,7 @@ unsafe extern "C" {
         self_: *mut IGESAppli_NodalConstraint,
         aType: i32,
         aNode: *const Handle_IGESAppli_Node,
-        allTabData: *const Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
+        allTabData: *const Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_NodalConstraint.hxx`:54 - `IGESAppli_NodalConstraint::NbCases()`
     pub fn IGESAppli_NodalConstraint_nb_cases(
@@ -5613,9 +5613,9 @@ unsafe extern "C" {
     /// **Source:** `IGESAppli_NodalDisplAndRot.hxx`:57 - `IGESAppli_NodalDisplAndRot::Init()`
     pub fn IGESAppli_NodalDisplAndRot_init(
         self_: *mut IGESAppli_NodalDisplAndRot,
-        allNotes: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
+        allNotes: *const Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
         allIdentifiers: *const Handle_NCollection_HArray1_int,
-        allNodes: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         allRotParams: *const Handle_IGESBasic_HArray1OfHArray1OfXYZ,
         allTransParams: *const Handle_IGESBasic_HArray1OfHArray1OfXYZ,
     ) -> *const std::ffi::c_char;
@@ -6040,7 +6040,7 @@ unsafe extern "C" {
         aNumber: i32,
         aTime: f64,
         allNodeIdentifiers: *const Handle_NCollection_HArray1_int,
-        allNodes: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
+        allNodes: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
         allData: *const Handle_NCollection_HArray2_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_NodalResults.hxx`:64 - `IGESAppli_NodalResults::SetFormNumber()`
@@ -8450,12 +8450,12 @@ unsafe extern "C" {
         self_: *mut IGESAppli_PipingFlow,
         nbContextFlags: i32,
         aFlowType: i32,
-        allFlowAssocs: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allConnectPoints: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-        allJoins: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allFlowNames: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allTextDisps: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-        allContFlowAssocs: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allFlowAssocs: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allConnectPoints: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        allJoins: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allFlowNames: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allTextDisps: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        allContFlowAssocs: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESAppli_PipingFlow.hxx`:64 - `IGESAppli_PipingFlow::OwnCorrect()`
     pub fn IGESAppli_PipingFlow_own_correct(
@@ -11905,8 +11905,8 @@ unsafe extern "C" {
     /// **Source:** `IGESBasic_ExternalRefFileIndex.hxx`:46 - `IGESBasic_ExternalRefFileIndex::Init()`
     pub fn IGESBasic_ExternalRefFileIndex_init(
         self_: *mut IGESBasic_ExternalRefFileIndex,
-        aNameArray: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        aNameArray: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_ExternalRefFileIndex.hxx`:51 - `IGESBasic_ExternalRefFileIndex::NbEntries()`
     pub fn IGESBasic_ExternalRefFileIndex_nb_entries(
@@ -13488,7 +13488,7 @@ unsafe extern "C" {
     /// **Source:** `IGESBasic_ExternalReferenceFile.hxx`:41 - `IGESBasic_ExternalReferenceFile::Init()`
     pub fn IGESBasic_ExternalReferenceFile_init(
         self_: *mut IGESBasic_ExternalReferenceFile,
-        aNameArray: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aNameArray: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_ExternalReferenceFile.hxx`:45 - `IGESBasic_ExternalReferenceFile::NbListEntries()`
     pub fn IGESBasic_ExternalReferenceFile_nb_list_entries(
@@ -14144,7 +14144,7 @@ unsafe extern "C" {
     /// **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn IGESBasic_Group_init(
         self_: *mut IGESBasic_Group,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_Group.hxx`:58 - `IGESBasic_Group::SetOrdered()`
     pub fn IGESBasic_Group_set_ordered(
@@ -14645,7 +14645,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn IGESBasic_GroupWithoutBackP_inherited_Init(
         self_: *mut IGESBasic_GroupWithoutBackP,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:58 - `IGESBasic_Group::SetOrdered()`
     pub fn IGESBasic_GroupWithoutBackP_inherited_SetOrdered(
@@ -15039,13 +15039,13 @@ unsafe extern "C" {
     pub fn IGESBasic_HArray1OfHArray1OfIGESEntity_set_value(
         self_: *mut IGESBasic_HArray1OfHArray1OfIGESEntity,
         num: i32,
-        val: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_HArray1OfHArray1OfIGESEntity.hxx`:45 - `IGESBasic_HArray1OfHArray1OfIGESEntity::Value()`
     pub fn IGESBasic_HArray1OfHArray1OfIGESEntity_value(
         self_: *const IGESBasic_HArray1OfHArray1OfIGESEntity,
         num: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>;
     /// **Source:** `IGESBasic_HArray1OfHArray1OfIGESEntity.hxx`:48 - `IGESBasic_HArray1OfHArray1OfIGESEntity::DynamicType()`
     pub fn IGESBasic_HArray1OfHArray1OfIGESEntity_dynamic_type(
         self_: *const IGESBasic_HArray1OfHArray1OfIGESEntity,
@@ -16433,7 +16433,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn IGESBasic_OrderedGroup_inherited_Init(
         self_: *mut IGESBasic_OrderedGroup,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:58 - `IGESBasic_Group::SetOrdered()`
     pub fn IGESBasic_OrderedGroup_inherited_SetOrdered(
@@ -16882,7 +16882,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:54 - `IGESBasic_Group::Init()`
     pub fn IGESBasic_OrderedGroupWithoutBackP_inherited_Init(
         self_: *mut IGESBasic_OrderedGroupWithoutBackP,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IGESBasic_Group.hxx`:58 - `IGESBasic_Group::SetOrdered()`
     pub fn IGESBasic_OrderedGroupWithoutBackP_inherited_SetOrdered(
@@ -17565,7 +17565,7 @@ unsafe extern "C" {
         self_: *mut IGESBasic_SingleParent,
         nbParentEntities: i32,
         aParentEntity: *const Handle_IGESData_IGESEntity,
-        allChildren: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allChildren: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_SingleParent.hxx`:51 - `IGESBasic_SingleParent::NbParentEntities()`
     pub fn IGESBasic_SingleParent_nb_parent_entities(
@@ -18489,7 +18489,7 @@ unsafe extern "C" {
         self_: *mut IGESBasic_SubfigureDef,
         aDepth: i32,
         aName: *const Handle_TCollection_HAsciiString,
-        allAssocEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAssocEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESBasic_SubfigureDef.hxx`:52 - `IGESBasic_SubfigureDef::Depth()`
     pub fn IGESBasic_SubfigureDef_depth(
@@ -19881,7 +19881,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:191 - `XSControl_Reader::TransferList()`
     pub fn IGESCAFControl_Reader_inherited_TransferList(
         self_: *mut IGESCAFControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
     /// Inherited: **Source:** `XSControl_Reader.hxx`:198 - `XSControl_Reader::TransferRoots()`
@@ -19927,7 +19927,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn IGESCAFControl_Reader_inherited_GetStatsTransfer(
         self_: *const IGESCAFControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         nbMapped: *mut i32,
         nbWithResult: *mut i32,
         nbWithFail: *mut i32,
@@ -20744,7 +20744,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:191 - `XSControl_Reader::TransferList()`
     pub fn IGESControl_Reader_inherited_TransferList(
         self_: *mut IGESControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
     /// Inherited: **Source:** `XSControl_Reader.hxx`:198 - `XSControl_Reader::TransferRoots()`
@@ -20790,7 +20790,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn IGESControl_Reader_inherited_GetStatsTransfer(
         self_: *const IGESControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         nbMapped: *mut i32,
         nbWithResult: *mut i32,
         nbWithFail: *mut i32,
@@ -22412,7 +22412,7 @@ unsafe extern "C" {
     /// **Source:** `IGESData_FreeFormatEntity.hxx`:118 - `IGESData_FreeFormatEntity::AddEntities()`
     pub fn IGESData_FreeFormatEntity_add_entities(
         self_: *mut IGESData_FreeFormatEntity,
-        ents: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        ents: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESData_FreeFormatEntity.hxx`:124 - `IGESData_FreeFormatEntity::AddNegativePointers()`
     pub fn IGESData_FreeFormatEntity_add_negative_pointers(
@@ -24638,9 +24638,7 @@ unsafe extern "C" {
     /// **Source:** `IGESData_IGESModel.hxx`:57 - `IGESData_IGESModel::StartSection()`
     pub fn IGESData_IGESModel_start_section(
         self_: *const IGESData_IGESModel,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IGESData_IGESModel.hxx`:60 - `IGESData_IGESModel::NbStartLines()`
     pub fn IGESData_IGESModel_nb_start_lines(
         self_: *const IGESData_IGESModel,
@@ -24657,7 +24655,7 @@ unsafe extern "C" {
     /// **Source:** `IGESData_IGESModel.hxx`:78 - `IGESData_IGESModel::SetStartSection()`
     pub fn IGESData_IGESModel_set_start_section(
         self_: *mut IGESData_IGESModel,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         copy: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESData_IGESModel.hxx`:85 - `IGESData_IGESModel::AddStartLine()`
@@ -25053,9 +25051,7 @@ unsafe extern "C" {
     /// **Source:** `IGESData_IGESReaderData.hxx`:59 - `IGESData_IGESReaderData::StartSection()`
     pub fn IGESData_IGESReaderData_start_section(
         self_: *const IGESData_IGESReaderData,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IGESData_IGESReaderData.hxx`:62 - `IGESData_IGESReaderData::AddGlobal()`
     pub fn IGESData_IGESReaderData_add_global(
         self_: *mut IGESData_IGESReaderData,
@@ -25632,9 +25628,7 @@ unsafe extern "C" {
     pub fn IGESData_IGESWriter_section_strings(
         self_: *const IGESData_IGESWriter,
         numsec: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IGESData_IGESWriter.hxx`:178 - `IGESData_IGESWriter::Print()`
     pub fn IGESData_IGESWriter_print(
         self_: *const IGESData_IGESWriter,
@@ -27669,37 +27663,37 @@ unsafe extern "C" {
         index: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESData_ParamReader.hxx`:329 - `IGESData_ParamReader::ReadTexts()`
-    pub fn IGESData_ParamReader_read_texts_paramcursor_msg_handlencollectionharray1opencascadehandletcollectionhasciistring_int(
+    pub fn IGESData_ParamReader_read_texts_paramcursor_msg_harr1_tcollection_hasciistring_int(
         self_: *mut IGESData_ParamReader,
         PC: *const IGESData_ParamCursor,
         amsg: *const Message_Msg,
-        val: *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        val: *mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         index: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESData_ParamReader.hxx`:340 - `IGESData_ParamReader::ReadTexts()`
-    pub fn IGESData_ParamReader_read_texts_paramcursor_charptr_handlencollectionharray1opencascadehandletcollectionhasciistring_int(
+    pub fn IGESData_ParamReader_read_texts_paramcursor_charptr_harr1_tcollection_hasciistring_int(
         self_: *mut IGESData_ParamReader,
         PC: *const IGESData_ParamCursor,
         mess: *const std::ffi::c_char,
-        val: *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        val: *mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         index: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESData_ParamReader.hxx`:346 - `IGESData_ParamReader::ReadEnts()`
-    pub fn IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_msg_harr1_igesdata_igesentity_int(
         self_: *mut IGESData_ParamReader,
         IR: *const Handle_IGESData_IGESReaderData,
         PC: *const IGESData_ParamCursor,
         amsg: *const Message_Msg,
-        val: *mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: *mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESData_ParamReader.hxx`:362 - `IGESData_ParamReader::ReadEnts()`
-    pub fn IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn IGESData_ParamReader_read_ents_handleigesdataigesreaderdata_paramcursor_charptr_harr1_igesdata_igesentity_int(
         self_: *mut IGESData_ParamReader,
         IR: *const Handle_IGESData_IGESReaderData,
         PC: *const IGESData_ParamCursor,
         mess: *const std::ffi::c_char,
-        val: *mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        val: *mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESData_ParamReader.hxx`:369 - `IGESData_ParamReader::ReadEntList()`
@@ -30562,7 +30556,7 @@ unsafe extern "C" {
         attrTypes: *const Handle_NCollection_HArray1_int,
         attrValueDataTypes: *const Handle_NCollection_HArray1_int,
         attrValueCounts: *const Handle_NCollection_HArray1_int,
-        attrValues: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        attrValues: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
         attrValuePointers: *const Handle_IGESDefs_HArray1OfHArray1OfTextDisplayTemplate,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_AttributeDef.hxx`:54 - `IGESDefs_AttributeDef::HasTableName()`
@@ -31024,7 +31018,7 @@ unsafe extern "C" {
     /// **Source:** `IGESDefs_AttributeTable.hxx`:48 - `IGESDefs_AttributeTable::Init()`
     pub fn IGESDefs_AttributeTable_init(
         self_: *mut IGESDefs_AttributeTable,
-        attributes: *const Handle_NCollection_HArray2_opencascade_handle_Standard_Transient,
+        attributes: *const Handle_NCollection_HArray2_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_AttributeTable.hxx`:53 - `IGESDefs_AttributeTable::SetDefinition()`
     pub fn IGESDefs_AttributeTable_set_definition(
@@ -31737,7 +31731,7 @@ unsafe extern "C" {
         nbPropVal: i32,
         aName: *const Handle_TCollection_HAsciiString,
         allTypes: *const Handle_NCollection_HArray1_int,
-        allValues: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        allValues: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_GenericData.hxx`:58 - `IGESDefs_GenericData::NbPropertyValues()`
     pub fn IGESDefs_GenericData_nb_property_values(
@@ -32182,15 +32176,13 @@ unsafe extern "C" {
     pub fn IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_set_value(
         self_: *mut IGESDefs_HArray1OfHArray1OfTextDisplayTemplate,
         num: i32,
-        val: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
+        val: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx`:46 - `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate::Value()`
     pub fn IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_value(
         self_: *const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate>;
     /// **Source:** `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx`:48 - `IGESDefs_HArray1OfHArray1OfTextDisplayTemplate::DynamicType()`
     pub fn IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_dynamic_type(
         self_: *const IGESDefs_HArray1OfHArray1OfTextDisplayTemplate,
@@ -32276,7 +32268,7 @@ unsafe extern "C" {
         self_: *mut IGESDefs_MacroDef,
         macro_: *const Handle_TCollection_HAsciiString,
         entityTypeID: i32,
-        langStatements: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        langStatements: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         endMacro: *const Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_MacroDef.hxx`:53 - `IGESDefs_MacroDef::NbStatements()`
@@ -33871,8 +33863,8 @@ unsafe extern "C" {
     /// **Source:** `IGESDefs_UnitsData.hxx`:46 - `IGESDefs_UnitsData::Init()`
     pub fn IGESDefs_UnitsData_init(
         self_: *mut IGESDefs_UnitsData,
-        unitTypes: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        unitValues: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        unitTypes: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        unitValues: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         unitScales: *const Handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDefs_UnitsData.hxx`:52 - `IGESDefs_UnitsData::NbUnits()`
@@ -37672,7 +37664,7 @@ unsafe extern "C" {
         self_: *mut IGESDimen_DimensionedGeometry,
         nbDims: i32,
         aDimension: *const Handle_IGESData_IGESEntity,
-        entities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        entities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_DimensionedGeometry.hxx`:44 - `IGESDimen_DimensionedGeometry::NbDimensions()`
     pub fn IGESDimen_DimensionedGeometry_nb_dimensions(
@@ -38077,7 +38069,7 @@ unsafe extern "C" {
         leftCorner: *const gp_XYZ,
         anAngle: f64,
         aNote: *const Handle_IGESDimen_GeneralNote,
-        someLeaders: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        someLeaders: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_FlagNote.hxx`:55 - `IGESDimen_FlagNote::LowerLeftCorner()`
     pub fn IGESDimen_FlagNote_lower_left_corner(
@@ -38496,7 +38488,7 @@ unsafe extern "C" {
     pub fn IGESDimen_GeneralLabel_init(
         self_: *mut IGESDimen_GeneralLabel,
         aNote: *const Handle_IGESDimen_GeneralNote,
-        someLeaders: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        someLeaders: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_GeneralLabel.hxx`:48 - `IGESDimen_GeneralLabel::Note()`
     pub fn IGESDimen_GeneralLabel_note(
@@ -39155,13 +39147,13 @@ unsafe extern "C" {
         widths: *const Handle_NCollection_HArray1_double,
         heights: *const Handle_NCollection_HArray1_double,
         fontCodes: *const Handle_NCollection_HArray1_int,
-        fonts: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
+        fonts: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
         slants: *const Handle_NCollection_HArray1_double,
         rotations: *const Handle_NCollection_HArray1_double,
         mirrorFlags: *const Handle_NCollection_HArray1_int,
         rotFlags: *const Handle_NCollection_HArray1_int,
         start: *const Handle_NCollection_HArray1_gp_XYZ,
-        texts: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        texts: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_GeneralNote.hxx`:73 - `IGESDimen_GeneralNote::SetFormNumber()`
     pub fn IGESDimen_GeneralNote_set_form_number(
@@ -39622,8 +39614,8 @@ unsafe extern "C" {
     pub fn IGESDimen_GeneralSymbol_init(
         self_: *mut IGESDimen_GeneralSymbol,
         aNote: *const Handle_IGESDimen_GeneralNote,
-        allGeoms: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allLeaders: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        allGeoms: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allLeaders: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_GeneralSymbol.hxx`:54 - `IGESDimen_GeneralSymbol::SetFormNumber()`
     pub fn IGESDimen_GeneralSymbol_set_form_number(
@@ -40888,7 +40880,7 @@ unsafe extern "C" {
         aDimen: *const Handle_IGESData_IGESEntity,
         anOrientation: i32,
         anAngle: f64,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         allLocations: *const Handle_NCollection_HArray1_int,
         allPoints: *const Handle_NCollection_HArray1_gp_XYZ,
     ) -> *const std::ffi::c_char;
@@ -41329,18 +41321,18 @@ unsafe extern "C" {
         interLineSpc: *const Handle_NCollection_HArray1_double,
         fontStyles: *const Handle_NCollection_HArray1_int,
         charAngles: *const Handle_NCollection_HArray1_double,
-        controlCodeStrings: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        controlCodeStrings: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         nbChars: *const Handle_NCollection_HArray1_int,
         boxWidths: *const Handle_NCollection_HArray1_double,
         boxHeights: *const Handle_NCollection_HArray1_double,
         charSetCodes: *const Handle_NCollection_HArray1_int,
-        charSetEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        charSetEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         slAngles: *const Handle_NCollection_HArray1_double,
         rotAngles: *const Handle_NCollection_HArray1_double,
         mirrorFlags: *const Handle_NCollection_HArray1_int,
         rotateFlags: *const Handle_NCollection_HArray1_int,
         startPoints: *const Handle_NCollection_HArray1_gp_XYZ,
-        texts: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        texts: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_NewGeneralNote.hxx`:101 - `IGESDimen_NewGeneralNote::TextWidth()`
     pub fn IGESDimen_NewGeneralNote_text_width(
@@ -43835,7 +43827,7 @@ unsafe extern "C" {
         aPoint: *const gp_XYZ,
         aDistance: f64,
         anAngle: f64,
-        someIslands: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        someIslands: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDimen_SectionedArea.hxx`:58 - `IGESDimen_SectionedArea::SetInverted()`
     pub fn IGESDimen_SectionedArea_set_inverted(
@@ -46890,9 +46882,9 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_Drawing.hxx`:53 - `IGESDraw_Drawing::Init()`
     pub fn IGESDraw_Drawing_init(
         self_: *mut IGESDraw_Drawing,
-        allViews: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allViewOrigins: *const Handle_NCollection_HArray1_gp_XY,
-        allAnnotations: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAnnotations: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_Drawing.hxx`:59 - `IGESDraw_Drawing::NbViews()`
     pub fn IGESDraw_Drawing_nb_views(self_: *const IGESDraw_Drawing) -> crate::OcctResult<i32>;
@@ -47310,10 +47302,10 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:53 - `IGESDraw_DrawingWithRotation::Init()`
     pub fn IGESDraw_DrawingWithRotation_init(
         self_: *mut IGESDraw_DrawingWithRotation,
-        allViews: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allViewOrigins: *const Handle_NCollection_HArray1_gp_XY,
         allOrientationAngles: *const Handle_NCollection_HArray1_double,
-        allAnnotations: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allAnnotations: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:60 - `IGESDraw_DrawingWithRotation::NbViews()`
     pub fn IGESDraw_DrawingWithRotation_nb_views(
@@ -48002,11 +47994,11 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:57 - `IGESDraw_LabelDisplay::Init()`
     pub fn IGESDraw_LabelDisplay_init(
         self_: *mut IGESDraw_LabelDisplay,
-        allViews: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allTextLocations: *const Handle_NCollection_HArray1_gp_XYZ,
-        allLeaderEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
+        allLeaderEntities: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
         allLabelLevels: *const Handle_NCollection_HArray1_int,
-        allDisplayedEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayedEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:65 - `IGESDraw_LabelDisplay::NbLabels()`
     pub fn IGESDraw_LabelDisplay_nb_labels(
@@ -48439,7 +48431,7 @@ unsafe extern "C" {
         aTypeFlag: i32,
         aDesignator: *const Handle_TCollection_HAsciiString,
         aTemplate: *const Handle_IGESGraph_TextDisplayTemplate,
-        allConnectPoints: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
+        allConnectPoints: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_NetworkSubfigure.hxx`:66 - `IGESDraw_NetworkSubfigure::SubfigureDefinition()`
     pub fn IGESDraw_NetworkSubfigure_subfigure_definition(
@@ -48867,11 +48859,11 @@ unsafe extern "C" {
         self_: *mut IGESDraw_NetworkSubfigureDef,
         aDepth: i32,
         aName: *const Handle_TCollection_HAsciiString,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         aTypeFlag: i32,
         aDesignator: *const Handle_TCollection_HAsciiString,
         aTemplate: *const Handle_IGESGraph_TextDisplayTemplate,
-        allPointEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
+        allPointEntities: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:75 - `IGESDraw_NetworkSubfigureDef::Depth()`
     pub fn IGESDraw_NetworkSubfigureDef_depth(
@@ -49779,7 +49771,7 @@ unsafe extern "C" {
         self_: *mut IGESDraw_Planar,
         nbMats: i32,
         aTransformationMatrix: *const Handle_IGESGeom_TransformationMatrix,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_Planar.hxx`:49 - `IGESDraw_Planar::NbMatrices()`
     pub fn IGESDraw_Planar_nb_matrices(self_: *const IGESDraw_Planar) -> crate::OcctResult<i32>;
@@ -50929,13 +50921,13 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_SegmentedViewsVisible.hxx`:57 - `IGESDraw_SegmentedViewsVisible::Init()`
     pub fn IGESDraw_SegmentedViewsVisible_init(
         self_: *mut IGESDraw_SegmentedViewsVisible,
-        allViews: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViews: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allBreakpointParameters: *const Handle_NCollection_HArray1_double,
         allDisplayFlags: *const Handle_NCollection_HArray1_int,
         allColorValues: *const Handle_NCollection_HArray1_int,
-        allColorDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
+        allColorDefinitions: *const Handle_NCollection_HArray1_Handle_IGESGraph_Color,
         allLineFontValues: *const Handle_NCollection_HArray1_int,
-        allLineFontDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
+        allLineFontDefinitions: *const Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
         allLineWeights: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_SegmentedViewsVisible.hxx`:69 - `IGESDraw_SegmentedViewsVisible::IsSingle()`
@@ -52717,13 +52709,13 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:45 - `IGESDraw_ViewsVisible::Init()`
     pub fn IGESDraw_ViewsVisible_init(
         self_: *mut IGESDraw_ViewsVisible,
-        allViewEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-        allDisplayEntity: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allViewEntities: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+        allDisplayEntity: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:50 - `IGESDraw_ViewsVisible::InitImplied()`
     pub fn IGESDraw_ViewsVisible_init_implied(
         self_: *mut IGESDraw_ViewsVisible,
-        allDisplayEntity: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntity: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:54 - `IGESDraw_ViewsVisible::IsSingle()`
     pub fn IGESDraw_ViewsVisible_is_single(
@@ -53139,18 +53131,18 @@ unsafe extern "C" {
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:59 - `IGESDraw_ViewsVisibleWithAttr::Init()`
     pub fn IGESDraw_ViewsVisibleWithAttr_init(
         self_: *mut IGESDraw_ViewsVisibleWithAttr,
-        allViewEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
+        allViewEntities: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
         allLineFonts: *const Handle_NCollection_HArray1_int,
-        allLineDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
+        allLineDefinitions: *const Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
         allColorValues: *const Handle_NCollection_HArray1_int,
-        allColorDefinitions: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
+        allColorDefinitions: *const Handle_NCollection_HArray1_Handle_IGESGraph_Color,
         allLineWeights: *const Handle_NCollection_HArray1_int,
-        allDisplayEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:70 - `IGESDraw_ViewsVisibleWithAttr::InitImplied()`
     pub fn IGESDraw_ViewsVisibleWithAttr_init_implied(
         self_: *mut IGESDraw_ViewsVisibleWithAttr,
-        allDisplayEntity: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allDisplayEntity: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:74 - `IGESDraw_ViewsVisibleWithAttr::IsSingle()`
     pub fn IGESDraw_ViewsVisibleWithAttr_is_single(
@@ -54569,7 +54561,7 @@ unsafe extern "C" {
         aType: i32,
         aPreference: i32,
         aSurface: *const Handle_IGESData_IGESEntity,
-        allModelCurves: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allModelCurves: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         allSenses: *const Handle_NCollection_HArray1_int,
         allParameterCurves: *const Handle_IGESBasic_HArray1OfHArray1OfIGESEntity,
     ) -> *const std::ffi::c_char;
@@ -54608,7 +54600,7 @@ unsafe extern "C" {
     pub fn IGESGeom_Boundary_parameter_curves(
         self_: *const IGESGeom_Boundary,
         Index: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>;
     /// **Source:** `IGESGeom_Boundary.hxx`:103 - `IGESGeom_Boundary::ParameterCurve()`
     pub fn IGESGeom_Boundary_parameter_curve(
         self_: *const IGESGeom_Boundary,
@@ -54994,7 +54986,7 @@ unsafe extern "C" {
         self_: *mut IGESGeom_BoundedSurface,
         aType: i32,
         aSurface: *const Handle_IGESData_IGESEntity,
-        allBounds: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
+        allBounds: *const Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESGeom_BoundedSurface.hxx`:54 - `IGESGeom_BoundedSurface::RepresentationType()`
     pub fn IGESGeom_BoundedSurface_representation_type(
@@ -55823,7 +55815,7 @@ unsafe extern "C" {
     /// **Source:** `IGESGeom_CompositeCurve.hxx`:41 - `IGESGeom_CompositeCurve::Init()`
     pub fn IGESGeom_CompositeCurve_init(
         self_: *mut IGESGeom_CompositeCurve,
-        allEntities: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        allEntities: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESGeom_CompositeCurve.hxx`:45 - `IGESGeom_CompositeCurve::NbCurves()`
     pub fn IGESGeom_CompositeCurve_nb_curves(
@@ -64756,7 +64748,7 @@ unsafe extern "C" {
         aSurface: *const Handle_IGESData_IGESEntity,
         aFlag: i32,
         anOuter: *const Handle_IGESGeom_CurveOnSurface,
-        allInners: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
+        allInners: *const Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESGeom_TrimmedSurface.hxx`:63 - `IGESGeom_TrimmedSurface::Surface()`
     pub fn IGESGeom_TrimmedSurface_surface(
@@ -72449,7 +72441,7 @@ unsafe extern "C" {
     /// **Source:** `IGESSelect_AddFileComment.hxx`:52 - `IGESSelect_AddFileComment::AddLines()`
     pub fn IGESSelect_AddFileComment_add_lines(
         self_: *mut IGESSelect_AddFileComment,
-        lines: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        lines: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSelect_AddFileComment.hxx`:56 - `IGESSelect_AddFileComment::NbLines()`
     pub fn IGESSelect_AddFileComment_nb_lines(
@@ -72463,9 +72455,7 @@ unsafe extern "C" {
     /// **Source:** `IGESSelect_AddFileComment.hxx`:62 - `IGESSelect_AddFileComment::Lines()`
     pub fn IGESSelect_AddFileComment_lines(
         self_: *const IGESSelect_AddFileComment,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IGESSelect_AddFileComment.hxx`:66 - `IGESSelect_AddFileComment::Perform()`
     pub fn IGESSelect_AddFileComment_perform(
         self_: *const IGESSelect_AddFileComment,
@@ -73671,13 +73661,13 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn IGESSelect_CounterOfLevelNumber_inherited_AddList(
         self_: *mut IGESSelect_CounterOfLevelNumber,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: *const Handle_Interface_InterfaceModel,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:104 - `IFSelect_SignCounter::AddWithGraph()`
     pub fn IGESSelect_CounterOfLevelNumber_inherited_AddWithGraph(
         self_: *mut IGESSelect_CounterOfLevelNumber,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: *const Interface_Graph,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
@@ -74340,15 +74330,13 @@ unsafe extern "C" {
         self_: *const IGESSelect_EditDirPart,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:150 - `IFSelect_Editor::UpdateList()`
     pub fn IGESSelect_EditDirPart_inherited_UpdateList(
         self_: *const IGESSelect_EditDirPart,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -74538,15 +74526,13 @@ unsafe extern "C" {
         self_: *const IGESSelect_EditHeader,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:150 - `IFSelect_Editor::UpdateList()`
     pub fn IGESSelect_EditHeader_inherited_UpdateList(
         self_: *const IGESSelect_EditHeader,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -80006,7 +79992,7 @@ unsafe extern "C" {
     /// **Source:** `IGESSelect_ViewSorter.hxx`:64 - `IGESSelect_ViewSorter::AddList()`
     pub fn IGESSelect_ViewSorter_add_list(
         self_: *mut IGESSelect_ViewSorter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSelect_ViewSorter.hxx`:68 - `IGESSelect_ViewSorter::AddModel()`
     pub fn IGESSelect_ViewSorter_add_model(
@@ -80670,7 +80656,7 @@ unsafe extern "C" {
     /// **Source:** `IGESSolid_BooleanTree.hxx`:42 - `IGESSolid_BooleanTree::Init()`
     pub fn IGESSolid_BooleanTree_init(
         self_: *mut IGESSolid_BooleanTree,
-        operands: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        operands: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         operations: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_BooleanTree.hxx`:47 - `IGESSolid_BooleanTree::Length()`
@@ -82704,10 +82690,10 @@ unsafe extern "C" {
     /// **Source:** `IGESSolid_EdgeList.hxx`:52 - `IGESSolid_EdgeList::Init()`
     pub fn IGESSolid_EdgeList_init(
         self_: *mut IGESSolid_EdgeList,
-        curves: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        startVertexList: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
+        curves: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        startVertexList: *const Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
         startVertexIndex: *const Handle_NCollection_HArray1_int,
-        endVertexList: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
+        endVertexList: *const Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
         endVertexIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_EdgeList.hxx`:60 - `IGESSolid_EdgeList::NbEdges()`
@@ -83547,7 +83533,7 @@ unsafe extern "C" {
         self_: *mut IGESSolid_Face,
         aSurface: *const Handle_IGESData_IGESEntity,
         outerLoopFlag: bool,
-        loops: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
+        loops: *const Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_Face.hxx`:48 - `IGESSolid_Face::Surface()`
     pub fn IGESSolid_Face_surface(
@@ -84195,7 +84181,7 @@ unsafe extern "C" {
     pub fn IGESSolid_Loop_init(
         self_: *mut IGESSolid_Loop,
         types: *const Handle_NCollection_HArray1_int,
-        edges: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        edges: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         index: *const Handle_NCollection_HArray1_int,
         orient: *const Handle_NCollection_HArray1_int,
         nbParameterCurves: *const Handle_NCollection_HArray1_int,
@@ -84622,7 +84608,7 @@ unsafe extern "C" {
         self_: *mut IGESSolid_ManifoldSolid,
         aShell: *const Handle_IGESSolid_Shell,
         shellflag: bool,
-        voidShells: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
+        voidShells: *const Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
         voidShellFlags: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_ManifoldSolid.hxx`:54 - `IGESSolid_ManifoldSolid::Shell()`
@@ -86569,7 +86555,7 @@ unsafe extern "C" {
     /// **Source:** `IGESSolid_Shell.hxx`:46 - `IGESSolid_Shell::Init()`
     pub fn IGESSolid_Shell_init(
         self_: *mut IGESSolid_Shell,
-        allFaces: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face,
+        allFaces: *const Handle_NCollection_HArray1_Handle_IGESSolid_Face,
         allOrient: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_Shell.hxx`:52 - `IGESSolid_Shell::IsClosed()`
@@ -86967,8 +86953,8 @@ unsafe extern "C" {
     /// **Source:** `IGESSolid_SolidAssembly.hxx`:50 - `IGESSolid_SolidAssembly::Init()`
     pub fn IGESSolid_SolidAssembly_init(
         self_: *mut IGESSolid_SolidAssembly,
-        allItems: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-        allMatrices: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
+        allItems: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+        allMatrices: *const Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IGESSolid_SolidAssembly.hxx`:56 - `IGESSolid_SolidAssembly::HasBrep()`
     pub fn IGESSolid_SolidAssembly_has_brep(
@@ -93346,24 +93332,24 @@ unsafe extern "C" {
         self_: *const IGESToBRep_IGESBoundary,
     ) -> crate::OcctResult<*mut Handle_ShapeExtend_WireData>;
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:88 - `IGESToBRep_IGESBoundary::Transfer()`
-    pub fn IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handlencollectionharray1opencascadehandleigesdataigesentity_int(
+    pub fn IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_harr1_igesdata_igesentity_int(
         self_: *mut IGESToBRep_IGESBoundary,
         okCurve: *mut bool,
         okCurve3d: *mut bool,
         okCurve2d: *mut bool,
         curve3d: *const Handle_IGESData_IGESEntity,
         toreverse3d: bool,
-        curves2d: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        curves2d: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         number: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:111 - `IGESToBRep_IGESBoundary::Transfer()`
-    pub fn IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handlencollectionharray1opencascadehandleigesdataigesentity_bool_int_handleshapeextendwiredata(
+    pub fn IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_harr1_igesdata_igesentity_bool_int_handleshapeextendwiredata(
         self_: *mut IGESToBRep_IGESBoundary,
         okCurve: *mut bool,
         okCurve3d: *mut bool,
         okCurve2d: *mut bool,
         curve3d: *const Handle_ShapeExtend_WireData,
-        curves2d: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
+        curves2d: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
         toreverse2d: bool,
         number: i32,
         lsewd: *mut Handle_ShapeExtend_WireData,
@@ -94365,7 +94351,7 @@ unsafe extern "C" {
     /// **Source:** `IGESToBRep.hxx`:88 - `IGESToBRep::IGESCurveToSequenceOfIGESCurve`
     pub fn IGESToBRep_iges_curve_to_sequence_of_iges_curve(
         curve: *const Handle_IGESData_IGESEntity,
-        sequence: *mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        sequence: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `IGESToBRep.hxx`:92 - `IGESToBRep::TransferPCurve`
     pub fn IGESToBRep_transfer_p_curve(

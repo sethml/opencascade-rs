@@ -66,14 +66,12 @@
 #include <GeomFill_Trihedron.hxx>
 #include <GeomPlate_CurveConstraint.hxx>
 #include <IntPatch_GLine.hxx>
-#include <IntPatch_Line.hxx>
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_WLine.hxx>
 #include <IntRes2d_Domain.hxx>
 #include <IntSurf_Situation.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
-#include <Law_Function.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
@@ -99,10 +97,8 @@
 #include <TopOpeBRepBuild_GTool.hxx>
 #include <TopOpeBRepBuild_GTopo.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopOpeBRepBuild_Loop.hxx>
 #include <TopOpeBRepBuild_LoopClassifier.hxx>
 #include <TopOpeBRepBuild_LoopSet.hxx>
-#include <TopOpeBRepBuild_Pave.hxx>
 #include <TopOpeBRepBuild_PaveClassifier.hxx>
 #include <TopOpeBRepBuild_PaveSet.hxx>
 #include <TopOpeBRepBuild_ShapeListOfShape.hxx>
@@ -143,7 +139,6 @@
 #include <TopOpeBRepDS_GapTool.hxx>
 #include <TopOpeBRepDS_GeometryData.hxx>
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopOpeBRepDS_Interference.hxx>
 #include <TopOpeBRepDS_InterferenceIterator.hxx>
 #include <TopOpeBRepDS_InterferenceTool.hxx>
 #include <TopOpeBRepDS_Kind.hxx>
@@ -3156,6 +3151,10 @@ extern "C" const char* BRepFill_Sweep_set_force_approx_c1(BRepFill_Sweep* self_,
     try { self_->SetForceApproxC1(ForceApproxC1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFill_Sweep_build(BRepFill_Sweep* self_, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* ReversedEdges, NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher* Tapes, NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher* Rails, int32_t Transition, int32_t Continuity, int32_t Approx, int32_t Degmax, int32_t Segmax) {
+    try { self_->Build(*ReversedEdges, *Tapes, *Rails, static_cast<BRepFill_TransitionStyle>(Transition), static_cast<GeomAbs_Shape>(Continuity), static_cast<GeomFill_ApproxStyle>(Approx), Degmax, Segmax); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> BRepFill_Sweep_is_done(const BRepFill_Sweep* self_) {
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5219,6 +5218,18 @@ extern "C" const char* TopOpeBRepBuild_Area1dBuilder_init_area_builder(TopOpeBRe
     try { self_->InitAreaBuilder(*LS, *LC, ForceClass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(const TopOpeBRepBuild_Area1dBuilder* self_, Handle(TopOpeBRepBuild_Loop) const* L, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL, void* s) {
+    try { self_->ADD_Loop_TO_LISTOFLoop(*L, *LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(const TopOpeBRepBuild_Area1dBuilder* self_, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL2, void* s, void* s1, void* s2) {
+    try { self_->ADD_LISTOFLoop_TO_LISTOFLoop(*LOL1, *LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_Area1dBuilder_dump_list(NCollection_List_Handle_TopOpeBRepBuild_Loop const* L) {
+    try { TopOpeBRepBuild_Area1dBuilder::DumpList(*L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<const TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder(const TopOpeBRepBuild_Area1dBuilder* self_) { return {static_cast<const TopOpeBRepBuild_AreaBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(TopOpeBRepBuild_Area1dBuilder* self_) { return {static_cast<TopOpeBRepBuild_AreaBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<int32_t> TopOpeBRepBuild_Area1dBuilder_inherited_InitArea(TopOpeBRepBuild_Area1dBuilder* self) {
@@ -5297,6 +5308,14 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_Area2
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_Area2dBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL, void* s) {
+    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_Area2dBuilder* self, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL2, void* s, void* s1, void* s2) {
+    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void TopOpeBRepBuild_Area2dBuilder_destructor(TopOpeBRepBuild_Area2dBuilder* self_) { delete self_; }
 
 // ========================
@@ -5345,6 +5364,14 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_Area3
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_Area3dBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL, void* s) {
+    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_Area3dBuilder* self, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL2, void* s, void* s1, void* s2) {
+    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void TopOpeBRepBuild_Area3dBuilder_destructor(TopOpeBRepBuild_Area3dBuilder* self_) { delete self_; }
 
 // ========================
@@ -5390,6 +5417,14 @@ extern "C" const char* TopOpeBRepBuild_AreaBuilder_next_loop(TopOpeBRepBuild_Are
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_AreaBuilder_loop_(const TopOpeBRepBuild_AreaBuilder* self_) {
     try { return {&(self_->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(const TopOpeBRepBuild_AreaBuilder* self_, Handle(TopOpeBRepBuild_Loop) const* L, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL, void* s) {
+    try { self_->ADD_Loop_TO_LISTOFLoop(*L, *LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(const TopOpeBRepBuild_AreaBuilder* self_, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop* LOL2, void* s, void* s1, void* s2) {
+    try { self_->ADD_LISTOFLoop_TO_LISTOFLoop(*LOL1, *LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopOpeBRepBuild_AreaBuilder_destructor(TopOpeBRepBuild_AreaBuilder* self_) { delete self_; }
 
@@ -7082,6 +7117,14 @@ extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_InitAreaBuilder(Top
     try { self->InitAreaBuilder(LS, LC, ForceClass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_EdgeBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL, void* s) {
+    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_EdgeBuilder* self, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL2, void* s, void* s1, void* s2) {
+    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(TopOpeBRepBuild_EdgeBuilder* self) {
     try { return {self->InitArea(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7163,6 +7206,14 @@ extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_NextLoop(TopOpe
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(const TopOpeBRepBuild_FaceAreaBuilder* self) {
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_FaceAreaBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL, void* s) {
+    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_FaceAreaBuilder* self, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL2, void* s, void* s1, void* s2) {
+    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopOpeBRepBuild_FaceAreaBuilder_destructor(TopOpeBRepBuild_FaceAreaBuilder* self_) { delete self_; }
 
@@ -7871,6 +7922,10 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop)*> TopOpeBRepBuild_LoopSet_loo
     try { return {new Handle(TopOpeBRepBuild_Loop)(self_->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepBuild_Loop*> TopOpeBRepBuild_LoopSet_change_list_of_loop(TopOpeBRepBuild_LoopSet* self_) {
+    try { return {&(self_->ChangeListOfLoop()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TopOpeBRepBuild_LoopSet_init_loop(TopOpeBRepBuild_LoopSet* self_) {
     try { self_->InitLoop(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8087,8 +8142,16 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_PaveSet_closed_vertices(TopOpeBRepBu
     try { return {self_->ClosedVertices(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TopOpeBRepBuild_PaveSet_sort_pave(NCollection_List_Handle_TopOpeBRepBuild_Pave const* Lin, NCollection_List_Handle_TopOpeBRepBuild_Pave* Lout) {
+    try { TopOpeBRepBuild_PaveSet::SortPave(*Lin, *Lout); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<const TopOpeBRepBuild_LoopSet*> TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet(const TopOpeBRepBuild_PaveSet* self_) { return {static_cast<const TopOpeBRepBuild_LoopSet*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_LoopSet*> TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet_mut(TopOpeBRepBuild_PaveSet* self_) { return {static_cast<TopOpeBRepBuild_LoopSet*>(self_), nullptr}; }
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepBuild_Loop*> TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(TopOpeBRepBuild_PaveSet* self) {
+    try { return {&(self->ChangeListOfLoop()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void TopOpeBRepBuild_PaveSet_destructor(TopOpeBRepBuild_PaveSet* self_) { delete self_; }
 
 // ========================
@@ -8534,6 +8597,14 @@ extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_NextLoop(TopOp
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(const TopOpeBRepBuild_SolidAreaBuilder* self) {
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_SolidAreaBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL, void* s) {
+    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_SolidAreaBuilder* self, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL1, NCollection_List_Handle_TopOpeBRepBuild_Loop& LOL2, void* s, void* s1, void* s2) {
+    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopOpeBRepBuild_SolidAreaBuilder_destructor(TopOpeBRepBuild_SolidAreaBuilder* self_) { delete self_; }
 
@@ -9025,12 +9096,20 @@ extern "C" OcctResult<TopOpeBRepDS_Association*> TopOpeBRepDS_Association_ctor()
     try { return {new TopOpeBRepDS_Association(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepDS_Association_associate(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
+extern "C" const char* TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
     try { self_->Associate(*I, *K); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_list_topopebrepds_interference(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI) {
+    try { self_->Associate(*I, *LI); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Association_has_association(const TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->HasAssociation(*I), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_Association_associated(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I) {
+    try { return {&(self_->Associated(*I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Association_are_associated(const TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
@@ -9299,6 +9378,10 @@ extern "C" OcctResult<bool> TopOpeBRepDS_Check_chk_intg(TopOpeBRepDS_Check* self
     try { return {self_->ChkIntg(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> TopOpeBRepDS_Check_chk_intg_interf(TopOpeBRepDS_Check* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI) {
+    try { return {self_->ChkIntgInterf(*LI), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TopOpeBRepDS_Check_check_ds(TopOpeBRepDS_Check* self_, int32_t i, int32_t K) {
     try { return {self_->CheckDS(i, static_cast<TopOpeBRepDS_Kind>(K)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9547,6 +9630,14 @@ extern "C" const char* TopOpeBRepDS_CurveData_inherited_Assign(TopOpeBRepDS_Curv
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_CurveData_inherited_Interferences(const TopOpeBRepDS_CurveData* self) {
+    try { return {&(self->Interferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_CurveData_inherited_ChangeInterferences(TopOpeBRepDS_CurveData* self) {
+    try { return {&(self->ChangeInterferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TopOpeBRepDS_CurveData_inherited_AddInterference(TopOpeBRepDS_CurveData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9607,6 +9698,10 @@ extern "C" void TopOpeBRepDS_CurveExplorer_destructor(TopOpeBRepDS_CurveExplorer
 // TopOpeBRepDS_CurveIterator wrappers
 // ========================
 
+extern "C" OcctResult<TopOpeBRepDS_CurveIterator*> TopOpeBRepDS_CurveIterator_ctor_list_topopebrepds_interference(NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { return {new TopOpeBRepDS_CurveIterator(*L), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TopOpeBRepDS_CurveIterator_match_interference(const TopOpeBRepDS_CurveIterator* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->MatchInterference(*I), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9625,6 +9720,10 @@ extern "C" OcctResult<Handle(Geom2d_Curve) const*> TopOpeBRepDS_CurveIterator_p_
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_CurveIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_CurveIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
+extern "C" const char* TopOpeBRepDS_CurveIterator_inherited_Init(TopOpeBRepDS_CurveIterator* self, NCollection_List_Handle_TopOpeBRepDS_Interference const& L) {
+    try { self->Init(L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TopOpeBRepDS_CurveIterator_inherited_GeometryKind(TopOpeBRepDS_CurveIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9895,6 +9994,46 @@ extern "C" const char* TopOpeBRepDS_DataStructure_init_section_edges(TopOpeBRepD
 }
 extern "C" OcctResult<int32_t> TopOpeBRepDS_DataStructure_add_section_edge(TopOpeBRepDS_DataStructure* self_, TopoDS_Edge const* E) {
     try { return {self_->AddSectionEdge(*E), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_DataStructure_surface_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->SurfaceInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_DataStructure_change_surface_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->ChangeSurfaceInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_DataStructure_curve_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->CurveInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_DataStructure_change_curve_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->ChangeCurveInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_DataStructure_point_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->PointInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_DataStructure_change_point_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->ChangePointInterferences(I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_DataStructure_shape_interferences_shape_bool(const TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S, bool FindKeep) {
+    try { return {&(self_->ShapeInterferences(*S, FindKeep)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_DataStructure_change_shape_interferences_shape(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
+    try { return {&(self_->ChangeShapeInterferences(*S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_DataStructure_shape_interferences_int_bool(const TopOpeBRepDS_DataStructure* self_, int32_t I, bool FindKeep) {
+    try { return {&(self_->ShapeInterferences(I, FindKeep)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_DataStructure_change_shape_interferences_int(TopOpeBRepDS_DataStructure* self_, int32_t I) {
+    try { return {&(self_->ChangeShapeInterferences(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepDS_DataStructure_shape_same_domain_shape(const TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
@@ -10659,6 +10798,34 @@ extern "C" const char* TopOpeBRepDS_GapFiller_perform(TopOpeBRepDS_GapFiller* se
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TopOpeBRepDS_GapFiller_find_associated_points(TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { self_->FindAssociatedPoints(*I, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> TopOpeBRepDS_GapFiller_check_connexity(TopOpeBRepDS_GapFiller* self_, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { return {self_->CheckConnexity(*LI), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TopOpeBRepDS_GapFiller_add_points_on_shape(TopOpeBRepDS_GapFiller* self_, TopoDS_Shape const* S, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { self_->AddPointsOnShape(*S, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_GapFiller_add_points_on_connex_shape(TopOpeBRepDS_GapFiller* self_, TopoDS_Shape const* F, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI) {
+    try { self_->AddPointsOnConnexShape(*F, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_face(TopOpeBRepDS_GapFiller* self_, TopoDS_Face const* F, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { self_->FilterByFace(*F, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_edge(TopOpeBRepDS_GapFiller* self_, TopoDS_Edge const* E, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { self_->FilterByEdge(*E, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_incident_distance(TopOpeBRepDS_GapFiller* self_, TopoDS_Face const* F, Handle(TopOpeBRepDS_Interference) const* I, NCollection_List_Handle_TopOpeBRepDS_Interference* LI) {
+    try { self_->FilterByIncidentDistance(*F, *I, *LI); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> TopOpeBRepDS_GapFiller_is_on_face(const TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I, TopoDS_Face const* F) {
     try { return {self_->IsOnFace(*I, *F), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10692,6 +10859,18 @@ extern "C" OcctResult<TopOpeBRepDS_GapTool*> TopOpeBRepDS_GapTool_ctor_handletop
 extern "C" const char* TopOpeBRepDS_GapTool_init(TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_HDataStructure) const* HDS) {
     try { self_->Init(*HDS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_GapTool_interferences(const TopOpeBRepDS_GapTool* self_, int32_t IndexPoint) {
+    try { return {&(self_->Interferences(IndexPoint)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_GapTool_same_interferences(const TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I) {
+    try { return {&(self_->SameInterferences(*I)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_GapTool_change_same_interferences(TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I) {
+    try { return {&(self_->ChangeSameInterferences(*I)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_GapTool_curve(const TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_Curve* C) {
     try { return {self_->Curve(*I, *C), nullptr}; }
@@ -10788,6 +10967,14 @@ extern "C" OcctResult<TopOpeBRepDS_GeometryData*> TopOpeBRepDS_GeometryData_ctor
 extern "C" const char* TopOpeBRepDS_GeometryData_assign(TopOpeBRepDS_GeometryData* self_, TopOpeBRepDS_GeometryData const* Other) {
     try { self_->Assign(*Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_GeometryData_interferences(const TopOpeBRepDS_GeometryData* self_) {
+    try { return {&(self_->Interferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_GeometryData_change_interferences(TopOpeBRepDS_GeometryData* self_) {
+    try { return {&(self_->ChangeInterferences()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* TopOpeBRepDS_GeometryData_add_interference(TopOpeBRepDS_GeometryData* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { self_->AddInterference(*I); return nullptr; }
@@ -10939,12 +11126,44 @@ extern "C" OcctResult<bool> TopOpeBRepDS_HDataStructure_edges_same_parameter(con
     try { return {self_->EdgesSameParameter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference2(const TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* L1, NCollection_List_Handle_TopOpeBRepDS_Interference* L2) {
+    try { self_->SortOnParameter(*L1, *L2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference(const TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference* L) {
+    try { self_->SortOnParameter(*L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_min_max_on_parameter(const TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* L, double* Min, double* Max) {
+    try { self_->MinMaxOnParameter(*L, *Min, *Max); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_list_topopebrepds_interference_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, NCollection_List_Handle_TopOpeBRepDS_Interference* LI, TCollection_AsciiString const* str) {
+    try { self_->StoreInterference(*I, *LI, *str); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
     try { self_->StoreInterference(*I, *S, *str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, int32_t IS, TCollection_AsciiString const* str) {
     try { self_->StoreInterference(*I, IS, *str); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
+    try { self_->StoreInterferences(*LI, *S, *str); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI, int32_t IS, TCollection_AsciiString const* str) {
+    try { self_->StoreInterferences(*LI, IS, *str); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
+    try { self_->ClearStoreInterferences(*LI, *S, *str); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* LI, int32_t IS, TCollection_AsciiString const* str) {
+    try { self_->ClearStoreInterferences(*LI, IS, *str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_HDataStructure_dynamic_type(const TopOpeBRepDS_HDataStructure* self_) {
@@ -11205,6 +11424,14 @@ extern "C" void TopOpeBRepDS_Interference_destructor(TopOpeBRepDS_Interference* 
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_InterferenceIterator_ctor() {
     try { return {new TopOpeBRepDS_InterferenceIterator(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_InterferenceIterator_ctor_list_topopebrepds_interference(NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { return {new TopOpeBRepDS_InterferenceIterator(*L), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TopOpeBRepDS_InterferenceIterator_init(TopOpeBRepDS_InterferenceIterator* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { self_->Init(*L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TopOpeBRepDS_InterferenceIterator_geometry_kind(TopOpeBRepDS_InterferenceIterator* self_, int32_t GK) {
     try { self_->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
@@ -11484,6 +11711,14 @@ extern "C" const char* TopOpeBRepDS_PointData_inherited_Assign(TopOpeBRepDS_Poin
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_PointData_inherited_Interferences(const TopOpeBRepDS_PointData* self) {
+    try { return {&(self->Interferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_PointData_inherited_ChangeInterferences(TopOpeBRepDS_PointData* self) {
+    try { return {&(self->ChangeInterferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TopOpeBRepDS_PointData_inherited_AddInterference(TopOpeBRepDS_PointData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11544,6 +11779,10 @@ extern "C" void TopOpeBRepDS_PointExplorer_destructor(TopOpeBRepDS_PointExplorer
 // TopOpeBRepDS_PointIterator wrappers
 // ========================
 
+extern "C" OcctResult<TopOpeBRepDS_PointIterator*> TopOpeBRepDS_PointIterator_ctor_list_topopebrepds_interference(NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { return {new TopOpeBRepDS_PointIterator(*L), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TopOpeBRepDS_PointIterator_match_interference(const TopOpeBRepDS_PointIterator* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->MatchInterference(*I), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11582,6 +11821,10 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_PointIterator_support(const TopOpeBR
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_PointIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_PointIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
+extern "C" const char* TopOpeBRepDS_PointIterator_inherited_Init(TopOpeBRepDS_PointIterator* self, NCollection_List_Handle_TopOpeBRepDS_Interference const& L) {
+    try { self->Init(L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TopOpeBRepDS_PointIterator_inherited_GeometryKind(TopOpeBRepDS_PointIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11636,6 +11879,14 @@ extern "C" void TopOpeBRepDS_Reducer_destructor(TopOpeBRepDS_Reducer* self_) { d
 
 extern "C" OcctResult<TopOpeBRepDS_ShapeData*> TopOpeBRepDS_ShapeData_ctor() {
     try { return {new TopOpeBRepDS_ShapeData(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_ShapeData_interferences(const TopOpeBRepDS_ShapeData* self_) {
+    try { return {&(self_->Interferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_ShapeData_change_interferences(TopOpeBRepDS_ShapeData* self_) {
+    try { return {&(self_->ChangeInterferences()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_ShapeData_keep(const TopOpeBRepDS_ShapeData* self_) {
@@ -12120,6 +12371,14 @@ extern "C" const char* TopOpeBRepDS_SurfaceData_inherited_Assign(TopOpeBRepDS_Su
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_SurfaceData_inherited_Interferences(const TopOpeBRepDS_SurfaceData* self) {
+    try { return {&(self->Interferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_SurfaceData_inherited_ChangeInterferences(TopOpeBRepDS_SurfaceData* self) {
+    try { return {&(self->ChangeInterferences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TopOpeBRepDS_SurfaceData_inherited_AddInterference(TopOpeBRepDS_SurfaceData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12180,6 +12439,10 @@ extern "C" void TopOpeBRepDS_SurfaceExplorer_destructor(TopOpeBRepDS_SurfaceExpl
 // TopOpeBRepDS_SurfaceIterator wrappers
 // ========================
 
+extern "C" OcctResult<TopOpeBRepDS_SurfaceIterator*> TopOpeBRepDS_SurfaceIterator_ctor_list_topopebrepds_interference(NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { return {new TopOpeBRepDS_SurfaceIterator(*L), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> TopOpeBRepDS_SurfaceIterator_current(const TopOpeBRepDS_SurfaceIterator* self_) {
     try { return {self_->Current(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -12190,6 +12453,10 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_SurfaceIterator_orientation(const To
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_SurfaceIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_SurfaceIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
+extern "C" const char* TopOpeBRepDS_SurfaceIterator_inherited_Init(TopOpeBRepDS_SurfaceIterator* self, NCollection_List_Handle_TopOpeBRepDS_Interference const& L) {
+    try { self->Init(L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TopOpeBRepDS_SurfaceIterator_inherited_GeometryKind(TopOpeBRepDS_SurfaceIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12240,8 +12507,24 @@ extern "C" const char* TopOpeBRepDS_TKI_clear(TopOpeBRepDS_TKI* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TopOpeBRepDS_TKI_fill_on_geometry(TopOpeBRepDS_TKI* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { self_->FillOnGeometry(*L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TopOpeBRepDS_TKI_fill_on_support(TopOpeBRepDS_TKI* self_, NCollection_List_Handle_TopOpeBRepDS_Interference const* L) {
+    try { self_->FillOnSupport(*L); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> TopOpeBRepDS_TKI_is_bound(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
     try { return {self_->IsBound(static_cast<TopOpeBRepDS_Kind>(K), G), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_TKI_interferences(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
+    try { return {&(self_->Interferences(static_cast<TopOpeBRepDS_Kind>(K), G)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_TKI_change_interferences(TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
+    try { return {&(self_->ChangeInterferences(static_cast<TopOpeBRepDS_Kind>(K), G)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_TKI_has_interferences(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
@@ -12271,6 +12554,24 @@ extern "C" OcctResult<bool> TopOpeBRepDS_TKI_more(const TopOpeBRepDS_TKI* self_)
 extern "C" const char* TopOpeBRepDS_TKI_next(TopOpeBRepDS_TKI* self_) {
     try { self_->Next(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference const*> TopOpeBRepDS_TKI_value(const TopOpeBRepDS_TKI* self_, int32_t& K, int32_t* G) {
+    try {
+    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
+    auto result_ = &(self_->Value(K_enum_, *G));
+    K = static_cast<int32_t>(K_enum_);
+    return {result_, nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_TKI_change_value(TopOpeBRepDS_TKI* self_, int32_t& K, int32_t* G) {
+    try {
+    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
+    auto result_ = &(self_->ChangeValue(K_enum_, *G));
+    K = static_cast<int32_t>(K_enum_);
+    return {result_, nullptr};
+    }
+    OCCT_CATCH_RETURN
 }
 extern "C" void TopOpeBRepDS_TKI_destructor(TopOpeBRepDS_TKI* self_) { delete self_; }
 

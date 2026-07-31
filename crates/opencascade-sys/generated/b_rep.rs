@@ -117,6 +117,21 @@ impl Builder {
         })
     }
 
+    /// **Source:** `BRep_Builder.hxx`:84 - `BRep_Builder::MakeFace()`
+    /// Makes a Face with a list of triangulations and active one.
+    /// Use NULL active triangulation to set the first triangulation in list as active.
+    /// The triangulations is in the same reference system than the TFace.
+    pub fn make_face_face_list_poly_triangulation_handlepolytriangulation(
+        &self,
+        theFace: &mut crate::topo_ds::Face,
+        theTriangulations: &crate::ffi_types::NCollection_List_Handle_Poly_Triangulation,
+        theActiveTriangulation: &crate::ffi_types::Handle_Poly_Triangulation,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::BRep_Builder_make_face_face_list_poly_triangulation_handlepolytriangulation(self as *const Self, theFace, theTriangulations, theActiveTriangulation)
+        })
+    }
+
     /// **Source:** `BRep_Builder.hxx`:92 - `BRep_Builder::UpdateFace()`
     /// Updates the face F using the tolerance value Tol,
     /// surface S and location Location.
@@ -962,15 +977,6 @@ impl Builder {
         })
     }
 }
-
-// ── Skipped symbols for Builder (1 total) ──
-// SKIPPED: **Source:** `BRep_Builder.hxx`:84 - `BRep_Builder::MakeFace`
-//   method: Makes a Face with a list of triangulations and active one.
-//   method: Use NULL active triangulation to set the first triangulation in list as active.
-//   method: The triangulations is in the same reference system than the TFace.
-//   Reason: has unbindable types: param 'theTriangulations': unresolved template type (NCollection_List<occ::handle<Poly_Triangulation>> const&)
-//   // pub fn make_face(&self, theFace: &mut Face, theTriangulations: /* NCollection_List<occ::handle<Poly_Triangulation>> const& */, theActiveTriangulation: &HandleTriangulation);
-//
 
 // ========================
 // From BRep_Curve3D.hxx
@@ -9202,6 +9208,26 @@ impl TEdge {
         })
     }
 
+    /// **Source:** `BRep_TEdge.hxx`:66 - `BRep_TEdge::Curves()`
+    pub fn curves(&self) -> &crate::ffi_types::NCollection_List_Handle_BRep_CurveRepresentation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::BRep_TEdge_curves(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BRep_TEdge.hxx`:68 - `BRep_TEdge::ChangeCurves()`
+    pub fn change_curves(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_BRep_CurveRepresentation {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBRep::BRep_TEdge_change_curves(
+                self as *mut Self,
+            )))
+        }
+    }
+
     /// **Source:** `BRep_TEdge.hxx`:71 - `BRep_TEdge::EmptyCopy()`
     /// Returns a copy of the TShape with no sub-shapes.
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
@@ -9508,16 +9534,6 @@ impl Handle_BRep_TEdge {
     }
 }
 
-// ── Skipped symbols for TEdge (2 total) ──
-// SKIPPED: **Source:** `BRep_TEdge.hxx`:66 - `BRep_TEdge::Curves`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BRep_CurveRepresentation>> const&)
-//   // pub fn curves(&self) -> /* NCollection_List<occ::handle<BRep_CurveRepresentation>> const& */;
-//
-// SKIPPED: **Source:** `BRep_TEdge.hxx`:68 - `BRep_TEdge::ChangeCurves`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BRep_CurveRepresentation>>&)
-//   // pub fn change_curves(&mut self) -> /* NCollection_List<occ::handle<BRep_CurveRepresentation>>& */;
-//
-
 // ========================
 // From BRep_TFace.hxx
 // ========================
@@ -9695,6 +9711,33 @@ impl TFace {
                 crate::ffi_extern_TKBRep::BRep_TFace_empty_copy(self as *const Self),
             ))
         }
+    }
+
+    /// **Source:** `BRep_TFace.hxx`:112 - `BRep_TFace::Triangulations()`
+    /// Returns the list of available face triangulations.
+    pub fn triangulations(&self) -> &crate::ffi_types::NCollection_List_Handle_Poly_Triangulation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::BRep_TFace_triangulations(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BRep_TFace.hxx`:123 - `BRep_TFace::Triangulations()`
+    /// Sets input list of triangulations and currently active triangulation for this face.
+    /// If list is empty internal list of triangulations will be cleared and active triangulation will
+    /// be nullified. Else this list will be saved and the input active triangulation be saved as
+    /// active. Use NULL active triangulation to set the first triangulation in list as active. Note:
+    /// the method throws exception if there is any NULL triangulation in input list or
+    /// if this list doesn't contain input active triangulation.
+    pub fn triangulations_list_poly_triangulation_handlepolytriangulation(
+        &mut self,
+        theTriangulations: &crate::ffi_types::NCollection_List_Handle_Poly_Triangulation,
+        theActiveTriangulation: &crate::ffi_types::Handle_Poly_Triangulation,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::BRep_TFace_triangulations_list_poly_triangulation_handlepolytriangulation(self as *mut Self, theTriangulations, theActiveTriangulation)
+        })
     }
 
     /// **Source:** `BRep_TFace.hxx`:128 - `BRep_TFace::NbTriangulations()`
@@ -10011,20 +10054,6 @@ impl Handle_BRep_TFace {
     }
 }
 
-// ── Skipped symbols for TFace (2 total) ──
-// SKIPPED: **Source:** `BRep_TFace.hxx`:112 - `BRep_TFace::Triangulations`
-//   method: Returns the list of available face triangulations.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Poly_Triangulation>> const&)
-//   // pub fn triangulations(&self) -> /* NCollection_List<occ::handle<Poly_Triangulation>> const& */;
-//
-// SKIPPED: **Source:** `BRep_TFace.hxx`:123 - `BRep_TFace::Triangulations`
-//   method: Sets input list of triangulations and currently active triangulation for this face.
-//   method: If list is empty internal list of triangulations will be cleared and active triangulation will
-//   method: be nullified. Else this list will be saved and the input active triangulation be saved as
-//   Reason: has unbindable types: param 'theTriangulations': unresolved template type (NCollection_List<occ::handle<Poly_Triangulation>> const&)
-//   // pub fn triangulations(&mut self, theTriangulations: /* NCollection_List<occ::handle<Poly_Triangulation>> const& */, theActiveTriangulation: &HandleTriangulation);
-//
-
 // ========================
 // From BRep_TVertex.hxx
 // ========================
@@ -10089,6 +10118,26 @@ impl TVertex {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::BRep_TVertex_pnt_pnt(self as *mut Self, P)
         })
+    }
+
+    /// **Source:** `BRep_TVertex.hxx`:51 - `BRep_TVertex::Points()`
+    pub fn points(&self) -> &crate::ffi_types::NCollection_List_Handle_BRep_PointRepresentation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::BRep_TVertex_points(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `BRep_TVertex.hxx`:53 - `BRep_TVertex::ChangePoints()`
+    pub fn change_points(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_BRep_PointRepresentation {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBRep::BRep_TVertex_change_points(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `BRep_TVertex.hxx`:56 - `BRep_TVertex::EmptyCopy()`
@@ -10400,16 +10449,6 @@ impl Handle_BRep_TVertex {
     }
 }
 
-// ── Skipped symbols for TVertex (2 total) ──
-// SKIPPED: **Source:** `BRep_TVertex.hxx`:51 - `BRep_TVertex::Points`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BRep_PointRepresentation>> const&)
-//   // pub fn points(&self) -> /* NCollection_List<occ::handle<BRep_PointRepresentation>> const& */;
-//
-// SKIPPED: **Source:** `BRep_TVertex.hxx`:53 - `BRep_TVertex::ChangePoints`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BRep_PointRepresentation>>&)
-//   // pub fn change_points(&mut self) -> /* NCollection_List<occ::handle<BRep_PointRepresentation>>& */;
-//
-
 // ========================
 // From BRep_Tool.hxx
 // ========================
@@ -10492,6 +10531,23 @@ impl Tool {
                 theFace,
                 theLocation,
                 theMeshPurpose,
+            )))
+        }
+    }
+
+    /// **Source:** `BRep_Tool.hxx`:82 - `BRep_Tool::Triangulations()`
+    /// Returns all triangulations of the face.
+    /// @param[in] theFace  the input face.
+    /// @param[out] theLocation  the face location.
+    /// @return list of all available face triangulations.
+    pub fn triangulations(
+        theFace: &crate::topo_ds::Face,
+        theLocation: &mut crate::top_loc::Location,
+    ) -> &'static crate::ffi_types::NCollection_List_Handle_Poly_Triangulation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::BRep_Tool_triangulations(
+                theFace,
+                theLocation,
             )))
         }
     }
@@ -11101,12 +11157,3 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (1 total) ──
-// SKIPPED: **Source:** `BRep_Tool.hxx`:82 - `BRep_Tool::Triangulations`
-//   static_method: Returns all triangulations of the face.
-//   static_method: @param[in] theFace  the input face.
-//   static_method: @param[out] theLocation  the face location.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Poly_Triangulation>> const&)
-//   // pub fn triangulations(theFace: &Face, theLocation: &mut Location) -> /* NCollection_List<occ::handle<Poly_Triangulation>> const& */;
-//

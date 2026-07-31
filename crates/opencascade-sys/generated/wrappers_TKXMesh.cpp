@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BRepMesh_DiscretAlgoFactory.hxx>
 #include <BRepMesh_DiscretRoot.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>

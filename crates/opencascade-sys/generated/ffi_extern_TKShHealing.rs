@@ -31,17 +31,29 @@ unsafe extern "C" {
         revsewd: *mut bool,
         revnextsewd: *mut bool,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:73 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
+    pub fn ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeombsplinecurve_seq_geom_curve(
+        self_: *const ShapeAlgo_AlgoContainer,
+        bspline: *const Handle_Geom_BSplineCurve,
+        seq: *mut NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:77 - `ShapeAlgo_AlgoContainer::ApproxBSplineCurve()`
+    pub fn ShapeAlgo_AlgoContainer_approx_b_spline_curve_handlegeom2dbsplinecurve_seq_geom2d_curve(
+        self_: *const ShapeAlgo_AlgoContainer,
+        bspline: *const Handle_Geom2d_BSplineCurve,
+        seq: *mut NCollection_Sequence_Handle_Geom2d_Curve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:81 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
-    pub fn ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(
+    pub fn ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(
         self_: *const ShapeAlgo_AlgoContainer,
         BS: *const Handle_Geom_BSplineCurve,
-        seqBS: *mut Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
+        seqBS: *mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:87 - `ShapeAlgo_AlgoContainer::C0BSplineToSequenceOfC1BSplineCurve()`
-    pub fn ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(
+    pub fn ShapeAlgo_AlgoContainer_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(
         self_: *const ShapeAlgo_AlgoContainer,
         BS: *const Handle_Geom2d_BSplineCurve,
-        seqBS: *mut Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
+        seqBS: *mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ShapeAlgo_AlgoContainer.hxx`:92 - `ShapeAlgo_AlgoContainer::C0ShapeToC1Shape()`
     pub fn ShapeAlgo_AlgoContainer_c0_shape_to_c1_shape(
@@ -1166,15 +1178,11 @@ unsafe extern "C" {
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:116 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBounds()`
     pub fn ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(
         self_: *const ShapeAnalysis_FreeBoundsProperties,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData>;
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:120 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds()`
     pub fn ShapeAnalysis_FreeBoundsProperties_open_free_bounds(
         self_: *const ShapeAnalysis_FreeBoundsProperties,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData>;
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:125 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBound()`
     pub fn ShapeAnalysis_FreeBoundsProperties_closed_free_bound(
         self_: *const ShapeAnalysis_FreeBoundsProperties,
@@ -5491,26 +5499,26 @@ unsafe extern "C" {
     pub fn ShapeExtend_CompositeSurface_ctor(
     ) -> crate::OcctResult<*mut ShapeExtend_CompositeSurface>;
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:75 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
-    pub fn ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(
-        GridSurf: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+    pub fn ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_parametrisation(
+        GridSurf: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
         param: i32,
     ) -> crate::OcctResult<*mut ShapeExtend_CompositeSurface>;
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:80 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
-    pub fn ShapeExtend_CompositeSurface_ctor_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(
-        GridSurf: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+    pub fn ShapeExtend_CompositeSurface_ctor_handlencollectionharray2handlegeomsurface_arr1_double2(
+        GridSurf: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
         UJoints: *const NCollection_Array1_double,
         VJoints: *const NCollection_Array1_double,
     ) -> crate::OcctResult<*mut ShapeExtend_CompositeSurface>;
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:97 - `ShapeExtend_CompositeSurface::Init()`
-    pub fn ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_parametrisation(
+    pub fn ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_parametrisation(
         self_: *mut ShapeExtend_CompositeSurface,
-        GridSurf: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+        GridSurf: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
         param: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:111 - `ShapeExtend_CompositeSurface::Init()`
-    pub fn ShapeExtend_CompositeSurface_init_handlencollectionharray2opencascadehandlegeomsurface_arr1_double2(
+    pub fn ShapeExtend_CompositeSurface_init_handlencollectionharray2handlegeomsurface_arr1_double2(
         self_: *mut ShapeExtend_CompositeSurface,
-        GridSurf: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
+        GridSurf: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
         UJoints: *const NCollection_Array1_double,
         VJoints: *const NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
@@ -5531,7 +5539,7 @@ unsafe extern "C" {
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:126 - `ShapeExtend_CompositeSurface::Patches()`
     pub fn ShapeExtend_CompositeSurface_patches(
         self_: *const ShapeExtend_CompositeSurface,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray2_Handle_Geom_Surface>;
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:132 - `ShapeExtend_CompositeSurface::UJointValues()`
     pub fn ShapeExtend_CompositeSurface_u_joint_values(
         self_: *const ShapeExtend_CompositeSurface,
@@ -6070,6 +6078,12 @@ unsafe extern "C" {
         message: *const Message_Msg,
         gravity: i32,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:65 - `ShapeExtend_MsgRegistrator::MapTransient()`
+    pub fn ShapeExtend_MsgRegistrator_map_transient(
+        self_: *const ShapeExtend_MsgRegistrator,
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg,
+    >;
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:69 - `ShapeExtend_MsgRegistrator::MapShape()`
     pub fn ShapeExtend_MsgRegistrator_map_shape(self_: *const ShapeExtend_MsgRegistrator) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher>;
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:71 - `ShapeExtend_MsgRegistrator::DynamicType()`
@@ -10863,7 +10877,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
     pub fn ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(
         self_: *const ShapeUpgrade_ConvertCurve2dToBezier,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom2d_Curve>;
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:46 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(
         self_: *mut ShapeUpgrade_ConvertCurve2dToBezier,
@@ -11038,7 +11052,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
     pub fn ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(
         self_: *const ShapeUpgrade_ConvertCurve3dToBezier,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom_Curve>;
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:46 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(
         self_: *mut ShapeUpgrade_ConvertCurve3dToBezier,
@@ -13482,7 +13496,7 @@ unsafe extern "C" {
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
     pub fn ShapeUpgrade_SplitCurve2d_get_curves(
         self_: *const ShapeUpgrade_SplitCurve2d,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom2d_Curve>;
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::DynamicType()`
     pub fn ShapeUpgrade_SplitCurve2d_dynamic_type(
         self_: *const ShapeUpgrade_SplitCurve2d,
@@ -13705,7 +13719,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:51 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
     pub fn ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(
         self_: *const ShapeUpgrade_SplitCurve2dContinuity,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom2d_Curve>;
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:46 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(
         self_: *mut ShapeUpgrade_SplitCurve2dContinuity,
@@ -13779,7 +13793,7 @@ unsafe extern "C" {
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
     pub fn ShapeUpgrade_SplitCurve3d_get_curves(
         self_: *const ShapeUpgrade_SplitCurve3d,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom_Curve>;
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::DynamicType()`
     pub fn ShapeUpgrade_SplitCurve3d_dynamic_type(
         self_: *const ShapeUpgrade_SplitCurve3d,
@@ -14006,7 +14020,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:51 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
     pub fn ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(
         self_: *const ShapeUpgrade_SplitCurve3dContinuity,
-    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_opencascade_handle_Geom_Curve>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Handle_Geom_Curve>;
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:46 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(
         self_: *mut ShapeUpgrade_SplitCurve3dContinuity,
@@ -15408,14 +15422,14 @@ unsafe extern "C" {
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ShapeUpgrade.hxx`:45 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
-    pub fn ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionhsequenceopencascadehandlegeomboundedcurve(
+    pub fn ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_hseq_geom_boundedcurve(
         BS: *const Handle_Geom_BSplineCurve,
-        seqBS: *mut Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
+        seqBS: *mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ShapeUpgrade.hxx`:55 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
-    pub fn ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionhsequenceopencascadehandlegeom2dboundedcurve(
+    pub fn ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_hseq_geom2d_boundedcurve(
         BS: *const Handle_Geom2d_BSplineCurve,
-        seqBS: *mut Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
+        seqBS: *mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
     ) -> crate::OcctResult<bool>;
 
     // Nested type & typedef type destructors

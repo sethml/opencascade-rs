@@ -8,9 +8,9 @@
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_Handle.hxx>
+#include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_AttributeDelta.hxx>
+#include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDataXtd_Constraint.hxx>
 #include <TPrsStd_AISPresentation.hxx>
@@ -431,6 +431,10 @@ extern "C" const char* TPrsStd_AISPresentation_inherited_References(const TPrsSt
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TPrsStd_AISPresentation_inherited_ExtendedDump(const TPrsStd_AISPresentation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TPrsStd_AISPresentation_inherited_Forget(TPrsStd_AISPresentation* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -683,6 +687,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TPrsStd_AISViewer_inherited_D
 }
 extern "C" const char* TPrsStd_AISViewer_inherited_References(const TPrsStd_AISViewer* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TPrsStd_AISViewer_inherited_ExtendedDump(const TPrsStd_AISViewer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TPrsStd_AISViewer_inherited_Forget(TPrsStd_AISViewer* self, int32_t aTransaction) {

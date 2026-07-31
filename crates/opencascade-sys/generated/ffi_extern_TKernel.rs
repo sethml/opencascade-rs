@@ -1826,16 +1826,19 @@ unsafe extern "C" {
     pub fn Message_Algorithm_get_message_strings(
         self_: *const Message_Algorithm,
         theStatus: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// **Source:** `Message_Algorithm.hxx`:216 - `Message_Algorithm::DynamicType()`
     pub fn Message_Algorithm_dynamic_type(
         self_: *const Message_Algorithm,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `Message_Algorithm.hxx`:206 - `Message_Algorithm::PrepareReport()`
-    pub fn Message_Algorithm_prepare_report(
+    pub fn Message_Algorithm_prepare_report_handletcolstdhpackedmapofinteger_int(
         theError: *const Handle_TColStd_HPackedMapOfInteger,
+        theMaxCount: i32,
+    ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
+    /// **Source:** `Message_Algorithm.hxx`:212 - `Message_Algorithm::PrepareReport()`
+    pub fn Message_Algorithm_prepare_report_seq_tcollection_hextendedstring_int(
+        theReportSeq: *const NCollection_Sequence_Handle_TCollection_HExtendedString,
         theMaxCount: i32,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
     /// **Source:** `Message_Algorithm.hxx`:216 - `Message_Algorithm::get_type_name()`
@@ -2400,6 +2403,11 @@ unsafe extern "C" {
     pub fn Message_CompositeAlerts_dynamic_type(
         self_: *const Message_CompositeAlerts,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts()`
+    pub fn Message_CompositeAlerts_alerts(
+        self_: *const Message_CompositeAlerts,
+        theGravity: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_Message_Alert>;
     /// **Source:** `Message_CompositeAlerts.hxx`:38 - `Message_CompositeAlerts::AddAlert()`
     pub fn Message_CompositeAlerts_add_alert(
         self_: *mut Message_CompositeAlerts,
@@ -2640,6 +2648,14 @@ unsafe extern "C" {
         self_: *mut Message_Messenger,
         theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
+    /// **Source:** `Message_Messenger.hxx`:167 - `Message_Messenger::Printers()`
+    pub fn Message_Messenger_printers(
+        self_: *const Message_Messenger,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Message_Printer>;
+    /// **Source:** `Message_Messenger.hxx`:171 - `Message_Messenger::ChangePrinters()`
+    pub fn Message_Messenger_change_printers(
+        self_: *mut Message_Messenger,
+    ) -> crate::OcctResult<*mut NCollection_Sequence_Handle_Message_Printer>;
     /// **Source:** `Message_Messenger.hxx`:176 - `Message_Messenger::Send()`
     pub fn Message_Messenger_send_charptr_gravity(
         self_: *const Message_Messenger,
@@ -3607,6 +3623,11 @@ unsafe extern "C" {
         theGravity: i32,
         theAlert: *const Handle_Message_Alert,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `Message_Report.hxx`:66 - `Message_Report::GetAlerts()`
+    pub fn Message_Report_get_alerts(
+        self_: *const Message_Report,
+        theGravity: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_Message_Alert>;
     /// **Source:** `Message_Report.hxx`:70 - `Message_Report::HasAlert()`
     pub fn Message_Report_has_alert_handlestandardtype(
         self_: *mut Message_Report,
@@ -18667,7 +18688,7 @@ unsafe extern "C" {
     /// **Source:** `Storage_Data.hxx`:190 - `Storage_Data::Roots()`
     pub fn Storage_Data_roots(
         self_: *const Storage_Data,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Storage_Root>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Storage_Root>;
     /// **Source:** `Storage_Data.hxx`:199 - `Storage_Data::Find()`
     pub fn Storage_Data_find(
         self_: *const Storage_Data,
@@ -19080,7 +19101,7 @@ unsafe extern "C" {
     /// **Source:** `Storage_InternalData.hxx`:36 - `Storage_InternalData::ReadArray()`
     pub fn Storage_InternalData_read_array(
         self_: *mut Storage_InternalData,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Persistent>;
     /// **Source:** `Storage_InternalData.hxx`:43 - `Storage_InternalData::Clear()`
     pub fn Storage_InternalData_clear(self_: *mut Storage_InternalData) -> *const std::ffi::c_char;
     /// **Source:** `Storage_InternalData.hxx`:47 - `Storage_InternalData::DynamicType()`
@@ -19291,7 +19312,7 @@ unsafe extern "C" {
     /// **Source:** `Storage_RootData.hxx`:50 - `Storage_RootData::Roots()`
     pub fn Storage_RootData_roots(
         self_: *const Storage_RootData,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Storage_Root>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Storage_Root>;
     /// **Source:** `Storage_RootData.hxx`:53 - `Storage_RootData::Find()`
     pub fn Storage_RootData_find(
         self_: *const Storage_RootData,
@@ -22071,7 +22092,7 @@ unsafe extern "C" {
     /// **Source:** `Units_Lexicon.hxx`:48 - `Units_Lexicon::Sequence()`
     pub fn Units_Lexicon_sequence(
         self_: *const Units_Lexicon,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
     /// **Source:** `Units_Lexicon.hxx`:54 - `Units_Lexicon::AddToken()`
     pub fn Units_Lexicon_add_token(
         self_: *mut Units_Lexicon,
@@ -22174,7 +22195,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     pub fn Units_MathSentence_inherited_Sequence(
         self_: *const Units_MathSentence,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
     /// Inherited: **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
     pub fn Units_MathSentence_inherited_Evaluate(
         self_: *mut Units_MathSentence,
@@ -22351,10 +22372,10 @@ unsafe extern "C" {
     // ======================== Units_Quantity ========================
     pub fn Units_Quantity_destructor(self_: *mut Units_Quantity);
     /// **Source:** `Units_Quantity.hxx`:44 - `Units_Quantity::Units_Quantity()`
-    pub fn Units_Quantity_ctor_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(
+    pub fn Units_Quantity_ctor_charptr_handleunitsdimensions_hseq_units_unit(
         aname: *const std::ffi::c_char,
         adimensions: *const Handle_Units_Dimensions,
-        aunitssequence: *const Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
+        aunitssequence: *const Handle_NCollection_HSequence_Handle_Units_Unit,
     ) -> crate::OcctResult<*mut Units_Quantity>;
     /// **Source:** `Units_Quantity.hxx`:49 - `Units_Quantity::Name()`
     pub fn Units_Quantity_name(
@@ -22367,7 +22388,7 @@ unsafe extern "C" {
     /// **Source:** `Units_Quantity.hxx`:56 - `Units_Quantity::Sequence()`
     pub fn Units_Quantity_sequence(
         self_: *const Units_Quantity,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Unit>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Unit>;
     /// **Source:** `Units_Quantity.hxx`:60 - `Units_Quantity::IsEqual()`
     pub fn Units_Quantity_is_equal(
         self_: *const Units_Quantity,
@@ -22460,11 +22481,11 @@ unsafe extern "C" {
     /// **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     pub fn Units_Sentence_sequence(
         self_: *const Units_Sentence,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
     /// **Source:** `Units_Sentence.hxx`:50 - `Units_Sentence::Sequence()`
-    pub fn Units_Sentence_sequence_handlencollectionhsequenceopencascadehandleunitstoken(
+    pub fn Units_Sentence_sequence_hseq_units_token(
         self_: *mut Units_Sentence,
-        asequenceoftokens: *const Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+        asequenceoftokens: *const Handle_NCollection_HSequence_Handle_Units_Token,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
     pub fn Units_Sentence_evaluate(
@@ -22741,9 +22762,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Units_Unit.hxx`:71 - `Units_Unit::SymbolsSequence()`
     pub fn Units_ShiftedUnit_inherited_SymbolsSequence(
         self_: *const Units_ShiftedUnit,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Units_ShiftedUnit_inherited_IsInstance(
         self_: *const Units_ShiftedUnit,
@@ -23038,9 +23057,7 @@ unsafe extern "C" {
     /// **Source:** `Units_Unit.hxx`:71 - `Units_Unit::SymbolsSequence()`
     pub fn Units_Unit_symbols_sequence(
         self_: *const Units_Unit,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Units_Unit.hxx`:74 - `Units_Unit::Value()`
     pub fn Units_Unit_value_real(self_: *mut Units_Unit, avalue: f64) -> *const std::ffi::c_char;
     /// **Source:** `Units_Unit.hxx`:77 - `Units_Unit::Quantity()`
@@ -23137,16 +23154,16 @@ unsafe extern "C" {
         astring: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Units_UnitSentence>;
     /// **Source:** `Units_UnitSentence.hxx`:48 - `Units_UnitSentence::Units_UnitSentence()`
-    pub fn Units_UnitSentence_ctor_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(
+    pub fn Units_UnitSentence_ctor_charptr_hseq_units_quantity(
         astring: *const std::ffi::c_char,
-        aquantitiessequence: *const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+        aquantitiessequence: *const Handle_NCollection_HSequence_Handle_Units_Quantity,
     ) -> crate::OcctResult<*mut Units_UnitSentence>;
     /// **Source:** `Units_UnitSentence.hxx`:55 - `Units_UnitSentence::Analyse()`
     pub fn Units_UnitSentence_analyse(self_: *mut Units_UnitSentence) -> *const std::ffi::c_char;
     /// **Source:** `Units_UnitSentence.hxx`:60 - `Units_UnitSentence::SetUnits()`
     pub fn Units_UnitSentence_set_units(
         self_: *mut Units_UnitSentence,
-        aquantitiessequence: *const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+        aquantitiessequence: *const Handle_NCollection_HSequence_Handle_Units_Quantity,
     ) -> *const std::ffi::c_char;
     /// Upcast Units_UnitSentence to Units_Sentence
     pub fn Units_UnitSentence_as_Units_Sentence(
@@ -23163,7 +23180,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     pub fn Units_UnitSentence_inherited_Sequence(
         self_: *const Units_UnitSentence,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
     /// Inherited: **Source:** `Units_Sentence.hxx`:55 - `Units_Sentence::Evaluate()`
     pub fn Units_UnitSentence_inherited_Evaluate(
         self_: *mut Units_UnitSentence,
@@ -23187,7 +23204,7 @@ unsafe extern "C" {
     /// **Source:** `Units_UnitsDictionary.hxx`:42 - `Units_UnitsDictionary::Sequence()`
     pub fn Units_UnitsDictionary_sequence(
         self_: *const Units_UnitsDictionary,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Quantity>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Quantity>;
     /// **Source:** `Units_UnitsDictionary.hxx`:45 - `Units_UnitsDictionary::ActiveUnit()`
     pub fn Units_UnitsDictionary_active_unit(
         self_: *const Units_UnitsDictionary,
@@ -23341,7 +23358,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Units_Lexicon.hxx`:48 - `Units_Lexicon::Sequence()`
     pub fn Units_UnitsLexicon_inherited_Sequence(
         self_: *const Units_UnitsLexicon,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Units_UnitsLexicon_inherited_IsInstance(
         self_: *const Units_UnitsLexicon,
@@ -23384,7 +23401,7 @@ unsafe extern "C" {
     /// **Source:** `Units_UnitsSystem.hxx`:53 - `Units_UnitsSystem::QuantitiesSequence()`
     pub fn Units_UnitsSystem_quantities_sequence(
         self_: *const Units_UnitsSystem,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Quantity>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Quantity>;
     /// **Source:** `Units_UnitsSystem.hxx`:59 - `Units_UnitsSystem::ActiveUnitsSequence()`
     pub fn Units_UnitsSystem_active_units_sequence(
         self_: *const Units_UnitsSystem,
@@ -24516,6 +24533,565 @@ unsafe extern "C" {
         theValue: *const HLRBRep_FaceData,
     );
 
+    /// Create a new empty NCollection_Array1_Handle_Expr_GeneralExpression
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_new(
+    ) -> *mut NCollection_Array1_Handle_Expr_GeneralExpression;
+
+    /// Destroy a NCollection_Array1_Handle_Expr_GeneralExpression
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_destructor(
+        self_: *mut NCollection_Array1_Handle_Expr_GeneralExpression,
+    );
+
+    /// Create NCollection_Array1_Handle_Expr_GeneralExpression with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Expr_GeneralExpression;
+
+    /// Create NCollection_Array1_Handle_Expr_GeneralExpression with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Expr_GeneralExpression,
+    ) -> *mut NCollection_Array1_Handle_Expr_GeneralExpression;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_length(
+        arr: *const NCollection_Array1_Handle_Expr_GeneralExpression,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_lower(
+        arr: *const NCollection_Array1_Handle_Expr_GeneralExpression,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_upper(
+        arr: *const NCollection_Array1_Handle_Expr_GeneralExpression,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_value(
+        arr: *const NCollection_Array1_Handle_Expr_GeneralExpression,
+        theIndex: i32,
+    ) -> *const Handle_Expr_GeneralExpression;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_set_value(
+        arr: *mut NCollection_Array1_Handle_Expr_GeneralExpression,
+        theIndex: i32,
+        theItem: *const Handle_Expr_GeneralExpression,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Expr_GeneralExpression_init(
+        arr: *mut NCollection_Array1_Handle_Expr_GeneralExpression,
+        theValue: *const Handle_Expr_GeneralExpression,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Expr_NamedUnknown
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_new(
+    ) -> *mut NCollection_Array1_Handle_Expr_NamedUnknown;
+
+    /// Destroy a NCollection_Array1_Handle_Expr_NamedUnknown
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_destructor(
+        self_: *mut NCollection_Array1_Handle_Expr_NamedUnknown,
+    );
+
+    /// Create NCollection_Array1_Handle_Expr_NamedUnknown with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Expr_NamedUnknown;
+
+    /// Create NCollection_Array1_Handle_Expr_NamedUnknown with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Expr_NamedUnknown,
+    ) -> *mut NCollection_Array1_Handle_Expr_NamedUnknown;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_length(
+        arr: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_lower(
+        arr: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_upper(
+        arr: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_value(
+        arr: *const NCollection_Array1_Handle_Expr_NamedUnknown,
+        theIndex: i32,
+    ) -> *const Handle_Expr_NamedUnknown;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_set_value(
+        arr: *mut NCollection_Array1_Handle_Expr_NamedUnknown,
+        theIndex: i32,
+        theItem: *const Handle_Expr_NamedUnknown,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Expr_NamedUnknown_init(
+        arr: *mut NCollection_Array1_Handle_Expr_NamedUnknown,
+        theValue: *const Handle_Expr_NamedUnknown,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Geom2d_BSplineCurve
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_new(
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BSplineCurve;
+
+    /// Destroy a NCollection_Array1_Handle_Geom2d_BSplineCurve
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_destructor(
+        self_: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Create NCollection_Array1_Handle_Geom2d_BSplineCurve with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BSplineCurve;
+
+    /// Create NCollection_Array1_Handle_Geom2d_BSplineCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom2d_BSplineCurve,
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BSplineCurve;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_length(
+        arr: *const NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_lower(
+        arr: *const NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_upper(
+        arr: *const NCollection_Array1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_value(
+        arr: *const NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom2d_BSplineCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_set_value(
+        arr: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Geom2d_BSplineCurve_init(
+        arr: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        theValue: *const Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Geom2d_BezierCurve
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_new(
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BezierCurve;
+
+    /// Destroy a NCollection_Array1_Handle_Geom2d_BezierCurve
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_destructor(
+        self_: *mut NCollection_Array1_Handle_Geom2d_BezierCurve,
+    );
+
+    /// Create NCollection_Array1_Handle_Geom2d_BezierCurve with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BezierCurve;
+
+    /// Create NCollection_Array1_Handle_Geom2d_BezierCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom2d_BezierCurve,
+    ) -> *mut NCollection_Array1_Handle_Geom2d_BezierCurve;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_length(
+        arr: *const NCollection_Array1_Handle_Geom2d_BezierCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_lower(
+        arr: *const NCollection_Array1_Handle_Geom2d_BezierCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_upper(
+        arr: *const NCollection_Array1_Handle_Geom2d_BezierCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_value(
+        arr: *const NCollection_Array1_Handle_Geom2d_BezierCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom2d_BezierCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_set_value(
+        arr: *mut NCollection_Array1_Handle_Geom2d_BezierCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom2d_BezierCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Geom2d_BezierCurve_init(
+        arr: *mut NCollection_Array1_Handle_Geom2d_BezierCurve,
+        theValue: *const Handle_Geom2d_BezierCurve,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Geom_BSplineCurve
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_new(
+    ) -> *mut NCollection_Array1_Handle_Geom_BSplineCurve;
+
+    /// Destroy a NCollection_Array1_Handle_Geom_BSplineCurve
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_destructor(
+        self_: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+    );
+
+    /// Create NCollection_Array1_Handle_Geom_BSplineCurve with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Geom_BSplineCurve;
+
+    /// Create NCollection_Array1_Handle_Geom_BSplineCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom_BSplineCurve,
+    ) -> *mut NCollection_Array1_Handle_Geom_BSplineCurve;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_length(
+        arr: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_lower(
+        arr: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_upper(
+        arr: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_value(
+        arr: *const NCollection_Array1_Handle_Geom_BSplineCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom_BSplineCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_set_value(
+        arr: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom_BSplineCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Geom_BSplineCurve_init(
+        arr: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+        theValue: *const Handle_Geom_BSplineCurve,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Geom_BezierCurve
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_new(
+    ) -> *mut NCollection_Array1_Handle_Geom_BezierCurve;
+
+    /// Destroy a NCollection_Array1_Handle_Geom_BezierCurve
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_destructor(
+        self_: *mut NCollection_Array1_Handle_Geom_BezierCurve,
+    );
+
+    /// Create NCollection_Array1_Handle_Geom_BezierCurve with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Geom_BezierCurve;
+
+    /// Create NCollection_Array1_Handle_Geom_BezierCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom_BezierCurve,
+    ) -> *mut NCollection_Array1_Handle_Geom_BezierCurve;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_length(
+        arr: *const NCollection_Array1_Handle_Geom_BezierCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_lower(
+        arr: *const NCollection_Array1_Handle_Geom_BezierCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_upper(
+        arr: *const NCollection_Array1_Handle_Geom_BezierCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_value(
+        arr: *const NCollection_Array1_Handle_Geom_BezierCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom_BezierCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_set_value(
+        arr: *mut NCollection_Array1_Handle_Geom_BezierCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom_BezierCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Geom_BezierCurve_init(
+        arr: *mut NCollection_Array1_Handle_Geom_BezierCurve,
+        theValue: *const Handle_Geom_BezierCurve,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_Geom_Curve
+    pub fn NCollection_Array1_Handle_Geom_Curve_new() -> *mut NCollection_Array1_Handle_Geom_Curve;
+
+    /// Destroy a NCollection_Array1_Handle_Geom_Curve
+    pub fn NCollection_Array1_Handle_Geom_Curve_destructor(
+        self_: *mut NCollection_Array1_Handle_Geom_Curve,
+    );
+
+    /// Create NCollection_Array1_Handle_Geom_Curve with lower and upper bounds
+    pub fn NCollection_Array1_Handle_Geom_Curve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_Geom_Curve;
+
+    /// Create NCollection_Array1_Handle_Geom_Curve with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_Geom_Curve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom_Curve,
+    ) -> *mut NCollection_Array1_Handle_Geom_Curve;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_Geom_Curve_length(
+        arr: *const NCollection_Array1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_Geom_Curve_lower(
+        arr: *const NCollection_Array1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_Geom_Curve_upper(
+        arr: *const NCollection_Array1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_Curve_value(
+        arr: *const NCollection_Array1_Handle_Geom_Curve,
+        theIndex: i32,
+    ) -> *const Handle_Geom_Curve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_Geom_Curve_set_value(
+        arr: *mut NCollection_Array1_Handle_Geom_Curve,
+        theIndex: i32,
+        theItem: *const Handle_Geom_Curve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_Geom_Curve_init(
+        arr: *mut NCollection_Array1_Handle_Geom_Curve,
+        theValue: *const Handle_Geom_Curve,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_HLRAlgo_PolyData
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_new(
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyData;
+
+    /// Destroy a NCollection_Array1_Handle_HLRAlgo_PolyData
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_destructor(
+        self_: *mut NCollection_Array1_Handle_HLRAlgo_PolyData,
+    );
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyData with lower and upper bounds
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyData;
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyData with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_HLRAlgo_PolyData,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyData;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_length(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyData,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_lower(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyData,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_upper(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyData,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_value(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyData,
+        theIndex: i32,
+    ) -> *const Handle_HLRAlgo_PolyData;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_set_value(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyData,
+        theIndex: i32,
+        theItem: *const Handle_HLRAlgo_PolyData,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyData_init(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyData,
+        theValue: *const Handle_HLRAlgo_PolyData,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_HLRAlgo_PolyInternalNode
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_new(
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode;
+
+    /// Destroy a NCollection_Array1_Handle_HLRAlgo_PolyInternalNode
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_destructor(
+        self_: *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    );
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyInternalNode with lower and upper bounds
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode;
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyInternalNode with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_HLRAlgo_PolyInternalNode,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_length(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_lower(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_upper(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_value(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        theIndex: i32,
+    ) -> *const Handle_HLRAlgo_PolyInternalNode;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_set_value(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        theIndex: i32,
+        theItem: *const Handle_HLRAlgo_PolyInternalNode,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_init(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        theValue: *const Handle_HLRAlgo_PolyInternalNode,
+    );
+
+    /// Create a new empty NCollection_Array1_Handle_HLRAlgo_PolyShellData
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_new(
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData;
+
+    /// Destroy a NCollection_Array1_Handle_HLRAlgo_PolyShellData
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_destructor(
+        self_: *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+    );
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyShellData with lower and upper bounds
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData;
+
+    /// Create NCollection_Array1_Handle_HLRAlgo_PolyShellData with bounds, all elements initialized to theValue
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_HLRAlgo_PolyShellData,
+    ) -> *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData;
+
+    /// Get number of elements
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_length(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_lower(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_upper(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_value(
+        arr: *const NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+        theIndex: i32,
+    ) -> *const Handle_HLRAlgo_PolyShellData;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_set_value(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+        theIndex: i32,
+        theItem: *const Handle_HLRAlgo_PolyShellData,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array1_Handle_HLRAlgo_PolyShellData_init(
+        arr: *mut NCollection_Array1_Handle_HLRAlgo_PolyShellData,
+        theValue: *const Handle_HLRAlgo_PolyShellData,
+    );
+
     /// Create a new empty NCollection_Array1_Plate_PinpointConstraint
     pub fn NCollection_Array1_Plate_PinpointConstraint_new(
     ) -> *mut NCollection_Array1_Plate_PinpointConstraint;
@@ -25246,6 +25822,88 @@ unsafe extern "C" {
     /// Set all elements to the same value
     pub fn NCollection_Array1_int_init(arr: *mut NCollection_Array1_int, theValue: *const i32);
 
+    /// Create a new empty NCollection_Array2_Handle_Geom_BezierSurface
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_new(
+    ) -> *mut NCollection_Array2_Handle_Geom_BezierSurface;
+
+    /// Destroy a NCollection_Array2_Handle_Geom_BezierSurface
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_destructor(
+        self_: *mut NCollection_Array2_Handle_Geom_BezierSurface,
+    );
+
+    /// Create NCollection_Array2_Handle_Geom_BezierSurface with row and column bounds
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+    ) -> *mut NCollection_Array2_Handle_Geom_BezierSurface;
+
+    /// Create NCollection_Array2_Handle_Geom_BezierSurface with bounds, all elements initialized to theValue
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4_value(
+        theRowLower: i32,
+        theRowUpper: i32,
+        theColLower: i32,
+        theColUpper: i32,
+        theValue: *const Handle_Geom_BezierSurface,
+    ) -> *mut NCollection_Array2_Handle_Geom_BezierSurface;
+
+    /// Get number of rows
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_nb_rows(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get number of columns
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_nb_columns(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get lower row bound
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_lower_row(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get upper row bound
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_upper_row(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get lower column bound
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_lower_col(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get upper column bound
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_upper_col(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get total number of elements
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_length(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> i32;
+
+    /// Get element at row/col (bounds-checked)
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_value(
+        arr: *const NCollection_Array2_Handle_Geom_BezierSurface,
+        theRow: i32,
+        theCol: i32,
+    ) -> *const Handle_Geom_BezierSurface;
+
+    /// Set element at row/col (bounds-checked)
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_set_value(
+        arr: *mut NCollection_Array2_Handle_Geom_BezierSurface,
+        theRow: i32,
+        theCol: i32,
+        theItem: *const Handle_Geom_BezierSurface,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_Array2_Handle_Geom_BezierSurface_init(
+        arr: *mut NCollection_Array2_Handle_Geom_BezierSurface,
+        theValue: *const Handle_Geom_BezierSurface,
+    );
+
     /// Create a new empty NCollection_Array2_double
     pub fn NCollection_Array2_double_new() -> *mut NCollection_Array2_double;
 
@@ -25568,6 +26226,586 @@ unsafe extern "C" {
     /// Set all elements to the same value
     pub fn NCollection_Array2_int_init(arr: *mut NCollection_Array2_int, theValue: *const i32);
 
+    /// Create a new empty NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_bind(
+        coll: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+        value: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_find(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> *mut DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(
+        iter: *mut DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator
+    pub fn DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(
+        self_: *mut DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_new(
+    ) -> *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent;
+
+    /// Destroy a NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_destructor(
+        self_: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_size(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_clear(
+        coll: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_bind(
+        coll: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+        key: *const Handle_Standard_Transient,
+        value: *const Handle_StdObjMgt_Persistent,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_find(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+        key: *const Handle_Standard_Transient,
+    ) -> *mut Handle_StdObjMgt_Persistent;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_contains(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+        key: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_iter(
+        coll: *const NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> *mut DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_next_key(
+        iter: *mut DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator
+    pub fn DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_destructor(
+        self_: *mut DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_new(
+    ) -> *mut NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape;
+
+    /// Destroy a NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_destructor(
+        self_: *mut NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_size(
+        coll: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_clear(
+        coll: *mut NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_bind(
+        coll: *mut NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepRepr_RepresentationItem,
+        value: *const TopoDS_Shape,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_find(
+        coll: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepRepr_RepresentationItem,
+    ) -> *mut TopoDS_Shape;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_contains(
+        coll: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepRepr_RepresentationItem,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_iter(
+        coll: *const NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+    ) -> *mut DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_next_key(
+        iter: *mut DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator,
+    ) -> *mut Handle_StepRepr_RepresentationItem;
+
+    /// Destroy a DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator
+    pub fn DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_destructor(
+        self_: *mut DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_new(
+    ) -> *mut NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape;
+
+    /// Destroy a NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_destructor(
+        self_: *mut NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_size(
+        coll: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_clear(
+        coll: *mut NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_bind(
+        coll: *mut NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepShape_TopologicalRepresentationItem,
+        value: *const TopoDS_Shape,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_find(
+        coll: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepShape_TopologicalRepresentationItem,
+    ) -> *mut TopoDS_Shape;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_contains(
+        coll: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        key: *const Handle_StepShape_TopologicalRepresentationItem,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_iter(
+        coll: *const NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+    ) -> *mut DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_next_key(
+        iter: *mut DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator,
+    ) -> *mut Handle_StepShape_TopologicalRepresentationItem;
+
+    /// Destroy a DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator
+    pub fn DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_destructor(
+        self_: *mut DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_new(
+    ) -> *mut NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label;
+
+    /// Destroy a NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_destructor(
+        self_: *mut NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_size(
+        coll: *const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_clear(
+        coll: *mut NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_bind(
+        coll: *mut NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+        key: *const Handle_TCollection_HExtendedString,
+        value: *const TDF_Label,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_find(
+        coll: *const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+        key: *const Handle_TCollection_HExtendedString,
+    ) -> *mut TDF_Label;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_contains(
+        coll: *const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+        key: *const Handle_TCollection_HExtendedString,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_iter(
+        coll: *const NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    ) -> *mut DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_next_key(
+        iter: *mut DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator,
+    ) -> *mut Handle_TCollection_HExtendedString;
+
+    /// Destroy a DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator
+    pub fn DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_destructor(
+        self_: *mut DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_new(
+    ) -> *mut NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute;
+
+    /// Destroy a NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_destructor(
+        self_: *mut NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_size(
+        coll: *const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_clear(
+        coll: *mut NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_bind(
+        coll: *mut NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+        key: *const Handle_TDF_Attribute,
+        value: *const Handle_TDF_Attribute,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_find(
+        coll: *const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+        key: *const Handle_TDF_Attribute,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_contains(
+        coll: *const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+        key: *const Handle_TDF_Attribute,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_iter(
+        coll: *const NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+    ) -> *mut DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_next_key(
+        iter: *mut DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Destroy a DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator
+    pub fn DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_destructor(
+        self_: *mut DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_new(
+    ) -> *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance;
+
+    /// Destroy a NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_destructor(
+        self_: *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_size(
+        coll: *const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_clear(
+        coll: *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_bind(
+        coll: *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+        key: *const Handle_TopoDS_TShape,
+        value: *const Handle_VrmlData_Appearance,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_find(
+        coll: *const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+        key: *const Handle_TopoDS_TShape,
+    ) -> *mut Handle_VrmlData_Appearance;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_contains(
+        coll: *const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+        key: *const Handle_TopoDS_TShape,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_iter(
+        coll: *const NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) -> *mut DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_next_key(
+        iter: *mut DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator,
+    ) -> *mut Handle_TopoDS_TShape;
+
+    /// Destroy a DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator
+    pub fn DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_destructor(
+        self_: *mut DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_new() -> *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject;
+
+    /// Destroy a NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_destructor(
+        self_: *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_size(
+        coll: *const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_clear(
+        coll: *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_bind(
+        coll: *mut NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+        key: *const Handle_XCAFDimTolObjects_GeomToleranceObject,
+        value: *const Handle_XCAFDimTolObjects_DatumObject,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_find(
+        coll: *const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+        key: *const Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> *mut Handle_XCAFDimTolObjects_DatumObject;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_contains(
+        coll: *const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+        key: *const Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_iter(coll: *const NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject) -> *mut DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_next_key(
+        iter: *mut DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    ) -> *mut Handle_XCAFDimTolObjects_GeomToleranceObject;
+
+    /// Destroy a DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator
+    pub fn DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(
+        self_: *mut DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_new(
+    ) -> *mut NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial;
+
+    /// Destroy a NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_destructor(
+        self_: *mut NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+    );
+
+    /// Get number of elements in NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_size(
+        coll: *const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_clear(
+        coll: *mut NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_bind(
+        coll: *mut NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+        key: *const Handle_XCAFDoc_VisMaterial,
+        value: *const Handle_XCAFDoc_VisMaterial,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_find(
+        coll: *const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+        key: *const Handle_XCAFDoc_VisMaterial,
+    ) -> *mut Handle_XCAFDoc_VisMaterial;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_contains(
+        coll: *const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+        key: *const Handle_XCAFDoc_VisMaterial,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_iter(
+        coll: *const NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+    ) -> *mut DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_next_key(
+        iter: *mut DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator,
+    ) -> *mut Handle_XCAFDoc_VisMaterial;
+
+    /// Destroy a DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator
+    pub fn DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_destructor(
+        self_: *mut DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_new(
+    ) -> *mut NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile;
+
+    /// Destroy a NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_destructor(
+        self_: *mut NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    );
+
+    /// Get number of elements in NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_size(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_clear(
+        coll: *mut NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_bind(
+        coll: *mut NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+        key: *const TCollection_AsciiString,
+        value: *const Handle_STEPCAFControl_ExternFile,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_find(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+        key: *const TCollection_AsciiString,
+    ) -> *mut Handle_STEPCAFControl_ExternFile;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_contains(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+        key: *const TCollection_AsciiString,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_iter(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    ) -> *mut DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_next_key(
+        iter: *mut DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator,
+    ) -> *mut TCollection_AsciiString;
+
+    /// Destroy a DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator
+    pub fn DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_destructor(
+        self_: *mut DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_new(
+    ) -> *mut NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver;
+
+    /// Destroy a NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_destructor(
+        self_: *mut NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    );
+
+    /// Get number of elements in NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_size(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_clear(
+        coll: *mut NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_bind(
+        coll: *mut NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+        key: *const TCollection_AsciiString,
+        value: *const Handle_XmlMDF_ADriver,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_find(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+        key: *const TCollection_AsciiString,
+    ) -> *mut Handle_XmlMDF_ADriver;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_contains(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+        key: *const TCollection_AsciiString,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_iter(
+        coll: *const NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    ) -> *mut DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_next_key(
+        iter: *mut DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator,
+    ) -> *mut TCollection_AsciiString;
+
+    /// Destroy a DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator
+    pub fn DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_destructor(
+        self_: *mut DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator,
+    );
+
     /// Create a new empty NCollection_DataMap_TCollection_AsciiString_RWObj_Material
     pub fn NCollection_DataMap_TCollection_AsciiString_RWObj_Material_new(
     ) -> *mut NCollection_DataMap_TCollection_AsciiString_RWObj_Material;
@@ -25778,6 +27016,59 @@ unsafe extern "C" {
     /// Destroy a DataMap_TCollection_AsciiString_intIterator
     pub fn DataMap_TCollection_AsciiString_intIterator_destructor(
         self_: *mut DataMap_TCollection_AsciiString_intIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_new(
+    ) -> *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData;
+
+    /// Destroy a NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_destructor(
+        self_: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    );
+
+    /// Get number of elements in NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_size(
+        coll: *const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_clear(
+        coll: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_bind(
+        coll: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        key: *const TCollection_ExtendedString,
+        value: *const Handle_CDM_MetaData,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_find(
+        coll: *const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        key: *const TCollection_ExtendedString,
+    ) -> *mut Handle_CDM_MetaData;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_contains(
+        coll: *const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        key: *const TCollection_ExtendedString,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_iter(
+        coll: *const NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    ) -> *mut DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_next_key(
+        iter: *mut DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator,
+    ) -> *mut TCollection_ExtendedString;
+
+    /// Destroy a DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator
+    pub fn DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_destructor(
+        self_: *mut DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator,
     );
 
     /// Create a new empty NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString
@@ -26252,6 +27543,59 @@ unsafe extern "C" {
         self_: *mut DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasherIterator,
     );
 
+    /// Create a new empty NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_new(
+    ) -> *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher;
+
+    /// Destroy a NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_destructor(
+        self_: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+    );
+
+    /// Get number of elements in NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_size(
+        coll: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_clear(
+        coll: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_bind(
+        coll: *mut NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        key: *const TopoDS_Shape,
+        value: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_find(
+        coll: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        key: *const TopoDS_Shape,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_contains(
+        coll: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+        key: *const TopoDS_Shape,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_iter(
+        coll: *const NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
+    ) -> *mut DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_next_key(
+        iter: *mut DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator,
+    ) -> *mut TopoDS_Shape;
+
+    /// Destroy a DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator
+    pub fn DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_destructor(
+        self_: *mut DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator,
+    );
+
     /// Create a new empty NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher
     pub fn NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher_new(
     ) -> *mut NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher;
@@ -26566,6 +27910,112 @@ unsafe extern "C" {
     /// Destroy a DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator
     pub fn DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator_destructor(
         self_: *mut DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_gp_Pnt_Handle_Standard_Transient
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_DataMap_gp_Pnt_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_DataMap_gp_Pnt_Handle_Standard_Transient
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_DataMap_gp_Pnt_Handle_Standard_Transient
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_size(
+        coll: *const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_gp_Pnt_Handle_Standard_Transient
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_bind(
+        coll: *mut NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+        key: *const gp_Pnt,
+        value: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_find(
+        coll: *const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+        key: *const gp_Pnt,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_contains(
+        coll: *const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+        key: *const gp_Pnt,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_iter(
+        coll: *const NCollection_DataMap_gp_Pnt_Handle_Standard_Transient,
+    ) -> *mut DataMap_gp_Pnt_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_gp_Pnt_Handle_Standard_TransientIterator_next_key(
+        iter: *mut DataMap_gp_Pnt_Handle_Standard_TransientIterator,
+    ) -> *mut gp_Pnt;
+
+    /// Destroy a DataMap_gp_Pnt_Handle_Standard_TransientIterator
+    pub fn DataMap_gp_Pnt_Handle_Standard_TransientIterator_destructor(
+        self_: *mut DataMap_gp_Pnt_Handle_Standard_TransientIterator,
+    );
+
+    /// Create a new empty NCollection_DataMap_int_Handle_MAT_BasicElt
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_new(
+    ) -> *mut NCollection_DataMap_int_Handle_MAT_BasicElt;
+
+    /// Destroy a NCollection_DataMap_int_Handle_MAT_BasicElt
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_destructor(
+        self_: *mut NCollection_DataMap_int_Handle_MAT_BasicElt,
+    );
+
+    /// Get number of elements in NCollection_DataMap_int_Handle_MAT_BasicElt
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_size(
+        coll: *const NCollection_DataMap_int_Handle_MAT_BasicElt,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_DataMap_int_Handle_MAT_BasicElt
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_clear(
+        coll: *mut NCollection_DataMap_int_Handle_MAT_BasicElt,
+    );
+
+    /// Bind a key to a value
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_bind(
+        coll: *mut NCollection_DataMap_int_Handle_MAT_BasicElt,
+        key: *const i32,
+        value: *const Handle_MAT_BasicElt,
+    ) -> bool;
+
+    /// Find a value by key (returns nullptr if not found)
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_find(
+        coll: *const NCollection_DataMap_int_Handle_MAT_BasicElt,
+        key: *const i32,
+    ) -> *mut Handle_MAT_BasicElt;
+
+    /// Check if key exists
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_contains(
+        coll: *const NCollection_DataMap_int_Handle_MAT_BasicElt,
+        key: *const i32,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_DataMap_int_Handle_MAT_BasicElt_iter(
+        coll: *const NCollection_DataMap_int_Handle_MAT_BasicElt,
+    ) -> *mut DataMap_int_Handle_MAT_BasicEltIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn DataMap_int_Handle_MAT_BasicEltIterator_next_key(
+        iter: *mut DataMap_int_Handle_MAT_BasicEltIterator,
+    ) -> *mut i32;
+
+    /// Destroy a DataMap_int_Handle_MAT_BasicEltIterator
+    pub fn DataMap_int_Handle_MAT_BasicEltIterator_destructor(
+        self_: *mut DataMap_int_Handle_MAT_BasicEltIterator,
     );
 
     /// Create a new empty NCollection_DataMap_int_TopoDS_Shape
@@ -26997,6 +28447,4421 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HArray1_HLRAlgo_TriangleData_get_mut(
         h: *mut Handle_NCollection_HArray1_HLRAlgo_TriangleData,
     ) -> *mut NCollection_HArray1_HLRAlgo_TriangleData;
+
+    /// Create a new empty NCollection_HArray1_Handle_Adaptor3d_Curve
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_new(
+    ) -> *mut NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    /// Destroy a NCollection_HArray1_Handle_Adaptor3d_Curve
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(
+        self_: *mut NCollection_HArray1_Handle_Adaptor3d_Curve,
+    );
+
+    /// Create NCollection_HArray1_Handle_Adaptor3d_Curve with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    /// Create NCollection_HArray1_Handle_Adaptor3d_Curve with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Adaptor3d_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_length(
+        arr: *const NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_lower(
+        arr: *const NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_upper(
+        arr: *const NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_value(
+        arr: *const NCollection_HArray1_Handle_Adaptor3d_Curve,
+        theIndex: i32,
+    ) -> *const Handle_Adaptor3d_Curve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_set_value(
+        arr: *mut NCollection_HArray1_Handle_Adaptor3d_Curve,
+        theIndex: i32,
+        theItem: *const Handle_Adaptor3d_Curve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_init(
+        arr: *mut NCollection_HArray1_Handle_Adaptor3d_Curve,
+        theValue: *const Handle_Adaptor3d_Curve,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Adaptor3d_Curve in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Adaptor3d_Curve_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get(
+        h: *const Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> *const NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Adaptor3d_Curve;
+
+    /// Create a new empty NCollection_HArray1_Handle_Geom2d_BSplineCurve
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_new(
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    /// Destroy a NCollection_HArray1_Handle_Geom2d_BSplineCurve
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(
+        self_: *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Create NCollection_HArray1_Handle_Geom2d_BSplineCurve with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    /// Create NCollection_HArray1_Handle_Geom2d_BSplineCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom2d_BSplineCurve,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_length(
+        arr: *const NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_lower(
+        arr: *const NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_upper(
+        arr: *const NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_value(
+        arr: *const NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom2d_BSplineCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_set_value(
+        arr: *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_init(
+        arr: *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        theValue: *const Handle_Geom2d_BSplineCurve,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Geom2d_BSplineCurve in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Geom2d_BSplineCurve_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get(
+        h: *const Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> *const NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_BSplineCurve;
+
+    /// Create a new empty NCollection_HArray1_Handle_Geom2d_Curve
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_new(
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_Curve;
+
+    /// Destroy a NCollection_HArray1_Handle_Geom2d_Curve
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_destructor(
+        self_: *mut NCollection_HArray1_Handle_Geom2d_Curve,
+    );
+
+    /// Create NCollection_HArray1_Handle_Geom2d_Curve with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_Curve;
+
+    /// Create NCollection_HArray1_Handle_Geom2d_Curve with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom2d_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_Curve;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_length(
+        arr: *const NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_lower(
+        arr: *const NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_upper(
+        arr: *const NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_value(
+        arr: *const NCollection_HArray1_Handle_Geom2d_Curve,
+        theIndex: i32,
+    ) -> *const Handle_Geom2d_Curve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_set_value(
+        arr: *mut NCollection_HArray1_Handle_Geom2d_Curve,
+        theIndex: i32,
+        theItem: *const Handle_Geom2d_Curve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_init(
+        arr: *mut NCollection_HArray1_Handle_Geom2d_Curve,
+        theValue: *const Handle_Geom2d_Curve,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Geom2d_Curve in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Geom2d_Curve_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Geom2d_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_Curve_get(
+        h: *const Handle_NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> *const NCollection_HArray1_Handle_Geom2d_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_Curve_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Geom2d_Curve;
+
+    /// Create a new empty NCollection_HArray1_Handle_Geom_BSplineCurve
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_new(
+    ) -> *mut NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    /// Destroy a NCollection_HArray1_Handle_Geom_BSplineCurve
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(
+        self_: *mut NCollection_HArray1_Handle_Geom_BSplineCurve,
+    );
+
+    /// Create NCollection_HArray1_Handle_Geom_BSplineCurve with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    /// Create NCollection_HArray1_Handle_Geom_BSplineCurve with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom_BSplineCurve,
+    ) -> *mut NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_length(
+        arr: *const NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_lower(
+        arr: *const NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_upper(
+        arr: *const NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_value(
+        arr: *const NCollection_HArray1_Handle_Geom_BSplineCurve,
+        theIndex: i32,
+    ) -> *const Handle_Geom_BSplineCurve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_set_value(
+        arr: *mut NCollection_HArray1_Handle_Geom_BSplineCurve,
+        theIndex: i32,
+        theItem: *const Handle_Geom_BSplineCurve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_init(
+        arr: *mut NCollection_HArray1_Handle_Geom_BSplineCurve,
+        theValue: *const Handle_Geom_BSplineCurve,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Geom_BSplineCurve in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Geom_BSplineCurve_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get(
+        h: *const Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> *const NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> *mut NCollection_HArray1_Handle_Geom_BSplineCurve;
+
+    /// Create a new empty NCollection_HArray1_Handle_Geom_Curve
+    pub fn NCollection_HArray1_Handle_Geom_Curve_new() -> *mut NCollection_HArray1_Handle_Geom_Curve;
+
+    /// Destroy a NCollection_HArray1_Handle_Geom_Curve
+    pub fn NCollection_HArray1_Handle_Geom_Curve_destructor(
+        self_: *mut NCollection_HArray1_Handle_Geom_Curve,
+    );
+
+    /// Create NCollection_HArray1_Handle_Geom_Curve with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Geom_Curve_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Geom_Curve;
+
+    /// Create NCollection_HArray1_Handle_Geom_Curve with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Geom_Curve_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Geom_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Geom_Curve;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Geom_Curve_length(
+        arr: *const NCollection_HArray1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Geom_Curve_lower(
+        arr: *const NCollection_HArray1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Geom_Curve_upper(
+        arr: *const NCollection_HArray1_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom_Curve_value(
+        arr: *const NCollection_HArray1_Handle_Geom_Curve,
+        theIndex: i32,
+    ) -> *const Handle_Geom_Curve;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Geom_Curve_set_value(
+        arr: *mut NCollection_HArray1_Handle_Geom_Curve,
+        theIndex: i32,
+        theItem: *const Handle_Geom_Curve,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Geom_Curve_init(
+        arr: *mut NCollection_HArray1_Handle_Geom_Curve,
+        theValue: *const Handle_Geom_Curve,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Geom_Curve in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Geom_Curve_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Geom_Curve,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Geom_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom_Curve_get(
+        h: *const Handle_NCollection_HArray1_Handle_Geom_Curve,
+    ) -> *const NCollection_HArray1_Handle_Geom_Curve;
+
+    pub fn Handle_NCollection_HArray1_Handle_Geom_Curve_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Geom_Curve,
+    ) -> *mut NCollection_HArray1_Handle_Geom_Curve;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESAppli_FiniteElement
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESAppli_FiniteElement
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESAppli_FiniteElement with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    /// Create NCollection_HArray1_Handle_IGESAppli_FiniteElement with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESAppli_FiniteElement,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_length(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_lower(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_upper(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_value(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+        theIndex: i32,
+    ) -> *const Handle_IGESAppli_FiniteElement;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+        theIndex: i32,
+        theItem: *const Handle_IGESAppli_FiniteElement,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_init(
+        arr: *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+        theValue: *const Handle_IGESAppli_FiniteElement,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESAppli_FiniteElement in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESAppli_FiniteElement_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> *const NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_FiniteElement;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESAppli_Node
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_Node;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESAppli_Node
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESAppli_Node,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESAppli_Node with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_Node;
+
+    /// Create NCollection_HArray1_Handle_IGESAppli_Node with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESAppli_Node,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_Node;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_length(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_lower(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_upper(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_value(
+        arr: *const NCollection_HArray1_Handle_IGESAppli_Node,
+        theIndex: i32,
+    ) -> *const Handle_IGESAppli_Node;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESAppli_Node,
+        theIndex: i32,
+        theItem: *const Handle_IGESAppli_Node,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_init(
+        arr: *mut NCollection_HArray1_Handle_IGESAppli_Node,
+        theValue: *const Handle_IGESAppli_Node,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESAppli_Node in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESAppli_Node_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESAppli_Node;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_Node_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> *const NCollection_HArray1_Handle_IGESAppli_Node;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_Node_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> *mut NCollection_HArray1_Handle_IGESAppli_Node;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESData_IGESEntity
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESData_IGESEntity
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESData_IGESEntity,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESData_IGESEntity with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    /// Create NCollection_HArray1_Handle_IGESData_IGESEntity with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESData_IGESEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_length(
+        arr: *const NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_lower(
+        arr: *const NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_upper(
+        arr: *const NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_value(
+        arr: *const NCollection_HArray1_Handle_IGESData_IGESEntity,
+        theIndex: i32,
+    ) -> *const Handle_IGESData_IGESEntity;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESData_IGESEntity,
+        theIndex: i32,
+        theItem: *const Handle_IGESData_IGESEntity,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_init(
+        arr: *mut NCollection_HArray1_Handle_IGESData_IGESEntity,
+        theValue: *const Handle_IGESData_IGESEntity,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESData_IGESEntity in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESData_IGESEntity_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> *const NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_IGESEntity;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESData_LineFontEntity
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESData_LineFontEntity
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESData_LineFontEntity with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    /// Create NCollection_HArray1_Handle_IGESData_LineFontEntity with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESData_LineFontEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_length(
+        arr: *const NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_lower(
+        arr: *const NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_upper(
+        arr: *const NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_value(
+        arr: *const NCollection_HArray1_Handle_IGESData_LineFontEntity,
+        theIndex: i32,
+    ) -> *const Handle_IGESData_LineFontEntity;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESData_LineFontEntity,
+        theIndex: i32,
+        theItem: *const Handle_IGESData_LineFontEntity,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_init(
+        arr: *mut NCollection_HArray1_Handle_IGESData_LineFontEntity,
+        theValue: *const Handle_IGESData_LineFontEntity,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESData_LineFontEntity in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESData_LineFontEntity_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> *const NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_LineFontEntity;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESData_ViewKindEntity
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESData_ViewKindEntity
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESData_ViewKindEntity with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    /// Create NCollection_HArray1_Handle_IGESData_ViewKindEntity with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESData_ViewKindEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_length(
+        arr: *const NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_lower(
+        arr: *const NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_upper(
+        arr: *const NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_value(
+        arr: *const NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+        theIndex: i32,
+    ) -> *const Handle_IGESData_ViewKindEntity;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+        theIndex: i32,
+        theItem: *const Handle_IGESData_ViewKindEntity,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_init(
+        arr: *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+        theValue: *const Handle_IGESData_ViewKindEntity,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESData_ViewKindEntity in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESData_ViewKindEntity_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> *const NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> *mut NCollection_HArray1_Handle_IGESData_ViewKindEntity;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESDefs_TabularData
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESDefs_TabularData
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESDefs_TabularData,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESDefs_TabularData with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    /// Create NCollection_HArray1_Handle_IGESDefs_TabularData with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESDefs_TabularData,
+    ) -> *mut NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_length(
+        arr: *const NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_lower(
+        arr: *const NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_upper(
+        arr: *const NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_value(
+        arr: *const NCollection_HArray1_Handle_IGESDefs_TabularData,
+        theIndex: i32,
+    ) -> *const Handle_IGESDefs_TabularData;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESDefs_TabularData,
+        theIndex: i32,
+        theItem: *const Handle_IGESDefs_TabularData,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_init(
+        arr: *mut NCollection_HArray1_Handle_IGESDefs_TabularData,
+        theValue: *const Handle_IGESDefs_TabularData,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESDefs_TabularData in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESDefs_TabularData_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> *const NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> *mut NCollection_HArray1_Handle_IGESDefs_TabularData;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESDimen_GeneralNote
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESDimen_GeneralNote
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESDimen_GeneralNote with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    /// Create NCollection_HArray1_Handle_IGESDimen_GeneralNote with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESDimen_GeneralNote,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_length(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_lower(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_upper(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_value(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+        theIndex: i32,
+    ) -> *const Handle_IGESDimen_GeneralNote;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+        theIndex: i32,
+        theItem: *const Handle_IGESDimen_GeneralNote,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_init(
+        arr: *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+        theValue: *const Handle_IGESDimen_GeneralNote,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESDimen_GeneralNote in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESDimen_GeneralNote_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> *const NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_GeneralNote;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESDimen_LeaderArrow
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESDimen_LeaderArrow
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESDimen_LeaderArrow with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    /// Create NCollection_HArray1_Handle_IGESDimen_LeaderArrow with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESDimen_LeaderArrow,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_length(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_lower(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_upper(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_value(
+        arr: *const NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+        theIndex: i32,
+    ) -> *const Handle_IGESDimen_LeaderArrow;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+        theIndex: i32,
+        theItem: *const Handle_IGESDimen_LeaderArrow,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_init(
+        arr: *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+        theValue: *const Handle_IGESDimen_LeaderArrow,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESDimen_LeaderArrow in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESDimen_LeaderArrow_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> *const NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> *mut NCollection_HArray1_Handle_IGESDimen_LeaderArrow;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESDraw_ConnectPoint
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESDraw_ConnectPoint
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESDraw_ConnectPoint with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    /// Create NCollection_HArray1_Handle_IGESDraw_ConnectPoint with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESDraw_ConnectPoint,
+    ) -> *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_length(
+        arr: *const NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_lower(
+        arr: *const NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_upper(
+        arr: *const NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_value(
+        arr: *const NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        theIndex: i32,
+    ) -> *const Handle_IGESDraw_ConnectPoint;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        theIndex: i32,
+        theItem: *const Handle_IGESDraw_ConnectPoint,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_init(
+        arr: *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+        theValue: *const Handle_IGESDraw_ConnectPoint,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESDraw_ConnectPoint in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESDraw_ConnectPoint_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> *const NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> *mut NCollection_HArray1_Handle_IGESDraw_ConnectPoint;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGeom_Boundary
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGeom_Boundary
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_Boundary,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_Boundary with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_Boundary with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGeom_Boundary,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_length(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_value(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_Boundary,
+        theIndex: i32,
+    ) -> *const Handle_IGESGeom_Boundary;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_Boundary,
+        theIndex: i32,
+        theItem: *const Handle_IGESGeom_Boundary,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_Boundary,
+        theValue: *const Handle_IGESGeom_Boundary,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGeom_Boundary in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGeom_Boundary_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> *const NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_Boundary;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGeom_CurveOnSurface
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGeom_CurveOnSurface
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_CurveOnSurface with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_CurveOnSurface with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGeom_CurveOnSurface,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_length(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_value(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+        theIndex: i32,
+    ) -> *const Handle_IGESGeom_CurveOnSurface;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+        theIndex: i32,
+        theItem: *const Handle_IGESGeom_CurveOnSurface,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+        theValue: *const Handle_IGESGeom_CurveOnSurface,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGeom_CurveOnSurface in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> *const NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_CurveOnSurface;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGeom_TransformationMatrix
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGeom_TransformationMatrix
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_TransformationMatrix with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    /// Create NCollection_HArray1_Handle_IGESGeom_TransformationMatrix with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGeom_TransformationMatrix,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_length(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_value(
+        arr: *const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+        theIndex: i32,
+    ) -> *const Handle_IGESGeom_TransformationMatrix;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+        theIndex: i32,
+        theItem: *const Handle_IGESGeom_TransformationMatrix,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+        theValue: *const Handle_IGESGeom_TransformationMatrix,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGeom_TransformationMatrix in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> *const NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> *mut NCollection_HArray1_Handle_IGESGeom_TransformationMatrix;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGraph_Color
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_Color;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGraph_Color
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_Color,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_Color with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_Color;
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_Color with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGraph_Color,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_Color;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_length(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_value(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_Color,
+        theIndex: i32,
+    ) -> *const Handle_IGESGraph_Color;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_Color,
+        theIndex: i32,
+        theItem: *const Handle_IGESGraph_Color,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_Color,
+        theValue: *const Handle_IGESGraph_Color,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGraph_Color in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGraph_Color_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGraph_Color;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_Color_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> *const NCollection_HArray1_Handle_IGESGraph_Color;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_Color_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_Color;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGraph_TextDisplayTemplate,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_length(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_value(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        theIndex: i32,
+    ) -> *const Handle_IGESGraph_TextDisplayTemplate;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        theIndex: i32,
+        theItem: *const Handle_IGESGraph_TextDisplayTemplate,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+        theValue: *const Handle_IGESGraph_TextDisplayTemplate,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> *const NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESGraph_TextFontDef
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESGraph_TextFontDef
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_TextFontDef with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    /// Create NCollection_HArray1_Handle_IGESGraph_TextFontDef with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESGraph_TextFontDef,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_length(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_lower(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_upper(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_value(
+        arr: *const NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+        theIndex: i32,
+    ) -> *const Handle_IGESGraph_TextFontDef;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+        theIndex: i32,
+        theItem: *const Handle_IGESGraph_TextFontDef,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_init(
+        arr: *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+        theValue: *const Handle_IGESGraph_TextFontDef,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESGraph_TextFontDef in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESGraph_TextFontDef_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> *const NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> *mut NCollection_HArray1_Handle_IGESGraph_TextFontDef;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESSolid_Face
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Face;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESSolid_Face
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Face,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Face with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Face;
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Face with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESSolid_Face,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Face;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_length(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_lower(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_upper(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_value(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Face,
+        theIndex: i32,
+    ) -> *const Handle_IGESSolid_Face;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Face,
+        theIndex: i32,
+        theItem: *const Handle_IGESSolid_Face,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_init(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Face,
+        theValue: *const Handle_IGESSolid_Face,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESSolid_Face in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Face_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESSolid_Face;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Face_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> *const NCollection_HArray1_Handle_IGESSolid_Face;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Face_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Face;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESSolid_Loop
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESSolid_Loop
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Loop,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Loop with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Loop with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESSolid_Loop,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_length(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_lower(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_upper(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_value(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Loop,
+        theIndex: i32,
+    ) -> *const Handle_IGESSolid_Loop;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Loop,
+        theIndex: i32,
+        theItem: *const Handle_IGESSolid_Loop,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_init(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Loop,
+        theValue: *const Handle_IGESSolid_Loop,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESSolid_Loop in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Loop_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> *const NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Loop;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESSolid_Shell
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESSolid_Shell
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Shell,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Shell with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_Shell with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESSolid_Shell,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_length(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_lower(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_upper(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_value(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_Shell,
+        theIndex: i32,
+    ) -> *const Handle_IGESSolid_Shell;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Shell,
+        theIndex: i32,
+        theItem: *const Handle_IGESSolid_Shell,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_init(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_Shell,
+        theValue: *const Handle_IGESSolid_Shell,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESSolid_Shell in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESSolid_Shell_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> *const NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_Shell;
+
+    /// Create a new empty NCollection_HArray1_Handle_IGESSolid_VertexList
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_new(
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    /// Destroy a NCollection_HArray1_Handle_IGESSolid_VertexList
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_VertexList,
+    );
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_VertexList with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    /// Create NCollection_HArray1_Handle_IGESSolid_VertexList with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_IGESSolid_VertexList,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_length(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_lower(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_upper(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_value(
+        arr: *const NCollection_HArray1_Handle_IGESSolid_VertexList,
+        theIndex: i32,
+    ) -> *const Handle_IGESSolid_VertexList;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_set_value(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_VertexList,
+        theIndex: i32,
+        theItem: *const Handle_IGESSolid_VertexList,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_init(
+        arr: *mut NCollection_HArray1_Handle_IGESSolid_VertexList,
+        theValue: *const Handle_IGESSolid_VertexList,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_IGESSolid_VertexList in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_IGESSolid_VertexList_to_handle(
+        self_: *mut NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> *mut Handle_NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get(
+        h: *const Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> *const NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> *mut NCollection_HArray1_Handle_IGESSolid_VertexList;
+
+    /// Create a new empty NCollection_HArray1_Handle_Standard_Persistent
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_new(
+    ) -> *mut NCollection_HArray1_Handle_Standard_Persistent;
+
+    /// Destroy a NCollection_HArray1_Handle_Standard_Persistent
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_destructor(
+        self_: *mut NCollection_HArray1_Handle_Standard_Persistent,
+    );
+
+    /// Create NCollection_HArray1_Handle_Standard_Persistent with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Persistent;
+
+    /// Create NCollection_HArray1_Handle_Standard_Persistent with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Standard_Persistent,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Persistent;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_length(
+        arr: *const NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_lower(
+        arr: *const NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_upper(
+        arr: *const NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_value(
+        arr: *const NCollection_HArray1_Handle_Standard_Persistent,
+        theIndex: i32,
+    ) -> *const Handle_Standard_Persistent;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_set_value(
+        arr: *mut NCollection_HArray1_Handle_Standard_Persistent,
+        theIndex: i32,
+        theItem: *const Handle_Standard_Persistent,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_init(
+        arr: *mut NCollection_HArray1_Handle_Standard_Persistent,
+        theValue: *const Handle_Standard_Persistent,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Standard_Persistent in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Standard_Persistent_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Standard_Persistent;
+
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Persistent_get(
+        h: *const Handle_NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> *const NCollection_HArray1_Handle_Standard_Persistent;
+
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Persistent_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Persistent;
+
+    /// Create a new empty NCollection_HArray1_Handle_Standard_Transient
+    pub fn NCollection_HArray1_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_HArray1_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_HArray1_Handle_Standard_Transient
+    pub fn NCollection_HArray1_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_HArray1_Handle_Standard_Transient,
+    );
+
+    /// Create NCollection_HArray1_Handle_Standard_Transient with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_Standard_Transient_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Transient;
+
+    /// Create NCollection_HArray1_Handle_Standard_Transient with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_Standard_Transient_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_Standard_Transient,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Transient;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_Standard_Transient_length(
+        arr: *const NCollection_HArray1_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_Standard_Transient_lower(
+        arr: *const NCollection_HArray1_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_Standard_Transient_upper(
+        arr: *const NCollection_HArray1_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Standard_Transient_value(
+        arr: *const NCollection_HArray1_Handle_Standard_Transient,
+        theIndex: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_Standard_Transient_set_value(
+        arr: *mut NCollection_HArray1_Handle_Standard_Transient,
+        theIndex: i32,
+        theItem: *const Handle_Standard_Transient,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_Standard_Transient_init(
+        arr: *mut NCollection_HArray1_Handle_Standard_Transient,
+        theValue: *const Handle_Standard_Transient,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_Standard_Transient in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_Standard_Transient_to_handle(
+        self_: *mut NCollection_HArray1_Handle_Standard_Transient,
+    ) -> *mut Handle_NCollection_HArray1_Handle_Standard_Transient;
+
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Transient_get(
+        h: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
+    ) -> *const NCollection_HArray1_Handle_Standard_Transient;
+
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Transient_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_Standard_Transient,
+    ) -> *mut NCollection_HArray1_Handle_Standard_Transient;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_Approval
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Approval;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_Approval
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Approval,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Approval with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Approval;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Approval with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_Approval,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Approval;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Approval,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_Approval;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Approval,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_Approval,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Approval,
+        theValue: *const Handle_StepBasic_Approval,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_Approval in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_Approval_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_Approval;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Approval_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_Approval;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Approval_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Approval;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_DerivedUnitElement
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_DerivedUnitElement
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_DerivedUnitElement with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_DerivedUnitElement with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_DerivedUnitElement,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_DerivedUnitElement;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_DerivedUnitElement,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+        theValue: *const Handle_StepBasic_DerivedUnitElement,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_DerivedUnitElement in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_DerivedUnitElement;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_Document
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Document;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_Document
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Document,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Document with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Document;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Document with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_Document,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Document;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Document,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_Document;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Document,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_Document,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Document,
+        theValue: *const Handle_StepBasic_Document,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_Document in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_Document_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_Document;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Document_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_Document;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Document_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Document;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_NamedUnit
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_NamedUnit
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_NamedUnit with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_NamedUnit with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_NamedUnit,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_NamedUnit,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_NamedUnit;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_NamedUnit,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_NamedUnit,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_NamedUnit,
+        theValue: *const Handle_StepBasic_NamedUnit,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_NamedUnit in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_NamedUnit_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_NamedUnit;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_Organization
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Organization;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_Organization
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Organization,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Organization with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Organization;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Organization with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_Organization,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Organization;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Organization,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_Organization;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Organization,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_Organization,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Organization,
+        theValue: *const Handle_StepBasic_Organization,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_Organization in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_Organization_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_Organization;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Organization_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_Organization;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Organization_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Organization;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_Person
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Person;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_Person
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Person,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Person with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Person;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Person with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_Person,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Person;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Person,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_Person;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Person,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_Person,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Person,
+        theValue: *const Handle_StepBasic_Person,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_Person in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_Person_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_Person;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Person_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_Person;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Person_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Person;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_Product
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Product;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_Product
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Product,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Product with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Product;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_Product with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_Product,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Product;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_Product,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_Product;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Product,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_Product,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_Product,
+        theValue: *const Handle_StepBasic_Product,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_Product in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_Product_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_Product;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Product_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_Product;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Product_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_Product;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_ProductContext
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_ProductContext
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_ProductContext,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_ProductContext with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_ProductContext with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_ProductContext,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_ProductContext,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_ProductContext;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_ProductContext,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_ProductContext,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_ProductContext,
+        theValue: *const Handle_StepBasic_ProductContext,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_ProductContext in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_ProductContext_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_ProductContext;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_new(
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    /// Destroy a NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    /// Create NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_length(
+        arr: *const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_lower(
+        arr: *const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_upper(
+        arr: *const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_value(
+        arr: *const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+        theIndex: i32,
+    ) -> *const Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+        theIndex: i32,
+        theItem: *const Handle_StepBasic_UncertaintyMeasureWithUnit,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_init(
+        arr: *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+        theValue: *const Handle_StepBasic_UncertaintyMeasureWithUnit,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> *const NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> *mut NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepDimTol_DatumReference
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_new(
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    /// Destroy a NCollection_HArray1_Handle_StepDimTol_DatumReference
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReference with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReference with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepDimTol_DatumReference,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_length(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_lower(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_upper(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_value(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReference,
+        theIndex: i32,
+    ) -> *const Handle_StepDimTol_DatumReference;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReference,
+        theIndex: i32,
+        theItem: *const Handle_StepDimTol_DatumReference,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_init(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReference,
+        theValue: *const Handle_StepDimTol_DatumReference,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepDimTol_DatumReference in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReference_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> *const NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReference;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_new(
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    /// Destroy a NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_length(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_lower(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_upper(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_value(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+        theIndex: i32,
+    ) -> *const Handle_StepDimTol_DatumReferenceCompartment;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+        theIndex: i32,
+        theItem: *const Handle_StepDimTol_DatumReferenceCompartment,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_init(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+        theValue: *const Handle_StepDimTol_DatumReferenceCompartment,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_new(
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    /// Destroy a NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    /// Create NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepDimTol_DatumReferenceElement,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_length(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_lower(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_upper(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_value(
+        arr: *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+        theIndex: i32,
+    ) -> *const Handle_StepDimTol_DatumReferenceElement;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+        theIndex: i32,
+        theItem: *const Handle_StepDimTol_DatumReferenceElement,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_init(
+        arr: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+        theValue: *const Handle_StepDimTol_DatumReferenceElement,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> *const NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> *mut NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_new(
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    /// Destroy a NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    /// Create NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_length(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_lower(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_upper(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_value(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+        theIndex: i32,
+    ) -> *const Handle_StepElement_CurveElementEndReleasePacket;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+        theIndex: i32,
+        theItem: *const Handle_StepElement_CurveElementEndReleasePacket,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_init(
+        arr: *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+        theValue: *const Handle_StepElement_CurveElementEndReleasePacket,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> *const NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_new(
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Destroy a NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Create NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_length(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_lower(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_upper(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_value(
+        arr: *const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+        theIndex: i32,
+    ) -> *const Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+        theIndex: i32,
+        theItem: *const Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_init(
+        arr: *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+        theValue: *const Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *const NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepElement_SurfaceSection
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_new(
+    ) -> *mut NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    /// Destroy a NCollection_HArray1_Handle_StepElement_SurfaceSection
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepElement_SurfaceSection with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    /// Create NCollection_HArray1_Handle_StepElement_SurfaceSection with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepElement_SurfaceSection,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_length(
+        arr: *const NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_lower(
+        arr: *const NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_upper(
+        arr: *const NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_value(
+        arr: *const NCollection_HArray1_Handle_StepElement_SurfaceSection,
+        theIndex: i32,
+    ) -> *const Handle_StepElement_SurfaceSection;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepElement_SurfaceSection,
+        theIndex: i32,
+        theItem: *const Handle_StepElement_SurfaceSection,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_init(
+        arr: *mut NCollection_HArray1_Handle_StepElement_SurfaceSection,
+        theValue: *const Handle_StepElement_SurfaceSection,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepElement_SurfaceSection in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepElement_SurfaceSection_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> *const NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_SurfaceSection;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_new(
+    ) -> *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    /// Destroy a NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    /// Create NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepElement_VolumeElementPurposeMember,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_length(
+        arr: *const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_lower(
+        arr: *const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_upper(
+        arr: *const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_value(
+        arr: *const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+        theIndex: i32,
+    ) -> *const Handle_StepElement_VolumeElementPurposeMember;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+        theIndex: i32,
+        theItem: *const Handle_StepElement_VolumeElementPurposeMember,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_init(
+        arr: *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+        theValue: *const Handle_StepElement_VolumeElementPurposeMember,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> *const NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> *mut NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_new(
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    /// Destroy a NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepFEA_CurveElementEndOffset,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_length(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_lower(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_upper(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_value(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+        theIndex: i32,
+    ) -> *const Handle_StepFEA_CurveElementEndOffset;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+        theIndex: i32,
+        theItem: *const Handle_StepFEA_CurveElementEndOffset,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_init(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+        theValue: *const Handle_StepFEA_CurveElementEndOffset,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> *const NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_new(
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    /// Destroy a NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepFEA_CurveElementEndRelease,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_length(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_lower(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_upper(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_value(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+        theIndex: i32,
+    ) -> *const Handle_StepFEA_CurveElementEndRelease;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+        theIndex: i32,
+        theItem: *const Handle_StepFEA_CurveElementEndRelease,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_init(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+        theValue: *const Handle_StepFEA_CurveElementEndRelease,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> *const NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepFEA_CurveElementInterval
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_new(
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    /// Destroy a NCollection_HArray1_Handle_StepFEA_CurveElementInterval
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementInterval with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    /// Create NCollection_HArray1_Handle_StepFEA_CurveElementInterval with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepFEA_CurveElementInterval,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_length(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_lower(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_upper(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_value(
+        arr: *const NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+        theIndex: i32,
+    ) -> *const Handle_StepFEA_CurveElementInterval;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+        theIndex: i32,
+        theItem: *const Handle_StepFEA_CurveElementInterval,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_init(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+        theValue: *const Handle_StepFEA_CurveElementInterval,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepFEA_CurveElementInterval in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepFEA_CurveElementInterval_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> *const NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_CurveElementInterval;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_new(
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    /// Destroy a NCollection_HArray1_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepFEA_ElementRepresentation with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    /// Create NCollection_HArray1_Handle_StepFEA_ElementRepresentation with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepFEA_ElementRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_length(
+        arr: *const NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_lower(
+        arr: *const NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_upper(
+        arr: *const NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_value(
+        arr: *const NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+        theIndex: i32,
+    ) -> *const Handle_StepFEA_ElementRepresentation;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+        theIndex: i32,
+        theItem: *const Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_init(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+        theValue: *const Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepFEA_ElementRepresentation in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepFEA_ElementRepresentation_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> *const NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_ElementRepresentation;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepFEA_NodeRepresentation
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_new(
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    /// Destroy a NCollection_HArray1_Handle_StepFEA_NodeRepresentation
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepFEA_NodeRepresentation with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    /// Create NCollection_HArray1_Handle_StepFEA_NodeRepresentation with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepFEA_NodeRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_length(
+        arr: *const NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_lower(
+        arr: *const NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_upper(
+        arr: *const NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_value(
+        arr: *const NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+        theIndex: i32,
+    ) -> *const Handle_StepFEA_NodeRepresentation;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+        theIndex: i32,
+        theItem: *const Handle_StepFEA_NodeRepresentation,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_init(
+        arr: *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+        theValue: *const Handle_StepFEA_NodeRepresentation,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepFEA_NodeRepresentation in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepFEA_NodeRepresentation_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> *const NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepFEA_NodeRepresentation;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepGeom_CartesianPoint
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_new(
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    /// Destroy a NCollection_HArray1_Handle_StepGeom_CartesianPoint
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepGeom_CartesianPoint with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    /// Create NCollection_HArray1_Handle_StepGeom_CartesianPoint with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepGeom_CartesianPoint,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_length(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_lower(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_upper(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_value(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+        theIndex: i32,
+    ) -> *const Handle_StepGeom_CartesianPoint;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+        theIndex: i32,
+        theItem: *const Handle_StepGeom_CartesianPoint,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_init(
+        arr: *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+        theValue: *const Handle_StepGeom_CartesianPoint,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepGeom_CartesianPoint in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepGeom_CartesianPoint_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> *const NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CartesianPoint;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_new(
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    /// Destroy a NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    /// Create NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepGeom_CompositeCurveSegment,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_length(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_lower(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_upper(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_value(
+        arr: *const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+        theIndex: i32,
+    ) -> *const Handle_StepGeom_CompositeCurveSegment;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+        theIndex: i32,
+        theItem: *const Handle_StepGeom_CompositeCurveSegment,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_init(
+        arr: *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+        theValue: *const Handle_StepGeom_CompositeCurveSegment,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> *const NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> *mut NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_new(
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    /// Destroy a NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    /// Create NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_length(
+        arr: *const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_lower(
+        arr: *const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_upper(
+        arr: *const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_value(
+        arr: *const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+        theIndex: i32,
+    ) -> *const Handle_StepRepr_MaterialPropertyRepresentation;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+        theIndex: i32,
+        theItem: *const Handle_StepRepr_MaterialPropertyRepresentation,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_init(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+        theValue: *const Handle_StepRepr_MaterialPropertyRepresentation,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> *const NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_new(
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    /// Destroy a NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    /// Create NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_length(
+        arr: *const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_lower(
+        arr: *const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_upper(
+        arr: *const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_value(
+        arr: *const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+        theIndex: i32,
+    ) -> *const Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+        theIndex: i32,
+        theItem: *const Handle_StepRepr_PropertyDefinitionRepresentation,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_init(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+        theValue: *const Handle_StepRepr_PropertyDefinitionRepresentation,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> *const NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepRepr_RepresentationItem
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_new(
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    /// Destroy a NCollection_HArray1_Handle_StepRepr_RepresentationItem
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepRepr_RepresentationItem with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    /// Create NCollection_HArray1_Handle_StepRepr_RepresentationItem with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepRepr_RepresentationItem,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_length(
+        arr: *const NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_lower(
+        arr: *const NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_upper(
+        arr: *const NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_value(
+        arr: *const NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+        theIndex: i32,
+    ) -> *const Handle_StepRepr_RepresentationItem;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+        theIndex: i32,
+        theItem: *const Handle_StepRepr_RepresentationItem,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_init(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+        theValue: *const Handle_StepRepr_RepresentationItem,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepRepr_RepresentationItem in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepRepr_RepresentationItem_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> *const NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_RepresentationItem;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepRepr_ShapeAspect
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_new(
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    /// Destroy a NCollection_HArray1_Handle_StepRepr_ShapeAspect
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepRepr_ShapeAspect with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    /// Create NCollection_HArray1_Handle_StepRepr_ShapeAspect with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepRepr_ShapeAspect,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_length(
+        arr: *const NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_lower(
+        arr: *const NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_upper(
+        arr: *const NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_value(
+        arr: *const NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+        theIndex: i32,
+    ) -> *const Handle_StepRepr_ShapeAspect;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+        theIndex: i32,
+        theItem: *const Handle_StepRepr_ShapeAspect,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_init(
+        arr: *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+        theValue: *const Handle_StepRepr_ShapeAspect,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepRepr_ShapeAspect in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepRepr_ShapeAspect_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> *const NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> *mut NCollection_HArray1_Handle_StepRepr_ShapeAspect;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    /// Create NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_ConnectedEdgeSet,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_ConnectedEdgeSet;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_ConnectedEdgeSet,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+        theValue: *const Handle_StepShape_ConnectedEdgeSet,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> *const NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_ConnectedFaceSet
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_ConnectedFaceSet
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_ConnectedFaceSet with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    /// Create NCollection_HArray1_Handle_StepShape_ConnectedFaceSet with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_ConnectedFaceSet,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_ConnectedFaceSet;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_ConnectedFaceSet,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+        theValue: *const Handle_StepShape_ConnectedFaceSet,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_ConnectedFaceSet in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> *const NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_ConnectedFaceSet;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_Edge
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Edge;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_Edge
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_Edge,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_Edge with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Edge;
+
+    /// Create NCollection_HArray1_Handle_StepShape_Edge with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_Edge,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Edge;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_Edge,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_Edge;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_Edge,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_Edge,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_Edge,
+        theValue: *const Handle_StepShape_Edge,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_Edge in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_Edge_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_Edge;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Edge_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> *const NCollection_HArray1_Handle_StepShape_Edge;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Edge_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Edge;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_Face
+    pub fn NCollection_HArray1_Handle_StepShape_Face_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Face;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_Face
+    pub fn NCollection_HArray1_Handle_StepShape_Face_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_Face,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_Face with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_Face_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Face;
+
+    /// Create NCollection_HArray1_Handle_StepShape_Face with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_Face_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_Face,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Face;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_Face_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_Face,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_Face_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_Face,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_Face_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_Face,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_Face_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_Face,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_Face;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_Face_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_Face,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_Face,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_Face_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_Face,
+        theValue: *const Handle_StepShape_Face,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_Face in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_Face_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_Face,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_Face;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Face_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
+    ) -> *const NCollection_HArray1_Handle_StepShape_Face;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Face_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_Face,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_Face;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_FaceBound
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_FaceBound
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_FaceBound,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_FaceBound with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    /// Create NCollection_HArray1_Handle_StepShape_FaceBound with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_FaceBound,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_FaceBound,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_FaceBound;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_FaceBound,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_FaceBound,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_FaceBound,
+        theValue: *const Handle_StepShape_FaceBound,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_FaceBound in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_FaceBound_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> *const NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_FaceBound;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_OrientedClosedShell
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_OrientedClosedShell
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_OrientedClosedShell with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    /// Create NCollection_HArray1_Handle_StepShape_OrientedClosedShell with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_OrientedClosedShell,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_OrientedClosedShell;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_OrientedClosedShell,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+        theValue: *const Handle_StepShape_OrientedClosedShell,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_OrientedClosedShell in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedClosedShell_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> *const NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedClosedShell;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepShape_OrientedEdge
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_new(
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    /// Destroy a NCollection_HArray1_Handle_StepShape_OrientedEdge
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepShape_OrientedEdge with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    /// Create NCollection_HArray1_Handle_StepShape_OrientedEdge with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepShape_OrientedEdge,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_length(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_lower(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_upper(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_value(
+        arr: *const NCollection_HArray1_Handle_StepShape_OrientedEdge,
+        theIndex: i32,
+    ) -> *const Handle_StepShape_OrientedEdge;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepShape_OrientedEdge,
+        theIndex: i32,
+        theItem: *const Handle_StepShape_OrientedEdge,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_init(
+        arr: *mut NCollection_HArray1_Handle_StepShape_OrientedEdge,
+        theValue: *const Handle_StepShape_OrientedEdge,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepShape_OrientedEdge in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepShape_OrientedEdge_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> *const NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> *mut NCollection_HArray1_Handle_StepShape_OrientedEdge;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_new(
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    /// Destroy a NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    /// Create NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepVisual_CurveStyleFontPattern,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_length(
+        arr: *const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_lower(
+        arr: *const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_upper(
+        arr: *const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_value(
+        arr: *const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+        theIndex: i32,
+    ) -> *const Handle_StepVisual_CurveStyleFontPattern;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+        theIndex: i32,
+        theItem: *const Handle_StepVisual_CurveStyleFontPattern,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_init(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+        theValue: *const Handle_StepVisual_CurveStyleFontPattern,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> *const NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_new(
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    /// Destroy a NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    /// Create NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepVisual_PresentationStyleAssignment,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_length(
+        arr: *const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_lower(
+        arr: *const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_upper(
+        arr: *const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_value(
+        arr: *const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+        theIndex: i32,
+    ) -> *const Handle_StepVisual_PresentationStyleAssignment;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+        theIndex: i32,
+        theItem: *const Handle_StepVisual_PresentationStyleAssignment,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_init(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+        theValue: *const Handle_StepVisual_PresentationStyleAssignment,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> *const NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment;
+
+    /// Create a new empty NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_new(
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    /// Destroy a NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    );
+
+    /// Create NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    /// Create NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_StepVisual_TessellatedStructuredItem,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_length(
+        arr: *const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_lower(
+        arr: *const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_upper(
+        arr: *const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_value(
+        arr: *const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+        theIndex: i32,
+    ) -> *const Handle_StepVisual_TessellatedStructuredItem;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_set_value(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+        theIndex: i32,
+        theItem: *const Handle_StepVisual_TessellatedStructuredItem,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_init(
+        arr: *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+        theValue: *const Handle_StepVisual_TessellatedStructuredItem,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_to_handle(
+        self_: *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get(
+        h: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> *const NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> *mut NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem;
+
+    /// Create a new empty NCollection_HArray1_Handle_TCollection_HAsciiString
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_new(
+    ) -> *mut NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+    /// Destroy a NCollection_HArray1_Handle_TCollection_HAsciiString
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(
+        self_: *mut NCollection_HArray1_Handle_TCollection_HAsciiString,
+    );
+
+    /// Create NCollection_HArray1_Handle_TCollection_HAsciiString with lower and upper bounds
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2(
+        theLower: i32,
+        theUpper: i32,
+    ) -> *mut NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+    /// Create NCollection_HArray1_Handle_TCollection_HAsciiString with bounds, all elements initialized to theValue
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2_value(
+        theLower: i32,
+        theUpper: i32,
+        theValue: *const Handle_TCollection_HAsciiString,
+    ) -> *mut NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+    /// Get number of elements
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_length(
+        arr: *const NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> i32;
+
+    /// Get lower bound index
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_lower(
+        arr: *const NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> i32;
+
+    /// Get upper bound index
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_upper(
+        arr: *const NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> i32;
+
+    /// Get element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_value(
+        arr: *const NCollection_HArray1_Handle_TCollection_HAsciiString,
+        theIndex: i32,
+    ) -> *const Handle_TCollection_HAsciiString;
+
+    /// Set element at index (bounds-checked)
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_set_value(
+        arr: *mut NCollection_HArray1_Handle_TCollection_HAsciiString,
+        theIndex: i32,
+        theItem: *const Handle_TCollection_HAsciiString,
+    );
+
+    /// Set all elements to the same value
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_init(
+        arr: *mut NCollection_HArray1_Handle_TCollection_HAsciiString,
+        theValue: *const Handle_TCollection_HAsciiString,
+    );
+
+    /// Wrap an owned NCollection_HArray1_Handle_TCollection_HAsciiString in a Handle (reference-counted)
+    pub fn NCollection_HArray1_Handle_TCollection_HAsciiString_to_handle(
+        self_: *mut NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> *mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+    pub fn Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get(
+        h: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> *const NCollection_HArray1_Handle_TCollection_HAsciiString;
+
+    pub fn Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get_mut(
+        h: *mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> *mut NCollection_HArray1_Handle_TCollection_HAsciiString;
 
     /// Create a new empty NCollection_HArray1_Poly_Triangle
     pub fn NCollection_HArray1_Poly_Triangle_new() -> *mut NCollection_HArray1_Poly_Triangle;
@@ -31856,6 +37721,1186 @@ unsafe extern "C" {
         h: *mut Handle_NCollection_HArray1_int,
     ) -> *mut NCollection_HArray1_int;
 
+    /// Create a new empty NCollection_HSequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_new(
+    ) -> *mut NCollection_HSequence_Handle_ChFiDS_SurfData;
+
+    /// Destroy a NCollection_HSequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(
+        self_: *mut NCollection_HSequence_Handle_ChFiDS_SurfData,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_size(
+        coll: *const NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_clear(
+        coll: *mut NCollection_HSequence_Handle_ChFiDS_SurfData,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_append(
+        coll: *mut NCollection_HSequence_Handle_ChFiDS_SurfData,
+        item: *const Handle_ChFiDS_SurfData,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_value(
+        coll: *const NCollection_HSequence_Handle_ChFiDS_SurfData,
+        index: i32,
+    ) -> *const Handle_ChFiDS_SurfData;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_iter(
+        coll: *const NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> *mut HSequence_Handle_ChFiDS_SurfDataIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_ChFiDS_SurfDataIterator_next(
+        iter: *mut HSequence_Handle_ChFiDS_SurfDataIterator,
+    ) -> *mut Handle_ChFiDS_SurfData;
+
+    /// Destroy a HSequence_Handle_ChFiDS_SurfDataIterator
+    pub fn HSequence_Handle_ChFiDS_SurfDataIterator_destructor(
+        self_: *mut HSequence_Handle_ChFiDS_SurfDataIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_ChFiDS_SurfData in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_ChFiDS_SurfData_to_handle(
+        self_: *mut NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> *mut Handle_NCollection_HSequence_Handle_ChFiDS_SurfData;
+
+    pub fn Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get(
+        h: *const Handle_NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> *const NCollection_HSequence_Handle_ChFiDS_SurfData;
+
+    pub fn Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> *mut NCollection_HSequence_Handle_ChFiDS_SurfData;
+
+    /// Create a new empty NCollection_HSequence_Handle_Geom2d_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_new(
+    ) -> *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+
+    /// Destroy a NCollection_HSequence_Handle_Geom2d_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(
+        self_: *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Geom2d_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_size(
+        coll: *const NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Geom2d_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_clear(
+        coll: *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_append(
+        coll: *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+        item: *const Handle_Geom2d_BoundedCurve,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_value(
+        coll: *const NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+        index: i32,
+    ) -> *const Handle_Geom2d_BoundedCurve;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_iter(
+        coll: *const NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> *mut HSequence_Handle_Geom2d_BoundedCurveIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Geom2d_BoundedCurveIterator_next(
+        iter: *mut HSequence_Handle_Geom2d_BoundedCurveIterator,
+    ) -> *mut Handle_Geom2d_BoundedCurve;
+
+    /// Destroy a HSequence_Handle_Geom2d_BoundedCurveIterator
+    pub fn HSequence_Handle_Geom2d_BoundedCurveIterator_destructor(
+        self_: *mut HSequence_Handle_Geom2d_BoundedCurveIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Geom2d_BoundedCurve in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Geom2d_BoundedCurve_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+
+    pub fn Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get(
+        h: *const Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> *const NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+
+    pub fn Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> *mut NCollection_HSequence_Handle_Geom2d_BoundedCurve;
+
+    /// Create a new empty NCollection_HSequence_Handle_Geom_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_new(
+    ) -> *mut NCollection_HSequence_Handle_Geom_BoundedCurve;
+
+    /// Destroy a NCollection_HSequence_Handle_Geom_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(
+        self_: *mut NCollection_HSequence_Handle_Geom_BoundedCurve,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Geom_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_size(
+        coll: *const NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Geom_BoundedCurve
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_clear(
+        coll: *mut NCollection_HSequence_Handle_Geom_BoundedCurve,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_append(
+        coll: *mut NCollection_HSequence_Handle_Geom_BoundedCurve,
+        item: *const Handle_Geom_BoundedCurve,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_value(
+        coll: *const NCollection_HSequence_Handle_Geom_BoundedCurve,
+        index: i32,
+    ) -> *const Handle_Geom_BoundedCurve;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_iter(
+        coll: *const NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> *mut HSequence_Handle_Geom_BoundedCurveIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Geom_BoundedCurveIterator_next(
+        iter: *mut HSequence_Handle_Geom_BoundedCurveIterator,
+    ) -> *mut Handle_Geom_BoundedCurve;
+
+    /// Destroy a HSequence_Handle_Geom_BoundedCurveIterator
+    pub fn HSequence_Handle_Geom_BoundedCurveIterator_destructor(
+        self_: *mut HSequence_Handle_Geom_BoundedCurveIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Geom_BoundedCurve in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Geom_BoundedCurve_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve;
+
+    pub fn Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get(
+        h: *const Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> *const NCollection_HSequence_Handle_Geom_BoundedCurve;
+
+    pub fn Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> *mut NCollection_HSequence_Handle_Geom_BoundedCurve;
+
+    /// Create a new empty NCollection_HSequence_Handle_STEPSelections_AssemblyLink
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_new(
+    ) -> *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+
+    /// Destroy a NCollection_HSequence_Handle_STEPSelections_AssemblyLink
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(
+        self_: *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_STEPSelections_AssemblyLink
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_size(
+        coll: *const NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_STEPSelections_AssemblyLink
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clear(
+        coll: *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_append(
+        coll: *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+        item: *const Handle_STEPSelections_AssemblyLink,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_value(
+        coll: *const NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+        index: i32,
+    ) -> *const Handle_STEPSelections_AssemblyLink;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_iter(
+        coll: *const NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> *mut HSequence_Handle_STEPSelections_AssemblyLinkIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_STEPSelections_AssemblyLinkIterator_next(
+        iter: *mut HSequence_Handle_STEPSelections_AssemblyLinkIterator,
+    ) -> *mut Handle_STEPSelections_AssemblyLink;
+
+    /// Destroy a HSequence_Handle_STEPSelections_AssemblyLinkIterator
+    pub fn HSequence_Handle_STEPSelections_AssemblyLinkIterator_destructor(
+        self_: *mut HSequence_Handle_STEPSelections_AssemblyLinkIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_STEPSelections_AssemblyLink in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_STEPSelections_AssemblyLink_to_handle(
+        self_: *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> *mut Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+
+    pub fn Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get(
+        h: *const Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> *const NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+
+    pub fn Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> *mut NCollection_HSequence_Handle_STEPSelections_AssemblyLink;
+
+    /// Create a new empty NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_new(
+    ) -> *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+
+    /// Destroy a NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(
+        self_: *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_size(
+        coll: *const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clear(
+        coll: *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_append(
+        coll: *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+        item: *const Handle_ShapeAnalysis_FreeBoundData,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_value(
+        coll: *const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+        index: i32,
+    ) -> *const Handle_ShapeAnalysis_FreeBoundData;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_iter(
+        coll: *const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> *mut HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_next(
+        iter: *mut HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator,
+    ) -> *mut Handle_ShapeAnalysis_FreeBoundData;
+
+    /// Destroy a HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator
+    pub fn HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_destructor(
+        self_: *mut HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_to_handle(
+        self_: *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> *mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+
+    pub fn Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get(
+        h: *const Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> *const NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+
+    pub fn Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> *mut NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData;
+
+    /// Create a new empty NCollection_HSequence_Handle_Standard_Transient
+    pub fn NCollection_HSequence_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_HSequence_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_HSequence_Handle_Standard_Transient
+    pub fn NCollection_HSequence_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_HSequence_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Standard_Transient
+    pub fn NCollection_HSequence_Handle_Standard_Transient_size(
+        coll: *const NCollection_HSequence_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Standard_Transient
+    pub fn NCollection_HSequence_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_HSequence_Handle_Standard_Transient,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Standard_Transient_append(
+        coll: *mut NCollection_HSequence_Handle_Standard_Transient,
+        item: *const Handle_Standard_Transient,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Standard_Transient_value(
+        coll: *const NCollection_HSequence_Handle_Standard_Transient,
+        index: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Standard_Transient_iter(
+        coll: *const NCollection_HSequence_Handle_Standard_Transient,
+    ) -> *mut HSequence_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Standard_TransientIterator_next(
+        iter: *mut HSequence_Handle_Standard_TransientIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a HSequence_Handle_Standard_TransientIterator
+    pub fn HSequence_Handle_Standard_TransientIterator_destructor(
+        self_: *mut HSequence_Handle_Standard_TransientIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Standard_Transient in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Standard_Transient_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Standard_Transient,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Standard_Transient;
+
+    pub fn Handle_NCollection_HSequence_Handle_Standard_Transient_get(
+        h: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> *const NCollection_HSequence_Handle_Standard_Transient;
+
+    pub fn Handle_NCollection_HSequence_Handle_Standard_Transient_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> *mut NCollection_HSequence_Handle_Standard_Transient;
+
+    /// Create a new empty NCollection_HSequence_Handle_StdStorage_Root
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_new(
+    ) -> *mut NCollection_HSequence_Handle_StdStorage_Root;
+
+    /// Destroy a NCollection_HSequence_Handle_StdStorage_Root
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_destructor(
+        self_: *mut NCollection_HSequence_Handle_StdStorage_Root,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_StdStorage_Root
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_size(
+        coll: *const NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_StdStorage_Root
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_clear(
+        coll: *mut NCollection_HSequence_Handle_StdStorage_Root,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_append(
+        coll: *mut NCollection_HSequence_Handle_StdStorage_Root,
+        item: *const Handle_StdStorage_Root,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_value(
+        coll: *const NCollection_HSequence_Handle_StdStorage_Root,
+        index: i32,
+    ) -> *const Handle_StdStorage_Root;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_iter(
+        coll: *const NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> *mut HSequence_Handle_StdStorage_RootIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_StdStorage_RootIterator_next(
+        iter: *mut HSequence_Handle_StdStorage_RootIterator,
+    ) -> *mut Handle_StdStorage_Root;
+
+    /// Destroy a HSequence_Handle_StdStorage_RootIterator
+    pub fn HSequence_Handle_StdStorage_RootIterator_destructor(
+        self_: *mut HSequence_Handle_StdStorage_RootIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_StdStorage_Root in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_StdStorage_Root_to_handle(
+        self_: *mut NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> *mut Handle_NCollection_HSequence_Handle_StdStorage_Root;
+
+    pub fn Handle_NCollection_HSequence_Handle_StdStorage_Root_get(
+        h: *const Handle_NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> *const NCollection_HSequence_Handle_StdStorage_Root;
+
+    pub fn Handle_NCollection_HSequence_Handle_StdStorage_Root_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> *mut NCollection_HSequence_Handle_StdStorage_Root;
+
+    /// Create a new empty NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_new(
+    ) -> *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Destroy a NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(
+        self_: *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_size(
+        coll: *const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clear(
+        coll: *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_append(
+        coll: *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+        item: *const Handle_StepElement_CurveElementSectionDefinition,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_value(
+        coll: *const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+        index: i32,
+    ) -> *const Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_iter(
+        coll: *const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_next(
+        iter: *mut HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator,
+    ) -> *mut Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Destroy a HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator
+    pub fn HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_destructor(
+        self_: *mut HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_to_handle(
+        self_: *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get(
+        h: *const Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *const NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> *mut NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition;
+
+    /// Create a new empty NCollection_HSequence_Handle_StepElement_ElementMaterial
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_new(
+    ) -> *mut NCollection_HSequence_Handle_StepElement_ElementMaterial;
+
+    /// Destroy a NCollection_HSequence_Handle_StepElement_ElementMaterial
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(
+        self_: *mut NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_StepElement_ElementMaterial
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_size(
+        coll: *const NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_StepElement_ElementMaterial
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_clear(
+        coll: *mut NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_append(
+        coll: *mut NCollection_HSequence_Handle_StepElement_ElementMaterial,
+        item: *const Handle_StepElement_ElementMaterial,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_value(
+        coll: *const NCollection_HSequence_Handle_StepElement_ElementMaterial,
+        index: i32,
+    ) -> *const Handle_StepElement_ElementMaterial;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_iter(
+        coll: *const NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> *mut HSequence_Handle_StepElement_ElementMaterialIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_StepElement_ElementMaterialIterator_next(
+        iter: *mut HSequence_Handle_StepElement_ElementMaterialIterator,
+    ) -> *mut Handle_StepElement_ElementMaterial;
+
+    /// Destroy a HSequence_Handle_StepElement_ElementMaterialIterator
+    pub fn HSequence_Handle_StepElement_ElementMaterialIterator_destructor(
+        self_: *mut HSequence_Handle_StepElement_ElementMaterialIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_StepElement_ElementMaterial in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_StepElement_ElementMaterial_to_handle(
+        self_: *mut NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> *mut Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get(
+        h: *const Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> *const NCollection_HSequence_Handle_StepElement_ElementMaterial;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> *mut NCollection_HSequence_Handle_StepElement_ElementMaterial;
+
+    /// Create a new empty NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_new(
+    ) -> *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+
+    /// Destroy a NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(
+        self_: *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_size(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clear(
+        coll: *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_append(
+        coll: *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+        item: *const Handle_StepFEA_ElementGeometricRelationship,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_value(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+        index: i32,
+    ) -> *const Handle_StepFEA_ElementGeometricRelationship;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_iter(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> *mut HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_next(
+        iter: *mut HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator,
+    ) -> *mut Handle_StepFEA_ElementGeometricRelationship;
+
+    /// Destroy a HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator
+    pub fn HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_destructor(
+        self_: *mut HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_to_handle(
+        self_: *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get(
+        h: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> *const NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> *mut NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship;
+
+    /// Create a new empty NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_new(
+    ) -> *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+
+    /// Destroy a NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(
+        self_: *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_size(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clear(
+        coll: *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_append(
+        coll: *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+        item: *const Handle_StepFEA_ElementRepresentation,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_value(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+        index: i32,
+    ) -> *const Handle_StepFEA_ElementRepresentation;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_iter(
+        coll: *const NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> *mut HSequence_Handle_StepFEA_ElementRepresentationIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_StepFEA_ElementRepresentationIterator_next(
+        iter: *mut HSequence_Handle_StepFEA_ElementRepresentationIterator,
+    ) -> *mut Handle_StepFEA_ElementRepresentation;
+
+    /// Destroy a HSequence_Handle_StepFEA_ElementRepresentationIterator
+    pub fn HSequence_Handle_StepFEA_ElementRepresentationIterator_destructor(
+        self_: *mut HSequence_Handle_StepFEA_ElementRepresentationIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_StepFEA_ElementRepresentation in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_StepFEA_ElementRepresentation_to_handle(
+        self_: *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get(
+        h: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> *const NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> *mut NCollection_HSequence_Handle_StepFEA_ElementRepresentation;
+
+    /// Create a new empty NCollection_HSequence_Handle_Storage_Root
+    pub fn NCollection_HSequence_Handle_Storage_Root_new(
+    ) -> *mut NCollection_HSequence_Handle_Storage_Root;
+
+    /// Destroy a NCollection_HSequence_Handle_Storage_Root
+    pub fn NCollection_HSequence_Handle_Storage_Root_destructor(
+        self_: *mut NCollection_HSequence_Handle_Storage_Root,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Storage_Root
+    pub fn NCollection_HSequence_Handle_Storage_Root_size(
+        coll: *const NCollection_HSequence_Handle_Storage_Root,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Storage_Root
+    pub fn NCollection_HSequence_Handle_Storage_Root_clear(
+        coll: *mut NCollection_HSequence_Handle_Storage_Root,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Storage_Root_append(
+        coll: *mut NCollection_HSequence_Handle_Storage_Root,
+        item: *const Handle_Storage_Root,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Storage_Root_value(
+        coll: *const NCollection_HSequence_Handle_Storage_Root,
+        index: i32,
+    ) -> *const Handle_Storage_Root;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Storage_Root_iter(
+        coll: *const NCollection_HSequence_Handle_Storage_Root,
+    ) -> *mut HSequence_Handle_Storage_RootIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Storage_RootIterator_next(
+        iter: *mut HSequence_Handle_Storage_RootIterator,
+    ) -> *mut Handle_Storage_Root;
+
+    /// Destroy a HSequence_Handle_Storage_RootIterator
+    pub fn HSequence_Handle_Storage_RootIterator_destructor(
+        self_: *mut HSequence_Handle_Storage_RootIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Storage_Root in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Storage_Root_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Storage_Root,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Storage_Root;
+
+    pub fn Handle_NCollection_HSequence_Handle_Storage_Root_get(
+        h: *const Handle_NCollection_HSequence_Handle_Storage_Root,
+    ) -> *const NCollection_HSequence_Handle_Storage_Root;
+
+    pub fn Handle_NCollection_HSequence_Handle_Storage_Root_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Storage_Root,
+    ) -> *mut NCollection_HSequence_Handle_Storage_Root;
+
+    /// Create a new empty NCollection_HSequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_new(
+    ) -> *mut NCollection_HSequence_Handle_TCollection_HAsciiString;
+
+    /// Destroy a NCollection_HSequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(
+        self_: *mut NCollection_HSequence_Handle_TCollection_HAsciiString,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_size(
+        coll: *const NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_clear(
+        coll: *mut NCollection_HSequence_Handle_TCollection_HAsciiString,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_append(
+        coll: *mut NCollection_HSequence_Handle_TCollection_HAsciiString,
+        item: *const Handle_TCollection_HAsciiString,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_value(
+        coll: *const NCollection_HSequence_Handle_TCollection_HAsciiString,
+        index: i32,
+    ) -> *const Handle_TCollection_HAsciiString;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_iter(
+        coll: *const NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> *mut HSequence_Handle_TCollection_HAsciiStringIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_TCollection_HAsciiStringIterator_next(
+        iter: *mut HSequence_Handle_TCollection_HAsciiStringIterator,
+    ) -> *mut Handle_TCollection_HAsciiString;
+
+    /// Destroy a HSequence_Handle_TCollection_HAsciiStringIterator
+    pub fn HSequence_Handle_TCollection_HAsciiStringIterator_destructor(
+        self_: *mut HSequence_Handle_TCollection_HAsciiStringIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_TCollection_HAsciiString in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_TCollection_HAsciiString_to_handle(
+        self_: *mut NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> *mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString;
+
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get(
+        h: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> *const NCollection_HSequence_Handle_TCollection_HAsciiString;
+
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> *mut NCollection_HSequence_Handle_TCollection_HAsciiString;
+
+    /// Create a new empty NCollection_HSequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_new(
+    ) -> *mut NCollection_HSequence_Handle_TCollection_HExtendedString;
+
+    /// Destroy a NCollection_HSequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(
+        self_: *mut NCollection_HSequence_Handle_TCollection_HExtendedString,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_size(
+        coll: *const NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_clear(
+        coll: *mut NCollection_HSequence_Handle_TCollection_HExtendedString,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_append(
+        coll: *mut NCollection_HSequence_Handle_TCollection_HExtendedString,
+        item: *const Handle_TCollection_HExtendedString,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_value(
+        coll: *const NCollection_HSequence_Handle_TCollection_HExtendedString,
+        index: i32,
+    ) -> *const Handle_TCollection_HExtendedString;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_iter(
+        coll: *const NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> *mut HSequence_Handle_TCollection_HExtendedStringIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_TCollection_HExtendedStringIterator_next(
+        iter: *mut HSequence_Handle_TCollection_HExtendedStringIterator,
+    ) -> *mut Handle_TCollection_HExtendedString;
+
+    /// Destroy a HSequence_Handle_TCollection_HExtendedStringIterator
+    pub fn HSequence_Handle_TCollection_HExtendedStringIterator_destructor(
+        self_: *mut HSequence_Handle_TCollection_HExtendedStringIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_TCollection_HExtendedString in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_TCollection_HExtendedString_to_handle(
+        self_: *mut NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> *mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString;
+
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get(
+        h: *const Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> *const NCollection_HSequence_Handle_TCollection_HExtendedString;
+
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> *mut NCollection_HSequence_Handle_TCollection_HExtendedString;
+
+    /// Create a new empty NCollection_HSequence_Handle_TObj_Object
+    pub fn NCollection_HSequence_Handle_TObj_Object_new(
+    ) -> *mut NCollection_HSequence_Handle_TObj_Object;
+
+    /// Destroy a NCollection_HSequence_Handle_TObj_Object
+    pub fn NCollection_HSequence_Handle_TObj_Object_destructor(
+        self_: *mut NCollection_HSequence_Handle_TObj_Object,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_TObj_Object
+    pub fn NCollection_HSequence_Handle_TObj_Object_size(
+        coll: *const NCollection_HSequence_Handle_TObj_Object,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_TObj_Object
+    pub fn NCollection_HSequence_Handle_TObj_Object_clear(
+        coll: *mut NCollection_HSequence_Handle_TObj_Object,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_TObj_Object_append(
+        coll: *mut NCollection_HSequence_Handle_TObj_Object,
+        item: *const Handle_TObj_Object,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_TObj_Object_value(
+        coll: *const NCollection_HSequence_Handle_TObj_Object,
+        index: i32,
+    ) -> *const Handle_TObj_Object;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_TObj_Object_iter(
+        coll: *const NCollection_HSequence_Handle_TObj_Object,
+    ) -> *mut HSequence_Handle_TObj_ObjectIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_TObj_ObjectIterator_next(
+        iter: *mut HSequence_Handle_TObj_ObjectIterator,
+    ) -> *mut Handle_TObj_Object;
+
+    /// Destroy a HSequence_Handle_TObj_ObjectIterator
+    pub fn HSequence_Handle_TObj_ObjectIterator_destructor(
+        self_: *mut HSequence_Handle_TObj_ObjectIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_TObj_Object in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_TObj_Object_to_handle(
+        self_: *mut NCollection_HSequence_Handle_TObj_Object,
+    ) -> *mut Handle_NCollection_HSequence_Handle_TObj_Object;
+
+    pub fn Handle_NCollection_HSequence_Handle_TObj_Object_get(
+        h: *const Handle_NCollection_HSequence_Handle_TObj_Object,
+    ) -> *const NCollection_HSequence_Handle_TObj_Object;
+
+    pub fn Handle_NCollection_HSequence_Handle_TObj_Object_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_TObj_Object,
+    ) -> *mut NCollection_HSequence_Handle_TObj_Object;
+
+    /// Create a new empty NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_new(
+    ) -> *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+
+    /// Destroy a NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(
+        self_: *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_size(
+        coll: *const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clear(
+        coll: *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_append(
+        coll: *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+        item: *const Handle_TransferBRep_TransferResultInfo,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_value(
+        coll: *const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+        index: i32,
+    ) -> *const Handle_TransferBRep_TransferResultInfo;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_iter(
+        coll: *const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> *mut HSequence_Handle_TransferBRep_TransferResultInfoIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_TransferBRep_TransferResultInfoIterator_next(
+        iter: *mut HSequence_Handle_TransferBRep_TransferResultInfoIterator,
+    ) -> *mut Handle_TransferBRep_TransferResultInfo;
+
+    /// Destroy a HSequence_Handle_TransferBRep_TransferResultInfoIterator
+    pub fn HSequence_Handle_TransferBRep_TransferResultInfoIterator_destructor(
+        self_: *mut HSequence_Handle_TransferBRep_TransferResultInfoIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_TransferBRep_TransferResultInfo in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_to_handle(
+        self_: *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> *mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+
+    pub fn Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get(
+        h: *const Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> *const NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+
+    pub fn Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> *mut NCollection_HSequence_Handle_TransferBRep_TransferResultInfo;
+
+    /// Create a new empty NCollection_HSequence_Handle_Transfer_Finder
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_new(
+    ) -> *mut NCollection_HSequence_Handle_Transfer_Finder;
+
+    /// Destroy a NCollection_HSequence_Handle_Transfer_Finder
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_destructor(
+        self_: *mut NCollection_HSequence_Handle_Transfer_Finder,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Transfer_Finder
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_size(
+        coll: *const NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Transfer_Finder
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_clear(
+        coll: *mut NCollection_HSequence_Handle_Transfer_Finder,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_append(
+        coll: *mut NCollection_HSequence_Handle_Transfer_Finder,
+        item: *const Handle_Transfer_Finder,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_value(
+        coll: *const NCollection_HSequence_Handle_Transfer_Finder,
+        index: i32,
+    ) -> *const Handle_Transfer_Finder;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_iter(
+        coll: *const NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> *mut HSequence_Handle_Transfer_FinderIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Transfer_FinderIterator_next(
+        iter: *mut HSequence_Handle_Transfer_FinderIterator,
+    ) -> *mut Handle_Transfer_Finder;
+
+    /// Destroy a HSequence_Handle_Transfer_FinderIterator
+    pub fn HSequence_Handle_Transfer_FinderIterator_destructor(
+        self_: *mut HSequence_Handle_Transfer_FinderIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Transfer_Finder in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Transfer_Finder_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Transfer_Finder;
+
+    pub fn Handle_NCollection_HSequence_Handle_Transfer_Finder_get(
+        h: *const Handle_NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> *const NCollection_HSequence_Handle_Transfer_Finder;
+
+    pub fn Handle_NCollection_HSequence_Handle_Transfer_Finder_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> *mut NCollection_HSequence_Handle_Transfer_Finder;
+
+    /// Create a new empty NCollection_HSequence_Handle_Units_Quantity
+    pub fn NCollection_HSequence_Handle_Units_Quantity_new(
+    ) -> *mut NCollection_HSequence_Handle_Units_Quantity;
+
+    /// Destroy a NCollection_HSequence_Handle_Units_Quantity
+    pub fn NCollection_HSequence_Handle_Units_Quantity_destructor(
+        self_: *mut NCollection_HSequence_Handle_Units_Quantity,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Units_Quantity
+    pub fn NCollection_HSequence_Handle_Units_Quantity_size(
+        coll: *const NCollection_HSequence_Handle_Units_Quantity,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Units_Quantity
+    pub fn NCollection_HSequence_Handle_Units_Quantity_clear(
+        coll: *mut NCollection_HSequence_Handle_Units_Quantity,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Units_Quantity_append(
+        coll: *mut NCollection_HSequence_Handle_Units_Quantity,
+        item: *const Handle_Units_Quantity,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Units_Quantity_value(
+        coll: *const NCollection_HSequence_Handle_Units_Quantity,
+        index: i32,
+    ) -> *const Handle_Units_Quantity;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Units_Quantity_iter(
+        coll: *const NCollection_HSequence_Handle_Units_Quantity,
+    ) -> *mut HSequence_Handle_Units_QuantityIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Units_QuantityIterator_next(
+        iter: *mut HSequence_Handle_Units_QuantityIterator,
+    ) -> *mut Handle_Units_Quantity;
+
+    /// Destroy a HSequence_Handle_Units_QuantityIterator
+    pub fn HSequence_Handle_Units_QuantityIterator_destructor(
+        self_: *mut HSequence_Handle_Units_QuantityIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Units_Quantity in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Units_Quantity_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Units_Quantity,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Units_Quantity;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Quantity_get(
+        h: *const Handle_NCollection_HSequence_Handle_Units_Quantity,
+    ) -> *const NCollection_HSequence_Handle_Units_Quantity;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Quantity_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Units_Quantity,
+    ) -> *mut NCollection_HSequence_Handle_Units_Quantity;
+
+    /// Create a new empty NCollection_HSequence_Handle_Units_Token
+    pub fn NCollection_HSequence_Handle_Units_Token_new(
+    ) -> *mut NCollection_HSequence_Handle_Units_Token;
+
+    /// Destroy a NCollection_HSequence_Handle_Units_Token
+    pub fn NCollection_HSequence_Handle_Units_Token_destructor(
+        self_: *mut NCollection_HSequence_Handle_Units_Token,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Units_Token
+    pub fn NCollection_HSequence_Handle_Units_Token_size(
+        coll: *const NCollection_HSequence_Handle_Units_Token,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Units_Token
+    pub fn NCollection_HSequence_Handle_Units_Token_clear(
+        coll: *mut NCollection_HSequence_Handle_Units_Token,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Units_Token_append(
+        coll: *mut NCollection_HSequence_Handle_Units_Token,
+        item: *const Handle_Units_Token,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Units_Token_value(
+        coll: *const NCollection_HSequence_Handle_Units_Token,
+        index: i32,
+    ) -> *const Handle_Units_Token;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Units_Token_iter(
+        coll: *const NCollection_HSequence_Handle_Units_Token,
+    ) -> *mut HSequence_Handle_Units_TokenIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Units_TokenIterator_next(
+        iter: *mut HSequence_Handle_Units_TokenIterator,
+    ) -> *mut Handle_Units_Token;
+
+    /// Destroy a HSequence_Handle_Units_TokenIterator
+    pub fn HSequence_Handle_Units_TokenIterator_destructor(
+        self_: *mut HSequence_Handle_Units_TokenIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Units_Token in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Units_Token_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Units_Token,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Units_Token;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Token_get(
+        h: *const Handle_NCollection_HSequence_Handle_Units_Token,
+    ) -> *const NCollection_HSequence_Handle_Units_Token;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Token_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Units_Token,
+    ) -> *mut NCollection_HSequence_Handle_Units_Token;
+
+    /// Create a new empty NCollection_HSequence_Handle_Units_Unit
+    pub fn NCollection_HSequence_Handle_Units_Unit_new(
+    ) -> *mut NCollection_HSequence_Handle_Units_Unit;
+
+    /// Destroy a NCollection_HSequence_Handle_Units_Unit
+    pub fn NCollection_HSequence_Handle_Units_Unit_destructor(
+        self_: *mut NCollection_HSequence_Handle_Units_Unit,
+    );
+
+    /// Get number of elements in NCollection_HSequence_Handle_Units_Unit
+    pub fn NCollection_HSequence_Handle_Units_Unit_size(
+        coll: *const NCollection_HSequence_Handle_Units_Unit,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_HSequence_Handle_Units_Unit
+    pub fn NCollection_HSequence_Handle_Units_Unit_clear(
+        coll: *mut NCollection_HSequence_Handle_Units_Unit,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_HSequence_Handle_Units_Unit_append(
+        coll: *mut NCollection_HSequence_Handle_Units_Unit,
+        item: *const Handle_Units_Unit,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_HSequence_Handle_Units_Unit_value(
+        coll: *const NCollection_HSequence_Handle_Units_Unit,
+        index: i32,
+    ) -> *const Handle_Units_Unit;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_HSequence_Handle_Units_Unit_iter(
+        coll: *const NCollection_HSequence_Handle_Units_Unit,
+    ) -> *mut HSequence_Handle_Units_UnitIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn HSequence_Handle_Units_UnitIterator_next(
+        iter: *mut HSequence_Handle_Units_UnitIterator,
+    ) -> *mut Handle_Units_Unit;
+
+    /// Destroy a HSequence_Handle_Units_UnitIterator
+    pub fn HSequence_Handle_Units_UnitIterator_destructor(
+        self_: *mut HSequence_Handle_Units_UnitIterator,
+    );
+
+    /// Wrap an owned NCollection_HSequence_Handle_Units_Unit in a Handle (reference-counted)
+    pub fn NCollection_HSequence_Handle_Units_Unit_to_handle(
+        self_: *mut NCollection_HSequence_Handle_Units_Unit,
+    ) -> *mut Handle_NCollection_HSequence_Handle_Units_Unit;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Unit_get(
+        h: *const Handle_NCollection_HSequence_Handle_Units_Unit,
+    ) -> *const NCollection_HSequence_Handle_Units_Unit;
+
+    pub fn Handle_NCollection_HSequence_Handle_Units_Unit_get_mut(
+        h: *mut Handle_NCollection_HSequence_Handle_Units_Unit,
+    ) -> *mut NCollection_HSequence_Handle_Units_Unit;
+
     /// Create a new empty NCollection_HSequence_TCollection_AsciiString
     pub fn NCollection_HSequence_TCollection_AsciiString_new(
     ) -> *mut NCollection_HSequence_TCollection_AsciiString;
@@ -32120,6 +39165,148 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HSequence_int_get_mut(
         h: *mut Handle_NCollection_HSequence_int,
     ) -> *mut NCollection_HSequence_int;
+
+    /// Create a new empty NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    );
+
+    /// Add a key-value pair, returns index (existing or new)
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_add(
+        coll: *mut NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+        value: *const Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Find value by key (returns reference)
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_key(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Find value by 1-based index (returns reference)
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_index(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        index: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Find key by 1-based index
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_key(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        index: i32,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Find index by key (returns 0 if not found)
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_index(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Check if key exists
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+        key: *const Handle_Standard_Transient,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(
+        coll: *const NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> *mut IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(
+        iter: *mut IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator
+    pub fn IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(
+        self_: *mut IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    );
+
+    /// Create a new empty NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_size(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+    );
+
+    /// Add a key-value pair, returns index (existing or new)
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_add(
+        coll: *mut NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        key: *const TCollection_AsciiString,
+        value: *const Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Find value by key (returns reference)
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_key(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        key: *const TCollection_AsciiString,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Find value by 1-based index (returns reference)
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_index(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        index: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Find key by 1-based index
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_key(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        index: i32,
+    ) -> *mut TCollection_AsciiString;
+
+    /// Find index by key (returns 0 if not found)
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_index(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        key: *const TCollection_AsciiString,
+    ) -> i32;
+
+    /// Check if key exists
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_contains(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        key: *const TCollection_AsciiString,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_iter(
+        coll: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+    ) -> *mut IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_next_key(
+        iter: *mut IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator,
+    ) -> *mut TCollection_AsciiString;
+
+    /// Destroy a IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator
+    pub fn IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_destructor(
+        self_: *mut IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator,
+    );
 
     /// Create a new empty NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue
     pub fn NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue_new(
@@ -32900,6 +40087,162 @@ unsafe extern "C" {
         self_: *mut IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasherIterator,
     );
 
+    /// Create a new empty NCollection_IndexedMap_Handle_BOPDS_PaveBlock
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_new(
+    ) -> *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock;
+
+    /// Destroy a NCollection_IndexedMap_Handle_BOPDS_PaveBlock
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_destructor(
+        self_: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Get number of elements in NCollection_IndexedMap_Handle_BOPDS_PaveBlock
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_size(
+        coll: *const NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_IndexedMap_Handle_BOPDS_PaveBlock
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_clear(
+        coll: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_add(
+        coll: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Get element at 1-based index
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_key(
+        coll: *const NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        index: i32,
+    ) -> *const Handle_BOPDS_PaveBlock;
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_index(
+        coll: *const NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_IndexedMap_Handle_BOPDS_PaveBlock_iter(
+        coll: *const NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+    ) -> *mut IndexedMap_Handle_BOPDS_PaveBlockIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn IndexedMap_Handle_BOPDS_PaveBlockIterator_next(
+        iter: *mut IndexedMap_Handle_BOPDS_PaveBlockIterator,
+    ) -> *mut Handle_BOPDS_PaveBlock;
+
+    /// Destroy a IndexedMap_Handle_BOPDS_PaveBlockIterator
+    pub fn IndexedMap_Handle_BOPDS_PaveBlockIterator_destructor(
+        self_: *mut IndexedMap_Handle_BOPDS_PaveBlockIterator,
+    );
+
+    /// Create a new empty NCollection_IndexedMap_Handle_Standard_Transient
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_IndexedMap_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_IndexedMap_Handle_Standard_Transient
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_IndexedMap_Handle_Standard_Transient
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_size(
+        coll: *const NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_IndexedMap_Handle_Standard_Transient
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_add(
+        coll: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+        item: *const Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Get element at 1-based index
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_find_key(
+        coll: *const NCollection_IndexedMap_Handle_Standard_Transient,
+        index: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_find_index(
+        coll: *const NCollection_IndexedMap_Handle_Standard_Transient,
+        item: *const Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_IndexedMap_Handle_Standard_Transient_iter(
+        coll: *const NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *mut IndexedMap_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn IndexedMap_Handle_Standard_TransientIterator_next(
+        iter: *mut IndexedMap_Handle_Standard_TransientIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a IndexedMap_Handle_Standard_TransientIterator
+    pub fn IndexedMap_Handle_Standard_TransientIterator_destructor(
+        self_: *mut IndexedMap_Handle_Standard_TransientIterator,
+    );
+
+    /// Create a new empty NCollection_IndexedMap_Handle_TDF_Attribute
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_new(
+    ) -> *mut NCollection_IndexedMap_Handle_TDF_Attribute;
+
+    /// Destroy a NCollection_IndexedMap_Handle_TDF_Attribute
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_destructor(
+        self_: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    );
+
+    /// Get number of elements in NCollection_IndexedMap_Handle_TDF_Attribute
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_size(
+        coll: *const NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_IndexedMap_Handle_TDF_Attribute
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_clear(
+        coll: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_add(
+        coll: *mut NCollection_IndexedMap_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Get element at 1-based index
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_find_key(
+        coll: *const NCollection_IndexedMap_Handle_TDF_Attribute,
+        index: i32,
+    ) -> *const Handle_TDF_Attribute;
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_find_index(
+        coll: *const NCollection_IndexedMap_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_IndexedMap_Handle_TDF_Attribute_iter(
+        coll: *const NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) -> *mut IndexedMap_Handle_TDF_AttributeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn IndexedMap_Handle_TDF_AttributeIterator_next(
+        iter: *mut IndexedMap_Handle_TDF_AttributeIterator,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Destroy a IndexedMap_Handle_TDF_AttributeIterator
+    pub fn IndexedMap_Handle_TDF_AttributeIterator_destructor(
+        self_: *mut IndexedMap_Handle_TDF_AttributeIterator,
+    );
+
     /// Create a new empty NCollection_IndexedMap_TCollection_AsciiString
     pub fn NCollection_IndexedMap_TCollection_AsciiString_new(
     ) -> *mut NCollection_IndexedMap_TCollection_AsciiString;
@@ -33438,6 +40781,733 @@ unsafe extern "C" {
         self_: *mut List_HLRAlgo_InterferenceIterator,
     );
 
+    /// Create a new empty NCollection_List_Handle_BOPDS_PaveBlock
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_new(
+    ) -> *mut NCollection_List_Handle_BOPDS_PaveBlock;
+
+    /// Destroy a NCollection_List_Handle_BOPDS_PaveBlock
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_destructor(
+        self_: *mut NCollection_List_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_BOPDS_PaveBlock
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_size(
+        coll: *const NCollection_List_Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_BOPDS_PaveBlock
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_clear(
+        coll: *mut NCollection_List_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_append(
+        coll: *mut NCollection_List_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_prepend(
+        coll: *mut NCollection_List_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_BOPDS_PaveBlock_iter(
+        coll: *const NCollection_List_Handle_BOPDS_PaveBlock,
+    ) -> *mut List_Handle_BOPDS_PaveBlockIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_BOPDS_PaveBlockIterator_next(
+        iter: *mut List_Handle_BOPDS_PaveBlockIterator,
+    ) -> *mut Handle_BOPDS_PaveBlock;
+
+    /// Destroy a List_Handle_BOPDS_PaveBlockIterator
+    pub fn List_Handle_BOPDS_PaveBlockIterator_destructor(
+        self_: *mut List_Handle_BOPDS_PaveBlockIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_BRepMesh_DiscretAlgoFactory
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_new(
+    ) -> *mut NCollection_List_Handle_BRepMesh_DiscretAlgoFactory;
+
+    /// Destroy a NCollection_List_Handle_BRepMesh_DiscretAlgoFactory
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_destructor(
+        self_: *mut NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_BRepMesh_DiscretAlgoFactory
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_size(
+        coll: *const NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_BRepMesh_DiscretAlgoFactory
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_clear(
+        coll: *mut NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_append(
+        coll: *mut NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+        item: *const Handle_BRepMesh_DiscretAlgoFactory,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_prepend(
+        coll: *mut NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+        item: *const Handle_BRepMesh_DiscretAlgoFactory,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_iter(
+        coll: *const NCollection_List_Handle_BRepMesh_DiscretAlgoFactory,
+    ) -> *mut List_Handle_BRepMesh_DiscretAlgoFactoryIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_BRepMesh_DiscretAlgoFactoryIterator_next(
+        iter: *mut List_Handle_BRepMesh_DiscretAlgoFactoryIterator,
+    ) -> *mut Handle_BRepMesh_DiscretAlgoFactory;
+
+    /// Destroy a List_Handle_BRepMesh_DiscretAlgoFactoryIterator
+    pub fn List_Handle_BRepMesh_DiscretAlgoFactoryIterator_destructor(
+        self_: *mut List_Handle_BRepMesh_DiscretAlgoFactoryIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_BRep_CurveRepresentation
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_new(
+    ) -> *mut NCollection_List_Handle_BRep_CurveRepresentation;
+
+    /// Destroy a NCollection_List_Handle_BRep_CurveRepresentation
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_destructor(
+        self_: *mut NCollection_List_Handle_BRep_CurveRepresentation,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_BRep_CurveRepresentation
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_size(
+        coll: *const NCollection_List_Handle_BRep_CurveRepresentation,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_BRep_CurveRepresentation
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_clear(
+        coll: *mut NCollection_List_Handle_BRep_CurveRepresentation,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_append(
+        coll: *mut NCollection_List_Handle_BRep_CurveRepresentation,
+        item: *const Handle_BRep_CurveRepresentation,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_prepend(
+        coll: *mut NCollection_List_Handle_BRep_CurveRepresentation,
+        item: *const Handle_BRep_CurveRepresentation,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_BRep_CurveRepresentation_iter(
+        coll: *const NCollection_List_Handle_BRep_CurveRepresentation,
+    ) -> *mut List_Handle_BRep_CurveRepresentationIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_BRep_CurveRepresentationIterator_next(
+        iter: *mut List_Handle_BRep_CurveRepresentationIterator,
+    ) -> *mut Handle_BRep_CurveRepresentation;
+
+    /// Destroy a List_Handle_BRep_CurveRepresentationIterator
+    pub fn List_Handle_BRep_CurveRepresentationIterator_destructor(
+        self_: *mut List_Handle_BRep_CurveRepresentationIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_BRep_PointRepresentation
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_new(
+    ) -> *mut NCollection_List_Handle_BRep_PointRepresentation;
+
+    /// Destroy a NCollection_List_Handle_BRep_PointRepresentation
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_destructor(
+        self_: *mut NCollection_List_Handle_BRep_PointRepresentation,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_BRep_PointRepresentation
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_size(
+        coll: *const NCollection_List_Handle_BRep_PointRepresentation,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_BRep_PointRepresentation
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_clear(
+        coll: *mut NCollection_List_Handle_BRep_PointRepresentation,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_append(
+        coll: *mut NCollection_List_Handle_BRep_PointRepresentation,
+        item: *const Handle_BRep_PointRepresentation,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_prepend(
+        coll: *mut NCollection_List_Handle_BRep_PointRepresentation,
+        item: *const Handle_BRep_PointRepresentation,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_BRep_PointRepresentation_iter(
+        coll: *const NCollection_List_Handle_BRep_PointRepresentation,
+    ) -> *mut List_Handle_BRep_PointRepresentationIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_BRep_PointRepresentationIterator_next(
+        iter: *mut List_Handle_BRep_PointRepresentationIterator,
+    ) -> *mut Handle_BRep_PointRepresentation;
+
+    /// Destroy a List_Handle_BRep_PointRepresentationIterator
+    pub fn List_Handle_BRep_PointRepresentationIterator_destructor(
+        self_: *mut List_Handle_BRep_PointRepresentationIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_ChFiDS_ElSpine
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_new(
+    ) -> *mut NCollection_List_Handle_ChFiDS_ElSpine;
+
+    /// Destroy a NCollection_List_Handle_ChFiDS_ElSpine
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_destructor(
+        self_: *mut NCollection_List_Handle_ChFiDS_ElSpine,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_ChFiDS_ElSpine
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_size(
+        coll: *const NCollection_List_Handle_ChFiDS_ElSpine,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_ChFiDS_ElSpine
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_clear(
+        coll: *mut NCollection_List_Handle_ChFiDS_ElSpine,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_append(
+        coll: *mut NCollection_List_Handle_ChFiDS_ElSpine,
+        item: *const Handle_ChFiDS_ElSpine,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_prepend(
+        coll: *mut NCollection_List_Handle_ChFiDS_ElSpine,
+        item: *const Handle_ChFiDS_ElSpine,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_ChFiDS_ElSpine_iter(
+        coll: *const NCollection_List_Handle_ChFiDS_ElSpine,
+    ) -> *mut List_Handle_ChFiDS_ElSpineIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_ChFiDS_ElSpineIterator_next(
+        iter: *mut List_Handle_ChFiDS_ElSpineIterator,
+    ) -> *mut Handle_ChFiDS_ElSpine;
+
+    /// Destroy a List_Handle_ChFiDS_ElSpineIterator
+    pub fn List_Handle_ChFiDS_ElSpineIterator_destructor(
+        self_: *mut List_Handle_ChFiDS_ElSpineIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_ChFiDS_Stripe
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_new() -> *mut NCollection_List_Handle_ChFiDS_Stripe;
+
+    /// Destroy a NCollection_List_Handle_ChFiDS_Stripe
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_destructor(
+        self_: *mut NCollection_List_Handle_ChFiDS_Stripe,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_ChFiDS_Stripe
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_size(
+        coll: *const NCollection_List_Handle_ChFiDS_Stripe,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_ChFiDS_Stripe
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_clear(
+        coll: *mut NCollection_List_Handle_ChFiDS_Stripe,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_append(
+        coll: *mut NCollection_List_Handle_ChFiDS_Stripe,
+        item: *const Handle_ChFiDS_Stripe,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_prepend(
+        coll: *mut NCollection_List_Handle_ChFiDS_Stripe,
+        item: *const Handle_ChFiDS_Stripe,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_ChFiDS_Stripe_iter(
+        coll: *const NCollection_List_Handle_ChFiDS_Stripe,
+    ) -> *mut List_Handle_ChFiDS_StripeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_ChFiDS_StripeIterator_next(
+        iter: *mut List_Handle_ChFiDS_StripeIterator,
+    ) -> *mut Handle_ChFiDS_Stripe;
+
+    /// Destroy a List_Handle_ChFiDS_StripeIterator
+    pub fn List_Handle_ChFiDS_StripeIterator_destructor(
+        self_: *mut List_Handle_ChFiDS_StripeIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_Law_Function
+    pub fn NCollection_List_Handle_Law_Function_new() -> *mut NCollection_List_Handle_Law_Function;
+
+    /// Destroy a NCollection_List_Handle_Law_Function
+    pub fn NCollection_List_Handle_Law_Function_destructor(
+        self_: *mut NCollection_List_Handle_Law_Function,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_Law_Function
+    pub fn NCollection_List_Handle_Law_Function_size(
+        coll: *const NCollection_List_Handle_Law_Function,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_Law_Function
+    pub fn NCollection_List_Handle_Law_Function_clear(
+        coll: *mut NCollection_List_Handle_Law_Function,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_Law_Function_append(
+        coll: *mut NCollection_List_Handle_Law_Function,
+        item: *const Handle_Law_Function,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_Law_Function_prepend(
+        coll: *mut NCollection_List_Handle_Law_Function,
+        item: *const Handle_Law_Function,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_Law_Function_iter(
+        coll: *const NCollection_List_Handle_Law_Function,
+    ) -> *mut List_Handle_Law_FunctionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_Law_FunctionIterator_next(
+        iter: *mut List_Handle_Law_FunctionIterator,
+    ) -> *mut Handle_Law_Function;
+
+    /// Destroy a List_Handle_Law_FunctionIterator
+    pub fn List_Handle_Law_FunctionIterator_destructor(
+        self_: *mut List_Handle_Law_FunctionIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_Message_Alert
+    pub fn NCollection_List_Handle_Message_Alert_new() -> *mut NCollection_List_Handle_Message_Alert;
+
+    /// Destroy a NCollection_List_Handle_Message_Alert
+    pub fn NCollection_List_Handle_Message_Alert_destructor(
+        self_: *mut NCollection_List_Handle_Message_Alert,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_Message_Alert
+    pub fn NCollection_List_Handle_Message_Alert_size(
+        coll: *const NCollection_List_Handle_Message_Alert,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_Message_Alert
+    pub fn NCollection_List_Handle_Message_Alert_clear(
+        coll: *mut NCollection_List_Handle_Message_Alert,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_Message_Alert_append(
+        coll: *mut NCollection_List_Handle_Message_Alert,
+        item: *const Handle_Message_Alert,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_Message_Alert_prepend(
+        coll: *mut NCollection_List_Handle_Message_Alert,
+        item: *const Handle_Message_Alert,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_Message_Alert_iter(
+        coll: *const NCollection_List_Handle_Message_Alert,
+    ) -> *mut List_Handle_Message_AlertIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_Message_AlertIterator_next(
+        iter: *mut List_Handle_Message_AlertIterator,
+    ) -> *mut Handle_Message_Alert;
+
+    /// Destroy a List_Handle_Message_AlertIterator
+    pub fn List_Handle_Message_AlertIterator_destructor(
+        self_: *mut List_Handle_Message_AlertIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_Poly_Triangulation
+    pub fn NCollection_List_Handle_Poly_Triangulation_new(
+    ) -> *mut NCollection_List_Handle_Poly_Triangulation;
+
+    /// Destroy a NCollection_List_Handle_Poly_Triangulation
+    pub fn NCollection_List_Handle_Poly_Triangulation_destructor(
+        self_: *mut NCollection_List_Handle_Poly_Triangulation,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_Poly_Triangulation
+    pub fn NCollection_List_Handle_Poly_Triangulation_size(
+        coll: *const NCollection_List_Handle_Poly_Triangulation,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_Poly_Triangulation
+    pub fn NCollection_List_Handle_Poly_Triangulation_clear(
+        coll: *mut NCollection_List_Handle_Poly_Triangulation,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_Poly_Triangulation_append(
+        coll: *mut NCollection_List_Handle_Poly_Triangulation,
+        item: *const Handle_Poly_Triangulation,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_Poly_Triangulation_prepend(
+        coll: *mut NCollection_List_Handle_Poly_Triangulation,
+        item: *const Handle_Poly_Triangulation,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_Poly_Triangulation_iter(
+        coll: *const NCollection_List_Handle_Poly_Triangulation,
+    ) -> *mut List_Handle_Poly_TriangulationIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_Poly_TriangulationIterator_next(
+        iter: *mut List_Handle_Poly_TriangulationIterator,
+    ) -> *mut Handle_Poly_Triangulation;
+
+    /// Destroy a List_Handle_Poly_TriangulationIterator
+    pub fn List_Handle_Poly_TriangulationIterator_destructor(
+        self_: *mut List_Handle_Poly_TriangulationIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TDF_Attribute
+    pub fn NCollection_List_Handle_TDF_Attribute_new() -> *mut NCollection_List_Handle_TDF_Attribute;
+
+    /// Destroy a NCollection_List_Handle_TDF_Attribute
+    pub fn NCollection_List_Handle_TDF_Attribute_destructor(
+        self_: *mut NCollection_List_Handle_TDF_Attribute,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TDF_Attribute
+    pub fn NCollection_List_Handle_TDF_Attribute_size(
+        coll: *const NCollection_List_Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TDF_Attribute
+    pub fn NCollection_List_Handle_TDF_Attribute_clear(
+        coll: *mut NCollection_List_Handle_TDF_Attribute,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TDF_Attribute_append(
+        coll: *mut NCollection_List_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TDF_Attribute_prepend(
+        coll: *mut NCollection_List_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TDF_Attribute_iter(
+        coll: *const NCollection_List_Handle_TDF_Attribute,
+    ) -> *mut List_Handle_TDF_AttributeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TDF_AttributeIterator_next(
+        iter: *mut List_Handle_TDF_AttributeIterator,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Destroy a List_Handle_TDF_AttributeIterator
+    pub fn List_Handle_TDF_AttributeIterator_destructor(
+        self_: *mut List_Handle_TDF_AttributeIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TDF_AttributeDelta
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_new(
+    ) -> *mut NCollection_List_Handle_TDF_AttributeDelta;
+
+    /// Destroy a NCollection_List_Handle_TDF_AttributeDelta
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_destructor(
+        self_: *mut NCollection_List_Handle_TDF_AttributeDelta,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TDF_AttributeDelta
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_size(
+        coll: *const NCollection_List_Handle_TDF_AttributeDelta,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TDF_AttributeDelta
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_clear(
+        coll: *mut NCollection_List_Handle_TDF_AttributeDelta,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_append(
+        coll: *mut NCollection_List_Handle_TDF_AttributeDelta,
+        item: *const Handle_TDF_AttributeDelta,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_prepend(
+        coll: *mut NCollection_List_Handle_TDF_AttributeDelta,
+        item: *const Handle_TDF_AttributeDelta,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TDF_AttributeDelta_iter(
+        coll: *const NCollection_List_Handle_TDF_AttributeDelta,
+    ) -> *mut List_Handle_TDF_AttributeDeltaIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TDF_AttributeDeltaIterator_next(
+        iter: *mut List_Handle_TDF_AttributeDeltaIterator,
+    ) -> *mut Handle_TDF_AttributeDelta;
+
+    /// Destroy a List_Handle_TDF_AttributeDeltaIterator
+    pub fn List_Handle_TDF_AttributeDeltaIterator_destructor(
+        self_: *mut List_Handle_TDF_AttributeDeltaIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TDF_Delta
+    pub fn NCollection_List_Handle_TDF_Delta_new() -> *mut NCollection_List_Handle_TDF_Delta;
+
+    /// Destroy a NCollection_List_Handle_TDF_Delta
+    pub fn NCollection_List_Handle_TDF_Delta_destructor(
+        self_: *mut NCollection_List_Handle_TDF_Delta,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TDF_Delta
+    pub fn NCollection_List_Handle_TDF_Delta_size(
+        coll: *const NCollection_List_Handle_TDF_Delta,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TDF_Delta
+    pub fn NCollection_List_Handle_TDF_Delta_clear(coll: *mut NCollection_List_Handle_TDF_Delta);
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TDF_Delta_append(
+        coll: *mut NCollection_List_Handle_TDF_Delta,
+        item: *const Handle_TDF_Delta,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TDF_Delta_prepend(
+        coll: *mut NCollection_List_Handle_TDF_Delta,
+        item: *const Handle_TDF_Delta,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TDF_Delta_iter(
+        coll: *const NCollection_List_Handle_TDF_Delta,
+    ) -> *mut List_Handle_TDF_DeltaIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TDF_DeltaIterator_next(
+        iter: *mut List_Handle_TDF_DeltaIterator,
+    ) -> *mut Handle_TDF_Delta;
+
+    /// Destroy a List_Handle_TDF_DeltaIterator
+    pub fn List_Handle_TDF_DeltaIterator_destructor(self_: *mut List_Handle_TDF_DeltaIterator);
+
+    /// Create a new empty NCollection_List_Handle_TNaming_NamedShape
+    pub fn NCollection_List_Handle_TNaming_NamedShape_new(
+    ) -> *mut NCollection_List_Handle_TNaming_NamedShape;
+
+    /// Destroy a NCollection_List_Handle_TNaming_NamedShape
+    pub fn NCollection_List_Handle_TNaming_NamedShape_destructor(
+        self_: *mut NCollection_List_Handle_TNaming_NamedShape,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TNaming_NamedShape
+    pub fn NCollection_List_Handle_TNaming_NamedShape_size(
+        coll: *const NCollection_List_Handle_TNaming_NamedShape,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TNaming_NamedShape
+    pub fn NCollection_List_Handle_TNaming_NamedShape_clear(
+        coll: *mut NCollection_List_Handle_TNaming_NamedShape,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TNaming_NamedShape_append(
+        coll: *mut NCollection_List_Handle_TNaming_NamedShape,
+        item: *const Handle_TNaming_NamedShape,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TNaming_NamedShape_prepend(
+        coll: *mut NCollection_List_Handle_TNaming_NamedShape,
+        item: *const Handle_TNaming_NamedShape,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TNaming_NamedShape_iter(
+        coll: *const NCollection_List_Handle_TNaming_NamedShape,
+    ) -> *mut List_Handle_TNaming_NamedShapeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TNaming_NamedShapeIterator_next(
+        iter: *mut List_Handle_TNaming_NamedShapeIterator,
+    ) -> *mut Handle_TNaming_NamedShape;
+
+    /// Destroy a List_Handle_TNaming_NamedShapeIterator
+    pub fn List_Handle_TNaming_NamedShapeIterator_destructor(
+        self_: *mut List_Handle_TNaming_NamedShapeIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TopOpeBRepBuild_Loop
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_new(
+    ) -> *mut NCollection_List_Handle_TopOpeBRepBuild_Loop;
+
+    /// Destroy a NCollection_List_Handle_TopOpeBRepBuild_Loop
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_destructor(
+        self_: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TopOpeBRepBuild_Loop
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_size(
+        coll: *const NCollection_List_Handle_TopOpeBRepBuild_Loop,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TopOpeBRepBuild_Loop
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_clear(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_append(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        item: *const Handle_TopOpeBRepBuild_Loop,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_prepend(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        item: *const Handle_TopOpeBRepBuild_Loop,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Loop_iter(
+        coll: *const NCollection_List_Handle_TopOpeBRepBuild_Loop,
+    ) -> *mut List_Handle_TopOpeBRepBuild_LoopIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TopOpeBRepBuild_LoopIterator_next(
+        iter: *mut List_Handle_TopOpeBRepBuild_LoopIterator,
+    ) -> *mut Handle_TopOpeBRepBuild_Loop;
+
+    /// Destroy a List_Handle_TopOpeBRepBuild_LoopIterator
+    pub fn List_Handle_TopOpeBRepBuild_LoopIterator_destructor(
+        self_: *mut List_Handle_TopOpeBRepBuild_LoopIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TopOpeBRepBuild_Pave
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_new(
+    ) -> *mut NCollection_List_Handle_TopOpeBRepBuild_Pave;
+
+    /// Destroy a NCollection_List_Handle_TopOpeBRepBuild_Pave
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_destructor(
+        self_: *mut NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TopOpeBRepBuild_Pave
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_size(
+        coll: *const NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TopOpeBRepBuild_Pave
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_clear(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_append(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Pave,
+        item: *const Handle_TopOpeBRepBuild_Pave,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_prepend(
+        coll: *mut NCollection_List_Handle_TopOpeBRepBuild_Pave,
+        item: *const Handle_TopOpeBRepBuild_Pave,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TopOpeBRepBuild_Pave_iter(
+        coll: *const NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    ) -> *mut List_Handle_TopOpeBRepBuild_PaveIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TopOpeBRepBuild_PaveIterator_next(
+        iter: *mut List_Handle_TopOpeBRepBuild_PaveIterator,
+    ) -> *mut Handle_TopOpeBRepBuild_Pave;
+
+    /// Destroy a List_Handle_TopOpeBRepBuild_PaveIterator
+    pub fn List_Handle_TopOpeBRepBuild_PaveIterator_destructor(
+        self_: *mut List_Handle_TopOpeBRepBuild_PaveIterator,
+    );
+
+    /// Create a new empty NCollection_List_Handle_TopOpeBRepDS_Interference
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_new(
+    ) -> *mut NCollection_List_Handle_TopOpeBRepDS_Interference;
+
+    /// Destroy a NCollection_List_Handle_TopOpeBRepDS_Interference
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_destructor(
+        self_: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    );
+
+    /// Get number of elements in NCollection_List_Handle_TopOpeBRepDS_Interference
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_size(
+        coll: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_List_Handle_TopOpeBRepDS_Interference
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_clear(
+        coll: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+    );
+
+    /// Append an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_append(
+        coll: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+        item: *const Handle_TopOpeBRepDS_Interference,
+    );
+
+    /// Prepend an element to the list
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_prepend(
+        coll: *mut NCollection_List_Handle_TopOpeBRepDS_Interference,
+        item: *const Handle_TopOpeBRepDS_Interference,
+    );
+
+    /// Create an iterator over the collection
+    pub fn NCollection_List_Handle_TopOpeBRepDS_Interference_iter(
+        coll: *const NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> *mut List_Handle_TopOpeBRepDS_InterferenceIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn List_Handle_TopOpeBRepDS_InterferenceIterator_next(
+        iter: *mut List_Handle_TopOpeBRepDS_InterferenceIterator,
+    ) -> *mut Handle_TopOpeBRepDS_Interference;
+
+    /// Destroy a List_Handle_TopOpeBRepDS_InterferenceIterator
+    pub fn List_Handle_TopOpeBRepDS_InterferenceIterator_destructor(
+        self_: *mut List_Handle_TopOpeBRepDS_InterferenceIterator,
+    );
+
     /// Create a new empty NCollection_List_IntPolyh_Couple
     pub fn NCollection_List_IntPolyh_Couple_new() -> *mut NCollection_List_IntPolyh_Couple;
 
@@ -33970,6 +42040,143 @@ unsafe extern "C" {
     /// Destroy a Map_BOPDS_PairIterator
     pub fn Map_BOPDS_PairIterator_destructor(self_: *mut Map_BOPDS_PairIterator);
 
+    /// Create a new empty NCollection_Map_Handle_BOPDS_PaveBlock
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_new(
+    ) -> *mut NCollection_Map_Handle_BOPDS_PaveBlock;
+
+    /// Destroy a NCollection_Map_Handle_BOPDS_PaveBlock
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_destructor(
+        self_: *mut NCollection_Map_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Get number of elements in NCollection_Map_Handle_BOPDS_PaveBlock
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_size(
+        coll: *const NCollection_Map_Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Map_Handle_BOPDS_PaveBlock
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_clear(
+        coll: *mut NCollection_Map_Handle_BOPDS_PaveBlock,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_add(
+        coll: *mut NCollection_Map_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    ) -> i32;
+
+    /// Check if an element is present
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_contains(
+        coll: *const NCollection_Map_Handle_BOPDS_PaveBlock,
+        item: *const Handle_BOPDS_PaveBlock,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Map_Handle_BOPDS_PaveBlock_iter(
+        coll: *const NCollection_Map_Handle_BOPDS_PaveBlock,
+    ) -> *mut Map_Handle_BOPDS_PaveBlockIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Map_Handle_BOPDS_PaveBlockIterator_next(
+        iter: *mut Map_Handle_BOPDS_PaveBlockIterator,
+    ) -> *mut Handle_BOPDS_PaveBlock;
+
+    /// Destroy a Map_Handle_BOPDS_PaveBlockIterator
+    pub fn Map_Handle_BOPDS_PaveBlockIterator_destructor(
+        self_: *mut Map_Handle_BOPDS_PaveBlockIterator,
+    );
+
+    /// Create a new empty NCollection_Map_Handle_TDF_Attribute
+    pub fn NCollection_Map_Handle_TDF_Attribute_new() -> *mut NCollection_Map_Handle_TDF_Attribute;
+
+    /// Destroy a NCollection_Map_Handle_TDF_Attribute
+    pub fn NCollection_Map_Handle_TDF_Attribute_destructor(
+        self_: *mut NCollection_Map_Handle_TDF_Attribute,
+    );
+
+    /// Get number of elements in NCollection_Map_Handle_TDF_Attribute
+    pub fn NCollection_Map_Handle_TDF_Attribute_size(
+        coll: *const NCollection_Map_Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Map_Handle_TDF_Attribute
+    pub fn NCollection_Map_Handle_TDF_Attribute_clear(
+        coll: *mut NCollection_Map_Handle_TDF_Attribute,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_Map_Handle_TDF_Attribute_add(
+        coll: *mut NCollection_Map_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Check if an element is present
+    pub fn NCollection_Map_Handle_TDF_Attribute_contains(
+        coll: *const NCollection_Map_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Map_Handle_TDF_Attribute_iter(
+        coll: *const NCollection_Map_Handle_TDF_Attribute,
+    ) -> *mut Map_Handle_TDF_AttributeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Map_Handle_TDF_AttributeIterator_next(
+        iter: *mut Map_Handle_TDF_AttributeIterator,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Destroy a Map_Handle_TDF_AttributeIterator
+    pub fn Map_Handle_TDF_AttributeIterator_destructor(
+        self_: *mut Map_Handle_TDF_AttributeIterator,
+    );
+
+    /// Create a new empty NCollection_Map_Handle_TNaming_NamedShape
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_new(
+    ) -> *mut NCollection_Map_Handle_TNaming_NamedShape;
+
+    /// Destroy a NCollection_Map_Handle_TNaming_NamedShape
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_destructor(
+        self_: *mut NCollection_Map_Handle_TNaming_NamedShape,
+    );
+
+    /// Get number of elements in NCollection_Map_Handle_TNaming_NamedShape
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_size(
+        coll: *const NCollection_Map_Handle_TNaming_NamedShape,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Map_Handle_TNaming_NamedShape
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_clear(
+        coll: *mut NCollection_Map_Handle_TNaming_NamedShape,
+    );
+
+    /// Add an element to the map/set
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_add(
+        coll: *mut NCollection_Map_Handle_TNaming_NamedShape,
+        item: *const Handle_TNaming_NamedShape,
+    ) -> i32;
+
+    /// Check if an element is present
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_contains(
+        coll: *const NCollection_Map_Handle_TNaming_NamedShape,
+        item: *const Handle_TNaming_NamedShape,
+    ) -> bool;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Map_Handle_TNaming_NamedShape_iter(
+        coll: *const NCollection_Map_Handle_TNaming_NamedShape,
+    ) -> *mut Map_Handle_TNaming_NamedShapeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Map_Handle_TNaming_NamedShapeIterator_next(
+        iter: *mut Map_Handle_TNaming_NamedShapeIterator,
+    ) -> *mut Handle_TNaming_NamedShape;
+
+    /// Destroy a Map_Handle_TNaming_NamedShapeIterator
+    pub fn Map_Handle_TNaming_NamedShapeIterator_destructor(
+        self_: *mut Map_Handle_TNaming_NamedShapeIterator,
+    );
+
     /// Create a new empty NCollection_Map_TCollection_AsciiString
     pub fn NCollection_Map_TCollection_AsciiString_new(
     ) -> *mut NCollection_Map_TCollection_AsciiString;
@@ -34392,6 +42599,1153 @@ unsafe extern "C" {
     /// Destroy a Sequence_HLRBRep_ShapeBoundsIterator
     pub fn Sequence_HLRBRep_ShapeBoundsIterator_destructor(
         self_: *mut Sequence_HLRBRep_ShapeBoundsIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_AdvApp2Var_Node
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_new(
+    ) -> *mut NCollection_Sequence_Handle_AdvApp2Var_Node;
+
+    /// Destroy a NCollection_Sequence_Handle_AdvApp2Var_Node
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_destructor(
+        self_: *mut NCollection_Sequence_Handle_AdvApp2Var_Node,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_AdvApp2Var_Node
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_size(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Node,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_AdvApp2Var_Node
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_clear(
+        coll: *mut NCollection_Sequence_Handle_AdvApp2Var_Node,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_append(
+        coll: *mut NCollection_Sequence_Handle_AdvApp2Var_Node,
+        item: *const Handle_AdvApp2Var_Node,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_value(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Node,
+        index: i32,
+    ) -> *const Handle_AdvApp2Var_Node;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Node_iter(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Node,
+    ) -> *mut Sequence_Handle_AdvApp2Var_NodeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_AdvApp2Var_NodeIterator_next(
+        iter: *mut Sequence_Handle_AdvApp2Var_NodeIterator,
+    ) -> *mut Handle_AdvApp2Var_Node;
+
+    /// Destroy a Sequence_Handle_AdvApp2Var_NodeIterator
+    pub fn Sequence_Handle_AdvApp2Var_NodeIterator_destructor(
+        self_: *mut Sequence_Handle_AdvApp2Var_NodeIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_AdvApp2Var_Patch
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_new(
+    ) -> *mut NCollection_Sequence_Handle_AdvApp2Var_Patch;
+
+    /// Destroy a NCollection_Sequence_Handle_AdvApp2Var_Patch
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_destructor(
+        self_: *mut NCollection_Sequence_Handle_AdvApp2Var_Patch,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_AdvApp2Var_Patch
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_size(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Patch,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_AdvApp2Var_Patch
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_clear(
+        coll: *mut NCollection_Sequence_Handle_AdvApp2Var_Patch,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_append(
+        coll: *mut NCollection_Sequence_Handle_AdvApp2Var_Patch,
+        item: *const Handle_AdvApp2Var_Patch,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_value(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Patch,
+        index: i32,
+    ) -> *const Handle_AdvApp2Var_Patch;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_AdvApp2Var_Patch_iter(
+        coll: *const NCollection_Sequence_Handle_AdvApp2Var_Patch,
+    ) -> *mut Sequence_Handle_AdvApp2Var_PatchIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_AdvApp2Var_PatchIterator_next(
+        iter: *mut Sequence_Handle_AdvApp2Var_PatchIterator,
+    ) -> *mut Handle_AdvApp2Var_Patch;
+
+    /// Destroy a Sequence_Handle_AdvApp2Var_PatchIterator
+    pub fn Sequence_Handle_AdvApp2Var_PatchIterator_destructor(
+        self_: *mut Sequence_Handle_AdvApp2Var_PatchIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_new(
+    ) -> *mut NCollection_Sequence_Handle_ChFiDS_SurfData;
+
+    /// Destroy a NCollection_Sequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_destructor(
+        self_: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_size(
+        coll: *const NCollection_Sequence_Handle_ChFiDS_SurfData,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_ChFiDS_SurfData
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_clear(
+        coll: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_append(
+        coll: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        item: *const Handle_ChFiDS_SurfData,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_value(
+        coll: *const NCollection_Sequence_Handle_ChFiDS_SurfData,
+        index: i32,
+    ) -> *const Handle_ChFiDS_SurfData;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_ChFiDS_SurfData_iter(
+        coll: *const NCollection_Sequence_Handle_ChFiDS_SurfData,
+    ) -> *mut Sequence_Handle_ChFiDS_SurfDataIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_ChFiDS_SurfDataIterator_next(
+        iter: *mut Sequence_Handle_ChFiDS_SurfDataIterator,
+    ) -> *mut Handle_ChFiDS_SurfData;
+
+    /// Destroy a Sequence_Handle_ChFiDS_SurfDataIterator
+    pub fn Sequence_Handle_ChFiDS_SurfDataIterator_destructor(
+        self_: *mut Sequence_Handle_ChFiDS_SurfDataIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Expr_GeneralExpression
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_new(
+    ) -> *mut NCollection_Sequence_Handle_Expr_GeneralExpression;
+
+    /// Destroy a NCollection_Sequence_Handle_Expr_GeneralExpression
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_destructor(
+        self_: *mut NCollection_Sequence_Handle_Expr_GeneralExpression,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Expr_GeneralExpression
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_size(
+        coll: *const NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Expr_GeneralExpression
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_clear(
+        coll: *mut NCollection_Sequence_Handle_Expr_GeneralExpression,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_append(
+        coll: *mut NCollection_Sequence_Handle_Expr_GeneralExpression,
+        item: *const Handle_Expr_GeneralExpression,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_value(
+        coll: *const NCollection_Sequence_Handle_Expr_GeneralExpression,
+        index: i32,
+    ) -> *const Handle_Expr_GeneralExpression;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Expr_GeneralExpression_iter(
+        coll: *const NCollection_Sequence_Handle_Expr_GeneralExpression,
+    ) -> *mut Sequence_Handle_Expr_GeneralExpressionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Expr_GeneralExpressionIterator_next(
+        iter: *mut Sequence_Handle_Expr_GeneralExpressionIterator,
+    ) -> *mut Handle_Expr_GeneralExpression;
+
+    /// Destroy a Sequence_Handle_Expr_GeneralExpressionIterator
+    pub fn Sequence_Handle_Expr_GeneralExpressionIterator_destructor(
+        self_: *mut Sequence_Handle_Expr_GeneralExpressionIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Expr_NamedExpression
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_new(
+    ) -> *mut NCollection_Sequence_Handle_Expr_NamedExpression;
+
+    /// Destroy a NCollection_Sequence_Handle_Expr_NamedExpression
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_destructor(
+        self_: *mut NCollection_Sequence_Handle_Expr_NamedExpression,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Expr_NamedExpression
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_size(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedExpression,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Expr_NamedExpression
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_clear(
+        coll: *mut NCollection_Sequence_Handle_Expr_NamedExpression,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_append(
+        coll: *mut NCollection_Sequence_Handle_Expr_NamedExpression,
+        item: *const Handle_Expr_NamedExpression,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_value(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedExpression,
+        index: i32,
+    ) -> *const Handle_Expr_NamedExpression;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Expr_NamedExpression_iter(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedExpression,
+    ) -> *mut Sequence_Handle_Expr_NamedExpressionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Expr_NamedExpressionIterator_next(
+        iter: *mut Sequence_Handle_Expr_NamedExpressionIterator,
+    ) -> *mut Handle_Expr_NamedExpression;
+
+    /// Destroy a Sequence_Handle_Expr_NamedExpressionIterator
+    pub fn Sequence_Handle_Expr_NamedExpressionIterator_destructor(
+        self_: *mut Sequence_Handle_Expr_NamedExpressionIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Expr_NamedFunction
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_new(
+    ) -> *mut NCollection_Sequence_Handle_Expr_NamedFunction;
+
+    /// Destroy a NCollection_Sequence_Handle_Expr_NamedFunction
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_destructor(
+        self_: *mut NCollection_Sequence_Handle_Expr_NamedFunction,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Expr_NamedFunction
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_size(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedFunction,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Expr_NamedFunction
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_clear(
+        coll: *mut NCollection_Sequence_Handle_Expr_NamedFunction,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_append(
+        coll: *mut NCollection_Sequence_Handle_Expr_NamedFunction,
+        item: *const Handle_Expr_NamedFunction,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_value(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedFunction,
+        index: i32,
+    ) -> *const Handle_Expr_NamedFunction;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Expr_NamedFunction_iter(
+        coll: *const NCollection_Sequence_Handle_Expr_NamedFunction,
+    ) -> *mut Sequence_Handle_Expr_NamedFunctionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Expr_NamedFunctionIterator_next(
+        iter: *mut Sequence_Handle_Expr_NamedFunctionIterator,
+    ) -> *mut Handle_Expr_NamedFunction;
+
+    /// Destroy a Sequence_Handle_Expr_NamedFunctionIterator
+    pub fn Sequence_Handle_Expr_NamedFunctionIterator_destructor(
+        self_: *mut Sequence_Handle_Expr_NamedFunctionIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Geom2d_Curve
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_new(
+    ) -> *mut NCollection_Sequence_Handle_Geom2d_Curve;
+
+    /// Destroy a NCollection_Sequence_Handle_Geom2d_Curve
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_destructor(
+        self_: *mut NCollection_Sequence_Handle_Geom2d_Curve,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Geom2d_Curve
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_size(
+        coll: *const NCollection_Sequence_Handle_Geom2d_Curve,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Geom2d_Curve
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_clear(
+        coll: *mut NCollection_Sequence_Handle_Geom2d_Curve,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_append(
+        coll: *mut NCollection_Sequence_Handle_Geom2d_Curve,
+        item: *const Handle_Geom2d_Curve,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_value(
+        coll: *const NCollection_Sequence_Handle_Geom2d_Curve,
+        index: i32,
+    ) -> *const Handle_Geom2d_Curve;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Geom2d_Curve_iter(
+        coll: *const NCollection_Sequence_Handle_Geom2d_Curve,
+    ) -> *mut Sequence_Handle_Geom2d_CurveIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Geom2d_CurveIterator_next(
+        iter: *mut Sequence_Handle_Geom2d_CurveIterator,
+    ) -> *mut Handle_Geom2d_Curve;
+
+    /// Destroy a Sequence_Handle_Geom2d_CurveIterator
+    pub fn Sequence_Handle_Geom2d_CurveIterator_destructor(
+        self_: *mut Sequence_Handle_Geom2d_CurveIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Geom_Curve
+    pub fn NCollection_Sequence_Handle_Geom_Curve_new(
+    ) -> *mut NCollection_Sequence_Handle_Geom_Curve;
+
+    /// Destroy a NCollection_Sequence_Handle_Geom_Curve
+    pub fn NCollection_Sequence_Handle_Geom_Curve_destructor(
+        self_: *mut NCollection_Sequence_Handle_Geom_Curve,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Geom_Curve
+    pub fn NCollection_Sequence_Handle_Geom_Curve_size(
+        coll: *const NCollection_Sequence_Handle_Geom_Curve,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Geom_Curve
+    pub fn NCollection_Sequence_Handle_Geom_Curve_clear(
+        coll: *mut NCollection_Sequence_Handle_Geom_Curve,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Geom_Curve_append(
+        coll: *mut NCollection_Sequence_Handle_Geom_Curve,
+        item: *const Handle_Geom_Curve,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Geom_Curve_value(
+        coll: *const NCollection_Sequence_Handle_Geom_Curve,
+        index: i32,
+    ) -> *const Handle_Geom_Curve;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Geom_Curve_iter(
+        coll: *const NCollection_Sequence_Handle_Geom_Curve,
+    ) -> *mut Sequence_Handle_Geom_CurveIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Geom_CurveIterator_next(
+        iter: *mut Sequence_Handle_Geom_CurveIterator,
+    ) -> *mut Handle_Geom_Curve;
+
+    /// Destroy a Sequence_Handle_Geom_CurveIterator
+    pub fn Sequence_Handle_Geom_CurveIterator_destructor(
+        self_: *mut Sequence_Handle_Geom_CurveIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_IFSelect_Selection
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_new(
+    ) -> *mut NCollection_Sequence_Handle_IFSelect_Selection;
+
+    /// Destroy a NCollection_Sequence_Handle_IFSelect_Selection
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_destructor(
+        self_: *mut NCollection_Sequence_Handle_IFSelect_Selection,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_IFSelect_Selection
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_size(
+        coll: *const NCollection_Sequence_Handle_IFSelect_Selection,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_IFSelect_Selection
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_clear(
+        coll: *mut NCollection_Sequence_Handle_IFSelect_Selection,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_append(
+        coll: *mut NCollection_Sequence_Handle_IFSelect_Selection,
+        item: *const Handle_IFSelect_Selection,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_value(
+        coll: *const NCollection_Sequence_Handle_IFSelect_Selection,
+        index: i32,
+    ) -> *const Handle_IFSelect_Selection;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_IFSelect_Selection_iter(
+        coll: *const NCollection_Sequence_Handle_IFSelect_Selection,
+    ) -> *mut Sequence_Handle_IFSelect_SelectionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_IFSelect_SelectionIterator_next(
+        iter: *mut Sequence_Handle_IFSelect_SelectionIterator,
+    ) -> *mut Handle_IFSelect_Selection;
+
+    /// Destroy a Sequence_Handle_IFSelect_SelectionIterator
+    pub fn Sequence_Handle_IFSelect_SelectionIterator_destructor(
+        self_: *mut Sequence_Handle_IFSelect_SelectionIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_IntPatch_Line
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_new(
+    ) -> *mut NCollection_Sequence_Handle_IntPatch_Line;
+
+    /// Destroy a NCollection_Sequence_Handle_IntPatch_Line
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_destructor(
+        self_: *mut NCollection_Sequence_Handle_IntPatch_Line,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_IntPatch_Line
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_size(
+        coll: *const NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_IntPatch_Line
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_clear(
+        coll: *mut NCollection_Sequence_Handle_IntPatch_Line,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_append(
+        coll: *mut NCollection_Sequence_Handle_IntPatch_Line,
+        item: *const Handle_IntPatch_Line,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_value(
+        coll: *const NCollection_Sequence_Handle_IntPatch_Line,
+        index: i32,
+    ) -> *const Handle_IntPatch_Line;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_IntPatch_Line_iter(
+        coll: *const NCollection_Sequence_Handle_IntPatch_Line,
+    ) -> *mut Sequence_Handle_IntPatch_LineIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_IntPatch_LineIterator_next(
+        iter: *mut Sequence_Handle_IntPatch_LineIterator,
+    ) -> *mut Handle_IntPatch_Line;
+
+    /// Destroy a Sequence_Handle_IntPatch_LineIterator
+    pub fn Sequence_Handle_IntPatch_LineIterator_destructor(
+        self_: *mut Sequence_Handle_IntPatch_LineIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_MAT2d_Connexion
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_new(
+    ) -> *mut NCollection_Sequence_Handle_MAT2d_Connexion;
+
+    /// Destroy a NCollection_Sequence_Handle_MAT2d_Connexion
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_destructor(
+        self_: *mut NCollection_Sequence_Handle_MAT2d_Connexion,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_MAT2d_Connexion
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_size(
+        coll: *const NCollection_Sequence_Handle_MAT2d_Connexion,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_MAT2d_Connexion
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_clear(
+        coll: *mut NCollection_Sequence_Handle_MAT2d_Connexion,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_append(
+        coll: *mut NCollection_Sequence_Handle_MAT2d_Connexion,
+        item: *const Handle_MAT2d_Connexion,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_value(
+        coll: *const NCollection_Sequence_Handle_MAT2d_Connexion,
+        index: i32,
+    ) -> *const Handle_MAT2d_Connexion;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_MAT2d_Connexion_iter(
+        coll: *const NCollection_Sequence_Handle_MAT2d_Connexion,
+    ) -> *mut Sequence_Handle_MAT2d_ConnexionIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_MAT2d_ConnexionIterator_next(
+        iter: *mut Sequence_Handle_MAT2d_ConnexionIterator,
+    ) -> *mut Handle_MAT2d_Connexion;
+
+    /// Destroy a Sequence_Handle_MAT2d_ConnexionIterator
+    pub fn Sequence_Handle_MAT2d_ConnexionIterator_destructor(
+        self_: *mut Sequence_Handle_MAT2d_ConnexionIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_MAT_Arc
+    pub fn NCollection_Sequence_Handle_MAT_Arc_new() -> *mut NCollection_Sequence_Handle_MAT_Arc;
+
+    /// Destroy a NCollection_Sequence_Handle_MAT_Arc
+    pub fn NCollection_Sequence_Handle_MAT_Arc_destructor(
+        self_: *mut NCollection_Sequence_Handle_MAT_Arc,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_MAT_Arc
+    pub fn NCollection_Sequence_Handle_MAT_Arc_size(
+        coll: *const NCollection_Sequence_Handle_MAT_Arc,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_MAT_Arc
+    pub fn NCollection_Sequence_Handle_MAT_Arc_clear(
+        coll: *mut NCollection_Sequence_Handle_MAT_Arc,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_MAT_Arc_append(
+        coll: *mut NCollection_Sequence_Handle_MAT_Arc,
+        item: *const Handle_MAT_Arc,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_MAT_Arc_value(
+        coll: *const NCollection_Sequence_Handle_MAT_Arc,
+        index: i32,
+    ) -> *const Handle_MAT_Arc;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_MAT_Arc_iter(
+        coll: *const NCollection_Sequence_Handle_MAT_Arc,
+    ) -> *mut Sequence_Handle_MAT_ArcIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_MAT_ArcIterator_next(
+        iter: *mut Sequence_Handle_MAT_ArcIterator,
+    ) -> *mut Handle_MAT_Arc;
+
+    /// Destroy a Sequence_Handle_MAT_ArcIterator
+    pub fn Sequence_Handle_MAT_ArcIterator_destructor(self_: *mut Sequence_Handle_MAT_ArcIterator);
+
+    /// Create a new empty NCollection_Sequence_Handle_MAT_BasicElt
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_new(
+    ) -> *mut NCollection_Sequence_Handle_MAT_BasicElt;
+
+    /// Destroy a NCollection_Sequence_Handle_MAT_BasicElt
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_destructor(
+        self_: *mut NCollection_Sequence_Handle_MAT_BasicElt,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_MAT_BasicElt
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_size(
+        coll: *const NCollection_Sequence_Handle_MAT_BasicElt,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_MAT_BasicElt
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_clear(
+        coll: *mut NCollection_Sequence_Handle_MAT_BasicElt,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_append(
+        coll: *mut NCollection_Sequence_Handle_MAT_BasicElt,
+        item: *const Handle_MAT_BasicElt,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_value(
+        coll: *const NCollection_Sequence_Handle_MAT_BasicElt,
+        index: i32,
+    ) -> *const Handle_MAT_BasicElt;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_MAT_BasicElt_iter(
+        coll: *const NCollection_Sequence_Handle_MAT_BasicElt,
+    ) -> *mut Sequence_Handle_MAT_BasicEltIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_MAT_BasicEltIterator_next(
+        iter: *mut Sequence_Handle_MAT_BasicEltIterator,
+    ) -> *mut Handle_MAT_BasicElt;
+
+    /// Destroy a Sequence_Handle_MAT_BasicEltIterator
+    pub fn Sequence_Handle_MAT_BasicEltIterator_destructor(
+        self_: *mut Sequence_Handle_MAT_BasicEltIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Message_Printer
+    pub fn NCollection_Sequence_Handle_Message_Printer_new(
+    ) -> *mut NCollection_Sequence_Handle_Message_Printer;
+
+    /// Destroy a NCollection_Sequence_Handle_Message_Printer
+    pub fn NCollection_Sequence_Handle_Message_Printer_destructor(
+        self_: *mut NCollection_Sequence_Handle_Message_Printer,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Message_Printer
+    pub fn NCollection_Sequence_Handle_Message_Printer_size(
+        coll: *const NCollection_Sequence_Handle_Message_Printer,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Message_Printer
+    pub fn NCollection_Sequence_Handle_Message_Printer_clear(
+        coll: *mut NCollection_Sequence_Handle_Message_Printer,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Message_Printer_append(
+        coll: *mut NCollection_Sequence_Handle_Message_Printer,
+        item: *const Handle_Message_Printer,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Message_Printer_value(
+        coll: *const NCollection_Sequence_Handle_Message_Printer,
+        index: i32,
+    ) -> *const Handle_Message_Printer;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Message_Printer_iter(
+        coll: *const NCollection_Sequence_Handle_Message_Printer,
+    ) -> *mut Sequence_Handle_Message_PrinterIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Message_PrinterIterator_next(
+        iter: *mut Sequence_Handle_Message_PrinterIterator,
+    ) -> *mut Handle_Message_Printer;
+
+    /// Destroy a Sequence_Handle_Message_PrinterIterator
+    pub fn Sequence_Handle_Message_PrinterIterator_destructor(
+        self_: *mut Sequence_Handle_Message_PrinterIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_PCDM_Document
+    pub fn NCollection_Sequence_Handle_PCDM_Document_new(
+    ) -> *mut NCollection_Sequence_Handle_PCDM_Document;
+
+    /// Destroy a NCollection_Sequence_Handle_PCDM_Document
+    pub fn NCollection_Sequence_Handle_PCDM_Document_destructor(
+        self_: *mut NCollection_Sequence_Handle_PCDM_Document,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_PCDM_Document
+    pub fn NCollection_Sequence_Handle_PCDM_Document_size(
+        coll: *const NCollection_Sequence_Handle_PCDM_Document,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_PCDM_Document
+    pub fn NCollection_Sequence_Handle_PCDM_Document_clear(
+        coll: *mut NCollection_Sequence_Handle_PCDM_Document,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_PCDM_Document_append(
+        coll: *mut NCollection_Sequence_Handle_PCDM_Document,
+        item: *const Handle_PCDM_Document,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_PCDM_Document_value(
+        coll: *const NCollection_Sequence_Handle_PCDM_Document,
+        index: i32,
+    ) -> *const Handle_PCDM_Document;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_PCDM_Document_iter(
+        coll: *const NCollection_Sequence_Handle_PCDM_Document,
+    ) -> *mut Sequence_Handle_PCDM_DocumentIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_PCDM_DocumentIterator_next(
+        iter: *mut Sequence_Handle_PCDM_DocumentIterator,
+    ) -> *mut Handle_PCDM_Document;
+
+    /// Destroy a Sequence_Handle_PCDM_DocumentIterator
+    pub fn Sequence_Handle_PCDM_DocumentIterator_destructor(
+        self_: *mut Sequence_Handle_PCDM_DocumentIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Poly_Triangulation
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_new(
+    ) -> *mut NCollection_Sequence_Handle_Poly_Triangulation;
+
+    /// Destroy a NCollection_Sequence_Handle_Poly_Triangulation
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_destructor(
+        self_: *mut NCollection_Sequence_Handle_Poly_Triangulation,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Poly_Triangulation
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_size(
+        coll: *const NCollection_Sequence_Handle_Poly_Triangulation,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Poly_Triangulation
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_clear(
+        coll: *mut NCollection_Sequence_Handle_Poly_Triangulation,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_append(
+        coll: *mut NCollection_Sequence_Handle_Poly_Triangulation,
+        item: *const Handle_Poly_Triangulation,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_value(
+        coll: *const NCollection_Sequence_Handle_Poly_Triangulation,
+        index: i32,
+    ) -> *const Handle_Poly_Triangulation;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Poly_Triangulation_iter(
+        coll: *const NCollection_Sequence_Handle_Poly_Triangulation,
+    ) -> *mut Sequence_Handle_Poly_TriangulationIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Poly_TriangulationIterator_next(
+        iter: *mut Sequence_Handle_Poly_TriangulationIterator,
+    ) -> *mut Handle_Poly_Triangulation;
+
+    /// Destroy a Sequence_Handle_Poly_TriangulationIterator
+    pub fn Sequence_Handle_Poly_TriangulationIterator_destructor(
+        self_: *mut Sequence_Handle_Poly_TriangulationIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_Standard_Transient
+    pub fn NCollection_Sequence_Handle_Standard_Transient_new(
+    ) -> *mut NCollection_Sequence_Handle_Standard_Transient;
+
+    /// Destroy a NCollection_Sequence_Handle_Standard_Transient
+    pub fn NCollection_Sequence_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_Sequence_Handle_Standard_Transient,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_Standard_Transient
+    pub fn NCollection_Sequence_Handle_Standard_Transient_size(
+        coll: *const NCollection_Sequence_Handle_Standard_Transient,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_Standard_Transient
+    pub fn NCollection_Sequence_Handle_Standard_Transient_clear(
+        coll: *mut NCollection_Sequence_Handle_Standard_Transient,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_Standard_Transient_append(
+        coll: *mut NCollection_Sequence_Handle_Standard_Transient,
+        item: *const Handle_Standard_Transient,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_Standard_Transient_value(
+        coll: *const NCollection_Sequence_Handle_Standard_Transient,
+        index: i32,
+    ) -> *const Handle_Standard_Transient;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_Standard_Transient_iter(
+        coll: *const NCollection_Sequence_Handle_Standard_Transient,
+    ) -> *mut Sequence_Handle_Standard_TransientIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_Standard_TransientIterator_next(
+        iter: *mut Sequence_Handle_Standard_TransientIterator,
+    ) -> *mut Handle_Standard_Transient;
+
+    /// Destroy a Sequence_Handle_Standard_TransientIterator
+    pub fn Sequence_Handle_Standard_TransientIterator_destructor(
+        self_: *mut Sequence_Handle_Standard_TransientIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_new(
+    ) -> *mut NCollection_Sequence_Handle_TCollection_HAsciiString;
+
+    /// Destroy a NCollection_Sequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_destructor(
+        self_: *mut NCollection_Sequence_Handle_TCollection_HAsciiString,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_size(
+        coll: *const NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_TCollection_HAsciiString
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_clear(
+        coll: *mut NCollection_Sequence_Handle_TCollection_HAsciiString,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_append(
+        coll: *mut NCollection_Sequence_Handle_TCollection_HAsciiString,
+        item: *const Handle_TCollection_HAsciiString,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_value(
+        coll: *const NCollection_Sequence_Handle_TCollection_HAsciiString,
+        index: i32,
+    ) -> *const Handle_TCollection_HAsciiString;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_TCollection_HAsciiString_iter(
+        coll: *const NCollection_Sequence_Handle_TCollection_HAsciiString,
+    ) -> *mut Sequence_Handle_TCollection_HAsciiStringIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_TCollection_HAsciiStringIterator_next(
+        iter: *mut Sequence_Handle_TCollection_HAsciiStringIterator,
+    ) -> *mut Handle_TCollection_HAsciiString;
+
+    /// Destroy a Sequence_Handle_TCollection_HAsciiStringIterator
+    pub fn Sequence_Handle_TCollection_HAsciiStringIterator_destructor(
+        self_: *mut Sequence_Handle_TCollection_HAsciiStringIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_new(
+    ) -> *mut NCollection_Sequence_Handle_TCollection_HExtendedString;
+
+    /// Destroy a NCollection_Sequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_destructor(
+        self_: *mut NCollection_Sequence_Handle_TCollection_HExtendedString,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_size(
+        coll: *const NCollection_Sequence_Handle_TCollection_HExtendedString,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_TCollection_HExtendedString
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_clear(
+        coll: *mut NCollection_Sequence_Handle_TCollection_HExtendedString,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_append(
+        coll: *mut NCollection_Sequence_Handle_TCollection_HExtendedString,
+        item: *const Handle_TCollection_HExtendedString,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_value(
+        coll: *const NCollection_Sequence_Handle_TCollection_HExtendedString,
+        index: i32,
+    ) -> *const Handle_TCollection_HExtendedString;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_TCollection_HExtendedString_iter(
+        coll: *const NCollection_Sequence_Handle_TCollection_HExtendedString,
+    ) -> *mut Sequence_Handle_TCollection_HExtendedStringIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_TCollection_HExtendedStringIterator_next(
+        iter: *mut Sequence_Handle_TCollection_HExtendedStringIterator,
+    ) -> *mut Handle_TCollection_HExtendedString;
+
+    /// Destroy a Sequence_Handle_TCollection_HExtendedStringIterator
+    pub fn Sequence_Handle_TCollection_HExtendedStringIterator_destructor(
+        self_: *mut Sequence_Handle_TCollection_HExtendedStringIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_TDF_Attribute
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_new(
+    ) -> *mut NCollection_Sequence_Handle_TDF_Attribute;
+
+    /// Destroy a NCollection_Sequence_Handle_TDF_Attribute
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_destructor(
+        self_: *mut NCollection_Sequence_Handle_TDF_Attribute,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_TDF_Attribute
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_size(
+        coll: *const NCollection_Sequence_Handle_TDF_Attribute,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_TDF_Attribute
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_clear(
+        coll: *mut NCollection_Sequence_Handle_TDF_Attribute,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_append(
+        coll: *mut NCollection_Sequence_Handle_TDF_Attribute,
+        item: *const Handle_TDF_Attribute,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_value(
+        coll: *const NCollection_Sequence_Handle_TDF_Attribute,
+        index: i32,
+    ) -> *const Handle_TDF_Attribute;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_TDF_Attribute_iter(
+        coll: *const NCollection_Sequence_Handle_TDF_Attribute,
+    ) -> *mut Sequence_Handle_TDF_AttributeIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_TDF_AttributeIterator_next(
+        iter: *mut Sequence_Handle_TDF_AttributeIterator,
+    ) -> *mut Handle_TDF_Attribute;
+
+    /// Destroy a Sequence_Handle_TDF_AttributeIterator
+    pub fn Sequence_Handle_TDF_AttributeIterator_destructor(
+        self_: *mut Sequence_Handle_TDF_AttributeIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_TDocStd_ApplicationDelta
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_new(
+    ) -> *mut NCollection_Sequence_Handle_TDocStd_ApplicationDelta;
+
+    /// Destroy a NCollection_Sequence_Handle_TDocStd_ApplicationDelta
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_destructor(
+        self_: *mut NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_TDocStd_ApplicationDelta
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_size(
+        coll: *const NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_TDocStd_ApplicationDelta
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_clear(
+        coll: *mut NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_append(
+        coll: *mut NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+        item: *const Handle_TDocStd_ApplicationDelta,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_value(
+        coll: *const NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+        index: i32,
+    ) -> *const Handle_TDocStd_ApplicationDelta;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_TDocStd_ApplicationDelta_iter(
+        coll: *const NCollection_Sequence_Handle_TDocStd_ApplicationDelta,
+    ) -> *mut Sequence_Handle_TDocStd_ApplicationDeltaIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_TDocStd_ApplicationDeltaIterator_next(
+        iter: *mut Sequence_Handle_TDocStd_ApplicationDeltaIterator,
+    ) -> *mut Handle_TDocStd_ApplicationDelta;
+
+    /// Destroy a Sequence_Handle_TDocStd_ApplicationDeltaIterator
+    pub fn Sequence_Handle_TDocStd_ApplicationDeltaIterator_destructor(
+        self_: *mut Sequence_Handle_TDocStd_ApplicationDeltaIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_TDocStd_Document
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_new(
+    ) -> *mut NCollection_Sequence_Handle_TDocStd_Document;
+
+    /// Destroy a NCollection_Sequence_Handle_TDocStd_Document
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_destructor(
+        self_: *mut NCollection_Sequence_Handle_TDocStd_Document,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_TDocStd_Document
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_size(
+        coll: *const NCollection_Sequence_Handle_TDocStd_Document,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_TDocStd_Document
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_clear(
+        coll: *mut NCollection_Sequence_Handle_TDocStd_Document,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_append(
+        coll: *mut NCollection_Sequence_Handle_TDocStd_Document,
+        item: *const Handle_TDocStd_Document,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_value(
+        coll: *const NCollection_Sequence_Handle_TDocStd_Document,
+        index: i32,
+    ) -> *const Handle_TDocStd_Document;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_TDocStd_Document_iter(
+        coll: *const NCollection_Sequence_Handle_TDocStd_Document,
+    ) -> *mut Sequence_Handle_TDocStd_DocumentIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_TDocStd_DocumentIterator_next(
+        iter: *mut Sequence_Handle_TDocStd_DocumentIterator,
+    ) -> *mut Handle_TDocStd_Document;
+
+    /// Destroy a Sequence_Handle_TDocStd_DocumentIterator
+    pub fn Sequence_Handle_TDocStd_DocumentIterator_destructor(
+        self_: *mut Sequence_Handle_TDocStd_DocumentIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_new(
+    ) -> *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject;
+
+    /// Destroy a NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_destructor(
+        self_: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_size(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_clear(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_append(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        item: *const Handle_XCAFDimTolObjects_DatumObject,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_value(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+        index: i32,
+    ) -> *const Handle_XCAFDimTolObjects_DatumObject;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_iter(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject,
+    ) -> *mut Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_next(
+        iter: *mut Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    ) -> *mut Handle_XCAFDimTolObjects_DatumObject;
+
+    /// Destroy a Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator
+    pub fn Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(
+        self_: *mut Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_new(
+    ) -> *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject;
+
+    /// Destroy a NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_destructor(
+        self_: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_size(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_clear(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_append(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+        item: *const Handle_XCAFDimTolObjects_DimensionObject,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_value(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+        index: i32,
+    ) -> *const Handle_XCAFDimTolObjects_DimensionObject;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_iter(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    ) -> *mut Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_next(
+        iter: *mut Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator,
+    ) -> *mut Handle_XCAFDimTolObjects_DimensionObject;
+
+    /// Destroy a Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator
+    pub fn Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_destructor(
+        self_: *mut Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator,
+    );
+
+    /// Create a new empty NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_new(
+    ) -> *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject;
+
+    /// Destroy a NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_destructor(
+        self_: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+    );
+
+    /// Get number of elements in NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_size(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> i32;
+
+    /// Remove all elements from NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_clear(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+    );
+
+    /// Append an element to the sequence
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_append(
+        coll: *mut NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        item: *const Handle_XCAFDimTolObjects_GeomToleranceObject,
+    );
+
+    /// Get element at 1-based index
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_value(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+        index: i32,
+    ) -> *const Handle_XCAFDimTolObjects_GeomToleranceObject;
+
+    /// Create an iterator over the collection
+    pub fn NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_iter(
+        coll: *const NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> *mut Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator;
+
+    /// Advance iterator and get next element (nullptr when done)
+    pub fn Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_next(
+        iter: *mut Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator,
+    ) -> *mut Handle_XCAFDimTolObjects_GeomToleranceObject;
+
+    /// Destroy a Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator
+    pub fn Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_destructor(
+        self_: *mut Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator,
     );
 
     /// Create a new empty NCollection_Sequence_IntPatch_Point
@@ -35596,6 +44950,15 @@ unsafe extern "C" {
     pub fn NCollection_Array2_GeomGridEval_SurfD3_destructor(
         self_: *mut NCollection_Array2_GeomGridEval_SurfD3,
     );
+    pub fn NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg_destructor(
+        self_: *mut NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg,
+    );
+    pub fn NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double_destructor(
+        self_: *mut NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    );
+    pub fn NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int_destructor(
+        self_: *mut NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
+    );
     pub fn NCollection_DataMap_TCollection_ExtendedString_uint8_t_destructor(
         self_: *mut NCollection_DataMap_TCollection_ExtendedString_uint8_t,
     );
@@ -35613,6 +44976,9 @@ unsafe extern "C" {
     );
     pub fn NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher_destructor(
         self_: *mut NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
+    );
+    pub fn NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(
+        self_: *mut NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
     );
     pub fn NCollection_DataMap_int_NCollection_List_TopoDS_Shape_destructor(
         self_: *mut NCollection_DataMap_int_NCollection_List_TopoDS_Shape,
@@ -35662,6 +45028,12 @@ unsafe extern "C" {
     pub fn NCollection_DynamicArray_BOPDS_Point_destructor(
         self_: *mut NCollection_DynamicArray_BOPDS_Point,
     );
+    pub fn NCollection_DynamicArray_Handle_Adaptor3d_Surface_destructor(
+        self_: *mut NCollection_DynamicArray_Handle_Adaptor3d_Surface,
+    );
+    pub fn NCollection_DynamicArray_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_DynamicArray_Handle_Standard_Transient,
+    );
     pub fn NCollection_DynamicArray_ProxPnt_Status_destructor(
         self_: *mut NCollection_DynamicArray_ProxPnt_Status,
     );
@@ -35692,203 +45064,23 @@ unsafe extern "C" {
     pub fn NCollection_HArray1_StepDimTol_GeometricToleranceModifier_destructor(
         self_: *mut NCollection_HArray1_StepDimTol_GeometricToleranceModifier,
     );
-    pub fn NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+    pub fn NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_destructor(
+        self_: *mut NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
     );
-    pub fn NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
+    pub fn NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_destructor(
+        self_: *mut NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
     );
-    pub fn NCollection_HArray1_opencascade_handle_Geom2d_Curve_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Geom2d_Curve,
+    pub fn NCollection_HArray2_Handle_Geom_Surface_destructor(
+        self_: *mut NCollection_HArray2_Handle_Geom_Surface,
     );
-    pub fn NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
+    pub fn NCollection_HArray2_Handle_Standard_Transient_destructor(
+        self_: *mut NCollection_HArray2_Handle_Standard_Transient,
     );
-    pub fn NCollection_HArray1_opencascade_handle_Geom_Curve_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Geom_Curve,
+    pub fn NCollection_HArray2_Handle_StepGeom_CartesianPoint_destructor(
+        self_: *mut NCollection_HArray2_Handle_StepGeom_CartesianPoint,
     );
-    pub fn NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESAppli_Node_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESAppli_Node,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGraph_Color_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGraph_Color,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESSolid_Face_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESSolid_Face,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESSolid_Loop_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESSolid_Shell_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Standard_Persistent,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_Standard_Transient_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_Standard_Transient,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_Approval_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_Approval,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_Document_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_Document,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_Organization_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_Organization,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_Person_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_Person,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_Product_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_Edge_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_Edge,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_Face_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_Face,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_FaceBound_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    );
-    pub fn NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_destructor(
-        self_: *mut NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    pub fn NCollection_HArray2_Handle_StepGeom_SurfacePatch_destructor(
+        self_: *mut NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     );
     pub fn NCollection_HArray2_TopoDS_Shape_destructor(
         self_: *mut NCollection_HArray2_TopoDS_Shape,
@@ -35898,86 +45090,17 @@ unsafe extern "C" {
     pub fn NCollection_HArray2_gp_Pnt2d_destructor(self_: *mut NCollection_HArray2_gp_Pnt2d);
     pub fn NCollection_HArray2_gp_XYZ_destructor(self_: *mut NCollection_HArray2_gp_XYZ);
     pub fn NCollection_HArray2_int_destructor(self_: *mut NCollection_HArray2_int);
-    pub fn NCollection_HArray2_opencascade_handle_Geom_Surface_destructor(
-        self_: *mut NCollection_HArray2_opencascade_handle_Geom_Surface,
-    );
     pub fn NCollection_HArray2_opencascade_handle_NCollection_HArray1_double_destructor(
         self_: *mut NCollection_HArray2_opencascade_handle_NCollection_HArray1_double,
     );
     pub fn NCollection_HArray2_opencascade_handle_NCollection_HArray1_int_destructor(
         self_: *mut NCollection_HArray2_opencascade_handle_NCollection_HArray1_int,
     );
-    pub fn NCollection_HArray2_opencascade_handle_Standard_Transient_destructor(
-        self_: *mut NCollection_HArray2_opencascade_handle_Standard_Transient,
-    );
-    pub fn NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_destructor(
-        self_: *mut NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    );
-    pub fn NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_destructor(
-        self_: *mut NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_ChFiDS_SurfData,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
-    );
     pub fn NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt_destructor(
         self_: *mut NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt,
     );
-    pub fn NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Standard_Transient_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Standard_Transient,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_StdStorage_Root_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_StdStorage_Root,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Storage_Root_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Storage_Root,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_TObj_Object_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_TObj_Object,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Transfer_Finder_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Transfer_Finder,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Units_Quantity,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Units_Token_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Units_Token,
-    );
-    pub fn NCollection_HSequence_opencascade_handle_Units_Unit_destructor(
-        self_: *mut NCollection_HSequence_opencascade_handle_Units_Unit,
+    pub fn NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int_destructor(
+        self_: *mut NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
     );
     pub fn NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(
         self_: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,

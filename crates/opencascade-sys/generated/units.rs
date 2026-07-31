@@ -938,9 +938,7 @@ impl Lexicon {
     /// Returns the first item of the sequence of tokens.
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Lexicon_sequence(self as *const Self),
@@ -1229,9 +1227,7 @@ impl MathSentence {
     /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_MathSentence_inherited_Sequence(
@@ -1768,14 +1764,14 @@ impl Quantity {
     /// the name of the physical quantity, <adimensions> which
     /// is the physical dimensions, and <aunitssequence> which
     /// describes all the units known for this quantity.
-    pub fn new_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(
+    pub fn new_charptr_handleunitsdimensions_hseq_units_unit(
         aname: &str,
         adimensions: &crate::ffi_types::Handle_Units_Dimensions,
-        aunitssequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
+        aunitssequence: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Unit,
     ) -> crate::OwnedPtr<Self> {
         let c_aname = std::ffi::CString::new(aname).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_ctor_charptr_handleunitsdimensions_handlencollectionhsequenceopencascadehandleunitsunit(c_aname.as_ptr(), adimensions, aunitssequence)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_Quantity_ctor_charptr_handleunitsdimensions_hseq_units_unit(c_aname.as_ptr(), adimensions, aunitssequence)))
         }
     }
 
@@ -1804,8 +1800,7 @@ impl Quantity {
     /// all the units stored for this physical quantity.
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Unit>
-    {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Unit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Quantity_sequence(self as *const Self),
@@ -2058,9 +2053,7 @@ impl Sentence {
     /// Returns <thesequenceoftokens>.
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_Sentence_sequence(self as *const Self),
@@ -2070,12 +2063,15 @@ impl Sentence {
 
     /// **Source:** `Units_Sentence.hxx`:50 - `Units_Sentence::Sequence()`
     /// Sets the field <thesequenceoftokens> to <asequenceoftokens>.
-    pub fn sequence_handlencollectionhsequenceopencascadehandleunitstoken(
+    pub fn sequence_hseq_units_token(
         &mut self,
-        asequenceoftokens: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
+        asequenceoftokens: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Units_Sentence_sequence_handlencollectionhsequenceopencascadehandleunitstoken(self as *mut Self, asequenceoftokens)
+            crate::ffi_extern_TKernel::Units_Sentence_sequence_hseq_units_token(
+                self as *mut Self,
+                asequenceoftokens,
+            )
         })
     }
 
@@ -2761,7 +2757,7 @@ impl ShiftedUnit {
     pub fn symbols_sequence(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3672,7 +3668,7 @@ impl Unit {
     pub fn symbols_sequence(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3955,13 +3951,18 @@ impl UnitSentence {
     /// analysed. The sequence of physical quantities
     /// <asequenceofquantities> describes the available
     /// dictionary of units you want to use.
-    pub fn new_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(
+    pub fn new_charptr_hseq_units_quantity(
         astring: &str,
-        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity,
     ) -> crate::OwnedPtr<Self> {
         let c_astring = std::ffi::CString::new(astring).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Units_UnitSentence_ctor_charptr_handlencollectionhsequenceopencascadehandleunitsquantity(c_astring.as_ptr(), aquantitiessequence)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::Units_UnitSentence_ctor_charptr_hseq_units_quantity(
+                    c_astring.as_ptr(),
+                    aquantitiessequence,
+                ),
+            ))
         }
     }
 
@@ -3981,7 +3982,7 @@ impl UnitSentence {
     /// characteristics of the unit found.
     pub fn set_units(
         &mut self,
-        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
+        aquantitiessequence: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Units_UnitSentence_set_units(
@@ -4021,9 +4022,7 @@ impl UnitSentence {
     /// Inherited: **Source:** `Units_Sentence.hxx`:47 - `Units_Sentence::Sequence()`
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitSentence_inherited_Sequence(
@@ -4100,9 +4099,7 @@ impl UnitsDictionary {
     /// quantities.
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsDictionary_sequence(self as *const Self),
@@ -4471,9 +4468,7 @@ impl UnitsLexicon {
     /// Inherited: **Source:** `Units_Lexicon.hxx`:48 - `Units_Lexicon::Sequence()`
     pub fn sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsLexicon_inherited_Sequence(
@@ -4686,9 +4681,7 @@ impl UnitsSystem {
     /// Returns the sequence of refined quantities.
     pub fn quantities_sequence(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Units_UnitsSystem_quantities_sequence(

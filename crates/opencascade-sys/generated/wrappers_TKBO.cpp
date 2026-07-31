@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <BOPAlgo_Alerts.hxx>
 #include <BOPAlgo_Algo.hxx>
@@ -40,7 +39,6 @@
 #include <BOPDS_Interf.hxx>
 #include <BOPDS_Iterator.hxx>
 #include <BOPDS_IteratorSI.hxx>
-#include <BOPDS_PaveBlock.hxx>
 #include <BOPDS_ShapeInfo.hxx>
 #include <BOPDS_SubIterator.hxx>
 #include <BOPDS_Tools.hxx>
@@ -85,7 +83,6 @@
 #include <IntTools_Tools.hxx>
 #include <IntTools_TopolTool.hxx>
 #include <IntTools_WLineTool.hxx>
-#include <Message_Alert.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Message_Report.hxx>
 #include <Standard_Handle.hxx>
@@ -7293,6 +7290,14 @@ extern "C" OcctResult<BOPAlgo_Tools*> BOPAlgo_Tools_ctor() {
     try { return {new BOPAlgo_Tools(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* BOPAlgo_Tools_fill_map(Handle(BOPDS_PaveBlock) const* thePB1, int32_t theF, NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int* theMILI, TDF_HAllocator const* theAllocator) {
+    try { BOPAlgo_Tools::FillMap(*thePB1, theF, *theMILI, *theAllocator); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BOPAlgo_Tools_perform_common_blocks(NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int const* theMBlocks, TDF_HAllocator const* theAllocator, BOPDS_DS** pDS, Handle(IntTools_Context) const* theContext) {
+    try { BOPAlgo_Tools::PerformCommonBlocks(*theMBlocks, *theAllocator, *pDS, *theContext); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<double> BOPAlgo_Tools_compute_tolerance_of_cb(Handle(BOPDS_CommonBlock) const* theCB, BOPDS_DS* theDS, Handle(IntTools_Context) const* theContext) {
     try { return {BOPAlgo_Tools::ComputeToleranceOfCB(*theCB, theDS, *theContext), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7709,6 +7714,10 @@ extern "C" const char* BOPDS_CommonBlock_add_pave_block(BOPDS_CommonBlock* self_
     try { self_->AddPaveBlock(*aPB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BOPDS_CommonBlock_set_pave_blocks(BOPDS_CommonBlock* self_, NCollection_List_Handle_BOPDS_PaveBlock const* aLPB) {
+    try { self_->SetPaveBlocks(*aLPB); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BOPDS_CommonBlock_add_face(BOPDS_CommonBlock* self_, int32_t aF) {
     try { self_->AddFace(aF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7720,6 +7729,10 @@ extern "C" const char* BOPDS_CommonBlock_set_faces(BOPDS_CommonBlock* self_, NCo
 extern "C" const char* BOPDS_CommonBlock_append_faces(BOPDS_CommonBlock* self_, NCollection_List_int* aLF) {
     try { self_->AppendFaces(*aLF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_BOPDS_PaveBlock const*> BOPDS_CommonBlock_pave_blocks(const BOPDS_CommonBlock* self_) {
+    try { return {&(self_->PaveBlocks()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_List_int const*> BOPDS_CommonBlock_faces(const BOPDS_CommonBlock* self_) {
     try { return {&(self_->Faces()), nullptr}; }
@@ -7923,6 +7936,18 @@ extern "C" OcctResult<Bnd_Box*> BOPDS_Curve_change_box(BOPDS_Curve* self_) {
     try { return {&(self_->ChangeBox()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* BOPDS_Curve_set_pave_blocks(BOPDS_Curve* self_, NCollection_List_Handle_BOPDS_PaveBlock const* theLPB) {
+    try { self_->SetPaveBlocks(*theLPB); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_BOPDS_PaveBlock const*> BOPDS_Curve_pave_blocks(const BOPDS_Curve* self_) {
+    try { return {&(self_->PaveBlocks()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_BOPDS_PaveBlock*> BOPDS_Curve_change_pave_blocks(BOPDS_Curve* self_) {
+    try { return {&(self_->ChangePaveBlocks()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* BOPDS_Curve_init_pave_block1(BOPDS_Curve* self_) {
     try { self_->InitPaveBlock1(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8049,6 +8074,14 @@ extern "C" OcctResult<bool> BOPDS_DS_has_pave_blocks(const BOPDS_DS* self_, int3
     try { return {self_->HasPaveBlocks(theIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_BOPDS_PaveBlock const*> BOPDS_DS_pave_blocks(const BOPDS_DS* self_, int32_t theIndex) {
+    try { return {&(self_->PaveBlocks(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_BOPDS_PaveBlock*> BOPDS_DS_change_pave_blocks(BOPDS_DS* self_, int32_t theIndex) {
+    try { return {&(self_->ChangePaveBlocks(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* BOPDS_DS_update_pave_blocks(BOPDS_DS* self_) {
     try { self_->UpdatePaveBlocks(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8105,6 +8138,14 @@ extern "C" const char* BOPDS_DS_update_face_info_on_map_int(BOPDS_DS* self_, NCo
     try { self_->UpdateFaceInfoOn(*theFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BOPDS_DS_face_info_on(BOPDS_DS* self_, int32_t theIndex, NCollection_IndexedMap_Handle_BOPDS_PaveBlock* theMPB, NCollection_Map_int* theMVP) {
+    try { self_->FaceInfoOn(theIndex, *theMPB, *theMVP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BOPDS_DS_face_info_in(BOPDS_DS* self_, int32_t theIndex, NCollection_IndexedMap_Handle_BOPDS_PaveBlock* theMPB, NCollection_Map_int* theMVP) {
+    try { self_->FaceInfoIn(theIndex, *theMPB, *theMVP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BOPDS_DS_alone_vertices(const BOPDS_DS* self_, int32_t theFaceIndex, NCollection_List_int* theVertexList) {
     try { self_->AloneVertices(theFaceIndex, *theVertexList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8115,6 +8156,10 @@ extern "C" const char* BOPDS_DS_refine_face_info_on(BOPDS_DS* self_) {
 }
 extern "C" const char* BOPDS_DS_refine_face_info_in(BOPDS_DS* self_) {
     try { self_->RefineFaceInfoIn(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BOPDS_DS_sub_shapes_on_in(const BOPDS_DS* self_, int32_t theFaceIndex1, int32_t theFaceIndex2, NCollection_Map_int* theMVOnIn, NCollection_Map_int* theMVCommon, NCollection_IndexedMap_Handle_BOPDS_PaveBlock* thePBOnIn, NCollection_Map_Handle_BOPDS_PaveBlock* theCommonPaveBlocks) {
+    try { self_->SubShapesOnIn(theFaceIndex1, theFaceIndex2, *theMVOnIn, *theMVCommon, *thePBOnIn, *theCommonPaveBlocks); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BOPDS_DS_shared_edges(BOPDS_DS* self_, int32_t theFaceIndex1, int32_t theFaceIndex2, NCollection_List_int* theEdgeList, TDF_HAllocator const* theAllocator) {
@@ -8271,6 +8316,14 @@ extern "C" OcctResult<int32_t> BOPDS_FaceInfo_index(const BOPDS_FaceInfo* self_)
     try { return {self_->Index(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock const*> BOPDS_FaceInfo_pave_blocks_in(const BOPDS_FaceInfo* self_) {
+    try { return {&(self_->PaveBlocksIn()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock*> BOPDS_FaceInfo_change_pave_blocks_in(BOPDS_FaceInfo* self_) {
+    try { return {&(self_->ChangePaveBlocksIn()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_in(const BOPDS_FaceInfo* self_) {
     try { return {&(self_->VerticesIn()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8279,12 +8332,28 @@ extern "C" OcctResult<NCollection_Map_int*> BOPDS_FaceInfo_change_vertices_in(BO
     try { return {&(self_->ChangeVerticesIn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock const*> BOPDS_FaceInfo_pave_blocks_on(const BOPDS_FaceInfo* self_) {
+    try { return {&(self_->PaveBlocksOn()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock*> BOPDS_FaceInfo_change_pave_blocks_on(BOPDS_FaceInfo* self_) {
+    try { return {&(self_->ChangePaveBlocksOn()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_on(const BOPDS_FaceInfo* self_) {
     try { return {&(self_->VerticesOn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_Map_int*> BOPDS_FaceInfo_change_vertices_on(BOPDS_FaceInfo* self_) {
     try { return {&(self_->ChangeVerticesOn()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock const*> BOPDS_FaceInfo_pave_blocks_sc(const BOPDS_FaceInfo* self_) {
+    try { return {&(self_->PaveBlocksSc()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_IndexedMap_Handle_BOPDS_PaveBlock*> BOPDS_FaceInfo_change_pave_blocks_sc(BOPDS_FaceInfo* self_) {
+    try { return {&(self_->ChangePaveBlocksSc()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_Map_int const*> BOPDS_FaceInfo_vertices_sc(const BOPDS_FaceInfo* self_) {
@@ -9345,6 +9414,10 @@ extern "C" OcctResult<NCollection_List_BOPDS_Pave const*> BOPDS_PaveBlock_ext_pa
 extern "C" OcctResult<NCollection_List_BOPDS_Pave*> BOPDS_PaveBlock_change_ext_paves(BOPDS_PaveBlock* self_) {
     try { return {&(self_->ChangeExtPaves()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* BOPDS_PaveBlock_update(BOPDS_PaveBlock* self_, NCollection_List_Handle_BOPDS_PaveBlock* theLPB, bool theFlag) {
+    try { self_->Update(*theLPB, theFlag); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> BOPDS_PaveBlock_contains_parameter(const BOPDS_PaveBlock* self_, double thePrm, double theTol, int32_t* theInd) {
     try { return {self_->ContainsParameter(thePrm, theTol, *theInd), nullptr}; }
@@ -13027,6 +13100,10 @@ extern "C" OcctResult<IntTools_WLineTool*> IntTools_WLineTool_ctor() {
 }
 extern "C" OcctResult<bool> IntTools_WLineTool_not_use_surfaces_for_approx(TopoDS_Face const* aF1, TopoDS_Face const* aF2, Handle(IntPatch_WLine) const* WL, int32_t ifprm, int32_t ilprm) {
     try { return {IntTools_WLineTool::NotUseSurfacesForApprox(*aF1, *aF2, *WL, ifprm, ilprm), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> IntTools_WLineTool_decomposition_of_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(GeomAdaptor_Surface) const* theSurface1, Handle(GeomAdaptor_Surface) const* theSurface2, TopoDS_Face const* theFace1, TopoDS_Face const* theFace2, GeomInt_LineConstructor const* theLConstructor, bool theAvoidLConstructor, double theTol, NCollection_Sequence_Handle_IntPatch_Line* theNewLines, Handle(IntTools_Context) const* arg9) {
+    try { return {IntTools_WLineTool::DecompositionOfWLine(*theWLine, *theSurface1, *theSurface2, *theFace1, *theFace2, *theLConstructor, theAvoidLConstructor, theTol, *theNewLines, *arg9), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void IntTools_WLineTool_destructor(IntTools_WLineTool* self_) { delete self_; }

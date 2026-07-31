@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Surface.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepMesh_BaseMeshAlgo.hxx>
 #include <BRepMesh_BoundaryParamsRangeSplitter.hxx>
@@ -24,7 +23,6 @@
 #include <BRepMesh_DelabellaMeshAlgoFactory.hxx>
 #include <BRepMesh_Delaun.hxx>
 #include <BRepMesh_DelaunayBaseMeshAlgo.hxx>
-#include <BRepMesh_DiscretAlgoFactory.hxx>
 #include <BRepMesh_DiscretFactory.hxx>
 #include <BRepMesh_DiscretRoot.hxx>
 #include <BRepMesh_Edge.hxx>
@@ -85,7 +83,6 @@
 #include <NCollection_IncAllocator.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
 #include <TopAbs_Orientation.hxx>
@@ -2079,6 +2076,10 @@ extern "C" OcctResult<Handle(BRepMesh_DiscretAlgoFactory)*> BRepMesh_DiscretAlgo
     try { return {new Handle(BRepMesh_DiscretAlgoFactory)(BRepMesh_DiscretAlgoFactory::FindFactory(*theName)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_BRepMesh_DiscretAlgoFactory const*> BRepMesh_DiscretAlgoFactory_factories() {
+    try { return {&(BRepMesh_DiscretAlgoFactory::Factories()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DiscretAlgoFactory_as_Standard_Transient(const BRepMesh_DiscretAlgoFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DiscretAlgoFactory_as_Standard_Transient_mut(BRepMesh_DiscretAlgoFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepMesh_DiscretAlgoFactory*> Handle_BRepMesh_DiscretAlgoFactory_get(const Handle_BRepMesh_DiscretAlgoFactory* handle) {
@@ -3273,8 +3274,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> BRepMesh_ModelBuilde
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> BRepMesh_ModelBuilder_inherited_GetMessageStrings(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> BRepMesh_ModelBuilder_inherited_GetMessageStrings(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ModelBuilder_inherited_IsInstance(const BRepMesh_ModelBuilder* self, Handle(Standard_Type) const& theType) {
@@ -6103,8 +6104,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> IMeshTools_MeshBuild
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> IMeshTools_MeshBuilder_inherited_GetMessageStrings(const IMeshTools_MeshBuilder* self, int32_t theStatus) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> IMeshTools_MeshBuilder_inherited_GetMessageStrings(const IMeshTools_MeshBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IMeshTools_MeshBuilder_inherited_IsInstance(const IMeshTools_MeshBuilder* self, Handle(Standard_Type) const& theType) {
@@ -6329,8 +6330,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> IMeshTools_ModelBuil
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IMeshTools_ModelBuilder_inherited_IsInstance(const IMeshTools_ModelBuilder* self, Handle(Standard_Type) const& theType) {

@@ -50,7 +50,7 @@ impl FileDescription {
     /// **Source:** `HeaderSection_FileDescription.hxx`:36 - `HeaderSection_FileDescription::Init()`
     pub fn init(
         &mut self,
-        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         aImplementationLevel: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
@@ -65,7 +65,7 @@ impl FileDescription {
     /// **Source:** `HeaderSection_FileDescription.hxx`:40 - `HeaderSection_FileDescription::SetDescription()`
     pub fn set_description(
         &mut self,
-        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::HeaderSection_FileDescription_set_description(
@@ -78,9 +78,8 @@ impl FileDescription {
     /// **Source:** `HeaderSection_FileDescription.hxx`:44 - `HeaderSection_FileDescription::Description()`
     pub fn description(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::HeaderSection_FileDescription_description(
@@ -370,8 +369,8 @@ impl FileName {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aTimeStamp: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
         aPreprocessorVersion: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aOriginatingSystem: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aAuthorisation: &crate::ffi_types::Handle_TCollection_HAsciiString,
@@ -431,7 +430,7 @@ impl FileName {
     /// **Source:** `HeaderSection_FileName.hxx`:53 - `HeaderSection_FileName::SetAuthor()`
     pub fn set_author(
         &mut self,
-        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::HeaderSection_FileName_set_author(
@@ -444,9 +443,8 @@ impl FileName {
     /// **Source:** `HeaderSection_FileName.hxx`:56 - `HeaderSection_FileName::Author()`
     pub fn author(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::HeaderSection_FileName_author(self as *const Self),
@@ -479,7 +477,7 @@ impl FileName {
     /// **Source:** `HeaderSection_FileName.hxx`:63 - `HeaderSection_FileName::SetOrganization()`
     pub fn set_organization(
         &mut self,
-        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::HeaderSection_FileName_set_organization(
@@ -492,9 +490,8 @@ impl FileName {
     /// **Source:** `HeaderSection_FileName.hxx`:67 - `HeaderSection_FileName::Organization()`
     pub fn organization(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::HeaderSection_FileName_organization(
@@ -826,7 +823,7 @@ impl FileSchema {
     /// **Source:** `HeaderSection_FileSchema.hxx`:36 - `HeaderSection_FileSchema::Init()`
     pub fn init(
         &mut self,
-        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::HeaderSection_FileSchema_init(
@@ -839,7 +836,7 @@ impl FileSchema {
     /// **Source:** `HeaderSection_FileSchema.hxx`:40 - `HeaderSection_FileSchema::SetSchemaIdentifiers()`
     pub fn set_schema_identifiers(
         &mut self,
-        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::HeaderSection_FileSchema_set_schema_identifiers(
@@ -852,9 +849,8 @@ impl FileSchema {
     /// **Source:** `HeaderSection_FileSchema.hxx`:45 - `HeaderSection_FileSchema::SchemaIdentifiers()`
     pub fn schema_identifiers(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::HeaderSection_FileSchema_schema_identifiers(

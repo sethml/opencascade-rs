@@ -346,16 +346,25 @@ impl GenExp {
         })
     }
 
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(
-        &self,
-        name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedExpression> {
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
+            &*(crate::check_result(
                 crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetNamed(
                     self as *const Self,
-                    name,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedFunction {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetFunctions(
+                    self as *const Self,
                 ),
             ))
         }
@@ -645,16 +654,25 @@ impl GenFct {
         })
     }
 
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(
-        &self,
-        name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedExpression> {
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
+            &*(crate::check_result(
                 crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetNamed(
                     self as *const Self,
-                    name,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedFunction {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetFunctions(
+                    self as *const Self,
                 ),
             ))
         }
@@ -957,16 +975,25 @@ impl GenRel {
         })
     }
 
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(
-        &self,
-        name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedExpression> {
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedExpression {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
+            &*(crate::check_result(
                 crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetNamed(
                     self as *const Self,
-                    name,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedFunction {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetFunctions(
+                    self as *const Self,
                 ),
             ))
         }
@@ -1167,17 +1194,37 @@ impl Generator {
         })
     }
 
+    /// **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed()`
+    pub fn get_named(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedExpression {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_named(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions()`
+    pub fn get_functions(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Expr_NamedFunction {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_functions(
+                self as *const Self,
+            )))
+        }
+    }
+
     /// **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
     /// Returns NamedExpression with name <name> already
     /// interpreted if it exists. Returns a null handle if
     /// not.
-    pub fn get_named(
+    pub fn get_named_asciistring(
         &self,
         name: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedExpression> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_named(
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_named_asciistring(
                     self as *const Self,
                     name,
                 ),
@@ -1435,16 +1482,6 @@ impl Handle_ExprIntrp_Generator {
         }
     }
 }
-
-// ── Skipped symbols for Generator (2 total) ──
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::GetNamed`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Expr_NamedExpression>> const&)
-//   // pub fn get_named(&self) -> /* NCollection_Sequence<occ::handle<Expr_NamedExpression>> const& */;
-//
-// SKIPPED: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetFunctions`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Expr_NamedFunction>> const&)
-//   // pub fn get_functions(&self) -> /* NCollection_Sequence<occ::handle<Expr_NamedFunction>> const& */;
-//
 
 // ========================
 // From ExprIntrp_SyntaxError.hxx

@@ -156,7 +156,7 @@ impl AllConnected {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_AllConnected_inherited_AddList(
@@ -266,9 +266,8 @@ impl AllConnected {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_AllConnected_inherited_Content(
@@ -438,7 +437,7 @@ impl AllShared {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_AllShared_inherited_AddList(self as *mut Self, list)
@@ -541,9 +540,8 @@ impl AllShared {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_AllShared_inherited_Content(
@@ -705,7 +703,7 @@ impl Articulations {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_Articulations_inherited_AddList(
@@ -815,9 +813,8 @@ impl Articulations {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_Articulations_inherited_Content(
@@ -1043,7 +1040,7 @@ impl Compare {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_Compare_inherited_AddList(self as *mut Self, list)
@@ -1146,9 +1143,8 @@ impl Compare {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_Compare_inherited_Content(self as *const Self),
@@ -1619,7 +1615,7 @@ impl Cumulate {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_Cumulate_inherited_AddList(self as *mut Self, list)
@@ -1722,9 +1718,8 @@ impl Cumulate {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_Cumulate_inherited_Content(self as *const Self),
@@ -2137,7 +2132,7 @@ impl ExternalSources {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFGraph_ExternalSources_inherited_AddList(
@@ -2247,9 +2242,8 @@ impl ExternalSources {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFGraph_ExternalSources_inherited_Content(

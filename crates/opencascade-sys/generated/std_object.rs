@@ -52,14 +52,20 @@ impl Location {
             ))
         }
     }
-}
 
-// ── Skipped symbols for Location (1 total) ──
-// SKIPPED: **Source:** `StdObject_Location.hxx`:36 - `StdObject_Location::Translate`
-//   static_method: Creates a persistent wrapper object for a location
-//   Reason: has unbindable types: param 'theMap': unresolved template type (NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>&)
-//   // pub fn translate(theLoc: &Location, theMap: /* NCollection_DataMap<occ::handle<Standard_Transient>, occ::handle<StdObjMgt_Persistent>>& */) -> OwnedPtr<StdObject_Location>;
-//
+    /// **Source:** `StdObject_Location.hxx`:36 - `StdObject_Location::Translate()`
+    /// Creates a persistent wrapper object for a location
+    pub fn translate(
+        theLoc: &crate::top_loc::Location,
+        theMap: &mut crate::ffi_types::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    ) -> crate::OwnedPtr<Location> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdObject_Location_translate(theLoc, theMap),
+            ))
+        }
+    }
+}
 
 // ========================
 // From StdObject_Shape.hxx

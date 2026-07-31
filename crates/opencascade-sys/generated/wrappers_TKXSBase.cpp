@@ -82,7 +82,6 @@
 #include <IFSelect_SelectType.hxx>
 #include <IFSelect_SelectUnion.hxx>
 #include <IFSelect_SelectUnknownEntities.hxx>
-#include <IFSelect_Selection.hxx>
 #include <IFSelect_SelectionIterator.hxx>
 #include <IFSelect_SessionDumper.hxx>
 #include <IFSelect_SessionFile.hxx>
@@ -227,7 +226,6 @@
 #include <Interface_TypedValue.hxx>
 #include <Interface_UndefinedContent.hxx>
 #include <Message_Messenger.hxx>
-#include <Message_Printer.hxx>
 #include <Message_ProgressRange.hxx>
 #include <MoniTool_AttrList.hxx>
 #include <MoniTool_CaseData.hxx>
@@ -531,14 +529,14 @@ typedef opencascade::handle<MoniTool_TransientElem> Handle_MoniTool_TransientEle
 typedef opencascade::handle<MoniTool_TypedValue> Handle_MoniTool_TypedValue;
 typedef opencascade::handle<NCollection_HArray1_NCollection_List_int> Handle_NCollection_HArray1_NCollection_List_int;
 typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<NCollection_HSequence_Handle_Standard_Transient> Handle_NCollection_HSequence_Handle_Standard_Transient;
+typedef opencascade::handle<NCollection_HSequence_Handle_TCollection_HAsciiString> Handle_NCollection_HSequence_Handle_TCollection_HAsciiString;
+typedef opencascade::handle<NCollection_HSequence_Handle_TCollection_HExtendedString> Handle_NCollection_HSequence_Handle_TCollection_HExtendedString;
+typedef opencascade::handle<NCollection_HSequence_Handle_Transfer_Finder> Handle_NCollection_HSequence_Handle_Transfer_Finder;
 typedef opencascade::handle<NCollection_HSequence_TCollection_AsciiString> Handle_NCollection_HSequence_TCollection_AsciiString;
 typedef opencascade::handle<NCollection_HSequence_TopoDS_Shape> Handle_NCollection_HSequence_TopoDS_Shape;
 typedef opencascade::handle<NCollection_HSequence_double> Handle_NCollection_HSequence_double;
 typedef opencascade::handle<NCollection_HSequence_int> Handle_NCollection_HSequence_int;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Standard_Transient> Handle_NCollection_HSequence_opencascade_handle_Standard_Transient;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HAsciiString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TCollection_HExtendedString> Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_Transfer_Finder> Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder;
 typedef opencascade::handle<RWHeaderSection_GeneralModule> Handle_RWHeaderSection_GeneralModule;
 typedef opencascade::handle<RWHeaderSection_ReadWriteModule> Handle_RWHeaderSection_ReadWriteModule;
 typedef opencascade::handle<STEPCAFControl_ActorWrite> Handle_STEPCAFControl_ActorWrite;
@@ -1476,7 +1474,7 @@ extern "C" const char* IFGraph_AllConnected_inherited_Begin(IFGraph_AllConnected
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_AllConnected_inherited_AddList(IFGraph_AllConnected* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_AllConnected_inherited_AddList(IFGraph_AllConnected* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1520,8 +1518,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_AllConnected_in
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_AllConnected_inherited_Content(const IFGraph_AllConnected* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_AllConnected_inherited_Content(const IFGraph_AllConnected* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_AllConnected_inherited_Destroy(IFGraph_AllConnected* self) {
@@ -1574,7 +1572,7 @@ extern "C" const char* IFGraph_AllShared_inherited_Begin(IFGraph_AllShared* self
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_AllShared_inherited_AddList(IFGraph_AllShared* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_AllShared_inherited_AddList(IFGraph_AllShared* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1618,8 +1616,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_AllShared_inher
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_AllShared_inherited_Content(const IFGraph_AllShared* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_AllShared_inherited_Content(const IFGraph_AllShared* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_AllShared_inherited_Destroy(IFGraph_AllShared* self) {
@@ -1668,7 +1666,7 @@ extern "C" const char* IFGraph_Articulations_inherited_Begin(IFGraph_Articulatio
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Articulations_inherited_AddList(IFGraph_Articulations* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_Articulations_inherited_AddList(IFGraph_Articulations* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1712,8 +1710,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Articulations_i
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Articulations_inherited_Content(const IFGraph_Articulations* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_Articulations_inherited_Content(const IFGraph_Articulations* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Articulations_inherited_Destroy(IFGraph_Articulations* self) {
@@ -1786,7 +1784,7 @@ extern "C" const char* IFGraph_Compare_inherited_Begin(IFGraph_Compare* self) {
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Compare_inherited_AddList(IFGraph_Compare* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_Compare_inherited_AddList(IFGraph_Compare* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1830,8 +1828,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Compare_inherit
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Compare_inherited_Content(const IFGraph_Compare* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_Compare_inherited_Content(const IFGraph_Compare* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Compare_inherited_Destroy(IFGraph_Compare* self) {
@@ -2000,7 +1998,7 @@ extern "C" const char* IFGraph_Cumulate_inherited_Begin(IFGraph_Cumulate* self) 
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_Cumulate_inherited_AddList(IFGraph_Cumulate* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_Cumulate_inherited_AddList(IFGraph_Cumulate* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2044,8 +2042,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_Cumulate_inheri
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_Cumulate_inherited_Content(const IFGraph_Cumulate* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_Cumulate_inherited_Content(const IFGraph_Cumulate* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_Cumulate_inherited_Destroy(IFGraph_Cumulate* self) {
@@ -2202,7 +2200,7 @@ extern "C" const char* IFGraph_ExternalSources_inherited_Begin(IFGraph_ExternalS
     try { self->Begin(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFGraph_ExternalSources_inherited_AddList(IFGraph_ExternalSources* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* IFGraph_ExternalSources_inherited_AddList(IFGraph_ExternalSources* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2246,8 +2244,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> IFGraph_ExternalSources
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFGraph_ExternalSources_inherited_Content(const IFGraph_ExternalSources* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFGraph_ExternalSources_inherited_Content(const IFGraph_ExternalSources* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFGraph_ExternalSources_inherited_Destroy(IFGraph_ExternalSources* self) {
@@ -4188,16 +4186,16 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_EditForm_origi
     try { return {new Handle(TCollection_HAsciiString)(self_->OriginalValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_EditForm_original_list(const IFSelect_EditForm* self_, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->OriginalList(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_EditForm_original_list(const IFSelect_EditForm* self_, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->OriginalList(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_EditForm_edited_value(const IFSelect_EditForm* self_, int32_t num) {
     try { return {new Handle(TCollection_HAsciiString)(self_->EditedValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_EditForm_edited_list(const IFSelect_EditForm* self_, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->EditedList(num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_EditForm_edited_list(const IFSelect_EditForm* self_, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->EditedList(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool*> IFSelect_EditForm_edit_keep_status(IFSelect_EditForm* self_) {
@@ -4276,7 +4274,7 @@ extern "C" const char* IFSelect_EditForm_load_value(IFSelect_EditForm* self_, in
     try { self_->LoadValue(num, *val); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_EditForm_load_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list) {
+extern "C" const char* IFSelect_EditForm_load_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* list) {
     try { self_->LoadList(num, *list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4296,7 +4294,7 @@ extern "C" OcctResult<bool> IFSelect_EditForm_modify_list(IFSelect_EditForm* sel
     try { return {self_->ModifyList(num, *edited, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_EditForm_modify_list_value(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_EditForm_modify_list_value(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* list, bool enforce) {
     try { return {self_->ModifyListValue(num, *list, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4304,7 +4302,7 @@ extern "C" OcctResult<bool> IFSelect_EditForm_touch(IFSelect_EditForm* self_, in
     try { return {self_->Touch(num, *newval), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_EditForm_touch_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* newlist) {
+extern "C" OcctResult<bool> IFSelect_EditForm_touch_list(IFSelect_EditForm* self_, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* newlist) {
     try { return {self_->TouchList(num, *newlist), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4424,8 +4422,8 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IFSelect_Editor_list_editor(
     try { return {new Handle(IFSelect_ListEditor)(self_->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_Editor_list_value(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ListValue(*form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_Editor_list_value(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->ListValue(*form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_Editor_set_value(IFSelect_Editor* self_, int32_t num, Handle(Interface_TypedValue) const* typval, const char* shortname, int32_t accessmode) {
@@ -4484,7 +4482,7 @@ extern "C" OcctResult<bool> IFSelect_Editor_update(const IFSelect_Editor* self_,
     try { return {self_->Update(*form, num, *newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_Editor_update_list(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* newlist, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_Editor_update_list(const IFSelect_Editor* self_, Handle(IFSelect_EditForm) const* form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* newlist, bool enforce) {
     try { return {self_->UpdateList(*form, num, *newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4612,8 +4610,8 @@ extern "C" OcctResult<int32_t> IFSelect_Functions_give_entity_number(Handle(IFSe
     try { return {IFSelect_Functions::GiveEntityNumber(*WS, name), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_Functions_give_list(Handle(IFSelect_WorkSession) const* WS, const char* first, const char* second) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(IFSelect_Functions::GiveList(*WS, first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_Functions_give_list(Handle(IFSelect_WorkSession) const* WS, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(IFSelect_Functions::GiveList(*WS, first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Dispatch)*> IFSelect_Functions_give_dispatch(Handle(IFSelect_WorkSession) const* WS, const char* name, bool mode) {
@@ -4890,7 +4888,7 @@ extern "C" const char* IFSelect_GraphCounter_set_applied(IFSelect_GraphCounter* 
     try { self_->SetApplied(*sel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_GraphCounter_add_with_graph(IFSelect_GraphCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Interface_Graph const* graph) {
+extern "C" const char* IFSelect_GraphCounter_add_with_graph(IFSelect_GraphCounter* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, Interface_Graph const* graph) {
     try { self_->AddWithGraph(*list, *graph); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4952,7 +4950,7 @@ extern "C" const char* IFSelect_GraphCounter_inherited_AddSign(IFSelect_GraphCou
     try { self->AddSign(ent, model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, Handle(Interface_InterfaceModel) const& model) {
+extern "C" const char* IFSelect_GraphCounter_inherited_AddList(IFSelect_GraphCounter* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, Handle(Interface_InterfaceModel) const& model) {
     try { self->AddList(list, model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5146,12 +5144,12 @@ extern "C" OcctResult<IFSelect_ListEditor*> IFSelect_ListEditor_ctor_handleinter
     try { return {new IFSelect_ListEditor(*def, max), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ListEditor_original_values(const IFSelect_ListEditor* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->OriginalValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_ListEditor_original_values(const IFSelect_ListEditor* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->OriginalValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ListEditor_edited_values(const IFSelect_ListEditor* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->EditedValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_ListEditor_edited_values(const IFSelect_ListEditor* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->EditedValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> IFSelect_ListEditor_value(const IFSelect_ListEditor* self_, int32_t num, bool edited) {
@@ -5162,7 +5160,7 @@ extern "C" const char* IFSelect_ListEditor_load_model(IFSelect_ListEditor* self_
     try { self_->LoadModel(*model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_ListEditor_load_values(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* vals) {
+extern "C" const char* IFSelect_ListEditor_load_values(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* vals) {
     try { self_->LoadValues(*vals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5174,7 +5172,7 @@ extern "C" const char* IFSelect_ListEditor_clear_edit(IFSelect_ListEditor* self_
     try { self_->ClearEdit(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> IFSelect_ListEditor_load_edited(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list) {
+extern "C" OcctResult<bool> IFSelect_ListEditor_load_edited(IFSelect_ListEditor* self_, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* list) {
     try { return {self_->LoadEdited(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5314,8 +5312,8 @@ extern "C" OcctResult<Handle(IFSelect_AppliedModifiers)*> IFSelect_ModelCopier_a
     try { return {new Handle(IFSelect_AppliedModifiers)(self_->AppliedModifiers(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ModelCopier_sent_files(const IFSelect_ModelCopier* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_ModelCopier_sent_files(const IFSelect_ModelCopier* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_ModelCopier_set_share_out(IFSelect_ModelCopier* self_, Handle(IFSelect_ShareOut) const* sho) {
@@ -5936,7 +5934,7 @@ extern "C" const char* IFSelect_PacketList_add(IFSelect_PacketList* self_, Handl
     try { self_->Add(*ent); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_PacketList_add_list(IFSelect_PacketList* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" const char* IFSelect_PacketList_add_list(IFSelect_PacketList* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { self_->AddList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6056,7 +6054,7 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IFSelect_ParamEditor_dynamic
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(IFSelect_ParamEditor)*> IFSelect_ParamEditor_static_editor(Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* list, const char* label) {
+extern "C" OcctResult<Handle(IFSelect_ParamEditor)*> IFSelect_ParamEditor_static_editor(Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* list, const char* label) {
     try { return {new Handle(IFSelect_ParamEditor)(IFSelect_ParamEditor::StaticEditor(*list, label)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6136,15 +6134,15 @@ extern "C" OcctResult<Handle(IFSelect_ListEditor)*> IFSelect_ParamEditor_inherit
     try { return {new Handle(IFSelect_ListEditor)(self->ListEditor(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_ParamEditor_inherited_ListValue(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ListValue(form, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_Update(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(TCollection_HAsciiString) const& newval, bool enforce) {
     try { return {self->Update(form, num, newval, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const& newlist, bool enforce) {
+extern "C" OcctResult<bool> IFSelect_ParamEditor_inherited_UpdateList(const IFSelect_ParamEditor* self, Handle(IFSelect_EditForm) const& form, int32_t num, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const& newlist, bool enforce) {
     try { return {self->UpdateList(form, num, newlist, enforce), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8970,7 +8968,7 @@ extern "C" const char* IFSelect_SelectPointed_set_entity(IFSelect_SelectPointed*
     try { self_->SetEntity(*item); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SelectPointed_set_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" const char* IFSelect_SelectPointed_set_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { self_->SetList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8986,15 +8984,15 @@ extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle(IFSelect_SelectPointed
     try { return {self_->Toggle(*item), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_add_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_add_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {self_->AddList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_remove_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_remove_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {self_->RemoveList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<bool> IFSelect_SelectPointed_toggle_list(IFSelect_SelectPointed* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {self_->ToggleList(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11530,6 +11528,10 @@ extern "C" const char* IFSelect_SelectionIterator_add_item(IFSelect_SelectionIte
     try { self_->AddItem(*sel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* IFSelect_SelectionIterator_add_list(IFSelect_SelectionIterator* self_, NCollection_Sequence_Handle_IFSelect_Selection const* list) {
+    try { self_->AddList(*list); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> IFSelect_SelectionIterator_more(const IFSelect_SelectionIterator* self_) {
     try { return {self_->More(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -12516,11 +12518,11 @@ extern "C" const char* IFSelect_SignCounter_add_sign(IFSelect_SignCounter* self_
     try { self_->AddSign(*ent, *model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SignCounter_add_list(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Handle(Interface_InterfaceModel) const* model) {
+extern "C" const char* IFSelect_SignCounter_add_list(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, Handle(Interface_InterfaceModel) const* model) {
     try { self_->AddList(*list, *model); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IFSelect_SignCounter_add_with_graph(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Interface_Graph const* graph) {
+extern "C" const char* IFSelect_SignCounter_add_with_graph(IFSelect_SignCounter* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, Interface_Graph const* graph) {
     try { self_->AddWithGraph(*list, *graph); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13264,12 +13266,12 @@ extern "C" OcctResult<IFSelect_SignatureList*> IFSelect_SignatureList_ctor_bool(
     try { return {new IFSelect_SignatureList(withlist), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_SignatureList_list(const IFSelect_SignatureList* self_, const char* root) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->List(root)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_SignatureList_list(const IFSelect_SignatureList* self_, const char* root) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->List(root)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_SignatureList_entities(const IFSelect_SignatureList* self_, const char* sign) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Entities(sign)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_SignatureList_entities(const IFSelect_SignatureList* self_, const char* sign) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Entities(sign)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_SignatureList_set_list(IFSelect_SignatureList* self_, bool withlist) {
@@ -13291,6 +13293,10 @@ extern "C" const char* IFSelect_SignatureList_add(IFSelect_SignatureList* self_,
 extern "C" OcctResult<char const*> IFSelect_SignatureList_last_value(const IFSelect_SignatureList* self_) {
     try { return {self_->LastValue(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* IFSelect_SignatureList_init(IFSelect_SignatureList* self_, const char* name, NCollection_IndexedDataMap_TCollection_AsciiString_int const* count, NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient const* list, int32_t nbnuls) {
+    try { self_->Init(name, *count, *list, nbnuls); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> IFSelect_SignatureList_has_entities(const IFSelect_SignatureList* self_) {
     try { return {self_->HasEntities(), nullptr}; }
@@ -13798,12 +13804,12 @@ extern "C" OcctResult<Handle(Interface_HGraph)*> IFSelect_WorkSession_h_graph(IF
     try { return {new Handle(Interface_HGraph)(self_->HGraph()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_shareds(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Shareds(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_shareds(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Shareds(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_sharings(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Sharings(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_sharings(IFSelect_WorkSession* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Sharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> IFSelect_WorkSession_model_check_list(IFSelect_WorkSession* self_, bool complete) {
@@ -13842,12 +13848,12 @@ extern "C" OcctResult<Handle(NCollection_HSequence_int)*> IFSelect_WorkSession_i
     try { return {new Handle(NCollection_HSequence_int)(self_->ItemIdents(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ItemNames(*type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names(const IFSelect_WorkSession* self_, Handle(Standard_Type) const* type) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->ItemNames(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names_for_label(const IFSelect_WorkSession* self_, const char* label) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->ItemNamesForLabel(label)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_WorkSession_item_names_for_label(const IFSelect_WorkSession* self_, const char* label) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->ItemNamesForLabel(label)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> IFSelect_WorkSession_new_param_from_static(IFSelect_WorkSession* self_, const char* statname, const char* name) {
@@ -13890,12 +13896,12 @@ extern "C" OcctResult<IFSelect_SelectionIterator*> IFSelect_WorkSession_sources(
     try { return {new IFSelect_SelectionIterator(self_->Sources(*sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_selection_result(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->SelectionResult(*sel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_selection_result(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->SelectionResult(*sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_selection_result_from_list(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->SelectionResultFromList(*sel, *list)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_selection_result_from_list(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->SelectionResultFromList(*sel, *list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_item_selection(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* item) {
@@ -13962,8 +13968,8 @@ extern "C" OcctResult<TCollection_AsciiString*> IFSelect_WorkSession_file_name(c
     try { return {new TCollection_AsciiString(self_->FileName(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> IFSelect_WorkSession_sent_files(const IFSelect_WorkSession* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> IFSelect_WorkSession_sent_files(const IFSelect_WorkSession* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_PacketList)*> IFSelect_WorkSession_eval_split(const IFSelect_WorkSession* self_) {
@@ -13978,7 +13984,7 @@ extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_source(c
     try { return {new Handle(IFSelect_Selection)(self_->Source(*sel, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_new_select_pointed(IFSelect_WorkSession* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, const char* name) {
+extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_new_select_pointed(IFSelect_WorkSession* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, const char* name) {
     try { return {new Handle(IFSelect_Selection)(self_->NewSelectPointed(*list, name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13986,20 +13992,20 @@ extern "C" OcctResult<Handle(IFSelect_Selection)*> IFSelect_WorkSession_give_sel
     try { return {new Handle(IFSelect_Selection)(self_->GiveSelection(selname)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_handlestandardtransient(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* obj) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(*obj)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_give_list_handlestandardtransient(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* obj) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveList(*obj)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_charptr2(const IFSelect_WorkSession* self_, const char* first, const char* second) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_give_list_charptr2(const IFSelect_WorkSession* self_, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_from_list(const IFSelect_WorkSession* self_, const char* selname, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveListFromList(selname, *ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_give_list_from_list(const IFSelect_WorkSession* self_, const char* selname, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveListFromList(selname, *ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> IFSelect_WorkSession_give_list_combined(const IFSelect_WorkSession* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* l1, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* l2, int32_t mode) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveListCombined(*l1, *l2, mode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> IFSelect_WorkSession_give_list_combined(const IFSelect_WorkSession* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* l1, Handle(NCollection_HSequence_Handle_Standard_Transient) const* l2, int32_t mode) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveListCombined(*l1, *l2, mode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IFSelect_WorkSession_set_error_handle(IFSelect_WorkSession* self_, bool toHandle) {
@@ -14194,7 +14200,7 @@ extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter(IFSelect_WorkSe
     try { return {self_->ComputeCounter(*counter, forced), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter_from_list(IFSelect_WorkSession* self_, Handle(IFSelect_SignCounter) const* counter, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, bool clear) {
+extern "C" OcctResult<bool> IFSelect_WorkSession_compute_counter_from_list(IFSelect_WorkSession* self_, Handle(IFSelect_SignCounter) const* counter, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, bool clear) {
     try { return {self_->ComputeCounterFromList(*counter, *list, clear), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14350,7 +14356,7 @@ extern "C" OcctResult<bool> IFSelect_WorkSession_combine_remove(IFSelect_WorkSes
     try { return {self_->CombineRemove(*selcomb, *selrem), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IFSelect_WorkSession_set_select_pointed(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, int32_t mode) {
+extern "C" OcctResult<bool> IFSelect_WorkSession_set_select_pointed(const IFSelect_WorkSession* self_, Handle(IFSelect_Selection) const* sel, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, int32_t mode) {
     try { return {self_->SetSelectPointed(*sel, *list, mode), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14365,6 +14371,10 @@ extern "C" OcctResult<int32_t> IFSelect_WorkSession_query_check_status(const IFS
 extern "C" OcctResult<int32_t> IFSelect_WorkSession_query_parent(const IFSelect_WorkSession* self_, Handle(Standard_Transient) const* entdad, Handle(Standard_Transient) const* entson) {
     try { return {self_->QueryParent(*entdad, *entson), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* IFSelect_WorkSession_set_params(IFSelect_WorkSession* self_, NCollection_DynamicArray_Handle_Standard_Transient const* params, NCollection_DynamicArray_int const* uselist) {
+    try { self_->SetParams(*params, *uselist); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* IFSelect_WorkSession_trace_statics(const IFSelect_WorkSession* self_, int32_t use, int32_t mode) {
     try { self_->TraceStatics(use, mode); return nullptr; }
@@ -14666,16 +14676,16 @@ extern "C" OcctResult<Interface_Check*> Interface_Check_ctor_handlestandardtrans
     try { return {new Interface_Check(*anentity), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_fails(const Interface_Check* self_, bool final) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->Fails(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Interface_Check_fails(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->Fails(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_warnings(const Interface_Check* self_, bool final) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->Warnings(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Interface_Check_warnings(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->Warnings(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Check_info_msgs(const Interface_Check* self_, bool final) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->InfoMsgs(final)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Interface_Check_info_msgs(const Interface_Check* self_, bool final) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->InfoMsgs(final)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_Check_send_fail(Interface_Check* self_, Message_Msg const* amsg) {
@@ -14944,8 +14954,8 @@ extern "C" OcctResult<Interface_CheckIterator*> Interface_CheckIterator_extract_
     try { return {new Interface_CheckIterator(self_->Extract(mess, incl, static_cast<Interface_CheckStatus>(status))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_CheckIterator_checkeds(const Interface_CheckIterator* self_, bool failsonly, bool global) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Checkeds(failsonly, global)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Interface_CheckIterator_checkeds(const Interface_CheckIterator* self_, bool failsonly, bool global) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Checkeds(failsonly, global)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_CheckIterator_set_name(Interface_CheckIterator* self_, const char* name) {
@@ -15476,7 +15486,7 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor()
     try { return {new Interface_EntityIterator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_ctor_hseq_standard_transient(Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {new Interface_EntityIterator(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15484,11 +15494,11 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_EntityIterator_typed(
     try { return {new Interface_EntityIterator(self_->Typed(*type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_EntityIterator_content(const Interface_EntityIterator* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Interface_EntityIterator_content(const Interface_EntityIterator* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Interface_EntityIterator_add_list(Interface_EntityIterator* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" const char* Interface_EntityIterator_add_list(Interface_EntityIterator* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { self_->AddList(*list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16512,8 +16522,8 @@ extern "C" OcctResult<Interface_Graph*> Interface_Graph_ctor_handleinterfaceinte
     try { return {new Interface_Graph(*amodel, theModeStats), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_Graph_get_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetShareds(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Interface_Graph_get_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GetShareds(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_shareds(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
@@ -16524,8 +16534,8 @@ extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_sharings(const 
     try { return {new Interface_EntityIterator(self_->Sharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_Graph_get_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GetSharings(*ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Interface_Graph_get_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GetSharings(*ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_Graph_typed_sharings(const Interface_Graph* self_, Handle(Standard_Transient) const* ent, Handle(Standard_Type) const* type) {
@@ -16692,7 +16702,7 @@ extern "C" const char* Interface_GraphContent_evaluate(Interface_GraphContent* s
 }
 extern "C" OcctResult<const Interface_EntityIterator*> Interface_GraphContent_as_Interface_EntityIterator(const Interface_GraphContent* self_) { return {static_cast<const Interface_EntityIterator*>(self_), nullptr}; }
 extern "C" OcctResult<Interface_EntityIterator*> Interface_GraphContent_as_Interface_EntityIterator_mut(Interface_GraphContent* self_) { return {static_cast<Interface_EntityIterator*>(self_), nullptr}; }
-extern "C" const char* Interface_GraphContent_inherited_AddList(Interface_GraphContent* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
+extern "C" const char* Interface_GraphContent_inherited_AddList(Interface_GraphContent* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
     try { self->AddList(list); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16736,8 +16746,8 @@ extern "C" OcctResult<Handle(Standard_Transient) const*> Interface_GraphContent_
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Interface_GraphContent_inherited_Content(const Interface_GraphContent* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Content()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Interface_GraphContent_inherited_Content(const Interface_GraphContent* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Content()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_GraphContent_inherited_Destroy(Interface_GraphContent* self) {
@@ -17298,8 +17308,8 @@ extern "C" OcctResult<bool> Interface_InterfaceModel_set_template(const char* na
     try { return {Interface_InterfaceModel::SetTemplate(name, *model), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_InterfaceModel_list_templates() {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(Interface_InterfaceModel::ListTemplates()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Interface_InterfaceModel_list_templates() {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(Interface_InterfaceModel::ListTemplates()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> Interface_InterfaceModel_get_type_name() {
@@ -19022,8 +19032,8 @@ extern "C" OcctResult<bool> Interface_Static_is_updated(const char* name) {
     try { return {Interface_Static::IsUpdated(name), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> Interface_Static_items(int32_t mode, const char* criter) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(Interface_Static::Items(mode, criter)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> Interface_Static_items(int32_t mode, const char* criter) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(Interface_Static::Items(mode, criter)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Interface_Static_standards() {
@@ -22719,7 +22729,7 @@ extern "C" const char* Transfer_IteratorOfProcessForFinder_add_handletransferbin
     try { self_->Add(*binder, *start); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Transfer_IteratorOfProcessForFinder_filter(Transfer_IteratorOfProcessForFinder* self_, Handle(NCollection_HSequence_opencascade_handle_Transfer_Finder) const* list, bool keep) {
+extern "C" const char* Transfer_IteratorOfProcessForFinder_filter(Transfer_IteratorOfProcessForFinder* self_, Handle(NCollection_HSequence_Handle_Transfer_Finder) const* list, bool keep) {
     try { self_->Filter(*list, keep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -22827,7 +22837,7 @@ extern "C" const char* Transfer_IteratorOfProcessForTransient_add_handletransfer
     try { self_->Add(*binder, *start); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Transfer_IteratorOfProcessForTransient_filter(Transfer_IteratorOfProcessForTransient* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, bool keep) {
+extern "C" const char* Transfer_IteratorOfProcessForTransient_filter(Transfer_IteratorOfProcessForTransient* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, bool keep) {
     try { self_->Filter(*list, keep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -22927,6 +22937,14 @@ extern "C" OcctResult<Transfer_MapContainer*> Transfer_MapContainer_ctor() {
     try { return {new Transfer_MapContainer(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* Transfer_MapContainer_set_map_objects(Transfer_MapContainer* self_, NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient* theMapObjects) {
+    try { self_->SetMapObjects(*theMapObjects); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient*> Transfer_MapContainer_get_map_objects(Transfer_MapContainer* self_) {
+    try { return {&(self_->GetMapObjects()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Transfer_MapContainer_dynamic_type(const Transfer_MapContainer* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -23003,8 +23021,8 @@ extern "C" OcctResult<Handle(Standard_Transient)*> Transfer_MultipleBinder_resul
     try { return {new Handle(Standard_Transient)(self_->ResultValue(num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_MultipleBinder_multiple_result(const Transfer_MultipleBinder* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->MultipleResult()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_MultipleBinder_multiple_result(const Transfer_MultipleBinder* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->MultipleResult()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_MultipleBinder_is_multiple(const Transfer_MultipleBinder* self_) {
@@ -23023,7 +23041,7 @@ extern "C" OcctResult<int32_t> Transfer_MultipleBinder_nb_results(const Transfer
     try { return {self_->NbResults(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Transfer_MultipleBinder_set_multiple_result(Transfer_MultipleBinder* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* mulres) {
+extern "C" const char* Transfer_MultipleBinder_set_multiple_result(Transfer_MultipleBinder* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* mulres) {
     try { self_->SetMultipleResult(*mulres); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23797,16 +23815,16 @@ extern "C" OcctResult<Handle(Transfer_ResultFromTransient)*> Transfer_ResultFrom
     try { return {new Handle(Transfer_ResultFromTransient)(self_->ResultFromKey(*start)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_results(const Transfer_ResultFromModel* self_, int32_t level) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Results(level)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_ResultFromModel_results(const Transfer_ResultFromModel* self_, int32_t level) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Results(level)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_transferred_list(const Transfer_ResultFromModel* self_, int32_t level) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->TransferredList(level)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_ResultFromModel_transferred_list(const Transfer_ResultFromModel* self_, int32_t level) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->TransferredList(level)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_ResultFromModel_checked_list(const Transfer_ResultFromModel* self_, int32_t check, bool result) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->CheckedList(static_cast<Interface_CheckStatus>(check), result)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_ResultFromModel_checked_list(const Transfer_ResultFromModel* self_, int32_t check, bool result) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->CheckedList(static_cast<Interface_CheckStatus>(check), result)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> Transfer_ResultFromModel_check_list(const Transfer_ResultFromModel* self_, bool erronly, int32_t level) {
@@ -23976,6 +23994,10 @@ extern "C" const char* Transfer_ResultFromTransient_add_sub_result(Transfer_Resu
 extern "C" OcctResult<int32_t> Transfer_ResultFromTransient_nb_sub_results(const Transfer_ResultFromTransient* self_) {
     try { return {self_->NbSubResults(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* Transfer_ResultFromTransient_fill_map(const Transfer_ResultFromTransient* self_, NCollection_IndexedMap_Handle_Standard_Transient* map) {
+    try { self_->FillMap(*map); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* Transfer_ResultFromTransient_fill(Transfer_ResultFromTransient* self_, Handle(Transfer_TransientProcess) const* TP) {
     try { self_->Fill(*TP); return nullptr; }
@@ -24475,7 +24497,7 @@ extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinde
     try { return {new Transfer_TransientListBinder(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinder_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<Transfer_TransientListBinder*> Transfer_TransientListBinder_ctor_hseq_standard_transient(Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {new Transfer_TransientListBinder(*list), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -24483,8 +24505,8 @@ extern "C" OcctResult<Handle(Standard_Type)*> Transfer_TransientListBinder_resul
     try { return {new Handle(Standard_Type)(self_->ResultType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_TransientListBinder_result(const Transfer_TransientListBinder* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Result()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_TransientListBinder_result(const Transfer_TransientListBinder* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Result()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Transfer_TransientListBinder_is_multiple(const Transfer_TransientListBinder* self_) {
@@ -24735,8 +24757,8 @@ extern "C" OcctResult<Interface_EntityIterator*> Transfer_TransientProcess_typed
     try { return {new Interface_EntityIterator(self_->TypedSharings(*start, *type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> Transfer_TransientProcess_roots_for_transfer(Transfer_TransientProcess* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->RootsForTransfer()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> Transfer_TransientProcess_roots_for_transfer(Transfer_TransientProcess* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->RootsForTransfer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Transfer_TransientProcess_set_model(Transfer_TransientProcess* self_, Handle(Interface_InterfaceModel) const* model) {
@@ -25373,8 +25395,8 @@ extern "C" OcctResult<TopoDS_Shape*> TransferBRep_Reader_one_shape(const Transfe
     try { return {new TopoDS_Shape(self_->OneShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> TransferBRep_Reader_transients(const TransferBRep_Reader* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->Transients()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> TransferBRep_Reader_transients(const TransferBRep_Reader* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->Transients()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> TransferBRep_Reader_transient(const TransferBRep_Reader* self_, int32_t num) {
@@ -25449,7 +25471,7 @@ extern "C" OcctResult<bool> TransferBRep_Reader_transfer(TransferBRep_Reader* se
     try { return {self_->Transfer(num, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TransferBRep_Reader_transfer_list(TransferBRep_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
+extern "C" const char* TransferBRep_Reader_transfer_list(TransferBRep_Reader* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
     try { self_->TransferList(*list, *theProgress); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -26247,8 +26269,8 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XSControl_ConnectedShapes_dy
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_ConnectedShapes_adjacent_entities(TopoDS_Shape const* ashape, Handle(Transfer_TransientProcess) const* TP, int32_t type) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(XSControl_ConnectedShapes::AdjacentEntities(*ashape, *TP, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_ConnectedShapes_adjacent_entities(TopoDS_Shape const* ashape, Handle(Transfer_TransientProcess) const* TP, int32_t type) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(XSControl_ConnectedShapes::AdjacentEntities(*ashape, *TP, static_cast<TopAbs_ShapeEnum>(type))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> XSControl_ConnectedShapes_get_type_name() {
@@ -26609,12 +26631,12 @@ extern "C" OcctResult<Handle(Interface_InterfaceModel)*> XSControl_Reader_model(
     try { return {new Handle(Interface_InterfaceModel)(self_->Model()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Reader_give_list_charptr2(XSControl_Reader* self_, const char* first, const char* second) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_Reader_give_list_charptr2(XSControl_Reader* self_, const char* first, const char* second) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveList(first, second)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Reader_give_list_charptr_handlestandardtransient(XSControl_Reader* self_, const char* first, Handle(Standard_Transient) const* ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->GiveList(first, *ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_Reader_give_list_charptr_handlestandardtransient(XSControl_Reader* self_, const char* first, Handle(Standard_Transient) const* ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->GiveList(first, *ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_Reader_root_for_transfer(XSControl_Reader* self_, int32_t num) {
@@ -26661,7 +26683,7 @@ extern "C" OcctResult<bool> XSControl_Reader_transfer_entity(XSControl_Reader* s
     try { return {self_->TransferEntity(*start, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XSControl_Reader_transfer_list(XSControl_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<int32_t> XSControl_Reader_transfer_list(XSControl_Reader* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, Message_ProgressRange const* theProgress) {
     try { return {self_->TransferList(*list, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26701,7 +26723,7 @@ extern "C" const char* XSControl_Reader_print_stats_transfer_ostream_int2(const 
     try { self_->PrintStatsTransfer(*theStream, what, mode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_Reader_get_stats_transfer(const XSControl_Reader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list, int32_t* nbMapped, int32_t* nbWithResult, int32_t* nbWithFail) {
+extern "C" const char* XSControl_Reader_get_stats_transfer(const XSControl_Reader* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list, int32_t* nbMapped, int32_t* nbWithResult, int32_t* nbWithFail) {
     try { self_->GetStatsTransfer(*list, *nbMapped, *nbWithResult, *nbWithFail); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -27055,8 +27077,8 @@ extern "C" OcctResult<Handle(Transfer_ActorOfTransientProcess)*> XSControl_Trans
     try { return {new Handle(Transfer_ActorOfTransientProcess)(self_->Actor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_recorded_list(const XSControl_TransferReader* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->RecordedList()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_TransferReader_recorded_list(const XSControl_TransferReader* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->RecordedList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Transfer_ResultFromModel)*> XSControl_TransferReader_final_result(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt) {
@@ -27083,24 +27105,24 @@ extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_TransferReader_enti
     try { return {new Handle(Standard_Transient)(self_->EntityFromShapeResult(*theRes, theMode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_entities_from_shape_list(const XSControl_TransferReader* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* theRes, int32_t theMode) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->EntitiesFromShapeList(*theRes, theMode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_TransferReader_entities_from_shape_list(const XSControl_TransferReader* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* theRes, int32_t theMode) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->EntitiesFromShapeList(*theRes, theMode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> XSControl_TransferReader_check_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t theLevel) {
     try { return {new Interface_CheckIterator(self_->CheckList(*theEnt, theLevel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_checked_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t WithCheck, bool theResult) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->CheckedList(*theEnt, static_cast<Interface_CheckStatus>(WithCheck), theResult)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_TransferReader_checked_list(const XSControl_TransferReader* self_, Handle(Standard_Transient) const* theEnt, int32_t WithCheck, bool theResult) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->CheckedList(*theEnt, static_cast<Interface_CheckStatus>(WithCheck), theResult)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Interface_CheckIterator*> XSControl_TransferReader_last_check_list(const XSControl_TransferReader* self_) {
     try { return {new Interface_CheckIterator(self_->LastCheckList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_TransferReader_last_transfer_list(const XSControl_TransferReader* self_, bool theRoots) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->LastTransferList(theRoots)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_TransferReader_last_transfer_list(const XSControl_TransferReader* self_, bool theRoots) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->LastTransferList(theRoots)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_TransferReader_set_controller(XSControl_TransferReader* self_, Handle(XSControl_Controller) const* theControl) {
@@ -27207,7 +27229,7 @@ extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_one(XSControl_T
     try { return {self_->TransferOne(*theEnt, theRec, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_list(XSControl_TransferReader* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* theList, bool theRec, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<int32_t> XSControl_TransferReader_transfer_list(XSControl_TransferReader* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* theList, bool theRec, Message_ProgressRange const* theProgress) {
     try { return {self_->TransferList(*theList, theRec, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -27235,7 +27257,7 @@ extern "C" const char* XSControl_TransferReader_print_stats_process(Handle(Trans
     try { XSControl_TransferReader::PrintStatsProcess(*theTP, theWhat, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_TransferReader_print_stats_on_list(Handle(Transfer_TransientProcess) const* theTP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* theList, int32_t theWhat, int32_t theMode) {
+extern "C" const char* XSControl_TransferReader_print_stats_on_list(Handle(Transfer_TransientProcess) const* theTP, Handle(NCollection_HSequence_Handle_Standard_Transient) const* theList, int32_t theWhat, int32_t theMode) {
     try { XSControl_TransferReader::PrintStatsOnList(*theTP, *theList, theWhat, theMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -27431,8 +27453,8 @@ extern "C" OcctResult<Handle(Standard_Transient)*> XSControl_Utils_tra_value(con
     try { return {new Handle(Standard_Transient)(self_->TraValue(*list, num)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_Utils_new_seq_tra(const XSControl_Utils* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self_->NewSeqTra()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_Utils_new_seq_tra(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self_->NewSeqTra()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XSControl_Utils_to_h_string_charptr(const XSControl_Utils* self_, const char* strcon) {
@@ -27451,12 +27473,12 @@ extern "C" OcctResult<TCollection_ExtendedString*> XSControl_Utils_to_x_string(c
     try { return {new TCollection_ExtendedString(self_->ToXString(strcon)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_Utils_new_seq_c_str(const XSControl_Utils* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self_->NewSeqCStr()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> XSControl_Utils_new_seq_c_str(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self_->NewSeqCStr()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> XSControl_Utils_new_seq_e_str(const XSControl_Utils* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self_->NewSeqEStr()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> XSControl_Utils_new_seq_e_str(const XSControl_Utils* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self_->NewSeqEStr()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> XSControl_Utils_compound_from_seq(const XSControl_Utils* self_, Handle(NCollection_HSequence_TopoDS_Shape) const* seqval) {
@@ -27507,7 +27529,7 @@ extern "C" OcctResult<char const*> XSControl_Utils_type_name(const XSControl_Uti
     try { return {self_->TypeName(*item, nopk), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XSControl_Utils_append_tra(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* seqval, Handle(Standard_Transient) const* traval) {
+extern "C" const char* XSControl_Utils_append_tra(const XSControl_Utils* self_, Handle(NCollection_HSequence_Handle_Standard_Transient) const* seqval, Handle(Standard_Transient) const* traval) {
     try { self_->AppendTra(*seqval, *traval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -27555,11 +27577,11 @@ extern "C" OcctResult<char16_t const*> XSControl_Utils_e_str_value(const XSContr
     try { return {self_->EStrValue(*list, num), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XSControl_Utils_append_c_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString) const* seqval, const char* strval) {
+extern "C" const char* XSControl_Utils_append_c_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_Handle_TCollection_HAsciiString) const* seqval, const char* strval) {
     try { self_->AppendCStr(*seqval, strval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XSControl_Utils_append_e_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString) const* seqval, char16_t const* strval) {
+extern "C" const char* XSControl_Utils_append_e_str(const XSControl_Utils* self_, Handle(NCollection_HSequence_Handle_TCollection_HExtendedString) const* seqval, char16_t const* strval) {
     try { self_->AppendEStr(*seqval, strval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -27933,12 +27955,12 @@ extern "C" OcctResult<Interface_Graph const*> XSControl_WorkSession_inherited_Gr
     try { return {&(self->Graph()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_Shareds(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Shareds(ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_Shareds(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Shareds(ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_Sharings(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->Sharings(ent)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_Sharings(XSControl_WorkSession* self, Handle(Standard_Transient) const& ent) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->Sharings(ent)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_IsLoaded(const XSControl_WorkSession* self) {
@@ -28005,8 +28027,8 @@ extern "C" OcctResult<Handle(NCollection_HSequence_int)*> XSControl_WorkSession_
     try { return {new Handle(NCollection_HSequence_int)(self->ItemIdents(type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_ItemNames(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->ItemNames(type)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_ItemNames(const XSControl_WorkSession* self, Handle(Standard_Type) const& type) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->ItemNames(type)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IFSelect_IntParam)*> XSControl_WorkSession_inherited_IntParam(const XSControl_WorkSession* self, int32_t id) {
@@ -28045,12 +28067,12 @@ extern "C" OcctResult<IFSelect_SelectionIterator*> XSControl_WorkSession_inherit
     try { return {new IFSelect_SelectionIterator(self->Sources(sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResult(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->SelectionResult(sel)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResult(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->SelectionResult(sel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResultFromList(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->SelectionResultFromList(sel, list)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_SelectionResultFromList(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->SelectionResultFromList(sel, list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetItemSelection(XSControl_WorkSession* self, Handle(Standard_Transient) const& item, Handle(IFSelect_Selection) const& sel) {
@@ -28073,7 +28095,7 @@ extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounter(XSCon
     try { return {self->ComputeCounter(counter, forced), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounterFromList(XSControl_WorkSession* self, Handle(IFSelect_SignCounter) const& counter, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, bool clear) {
+extern "C" OcctResult<bool> XSControl_WorkSession_inherited_ComputeCounterFromList(XSControl_WorkSession* self, Handle(IFSelect_SignCounter) const& counter, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, bool clear) {
     try { return {self->ComputeCounterFromList(counter, list, clear), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28201,8 +28223,8 @@ extern "C" const char* XSControl_WorkSession_inherited_BeginSentFiles(XSControl_
     try { self->BeginSentFiles(record); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_SentFiles(const XSControl_WorkSession* self) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HAsciiString)(self->SentFiles()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)*> XSControl_WorkSession_inherited_SentFiles(const XSControl_WorkSession* self) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HAsciiString)(self->SentFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SendSplit(XSControl_WorkSession* self) {
@@ -28257,16 +28279,16 @@ extern "C" OcctResult<bool> XSControl_WorkSession_inherited_CombineRemove(XSCont
     try { return {self->CombineRemove(selcomb, selrem), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetSelectPointed(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& list, int32_t mode) {
+extern "C" OcctResult<bool> XSControl_WorkSession_inherited_SetSelectPointed(const XSControl_WorkSession* self, Handle(IFSelect_Selection) const& sel, Handle(NCollection_HSequence_Handle_Standard_Transient) const& list, int32_t mode) {
     try { return {self->SetSelectPointed(sel, list, mode), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveList(const XSControl_WorkSession* self, Handle(Standard_Transient) const& obj) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->GiveList(obj)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveList(const XSControl_WorkSession* self, Handle(Standard_Transient) const& obj) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->GiveList(obj)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveListCombined(const XSControl_WorkSession* self, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& l1, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const& l2, int32_t mode) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(self->GiveListCombined(l1, l2, mode)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> XSControl_WorkSession_inherited_GiveListCombined(const XSControl_WorkSession* self, Handle(NCollection_HSequence_Handle_Standard_Transient) const& l1, Handle(NCollection_HSequence_Handle_Standard_Transient) const& l2, int32_t mode) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(self->GiveListCombined(l1, l2, mode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XSControl_WorkSession_inherited_QueryCheckList(XSControl_WorkSession* self, Interface_CheckIterator const& chl) {
@@ -28280,6 +28302,10 @@ extern "C" OcctResult<int32_t> XSControl_WorkSession_inherited_QueryCheckStatus(
 extern "C" OcctResult<int32_t> XSControl_WorkSession_inherited_QueryParent(const XSControl_WorkSession* self, Handle(Standard_Transient) const& entdad, Handle(Standard_Transient) const& entson) {
     try { return {self->QueryParent(entdad, entson), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* XSControl_WorkSession_inherited_SetParams(XSControl_WorkSession* self, NCollection_DynamicArray_Handle_Standard_Transient const& params, NCollection_DynamicArray_int const& uselist) {
+    try { self->SetParams(params, uselist); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XSControl_WorkSession_inherited_TraceStatics(const XSControl_WorkSession* self, int32_t use, int32_t mode) {
     try { self->TraceStatics(use, mode); return nullptr; }
@@ -28448,7 +28474,7 @@ extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_
     try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(TransferBRep::Shapes(*TP, rootsonly)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* list) {
+extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_shapes_handletransfertransientprocess_hseq_standard_transient(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_Handle_Standard_Transient) const* list) {
     try { return {new Handle(NCollection_HSequence_TopoDS_Shape)(TransferBRep::Shapes(*TP, *list)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -28472,11 +28498,11 @@ extern "C" OcctResult<Handle(TransferBRep_ShapeMapper)*> TransferBRep_shape_mapp
     try { return {new Handle(TransferBRep_ShapeMapper)(TransferBRep::ShapeMapper(*FP, *shape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TransferBRep_transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_opencascade_handle_Standard_Transient) const* EntityTypes, Handle(NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo)* InfoSeq) {
+extern "C" const char* TransferBRep_transfer_result_info_handletransfertransientprocess_hseq_standard_transient_hseq_transferbrep_transferresultinfo(Handle(Transfer_TransientProcess) const* TP, Handle(NCollection_HSequence_Handle_Standard_Transient) const* EntityTypes, Handle(NCollection_HSequence_Handle_TransferBRep_TransferResultInfo)* InfoSeq) {
     try { TransferBRep::TransferResultInfo(*TP, *EntityTypes, *InfoSeq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(Handle(Transfer_FinderProcess) const* FP, Handle(NCollection_HSequence_int) const* ShapeTypes, Handle(NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo)* InfoSeq) {
+extern "C" const char* TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_hseq_transferbrep_transferresultinfo(Handle(Transfer_FinderProcess) const* FP, Handle(NCollection_HSequence_int) const* ShapeTypes, Handle(NCollection_HSequence_Handle_TransferBRep_TransferResultInfo)* InfoSeq) {
     try { TransferBRep::TransferResultInfo(*FP, *ShapeTypes, *InfoSeq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -28492,8 +28518,8 @@ extern "C" OcctResult<Interface_CheckIterator*> TransferBRep_result_check_list(I
     try { return {new Interface_CheckIterator(TransferBRep::ResultCheckList(*chl, *FP, *model)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)*> TransferBRep_checked(Interface_CheckIterator const* chl, bool alsoshapes) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_Standard_Transient)(TransferBRep::Checked(*chl, alsoshapes)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_Standard_Transient)*> TransferBRep_checked(Interface_CheckIterator const* chl, bool alsoshapes) {
+    try { return {new Handle(NCollection_HSequence_Handle_Standard_Transient)(TransferBRep::Checked(*chl, alsoshapes)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_HSequence_TopoDS_Shape)*> TransferBRep_checked_shapes(Interface_CheckIterator const* chl) {

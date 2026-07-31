@@ -64,7 +64,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_AllConnected_inherited_AddList(
         self_: *mut IFGraph_AllConnected,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_AllConnected_inherited_AddItem(
@@ -115,7 +115,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_AllConnected_inherited_Content(
         self_: *const IFGraph_AllConnected,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_AllConnected_inherited_Destroy(
         self_: *mut IFGraph_AllConnected,
@@ -177,7 +177,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_AllShared_inherited_AddList(
         self_: *mut IFGraph_AllShared,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_AllShared_inherited_AddItem(
@@ -228,7 +228,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_AllShared_inherited_Content(
         self_: *const IFGraph_AllShared,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_AllShared_inherited_Destroy(
         self_: *mut IFGraph_AllShared,
@@ -290,7 +290,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_Articulations_inherited_AddList(
         self_: *mut IFGraph_Articulations,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_Articulations_inherited_AddItem(
@@ -341,7 +341,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_Articulations_inherited_Content(
         self_: *const IFGraph_Articulations,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_Articulations_inherited_Destroy(
         self_: *mut IFGraph_Articulations,
@@ -416,7 +416,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_Compare_inherited_AddList(
         self_: *mut IFGraph_Compare,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_Compare_inherited_AddItem(
@@ -465,7 +465,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_Compare_inherited_Content(
         self_: *const IFGraph_Compare,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_Compare_inherited_Destroy(
         self_: *mut IFGraph_Compare,
@@ -655,7 +655,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_Cumulate_inherited_AddList(
         self_: *mut IFGraph_Cumulate,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_Cumulate_inherited_AddItem(
@@ -706,7 +706,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_Cumulate_inherited_Content(
         self_: *const IFGraph_Cumulate,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_Cumulate_inherited_Destroy(
         self_: *mut IFGraph_Cumulate,
@@ -870,7 +870,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn IFGraph_ExternalSources_inherited_AddList(
         self_: *mut IFGraph_ExternalSources,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn IFGraph_ExternalSources_inherited_AddItem(
@@ -921,7 +921,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn IFGraph_ExternalSources_inherited_Content(
         self_: *const IFGraph_ExternalSources,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn IFGraph_ExternalSources_inherited_Destroy(
         self_: *mut IFGraph_ExternalSources,
@@ -3194,7 +3194,7 @@ unsafe extern "C" {
     pub fn IFSelect_EditForm_load_list(
         self_: *mut IFSelect_EditForm,
         num: i32,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_EditForm.hxx`:171 - `IFSelect_EditForm::OriginalValue()`
     pub fn IFSelect_EditForm_original_value(
@@ -3205,9 +3205,7 @@ unsafe extern "C" {
     pub fn IFSelect_EditForm_original_list(
         self_: *const IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_EditForm.hxx`:185 - `IFSelect_EditForm::EditedValue()`
     pub fn IFSelect_EditForm_edited_value(
         self_: *const IFSelect_EditForm,
@@ -3217,9 +3215,7 @@ unsafe extern "C" {
     pub fn IFSelect_EditForm_edited_list(
         self_: *const IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_EditForm.hxx`:197 - `IFSelect_EditForm::IsModified()`
     pub fn IFSelect_EditForm_is_modified(
         self_: *const IFSelect_EditForm,
@@ -3248,7 +3244,7 @@ unsafe extern "C" {
     pub fn IFSelect_EditForm_modify_list_value(
         self_: *mut IFSelect_EditForm,
         num: i32,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_EditForm.hxx`:246 - `IFSelect_EditForm::Touch()`
@@ -3261,7 +3257,7 @@ unsafe extern "C" {
     pub fn IFSelect_EditForm_touch_list(
         self_: *mut IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_EditForm.hxx`:257 - `IFSelect_EditForm::NbTouched()`
     pub fn IFSelect_EditForm_nb_touched(self_: *const IFSelect_EditForm) -> crate::OcctResult<i32>;
@@ -3461,9 +3457,7 @@ unsafe extern "C" {
         self_: *const IFSelect_Editor,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_Editor.hxx`:131 - `IFSelect_Editor::Load()`
     pub fn IFSelect_Editor_load(
         self_: *const IFSelect_Editor,
@@ -3484,7 +3478,7 @@ unsafe extern "C" {
         self_: *const IFSelect_Editor,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_Editor.hxx`:161 - `IFSelect_Editor::Apply()`
@@ -3603,7 +3597,7 @@ unsafe extern "C" {
         WS: *const Handle_IFSelect_WorkSession,
         first: *const std::ffi::c_char,
         second: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_Functions.hxx`:78 - `IFSelect_Functions::GiveDispatch()`
     pub fn IFSelect_Functions_give_dispatch(
         WS: *const Handle_IFSelect_WorkSession,
@@ -3817,7 +3811,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_GraphCounter.hxx`:52 - `IFSelect_GraphCounter::AddWithGraph()`
     pub fn IFSelect_GraphCounter_add_with_graph(
         self_: *mut IFSelect_GraphCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: *const Interface_Graph,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_GraphCounter.hxx`:56 - `IFSelect_GraphCounter::DynamicType()`
@@ -3910,7 +3904,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn IFSelect_GraphCounter_inherited_AddList(
         self_: *mut IFSelect_GraphCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: *const Handle_Interface_InterfaceModel,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
@@ -4129,7 +4123,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_ListEditor.hxx`:70 - `IFSelect_ListEditor::LoadValues()`
     pub fn IFSelect_ListEditor_load_values(
         self_: *mut IFSelect_ListEditor,
-        vals: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        vals: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_ListEditor.hxx`:74 - `IFSelect_ListEditor::SetTouched()`
     pub fn IFSelect_ListEditor_set_touched(
@@ -4142,7 +4136,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_ListEditor.hxx`:87 - `IFSelect_ListEditor::LoadEdited()`
     pub fn IFSelect_ListEditor_load_edited(
         self_: *mut IFSelect_ListEditor,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_ListEditor.hxx`:95 - `IFSelect_ListEditor::SetValue()`
     pub fn IFSelect_ListEditor_set_value(
@@ -4165,15 +4159,11 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_ListEditor.hxx`:114 - `IFSelect_ListEditor::OriginalValues()`
     pub fn IFSelect_ListEditor_original_values(
         self_: *const IFSelect_ListEditor,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_ListEditor.hxx`:118 - `IFSelect_ListEditor::EditedValues()`
     pub fn IFSelect_ListEditor_edited_values(
         self_: *const IFSelect_ListEditor,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_ListEditor.hxx`:121 - `IFSelect_ListEditor::NbValues()`
     pub fn IFSelect_ListEditor_nb_values(
         self_: *const IFSelect_ListEditor,
@@ -4398,9 +4388,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_ModelCopier.hxx`:232 - `IFSelect_ModelCopier::SentFiles()`
     pub fn IFSelect_ModelCopier_sent_files(
         self_: *const IFSelect_ModelCopier,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_ModelCopier.hxx`:234 - `IFSelect_ModelCopier::DynamicType()`
     pub fn IFSelect_ModelCopier_dynamic_type(
         self_: *const IFSelect_ModelCopier,
@@ -4997,7 +4985,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_PacketList.hxx`:65 - `IFSelect_PacketList::AddList()`
     pub fn IFSelect_PacketList_add_list(
         self_: *mut IFSelect_PacketList,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_PacketList.hxx`:69 - `IFSelect_PacketList::NbPackets()`
     pub fn IFSelect_PacketList_nb_packets(
@@ -5155,7 +5143,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `IFSelect_ParamEditor.hxx`:82 - `IFSelect_ParamEditor::StaticEditor()`
     pub fn IFSelect_ParamEditor_static_editor(
-        list: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         label: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Handle_IFSelect_ParamEditor>;
     /// **Source:** `IFSelect_ParamEditor.hxx`:86 - `IFSelect_ParamEditor::get_type_name()`
@@ -5269,9 +5257,7 @@ unsafe extern "C" {
         self_: *const IFSelect_ParamEditor,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:144 - `IFSelect_Editor::Update()`
     pub fn IFSelect_ParamEditor_inherited_Update(
         self_: *const IFSelect_ParamEditor,
@@ -5285,7 +5271,7 @@ unsafe extern "C" {
         self_: *const IFSelect_ParamEditor,
         form: *const Handle_IFSelect_EditForm,
         num: i32,
-        newlist: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
@@ -8374,7 +8360,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_SelectPointed.hxx`:68 - `IFSelect_SelectPointed::SetList()`
     pub fn IFSelect_SelectPointed_set_list(
         self_: *mut IFSelect_SelectPointed,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_SelectPointed.hxx`:73 - `IFSelect_SelectPointed::Add()`
     pub fn IFSelect_SelectPointed_add(
@@ -8394,17 +8380,17 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_SelectPointed.hxx`:85 - `IFSelect_SelectPointed::AddList()`
     pub fn IFSelect_SelectPointed_add_list(
         self_: *mut IFSelect_SelectPointed,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_SelectPointed.hxx`:90 - `IFSelect_SelectPointed::RemoveList()`
     pub fn IFSelect_SelectPointed_remove_list(
         self_: *mut IFSelect_SelectPointed,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_SelectPointed.hxx`:95 - `IFSelect_SelectPointed::ToggleList()`
     pub fn IFSelect_SelectPointed_toggle_list(
         self_: *mut IFSelect_SelectPointed,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_SelectPointed.hxx`:99 - `IFSelect_SelectPointed::Rank()`
     pub fn IFSelect_SelectPointed_rank(
@@ -11307,6 +11293,11 @@ unsafe extern "C" {
         self_: *mut IFSelect_SelectionIterator,
         sel: *const Handle_IFSelect_Selection,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `IFSelect_SelectionIterator.hxx`:52 - `IFSelect_SelectionIterator::AddList()`
+    pub fn IFSelect_SelectionIterator_add_list(
+        self_: *mut IFSelect_SelectionIterator,
+        list: *const NCollection_Sequence_Handle_IFSelect_Selection,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_SelectionIterator.hxx`:55 - `IFSelect_SelectionIterator::More()`
     pub fn IFSelect_SelectionIterator_more(
         self_: *const IFSelect_SelectionIterator,
@@ -12492,13 +12483,13 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn IFSelect_SignCounter_add_list(
         self_: *mut IFSelect_SignCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: *const Handle_Interface_InterfaceModel,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_SignCounter.hxx`:104 - `IFSelect_SignCounter::AddWithGraph()`
     pub fn IFSelect_SignCounter_add_with_graph(
         self_: *mut IFSelect_SignCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: *const Interface_Graph,
     ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
@@ -13409,13 +13400,19 @@ unsafe extern "C" {
     pub fn IFSelect_SignatureList_last_value(
         self_: *const IFSelect_SignatureList,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
+    /// **Source:** `IFSelect_SignatureList.hxx`:76 - `IFSelect_SignatureList::Init()`
+    pub fn IFSelect_SignatureList_init(
+        self_: *mut IFSelect_SignatureList,
+        name: *const std::ffi::c_char,
+        count: *const NCollection_IndexedDataMap_TCollection_AsciiString_int,
+        list: *const NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        nbnuls: i32,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_SignatureList.hxx`:87 - `IFSelect_SignatureList::List()`
     pub fn IFSelect_SignatureList_list(
         self_: *const IFSelect_SignatureList,
         root: *const std::ffi::c_char,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_SignatureList.hxx`:92 - `IFSelect_SignatureList::HasEntities()`
     pub fn IFSelect_SignatureList_has_entities(
         self_: *const IFSelect_SignatureList,
@@ -13433,7 +13430,7 @@ unsafe extern "C" {
     pub fn IFSelect_SignatureList_entities(
         self_: *const IFSelect_SignatureList,
         sign: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_SignatureList.hxx`:108 - `IFSelect_SignatureList::SetName()`
     pub fn IFSelect_SignatureList_set_name(
         self_: *mut IFSelect_SignatureList,
@@ -14142,12 +14139,12 @@ unsafe extern "C" {
     pub fn IFSelect_WorkSession_shareds(
         self_: *mut IFSelect_WorkSession,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:239 - `IFSelect_WorkSession::Sharings()`
     pub fn IFSelect_WorkSession_sharings(
         self_: *mut IFSelect_WorkSession,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:245 - `IFSelect_WorkSession::IsLoaded()`
     pub fn IFSelect_WorkSession_is_loaded(
         self_: *const IFSelect_WorkSession,
@@ -14263,16 +14260,12 @@ unsafe extern "C" {
     pub fn IFSelect_WorkSession_item_names(
         self_: *const IFSelect_WorkSession,
         type_: *const Handle_Standard_Type,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_WorkSession.hxx`:385 - `IFSelect_WorkSession::ItemNamesForLabel()`
     pub fn IFSelect_WorkSession_item_names_for_label(
         self_: *const IFSelect_WorkSession,
         label: *const std::ffi::c_char,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_WorkSession.hxx`:402 - `IFSelect_WorkSession::NextIdentForLabel()`
     pub fn IFSelect_WorkSession_next_ident_for_label(
         self_: *const IFSelect_WorkSession,
@@ -14358,13 +14351,13 @@ unsafe extern "C" {
     pub fn IFSelect_WorkSession_selection_result(
         self_: *const IFSelect_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:495 - `IFSelect_WorkSession::SelectionResultFromList()`
     pub fn IFSelect_WorkSession_selection_result_from_list(
         self_: *const IFSelect_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:506 - `IFSelect_WorkSession::SetItemSelection()`
     pub fn IFSelect_WorkSession_set_item_selection(
         self_: *mut IFSelect_WorkSession,
@@ -14396,7 +14389,7 @@ unsafe extern "C" {
     pub fn IFSelect_WorkSession_compute_counter_from_list(
         self_: *mut IFSelect_WorkSession,
         counter: *const Handle_IFSelect_SignCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         clear: bool,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::AppliedDispatches()`
@@ -14592,9 +14585,7 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_WorkSession.hxx`:763 - `IFSelect_WorkSession::SentFiles()`
     pub fn IFSelect_WorkSession_sent_files(
         self_: *const IFSelect_WorkSession,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `IFSelect_WorkSession.hxx`:777 - `IFSelect_WorkSession::SendSplit()`
     pub fn IFSelect_WorkSession_send_split(
         self_: *mut IFSelect_WorkSession,
@@ -14691,14 +14682,14 @@ unsafe extern "C" {
     /// **Source:** `IFSelect_WorkSession.hxx`:923 - `IFSelect_WorkSession::NewSelectPointed()`
     pub fn IFSelect_WorkSession_new_select_pointed(
         self_: *mut IFSelect_WorkSession,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         name: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Handle_IFSelect_Selection>;
     /// **Source:** `IFSelect_WorkSession.hxx`:932 - `IFSelect_WorkSession::SetSelectPointed()`
     pub fn IFSelect_WorkSession_set_select_pointed(
         self_: *const IFSelect_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `IFSelect_WorkSession.hxx`:943 - `IFSelect_WorkSession::GiveSelection()`
@@ -14710,26 +14701,26 @@ unsafe extern "C" {
     pub fn IFSelect_WorkSession_give_list_handlestandardtransient(
         self_: *const IFSelect_WorkSession,
         obj: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:966 - `IFSelect_WorkSession::GiveList()`
     pub fn IFSelect_WorkSession_give_list_charptr2(
         self_: *const IFSelect_WorkSession,
         first: *const std::ffi::c_char,
         second: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:982 - `IFSelect_WorkSession::GiveListFromList()`
     pub fn IFSelect_WorkSession_give_list_from_list(
         self_: *const IFSelect_WorkSession,
         selname: *const std::ffi::c_char,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:989 - `IFSelect_WorkSession::GiveListCombined()`
     pub fn IFSelect_WorkSession_give_list_combined(
         self_: *const IFSelect_WorkSession,
-        l1: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-        l2: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        l1: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+        l2: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `IFSelect_WorkSession.hxx`:994 - `IFSelect_WorkSession::QueryCheckList()`
     pub fn IFSelect_WorkSession_query_check_list(
         self_: *mut IFSelect_WorkSession,
@@ -14746,6 +14737,12 @@ unsafe extern "C" {
         entdad: *const Handle_Standard_Transient,
         entson: *const Handle_Standard_Transient,
     ) -> crate::OcctResult<i32>;
+    /// **Source:** `IFSelect_WorkSession.hxx`:1030 - `IFSelect_WorkSession::SetParams()`
+    pub fn IFSelect_WorkSession_set_params(
+        self_: *mut IFSelect_WorkSession,
+        params: *const NCollection_DynamicArray_Handle_Standard_Transient,
+        uselist: *const NCollection_DynamicArray_int,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `IFSelect_WorkSession.hxx`:1041 - `IFSelect_WorkSession::TraceStatics()`
     pub fn IFSelect_WorkSession_trace_statics(
         self_: *const IFSelect_WorkSession,
@@ -15133,9 +15130,7 @@ unsafe extern "C" {
     pub fn Interface_Check_fails(
         self_: *const Interface_Check,
         final_: bool,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Interface_Check.hxx`:98 - `Interface_Check::SendWarning()`
     pub fn Interface_Check_send_warning(
         self_: *mut Interface_Check,
@@ -15183,9 +15178,7 @@ unsafe extern "C" {
     pub fn Interface_Check_warnings(
         self_: *const Interface_Check,
         final_: bool,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Interface_Check.hxx`:139 - `Interface_Check::SendMsg()`
     pub fn Interface_Check_send_msg(
         self_: *mut Interface_Check,
@@ -15209,9 +15202,7 @@ unsafe extern "C" {
     pub fn Interface_Check_info_msgs(
         self_: *const Interface_Check,
         final_: bool,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Interface_Check.hxx`:160 - `Interface_Check::Status()`
     pub fn Interface_Check_status(self_: *const Interface_Check) -> crate::OcctResult<i32>;
     /// **Source:** `Interface_Check.hxx`:164 - `Interface_Check::Complies()`
@@ -15492,7 +15483,7 @@ unsafe extern "C" {
         self_: *const Interface_CheckIterator,
         failsonly: bool,
         global: bool,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Interface_CheckIterator.hxx`:162 - `Interface_CheckIterator::Start()`
     pub fn Interface_CheckIterator_start(
         self_: *const Interface_CheckIterator,
@@ -16025,13 +16016,13 @@ unsafe extern "C" {
     /// **Source:** `Interface_EntityIterator.hxx`:41 - `Interface_EntityIterator::Interface_EntityIterator()`
     pub fn Interface_EntityIterator_ctor() -> crate::OcctResult<*mut Interface_EntityIterator>;
     /// **Source:** `Interface_EntityIterator.hxx`:44 - `Interface_EntityIterator::Interface_EntityIterator()`
-    pub fn Interface_EntityIterator_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    pub fn Interface_EntityIterator_ctor_hseq_standard_transient(
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<*mut Interface_EntityIterator>;
     /// **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn Interface_EntityIterator_add_list(
         self_: *mut Interface_EntityIterator,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn Interface_EntityIterator_add_item(
@@ -16082,7 +16073,7 @@ unsafe extern "C" {
     /// **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn Interface_EntityIterator_content(
         self_: *const Interface_EntityIterator,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn Interface_EntityIterator_destroy(
         self_: *mut Interface_EntityIterator,
@@ -17316,7 +17307,7 @@ unsafe extern "C" {
     pub fn Interface_Graph_get_shareds(
         self_: *const Interface_Graph,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Interface_Graph.hxx`:224 - `Interface_Graph::Shareds()`
     pub fn Interface_Graph_shareds(
         self_: *const Interface_Graph,
@@ -17331,7 +17322,7 @@ unsafe extern "C" {
     pub fn Interface_Graph_get_sharings(
         self_: *const Interface_Graph,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Interface_Graph.hxx`:239 - `Interface_Graph::TypedSharings()`
     pub fn Interface_Graph_typed_sharings(
         self_: *const Interface_Graph,
@@ -17409,7 +17400,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn Interface_GraphContent_inherited_AddList(
         self_: *mut Interface_GraphContent,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     pub fn Interface_GraphContent_inherited_AddItem(
@@ -17460,7 +17451,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn Interface_GraphContent_inherited_Content(
         self_: *const Interface_GraphContent,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn Interface_GraphContent_inherited_Destroy(
         self_: *mut Interface_GraphContent,
@@ -18115,9 +18106,8 @@ unsafe extern "C" {
         model: *const Handle_Interface_InterfaceModel,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Interface_InterfaceModel.hxx`:413 - `Interface_InterfaceModel::ListTemplates()`
-    pub fn Interface_InterfaceModel_list_templates() -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    pub fn Interface_InterfaceModel_list_templates(
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Interface_InterfaceModel.hxx`:415 - `Interface_InterfaceModel::get_type_name()`
     pub fn Interface_InterfaceModel_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `Interface_InterfaceModel.hxx`:415 - `Interface_InterfaceModel::get_type_descriptor()`
@@ -19847,9 +19837,7 @@ unsafe extern "C" {
     pub fn Interface_Static_items(
         mode: i32,
         criter: *const std::ffi::c_char,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `Interface_Static.hxx`:255 - `Interface_Static::Standards()`
     pub fn Interface_Static_standards() -> *const std::ffi::c_char;
     /// **Source:** `Interface_Static.hxx`:258 - `Interface_Static::FillMap()`
@@ -23973,7 +23961,7 @@ unsafe extern "C" {
     /// **Source:** `Transfer_IteratorOfProcessForFinder.hxx`:62 - `Transfer_IteratorOfProcessForFinder::Filter()`
     pub fn Transfer_IteratorOfProcessForFinder_filter(
         self_: *mut Transfer_IteratorOfProcessForFinder,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder,
+        list: *const Handle_NCollection_HSequence_Handle_Transfer_Finder,
         keep: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Transfer_IteratorOfProcessForFinder.hxx`:68 - `Transfer_IteratorOfProcessForFinder::HasStarting()`
@@ -24098,7 +24086,7 @@ unsafe extern "C" {
     /// **Source:** `Transfer_IteratorOfProcessForTransient.hxx`:63 - `Transfer_IteratorOfProcessForTransient::Filter()`
     pub fn Transfer_IteratorOfProcessForTransient_filter(
         self_: *mut Transfer_IteratorOfProcessForTransient,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         keep: bool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Transfer_IteratorOfProcessForTransient.hxx`:69 - `Transfer_IteratorOfProcessForTransient::HasStarting()`
@@ -24205,6 +24193,17 @@ unsafe extern "C" {
     pub fn Transfer_MapContainer_destructor(self_: *mut Transfer_MapContainer);
     /// **Source:** `Transfer_MapContainer.hxx`:29 - `Transfer_MapContainer::Transfer_MapContainer()`
     pub fn Transfer_MapContainer_ctor() -> crate::OcctResult<*mut Transfer_MapContainer>;
+    /// **Source:** `Transfer_MapContainer.hxx`:32 - `Transfer_MapContainer::SetMapObjects()`
+    pub fn Transfer_MapContainer_set_map_objects(
+        self_: *mut Transfer_MapContainer,
+        theMapObjects: *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `Transfer_MapContainer.hxx`:39 - `Transfer_MapContainer::GetMapObjects()`
+    pub fn Transfer_MapContainer_get_map_objects(
+        self_: *mut Transfer_MapContainer,
+    ) -> crate::OcctResult<
+        *mut NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    >;
     /// **Source:** `Transfer_MapContainer.hxx`:41 - `Transfer_MapContainer::DynamicType()`
     pub fn Transfer_MapContainer_dynamic_type(
         self_: *const Transfer_MapContainer,
@@ -24310,11 +24309,11 @@ unsafe extern "C" {
     /// **Source:** `Transfer_MultipleBinder.hxx`:78 - `Transfer_MultipleBinder::MultipleResult()`
     pub fn Transfer_MultipleBinder_multiple_result(
         self_: *const Transfer_MultipleBinder,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_MultipleBinder.hxx`:82 - `Transfer_MultipleBinder::SetMultipleResult()`
     pub fn Transfer_MultipleBinder_set_multiple_result(
         self_: *mut Transfer_MultipleBinder,
-        mulres: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        mulres: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Transfer_MultipleBinder.hxx`:85 - `Transfer_MultipleBinder::DynamicType()`
     pub fn Transfer_MultipleBinder_dynamic_type(
@@ -25343,18 +25342,18 @@ unsafe extern "C" {
     pub fn Transfer_ResultFromModel_results(
         self_: *const Transfer_ResultFromModel,
         level: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_ResultFromModel.hxx`:123 - `Transfer_ResultFromModel::TransferredList()`
     pub fn Transfer_ResultFromModel_transferred_list(
         self_: *const Transfer_ResultFromModel,
         level: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_ResultFromModel.hxx`:134 - `Transfer_ResultFromModel::CheckedList()`
     pub fn Transfer_ResultFromModel_checked_list(
         self_: *const Transfer_ResultFromModel,
         check: i32,
         result: bool,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_ResultFromModel.hxx`:143 - `Transfer_ResultFromModel::CheckList()`
     pub fn Transfer_ResultFromModel_check_list(
         self_: *const Transfer_ResultFromModel,
@@ -25501,6 +25500,11 @@ unsafe extern "C" {
         self_: *const Transfer_ResultFromTransient,
         key: *const Handle_Standard_Transient,
     ) -> crate::OcctResult<*mut Handle_Transfer_ResultFromTransient>;
+    /// **Source:** `Transfer_ResultFromTransient.hxx`:89 - `Transfer_ResultFromTransient::FillMap()`
+    pub fn Transfer_ResultFromTransient_fill_map(
+        self_: *const Transfer_ResultFromTransient,
+        map: *mut NCollection_IndexedMap_Handle_Standard_Transient,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `Transfer_ResultFromTransient.hxx`:94 - `Transfer_ResultFromTransient::Fill()`
     pub fn Transfer_ResultFromTransient_fill(
         self_: *mut Transfer_ResultFromTransient,
@@ -26087,8 +26091,8 @@ unsafe extern "C" {
     pub fn Transfer_TransientListBinder_ctor(
     ) -> crate::OcctResult<*mut Transfer_TransientListBinder>;
     /// **Source:** `Transfer_TransientListBinder.hxx`:40 - `Transfer_TransientListBinder::Transfer_TransientListBinder()`
-    pub fn Transfer_TransientListBinder_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    pub fn Transfer_TransientListBinder_ctor_hseq_standard_transient(
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<*mut Transfer_TransientListBinder>;
     /// **Source:** `Transfer_TransientListBinder.hxx`:43 - `Transfer_TransientListBinder::IsMultiple()`
     pub fn Transfer_TransientListBinder_is_multiple(
@@ -26110,7 +26114,7 @@ unsafe extern "C" {
     /// **Source:** `Transfer_TransientListBinder.hxx`:52 - `Transfer_TransientListBinder::Result()`
     pub fn Transfer_TransientListBinder_result(
         self_: *const Transfer_TransientListBinder,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_TransientListBinder.hxx`:56 - `Transfer_TransientListBinder::SetResult()`
     pub fn Transfer_TransientListBinder_set_result(
         self_: *mut Transfer_TransientListBinder,
@@ -26457,7 +26461,7 @@ unsafe extern "C" {
     /// **Source:** `Transfer_TransientProcess.hxx`:115 - `Transfer_TransientProcess::RootsForTransfer()`
     pub fn Transfer_TransientProcess_roots_for_transfer(
         self_: *mut Transfer_TransientProcess,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `Transfer_TransientProcess.hxx`:117 - `Transfer_TransientProcess::DynamicType()`
     pub fn Transfer_TransientProcess_dynamic_type(
         self_: *const Transfer_TransientProcess,
@@ -27216,7 +27220,7 @@ unsafe extern "C" {
     /// **Source:** `TransferBRep_Reader.hxx`:137 - `TransferBRep_Reader::TransferList()`
     pub fn TransferBRep_Reader_transfer_list(
         self_: *mut TransferBRep_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TransferBRep_Reader.hxx`:142 - `TransferBRep_Reader::IsDone()`
@@ -27252,7 +27256,7 @@ unsafe extern "C" {
     /// **Source:** `TransferBRep_Reader.hxx`:169 - `TransferBRep_Reader::Transients()`
     pub fn TransferBRep_Reader_transients(
         self_: *const TransferBRep_Reader,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `TransferBRep_Reader.hxx`:174 - `TransferBRep_Reader::Transient()`
     pub fn TransferBRep_Reader_transient(
         self_: *const TransferBRep_Reader,
@@ -28181,7 +28185,7 @@ unsafe extern "C" {
         ashape: *const TopoDS_Shape,
         TP: *const Handle_Transfer_TransientProcess,
         type_: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_ConnectedShapes.hxx`:74 - `XSControl_ConnectedShapes::get_type_name()`
     pub fn XSControl_ConnectedShapes_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `XSControl_ConnectedShapes.hxx`:74 - `XSControl_ConnectedShapes::get_type_descriptor()`
@@ -28628,13 +28632,13 @@ unsafe extern "C" {
         self_: *mut XSControl_Reader,
         first: *const std::ffi::c_char,
         second: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_Reader.hxx`:153 - `XSControl_Reader::GiveList()`
     pub fn XSControl_Reader_give_list_charptr_handlestandardtransient(
         self_: *mut XSControl_Reader,
         first: *const std::ffi::c_char,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_Reader.hxx`:160 - `XSControl_Reader::NbRootsForTransfer()`
     pub fn XSControl_Reader_nb_roots_for_transfer(
         self_: *mut XSControl_Reader,
@@ -28665,7 +28669,7 @@ unsafe extern "C" {
     /// **Source:** `XSControl_Reader.hxx`:191 - `XSControl_Reader::TransferList()`
     pub fn XSControl_Reader_transfer_list(
         self_: *mut XSControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `XSControl_Reader.hxx`:198 - `XSControl_Reader::TransferRoots()`
@@ -28728,7 +28732,7 @@ unsafe extern "C" {
     /// **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn XSControl_Reader_get_stats_transfer(
         self_: *const XSControl_Reader,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         nbMapped: *mut i32,
         nbWithResult: *mut i32,
         nbWithFail: *mut i32,
@@ -29252,7 +29256,7 @@ unsafe extern "C" {
     /// **Source:** `XSControl_TransferReader.hxx`:152 - `XSControl_TransferReader::RecordedList()`
     pub fn XSControl_TransferReader_recorded_list(
         self_: *const XSControl_TransferReader,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_TransferReader.hxx`:159 - `XSControl_TransferReader::Skip()`
     pub fn XSControl_TransferReader_skip(
         self_: *mut XSControl_TransferReader,
@@ -29321,7 +29325,7 @@ unsafe extern "C" {
         self_: *const XSControl_TransferReader,
         theRes: *const Handle_NCollection_HSequence_TopoDS_Shape,
         theMode: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_TransferReader.hxx`:241 - `XSControl_TransferReader::CheckList()`
     pub fn XSControl_TransferReader_check_list(
         self_: *const XSControl_TransferReader,
@@ -29340,7 +29344,7 @@ unsafe extern "C" {
         theEnt: *const Handle_Standard_Transient,
         WithCheck: i32,
         theResult: bool,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_TransferReader.hxx`:272 - `XSControl_TransferReader::BeginTransfer()`
     pub fn XSControl_TransferReader_begin_transfer(
         self_: *mut XSControl_TransferReader,
@@ -29360,7 +29364,7 @@ unsafe extern "C" {
     /// **Source:** `XSControl_TransferReader.hxx`:291 - `XSControl_TransferReader::TransferList()`
     pub fn XSControl_TransferReader_transfer_list(
         self_: *mut XSControl_TransferReader,
-        theList: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        theList: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theRec: bool,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
@@ -29391,7 +29395,7 @@ unsafe extern "C" {
     pub fn XSControl_TransferReader_last_transfer_list(
         self_: *const XSControl_TransferReader,
         theRoots: bool,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_TransferReader.hxx`:332 - `XSControl_TransferReader::ShapeResultList()`
     pub fn XSControl_TransferReader_shape_result_list(
         self_: *mut XSControl_TransferReader,
@@ -29410,7 +29414,7 @@ unsafe extern "C" {
     /// **Source:** `XSControl_TransferReader.hxx`:371 - `XSControl_TransferReader::PrintStatsOnList()`
     pub fn XSControl_TransferReader_print_stats_on_list(
         theTP: *const Handle_Transfer_TransientProcess,
-        theList: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        theList: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         theWhat: i32,
         theMode: i32,
     ) -> *const std::ffi::c_char;
@@ -29666,11 +29670,11 @@ unsafe extern "C" {
     /// **Source:** `XSControl_Utils.hxx`:87 - `XSControl_Utils::NewSeqTra()`
     pub fn XSControl_Utils_new_seq_tra(
         self_: *const XSControl_Utils,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `XSControl_Utils.hxx`:90 - `XSControl_Utils::AppendTra()`
     pub fn XSControl_Utils_append_tra(
         self_: *const XSControl_Utils,
-        seqval: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        seqval: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         traval: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `XSControl_Utils.hxx`:94 - `XSControl_Utils::DateString()`
@@ -29764,25 +29768,21 @@ unsafe extern "C" {
     /// **Source:** `XSControl_Utils.hxx`:140 - `XSControl_Utils::NewSeqCStr()`
     pub fn XSControl_Utils_new_seq_c_str(
         self_: *const XSControl_Utils,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendCStr()`
     pub fn XSControl_Utils_append_c_str(
         self_: *const XSControl_Utils,
-        seqval: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        seqval: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         strval: *const std::ffi::c_char,
     ) -> *const std::ffi::c_char;
     /// **Source:** `XSControl_Utils.hxx`:147 - `XSControl_Utils::NewSeqEStr()`
     pub fn XSControl_Utils_new_seq_e_str(
         self_: *const XSControl_Utils,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
     /// **Source:** `XSControl_Utils.hxx`:149 - `XSControl_Utils::AppendEStr()`
     pub fn XSControl_Utils_append_e_str(
         self_: *const XSControl_Utils,
-        seqval: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
+        seqval: *const Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
         strval: *const u16,
     ) -> *const std::ffi::c_char;
     /// **Source:** `XSControl_Utils.hxx`:155 - `XSControl_Utils::CompoundFromSeq()`
@@ -30281,12 +30281,12 @@ unsafe extern "C" {
     pub fn XSControl_WorkSession_inherited_Shareds(
         self_: *mut XSControl_WorkSession,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:239 - `IFSelect_WorkSession::Sharings()`
     pub fn XSControl_WorkSession_inherited_Sharings(
         self_: *mut XSControl_WorkSession,
         ent: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:245 - `IFSelect_WorkSession::IsLoaded()`
     pub fn XSControl_WorkSession_inherited_IsLoaded(
         self_: *const XSControl_WorkSession,
@@ -30370,9 +30370,7 @@ unsafe extern "C" {
     pub fn XSControl_WorkSession_inherited_ItemNames(
         self_: *const XSControl_WorkSession,
         type_: *const Handle_Standard_Type,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:417 - `IFSelect_WorkSession::IntParam()`
     pub fn XSControl_WorkSession_inherited_IntParam(
         self_: *const XSControl_WorkSession,
@@ -30423,13 +30421,13 @@ unsafe extern "C" {
     pub fn XSControl_WorkSession_inherited_SelectionResult(
         self_: *const XSControl_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:495 - `IFSelect_WorkSession::SelectionResultFromList()`
     pub fn XSControl_WorkSession_inherited_SelectionResultFromList(
         self_: *const XSControl_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:506 - `IFSelect_WorkSession::SetItemSelection()`
     pub fn XSControl_WorkSession_inherited_SetItemSelection(
         self_: *mut XSControl_WorkSession,
@@ -30461,7 +30459,7 @@ unsafe extern "C" {
     pub fn XSControl_WorkSession_inherited_ComputeCounterFromList(
         self_: *mut XSControl_WorkSession,
         counter: *const Handle_IFSelect_SignCounter,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         clear: bool,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::AppliedDispatches()`
@@ -30620,9 +30618,7 @@ unsafe extern "C" {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:763 - `IFSelect_WorkSession::SentFiles()`
     pub fn XSControl_WorkSession_inherited_SentFiles(
         self_: *const XSControl_WorkSession,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:777 - `IFSelect_WorkSession::SendSplit()`
     pub fn XSControl_WorkSession_inherited_SendSplit(
         self_: *mut XSControl_WorkSession,
@@ -30696,21 +30692,21 @@ unsafe extern "C" {
     pub fn XSControl_WorkSession_inherited_SetSelectPointed(
         self_: *const XSControl_WorkSession,
         sel: *const Handle_IFSelect_Selection,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:951 - `IFSelect_WorkSession::GiveList()`
     pub fn XSControl_WorkSession_inherited_GiveList(
         self_: *const XSControl_WorkSession,
         obj: *const Handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:989 - `IFSelect_WorkSession::GiveListCombined()`
     pub fn XSControl_WorkSession_inherited_GiveListCombined(
         self_: *const XSControl_WorkSession,
-        l1: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-        l2: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        l1: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+        l2: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:994 - `IFSelect_WorkSession::QueryCheckList()`
     pub fn XSControl_WorkSession_inherited_QueryCheckList(
         self_: *mut XSControl_WorkSession,
@@ -30727,6 +30723,12 @@ unsafe extern "C" {
         entdad: *const Handle_Standard_Transient,
         entson: *const Handle_Standard_Transient,
     ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1030 - `IFSelect_WorkSession::SetParams()`
+    pub fn XSControl_WorkSession_inherited_SetParams(
+        self_: *mut XSControl_WorkSession,
+        params: *const NCollection_DynamicArray_Handle_Standard_Transient,
+        uselist: *const NCollection_DynamicArray_int,
+    ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1041 - `IFSelect_WorkSession::TraceStatics()`
     pub fn XSControl_WorkSession_inherited_TraceStatics(
         self_: *const XSControl_WorkSession,
@@ -30929,9 +30931,9 @@ unsafe extern "C" {
         rootsonly: bool,
     ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_TopoDS_Shape>;
     /// **Source:** `TransferBRep.hxx`:79 - `TransferBRep::Shapes`
-    pub fn TransferBRep_shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(
+    pub fn TransferBRep_shapes_handletransfertransientprocess_hseq_standard_transient(
         TP: *const Handle_Transfer_TransientProcess,
-        list: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_TopoDS_Shape>;
     /// **Source:** `TransferBRep.hxx`:88 - `TransferBRep::ShapeState`
     pub fn TransferBRep_shape_state(
@@ -30960,16 +30962,16 @@ unsafe extern "C" {
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut Handle_TransferBRep_ShapeMapper>;
     /// **Source:** `TransferBRep.hxx`:123 - `TransferBRep::TransferResultInfo`
-    pub fn TransferBRep_transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+    pub fn TransferBRep_transfer_result_info_handletransfertransientprocess_hseq_standard_transient_hseq_transferbrep_transferresultinfo(
         TP: *const Handle_Transfer_TransientProcess,
-        EntityTypes: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-        InfoSeq: *mut Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
+        EntityTypes: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+        InfoSeq: *mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TransferBRep.hxx`:132 - `TransferBRep::TransferResultInfo`
-    pub fn TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+    pub fn TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_hseq_transferbrep_transferresultinfo(
         FP: *const Handle_Transfer_FinderProcess,
         ShapeTypes: *const Handle_NCollection_HSequence_int,
-        InfoSeq: *mut Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
+        InfoSeq: *mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TransferBRep.hxx`:138 - `TransferBRep::PrintResultInfo`
     pub fn TransferBRep_print_result_info(
@@ -30993,7 +30995,7 @@ unsafe extern "C" {
     pub fn TransferBRep_checked(
         chl: *const Interface_CheckIterator,
         alsoshapes: bool,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
     /// **Source:** `TransferBRep.hxx`:178 - `TransferBRep::CheckedShapes`
     pub fn TransferBRep_checked_shapes(
         chl: *const Interface_CheckIterator,

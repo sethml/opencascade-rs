@@ -14,7 +14,6 @@
 #include <NCollection_Buffer.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases

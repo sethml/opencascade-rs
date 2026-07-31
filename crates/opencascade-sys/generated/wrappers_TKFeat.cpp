@@ -420,6 +420,10 @@ extern "C" const char* BRepFeat_Form_perf_selection_valid(BRepFeat_Form* self_) 
     try { self_->PerfSelectionValid(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFeat_Form_curves(BRepFeat_Form* self_, NCollection_Sequence_Handle_Geom_Curve* S) {
+    try { self_->Curves(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<int32_t> BRepFeat_Form_current_status_error(const BRepFeat_Form* self_) {
     try { return {static_cast<int32_t>(self_->CurrentStatusError()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -848,6 +852,10 @@ extern "C" const char* BRepFeat_MakeDPrism_perform_until_height(BRepFeat_MakeDPr
     try { self_->PerformUntilHeight(*Until, Height); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFeat_MakeDPrism_curves(BRepFeat_MakeDPrism* self_, NCollection_Sequence_Handle_Geom_Curve* S) {
+    try { self_->Curves(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* BRepFeat_MakeDPrism_boss_edges(BRepFeat_MakeDPrism* self_, int32_t sig) {
     try { self_->BossEdges(sig); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1056,6 +1064,10 @@ extern "C" const char* BRepFeat_MakePipe_perform_shape2(BRepFeat_MakePipe* self_
     try { self_->Perform(*From, *Until); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFeat_MakePipe_curves(BRepFeat_MakePipe* self_, NCollection_Sequence_Handle_Geom_Curve* S) {
+    try { self_->Curves(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakePipe_as_BRepFeat_Form(const BRepFeat_MakePipe* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<BRepFeat_Form*> BRepFeat_MakePipe_as_BRepFeat_Form_mut(BRepFeat_MakePipe* self_) { return {static_cast<BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepFeat_MakePipe_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakePipe* self_) { return {static_cast<const BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
@@ -1184,6 +1196,10 @@ extern "C" const char* BRepFeat_MakePrism_perform_until_height(BRepFeat_MakePris
     try { self_->PerformUntilHeight(*Until, Length); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFeat_MakePrism_curves(BRepFeat_MakePrism* self_, NCollection_Sequence_Handle_Geom_Curve* S) {
+    try { self_->Curves(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakePrism_as_BRepFeat_Form(const BRepFeat_MakePrism* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<BRepFeat_Form*> BRepFeat_MakePrism_as_BRepFeat_Form_mut(BRepFeat_MakePrism* self_) { return {static_cast<BRepFeat_Form*>(self_), nullptr}; }
 extern "C" OcctResult<const BRepBuilderAPI_MakeShape*> BRepFeat_MakePrism_as_BRepBuilderAPI_MakeShape(const BRepFeat_MakePrism* self_) { return {static_cast<const BRepBuilderAPI_MakeShape*>(self_), nullptr}; }
@@ -1302,6 +1318,10 @@ extern "C" const char* BRepFeat_MakeRevol_perform_thru_all(BRepFeat_MakeRevol* s
 }
 extern "C" const char* BRepFeat_MakeRevol_perform_until_angle(BRepFeat_MakeRevol* self_, TopoDS_Shape const* Until, double Angle) {
     try { self_->PerformUntilAngle(*Until, Angle); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepFeat_MakeRevol_curves(BRepFeat_MakeRevol* self_, NCollection_Sequence_Handle_Geom_Curve* S) {
+    try { self_->Curves(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const BRepFeat_Form*> BRepFeat_MakeRevol_as_BRepFeat_Form(const BRepFeat_MakeRevol* self_) { return {static_cast<const BRepFeat_Form*>(self_), nullptr}; }
@@ -1684,6 +1704,10 @@ extern "C" const char* LocOpe_CSIntersector_perform_seq_circ(LocOpe_CSIntersecto
     try { self_->Perform(*Scir); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* LocOpe_CSIntersector_perform_seq_geom_curve(LocOpe_CSIntersector* self_, NCollection_Sequence_Handle_Geom_Curve const* Scur) {
+    try { self_->Perform(*Scur); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> LocOpe_CSIntersector_is_done(const LocOpe_CSIntersector* self_) {
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1855,6 +1879,10 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_DPrism_shape(const LocOpe_DPri
 extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_DPrism_shapes(const LocOpe_DPrism* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* LocOpe_DPrism_curves(const LocOpe_DPrism* self_, NCollection_Sequence_Handle_Geom_Curve* SCurves) {
+    try { self_->Curves(*SCurves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void LocOpe_DPrism_destructor(LocOpe_DPrism* self_) { delete self_; }
 
@@ -2294,6 +2322,10 @@ extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Pipe_shapes(L
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom_Curve const*> LocOpe_Pipe_curves(LocOpe_Pipe* self_, NCollection_Sequence_gp_Pnt const* Spt) {
+    try { return {&(self_->Curves(*Spt)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void LocOpe_Pipe_destructor(LocOpe_Pipe* self_) { delete self_; }
 
 // ========================
@@ -2382,6 +2414,10 @@ extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Prism_shapes(
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* LocOpe_Prism_curves(const LocOpe_Prism* self_, NCollection_Sequence_Handle_Geom_Curve* SCurves) {
+    try { self_->Curves(*SCurves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void LocOpe_Prism_destructor(LocOpe_Prism* self_) { delete self_; }
 
 // ========================
@@ -2427,6 +2463,10 @@ extern "C" OcctResult<TopoDS_Shape const*> LocOpe_Revol_shape(const LocOpe_Revol
 extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> LocOpe_Revol_shapes(const LocOpe_Revol* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Shapes(*S)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* LocOpe_Revol_curves(const LocOpe_Revol* self_, NCollection_Sequence_Handle_Geom_Curve* SCurves) {
+    try { self_->Curves(*SCurves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void LocOpe_Revol_destructor(LocOpe_Revol* self_) { delete self_; }
 

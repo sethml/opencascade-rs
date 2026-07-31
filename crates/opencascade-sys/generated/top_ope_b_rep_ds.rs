@@ -308,13 +308,24 @@ impl Association {
     }
 
     /// **Source:** `TopOpeBRepDS_Association.hxx`:35 - `TopOpeBRepDS_Association::Associate()`
-    pub fn associate(
+    pub fn associate_handletopopebrepdsinterference2(
         &mut self,
         I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
         K: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepDS_Association_associate(self as *mut Self, I, K)
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(self as *mut Self, I, K)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:38 - `TopOpeBRepDS_Association::Associate()`
+    pub fn associate_handletopopebrepdsinterference_list_topopebrepds_interference(
+        &mut self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_list_topopebrepds_interference(self as *mut Self, I, LI)
         })
     }
 
@@ -326,6 +337,24 @@ impl Association {
                 I,
             )
         })
+    }
+
+    /// **Source:** `TopOpeBRepDS_Association.hxx`:44 - `TopOpeBRepDS_Association::Associated()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn associated(
+        &mut self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_Association_associated(self as *mut Self, I),
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_Association.hxx`:47 - `TopOpeBRepDS_Association::AreAssociated()`
@@ -535,16 +564,6 @@ impl Handle_TopOpeBRepDS_Association {
         }
     }
 }
-
-// ── Skipped symbols for Association (2 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Association.hxx`:38 - `TopOpeBRepDS_Association::Associate`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn associate(&mut self, I: &HandleInterference, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_Association.hxx`:44 - `TopOpeBRepDS_Association::Associated`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn associated(&mut self, I: &HandleInterference) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
 
 // ========================
 // From TopOpeBRepDS_BuildTool.hxx
@@ -1202,6 +1221,18 @@ impl Check {
         })
     }
 
+    /// **Source:** `TopOpeBRepDS_Check.hxx`:50 - `TopOpeBRepDS_Check::ChkIntgInterf()`
+    /// Check integrition of interferences
+    /// (les supports et les geometries de LI)
+    pub fn chk_intg_interf(
+        &mut self,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_Check_chk_intg_interf(self as *mut Self, LI)
+        })
+    }
+
     /// **Source:** `TopOpeBRepDS_Check.hxx`:56 - `TopOpeBRepDS_Check::CheckDS()`
     /// Verifie que le ieme element de la DS existe, et
     /// pour un K de type topologique, verifie qu'il est du
@@ -1532,14 +1563,6 @@ impl Handle_TopOpeBRepDS_Check {
         }
     }
 }
-
-// ── Skipped symbols for Check (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_Check.hxx`:50 - `TopOpeBRepDS_Check::ChkIntgInterf`
-//   method: Check integrition of interferences
-//   method: (les supports et les geometries de LI)
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn chk_intg_interf(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */) -> bool;
-//
 
 // ========================
 // From TopOpeBRepDS_Curve.hxx
@@ -1909,6 +1932,32 @@ impl CurveData {
         })
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_CurveData_inherited_Interferences(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_CurveData_inherited_ChangeInterferences(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
         crate::check_void_result(unsafe {
@@ -2054,6 +2103,17 @@ unsafe impl crate::CppDeletable for CurveIterator {
 }
 
 impl CurveIterator {
+    /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:40 - `TopOpeBRepDS_CurveIterator::TopOpeBRepDS_CurveIterator()`
+    /// Creates an iterator on the curves on surface
+    /// described by the interferences in <L>.
+    pub fn new_list_topopebrepds_interference(
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_CurveIterator_ctor_list_topopebrepds_interference(L)))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_CurveIterator.hxx`:46 - `TopOpeBRepDS_CurveIterator::MatchInterference()`
     /// Returns True if the Interference <I> has a
     /// GeometryType() TopOpeBRepDS_CURVE
@@ -2110,6 +2170,19 @@ impl CurveIterator {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_CurveIterator_inherited_Init(
+                self as *mut Self,
+                L,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
@@ -2184,14 +2257,6 @@ impl CurveIterator {
         }
     }
 }
-
-// ── Skipped symbols for CurveIterator (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_CurveIterator.hxx`:40 - `TopOpeBRepDS_CurveIterator::TopOpeBRepDS_CurveIterator`
-//   constructor: Creates an iterator on the curves on surface
-//   constructor: described by the interferences in <L>.
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn new_interference>>(L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From TopOpeBRepDS_CurvePointInterference.hxx
@@ -2865,6 +2930,167 @@ impl DataStructure {
                 E,
             )
         })
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:125 - `TopOpeBRepDS_DataStructure::SurfaceInterferences()`
+    pub fn surface_interferences(
+        &self,
+        I: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_surface_interferences(
+                    self as *const Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:128 - `TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences()`
+    pub fn change_surface_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_change_surface_interferences(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:131 - `TopOpeBRepDS_DataStructure::CurveInterferences()`
+    pub fn curve_interferences(
+        &self,
+        I: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_curve_interferences(
+                    self as *const Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:134 - `TopOpeBRepDS_DataStructure::ChangeCurveInterferences()`
+    pub fn change_curve_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_change_curve_interferences(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:137 - `TopOpeBRepDS_DataStructure::PointInterferences()`
+    pub fn point_interferences(
+        &self,
+        I: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_point_interferences(
+                    self as *const Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:140 - `TopOpeBRepDS_DataStructure::ChangePointInterferences()`
+    pub fn change_point_interferences(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_change_point_interferences(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:143 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn shape_interferences_shape_bool(
+        &self,
+        S: &crate::topo_ds::Shape,
+        FindKeep: bool,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_shape_interferences_shape_bool(
+                    self as *const Self,
+                    S,
+                    FindKeep,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:146 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn change_shape_interferences_shape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_change_shape_interferences_shape(self as *mut Self, S)))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:149 - `TopOpeBRepDS_DataStructure::ShapeInterferences()`
+    pub fn shape_interferences_int_bool(
+        &self,
+        I: i32,
+        FindKeep: bool,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_shape_interferences_int_bool(
+                    self as *const Self,
+                    I,
+                    FindKeep,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:152 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences()`
+    pub fn change_shape_interferences_int(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_DataStructure_change_shape_interferences_int(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:154 - `TopOpeBRepDS_DataStructure::ShapeSameDomain()`
@@ -3576,48 +3802,6 @@ impl DataStructure {
         }
     }
 }
-
-// ── Skipped symbols for DataStructure (10 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:125 - `TopOpeBRepDS_DataStructure::SurfaceInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn surface_interferences(&self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:128 - `TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_surface_interferences(&mut self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:131 - `TopOpeBRepDS_DataStructure::CurveInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn curve_interferences(&self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:134 - `TopOpeBRepDS_DataStructure::ChangeCurveInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_curve_interferences(&mut self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:137 - `TopOpeBRepDS_DataStructure::PointInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn point_interferences(&self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:140 - `TopOpeBRepDS_DataStructure::ChangePointInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_point_interferences(&mut self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:143 - `TopOpeBRepDS_DataStructure::ShapeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn shape_interferences(&self, S: &Shape, FindKeep: bool) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:146 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_shape_interferences(&mut self, S: &Shape) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:149 - `TopOpeBRepDS_DataStructure::ShapeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn shape_interferences(&self, I: i32, FindKeep: bool) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_DataStructure.hxx`:152 - `TopOpeBRepDS_DataStructure::ChangeShapeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_shape_interferences(&mut self, I: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
 
 // ========================
 // From TopOpeBRepDS_Dumper.hxx
@@ -5201,6 +5385,116 @@ impl GapFiller {
         })
     }
 
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:47 - `TopOpeBRepDS_GapFiller::FindAssociatedPoints()`
+    /// Recherche parmi l'ensemble des points d'Interference
+    /// la Liste <LI> des points qui correspondent au point d'indice <Index>
+    pub fn find_associated_points(
+        &mut self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_find_associated_points(
+                self as *mut Self,
+                I,
+                LI,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:55 - `TopOpeBRepDS_GapFiller::CheckConnexity()`
+    /// Enchaine les sections via les points d'Interferences deja
+    /// associe; Renvoit dans <L> les points extremites des Lignes.
+    /// Methodes pour construire la liste des Points qui
+    /// peuvent correspondre a une Point donne.
+    pub fn check_connexity(
+        &mut self,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_check_connexity(self as *mut Self, LI)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:57 - `TopOpeBRepDS_GapFiller::AddPointsOnShape()`
+    pub fn add_points_on_shape(
+        &mut self,
+        S: &crate::topo_ds::Shape,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_add_points_on_shape(
+                self as *mut Self,
+                S,
+                LI,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:63 - `TopOpeBRepDS_GapFiller::AddPointsOnConnexShape()`
+    /// Methodes pour reduire la liste des Points qui
+    /// peuvent correspondre a une Point donne.
+    pub fn add_points_on_connex_shape(
+        &mut self,
+        F: &crate::topo_ds::Shape,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_add_points_on_connex_shape(
+                self as *mut Self,
+                F,
+                LI,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:67 - `TopOpeBRepDS_GapFiller::FilterByFace()`
+    pub fn filter_by_face(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_filter_by_face(
+                self as *mut Self,
+                F,
+                LI,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:70 - `TopOpeBRepDS_GapFiller::FilterByEdge()`
+    pub fn filter_by_edge(
+        &mut self,
+        E: &crate::topo_ds::Edge,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_filter_by_edge(
+                self as *mut Self,
+                E,
+                LI,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:73 - `TopOpeBRepDS_GapFiller::FilterByIncidentDistance()`
+    pub fn filter_by_incident_distance(
+        &mut self,
+        F: &crate::topo_ds::Face,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_GapFiller_filter_by_incident_distance(
+                self as *mut Self,
+                F,
+                I,
+                LI,
+            )
+        })
+    }
+
     /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:80 - `TopOpeBRepDS_GapFiller::IsOnFace()`
     /// Return TRUE si I a ete obtenu par une intersection
     /// avec <F>.
@@ -5252,43 +5546,6 @@ impl GapFiller {
     }
 }
 
-// ── Skipped symbols for GapFiller (7 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:47 - `TopOpeBRepDS_GapFiller::FindAssociatedPoints`
-//   method: Recherche parmi l'ensemble des points d'Interference
-//   method: la Liste <LI> des points qui correspondent au point d'indice <Index>
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn find_associated_points(&mut self, I: &HandleInterference, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:55 - `TopOpeBRepDS_GapFiller::CheckConnexity`
-//   method: Enchaine les sections via les points d'Interferences deja
-//   method: associe; Renvoit dans <L> les points extremites des Lignes.
-//   method: Methodes pour construire la liste des Points qui
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn check_connexity(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */) -> bool;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:57 - `TopOpeBRepDS_GapFiller::AddPointsOnShape`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn add_points_on_shape(&mut self, S: &Shape, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:63 - `TopOpeBRepDS_GapFiller::AddPointsOnConnexShape`
-//   method: Methodes pour reduire la liste des Points qui
-//   method: peuvent correspondre a une Point donne.
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn add_points_on_connex_shape(&mut self, F: &Shape, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:67 - `TopOpeBRepDS_GapFiller::FilterByFace`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn filter_by_face(&mut self, F: &Face, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:70 - `TopOpeBRepDS_GapFiller::FilterByEdge`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn filter_by_edge(&mut self, E: &Edge, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapFiller.hxx`:73 - `TopOpeBRepDS_GapFiller::FilterByIncidentDistance`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn filter_by_incident_distance(&mut self, F: &Face, I: &HandleInterference, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-
 // ========================
 // From TopOpeBRepDS_GapTool.hxx
 // ========================
@@ -5328,6 +5585,61 @@ impl GapTool {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_init(self as *mut Self, HDS)
         })
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:44 - `TopOpeBRepDS_GapTool::Interferences()`
+    pub fn interferences(
+        &self,
+        IndexPoint: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_interferences(
+                self as *const Self,
+                IndexPoint,
+            )))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:47 - `TopOpeBRepDS_GapTool::SameInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn same_interferences(
+        &self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_same_interferences(
+                    self as *const Self,
+                    I,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GapTool.hxx`:50 - `TopOpeBRepDS_GapTool::ChangeSameInterferences()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn change_same_interferences(
+        &mut self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_GapTool_change_same_interferences(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:53 - `TopOpeBRepDS_GapTool::Curve()`
@@ -5609,20 +5921,6 @@ impl Handle_TopOpeBRepDS_GapTool {
     }
 }
 
-// ── Skipped symbols for GapTool (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_GapTool.hxx`:44 - `TopOpeBRepDS_GapTool::Interferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn interferences(&self, IndexPoint: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapTool.hxx`:47 - `TopOpeBRepDS_GapTool::SameInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn same_interferences(&self, I: &HandleInterference) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GapTool.hxx`:50 - `TopOpeBRepDS_GapTool::ChangeSameInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_same_interferences(&mut self, I: &HandleInterference) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-
 // ========================
 // From TopOpeBRepDS_GeometryData.hxx
 // ========================
@@ -5674,6 +5972,32 @@ impl GeometryData {
         })
     }
 
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_interferences(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_GeometryData_change_interferences(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
         crate::check_void_result(unsafe {
@@ -5684,16 +6008,6 @@ impl GeometryData {
         })
     }
 }
-
-// ── Skipped symbols for GeometryData (2 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn interferences(&self) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_interferences(&mut self) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
 
 // ========================
 // From TopOpeBRepDS_HDataStructure.hxx
@@ -6104,6 +6418,57 @@ impl HDataStructure {
         })
     }
 
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:157 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn sort_on_parameter_list_topopebrepds_interference2(
+        &self,
+        L1: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        L2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference2(self as *const Self, L1, L2)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:161 - `TopOpeBRepDS_HDataStructure::SortOnParameter()`
+    pub fn sort_on_parameter_list_topopebrepds_interference(
+        &self,
+        L: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_sort_on_parameter_list_topopebrepds_interference(self as *const Self, L)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:164 - `TopOpeBRepDS_HDataStructure::MinMaxOnParameter()`
+    pub fn min_max_on_parameter(
+        &self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        Min: &mut f64,
+        Max: &mut f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_min_max_on_parameter(
+                self as *const Self,
+                L,
+                Min,
+                Max,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:190 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
+    /// Add interference <I> to list <LI>.
+    pub fn store_interference_handletopopebrepdsinterference_list_topopebrepds_interference_asciistring(
+        &mut self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+        LI: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_list_topopebrepds_interference_asciistring(self as *mut Self, I, LI, str)
+        })
+    }
+
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:196 - `TopOpeBRepDS_HDataStructure::StoreInterference()`
     /// Add interference <I> to list of interference of shape <S>.
     pub fn store_interference_handletopopebrepdsinterference_shape_asciistring(
@@ -6127,6 +6492,54 @@ impl HDataStructure {
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(self as *mut Self, I, IS, str)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:205 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn store_interferences_list_topopebrepds_interference_shape_asciistring(
+        &mut self,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        S: &crate::topo_ds::Shape,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_shape_asciistring(self as *mut Self, LI, S, str)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:210 - `TopOpeBRepDS_HDataStructure::StoreInterferences()`
+    pub fn store_interferences_list_topopebrepds_interference_int_asciistring(
+        &mut self,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        IS: i32,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_store_interferences_list_topopebrepds_interference_int_asciistring(self as *mut Self, LI, IS, str)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:215 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn clear_store_interferences_list_topopebrepds_interference_shape_asciistring(
+        &mut self,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        S: &crate::topo_ds::Shape,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_shape_asciistring(self as *mut Self, LI, S, str)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:220 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences()`
+    pub fn clear_store_interferences_list_topopebrepds_interference_int_asciistring(
+        &mut self,
+        LI: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+        IS: i32,
+        str: &crate::t_collection::AsciiString,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_HDataStructure_clear_store_interferences_list_topopebrepds_interference_int_asciistring(self as *mut Self, LI, IS, str)
         })
     }
 
@@ -6327,24 +6740,12 @@ impl Handle_TopOpeBRepDS_HDataStructure {
     }
 }
 
-// ── Skipped symbols for HDataStructure (11 total) ──
+// ── Skipped symbols for HDataStructure (3 total) ──
 // SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:113 - `TopOpeBRepDS_HDataStructure::SameDomain`
 //   method: Returns an iterator on the SameDomain shapes attached
 //   method: to the shape <S>.
 //   Reason: has unbindable types: return: unresolved template type (NCollection_List<TopoDS_Shape>::Iterator)
 //   // pub fn same_domain(&self, S: &Shape) -> OwnedPtr<NCollection_List<TopoDS_Shape>::Iterator>;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:157 - `TopOpeBRepDS_HDataStructure::SortOnParameter`
-//   Reason: has unbindable types: param 'L1': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&); param 'L2': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn sort_on_parameter(&self, L1: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, L2: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:161 - `TopOpeBRepDS_HDataStructure::SortOnParameter`
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn sort_on_parameter(&self, L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:164 - `TopOpeBRepDS_HDataStructure::MinMaxOnParameter`
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn min_max_on_parameter(&self, L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, Min: &mut f64, Max: &mut f64);
 //
 // SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:175 - `TopOpeBRepDS_HDataStructure::ScanInterfList`
 //   method: Search, among a list of interferences accessed by the iterator
@@ -6359,27 +6760,6 @@ impl Handle_TopOpeBRepDS_HDataStructure {
 //   method: if found, set <G,K> to the geometry,kind of the interference found.
 //   Reason: has unbindable types: param 'IT': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>::Iterator&)
 //   // pub fn get_geometry(&self, IT: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>::Iterator& */, PDS: &Point, G: &mut i32, K: &mut Kind) -> bool;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:190 - `TopOpeBRepDS_HDataStructure::StoreInterference`
-//   method: Add interference <I> to list <LI>.
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn store_interference(&mut self, I: &HandleInterference, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */, str: &AsciiString);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:205 - `TopOpeBRepDS_HDataStructure::StoreInterferences`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn store_interferences(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, S: &Shape, str: &AsciiString);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:210 - `TopOpeBRepDS_HDataStructure::StoreInterferences`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn store_interferences(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, IS: i32, str: &AsciiString);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:215 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn clear_store_interferences(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, S: &Shape, str: &AsciiString);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_HDataStructure.hxx`:220 - `TopOpeBRepDS_HDataStructure::ClearStoreInterferences`
-//   Reason: has unbindable types: param 'LI': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn clear_store_interferences(&mut self, LI: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */, IS: i32, str: &AsciiString);
 //
 
 // ========================
@@ -6928,6 +7308,29 @@ impl InterferenceIterator {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:49 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator()`
+    /// Creates an iterator on the Interference of list <L>.
+    pub fn new_list_topopebrepds_interference(
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceIterator_ctor_list_topopebrepds_interference(L)))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    /// re-initialize interference iteration process on
+    /// the list of interference <L>.
+    /// Conditions are not modified.
+    pub fn init(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_InterferenceIterator_init(self as *mut Self, L)
+        })
+    }
+
     /// **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     /// define a condition on interference iteration process.
     /// Interference must match the Geometry Kind <ST>
@@ -7032,19 +7435,7 @@ impl InterferenceIterator {
     }
 }
 
-// ── Skipped symbols for InterferenceIterator (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:49 - `TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator`
-//   constructor: Creates an iterator on the Interference of list <L>.
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn new_interference>>(L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init`
-//   method: re-initialize interference iteration process on
-//   method: the list of interference <L>.
-//   method: Conditions are not modified.
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn init(&mut self, L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */);
-//
+// ── Skipped symbols for InterferenceIterator (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:95 - `TopOpeBRepDS_InterferenceIterator::ChangeIterator`
 //   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>::Iterator&)
 //   // pub fn change_iterator(&mut self) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>::Iterator& */;
@@ -7717,6 +8108,32 @@ impl PointData {
         })
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_PointData_inherited_Interferences(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_PointData_inherited_ChangeInterferences(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
         crate::check_void_result(unsafe {
@@ -7862,6 +8279,17 @@ unsafe impl crate::CppDeletable for PointIterator {
 }
 
 impl PointIterator {
+    /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:39 - `TopOpeBRepDS_PointIterator::TopOpeBRepDS_PointIterator()`
+    /// Creates an iterator on the points on curves
+    /// described by the interferences in <L>.
+    pub fn new_list_topopebrepds_interference(
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_PointIterator_ctor_list_topopebrepds_interference(L)))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_PointIterator.hxx`:45 - `TopOpeBRepDS_PointIterator::MatchInterference()`
     /// Returns True if the Interference <I> has a
     /// GeometryType() TopOpeBRepDS_POINT or TopOpeBRepDS_VERTEX
@@ -7953,6 +8381,19 @@ impl PointIterator {
         }
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_PointIterator_inherited_Init(
+                self as *mut Self,
+                L,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
         crate::check_void_result(unsafe {
@@ -8015,14 +8456,6 @@ impl PointIterator {
         }
     }
 }
-
-// ── Skipped symbols for PointIterator (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_PointIterator.hxx`:39 - `TopOpeBRepDS_PointIterator::TopOpeBRepDS_PointIterator`
-//   constructor: Creates an iterator on the points on curves
-//   constructor: described by the interferences in <L>.
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn new_interference>>(L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From TopOpeBRepDS_Reducer.hxx
@@ -8099,6 +8532,30 @@ impl ShapeData {
         }
     }
 
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:37 - `TopOpeBRepDS_ShapeData::Interferences()`
+    pub fn interferences(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeData_interferences(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:40 - `TopOpeBRepDS_ShapeData::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_ShapeData_change_interferences(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:42 - `TopOpeBRepDS_ShapeData::Keep()`
     pub fn keep(&self) -> bool {
         crate::check_result(unsafe {
@@ -8113,16 +8570,6 @@ impl ShapeData {
         })
     }
 }
-
-// ── Skipped symbols for ShapeData (2 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_ShapeData.hxx`:37 - `TopOpeBRepDS_ShapeData::Interferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn interferences(&self) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_ShapeData.hxx`:40 - `TopOpeBRepDS_ShapeData::ChangeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_interferences(&mut self) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
 
 // ========================
 // From TopOpeBRepDS_ShapeShapeInterference.hxx
@@ -9506,6 +9953,32 @@ impl SurfaceData {
         })
     }
 
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:42 - `TopOpeBRepDS_GeometryData::Interferences()`
+    pub fn interferences(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceData_inherited_Interferences(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceData_inherited_ChangeInterferences(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:47 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
         crate::check_void_result(unsafe {
@@ -9656,6 +10129,17 @@ unsafe impl crate::CppDeletable for SurfaceIterator {
 }
 
 impl SurfaceIterator {
+    /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:37 - `TopOpeBRepDS_SurfaceIterator::TopOpeBRepDS_SurfaceIterator()`
+    /// Creates an iterator on the Surfaces on solid
+    /// described by the interferences in <L>.
+    pub fn new_list_topopebrepds_interference(
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceIterator_ctor_list_topopebrepds_interference(L)))
+        }
+    }
+
     /// **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:41 - `TopOpeBRepDS_SurfaceIterator::Current()`
     /// Index of the surface in the data structure.
     pub fn current(&self) -> i32 {
@@ -9687,6 +10171,19 @@ impl SurfaceIterator {
         unsafe {
             &mut *crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(self as *mut Self))
         }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:55 - `TopOpeBRepDS_InterferenceIterator::Init()`
+    pub fn init(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_SurfaceIterator_inherited_Init(
+                self as *mut Self,
+                L,
+            )
+        })
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:59 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
@@ -9779,14 +10276,6 @@ impl SurfaceIterator {
     }
 }
 
-// ── Skipped symbols for SurfaceIterator (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_SurfaceIterator.hxx`:37 - `TopOpeBRepDS_SurfaceIterator::TopOpeBRepDS_SurfaceIterator`
-//   constructor: Creates an iterator on the Surfaces on solid
-//   constructor: described by the interferences in <L>.
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn new_interference>>(L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From TopOpeBRepDS_TKI.hxx
 // ========================
@@ -9819,11 +10308,63 @@ impl TKI {
         })
     }
 
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:43 - `TopOpeBRepDS_TKI::FillOnGeometry()`
+    pub fn fill_on_geometry(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_fill_on_geometry(self as *mut Self, L)
+        })
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:46 - `TopOpeBRepDS_TKI::FillOnSupport()`
+    pub fn fill_on_support(
+        &mut self,
+        L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_fill_on_support(self as *mut Self, L)
+        })
+    }
+
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:49 - `TopOpeBRepDS_TKI::IsBound()`
     pub fn is_bound(&self, K: crate::top_ope_b_rep_ds::Kind, G: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_is_bound(self as *const Self, K.into(), G)
         })
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:51 - `TopOpeBRepDS_TKI::Interferences()`
+    pub fn interferences(
+        &self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_interferences(
+                self as *const Self,
+                K.into(),
+                G,
+            )))
+        }
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:55 - `TopOpeBRepDS_TKI::ChangeInterferences()`
+    pub fn change_interferences(
+        &mut self,
+        K: crate::top_ope_b_rep_ds::Kind,
+        G: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_change_interferences(
+                    self as *mut Self,
+                    K.into(),
+                    G,
+                ),
+            ))
+        }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:59 - `TopOpeBRepDS_TKI::HasInterferences()`
@@ -9892,33 +10433,55 @@ impl TKI {
             crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_next(self as *mut Self)
         })
     }
-}
 
-// ── Skipped symbols for TKI (6 total) ──
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:43 - `TopOpeBRepDS_TKI::FillOnGeometry`
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn fill_on_geometry(&mut self, L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:46 - `TopOpeBRepDS_TKI::FillOnSupport`
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn fill_on_support(&mut self, L: /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */);
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:51 - `TopOpeBRepDS_TKI::Interferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn interferences(&self, K: Kind, G: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:55 - `TopOpeBRepDS_TKI::ChangeInterferences`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_interferences(&mut self, K: Kind, G: i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:76 - `TopOpeBRepDS_TKI::Value`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const&)
-//   // pub fn value(&self, K: &mut Kind, G: &mut i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>> const& */;
-//
-// SKIPPED: **Source:** `TopOpeBRepDS_TKI.hxx`:80 - `TopOpeBRepDS_TKI::ChangeValue`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepDS_Interference>>&)
-//   // pub fn change_value(&mut self, K: &mut Kind, G: &mut i32) -> /* NCollection_List<occ::handle<TopOpeBRepDS_Interference>>& */;
-//
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:76 - `TopOpeBRepDS_TKI::Value()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn value(
+        &self,
+        K: &mut crate::top_ope_b_rep_ds::Kind,
+        G: &mut i32,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        let mut K_i32_: i32 = (*K).into();
+        let result_ = unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_value(
+                self as *const Self,
+                &mut K_i32_,
+                G,
+            )))
+        };
+        *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
+        result_
+    }
+
+    /// **Source:** `TopOpeBRepDS_TKI.hxx`:80 - `TopOpeBRepDS_TKI::ChangeValue()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn change_value(
+        &mut self,
+        K: &mut crate::top_ope_b_rep_ds::Kind,
+        G: &mut i32,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepDS_Interference {
+        let mut K_i32_: i32 = (*K).into();
+        let result_ = unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepDS_TKI_change_value(
+                self as *mut Self,
+                &mut K_i32_,
+                G,
+            )))
+        };
+        *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
+        result_
+    }
+}
 
 // ========================
 // From TopOpeBRepDS_TOOL.hxx

@@ -8378,6 +8378,20 @@ unsafe extern "C" {
     pub fn BOPAlgo_Tools_destructor(self_: *mut BOPAlgo_Tools);
     /// **Source:** `BOPAlgo_Tools.hxx` - `BOPAlgo_Tools::BOPAlgo_Tools()`
     pub fn BOPAlgo_Tools_ctor() -> crate::OcctResult<*mut BOPAlgo_Tools>;
+    /// **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap()`
+    pub fn BOPAlgo_Tools_fill_map(
+        thePB1: *const Handle_BOPDS_PaveBlock,
+        theF: i32,
+        theMILI: *mut NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
+        theAllocator: *const TDF_HAllocator,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPAlgo_Tools.hxx`:120 - `BOPAlgo_Tools::PerformCommonBlocks()`
+    pub fn BOPAlgo_Tools_perform_common_blocks(
+        theMBlocks: *const NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
+        theAllocator: *const TDF_HAllocator,
+        pDS: *mut *mut BOPDS_DS,
+        theContext: *const Handle_IntTools_Context,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BOPAlgo_Tools.hxx`:127 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
     pub fn BOPAlgo_Tools_compute_tolerance_of_cb(
         theCB: *const Handle_BOPDS_CommonBlock,
@@ -8871,6 +8885,11 @@ unsafe extern "C" {
         self_: *mut BOPDS_CommonBlock,
         aPB: *const Handle_BOPDS_PaveBlock,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:53 - `BOPDS_CommonBlock::SetPaveBlocks()`
+    pub fn BOPDS_CommonBlock_set_pave_blocks(
+        self_: *mut BOPDS_CommonBlock,
+        aLPB: *const NCollection_List_Handle_BOPDS_PaveBlock,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_CommonBlock.hxx`:59 - `BOPDS_CommonBlock::AddFace()`
     pub fn BOPDS_CommonBlock_add_face(
         self_: *mut BOPDS_CommonBlock,
@@ -8886,6 +8905,10 @@ unsafe extern "C" {
         self_: *mut BOPDS_CommonBlock,
         aLF: *mut NCollection_List_int,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_CommonBlock.hxx`:75 - `BOPDS_CommonBlock::PaveBlocks()`
+    pub fn BOPDS_CommonBlock_pave_blocks(
+        self_: *const BOPDS_CommonBlock,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_CommonBlock.hxx`:80 - `BOPDS_CommonBlock::Faces()`
     pub fn BOPDS_CommonBlock_faces(
         self_: *const BOPDS_CommonBlock,
@@ -9095,6 +9118,19 @@ unsafe extern "C" {
     pub fn BOPDS_Curve_box_(self_: *const BOPDS_Curve) -> crate::OcctResult<*const Bnd_Box>;
     /// **Source:** `BOPDS_Curve.hxx`:65 - `BOPDS_Curve::ChangeBox()`
     pub fn BOPDS_Curve_change_box(self_: *mut BOPDS_Curve) -> crate::OcctResult<*mut Bnd_Box>;
+    /// **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks()`
+    pub fn BOPDS_Curve_set_pave_blocks(
+        self_: *mut BOPDS_Curve,
+        theLPB: *const NCollection_List_Handle_BOPDS_PaveBlock,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_Curve.hxx`:72 - `BOPDS_Curve::PaveBlocks()`
+    pub fn BOPDS_Curve_pave_blocks(
+        self_: *const BOPDS_Curve,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_Curve.hxx`:77 - `BOPDS_Curve::ChangePaveBlocks()`
+    pub fn BOPDS_Curve_change_pave_blocks(
+        self_: *mut BOPDS_Curve,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_Curve.hxx`:81 - `BOPDS_Curve::InitPaveBlock1()`
     pub fn BOPDS_Curve_init_pave_block1(self_: *mut BOPDS_Curve) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_Curve.hxx`:86 - `BOPDS_Curve::ChangePaveBlock1()`
@@ -9193,6 +9229,16 @@ unsafe extern "C" {
         self_: *const BOPDS_DS,
         theIndex: i32,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `BOPDS_DS.hxx`:168 - `BOPDS_DS::PaveBlocks()`
+    pub fn BOPDS_DS_pave_blocks(
+        self_: *const BOPDS_DS,
+        theIndex: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_DS.hxx`:173 - `BOPDS_DS::ChangePaveBlocks()`
+    pub fn BOPDS_DS_change_pave_blocks(
+        self_: *mut BOPDS_DS,
+        theIndex: i32,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_DS.hxx`:177 - `BOPDS_DS::UpdatePaveBlocks()`
     pub fn BOPDS_DS_update_pave_blocks(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_DS.hxx`:180 - `BOPDS_DS::UpdatePaveBlock()`
@@ -9269,6 +9315,20 @@ unsafe extern "C" {
         self_: *mut BOPDS_DS,
         theFaces: *const NCollection_Map_int,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_DS.hxx`:241 - `BOPDS_DS::FaceInfoOn()`
+    pub fn BOPDS_DS_face_info_on(
+        self_: *mut BOPDS_DS,
+        theIndex: i32,
+        theMPB: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theMVP: *mut NCollection_Map_int,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_DS.hxx`:248 - `BOPDS_DS::FaceInfoIn()`
+    pub fn BOPDS_DS_face_info_in(
+        self_: *mut BOPDS_DS,
+        theIndex: i32,
+        theMPB: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theMVP: *mut NCollection_Map_int,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_DS.hxx`:255 - `BOPDS_DS::AloneVertices()`
     pub fn BOPDS_DS_alone_vertices(
         self_: *const BOPDS_DS,
@@ -9279,6 +9339,16 @@ unsafe extern "C" {
     pub fn BOPDS_DS_refine_face_info_on(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_DS.hxx`:265 - `BOPDS_DS::RefineFaceInfoIn()`
     pub fn BOPDS_DS_refine_face_info_in(self_: *mut BOPDS_DS) -> *const std::ffi::c_char;
+    /// **Source:** `BOPDS_DS.hxx`:274 - `BOPDS_DS::SubShapesOnIn()`
+    pub fn BOPDS_DS_sub_shapes_on_in(
+        self_: *const BOPDS_DS,
+        theFaceIndex1: i32,
+        theFaceIndex2: i32,
+        theMVOnIn: *mut NCollection_Map_int,
+        theMVCommon: *mut NCollection_Map_int,
+        thePBOnIn: *mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock,
+        theCommonPaveBlocks: *mut NCollection_Map_Handle_BOPDS_PaveBlock,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_DS.hxx`:284 - `BOPDS_DS::SharedEdges()`
     pub fn BOPDS_DS_shared_edges(
         self_: *mut BOPDS_DS,
@@ -9445,6 +9515,14 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_FaceInfo.hxx`:58 - `BOPDS_FaceInfo::Index()`
     pub fn BOPDS_FaceInfo_index(self_: *const BOPDS_FaceInfo) -> crate::OcctResult<i32>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:63 - `BOPDS_FaceInfo::PaveBlocksIn()`
+    pub fn BOPDS_FaceInfo_pave_blocks_in(
+        self_: *const BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:69 - `BOPDS_FaceInfo::ChangePaveBlocksIn()`
+    pub fn BOPDS_FaceInfo_change_pave_blocks_in(
+        self_: *mut BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_FaceInfo.hxx`:75 - `BOPDS_FaceInfo::VerticesIn()`
     pub fn BOPDS_FaceInfo_vertices_in(
         self_: *const BOPDS_FaceInfo,
@@ -9453,6 +9531,14 @@ unsafe extern "C" {
     pub fn BOPDS_FaceInfo_change_vertices_in(
         self_: *mut BOPDS_FaceInfo,
     ) -> crate::OcctResult<*mut NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:88 - `BOPDS_FaceInfo::PaveBlocksOn()`
+    pub fn BOPDS_FaceInfo_pave_blocks_on(
+        self_: *const BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:94 - `BOPDS_FaceInfo::ChangePaveBlocksOn()`
+    pub fn BOPDS_FaceInfo_change_pave_blocks_on(
+        self_: *mut BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_FaceInfo.hxx`:100 - `BOPDS_FaceInfo::VerticesOn()`
     pub fn BOPDS_FaceInfo_vertices_on(
         self_: *const BOPDS_FaceInfo,
@@ -9461,6 +9547,14 @@ unsafe extern "C" {
     pub fn BOPDS_FaceInfo_change_vertices_on(
         self_: *mut BOPDS_FaceInfo,
     ) -> crate::OcctResult<*mut NCollection_Map_int>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:113 - `BOPDS_FaceInfo::PaveBlocksSc()`
+    pub fn BOPDS_FaceInfo_pave_blocks_sc(
+        self_: *const BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
+    /// **Source:** `BOPDS_FaceInfo.hxx`:115 - `BOPDS_FaceInfo::ChangePaveBlocksSc()`
+    pub fn BOPDS_FaceInfo_change_pave_blocks_sc(
+        self_: *mut BOPDS_FaceInfo,
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_Handle_BOPDS_PaveBlock>;
     /// **Source:** `BOPDS_FaceInfo.hxx`:120 - `BOPDS_FaceInfo::VerticesSc()`
     pub fn BOPDS_FaceInfo_vertices_sc(
         self_: *const BOPDS_FaceInfo,
@@ -10568,6 +10662,12 @@ unsafe extern "C" {
     pub fn BOPDS_PaveBlock_change_ext_paves(
         self_: *mut BOPDS_PaveBlock,
     ) -> crate::OcctResult<*mut NCollection_List_BOPDS_Pave>;
+    /// **Source:** `BOPDS_PaveBlock.hxx`:136 - `BOPDS_PaveBlock::Update()`
+    pub fn BOPDS_PaveBlock_update(
+        self_: *mut BOPDS_PaveBlock,
+        theLPB: *mut NCollection_List_Handle_BOPDS_PaveBlock,
+        theFlag: bool,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BOPDS_PaveBlock.hxx`:144 - `BOPDS_PaveBlock::ContainsParameter()`
     pub fn BOPDS_PaveBlock_contains_parameter(
         self_: *const BOPDS_PaveBlock,
@@ -15040,6 +15140,19 @@ unsafe extern "C" {
         WL: *const Handle_IntPatch_WLine,
         ifprm: i32,
         ilprm: i32,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `IntTools_WLineTool.hxx`:38 - `IntTools_WLineTool::DecompositionOfWLine()`
+    pub fn IntTools_WLineTool_decomposition_of_w_line(
+        theWLine: *const Handle_IntPatch_WLine,
+        theSurface1: *const Handle_GeomAdaptor_Surface,
+        theSurface2: *const Handle_GeomAdaptor_Surface,
+        theFace1: *const TopoDS_Face,
+        theFace2: *const TopoDS_Face,
+        theLConstructor: *const GeomInt_LineConstructor,
+        theAvoidLConstructor: bool,
+        theTol: f64,
+        theNewLines: *mut NCollection_Sequence_Handle_IntPatch_Line,
+        arg9: *const Handle_IntTools_Context,
     ) -> crate::OcctResult<bool>;
 
     // Free functions

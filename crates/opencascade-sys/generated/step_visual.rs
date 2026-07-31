@@ -321,7 +321,7 @@ impl AnnotationCurveOccurrence {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -337,7 +337,7 @@ impl AnnotationCurveOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrence_inherited_SetStyles(
@@ -348,7 +348,10 @@ impl AnnotationCurveOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrence_inherited_Styles(
@@ -735,7 +738,7 @@ impl AnnotationCurveOccurrenceAndGeomReprItem {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -746,7 +749,7 @@ impl AnnotationCurveOccurrenceAndGeomReprItem {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_SetStyles(self as *mut Self, aStyles)
@@ -754,7 +757,10 @@ impl AnnotationCurveOccurrenceAndGeomReprItem {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_AnnotationCurveOccurrenceAndGeomReprItem_inherited_Styles(self as *const Self)))
         }
@@ -1404,7 +1410,7 @@ impl AnnotationFillAreaOccurrence {
     pub fn init(
         &mut self,
         theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        theStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         theItem: &crate::ffi_types::Handle_Standard_Transient,
         theFillStyleTarget: &crate::ffi_types::Handle_StepGeom_GeometricRepresentationItem,
     ) {
@@ -1543,7 +1549,7 @@ impl AnnotationFillAreaOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillAreaOccurrence_inherited_SetStyles(
@@ -1554,7 +1560,10 @@ impl AnnotationFillAreaOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_AnnotationFillAreaOccurrence_inherited_Styles(self as *const Self)))
         }
@@ -1910,7 +1919,7 @@ impl AnnotationOccurrence {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -1926,7 +1935,7 @@ impl AnnotationOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationOccurrence_inherited_SetStyles(
@@ -1937,7 +1946,10 @@ impl AnnotationOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_AnnotationOccurrence_inherited_Styles(
@@ -2306,7 +2318,7 @@ impl AnnotationPlane {
     pub fn init(
         &mut self,
         theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        theStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         theItem: &crate::ffi_types::Handle_Standard_Transient,
         theElements: &crate::ffi_types::Handle_NCollection_HArray1_StepVisual_AnnotationPlaneElement,
     ) {
@@ -2503,7 +2515,7 @@ impl AnnotationPlane {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlane_inherited_SetStyles(
@@ -2514,7 +2526,10 @@ impl AnnotationPlane {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_AnnotationPlane_inherited_Styles(
@@ -3523,7 +3538,7 @@ impl AnnotationTextOccurrence {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -3539,7 +3554,7 @@ impl AnnotationTextOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_AnnotationTextOccurrence_inherited_SetStyles(
@@ -3550,7 +3565,10 @@ impl AnnotationTextOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_AnnotationTextOccurrence_inherited_Styles(
@@ -8747,7 +8765,7 @@ impl CharacterizedObjAndRepresentationAndDraughtingModel {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -8772,7 +8790,7 @@ impl CharacterizedObjAndRepresentationAndDraughtingModel {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_SetItems(self as *mut Self, aItems)
@@ -8783,7 +8801,7 @@ impl CharacterizedObjAndRepresentationAndDraughtingModel {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel_inherited_Items(self as *const Self)))
@@ -9941,8 +9959,8 @@ impl ComplexTriangulatedFace {
         theHasTessellatedFace_GeometricLink: bool,
         theTessellatedFace_GeometricLink: &FaceOrSurface,
         thePnindex: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
+        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_init(
@@ -10008,9 +10026,8 @@ impl ComplexTriangulatedFace {
     /// Returns field TriangleStrips
     pub fn triangle_strips(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_triangle_strips(
@@ -10024,7 +10041,7 @@ impl ComplexTriangulatedFace {
     /// Sets field TriangleStrips
     pub fn set_triangle_strips(
         &mut self,
-        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_set_triangle_strips(
@@ -10048,9 +10065,8 @@ impl ComplexTriangulatedFace {
     /// Returns field TriangleFans
     pub fn triangle_fans(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_triangle_fans(
@@ -10064,7 +10080,7 @@ impl ComplexTriangulatedFace {
     /// Sets field TriangleFans
     pub fn set_triangle_fans(
         &mut self,
-        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedFace_set_triangle_fans(
@@ -10547,8 +10563,8 @@ impl ComplexTriangulatedSurfaceSet {
         theTessellatedSurfaceSet_Pnmax: i32,
         theTessellatedSurfaceSet_Normals: &crate::ffi_types::Handle_NCollection_HArray2_double,
         thePnindex: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
+        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_init(
@@ -10612,9 +10628,8 @@ impl ComplexTriangulatedSurfaceSet {
     /// Returns field TriangleStrips
     pub fn triangle_strips(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_triangle_strips(self as *const Self)))
         }
@@ -10624,7 +10639,7 @@ impl ComplexTriangulatedSurfaceSet {
     /// Sets field TriangleStrips
     pub fn set_triangle_strips(
         &mut self,
-        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleStrips: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_strips(
@@ -10648,9 +10663,8 @@ impl ComplexTriangulatedSurfaceSet {
     /// Returns field TriangleFans
     pub fn triangle_fans(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_triangle_fans(
@@ -10664,7 +10678,7 @@ impl ComplexTriangulatedSurfaceSet {
     /// Sets field TriangleFans
     pub fn set_triangle_fans(
         &mut self,
-        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
+        theTriangleFans: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ComplexTriangulatedSurfaceSet_set_triangle_fans(
@@ -12150,7 +12164,7 @@ impl ContextDependentOverRidingStyledItem {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
         aOverRiddenStyle: &crate::ffi_types::Handle_StepVisual_StyledItem,
         aStyleContext: &crate::ffi_types::Handle_NCollection_HArray1_StepVisual_StyleContextSelect,
@@ -12310,7 +12324,7 @@ impl ContextDependentOverRidingStyledItem {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentOverRidingStyledItem_inherited_SetStyles(self as *mut Self, aStyles)
@@ -12318,7 +12332,10 @@ impl ContextDependentOverRidingStyledItem {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_ContextDependentOverRidingStyledItem_inherited_Styles(self as *const Self)))
         }
@@ -14157,7 +14174,7 @@ impl CurveStyleFont {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPatternList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
+        aPatternList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFont_init(
@@ -14187,7 +14204,7 @@ impl CurveStyleFont {
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:47 - `StepVisual_CurveStyleFont::SetPatternList()`
     pub fn set_pattern_list(
         &mut self,
-        aPatternList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
+        aPatternList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFont_set_pattern_list(
@@ -14198,7 +14215,11 @@ impl CurveStyleFont {
     }
 
     /// **Source:** `StepVisual_CurveStyleFont.hxx`:52 - `StepVisual_CurveStyleFont::PatternList()`
-    pub fn pattern_list(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern>{
+    pub fn pattern_list(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_CurveStyleFont_pattern_list(
@@ -15183,7 +15204,7 @@ impl DraughtingAnnotationOccurrence {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -15199,7 +15220,7 @@ impl DraughtingAnnotationOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_DraughtingAnnotationOccurrence_inherited_SetStyles(self as *mut Self, aStyles)
@@ -15207,7 +15228,10 @@ impl DraughtingAnnotationOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_DraughtingAnnotationOccurrence_inherited_Styles(self as *const Self)))
         }
@@ -16188,7 +16212,7 @@ impl DraughtingModel {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -16225,7 +16249,7 @@ impl DraughtingModel {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_DraughtingModel_inherited_SetItems(
@@ -16239,7 +16263,7 @@ impl DraughtingModel {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -21155,7 +21179,7 @@ impl MechanicalDesignGeometricPresentationArea {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -21180,7 +21204,7 @@ impl MechanicalDesignGeometricPresentationArea {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationArea_inherited_SetItems(self as *mut Self, aItems)
@@ -21191,7 +21215,7 @@ impl MechanicalDesignGeometricPresentationArea {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationArea_inherited_Items(self as *const Self)))
@@ -21470,7 +21494,7 @@ impl MechanicalDesignGeometricPresentationRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -21495,7 +21519,7 @@ impl MechanicalDesignGeometricPresentationRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -21506,7 +21530,7 @@ impl MechanicalDesignGeometricPresentationRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_MechanicalDesignGeometricPresentationRepresentation_inherited_Items(self as *const Self)))
@@ -22204,7 +22228,7 @@ impl OverRidingStyledItem {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
         aOverRiddenStyle: &crate::ffi_types::Handle_StepVisual_StyledItem,
     ) {
@@ -22340,7 +22364,7 @@ impl OverRidingStyledItem {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_OverRidingStyledItem_inherited_SetStyles(
@@ -22351,7 +22375,10 @@ impl OverRidingStyledItem {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_OverRidingStyledItem_inherited_Styles(
@@ -25225,7 +25252,7 @@ impl PresentationArea {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -25262,7 +25289,7 @@ impl PresentationArea {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_PresentationArea_inherited_SetItems(
@@ -25276,7 +25303,7 @@ impl PresentationArea {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -26219,7 +26246,7 @@ impl PresentationRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -26256,7 +26283,7 @@ impl PresentationRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_PresentationRepresentation_inherited_SetItems(
@@ -26270,7 +26297,7 @@ impl PresentationRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -28490,7 +28517,7 @@ impl PresentationView {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -28527,7 +28554,7 @@ impl PresentationView {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_PresentationView_inherited_SetItems(
@@ -28541,7 +28568,7 @@ impl PresentationView {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -30517,7 +30544,7 @@ impl StyledItem {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -30533,7 +30560,7 @@ impl StyledItem {
     /// **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_StyledItem_set_styles(self as *mut Self, aStyles)
@@ -30541,7 +30568,10 @@ impl StyledItem {
     }
 
     /// **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_StyledItem_styles(
                 self as *const Self,
@@ -35512,7 +35542,7 @@ impl Template {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -35547,7 +35577,7 @@ impl Template {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_Template_inherited_SetItems(
@@ -35561,7 +35591,7 @@ impl Template {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -36237,7 +36267,7 @@ impl TessellatedAnnotationOccurrence {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
         aItem: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
@@ -36253,7 +36283,7 @@ impl TessellatedAnnotationOccurrence {
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:44 - `StepVisual_StyledItem::SetStyles()`
     pub fn set_styles(
         &mut self,
-        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
+        aStyles: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_TessellatedAnnotationOccurrence_inherited_SetStyles(self as *mut Self, aStyles)
@@ -36261,7 +36291,10 @@ impl TessellatedAnnotationOccurrence {
     }
 
     /// Inherited: **Source:** `StepVisual_StyledItem.hxx`:49 - `StepVisual_StyledItem::Styles()`
-    pub fn styles(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment{
+    pub fn styles(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_TessellatedAnnotationOccurrence_inherited_Styles(self as *const Self)))
         }
@@ -40255,7 +40288,7 @@ impl TessellatedShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -40288,7 +40321,7 @@ impl TessellatedShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentation_inherited_SetItems(
@@ -40302,7 +40335,7 @@ impl TessellatedShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentation_inherited_Items(self as *const Self)))
@@ -40535,7 +40568,7 @@ impl TessellatedShapeRepresentationWithAccuracyParameters {
     pub fn init(
         &mut self,
         theRepresentation_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theRepresentation_Items: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theRepresentation_ContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
         theTessellationAccuracyParameters: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
@@ -40688,7 +40721,7 @@ impl TessellatedShapeRepresentationWithAccuracyParameters {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_SetItems(self as *mut Self, aItems)
@@ -40699,7 +40732,7 @@ impl TessellatedShapeRepresentationWithAccuracyParameters {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShapeRepresentationWithAccuracyParameters_inherited_Items(self as *const Self)))
@@ -40917,7 +40950,7 @@ impl TessellatedShell {
     pub fn init(
         &mut self,
         theRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
         theHasTopologicalLink: bool,
         theTopologicalLink: &crate::ffi_types::Handle_StepShape_ConnectedFaceSet,
     ) {
@@ -40934,7 +40967,11 @@ impl TessellatedShell {
 
     /// **Source:** `StepVisual_TessellatedShell.hxx`:47 - `StepVisual_TessellatedShell::Items()`
     /// Returns field Items
-    pub fn items(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem>{
+    pub fn items(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShell_items(self as *const Self),
@@ -40946,7 +40983,7 @@ impl TessellatedShell {
     /// Sets field Items
     pub fn set_items(
         &mut self,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_TessellatedShell_set_items(
@@ -41345,7 +41382,7 @@ impl TessellatedSolid {
     pub fn init(
         &mut self,
         theRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
         theHasGeometricLink: bool,
         theGeometricLink: &crate::ffi_types::Handle_StepShape_ManifoldSolidBrep,
     ) {
@@ -41362,7 +41399,11 @@ impl TessellatedSolid {
 
     /// **Source:** `StepVisual_TessellatedSolid.hxx`:47 - `StepVisual_TessellatedSolid::Items()`
     /// Returns field Items
-    pub fn items(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem>{
+    pub fn items(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSolid_items(self as *const Self),
@@ -41374,7 +41415,7 @@ impl TessellatedSolid {
     /// Sets field Items
     pub fn set_items(
         &mut self,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepVisual_TessellatedSolid_set_items(

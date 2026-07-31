@@ -634,7 +634,7 @@ impl Curve3dElementDescriptor {
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
         aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_init(
@@ -648,7 +648,7 @@ impl Curve3dElementDescriptor {
 
     /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:49 - `StepElement_Curve3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember>{
+    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_purpose(
@@ -662,7 +662,7 @@ impl Curve3dElementDescriptor {
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_set_purpose(
@@ -4724,7 +4724,7 @@ impl ElementMaterial {
         &mut self,
         aMaterialId: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aProperties: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
+        aProperties: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_init(
@@ -4794,7 +4794,11 @@ impl ElementMaterial {
 
     /// **Source:** `StepElement_ElementMaterial.hxx`:57 - `StepElement_ElementMaterial::Properties()`
     /// Returns field Properties
-    pub fn properties(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation>{
+    pub fn properties(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_properties(
@@ -4808,7 +4812,7 @@ impl ElementMaterial {
     /// Set field Properties
     pub fn set_properties(
         &mut self,
-        Properties: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
+        Properties: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_set_properties(
@@ -5726,7 +5730,7 @@ impl Surface3dElementDescriptor {
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
         aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
         aShape: crate::step_element::Element2dShape,
     ) {
         crate::check_void_result(unsafe {
@@ -5742,7 +5746,7 @@ impl Surface3dElementDescriptor {
 
     /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:51 - `StepElement_Surface3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember>{
+    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_purpose(
@@ -5756,7 +5760,7 @@ impl Surface3dElementDescriptor {
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_set_purpose(
@@ -7983,7 +7987,7 @@ impl SurfaceSectionFieldVarying {
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+        aDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
         aAdditionalNodeValues: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -8000,7 +8004,7 @@ impl SurfaceSectionFieldVarying {
     pub fn definitions(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8015,7 +8019,7 @@ impl SurfaceSectionFieldVarying {
     /// Set field Definitions
     pub fn set_definitions(
         &mut self,
-        Definitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+        Definitions: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_set_definitions(
@@ -8674,7 +8678,7 @@ impl Volume3dElementDescriptor {
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
         aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
         aShape: crate::step_element::Volume3dElementShape,
     ) {
         crate::check_void_result(unsafe {
@@ -8690,7 +8694,11 @@ impl Volume3dElementDescriptor {
 
     /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:48 - `StepElement_Volume3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember>{
+    pub fn purpose(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_purpose(
@@ -8704,7 +8712,7 @@ impl Volume3dElementDescriptor {
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_set_purpose(

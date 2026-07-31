@@ -63,12 +63,12 @@ pub fn shapes_handletransfertransientprocess_bool(
 /// Gets the Shapes recorded in a TransientProcess as result of a
 /// Transfer, for a given list of starting entities, returns
 /// the shapes as a HSequence
-pub fn shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(
+pub fn shapes_handletransfertransientprocess_hseq_standard_transient(
     TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
-    list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
 ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(TP, list)))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_shapes_handletransfertransientprocess_hseq_standard_transient(TP, list)))
     }
 }
 /// **Source:** `TransferBRep.hxx`:88 - `TransferBRep::ShapeState`
@@ -145,13 +145,13 @@ pub fn shape_mapper(
 /// Method IsKind applied to the entities in TP is used to
 /// compare with entities in EntityTypes.
 /// TopAbs_ShapeEnum).
-pub fn transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+pub fn transfer_result_info_handletransfertransientprocess_hseq_standard_transient_hseq_transferbrep_transferresultinfo(
     TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
-    EntityTypes: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
+    EntityTypes: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(TP, EntityTypes, InfoSeq)
+        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransfertransientprocess_hseq_standard_transient_hseq_transferbrep_transferresultinfo(TP, EntityTypes, InfoSeq)
     })
 }
 /// **Source:** `TransferBRep.hxx`:132 - `TransferBRep::TransferResultInfo`
@@ -159,13 +159,13 @@ pub fn transfer_result_info_handletransfertransientprocess_handlencollectionhseq
 /// given in the ShapeTypes (which are in fact considered as
 /// TopAbs_ShapeEnum).
 /// The Finders in the FP are considered as ShapeMappers.
-pub fn transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+pub fn transfer_result_info_handletransferfinderprocess_hseq_int_hseq_transferbrep_transferresultinfo(
     FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     ShapeTypes: &crate::ffi_types::Handle_NCollection_HSequence_int,
-    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
+    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(FP, ShapeTypes, InfoSeq)
+        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_hseq_transferbrep_transferresultinfo(FP, ShapeTypes, InfoSeq)
     })
 }
 /// **Source:** `TransferBRep.hxx`:138 - `TransferBRep::PrintResultInfo`
@@ -230,9 +230,7 @@ pub fn result_check_list(
 pub fn checked(
     chl: &crate::interface::CheckIterator,
     alsoshapes: bool,
-) -> crate::OwnedPtr<
-    crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_checked(chl, alsoshapes),
@@ -979,7 +977,7 @@ impl Reader {
     /// Remark : former result is cleared
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -1074,9 +1072,8 @@ impl Reader {
     /// Returns the complete list of produced Transient Results
     pub fn transients(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_transients(self as *const Self),

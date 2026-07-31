@@ -10367,6 +10367,20 @@ unsafe extern "C" {
     pub fn ChFi3d_Builder_builder(
         self_: *const ChFi3d_Builder,
     ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart()`
+    pub fn ChFi3d_Builder_split_k_part(
+        self_: *mut ChFi3d_Builder,
+        Data: *const Handle_ChFiDS_SurfData,
+        SetData: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Spine: *const Handle_ChFiDS_Spine,
+        Iedge: i32,
+        S1: *const Handle_Adaptor3d_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_Adaptor3d_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        Intf: *mut bool,
+        Intl: *mut bool,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_Builder_perform_two_cornerby_inter(
         self_: *mut ChFi3d_Builder,
@@ -10572,6 +10586,124 @@ unsafe extern "C" {
         RecRst2: bool,
         Soldep: *const math_Vector,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:225 - `ChFi3d_ChBuilder::PerformSurf()`
+    pub fn ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(
+        self_: *mut ChFi3d_ChBuilder,
+        Data: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
+        Choix: i32,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: *mut f64,
+        Last: *mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecOnS1: bool,
+        RecOnS2: bool,
+        Soldep: *const math_Vector,
+        Intf: *mut i32,
+        Intl: *mut i32,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:250 - `ChFi3d_ChBuilder::PerformSurf()`
+    pub fn ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(
+        self_: *mut ChFi3d_ChBuilder,
+        Data: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
+        Choix: i32,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        PC1: *const Handle_BRepAdaptor_Curve2d,
+        Sref1: *const Handle_BRepAdaptor_Surface,
+        PCref1: *const Handle_BRepAdaptor_Curve2d,
+        Decroch1: *mut bool,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        Or2: i32,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: *mut f64,
+        Last: *mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: *const math_Vector,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:279 - `ChFi3d_ChBuilder::PerformSurf()`
+    pub fn ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(
+        self_: *mut ChFi3d_ChBuilder,
+        Data: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
+        Choix: i32,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        Or1: i32,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        PC2: *const Handle_BRepAdaptor_Curve2d,
+        Sref2: *const Handle_BRepAdaptor_Surface,
+        PCref2: *const Handle_BRepAdaptor_Curve2d,
+        Decroch2: *mut bool,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: *mut f64,
+        Last: *mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP: bool,
+        RecS: bool,
+        RecRst: bool,
+        Soldep: *const math_Vector,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:308 - `ChFi3d_ChBuilder::PerformSurf()`
+    pub fn ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(
+        self_: *mut ChFi3d_ChBuilder,
+        Data: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
+        Choix: i32,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        PC1: *const Handle_BRepAdaptor_Curve2d,
+        Sref1: *const Handle_BRepAdaptor_Surface,
+        PCref1: *const Handle_BRepAdaptor_Curve2d,
+        Decroch1: *mut bool,
+        Or1: i32,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        PC2: *const Handle_BRepAdaptor_Curve2d,
+        Sref2: *const Handle_BRepAdaptor_Surface,
+        PCref2: *const Handle_BRepAdaptor_Curve2d,
+        Decroch2: *mut bool,
+        Or2: i32,
+        MaxStep: f64,
+        Fleche: f64,
+        TolGuide: f64,
+        First: *mut f64,
+        Last: *mut f64,
+        Inside: bool,
+        Appro: bool,
+        Forward: bool,
+        RecP1: bool,
+        RecRst1: bool,
+        RecP2: bool,
+        RecRst2: bool,
+        Soldep: *const math_Vector,
+    ) -> *const std::ffi::c_char;
     /// Upcast ChFi3d_ChBuilder to ChFi3d_Builder
     pub fn ChFi3d_ChBuilder_as_ChFi3d_Builder(
         self_: *const ChFi3d_ChBuilder,
@@ -10714,6 +10846,20 @@ unsafe extern "C" {
     pub fn ChFi3d_ChBuilder_inherited_Builder(
         self_: *const ChFi3d_ChBuilder,
     ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart()`
+    pub fn ChFi3d_ChBuilder_inherited_SplitKPart(
+        self_: *mut ChFi3d_ChBuilder,
+        Data: *const Handle_ChFiDS_SurfData,
+        SetData: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Spine: *const Handle_ChFiDS_Spine,
+        Iedge: i32,
+        S1: *const Handle_Adaptor3d_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_Adaptor3d_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        Intf: *mut bool,
+        Intl: *mut bool,
+    ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut ChFi3d_ChBuilder,
@@ -10993,6 +11139,20 @@ unsafe extern "C" {
     pub fn ChFi3d_FilBuilder_inherited_Builder(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart()`
+    pub fn ChFi3d_FilBuilder_inherited_SplitKPart(
+        self_: *mut ChFi3d_FilBuilder,
+        Data: *const Handle_ChFiDS_SurfData,
+        SetData: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Spine: *const Handle_ChFiDS_Spine,
+        Iedge: i32,
+        S1: *const Handle_Adaptor3d_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_Adaptor3d_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        Intf: *mut bool,
+        Intl: *mut bool,
+    ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut ChFi3d_FilBuilder,
@@ -11202,6 +11362,14 @@ unsafe extern "C" {
         self_: *const ChFiDS_ChamfSpine,
         IE: i32,
     ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn ChFiDS_ChamfSpine_inherited_ChangeElSpines(
+        self_: *mut ChFiDS_ChamfSpine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(
+        self_: *mut ChFiDS_ChamfSpine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn ChFiDS_ChamfSpine_inherited_Reset(
         self_: *mut ChFiDS_ChamfSpine,
@@ -12153,6 +12321,14 @@ unsafe extern "C" {
         self_: *const ChFiDS_FilSpine,
         IE: i32,
     ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn ChFiDS_FilSpine_inherited_ChangeElSpines(
+        self_: *mut ChFiDS_FilSpine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(
+        self_: *mut ChFiDS_FilSpine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
     pub fn ChFiDS_FilSpine_inherited_SplitDone(
         self_: *const ChFiDS_FilSpine,
@@ -12515,6 +12691,14 @@ unsafe extern "C" {
         self_: *const ChFiDS_Spine,
         W: f64,
     ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// **Source:** `ChFiDS_Spine.hxx`:112 - `ChFiDS_Spine::ChangeElSpines()`
+    pub fn ChFiDS_Spine_change_el_spines(
+        self_: *mut ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
+    /// **Source:** `ChFiDS_Spine.hxx`:114 - `ChFiDS_Spine::ChangeOffsetElSpines()`
+    pub fn ChFiDS_Spine_change_offset_el_spines(
+        self_: *mut ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut NCollection_List_Handle_ChFiDS_ElSpine>;
     /// **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn ChFiDS_Spine_reset(self_: *mut ChFiDS_Spine, AllData: bool) -> *const std::ffi::c_char;
     /// **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
@@ -12803,7 +12987,7 @@ unsafe extern "C" {
     /// **Source:** `ChFiDS_Stripe.hxx`:42 - `ChFiDS_Stripe::SetOfSurfData()`
     pub fn ChFiDS_Stripe_set_of_surf_data(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData>;
+    ) -> crate::OcctResult<*const Handle_NCollection_HSequence_Handle_ChFiDS_SurfData>;
     /// **Source:** `ChFiDS_Stripe.hxx`:44 - `ChFiDS_Stripe::Spine()`
     pub fn ChFiDS_Stripe_spine(
         self_: *const ChFiDS_Stripe,
@@ -12821,7 +13005,7 @@ unsafe extern "C" {
     /// **Source:** `ChFiDS_Stripe.hxx`:52 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
     pub fn ChFiDS_Stripe_change_set_of_surf_data(
         self_: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_ChFiDS_SurfData>;
     /// **Source:** `ChFiDS_Stripe.hxx`:54 - `ChFiDS_Stripe::ChangeSpine()`
     pub fn ChFiDS_Stripe_change_spine(
         self_: *mut ChFiDS_Stripe,
@@ -13111,6 +13295,16 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `ChFiDS_StripeMap.hxx`:43 - `ChFiDS_StripeMap::Extent()`
     pub fn ChFiDS_StripeMap_extent(self_: *const ChFiDS_StripeMap) -> crate::OcctResult<i32>;
+    /// **Source:** `ChFiDS_StripeMap.hxx`:45 - `ChFiDS_StripeMap::FindFromKey()`
+    pub fn ChFiDS_StripeMap_find_from_key(
+        self_: *const ChFiDS_StripeMap,
+        V: *const TopoDS_Vertex,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_ChFiDS_Stripe>;
+    /// **Source:** `ChFiDS_StripeMap.hxx`:53 - `ChFiDS_StripeMap::FindFromIndex()`
+    pub fn ChFiDS_StripeMap_find_from_index(
+        self_: *const ChFiDS_StripeMap,
+        I: i32,
+    ) -> crate::OcctResult<*const NCollection_List_Handle_ChFiDS_Stripe>;
     /// **Source:** `ChFiDS_StripeMap.hxx`:61 - `ChFiDS_StripeMap::FindKey()`
     pub fn ChFiDS_StripeMap_find_key(
         self_: *const ChFiDS_StripeMap,
@@ -13898,6 +14092,20 @@ unsafe extern "C" {
     pub fn FilletSurf_InternalBuilder_inherited_Builder(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart()`
+    pub fn FilletSurf_InternalBuilder_inherited_SplitKPart(
+        self_: *mut FilletSurf_InternalBuilder,
+        Data: *const Handle_ChFiDS_SurfData,
+        SetData: *mut NCollection_Sequence_Handle_ChFiDS_SurfData,
+        Spine: *const Handle_ChFiDS_Spine,
+        Iedge: i32,
+        S1: *const Handle_Adaptor3d_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        S2: *const Handle_Adaptor3d_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        Intf: *mut bool,
+        Intl: *mut bool,
+    ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut FilletSurf_InternalBuilder,

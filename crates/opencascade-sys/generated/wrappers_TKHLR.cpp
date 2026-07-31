@@ -5,7 +5,6 @@
 
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_HVertex.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <Bnd_BoundSortBox.hxx>
@@ -27,14 +26,11 @@
 #include <Contap_TheSearch.hxx>
 #include <Contap_TheSearchInside.hxx>
 #include <Contap_TheSegmentOfTheSearch.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Line.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <GeomAbs_SurfaceType.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <HLRAlgo.hxx>
 #include <HLRAlgo_Coincidence.hxx>
 #include <HLRAlgo_EdgeIterator.hxx>
@@ -42,10 +38,7 @@
 #include <HLRAlgo_EdgesBlock.hxx>
 #include <HLRAlgo_Intersection.hxx>
 #include <HLRAlgo_PolyAlgo.hxx>
-#include <HLRAlgo_PolyData.hxx>
 #include <HLRAlgo_PolyInternalData.hxx>
-#include <HLRAlgo_PolyInternalNode.hxx>
-#include <HLRAlgo_PolyShellData.hxx>
 #include <HLRAlgo_Projector.hxx>
 #include <HLRAlgo_WiresBlock.hxx>
 #include <HLRAppli_ReflectLines.hxx>
@@ -1876,6 +1869,14 @@ extern "C" const char* HLRAlgo_PolyAlgo_init(HLRAlgo_PolyAlgo* self_, int32_t th
     try { self_->Init(theNbShells); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_Array1_Handle_HLRAlgo_PolyShellData const*> HLRAlgo_PolyAlgo_poly_shell(const HLRAlgo_PolyAlgo* self_) {
+    try { return {&(self_->PolyShell()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Handle_HLRAlgo_PolyShellData*> HLRAlgo_PolyAlgo_change_poly_shell(HLRAlgo_PolyAlgo* self_) {
+    try { return {&(self_->ChangePolyShell()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* HLRAlgo_PolyAlgo_clear(HLRAlgo_PolyAlgo* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2150,6 +2151,18 @@ extern "C" OcctResult<HLRAlgo_PolyInternalData*> HLRAlgo_PolyInternalData_ctor_i
     try { return {new HLRAlgo_PolyInternalData(nbNod, nbTri), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* HLRAlgo_PolyInternalData_update_links_arr1_triangledata_arr1_polyinternalsegment_arr1_hlralgo_polyinternalnode(HLRAlgo_PolyInternalData* self_, NCollection_Array1_HLRAlgo_TriangleData* theTData, NCollection_Array1_HLRAlgo_PolyInternalSegment* thePISeg, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode* thePINod) {
+    try { self_->UpdateLinks(*theTData, *thePISeg, *thePINod); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> HLRAlgo_PolyInternalData_add_node(HLRAlgo_PolyInternalData* self_, HLRAlgo_PolyInternalNode::NodeData* theNod1RValues, HLRAlgo_PolyInternalNode::NodeData* theNod2RValues, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod1, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod2, double theCoef1, double theX3, double theY3, double theZ3) {
+    try { return {self_->AddNode(*theNod1RValues, *theNod2RValues, *thePINod1, *thePINod2, theCoef1, theX3, theY3, theZ3), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HLRAlgo_PolyInternalData_update_links_int3_arr1_triangledataptr2_arr1_polyinternalsegmentptr2_arr1_hlralgo_polyinternalnodeptr2(HLRAlgo_PolyInternalData* self_, int32_t theIp1, int32_t theIp2, int32_t theIp3, NCollection_Array1_HLRAlgo_TriangleData** theTData1, NCollection_Array1_HLRAlgo_TriangleData** theTData2, NCollection_Array1_HLRAlgo_PolyInternalSegment** thePISeg1, NCollection_Array1_HLRAlgo_PolyInternalSegment** thePISeg2, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod1, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod2) {
+    try { self_->UpdateLinks(theIp1, theIp2, theIp3, *theTData1, *theTData2, *thePISeg1, *thePISeg2, *thePINod1, *thePINod2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* HLRAlgo_PolyInternalData_dump(const HLRAlgo_PolyInternalData* self_) {
     try { self_->Dump(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2160,6 +2173,10 @@ extern "C" const char* HLRAlgo_PolyInternalData_inc_t_data(HLRAlgo_PolyInternalD
 }
 extern "C" const char* HLRAlgo_PolyInternalData_inc_pi_seg(HLRAlgo_PolyInternalData* self_, NCollection_Array1_HLRAlgo_PolyInternalSegment** PISeg1, NCollection_Array1_HLRAlgo_PolyInternalSegment** PISeg2) {
     try { self_->IncPISeg(*PISeg1, *PISeg2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HLRAlgo_PolyInternalData_inc_pi_nod(HLRAlgo_PolyInternalData* self_, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod1, NCollection_Array1_Handle_HLRAlgo_PolyInternalNode** thePINod2) {
+    try { self_->IncPINod(*thePINod1, *thePINod2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* HLRAlgo_PolyInternalData_dec_t_data(HLRAlgo_PolyInternalData* self_) {
@@ -2208,6 +2225,10 @@ extern "C" OcctResult<NCollection_Array1_HLRAlgo_TriangleData*> HLRAlgo_PolyInte
 }
 extern "C" OcctResult<NCollection_Array1_HLRAlgo_PolyInternalSegment*> HLRAlgo_PolyInternalData_pi_seg(HLRAlgo_PolyInternalData* self_) {
     try { return {&(self_->PISeg()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Handle_HLRAlgo_PolyInternalNode*> HLRAlgo_PolyInternalData_pi_nod(HLRAlgo_PolyInternalData* self_) {
+    try { return {&(self_->PINod()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> HLRAlgo_PolyInternalData_dynamic_type(const HLRAlgo_PolyInternalData* self_) {
@@ -2382,6 +2403,14 @@ extern "C" const char* HLRAlgo_PolyShellData_update_hiding(HLRAlgo_PolyShellData
 }
 extern "C" OcctResult<bool> HLRAlgo_PolyShellData_hiding(const HLRAlgo_PolyShellData* self_) {
     try { return {self_->Hiding(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Handle_HLRAlgo_PolyData*> HLRAlgo_PolyShellData_poly_data(HLRAlgo_PolyShellData* self_) {
+    try { return {&(self_->PolyData()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Handle_HLRAlgo_PolyData*> HLRAlgo_PolyShellData_hiding_poly_data(HLRAlgo_PolyShellData* self_) {
+    try { return {&(self_->HidingPolyData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<NCollection_List_HLRAlgo_BiPoint*> HLRAlgo_PolyShellData_edges(HLRAlgo_PolyShellData* self_) {

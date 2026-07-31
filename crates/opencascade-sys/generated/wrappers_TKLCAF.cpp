@@ -23,8 +23,6 @@
 #include <Standard_Type.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
 #include <TDF.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_AttributeDelta.hxx>
 #include <TDF_AttributeIterator.hxx>
 #include <TDF_ChildIDIterator.hxx>
 #include <TDF_ChildIterator.hxx>
@@ -37,7 +35,6 @@
 #include <TDF_DataSet.hxx>
 #include <TDF_DefaultDeltaOnModification.hxx>
 #include <TDF_DefaultDeltaOnRemoval.hxx>
-#include <TDF_Delta.hxx>
 #include <TDF_DeltaOnAddition.hxx>
 #include <TDF_DeltaOnForget.hxx>
 #include <TDF_DeltaOnModification.hxx>
@@ -107,10 +104,8 @@
 #include <TDataXtd_Triangulation.hxx>
 #include <TDocStd.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_ApplicationDelta.hxx>
 #include <TDocStd_CompoundDelta.hxx>
 #include <TDocStd_Context.hxx>
-#include <TDocStd_Document.hxx>
 #include <TDocStd_FormatVersion.hxx>
 #include <TDocStd_Modified.hxx>
 #include <TDocStd_MultiTransactionManager.hxx>
@@ -131,7 +126,6 @@
 #include <TFunction_Scope.hxx>
 #include <TNaming_DeltaOnModification.hxx>
 #include <TNaming_DeltaOnRemoval.hxx>
-#include <TNaming_NamedShape.hxx>
 #include <TNaming_Naming.hxx>
 #include <TNaming_UsedShapes.hxx>
 #include <TObj_Application.hxx>
@@ -171,7 +165,6 @@
 #include <XCAFDoc_ShapeTool.hxx>
 #include <XCAFDoc_View.hxx>
 #include <XCAFDoc_ViewTool.hxx>
-#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
 #include <XCAFDoc_Volume.hxx>
 
@@ -932,6 +925,10 @@ extern "C" OcctResult<TCollection_AsciiString*> AppStdL_Application_inherited_Ve
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> AppStdL_Application_inherited_MetaDataLookUpTable(AppStdL_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> AppStdL_Application_inherited_IsInstance(const AppStdL_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1109,6 +1106,10 @@ extern "C" const char* TDF_Attribute_references(const TDF_Attribute* self_, Hand
 extern "C" OcctResult<Standard_OStream*> TDF_Attribute_dump(TDF_Attribute* self_, Standard_OStream* anOS) {
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TDF_Attribute_extended_dump(const TDF_Attribute* self_, Standard_OStream* anOS, TDF_IDFilter const* aFilter, NCollection_IndexedMap_Handle_TDF_Attribute* aMap) {
+    try { self_->ExtendedDump(*anOS, *aFilter, *aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDF_Attribute_forget(TDF_Attribute* self_, int32_t aTransaction) {
     try { self_->Forget(aTransaction); return nullptr; }
@@ -2234,6 +2235,10 @@ extern "C" const char* TDF_ClosureTool_closure_handletdfdataset_idfilter_closure
     try { TDF_ClosureTool::Closure(*aDataSet, *aFilter, *aMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDF_ClosureTool_closure_label_map_label_map_tdf_attribute_idfilter_closuremode(TDF_Label const* aLabel, NCollection_Map_TDF_Label* aLabMap, NCollection_Map_Handle_TDF_Attribute* anAttMap, TDF_IDFilter const* aFilter, TDF_ClosureMode const* aMode) {
+    try { TDF_ClosureTool::Closure(*aLabel, *aLabMap, *anAttMap, *aFilter, *aMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void TDF_ClosureTool_destructor(TDF_ClosureTool* self_) { delete self_; }
 
 // ========================
@@ -2297,6 +2302,14 @@ extern "C" OcctResult<bool> TDF_CopyLabel_is_done(const TDF_CopyLabel* self_) {
 extern "C" OcctResult<Handle(TDF_RelocationTable) const*> TDF_CopyLabel_relocation_table(const TDF_CopyLabel* self_) {
     try { return {&(self_->RelocationTable()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TDF_CopyLabel_external_references_label_map_tdf_attribute_idfilter(TDF_Label const* Lab, NCollection_Map_Handle_TDF_Attribute* aExternals, TDF_IDFilter const* aFilter) {
+    try { return {TDF_CopyLabel::ExternalReferences(*Lab, *aExternals, *aFilter), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TDF_CopyLabel_external_references_label2_map_tdf_attribute_idfilter_handletdfdataset(TDF_Label const* aRefLab, TDF_Label const* Lab, NCollection_Map_Handle_TDF_Attribute* aExternals, TDF_IDFilter const* aFilter, Handle(TDF_DataSet)* aDataSet) {
+    try { TDF_CopyLabel::ExternalReferences(*aRefLab, *Lab, *aExternals, *aFilter, *aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TDF_CopyLabel_destructor(TDF_CopyLabel* self_) { delete self_; }
 
@@ -2484,6 +2497,10 @@ extern "C" const char* TDF_DataSet_add_attribute(TDF_DataSet* self_, Handle(TDF_
 }
 extern "C" OcctResult<bool> TDF_DataSet_contains_attribute(const TDF_DataSet* self_, Handle(TDF_Attribute) const* anAttribute) {
     try { return {self_->ContainsAttribute(*anAttribute), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Map_Handle_TDF_Attribute*> TDF_DataSet_attributes(TDF_DataSet* self_) {
+    try { return {&(self_->Attributes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDF_DataSet_add_root(TDF_DataSet* self_, TDF_Label const* aLabel) {
@@ -2781,6 +2798,10 @@ extern "C" OcctResult<int32_t> TDF_Delta_end_time(const TDF_Delta* self_) {
 extern "C" const char* TDF_Delta_labels(const TDF_Delta* self_, NCollection_List_TDF_Label* aLabelList) {
     try { self_->Labels(*aLabelList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_TDF_AttributeDelta const*> TDF_Delta_attribute_deltas(const TDF_Delta* self_) {
+    try { return {&(self_->AttributeDeltas()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* TDF_Delta_set_name(TDF_Delta* self_, TCollection_ExtendedString const* theName) {
     try { self_->SetName(*theName); return nullptr; }
@@ -3388,6 +3409,10 @@ extern "C" OcctResult<TCollection_AsciiString const*> TDF_DerivedAttribute_type_
     try { return {&(TDF_DerivedAttribute::TypeName(theType)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDF_DerivedAttribute_attributes(NCollection_List_Handle_TDF_Attribute* theList) {
+    try { TDF_DerivedAttribute::Attributes(*theList); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" void TDF_DerivedAttribute_destructor(TDF_DerivedAttribute* self_) { delete self_; }
 
 // ========================
@@ -3596,6 +3621,10 @@ extern "C" OcctResult<Standard_OStream*> TDF_Label_dump(TDF_Label* self_, Standa
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDF_Label_extended_dump(const TDF_Label* self_, Standard_OStream* anOS, TDF_IDFilter const* aFilter, NCollection_IndexedMap_Handle_TDF_Attribute* aMap) {
+    try { self_->ExtendedDump(*anOS, *aFilter, *aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDF_Label_entry_dump(const TDF_Label* self_, Standard_OStream* anOS) {
     try { self_->EntryDump(*anOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3798,6 +3827,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDF_Reference_inherited_Delta
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDF_Reference_inherited_ExtendedDump(const TDF_Reference* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDF_Reference_inherited_Forget(TDF_Reference* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3888,8 +3921,20 @@ extern "C" const char* TDF_RelocationTable_target_label_map(const TDF_Relocation
     try { self_->TargetLabelMap(*aLabelMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDF_RelocationTable_target_attribute_map(const TDF_RelocationTable* self_, NCollection_Map_Handle_TDF_Attribute* anAttributeMap) {
+    try { self_->TargetAttributeMap(*anAttributeMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<NCollection_DataMap_TDF_Label_TDF_Label*> TDF_RelocationTable_label_table(TDF_RelocationTable* self_) {
     try { return {&(self_->LabelTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute*> TDF_RelocationTable_attribute_table(TDF_RelocationTable* self_) {
+    try { return {&(self_->AttributeTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient*> TDF_RelocationTable_transient_table(TDF_RelocationTable* self_) {
+    try { return {&(self_->TransientTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_OStream*> TDF_RelocationTable_dump(TDF_RelocationTable* self_, bool dumpLabels, bool dumpAttributes, bool dumpTransients, Standard_OStream* anOS) {
@@ -4160,6 +4205,10 @@ extern "C" const char* TDF_TagSource_inherited_References(const TDF_TagSource* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDF_TagSource_inherited_ExtendedDump(const TDF_TagSource* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDF_TagSource_inherited_Forget(TDF_TagSource* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4221,6 +4270,22 @@ extern "C" OcctResult<bool> TDF_Tool_is_self_contained_label(TDF_Label const* aL
 extern "C" OcctResult<bool> TDF_Tool_is_self_contained_label_idfilter(TDF_Label const* aLabel, TDF_IDFilter const* aFilter) {
     try { return {TDF_Tool::IsSelfContained(*aLabel, *aFilter), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TDF_Tool_out_referers_label_map_tdf_attribute(TDF_Label const* theLabel, NCollection_Map_Handle_TDF_Attribute* theAtts) {
+    try { TDF_Tool::OutReferers(*theLabel, *theAtts); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDF_Tool_out_referers_label_idfilter2_map_tdf_attribute(TDF_Label const* aLabel, TDF_IDFilter const* aFilterForReferers, TDF_IDFilter const* aFilterForReferences, NCollection_Map_Handle_TDF_Attribute* atts) {
+    try { TDF_Tool::OutReferers(*aLabel, *aFilterForReferers, *aFilterForReferences, *atts); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDF_Tool_out_references_label_map_tdf_attribute(TDF_Label const* aLabel, NCollection_Map_Handle_TDF_Attribute* atts) {
+    try { TDF_Tool::OutReferences(*aLabel, *atts); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDF_Tool_out_references_label_idfilter2_map_tdf_attribute(TDF_Label const* aLabel, TDF_IDFilter const* aFilterForReferers, TDF_IDFilter const* aFilterForReferences, NCollection_Map_Handle_TDF_Attribute* atts) {
+    try { TDF_Tool::OutReferences(*aLabel, *aFilterForReferers, *aFilterForReferences, *atts); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDF_Tool_relocate_label(TDF_Label const* aSourceLabel, TDF_Label const* fromRoot, TDF_Label const* toRoot, TDF_Label* aTargetLabel, bool create) {
     try { TDF_Tool::RelocateLabel(*aSourceLabel, *fromRoot, *toRoot, *aTargetLabel, create); return nullptr; }
@@ -4530,6 +4595,10 @@ extern "C" const char* TDataStd_AsciiString_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_AsciiString_inherited_ExtendedDump(const TDataStd_AsciiString* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_AsciiString_inherited_Forget(TDataStd_AsciiString* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4782,6 +4851,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_BooleanArray_inherit
 }
 extern "C" const char* TDataStd_BooleanArray_inherited_References(const TDataStd_BooleanArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_BooleanArray_inherited_ExtendedDump(const TDataStd_BooleanArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_BooleanArray_inherited_Forget(TDataStd_BooleanArray* self, int32_t aTransaction) {
@@ -5058,6 +5131,10 @@ extern "C" const char* TDataStd_BooleanList_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_BooleanList_inherited_ExtendedDump(const TDataStd_BooleanList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_BooleanList_inherited_Forget(TDataStd_BooleanList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5318,6 +5395,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ByteArray_inherited_
 }
 extern "C" const char* TDataStd_ByteArray_inherited_References(const TDataStd_ByteArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_ByteArray_inherited_ExtendedDump(const TDataStd_ByteArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_ByteArray_inherited_Forget(TDataStd_ByteArray* self, int32_t aTransaction) {
@@ -5598,6 +5679,10 @@ extern "C" const char* TDataStd_Comment_inherited_References(const TDataStd_Comm
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_Comment_inherited_ExtendedDump(const TDataStd_Comment* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_Comment_inherited_Forget(TDataStd_Comment* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5834,6 +5919,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Current_inherited_De
 }
 extern "C" const char* TDataStd_Current_inherited_References(const TDataStd_Current* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Current_inherited_ExtendedDump(const TDataStd_Current* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Current_inherited_Forget(TDataStd_Current* self, int32_t aTransaction) {
@@ -6556,6 +6645,10 @@ extern "C" const char* TDataStd_Directory_inherited_References(const TDataStd_Di
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_Directory_inherited_ExtendedDump(const TDataStd_Directory* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_Directory_inherited_Forget(TDataStd_Directory* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6612,6 +6705,10 @@ extern "C" const char* TDataStd_Expression_set_expression(TDataStd_Expression* s
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Expression_get_expression(const TDataStd_Expression* self_) {
     try { return {&(self_->GetExpression()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TDF_Attribute*> TDataStd_Expression_get_variables(TDataStd_Expression* self_) {
+    try { return {&(self_->GetVariables()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_GUID const*> TDataStd_Expression_id(const TDataStd_Expression* self_) {
@@ -6796,6 +6893,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Expression_inherited
 }
 extern "C" const char* TDataStd_Expression_inherited_References(const TDataStd_Expression* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Expression_inherited_ExtendedDump(const TDataStd_Expression* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Expression_inherited_Forget(TDataStd_Expression* self, int32_t aTransaction) {
@@ -7066,6 +7167,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ExtStringArray_inher
 }
 extern "C" const char* TDataStd_ExtStringArray_inherited_References(const TDataStd_ExtStringArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_ExtStringArray_inherited_ExtendedDump(const TDataStd_ExtStringArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_ExtStringArray_inherited_Forget(TDataStd_ExtStringArray* self, int32_t aTransaction) {
@@ -7352,6 +7457,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ExtStringList_inheri
 }
 extern "C" const char* TDataStd_ExtStringList_inherited_References(const TDataStd_ExtStringList* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_ExtStringList_inherited_ExtendedDump(const TDataStd_ExtStringList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_ExtStringList_inherited_Forget(TDataStd_ExtStringList* self, int32_t aTransaction) {
@@ -7716,6 +7825,10 @@ extern "C" const char* TDataStd_GenericEmpty_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_GenericEmpty_inherited_ExtendedDump(const TDataStd_GenericEmpty* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_GenericEmpty_inherited_Forget(TDataStd_GenericEmpty* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7942,6 +8055,10 @@ extern "C" const char* TDataStd_GenericExtString_inherited_References(const TDat
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_GenericExtString_inherited_ExtendedDump(const TDataStd_GenericExtString* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_GenericExtString_inherited_Forget(TDataStd_GenericExtString* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8064,8 +8181,20 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> TDataStd_HData
     try { return {new TDataStd_HDataMapOfStringHArray1OfInteger(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> TDataStd_HDataMapOfStringHArray1OfInteger_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_int(NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int const* theOther) {
+    try { return {new TDataStd_HDataMapOfStringHArray1OfInteger(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(const TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int const*> TDataStd_HDataMapOfStringHArray1OfInteger_map(const TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
+    try { return {&(self_->Map()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int*> TDataStd_HDataMapOfStringHArray1OfInteger_change_map(TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
+    try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> TDataStd_HDataMapOfStringHArray1OfInteger_get_type_name() {
@@ -8132,8 +8261,20 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> TDataStd_HDataMap
     try { return {new TDataStd_HDataMapOfStringHArray1OfReal(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> TDataStd_HDataMapOfStringHArray1OfReal_ctor_datamap_tcollection_extendedstring_occ_handle_ncollection_harray1_double(NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double const* theOther) {
+    try { return {new TDataStd_HDataMapOfStringHArray1OfReal(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(const TDataStd_HDataMapOfStringHArray1OfReal* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double const*> TDataStd_HDataMapOfStringHArray1OfReal_map(const TDataStd_HDataMapOfStringHArray1OfReal* self_) {
+    try { return {&(self_->Map()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double*> TDataStd_HDataMapOfStringHArray1OfReal_change_map(TDataStd_HDataMapOfStringHArray1OfReal* self_) {
+    try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> TDataStd_HDataMapOfStringHArray1OfReal_get_type_name() {
@@ -8668,6 +8809,10 @@ extern "C" const char* TDataStd_IntPackedMap_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_IntPackedMap_inherited_ExtendedDump(const TDataStd_IntPackedMap* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_IntPackedMap_inherited_Forget(TDataStd_IntPackedMap* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8908,6 +9053,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Integer_inherited_De
 }
 extern "C" const char* TDataStd_Integer_inherited_References(const TDataStd_Integer* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Integer_inherited_ExtendedDump(const TDataStd_Integer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Integer_inherited_Forget(TDataStd_Integer* self, int32_t aTransaction) {
@@ -9178,6 +9327,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_IntegerArray_inherit
 }
 extern "C" const char* TDataStd_IntegerArray_inherited_References(const TDataStd_IntegerArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_IntegerArray_inherited_ExtendedDump(const TDataStd_IntegerArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_IntegerArray_inherited_Forget(TDataStd_IntegerArray* self, int32_t aTransaction) {
@@ -9466,6 +9619,10 @@ extern "C" const char* TDataStd_IntegerList_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_IntegerList_inherited_ExtendedDump(const TDataStd_IntegerList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_IntegerList_inherited_Forget(TDataStd_IntegerList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9710,6 +9867,10 @@ extern "C" const char* TDataStd_Name_inherited_References(const TDataStd_Name* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_Name_inherited_ExtendedDump(const TDataStd_Name* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_Name_inherited_Forget(TDataStd_Name* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9868,6 +10029,14 @@ extern "C" const char* TDataStd_NamedData_set_array_of_integers(TDataStd_NamedDa
     try { self_->SetArrayOfIntegers(*theName, *theArrayOfIntegers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int const*> TDataStd_NamedData_get_arrays_of_integers_container(TDataStd_NamedData* self_) {
+    try { return {&(self_->GetArraysOfIntegersContainer()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TDataStd_NamedData_change_arrays_of_integers(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int const* theArraysOfIntegers) {
+    try { self_->ChangeArraysOfIntegers(*theArraysOfIntegers); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> TDataStd_NamedData_has_arrays_of_reals(const TDataStd_NamedData* self_) {
     try { return {self_->HasArraysOfReals(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9882,6 +10051,14 @@ extern "C" OcctResult<Handle(NCollection_HArray1_double) const*> TDataStd_NamedD
 }
 extern "C" const char* TDataStd_NamedData_set_array_of_reals(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(NCollection_HArray1_double) const* theArrayOfReals) {
     try { self_->SetArrayOfReals(*theName, *theArrayOfReals); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double const*> TDataStd_NamedData_get_arrays_of_reals_container(TDataStd_NamedData* self_) {
+    try { return {&(self_->GetArraysOfRealsContainer()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* TDataStd_NamedData_change_arrays_of_reals(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double const* theArraysOfReals) {
+    try { self_->ChangeArraysOfReals(*theArraysOfReals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_NamedData_clear(TDataStd_NamedData* self_) {
@@ -10102,6 +10279,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_NamedData_inherited_
 }
 extern "C" const char* TDataStd_NamedData_inherited_References(const TDataStd_NamedData* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_NamedData_inherited_ExtendedDump(const TDataStd_NamedData* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_NamedData_inherited_Forget(TDataStd_NamedData* self, int32_t aTransaction) {
@@ -10342,6 +10523,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_NoteBook_inherited_D
 }
 extern "C" const char* TDataStd_NoteBook_inherited_References(const TDataStd_NoteBook* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_NoteBook_inherited_ExtendedDump(const TDataStd_NoteBook* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_NoteBook_inherited_Forget(TDataStd_NoteBook* self, int32_t aTransaction) {
@@ -10600,6 +10785,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Real_inherited_Delta
 }
 extern "C" const char* TDataStd_Real_inherited_References(const TDataStd_Real* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Real_inherited_ExtendedDump(const TDataStd_Real* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Real_inherited_Forget(TDataStd_Real* self, int32_t aTransaction) {
@@ -10870,6 +11059,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_RealArray_inherited_
 }
 extern "C" const char* TDataStd_RealArray_inherited_References(const TDataStd_RealArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_RealArray_inherited_ExtendedDump(const TDataStd_RealArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_RealArray_inherited_Forget(TDataStd_RealArray* self, int32_t aTransaction) {
@@ -11158,6 +11351,10 @@ extern "C" const char* TDataStd_RealList_inherited_References(const TDataStd_Rea
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDataStd_RealList_inherited_ExtendedDump(const TDataStd_RealList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_RealList_inherited_Forget(TDataStd_RealList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11419,6 +11616,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TDataStd_ReferenceArray_
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ReferenceArray_inherited_DeltaOnRemoval(const TDataStd_ReferenceArray* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TDataStd_ReferenceArray_inherited_ExtendedDump(const TDataStd_ReferenceArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_ReferenceArray_inherited_Forget(TDataStd_ReferenceArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -11706,6 +11907,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ReferenceList_inheri
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDataStd_ReferenceList_inherited_ExtendedDump(const TDataStd_ReferenceList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_ReferenceList_inherited_Forget(TDataStd_ReferenceList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11830,6 +12035,10 @@ extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Relation_inher
     try { return {&(self->GetExpression()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_TDF_Attribute*> TDataStd_Relation_inherited_GetVariables(TDataStd_Relation* self) {
+    try { return {&(self->GetVariables()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TDataStd_Relation_inherited_Restore(TDataStd_Relation* self, Handle(TDF_Attribute) const& With) {
     try { self->Restore(With); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11952,6 +12161,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Relation_inherited_D
 }
 extern "C" const char* TDataStd_Relation_inherited_References(const TDataStd_Relation* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Relation_inherited_ExtendedDump(const TDataStd_Relation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Relation_inherited_Forget(TDataStd_Relation* self, int32_t aTransaction) {
@@ -12180,6 +12393,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Tick_inherited_Delta
 }
 extern "C" const char* TDataStd_Tick_inherited_References(const TDataStd_Tick* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDataStd_Tick_inherited_ExtendedDump(const TDataStd_Tick* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Tick_inherited_Forget(TDataStd_Tick* self, int32_t aTransaction) {
@@ -12532,6 +12749,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_TreeNode_inherited_D
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDataStd_TreeNode_inherited_ExtendedDump(const TDataStd_TreeNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_TreeNode_inherited_Forget(TDataStd_TreeNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12749,6 +12970,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TDataStd_UAttribute_inhe
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_UAttribute_inherited_DeltaOnRemoval(const TDataStd_UAttribute* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TDataStd_UAttribute_inherited_ExtendedDump(const TDataStd_UAttribute* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_UAttribute_inherited_Forget(TDataStd_UAttribute* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -13032,6 +13257,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Variable_inherited_D
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TDataStd_Variable_inherited_ExtendedDump(const TDataStd_Variable* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDataStd_Variable_inherited_Forget(TDataStd_Variable* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -13308,6 +13537,10 @@ extern "C" OcctResult<TCollection_AsciiString*> TDocStd_Application_inherited_Ve
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> TDocStd_Application_inherited_MetaDataLookUpTable(TDocStd_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TDocStd_Application_inherited_IsInstance(const TDocStd_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13344,6 +13577,10 @@ extern "C" void TDocStd_Application_destructor(TDocStd_Application* self_) { del
 
 extern "C" OcctResult<TDocStd_ApplicationDelta*> TDocStd_ApplicationDelta_ctor() {
     try { return {new TDocStd_ApplicationDelta(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_TDocStd_Document*> TDocStd_ApplicationDelta_get_documents(TDocStd_ApplicationDelta* self_) {
+    try { return {&(self_->GetDocuments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> TDocStd_ApplicationDelta_get_name(const TDocStd_ApplicationDelta* self_) {
@@ -13481,6 +13718,10 @@ extern "C" OcctResult<int32_t> TDocStd_CompoundDelta_inherited_EndTime(const TDo
 extern "C" const char* TDocStd_CompoundDelta_inherited_Labels(const TDocStd_CompoundDelta* self, NCollection_List_TDF_Label& aLabelList) {
     try { self->Labels(aLabelList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_List_Handle_TDF_AttributeDelta const*> TDocStd_CompoundDelta_inherited_AttributeDeltas(const TDocStd_CompoundDelta* self) {
+    try { return {&(self->AttributeDeltas()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString*> TDocStd_CompoundDelta_inherited_Name(const TDocStd_CompoundDelta* self) {
     try { return {new TCollection_ExtendedString(self->Name()), nullptr}; }
@@ -13664,6 +13905,14 @@ extern "C" OcctResult<int32_t> TDocStd_Document_get_available_redos(const TDocSt
 }
 extern "C" OcctResult<bool> TDocStd_Document_redo(TDocStd_Document* self_) {
     try { return {self_->Redo(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TDF_Delta const*> TDocStd_Document_get_undos(const TDocStd_Document* self_) {
+    try { return {&(self_->GetUndos()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_TDF_Delta const*> TDocStd_Document_get_redos(const TDocStd_Document* self_) {
+    try { return {&(self_->GetRedos()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_Document_remove_first_undo(TDocStd_Document* self_) {
@@ -14268,6 +14517,10 @@ extern "C" const char* TDocStd_Modified_inherited_References(const TDocStd_Modif
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDocStd_Modified_inherited_ExtendedDump(const TDocStd_Modified* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDocStd_Modified_inherited_Forget(TDocStd_Modified* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14326,6 +14579,14 @@ extern "C" const char* TDocStd_MultiTransactionManager_redo(TDocStd_MultiTransac
     try { self_->Redo(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_TDocStd_ApplicationDelta const*> TDocStd_MultiTransactionManager_get_available_undos(const TDocStd_MultiTransactionManager* self_) {
+    try { return {&(self_->GetAvailableUndos()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_TDocStd_ApplicationDelta const*> TDocStd_MultiTransactionManager_get_available_redos(const TDocStd_MultiTransactionManager* self_) {
+    try { return {&(self_->GetAvailableRedos()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TDocStd_MultiTransactionManager_open_command(TDocStd_MultiTransactionManager* self_) {
     try { self_->OpenCommand(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14361,6 +14622,10 @@ extern "C" const char* TDocStd_MultiTransactionManager_add_document(TDocStd_Mult
 extern "C" const char* TDocStd_MultiTransactionManager_remove_document(TDocStd_MultiTransactionManager* self_, Handle(TDocStd_Document) const* theDoc) {
     try { self_->RemoveDocument(*theDoc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_TDocStd_Document const*> TDocStd_MultiTransactionManager_documents(const TDocStd_MultiTransactionManager* self_) {
+    try { return {&(self_->Documents()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_MultiTransactionManager_set_nested_transaction_mode(TDocStd_MultiTransactionManager* self_, bool isAllowed) {
     try { self_->SetNestedTransactionMode(isAllowed); return nullptr; }
@@ -14654,6 +14919,10 @@ extern "C" const char* TDocStd_Owner_inherited_References(const TDocStd_Owner* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDocStd_Owner_inherited_ExtendedDump(const TDocStd_Owner* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDocStd_Owner_inherited_Forget(TDocStd_Owner* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14934,6 +15203,10 @@ extern "C" const char* TDocStd_XLink_inherited_References(const TDocStd_XLink* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TDocStd_XLink_inherited_ExtendedDump(const TDocStd_XLink* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TDocStd_XLink_inherited_Forget(TDocStd_XLink* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -15188,6 +15461,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDocStd_XLinkRoot_inherited_D
 }
 extern "C" const char* TDocStd_XLinkRoot_inherited_References(const TDocStd_XLinkRoot* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TDocStd_XLinkRoot_inherited_ExtendedDump(const TDocStd_XLinkRoot* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDocStd_XLinkRoot_inherited_Forget(TDocStd_XLinkRoot* self, int32_t aTransaction) {
@@ -15654,6 +15931,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TFunction_Function_inherited_
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* TFunction_Function_inherited_ExtendedDump(const TFunction_Function* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TFunction_Function_inherited_Forget(TFunction_Function* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -15931,6 +16212,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TFunction_GraphNode_inhe
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TFunction_GraphNode_inherited_DeltaOnRemoval(const TFunction_GraphNode* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* TFunction_GraphNode_inherited_ExtendedDump(const TFunction_GraphNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TFunction_GraphNode_inherited_Forget(TFunction_GraphNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -16338,6 +16623,10 @@ extern "C" const char* TFunction_Logbook_inherited_References(const TFunction_Lo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TFunction_Logbook_inherited_ExtendedDump(const TFunction_Logbook* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TFunction_Logbook_inherited_Forget(TFunction_Logbook* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -16610,6 +16899,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TFunction_Scope_inherited_Del
 }
 extern "C" const char* TFunction_Scope_inherited_References(const TFunction_Scope* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TFunction_Scope_inherited_ExtendedDump(const TFunction_Scope* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TFunction_Scope_inherited_Forget(TFunction_Scope* self, int32_t aTransaction) {

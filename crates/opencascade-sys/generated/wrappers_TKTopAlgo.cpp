@@ -6,7 +6,6 @@
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_HVertex.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <AppParCurves_Constraint.hxx>
 #include <AppParCurves_MultiBSpCurve.hxx>
@@ -178,7 +177,6 @@
 #include <GeomAbs_SurfaceType.hxx>
 #include <GeomAdaptor_Curve.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_Plane.hxx>
 #include <IntCurveSurface_IntersectionPoint.hxx>
 #include <IntCurveSurface_TransitionOnCurve.hxx>
@@ -192,13 +190,10 @@
 #include <IntSurf_Quadric.hxx>
 #include <MAT2d_BiInt.hxx>
 #include <MAT2d_Circuit.hxx>
-#include <MAT2d_Connexion.hxx>
 #include <MAT2d_CutCurve.hxx>
 #include <MAT2d_Mat2d.hxx>
 #include <MAT2d_MiniPath.hxx>
 #include <MAT2d_Tool2d.hxx>
-#include <MAT_Arc.hxx>
-#include <MAT_BasicElt.hxx>
 #include <MAT_Bisector.hxx>
 #include <MAT_Edge.hxx>
 #include <MAT_Graph.hxx>
@@ -211,7 +206,6 @@
 #include <MAT_Zone.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Poly_Connect.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Select3D_BndBox3d.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
@@ -8972,6 +8966,10 @@ extern "C" const char* BRepMAT2d_Explorer_next(BRepMAT2d_Explorer* self_) {
     try { self_->Next(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom2d_Curve const*> BRepMAT2d_Explorer_contour(const BRepMAT2d_Explorer* self_, int32_t IndexContour) {
+    try { return {&(self_->Contour(IndexContour)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> BRepMAT2d_Explorer_is_modified(const BRepMAT2d_Explorer* self_, TopoDS_Shape const* aShape) {
     try { return {self_->IsModified(*aShape), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11578,6 +11576,10 @@ extern "C" const char* MAT_Graph_compact_nodes(MAT_Graph* self_) {
     try { self_->CompactNodes(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* MAT_Graph_change_basic_elts(MAT_Graph* self_, NCollection_DataMap_int_Handle_MAT_BasicElt const* NewMap) {
+    try { self_->ChangeBasicElts(*NewMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> MAT_Graph_dynamic_type(const MAT_Graph* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11981,6 +11983,14 @@ extern "C" OcctResult<int32_t> MAT_Node_geom_index(const MAT_Node* self_) {
 extern "C" OcctResult<int32_t> MAT_Node_index(const MAT_Node* self_) {
     try { return {self_->Index(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* MAT_Node_linked_arcs(const MAT_Node* self_, NCollection_Sequence_Handle_MAT_Arc* S) {
+    try { self_->LinkedArcs(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* MAT_Node_near_elts(const MAT_Node* self_, NCollection_Sequence_Handle_MAT_BasicElt* S) {
+    try { self_->NearElts(*S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> MAT_Node_distance(const MAT_Node* self_) {
     try { return {self_->Distance(), nullptr}; }
@@ -12736,8 +12746,16 @@ extern "C" const char* MAT2d_MiniPath_run_on_connexions(MAT2d_MiniPath* self_) {
     try { self_->RunOnConnexions(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_MAT2d_Connexion const*> MAT2d_MiniPath_path(const MAT2d_MiniPath* self_) {
+    try { return {&(self_->Path()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> MAT2d_MiniPath_is_connexions_from(const MAT2d_MiniPath* self_, int32_t Index) {
     try { return {self_->IsConnexionsFrom(Index), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_MAT2d_Connexion*> MAT2d_MiniPath_connexions_from(MAT2d_MiniPath* self_, int32_t Index) {
+    try { return {&(self_->ConnexionsFrom(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> MAT2d_MiniPath_is_root(const MAT2d_MiniPath* self_, int32_t Index) {

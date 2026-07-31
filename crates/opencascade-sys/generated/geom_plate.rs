@@ -207,9 +207,9 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
@@ -220,7 +220,7 @@ impl BuildPlateSurface {
         Anisotropie: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_ctor_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_ctor_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie)))
         }
     }
 
@@ -305,9 +305,9 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
@@ -316,7 +316,9 @@ impl BuildPlateSurface {
         TolAng: f64,
         TolCurv: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -330,9 +332,9 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real3(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real3(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
@@ -340,7 +342,9 @@ impl BuildPlateSurface {
         Tol3d: f64,
         TolAng: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, 0.1, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, 0.1, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -354,16 +358,18 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real2(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real2(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
         Tol3d: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, 0.01, 0.1, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, 0.01, 0.1, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -377,15 +383,17 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, 0.0001, 0.01, 0.1, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, 0.0001, 0.01, 0.1, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -399,14 +407,16 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
         NbIter: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, 0.00001, 0.0001, 0.01, 0.1, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, NbIter, 0.00001, 0.0001, 0.01, 0.1, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:69 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -420,13 +430,15 @@ impl BuildPlateSurface {
     /// are identical in the parametric space of the initial surface Tol3d is used to test if two
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises ConstructionError;
-    pub fn new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int(
+    pub fn new_harr1_int_harr1_adaptor3d_curve_harr1_int_int(
         NPoints: &crate::ffi_types::Handle_NCollection_HArray1_int,
-        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
+        TabCurve: &crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
         Tang: &crate::ffi_types::Handle_NCollection_HArray1_int,
         Degree: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false)
+        Self::new_harr1_int_harr1_adaptor3d_curve_harr1_int_int2_real4_bool(
+            NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false,
+        )
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:81 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
@@ -990,8 +1002,7 @@ impl BuildPlateSurface {
     /// correspond to the curve constraints set in Add.
     pub fn curves2d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>
-    {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_curves2d(

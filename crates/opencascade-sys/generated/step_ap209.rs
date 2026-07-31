@@ -164,7 +164,11 @@ impl Construct {
     }
 
     /// **Source:** `StepAP209_Construct.hxx`:84 - `StepAP209_Construct::GetElementMaterial()`
-    pub fn get_element_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial>{
+    pub fn get_element_material(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_element_material(
@@ -175,7 +179,11 @@ impl Construct {
     }
 
     /// **Source:** `StepAP209_Construct.hxx`:88 - `StepAP209_Construct::GetElemGeomRelat()`
-    pub fn get_elem_geom_relat(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship>{
+    pub fn get_elem_geom_relat(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elem_geom_relat(
@@ -186,7 +194,12 @@ impl Construct {
     }
 
     /// **Source:** `StepAP209_Construct.hxx`:91 - `StepAP209_Construct::GetElements1D()`
-    pub fn get_elements1_d(&self, theFeaModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
+    pub fn get_elements1_d(
+        &self,
+        theFeaModel: &crate::ffi_types::Handle_StepFEA_FeaModel,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements1_d(
@@ -198,7 +211,12 @@ impl Construct {
     }
 
     /// **Source:** `StepAP209_Construct.hxx`:94 - `StepAP209_Construct::GetElements2D()`
-    pub fn get_elements2_d(&self, theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
+    pub fn get_elements2_d(
+        &self,
+        theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements2_d(
@@ -210,7 +228,12 @@ impl Construct {
     }
 
     /// **Source:** `StepAP209_Construct.hxx`:97 - `StepAP209_Construct::GetElements3D()`
-    pub fn get_elements3_d(&self, theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
+    pub fn get_elements3_d(
+        &self,
+        theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements3_d(
@@ -224,7 +247,7 @@ impl Construct {
     /// **Source:** `StepAP209_Construct.hxx`:103 - `StepAP209_Construct::GetCurElemSection()`
     /// Getting list of curve_element_section_definitions
     /// for given element_representation
-    pub fn get_cur_elem_section(&self, ElemRepr: &crate::ffi_types::Handle_StepFEA_Curve3dElementRepresentation) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition>{
+    pub fn get_cur_elem_section(&self, ElemRepr: &crate::ffi_types::Handle_StepFEA_Curve3dElementRepresentation) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_cur_elem_section(

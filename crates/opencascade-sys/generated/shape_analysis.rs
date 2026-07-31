@@ -2707,7 +2707,11 @@ impl FreeBoundsProperties {
 
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:116 - `ShapeAnalysis_FreeBoundsProperties::ClosedFreeBounds()`
     /// Returns all closed free bounds
-    pub fn closed_free_bounds(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData>{
+    pub fn closed_free_bounds(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_closed_free_bounds(self as *const Self)))
         }
@@ -2715,7 +2719,11 @@ impl FreeBoundsProperties {
 
     /// **Source:** `ShapeAnalysis_FreeBoundsProperties.hxx`:120 - `ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds()`
     /// Returns all open free bounds
-    pub fn open_free_bounds(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData>{
+    pub fn open_free_bounds(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeAnalysis_FreeBoundsProperties_open_free_bounds(

@@ -9344,6 +9344,27 @@ impl Gordon {
         }
     }
 
+    /// **Source:** `GeomFill_Gordon.hxx`:130 - `GeomFill_Gordon::Init()`
+    /// Initializes the algorithm with profile and guide curves.
+    /// @param[in] theProfiles  array of profile curves (V-direction sections, must be >= 2)
+    /// @param[in] theGuides    array of guide curves (U-direction sections, must be >= 2)
+    /// @param[in] theTolerance geometric tolerance for intersection detection
+    pub fn init(
+        &mut self,
+        theProfiles: &crate::ffi_types::NCollection_Array1_Handle_Geom_Curve,
+        theGuides: &crate::ffi_types::NCollection_Array1_Handle_Geom_Curve,
+        theTolerance: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Gordon_init(
+                self as *mut Self,
+                theProfiles,
+                theGuides,
+                theTolerance,
+            )
+        })
+    }
+
     /// **Source:** `GeomFill_Gordon.hxx`:135 - `GeomFill_Gordon::Perform()`
     /// Performs the Gordon surface construction.
     pub fn perform(&mut self) {
@@ -9448,15 +9469,6 @@ impl Gordon {
         }
     }
 }
-
-// ── Skipped symbols for Gordon (1 total) ──
-// SKIPPED: **Source:** `GeomFill_Gordon.hxx`:130 - `GeomFill_Gordon::Init`
-//   method: Initializes the algorithm with profile and guide curves.
-//   method: @param[in] theProfiles  array of profile curves (V-direction sections, must be >= 2)
-//   method: @param[in] theGuides    array of guide curves (U-direction sections, must be >= 2)
-//   Reason: has unbindable types: param 'theProfiles': unresolved template type (NCollection_Array1<occ::handle<Geom_Curve>> const&); param 'theGuides': unresolved template type (NCollection_Array1<occ::handle<Geom_Curve>> const&)
-//   // pub fn init(&mut self, theProfiles: /* NCollection_Array1<occ::handle<Geom_Curve>> const& */, theGuides: /* NCollection_Array1<occ::handle<Geom_Curve>> const& */, theTolerance: f64);
-//
 
 /// **Source:** `GeomFill_Gordon.hxx`:111 - `GeomFill_Gordon_BuildReport`
 /// Diagnostics for the last Perform() call.
@@ -12760,6 +12772,85 @@ unsafe impl crate::CppDeletable for NSections {
 }
 
 impl NSections {
+    /// **Source:** `GeomFill_NSections.hxx`:42 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves.
+    pub fn new_seq_geom_curve(
+        NC: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_seq_geom_curve(NC),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:45 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    pub fn new_seq_geom_curve_seq_double(
+        NC: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+        NP: &crate::ffi_types::NCollection_Sequence_double,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_seq_geom_curve_seq_double(
+                    NC, NP,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:50 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    pub fn new_seq_geom_curve_seq_double_real2(
+        NC: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+        NP: &crate::ffi_types::NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_seq_geom_curve_seq_double_real2(NC, NP, UF, UL)))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:58 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    /// VF and VL are the parametric bounds of the path
+    pub fn new_seq_geom_curve_seq_double_real4(
+        NC: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+        NP: &crate::ffi_types::NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_seq_geom_curve_seq_double_real4(NC, NP, UF, UL, VF, VL)))
+        }
+    }
+
+    /// **Source:** `GeomFill_NSections.hxx`:70 - `GeomFill_NSections::GeomFill_NSections()`
+    /// Make a SectionLaw with N Curves and N associated parameters.
+    /// UF and UL are the parametric bounds of the NSections
+    /// VF and VL are the parametric bounds of the path
+    /// UF and UL are the parametric bounds of the NSections
+    /// Surf is a reference surface used by BRepFill_NSections
+    pub fn new_seq_geom_curve_seq_trsf_seq_double_real4_handlegeombsplinesurface(
+        NC: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+        Trsfs: &crate::ffi_types::NCollection_Sequence_gp_Trsf,
+        NP: &crate::ffi_types::NCollection_Sequence_double,
+        UF: f64,
+        UL: f64,
+        VF: f64,
+        VL: f64,
+        Surf: &crate::ffi_types::Handle_Geom_BSplineSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_seq_geom_curve_seq_trsf_seq_double_real4_handlegeombsplinesurface(NC, Trsfs, NP, UF, UL, VF, VL, Surf)))
+        }
+    }
+
     /// **Source:** `GeomFill_NSections.hxx`:80 - `GeomFill_NSections::D0()`
     /// compute the section for v = param
     pub fn d0(
@@ -13332,38 +13423,6 @@ impl Handle_GeomFill_NSections {
     }
 }
 
-// ── Skipped symbols for NSections (5 total) ──
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:42 - `GeomFill_NSections::GeomFill_NSections`
-//   constructor: Make a SectionLaw with N Curves.
-//   Reason: has unbindable types: param 'NC': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_curve>>(NC: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:45 - `GeomFill_NSections::GeomFill_NSections`
-//   constructor: Make a SectionLaw with N Curves and N associated parameters.
-//   Reason: has unbindable types: param 'NC': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_curve>>_seq_double(NC: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */, NP: &Sequence_double) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:50 - `GeomFill_NSections::GeomFill_NSections`
-//   constructor: Make a SectionLaw with N Curves and N associated parameters.
-//   constructor: UF and UL are the parametric bounds of the NSections
-//   Reason: has unbindable types: param 'NC': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_curve>>_seq_double_real2(NC: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */, NP: &Sequence_double, UF: f64, UL: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:58 - `GeomFill_NSections::GeomFill_NSections`
-//   constructor: Make a SectionLaw with N Curves and N associated parameters.
-//   constructor: UF and UL are the parametric bounds of the NSections
-//   constructor: VF and VL are the parametric bounds of the path
-//   Reason: has unbindable types: param 'NC': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_curve>>_seq_double_real4(NC: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */, NP: &Sequence_double, UF: f64, UL: f64, VF: f64, VL: f64) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomFill_NSections.hxx`:70 - `GeomFill_NSections::GeomFill_NSections`
-//   constructor: Make a SectionLaw with N Curves and N associated parameters.
-//   constructor: UF and UL are the parametric bounds of the NSections
-//   constructor: VF and VL are the parametric bounds of the path
-//   Reason: has unbindable types: param 'NC': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_curve>>_seq_trsf_seq_double_real4_handlegeombsplinesurface(NC: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */, Trsfs: &Sequence_gp_Trsf, NP: &Sequence_double, UF: f64, UL: f64, VF: f64, VL: f64, Surf: &HandleBSplineSurface) -> OwnedPtr<Self>;
-//
-
 // ========================
 // From GeomFill_NetworkSurface.hxx
 // ========================
@@ -13414,6 +13473,45 @@ impl NetworkSurface {
         }
     }
 
+    /// **Source:** `GeomFill_NetworkSurface.hxx`:85 - `GeomFill_NetworkSurface::Init()`
+    /// Initializes the algorithm with a compatible profile/guide B-spline network.
+    /// @param[in] theProfiles          profile curves evaluated in U direction
+    /// @param[in] theGuides            guide curves evaluated in V direction
+    /// @param[in] theProfileParameters V parameters locating profiles on guide skin
+    /// @param[in] theGuideParameters   U parameters locating guides on profile skin
+    /// @param[in] theIntersectionPoints validated profile/guide contact grid
+    /// @param[in] theIntersectionWeights rational weights for the contact grid
+    /// @param[in] theTolerance         geometric tolerance for closed-seam checks
+    /// @param[in] theIsUClosed         indicates that first/last guide curves close the U seam
+    /// @param[in] theIsVClosed         indicates that first/last profile curves close the V seam
+    pub fn init(
+        &mut self,
+        theProfiles: &crate::ffi_types::NCollection_Array1_Handle_Geom_BSplineCurve,
+        theGuides: &crate::ffi_types::NCollection_Array1_Handle_Geom_BSplineCurve,
+        theProfileParameters: &crate::ffi_types::NCollection_Array1_double,
+        theGuideParameters: &crate::ffi_types::NCollection_Array1_double,
+        theIntersectionPoints: &crate::ffi_types::NCollection_Array2_gp_Pnt,
+        theIntersectionWeights: &crate::ffi_types::NCollection_Array2_double,
+        theTolerance: f64,
+        theIsUClosed: bool,
+        theIsVClosed: bool,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NetworkSurface_init(
+                self as *mut Self,
+                theProfiles,
+                theGuides,
+                theProfileParameters,
+                theGuideParameters,
+                theIntersectionPoints,
+                theIntersectionWeights,
+                theTolerance,
+                theIsUClosed,
+                theIsVClosed,
+            )
+        })
+    }
+
     /// **Source:** `GeomFill_NetworkSurface.hxx`:96 - `GeomFill_NetworkSurface::Perform()`
     /// Performs the pole-based network surface construction.
     pub fn perform(&mut self) {
@@ -13453,15 +13551,6 @@ impl NetworkSurface {
         }
     }
 }
-
-// ── Skipped symbols for NetworkSurface (1 total) ──
-// SKIPPED: **Source:** `GeomFill_NetworkSurface.hxx`:85 - `GeomFill_NetworkSurface::Init`
-//   method: Initializes the algorithm with a compatible profile/guide B-spline network.
-//   method: @param[in] theProfiles          profile curves evaluated in U direction
-//   method: @param[in] theGuides            guide curves evaluated in V direction
-//   Reason: has unbindable types: param 'theProfiles': unresolved template type (NCollection_Array1<occ::handle<Geom_BSplineCurve>> const&); param 'theGuides': unresolved template type (NCollection_Array1<occ::handle<Geom_BSplineCurve>> const&)
-//   // pub fn init(&mut self, theProfiles: /* NCollection_Array1<occ::handle<Geom_BSplineCurve>> const& */, theGuides: /* NCollection_Array1<occ::handle<Geom_BSplineCurve>> const& */, theProfileParameters: &Array1_double, theGuideParameters: &Array1_double, theIntersectionPoints: &Array2_gp_Pnt, theIntersectionWeights: &Array2_double, theTolerance: f64, theIsUClosed: bool, theIsVClosed: bool);
-//
 
 // ========================
 // From GeomFill_Pipe.hxx
@@ -13620,6 +13709,22 @@ impl Pipe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve3(
                     Path, FirstSect, LastSect,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GeomFill_Pipe.hxx`:128 - `GeomFill_Pipe::GeomFill_Pipe()`
+    /// Create a pipe with N sections
+    /// The section evaluate from First to Last Section
+    pub fn new_handlegeomcurve_seq_geom_curve(
+        Path: &crate::ffi_types::Handle_Geom_Curve,
+        NSections: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve_seq_geom_curve(
+                    Path, NSections,
                 ),
             ))
         }
@@ -13786,6 +13891,21 @@ impl Pipe {
                 Path,
                 FirstSect,
                 LastSect,
+            )
+        })
+    }
+
+    /// **Source:** `GeomFill_Pipe.hxx`:207 - `GeomFill_Pipe::Init()`
+    pub fn init_handlegeomcurve_seq_geom_curve(
+        &mut self,
+        Path: &crate::ffi_types::Handle_Geom_Curve,
+        NSections: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve_seq_geom_curve(
+                self as *mut Self,
+                Path,
+                NSections,
             )
         })
     }
@@ -13961,18 +14081,6 @@ impl Pipe {
         .unwrap()
     }
 }
-
-// ── Skipped symbols for Pipe (2 total) ──
-// SKIPPED: **Source:** `GeomFill_Pipe.hxx`:128 - `GeomFill_Pipe::GeomFill_Pipe`
-//   constructor: Create a pipe with N sections
-//   constructor: The section evaluate from First to Last Section
-//   Reason: has unbindable types: param 'NSections': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn new_handlegeomcurve_curve>>(Path: &HandleCurve, NSections: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `GeomFill_Pipe.hxx`:207 - `GeomFill_Pipe::Init`
-//   Reason: has unbindable types: param 'NSections': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn init(&mut self, Path: &HandleCurve, NSections: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */);
-//
 
 // ========================
 // From GeomFill_PlanFunc.hxx

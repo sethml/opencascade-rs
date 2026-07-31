@@ -12,14 +12,12 @@
 #include <PCDM_Writer.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
 #include <TopTools_LocationSet.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlDrivers_DocumentStorageDriver.hxx>
 #include <XmlLDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
-#include <XmlMDF_ADriver.hxx>
 #include <XmlMDF_ADriverTable.hxx>
 #include <XmlMXCAFDoc.hxx>
 #include <XmlMXCAFDoc_AssemblyItemRefDriver.hxx>

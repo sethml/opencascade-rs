@@ -5130,6 +5130,12 @@ unsafe extern "C" {
         theName: *const std::ffi::c_char,
         theLocation: *mut gp_Trsf,
     ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Group.hxx`:143 - `VrmlData_Group::Shape()`
+    pub fn VrmlData_Group_shape(
+        self_: *mut VrmlData_Group,
+        theShape: *mut TopoDS_Shape,
+        pMapApp: *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::DynamicType()`
     pub fn VrmlData_Group_dynamic_type(
         self_: *const VrmlData_Group,
@@ -6520,6 +6526,11 @@ unsafe extern "C" {
         theName: *const std::ffi::c_char,
         theLocation: *mut gp_Trsf,
     ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Scene.hxx`:181 - `VrmlData_Scene::GetShape()`
+    pub fn VrmlData_Scene_get_shape(
+        self_: *mut VrmlData_Scene,
+        M: *mut NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    ) -> crate::OcctResult<*mut TopoDS_Shape>;
     /// **Source:** `VrmlData_Scene.hxx`:186 - `VrmlData_Scene::WorldInfo()`
     pub fn VrmlData_Scene_world_info(
         self_: *const VrmlData_Scene,

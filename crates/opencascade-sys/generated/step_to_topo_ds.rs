@@ -918,6 +918,31 @@ impl NMTool {
         }
     }
 
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:42 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool()`
+    pub fn new_dmap_steprepr_representationitem_shape_dmap_asciistring_shape(
+        MapOfRI: &crate::ffi_types::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        MapOfRINames: &crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepToTopoDS_NMTool_ctor_dmap_steprepr_representationitem_shape_dmap_asciistring_shape(MapOfRI, MapOfRINames)))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_NMTool.hxx`:46 - `StepToTopoDS_NMTool::Init()`
+    pub fn init(
+        &mut self,
+        MapOfRI: &crate::ffi_types::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+        MapOfRINames: &crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_NMTool_init(
+                self as *mut Self,
+                MapOfRI,
+                MapOfRINames,
+            )
+        })
+    }
+
     /// **Source:** `StepToTopoDS_NMTool.hxx`:50 - `StepToTopoDS_NMTool::SetActive()`
     pub fn set_active(&mut self, isActive: bool) {
         crate::check_void_result(unsafe {
@@ -1075,16 +1100,6 @@ impl NMTool {
     }
 }
 
-// ── Skipped symbols for NMTool (2 total) ──
-// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:42 - `StepToTopoDS_NMTool::StepToTopoDS_NMTool`
-//   Reason: has unbindable types: param 'MapOfRI': unresolved template type (NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> const&)
-//   // pub fn new_representationitem>, topods_shape>_dmap_asciistring_shape(MapOfRI: /* NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> const& */, MapOfRINames: &DataMap_TCollection_AsciiString_TopoDS_Shape) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StepToTopoDS_NMTool.hxx`:46 - `StepToTopoDS_NMTool::Init`
-//   Reason: has unbindable types: param 'MapOfRI': unresolved template type (NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> const&)
-//   // pub fn init(&mut self, MapOfRI: /* NCollection_DataMap<occ::handle<StepRepr_RepresentationItem>, TopoDS_Shape> const& */, MapOfRINames: &DataMap_TCollection_AsciiString_TopoDS_Shape);
-//
-
 // ========================
 // From StepToTopoDS_PointPair.hxx
 // ========================
@@ -1215,6 +1230,27 @@ impl Tool {
                 crate::ffi_extern_TKDESTEP::StepToTopoDS_Tool_ctor(),
             ))
         }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:52 - `StepToTopoDS_Tool::StepToTopoDS_Tool()`
+    pub fn new_dmap_stepshape_topologicalrepresentationitem_shape_handletransfertransientprocess(
+        Map: &crate::ffi_types::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepToTopoDS_Tool_ctor_dmap_stepshape_topologicalrepresentationitem_shape_handletransfertransientprocess(Map, TP)))
+        }
+    }
+
+    /// **Source:** `StepToTopoDS_Tool.hxx`:57 - `StepToTopoDS_Tool::Init()`
+    pub fn init(
+        &mut self,
+        Map: &crate::ffi_types::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+        TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepToTopoDS_Tool_init(self as *mut Self, Map, TP)
+        })
     }
 
     /// **Source:** `StepToTopoDS_Tool.hxx`:62 - `StepToTopoDS_Tool::IsBound()`
@@ -1470,16 +1506,6 @@ impl Tool {
         })
     }
 }
-
-// ── Skipped symbols for Tool (2 total) ──
-// SKIPPED: **Source:** `StepToTopoDS_Tool.hxx`:52 - `StepToTopoDS_Tool::StepToTopoDS_Tool`
-//   Reason: has unbindable types: param 'Map': unresolved template type (NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> const&)
-//   // pub fn new_topologicalrepresentationitem>, topods_shape>_handletransfertransientprocess(Map: /* NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> const& */, TP: &HandleTransientProcess) -> OwnedPtr<Self>;
-//
-// SKIPPED: **Source:** `StepToTopoDS_Tool.hxx`:57 - `StepToTopoDS_Tool::Init`
-//   Reason: has unbindable types: param 'Map': unresolved template type (NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> const&)
-//   // pub fn init(&mut self, Map: /* NCollection_DataMap<occ::handle<StepShape_TopologicalRepresentationItem>, TopoDS_Shape> const& */, TP: &HandleTransientProcess);
-//
 
 // ========================
 // From StepToTopoDS_TranslateCompositeCurve.hxx

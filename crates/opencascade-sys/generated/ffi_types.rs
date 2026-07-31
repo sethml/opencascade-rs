@@ -4701,6 +4701,326 @@ pub struct Handle_NCollection_HArray1_HLRAlgo_PolyHidingData {
 pub struct Handle_NCollection_HArray1_HLRAlgo_TriangleData {
     _opaque: [u8; 0],
 }
+/// Handle to NCollection_HArray1_Handle_Adaptor3d_Curve
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Adaptor3d_Curve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Geom2d_BSplineCurve
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Geom2d_Curve
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Geom2d_Curve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Geom_BSplineCurve
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Geom_BSplineCurve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Geom_Curve
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Geom_Curve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESAppli_FiniteElement
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESAppli_Node
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESAppli_Node {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESData_IGESEntity
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESData_IGESEntity {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESData_LineFontEntity
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESData_ViewKindEntity
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESDefs_TabularData
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESDefs_TabularData {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESDimen_GeneralNote
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESDimen_LeaderArrow
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESDraw_ConnectPoint
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGeom_Boundary
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGeom_Boundary {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGeom_CurveOnSurface
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGeom_TransformationMatrix
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGraph_Color
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGraph_Color {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESGraph_TextFontDef
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESSolid_Face
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESSolid_Face {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESSolid_Loop
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESSolid_Loop {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESSolid_Shell
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESSolid_Shell {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_IGESSolid_VertexList
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_IGESSolid_VertexList {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Standard_Persistent
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Standard_Persistent {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_Standard_Transient
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_Approval
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_Approval {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_DerivedUnitElement
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_Document
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_Document {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_NamedUnit
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_Organization
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_Organization {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_Person
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_Person {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_Product
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_Product {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_ProductContext
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_ProductContext {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepDimTol_DatumReference
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepElement_SurfaceSection
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepFEA_CurveElementInterval
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepFEA_ElementRepresentation
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepFEA_NodeRepresentation
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepGeom_CartesianPoint
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepRepr_RepresentationItem
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepRepr_ShapeAspect
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_ConnectedFaceSet
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_Edge
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_Edge {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_Face
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_Face {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_FaceBound
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_FaceBound {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_OrientedClosedShell
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepShape_OrientedEdge
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HArray1_Handle_TCollection_HAsciiString
+#[repr(C)]
+pub struct Handle_NCollection_HArray1_Handle_TCollection_HAsciiString {
+    _opaque: [u8; 0],
+}
 /// Handle to NCollection_HArray1_NCollection_List_int
 #[repr(C)]
 pub struct Handle_NCollection_HArray1_NCollection_List_int {
@@ -5071,336 +5391,36 @@ pub struct Handle_NCollection_HArray1_gp_XYZ {
 pub struct Handle_NCollection_HArray1_int {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_Adaptor3d_Curve
+/// Handle to NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_Geom2d_Curve
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_Geom_BSplineCurve
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_Geom_Curve
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESAppli_Node
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESData_IGESEntity
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESDefs_TabularData
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGeom_Boundary
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGraph_Color
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESSolid_Face
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESSolid_Loop
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESSolid_Shell
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_IGESSolid_VertexList
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember
+pub struct Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember
 {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember
+/// Handle to NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember
+pub struct Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember
 {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_Standard_Persistent
+/// Handle to NCollection_HArray2_Handle_Geom_Surface
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent {
+pub struct Handle_NCollection_HArray2_Handle_Geom_Surface {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_Standard_Transient
+/// Handle to NCollection_HArray2_Handle_Standard_Transient
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_Standard_Transient {
+pub struct Handle_NCollection_HArray2_Handle_Standard_Transient {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_Approval
+/// Handle to NCollection_HArray2_Handle_StepGeom_CartesianPoint
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval {
+pub struct Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement
+/// Handle to NCollection_HArray2_Handle_StepGeom_SurfacePatch
 #[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_Document
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_Organization
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_Person
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_Product
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_ProductContext
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_Edge
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_Face
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_Face {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_FaceBound
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HArray1_opencascade_handle_TCollection_HAsciiString
-#[repr(C)]
-pub struct Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString {
+pub struct Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     _opaque: [u8; 0],
 }
 /// Handle to NCollection_HArray2_TopoDS_Shape
@@ -5433,11 +5453,6 @@ pub struct Handle_NCollection_HArray2_gp_XYZ {
 pub struct Handle_NCollection_HArray2_int {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray2_opencascade_handle_Geom_Surface
-#[repr(C)]
-pub struct Handle_NCollection_HArray2_opencascade_handle_Geom_Surface {
-    _opaque: [u8; 0],
-}
 /// Handle to NCollection_HArray2_opencascade_handle_NCollection_HArray1_double
 #[repr(C)]
 pub struct Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_double {
@@ -5448,19 +5463,104 @@ pub struct Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_dou
 pub struct Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_int {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray2_opencascade_handle_Standard_Transient
+/// Handle to NCollection_HSequence_Handle_ChFiDS_SurfData
 #[repr(C)]
-pub struct Handle_NCollection_HArray2_opencascade_handle_Standard_Transient {
+pub struct Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint
+/// Handle to NCollection_HSequence_Handle_Geom2d_BoundedCurve
 #[repr(C)]
-pub struct Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint {
+pub struct Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch
+/// Handle to NCollection_HSequence_Handle_Geom_BoundedCurve
 #[repr(C)]
-pub struct Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch {
+pub struct Handle_NCollection_HSequence_Handle_Geom_BoundedCurve {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_STEPSelections_AssemblyLink
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Standard_Transient
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_StdStorage_Root
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_StdStorage_Root {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_StepElement_ElementMaterial
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Storage_Root
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Storage_Root {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_TCollection_HAsciiString
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_TCollection_HAsciiString {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_TCollection_HExtendedString
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_TCollection_HExtendedString {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_TObj_Object
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_TObj_Object {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Transfer_Finder
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Transfer_Finder {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Units_Quantity
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Units_Quantity {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Units_Token
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Units_Token {
+    _opaque: [u8; 0],
+}
+/// Handle to NCollection_HSequence_Handle_Units_Unit
+#[repr(C)]
+pub struct Handle_NCollection_HSequence_Handle_Units_Unit {
     _opaque: [u8; 0],
 }
 /// Handle to NCollection_HSequence_TCollection_AsciiString
@@ -5488,110 +5588,9 @@ pub struct Handle_NCollection_HSequence_double {
 pub struct Handle_NCollection_HSequence_int {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_HSequence_opencascade_handle_ChFiDS_SurfData
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Geom_BoundedCurve
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve {
-    _opaque: [u8; 0],
-}
 /// Handle to NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt
 #[repr(C)]
 pub struct Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Standard_Transient
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Standard_Transient {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_StdStorage_Root
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Storage_Root
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Storage_Root {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_TCollection_HAsciiString
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_TCollection_HExtendedString
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_TObj_Object
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_TObj_Object {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Transfer_Finder
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Units_Quantity
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Units_Quantity {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Units_Token
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Units_Token {
-    _opaque: [u8; 0],
-}
-/// Handle to NCollection_HSequence_opencascade_handle_Units_Unit
-#[repr(C)]
-pub struct Handle_NCollection_HSequence_opencascade_handle_Units_Unit {
     _opaque: [u8; 0],
 }
 /// Handle to NCollection_HeapAllocator
@@ -5609,10 +5608,9 @@ pub struct Handle_NCollection_IncAllocator {
 pub struct Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex {
     _opaque: [u8; 0],
 }
-/// Handle to NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
+/// Handle to NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner
 #[repr(C)]
-pub struct Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
-{
+pub struct Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner {
     _opaque: [u8; 0],
 }
 /// Handle to NCollection_Shared_NCollection_List_gp_Pnt2d
@@ -12251,6 +12249,600 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HArray1_HLRAlgo_TriangleData_is_null(
         self_: *const Handle_NCollection_HArray1_HLRAlgo_TriangleData,
     ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Adaptor3d_Curve>;
+    pub fn Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Adaptor3d_Curve,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve>;
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_Curve_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Geom2d_Curve,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_Curve_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Geom2d_Curve>;
+    pub fn Handle_NCollection_HArray1_Handle_Geom2d_Curve_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Geom2d_Curve,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve>;
+    pub fn Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Geom_Curve_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Geom_Curve,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Geom_Curve_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Geom_Curve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Geom_Curve>;
+    pub fn Handle_NCollection_HArray1_Handle_Geom_Curve_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Geom_Curve,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_Node_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESAppli_Node,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_Node_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESAppli_Node>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESAppli_Node_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESAppli_Node,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESData_IGESEntity,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESDefs_TabularData>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESDefs_TabularData,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGeom_Boundary>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGeom_Boundary,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_Color_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGraph_Color,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_Color_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGraph_Color>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_Color_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGraph_Color,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Face_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Face,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Face_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESSolid_Face>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Face_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESSolid_Face,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Loop_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Loop_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESSolid_Loop>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Loop_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESSolid_Loop,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Shell_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Shell_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESSolid_Shell>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_Shell_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESSolid_Shell,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_IGESSolid_VertexList>;
+    pub fn Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_IGESSolid_VertexList,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Persistent_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Standard_Persistent,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Persistent_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Persistent>;
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Persistent_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Standard_Persistent,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Transient_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_Standard_Transient,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Transient_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_Standard_Transient>;
+    pub fn Handle_NCollection_HArray1_Handle_Standard_Transient_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_Standard_Transient,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Approval_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_Approval,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Approval_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Approval>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Approval_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_Approval,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Document_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_Document,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Document_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Document>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Document_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_Document,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Organization_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_Organization,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Organization_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Organization>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Organization_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_Organization,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Person_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_Person,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Person_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Person>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Person_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_Person,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Product_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_Product,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Product_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_Product>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_Product_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_Product,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepBasic_ProductContext>;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_ProductContext,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference>;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement>;
+    pub fn Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection>;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset>;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease>;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval>;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation>;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation>;
+    pub fn Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>;
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment>;
+    pub fn Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem>;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>;
+    pub fn Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Edge_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_Edge,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Edge_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Edge>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Edge_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_Edge,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Face_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_Face,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Face_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_Face>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_Face_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_Face,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_FaceBound_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_FaceBound_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_FaceBound>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_FaceBound_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>;
+    pub fn Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern>;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    >;
+    pub fn Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(
+        ptr: *mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+    );
+    pub fn Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_clone(
+        ptr: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>;
+    pub fn Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_is_null(
+        self_: *const Handle_NCollection_HArray1_Handle_TCollection_HAsciiString,
+    ) -> bool;
     pub fn Handle_NCollection_HArray1_NCollection_List_int_destructor(
         ptr: *mut Handle_NCollection_HArray1_NCollection_List_int,
     );
@@ -12913,643 +13505,55 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HArray1_int_is_null(
         self_: *const Handle_NCollection_HArray1_int,
     ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Geom_Curve,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Geom_Curve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Geom_Curve>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Geom_Curve,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_Standard_Transient>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_Standard_Transient,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_Face>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge>;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    ) -> bool;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_destructor(
-        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    );
-    pub fn Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_clone(
-        ptr: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
-    >;
-    pub fn Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_is_null(
-        self_: *const Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_destructor(
+        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
+    );
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember>;
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_is_null(
+        self_: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_destructor(
+        ptr: *mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
+    );
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_clone(ptr: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember) -> crate::OcctResult<*mut Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember>;
+    pub fn Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_is_null(
+        self_: *const Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray2_Handle_Geom_Surface_destructor(
+        ptr: *mut Handle_NCollection_HArray2_Handle_Geom_Surface,
+    );
+    pub fn Handle_NCollection_HArray2_Handle_Geom_Surface_clone(
+        ptr: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_Geom_Surface>;
+    pub fn Handle_NCollection_HArray2_Handle_Geom_Surface_is_null(
+        self_: *const Handle_NCollection_HArray2_Handle_Geom_Surface,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray2_Handle_Standard_Transient_destructor(
+        ptr: *mut Handle_NCollection_HArray2_Handle_Standard_Transient,
+    );
+    pub fn Handle_NCollection_HArray2_Handle_Standard_Transient_clone(
+        ptr: *const Handle_NCollection_HArray2_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_Standard_Transient>;
+    pub fn Handle_NCollection_HArray2_Handle_Standard_Transient_is_null(
+        self_: *const Handle_NCollection_HArray2_Handle_Standard_Transient,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_destructor(
+        ptr: *mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
+    );
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_clone(
+        ptr: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint>;
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_is_null(
+        self_: *const Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint,
+    ) -> bool;
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_destructor(
+        ptr: *mut Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
+    );
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_clone(
+        ptr: *const Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch>;
+    pub fn Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_is_null(
+        self_: *const Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch,
     ) -> bool;
     pub fn Handle_NCollection_HArray2_TopoDS_Shape_destructor(
         ptr: *mut Handle_NCollection_HArray2_TopoDS_Shape,
@@ -13603,15 +13607,6 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HArray2_int_is_null(
         self_: *const Handle_NCollection_HArray2_int,
     ) -> bool;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_destructor(
-        ptr: *mut Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
-    );
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_clone(
-        ptr: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_Geom_Surface>;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_is_null(
-        self_: *const Handle_NCollection_HArray2_opencascade_handle_Geom_Surface,
-    ) -> bool;
     pub fn Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_double_destructor(
         ptr: *mut Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_double,
     );
@@ -13632,32 +13627,189 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_int_is_null(
         self_: *const Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_int,
     ) -> bool;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_destructor(
-        ptr: *mut Handle_NCollection_HArray2_opencascade_handle_Standard_Transient,
+    pub fn Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_ChFiDS_SurfData,
     );
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_clone(
-        ptr: *const Handle_NCollection_HArray2_opencascade_handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_Standard_Transient>;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_is_null(
-        self_: *const Handle_NCollection_HArray2_opencascade_handle_Standard_Transient,
+    pub fn Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_ChFiDS_SurfData,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_ChFiDS_SurfData>;
+    pub fn Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_ChFiDS_SurfData,
     ) -> bool;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_destructor(
-        ptr: *mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+    pub fn Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
     );
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_clone(
-        ptr: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint>;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_is_null(
-        self_: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint,
+    pub fn Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve>;
+    pub fn Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve,
     ) -> bool;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_destructor(
-        ptr: *mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+    pub fn Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
     );
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_clone(
-        ptr: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch>;
-    pub fn Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_is_null(
-        self_: *const Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch,
+    pub fn Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Geom_BoundedCurve>;
+    pub fn Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Geom_BoundedCurve,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink>;
+    pub fn Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData>;
+    pub fn Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Standard_Transient_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Standard_Transient,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Standard_Transient_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Standard_Transient>;
+    pub fn Handle_NCollection_HSequence_Handle_Standard_Transient_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_StdStorage_Root_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_StdStorage_Root,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_StdStorage_Root_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StdStorage_Root>;
+    pub fn Handle_NCollection_HSequence_Handle_StdStorage_Root_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_StdStorage_Root,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    >;
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial>;
+    pub fn Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    >;
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation>;
+    pub fn Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Storage_Root_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Storage_Root,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Storage_Root_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Storage_Root,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Storage_Root>;
+    pub fn Handle_NCollection_HSequence_Handle_Storage_Root_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Storage_Root,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HAsciiString>;
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TCollection_HExtendedString>;
+    pub fn Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_TObj_Object_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_TObj_Object,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_TObj_Object_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_TObj_Object,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TObj_Object>;
+    pub fn Handle_NCollection_HSequence_Handle_TObj_Object_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_TObj_Object,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo>;
+    pub fn Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Transfer_Finder_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Transfer_Finder,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Transfer_Finder_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Transfer_Finder>;
+    pub fn Handle_NCollection_HSequence_Handle_Transfer_Finder_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Transfer_Finder,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Quantity_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Units_Quantity,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Units_Quantity_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Units_Quantity,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Quantity>;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Quantity_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Units_Quantity,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Token_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Units_Token,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Units_Token_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Units_Token,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Token>;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Token_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Units_Token,
+    ) -> bool;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Unit_destructor(
+        ptr: *mut Handle_NCollection_HSequence_Handle_Units_Unit,
+    );
+    pub fn Handle_NCollection_HSequence_Handle_Units_Unit_clone(
+        ptr: *const Handle_NCollection_HSequence_Handle_Units_Unit,
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_Handle_Units_Unit>;
+    pub fn Handle_NCollection_HSequence_Handle_Units_Unit_is_null(
+        self_: *const Handle_NCollection_HSequence_Handle_Units_Unit,
     ) -> bool;
     pub fn Handle_NCollection_HSequence_TCollection_AsciiString_destructor(
         ptr: *mut Handle_NCollection_HSequence_TCollection_AsciiString,
@@ -13702,33 +13854,6 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HSequence_int_is_null(
         self_: *const Handle_NCollection_HSequence_int,
     ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve,
-    ) -> bool;
     pub fn Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt_destructor(
         ptr: *mut Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt,
     );
@@ -13740,173 +13865,6 @@ unsafe extern "C" {
     pub fn Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt_is_null(
         self_: *const Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt,
     ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Standard_Transient>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_clone(ptr: *const Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Storage_Root_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Storage_Root,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Storage_Root_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Storage_Root,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Storage_Root>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Storage_Root_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Storage_Root,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TObj_Object_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_TObj_Object,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TObj_Object_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_TObj_Object,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_TObj_Object>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TObj_Object_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_TObj_Object,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    ) -> crate::OcctResult<
-        *mut Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    >;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Quantity>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Units_Quantity,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Token_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Token_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Token>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Token_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Units_Token,
-    ) -> bool;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Unit_destructor(
-        ptr: *mut Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
-    );
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Unit_clone(
-        ptr: *const Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
-    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_Units_Unit>;
-    pub fn Handle_NCollection_HSequence_opencascade_handle_Units_Unit_is_null(
-        self_: *const Handle_NCollection_HSequence_opencascade_handle_Units_Unit,
-    ) -> bool;
     pub fn Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_destructor(
         ptr: *mut Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex,
     );
@@ -13916,12 +13874,16 @@ unsafe extern "C" {
     pub fn Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex_is_null(
         self_: *const Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex,
     ) -> bool;
-    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(
-        ptr: *mut Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner,
+    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_destructor(
+        ptr: *mut Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner,
     );
-    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_clone(ptr: *const Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) -> crate::OcctResult<*mut Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner>;
-    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_is_null(
-        self_: *const Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner,
+    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_clone(
+        ptr: *const Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner,
+    ) -> crate::OcctResult<
+        *mut Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner,
+    >;
+    pub fn Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_is_null(
+        self_: *const Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner,
     ) -> bool;
     pub fn Handle_NCollection_Shared_NCollection_List_gp_Pnt2d_destructor(
         ptr: *mut Handle_NCollection_Shared_NCollection_List_gp_Pnt2d,
@@ -14301,6 +14263,1558 @@ impl Handle_NCollection_HArray1_HLRAlgo_TriangleData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe { Handle_NCollection_HArray1_HLRAlgo_TriangleData_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Adaptor3d_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Adaptor3d_Curve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Adaptor3d_Curve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Geom2d_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Geom2d_Curve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Geom2d_Curve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_Geom2d_Curve_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Geom2d_Curve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_Geom2d_Curve_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Geom_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Geom_BSplineCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Geom_BSplineCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Geom_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Geom_Curve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Geom_Curve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_Geom_Curve_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Geom_Curve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_Geom_Curve_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESAppli_Node {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESAppli_Node_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESAppli_Node {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_IGESAppli_Node_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESAppli_Node {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESAppli_Node_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESData_IGESEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESData_IGESEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESData_IGESEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESDefs_TabularData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESDefs_TabularData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESDefs_TabularData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESGeom_Boundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGeom_Boundary {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGeom_Boundary {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESGraph_Color {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGraph_Color_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGraph_Color {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_IGESGraph_Color_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGraph_Color {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESGraph_Color_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESSolid_Face {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESSolid_Face_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESSolid_Face {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_IGESSolid_Face_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESSolid_Face {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESSolid_Face_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESSolid_Loop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESSolid_Loop_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESSolid_Loop {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_IGESSolid_Loop_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESSolid_Loop {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESSolid_Loop_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESSolid_Shell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESSolid_Shell_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESSolid_Shell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_IGESSolid_Shell_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESSolid_Shell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_IGESSolid_Shell_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_IGESSolid_VertexList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_IGESSolid_VertexList {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_IGESSolid_VertexList {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Standard_Persistent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Standard_Persistent_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Standard_Persistent {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_Standard_Persistent_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Standard_Persistent {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Standard_Persistent_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_Standard_Transient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_Standard_Transient_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_Standard_Transient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_Standard_Transient_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_Approval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Approval_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_Approval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_Approval_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_Approval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepBasic_Approval_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_Document {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Document_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_Document {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_Document_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_Document {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepBasic_Document_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_Organization {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Organization_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_Organization {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_Organization_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_Organization {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Organization_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_Person {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Person_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_Person {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_Person_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_Person {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepBasic_Person_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_Product {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_Product_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_Product {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_Product_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_Product {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepBasic_Product_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepBasic_ProductContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepBasic_ProductContext {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_ProductContext {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_clone(
+                    ptr,
+                ),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_clone(
+                    ptr,
+                ),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_clone(
+                    ptr,
+                ),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_clone(
+                    ptr,
+                ),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_Edge_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_Edge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_Edge_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_Edge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepShape_Edge_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_Face {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_Face_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_Face {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_Face_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_Face {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray1_Handle_StepShape_Face_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_FaceBound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_FaceBound_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_FaceBound {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_FaceBound_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_FaceBound {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_FaceBound_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HArray1_Handle_TCollection_HAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_is_null(self as *const Self)
+        }
     }
 }
 unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_NCollection_List_int {
@@ -15941,1907 +17455,119 @@ impl Handle_NCollection_HArray1_int {
         unsafe { Handle_NCollection_HArray1_int_is_null(self as *const Self) }
     }
 }
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_destructor(ptr);
-        }
+        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_destructor(ptr); }
     }
 }
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_clone(ptr),
-            )
-        }
+        unsafe { crate::check_result(Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_clone(ptr)) }
     }
 }
-impl Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
+impl Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_is_null(
-                self as *const Self,
-            )
-        }
+        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_is_null(self as *const Self) }
     }
 }
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve
-{
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_destructor(ptr);
-        }
+        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_destructor(ptr); }
     }
 }
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve
-{
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_clone(ptr),
-            )
-        }
+        unsafe { crate::check_result(Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_clone(ptr)) }
     }
 }
-impl Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve {
+impl Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_is_null(
-                self as *const Self,
-            )
-        }
+        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_is_null(self as *const Self) }
     }
 }
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray2_Handle_Geom_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_destructor(ptr);
+            Handle_NCollection_HArray2_Handle_Geom_Surface_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray2_Handle_Geom_Surface {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HArray2_Handle_Geom_Surface_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HArray2_Handle_Geom_Surface {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray2_Handle_Geom_Surface_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray2_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray2_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray2_Handle_Standard_Transient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_clone(
+            crate::check_result(Handle_NCollection_HArray2_Handle_Standard_Transient_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HArray2_Handle_Standard_Transient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HArray2_Handle_Standard_Transient_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_clone(
                 ptr,
             ))
         }
     }
 }
-impl Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve {
+impl Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve_is_null(self as *const Self)
+            Handle_NCollection_HArray2_Handle_StepGeom_CartesianPoint_is_null(self as *const Self)
         }
     }
 }
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve
-{
+unsafe impl crate::CppDeletable for Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_destructor(ptr);
+            Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve {
+unsafe impl crate::CppCopyable for Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_clone(ptr),
-            )
+            crate::check_result(Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_clone(ptr))
         }
     }
 }
-impl Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve {
+impl Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_Geom_Curve {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Geom_Curve_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESAppli_Node_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_Color_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Face_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Loop_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_Shell_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_destructor(ptr); }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_clone(ptr)) }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_is_null(self as *const Self) }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_destructor(ptr); }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_clone(ptr)) }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_is_null(self as *const Self) }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Standard_Persistent_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_Standard_Transient
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_Standard_Transient
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_Standard_Transient {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_Standard_Transient_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Approval_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Document_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Organization_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Person_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_Product_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray1_opencascade_handle_StepShape_Face {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray1_opencascade_handle_StepShape_Face {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_Face {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_Face_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_is_null(
-                self as *const Self,
-            )
+            Handle_NCollection_HArray2_Handle_StepGeom_SurfacePatch_is_null(self as *const Self)
         }
     }
 }
@@ -17953,30 +17679,6 @@ impl Handle_NCollection_HArray2_int {
         unsafe { Handle_NCollection_HArray2_int_is_null(self as *const Self) }
     }
 }
-unsafe impl crate::CppDeletable for Handle_NCollection_HArray2_opencascade_handle_Geom_Surface {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HArray2_opencascade_handle_Geom_Surface {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HArray2_opencascade_handle_Geom_Surface {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_Geom_Surface_is_null(self as *const Self)
-        }
-    }
-}
 unsafe impl crate::CppDeletable
     for Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_double
 {
@@ -18039,94 +17741,484 @@ impl Handle_NCollection_HArray2_opencascade_handle_NCollection_HArray1_int {
         }
     }
 }
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray2_opencascade_handle_Standard_Transient
-{
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_destructor(ptr);
+            Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray2_opencascade_handle_Standard_Transient
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Geom_BoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Geom_BoundedCurve {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Geom_BoundedCurve {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink
 {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_clone(ptr),
+                Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clone(ptr),
             )
         }
     }
 }
-impl Handle_NCollection_HArray2_opencascade_handle_Standard_Transient {
+impl Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_Standard_Transient_is_null(
+            Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_is_null(
                 self as *const Self,
             )
         }
     }
 }
 unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint
+    for Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_destructor(ptr);
+            Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint
-{
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_clone(ptr),
+                Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clone(ptr),
             )
         }
     }
 }
-impl Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint {
+impl Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_is_null(
+            Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Standard_Transient {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_Standard_Transient_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Standard_Transient {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Standard_Transient_is_null(self as *const Self)
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_StdStorage_Root {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StdStorage_Root_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_StdStorage_Root {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_StdStorage_Root_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_StdStorage_Root {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_StdStorage_Root_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clone(
+                    ptr,
+                ),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_is_null(
                 self as *const Self,
             )
         }
     }
 }
 unsafe impl crate::CppDeletable
-    for Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch
+    for Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_destructor(ptr);
+            Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(
+                ptr,
+            );
         }
     }
 }
 unsafe impl crate::CppCopyable
-    for Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch
+    for Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_clone(ptr),
+                Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clone(ptr),
             )
         }
     }
 }
-impl Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch {
+impl Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_is_null(
+            Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_is_null(
                 self as *const Self,
             )
         }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Storage_Root {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Storage_Root_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Storage_Root {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HSequence_Handle_Storage_Root_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Storage_Root {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_Storage_Root_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_clone(
+                ptr,
+            ))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_TCollection_HAsciiString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_TCollection_HExtendedString
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_TCollection_HExtendedString {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_TCollection_HExtendedString {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_TObj_Object {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TObj_Object_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_TObj_Object {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HSequence_Handle_TObj_Object_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_TObj_Object {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_TObj_Object_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable
+    for Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable
+    for Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo
+{
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(
+                Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clone(ptr),
+            )
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_is_null(
+                self as *const Self,
+            )
+        }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Transfer_Finder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Transfer_Finder_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Transfer_Finder {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_Transfer_Finder_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Transfer_Finder {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_Transfer_Finder_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Units_Quantity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Units_Quantity_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Units_Quantity {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(Handle_NCollection_HSequence_Handle_Units_Quantity_clone(ptr))
+        }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Units_Quantity {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_Units_Quantity_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Units_Token {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Units_Token_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Units_Token {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HSequence_Handle_Units_Token_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Units_Token {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_Units_Token_is_null(self as *const Self) }
+    }
+}
+unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_Handle_Units_Unit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            Handle_NCollection_HSequence_Handle_Units_Unit_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_Handle_Units_Unit {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(Handle_NCollection_HSequence_Handle_Units_Unit_clone(ptr)) }
+    }
+}
+impl Handle_NCollection_HSequence_Handle_Units_Unit {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { Handle_NCollection_HSequence_Handle_Units_Unit_is_null(self as *const Self) }
     }
 }
 unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_TCollection_AsciiString {
@@ -18226,94 +18318,6 @@ impl Handle_NCollection_HSequence_int {
     }
 }
 unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
     for Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
@@ -18348,496 +18352,6 @@ impl Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pn
     }
 }
 unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_Standard_Transient
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_Standard_Transient
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Standard_Transient {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Standard_Transient_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_opencascade_handle_Storage_Root {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Storage_Root_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_Storage_Root {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_Storage_Root_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Storage_Root {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Storage_Root_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(
-                ptr,
-            );
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_opencascade_handle_TObj_Object {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TObj_Object_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_TObj_Object {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_TObj_Object_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_TObj_Object {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TObj_Object_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable
-    for Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_clone(ptr))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Transfer_Finder_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_opencascade_handle_Units_Quantity {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_Units_Quantity {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_clone(ptr),
-            )
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Units_Quantity {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Quantity_is_null(
-                self as *const Self,
-            )
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_opencascade_handle_Units_Token {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Token_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_Units_Token {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_Units_Token_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Units_Token {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Token_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable for Handle_NCollection_HSequence_opencascade_handle_Units_Unit {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Unit_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppCopyable for Handle_NCollection_HSequence_opencascade_handle_Units_Unit {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(Handle_NCollection_HSequence_opencascade_handle_Units_Unit_clone(
-                ptr,
-            ))
-        }
-    }
-}
-impl Handle_NCollection_HSequence_opencascade_handle_Units_Unit {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            Handle_NCollection_HSequence_opencascade_handle_Units_Unit_is_null(self as *const Self)
-        }
-    }
-}
-unsafe impl crate::CppDeletable
     for Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
@@ -18868,28 +18382,34 @@ impl Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex {
     }
 }
 unsafe impl crate::CppDeletable
-    for Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
+    for Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_destructor(ptr);
+            Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_destructor(ptr);
         }
     }
 }
 unsafe impl crate::CppCopyable
-    for Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner
+    for Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner
 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_clone(ptr))
+            crate::check_result(
+                Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_clone(
+                    ptr,
+                ),
+            )
         }
     }
 }
-impl Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner {
+impl Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            Handle_NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner_is_null(self as *const Self)
+            Handle_NCollection_Shared_NCollection_IndexedMap_Handle_SelectMgr_EntityOwner_is_null(
+                self as *const Self,
+            )
         }
     }
 }
@@ -39148,6 +38668,21 @@ pub struct NCollection_Array2_GeomGridEval_SurfD3 {
 }
 /// Referenced type from C++
 #[repr(C)]
+pub struct NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
+pub struct NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
+pub struct NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
 pub struct NCollection_DataMap_TCollection_ExtendedString_uint8_t {
     _opaque: [u8; 0],
 }
@@ -39174,6 +38709,12 @@ pub struct NCollection_DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMa
 /// Referenced type from C++
 #[repr(C)]
 pub struct NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
+pub struct NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher
+{
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
@@ -39258,6 +38799,16 @@ pub struct NCollection_DynamicArray_BOPDS_Point {
 }
 /// Referenced type from C++
 #[repr(C)]
+pub struct NCollection_DynamicArray_Handle_Adaptor3d_Surface {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
+pub struct NCollection_DynamicArray_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+/// Referenced type from C++
+#[repr(C)]
 pub struct NCollection_DynamicArray_ProxPnt_Status {
     _opaque: [u8; 0],
 }
@@ -39323,334 +38874,34 @@ pub struct NCollection_HArray1_StepDimTol_GeometricToleranceModifier {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Geom2d_Curve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Geom_BSplineCurve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Geom_Curve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESAppli_Node {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESData_IGESEntity {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESDefs_TabularData {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGeom_Boundary {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_IGESSolid_VertexList {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember
+pub struct NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember
 {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember
+pub struct NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember
 {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Standard_Persistent {
+pub struct NCollection_HArray2_Handle_Geom_Surface {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_Standard_Transient {
+pub struct NCollection_HArray2_Handle_Standard_Transient {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_Approval {
+pub struct NCollection_HArray2_Handle_StepGeom_CartesianPoint {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_Document {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_Organization {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_Product {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_ProductContext {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_Face {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_FaceBound {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray1_opencascade_handle_TCollection_HAsciiString {
+pub struct NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
@@ -39685,11 +38936,6 @@ pub struct NCollection_HArray2_int {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray2_opencascade_handle_Geom_Surface {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
 pub struct NCollection_HArray2_opencascade_handle_NCollection_HArray1_double {
     _opaque: [u8; 0],
 }
@@ -39700,122 +38946,12 @@ pub struct NCollection_HArray2_opencascade_handle_NCollection_HArray1_int {
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HArray2_opencascade_handle_Standard_Transient {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Geom_BoundedCurve {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
 pub struct NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
 #[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Standard_Transient {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_StdStorage_Root {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Storage_Root {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_TCollection_HAsciiString {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_TCollection_HExtendedString {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_TObj_Object {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Transfer_Finder {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Units_Quantity {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Units_Token {
-    _opaque: [u8; 0],
-}
-/// Referenced type from C++
-#[repr(C)]
-pub struct NCollection_HSequence_opencascade_handle_Units_Unit {
+pub struct NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int {
     _opaque: [u8; 0],
 }
 /// Referenced type from C++
@@ -40358,6 +39494,86 @@ pub struct Array1_HLRBRep_FaceDataIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_Array1_Handle_Expr_GeneralExpression {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Expr_GeneralExpressionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Expr_NamedUnknown {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Expr_NamedUnknownIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Geom2d_BSplineCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Geom2d_BSplineCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Geom2d_BezierCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Geom2d_BezierCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Geom_BSplineCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Geom_BSplineCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Geom_BezierCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Geom_BezierCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_Geom_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_Geom_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_HLRAlgo_PolyData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_HLRAlgo_PolyDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_HLRAlgo_PolyInternalNode {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_HLRAlgo_PolyInternalNodeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Array1_Handle_HLRAlgo_PolyShellData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array1_Handle_HLRAlgo_PolyShellDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_Array1_Plate_PinpointConstraint {
     _opaque: [u8; 0],
 }
@@ -40478,6 +39694,14 @@ pub struct Array1_intIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_Array2_Handle_Geom_BezierSurface {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Array2_Handle_Geom_BezierSurfaceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_Array2_double {
     _opaque: [u8; 0],
 }
@@ -40518,6 +39742,96 @@ pub struct Array2_intIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+{
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator
+{
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_DataMap_TCollection_AsciiString_RWObj_Material {
     _opaque: [u8; 0],
 }
@@ -40547,6 +39861,14 @@ pub struct NCollection_DataMap_TCollection_AsciiString_int {
 }
 #[repr(C)]
 pub struct DataMap_TCollection_AsciiString_intIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -40622,6 +39944,14 @@ pub struct DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasherIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher {
     _opaque: [u8; 0],
 }
@@ -40668,6 +39998,22 @@ pub struct NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher {
 }
 #[repr(C)]
 pub struct DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_gp_Pnt_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_gp_Pnt_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_DataMap_int_Handle_MAT_BasicElt {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct DataMap_int_Handle_MAT_BasicEltIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -40724,6 +40070,518 @@ pub struct NCollection_HArray1_HLRAlgo_TriangleData {
 }
 #[repr(C)]
 pub struct HArray1_HLRAlgo_TriangleDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Adaptor3d_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Adaptor3d_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Geom2d_BSplineCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Geom2d_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Geom2d_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Geom_BSplineCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Geom_BSplineCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Geom_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Geom_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESAppli_FiniteElementIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESAppli_Node {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESAppli_NodeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESData_IGESEntity {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESData_IGESEntityIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESData_LineFontEntityIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESData_ViewKindEntityIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESDefs_TabularData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESDefs_TabularDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESDimen_GeneralNoteIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESDimen_LeaderArrowIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESDraw_ConnectPointIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGeom_Boundary {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGeom_BoundaryIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGeom_CurveOnSurfaceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGeom_TransformationMatrixIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGraph_Color {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGraph_ColorIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGraph_TextDisplayTemplateIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESGraph_TextFontDefIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESSolid_Face {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESSolid_FaceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESSolid_Loop {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESSolid_LoopIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESSolid_Shell {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESSolid_ShellIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_IGESSolid_VertexList {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_IGESSolid_VertexListIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Standard_Persistent {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Standard_PersistentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_Approval {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_ApprovalIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_DerivedUnitElementIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_Document {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_DocumentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_NamedUnitIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_Organization {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_OrganizationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_Person {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_PersonIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_Product {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_ProductIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_ProductContext {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_ProductContextIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepBasic_UncertaintyMeasureWithUnitIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepDimTol_DatumReferenceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepDimTol_DatumReferenceCompartmentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepDimTol_DatumReferenceElementIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepElement_CurveElementEndReleasePacketIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepElement_CurveElementSectionDefinitionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepElement_SurfaceSectionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepElement_VolumeElementPurposeMemberIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepFEA_CurveElementEndOffsetIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepFEA_CurveElementEndReleaseIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepFEA_CurveElementIntervalIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepFEA_ElementRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepFEA_NodeRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepGeom_CartesianPointIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepGeom_CompositeCurveSegmentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepRepr_MaterialPropertyRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepRepr_PropertyDefinitionRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepRepr_RepresentationItemIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepRepr_ShapeAspectIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_ConnectedEdgeSetIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_ConnectedFaceSetIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_Edge {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_EdgeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_Face {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_FaceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_FaceBound {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_FaceBoundIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_OrientedClosedShellIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepShape_OrientedEdgeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepVisual_CurveStyleFontPatternIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepVisual_PresentationStyleAssignmentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_StepVisual_TessellatedStructuredItemIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HArray1_Handle_TCollection_HAsciiString {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HArray1_Handle_TCollection_HAsciiStringIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -41303,6 +41161,166 @@ pub struct HArray1_intIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_HSequence_Handle_ChFiDS_SurfData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_ChFiDS_SurfDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Geom2d_BoundedCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Geom_BoundedCurve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Geom_BoundedCurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_STEPSelections_AssemblyLinkIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_StdStorage_Root {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_StdStorage_RootIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_StepElement_ElementMaterial {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_StepElement_ElementMaterialIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_StepFEA_ElementRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Storage_Root {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Storage_RootIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_TCollection_HAsciiString {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_TCollection_HAsciiStringIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_TCollection_HExtendedString {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_TCollection_HExtendedStringIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_TObj_Object {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_TObj_ObjectIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_TransferBRep_TransferResultInfoIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Transfer_Finder {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Transfer_FinderIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Units_Quantity {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Units_QuantityIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Units_Token {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Units_TokenIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_HSequence_Handle_Units_Unit {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct HSequence_Handle_Units_UnitIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_HSequence_TCollection_AsciiString {
     _opaque: [u8; 0],
 }
@@ -41340,6 +41358,22 @@ pub struct NCollection_HSequence_int {
 }
 #[repr(C)]
 pub struct HSequence_intIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -41430,6 +41464,30 @@ pub struct NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHashe
 }
 #[repr(C)]
 pub struct IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasherIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_IndexedMap_Handle_BOPDS_PaveBlock {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct IndexedMap_Handle_BOPDS_PaveBlockIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_IndexedMap_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct IndexedMap_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_IndexedMap_Handle_TDF_Attribute {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct IndexedMap_Handle_TDF_AttributeIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -41526,6 +41584,134 @@ pub struct NCollection_List_HLRAlgo_Interference {
 }
 #[repr(C)]
 pub struct List_HLRAlgo_InterferenceIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_BOPDS_PaveBlock {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_BOPDS_PaveBlockIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_BRepMesh_DiscretAlgoFactory {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_BRepMesh_DiscretAlgoFactoryIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_BRep_CurveRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_BRep_CurveRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_BRep_PointRepresentation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_BRep_PointRepresentationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_ChFiDS_ElSpine {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_ChFiDS_ElSpineIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_ChFiDS_Stripe {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_ChFiDS_StripeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_Law_Function {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_Law_FunctionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_Message_Alert {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_Message_AlertIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_Poly_Triangulation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_Poly_TriangulationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TDF_Attribute {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TDF_AttributeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TDF_AttributeDelta {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TDF_AttributeDeltaIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TDF_Delta {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TDF_DeltaIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TNaming_NamedShape {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TNaming_NamedShapeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TopOpeBRepBuild_Loop {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TopOpeBRepBuild_LoopIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TopOpeBRepBuild_Pave {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TopOpeBRepBuild_PaveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_List_Handle_TopOpeBRepDS_Interference {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct List_Handle_TopOpeBRepDS_InterferenceIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -41641,6 +41827,30 @@ pub struct Map_BOPDS_PairIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
+pub struct NCollection_Map_Handle_BOPDS_PaveBlock {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Map_Handle_BOPDS_PaveBlockIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Map_Handle_TDF_Attribute {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Map_Handle_TDF_AttributeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Map_Handle_TNaming_NamedShape {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Map_Handle_TNaming_NamedShapeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
 pub struct NCollection_Map_TCollection_AsciiString {
     _opaque: [u8; 0],
 }
@@ -41718,6 +41928,206 @@ pub struct NCollection_Sequence_HLRBRep_ShapeBounds {
 }
 #[repr(C)]
 pub struct Sequence_HLRBRep_ShapeBoundsIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_AdvApp2Var_Node {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_AdvApp2Var_NodeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_AdvApp2Var_Patch {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_AdvApp2Var_PatchIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_ChFiDS_SurfData {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_ChFiDS_SurfDataIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Expr_GeneralExpression {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Expr_GeneralExpressionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Expr_NamedExpression {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Expr_NamedExpressionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Expr_NamedFunction {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Expr_NamedFunctionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Geom2d_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Geom2d_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Geom_Curve {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Geom_CurveIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_IFSelect_Selection {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_IFSelect_SelectionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_IntPatch_Line {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_IntPatch_LineIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_MAT2d_Connexion {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_MAT2d_ConnexionIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_MAT_Arc {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_MAT_ArcIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_MAT_BasicElt {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_MAT_BasicEltIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Message_Printer {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Message_PrinterIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_PCDM_Document {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_PCDM_DocumentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Poly_Triangulation {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Poly_TriangulationIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_Standard_Transient {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_Standard_TransientIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_TCollection_HAsciiString {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_TCollection_HAsciiStringIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_TCollection_HExtendedString {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_TCollection_HExtendedStringIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_TDF_Attribute {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_TDF_AttributeIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_TDocStd_ApplicationDelta {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_TDocStd_ApplicationDeltaIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_TDocStd_Document {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_TDocStd_DocumentIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject {
+    _opaque: [u8; 0],
+}
+#[repr(C)]
+pub struct Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator {
     _opaque: [u8; 0],
 }
 #[repr(C)]
@@ -43728,6 +44138,33 @@ unsafe impl crate::CppDeletable for NCollection_Array2_GeomGridEval_SurfD3 {
         }
     }
 }
+unsafe impl crate::CppDeletable
+    for NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double_destructor(ptr);
+        }
+    }
+}
+unsafe impl crate::CppDeletable
+    for NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int_destructor(ptr);
+        }
+    }
+}
 unsafe impl crate::CppDeletable for NCollection_DataMap_TCollection_ExtendedString_uint8_t {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
@@ -43778,6 +44215,11 @@ unsafe impl crate::CppDeletable
         unsafe {
             crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher_destructor(ptr);
         }
+    }
+}
+unsafe impl crate::CppDeletable for NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe { crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher_destructor(ptr); }
     }
 }
 unsafe impl crate::CppDeletable for NCollection_DataMap_int_NCollection_List_TopoDS_Shape {
@@ -43892,6 +44334,22 @@ unsafe impl crate::CppDeletable for NCollection_DynamicArray_BOPDS_Point {
         }
     }
 }
+unsafe impl crate::CppDeletable for NCollection_DynamicArray_Handle_Adaptor3d_Surface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DynamicArray_Handle_Adaptor3d_Surface_destructor(
+                ptr,
+            );
+        }
+    }
+}
+unsafe impl crate::CppDeletable for NCollection_DynamicArray_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DynamicArray_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
 unsafe impl crate::CppDeletable for NCollection_DynamicArray_ProxPnt_Status {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
@@ -43976,519 +44434,45 @@ unsafe impl crate::CppDeletable for NCollection_HArray1_StepDimTol_GeometricTole
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Adaptor3d_Curve {
+unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe { crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember_destructor(ptr); }
+    }
+}
+unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe { crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember_destructor(ptr); }
+    }
+}
+unsafe impl crate::CppDeletable for NCollection_HArray2_Handle_Geom_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Adaptor3d_Curve_destructor(ptr);
+            crate::ffi_extern_TKernel::NCollection_HArray2_Handle_Geom_Surface_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve {
+unsafe impl crate::CppDeletable for NCollection_HArray2_Handle_Standard_Transient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Geom2d_Curve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Geom2d_Curve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Geom_BSplineCurve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Geom_BSplineCurve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Geom_Curve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Geom_Curve_destructor(
+            crate::ffi_extern_TKernel::NCollection_HArray2_Handle_Standard_Transient_destructor(
                 ptr,
             );
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement {
+unsafe impl crate::CppDeletable for NCollection_HArray2_Handle_StepGeom_CartesianPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement_destructor(ptr);
+            crate::ffi_extern_TKernel::NCollection_HArray2_Handle_StepGeom_CartesianPoint_destructor(ptr);
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESAppli_Node {
+unsafe impl crate::CppDeletable for NCollection_HArray2_Handle_StepGeom_SurfacePatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESAppli_Node_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESData_IGESEntity {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESData_IGESEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESDefs_TabularData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESDefs_TabularData_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESGeom_Boundary {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGeom_Boundary_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESGraph_Color {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGraph_Color_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESSolid_Face {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESSolid_Face_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESSolid_Loop {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESSolid_Loop_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESSolid_Shell {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESSolid_Shell_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_IGESSolid_VertexList {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_IGESSolid_VertexList_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe { crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember_destructor(ptr); }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe { crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember_destructor(ptr); }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Standard_Persistent {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Standard_Persistent_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_Standard_Transient {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_Standard_Transient_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_Approval {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_Approval_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_Document {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_Document_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_Organization {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_Organization_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_Person {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_Person_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepBasic_Product {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_Product_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepBasic_ProductContext
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_ProductContext_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepShape_Edge {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_Edge_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepShape_Face {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_Face_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepShape_FaceBound {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_FaceBound_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HArray1_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray1_opencascade_handle_TCollection_HAsciiString_destructor(ptr);
+            crate::ffi_extern_TKernel::NCollection_HArray2_Handle_StepGeom_SurfacePatch_destructor(
+                ptr,
+            );
         }
     }
 }
@@ -44534,13 +44518,6 @@ unsafe impl crate::CppDeletable for NCollection_HArray2_int {
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray2_opencascade_handle_Geom_Surface {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray2_opencascade_handle_Geom_Surface_destructor(ptr);
-        }
-    }
-}
 unsafe impl crate::CppDeletable
     for NCollection_HArray2_opencascade_handle_NCollection_HArray1_double
 {
@@ -44557,48 +44534,6 @@ unsafe impl crate::CppDeletable for NCollection_HArray2_opencascade_handle_NColl
         }
     }
 }
-unsafe impl crate::CppDeletable for NCollection_HArray2_opencascade_handle_Standard_Transient {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray2_opencascade_handle_Standard_Transient_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_ChFiDS_SurfData {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_ChFiDS_SurfData_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Geom_BoundedCurve {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Geom_BoundedCurve_destructor(ptr);
-        }
-    }
-}
 unsafe impl crate::CppDeletable
     for NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt
 {
@@ -44609,139 +44544,11 @@ unsafe impl crate::CppDeletable
     }
 }
 unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink
+    for NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int
 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Standard_Transient {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Standard_Transient_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_StdStorage_Root {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_StdStorage_Root_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Storage_Root {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Storage_Root_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_TCollection_HAsciiString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_TCollection_HAsciiString_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_TCollection_HExtendedString
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_TCollection_HExtendedString_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_TObj_Object {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_TObj_Object_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable
-    for NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Transfer_Finder {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Transfer_Finder_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Units_Quantity {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Units_Quantity_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Units_Token {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Units_Token_destructor(ptr);
-        }
-    }
-}
-unsafe impl crate::CppDeletable for NCollection_HSequence_opencascade_handle_Units_Unit {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::NCollection_HSequence_opencascade_handle_Units_Unit_destructor(ptr);
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int_destructor(ptr);
         }
     }
 }

@@ -14,12 +14,10 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
-#include <TDF_AttributeDelta.hxx>
 #include <TDF_DeltaOnModification.hxx>
+#include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
 #include <TObj_Assistant.hxx>
 #include <TObj_CheckModel.hxx>
@@ -46,7 +44,7 @@ typedef opencascade::handle<CDF_Application> Handle_CDF_Application;
 typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
 typedef opencascade::handle<Message_Algorithm> Handle_Message_Algorithm;
 typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TObj_Object> Handle_NCollection_HSequence_opencascade_handle_TObj_Object;
+typedef opencascade::handle<NCollection_HSequence_Handle_TObj_Object> Handle_NCollection_HSequence_Handle_TObj_Object;
 typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
 typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
@@ -410,6 +408,10 @@ extern "C" OcctResult<TCollection_AsciiString*> TObj_Application_inherited_Versi
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> TObj_Application_inherited_MetaDataLookUpTable(TObj_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TObj_Application_inherited_IsInstance(const TObj_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -594,8 +596,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> TObj_CheckModel_inhe
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> TObj_CheckModel_inherited_GetMessageStrings(const TObj_CheckModel* self, int32_t theStatus) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)*> TObj_CheckModel_inherited_GetMessageStrings(const TObj_CheckModel* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_Handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_CheckModel_inherited_IsInstance(const TObj_CheckModel* self, Handle(Standard_Type) const& theType) {
@@ -2162,7 +2164,7 @@ extern "C" void TObj_ReferenceIterator_destructor(TObj_ReferenceIterator* self_)
 // TObj_SequenceIterator wrappers
 // ========================
 
-extern "C" OcctResult<TObj_SequenceIterator*> TObj_SequenceIterator_ctor_handlencollectionhsequenceopencascadehandletobjobject_handlestandardtype(Handle(NCollection_HSequence_opencascade_handle_TObj_Object) const* theObjects, Handle(Standard_Type) const* theType) {
+extern "C" OcctResult<TObj_SequenceIterator*> TObj_SequenceIterator_ctor_hseq_tobj_object_handlestandardtype(Handle(NCollection_HSequence_Handle_TObj_Object) const* theObjects, Handle(Standard_Type) const* theType) {
     try { return {new TObj_SequenceIterator(*theObjects, *theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2464,6 +2466,10 @@ extern "C" const char* TObj_TIntSparseArray_inherited_References(const TObj_TInt
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TObj_TIntSparseArray_inherited_ExtendedDump(const TObj_TIntSparseArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TObj_TIntSparseArray_inherited_Forget(TObj_TIntSparseArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2686,6 +2692,10 @@ extern "C" const char* TObj_TModel_inherited_References(const TObj_TModel* self,
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TObj_TModel_inherited_ExtendedDump(const TObj_TModel* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TObj_TModel_inherited_Forget(TObj_TModel* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2752,6 +2762,14 @@ extern "C" const char* TObj_TNameContainer_clear(TObj_TNameContainer* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TObj_TNameContainer_set(TObj_TNameContainer* self_, NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label const* theElem) {
+    try { self_->Set(*theElem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label const*> TObj_TNameContainer_get(const TObj_TNameContainer* self_) {
+    try { return {&(self_->Get()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* TObj_TNameContainer_restore(TObj_TNameContainer* self_, Handle(TDF_Attribute) const* theWith) {
     try { self_->Restore(*theWith); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2768,7 +2786,7 @@ extern "C" OcctResult<Standard_GUID const*> TObj_TNameContainer_get_id() {
     try { return {&(TObj_TNameContainer::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TObj_TNameContainer)*> TObj_TNameContainer_set(TDF_Label const* theLabel) {
+extern "C" OcctResult<Handle(TObj_TNameContainer)*> TObj_TNameContainer_set_label(TDF_Label const* theLabel) {
     try { return {new Handle(TObj_TNameContainer)(TObj_TNameContainer::Set(*theLabel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2918,6 +2936,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TObj_TNameContainer_inherited
 }
 extern "C" const char* TObj_TNameContainer_inherited_References(const TObj_TNameContainer* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TObj_TNameContainer_inherited_ExtendedDump(const TObj_TNameContainer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TObj_TNameContainer_inherited_Forget(TObj_TNameContainer* self, int32_t aTransaction) {
@@ -3144,6 +3166,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TObj_TObject_inherited_DeltaO
 }
 extern "C" const char* TObj_TObject_inherited_References(const TObj_TObject* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TObj_TObject_inherited_ExtendedDump(const TObj_TObject* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TObj_TObject_inherited_Forget(TObj_TObject* self, int32_t aTransaction) {
@@ -3384,6 +3410,10 @@ extern "C" const char* TObj_TReference_inherited_References(const TObj_TReferenc
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* TObj_TReference_inherited_ExtendedDump(const TObj_TReference* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* TObj_TReference_inherited_Forget(TObj_TReference* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3612,6 +3642,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TObj_TXYZ_inherited_DeltaOnRe
 }
 extern "C" const char* TObj_TXYZ_inherited_References(const TObj_TXYZ* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* TObj_TXYZ_inherited_ExtendedDump(const TObj_TXYZ* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TObj_TXYZ_inherited_Forget(TObj_TXYZ* self, int32_t aTransaction) {

@@ -748,21 +748,35 @@ impl ALineToWLine {
             crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_tol3_d(self as *const Self)
         })
     }
-}
 
-// ── Skipped symbols for ALineToWLine (2 total) ──
-// SKIPPED: **Source:** `IntPatch_ALineToWLine.hxx`:53 - `IntPatch_ALineToWLine::MakeWLine`
-//   method: Converts aline to the set of Walking-lines and adds
-//   method: them in theLines.
-//   Reason: has unbindable types: param 'theLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn make_w_line(&self, aline: &HandleALine, theLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */);
-//
-// SKIPPED: **Source:** `IntPatch_ALineToWLine.hxx`:58 - `IntPatch_ALineToWLine::MakeWLine`
-//   method: Converts aline (limited by paraminf and paramsup) to the set of
-//   method: Walking-lines and adds them in theLines.
-//   Reason: has unbindable types: param 'theLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn make_w_line(&self, aline: &HandleALine, paraminf: f64, paramsup: f64, theLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */);
-//
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:53 - `IntPatch_ALineToWLine::MakeWLine()`
+    /// Converts aline to the set of Walking-lines and adds
+    /// them in theLines.
+    pub fn make_w_line_handleintpatchaline_seq_intpatch_line(
+        &self,
+        aline: &crate::ffi_types::Handle_IntPatch_ALine,
+        theLines: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_seq_intpatch_line(self as *const Self, aline, theLines)
+        })
+    }
+
+    /// **Source:** `IntPatch_ALineToWLine.hxx`:58 - `IntPatch_ALineToWLine::MakeWLine()`
+    /// Converts aline (limited by paraminf and paramsup) to the set of
+    /// Walking-lines and adds them in theLines.
+    pub fn make_w_line_handleintpatchaline_real2_seq_intpatch_line(
+        &self,
+        aline: &crate::ffi_types::Handle_IntPatch_ALine,
+        paraminf: f64,
+        paramsup: f64,
+        theLines: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_seq_intpatch_line(self as *const Self, aline, paraminf, paramsup, theLines)
+        })
+    }
+}
 
 // ========================
 // From IntPatch_ArcFunction.hxx
@@ -3529,6 +3543,17 @@ impl Intersection {
         }
     }
 
+    /// **Source:** `IntPatch_Intersection.hxx`:170 - `IntPatch_Intersection::SequenceOfLine()`
+    pub fn sequence_of_line(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_sequence_of_line(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `IntPatch_Intersection.hxx`:174 - `IntPatch_Intersection::Dump()`
     /// Dump of each result line.
     /// Mode for more accurate dumps.
@@ -3583,18 +3608,25 @@ impl Intersection {
             )
         })
     }
-}
 
-// ── Skipped symbols for Intersection (2 total) ──
-// SKIPPED: **Source:** `IntPatch_Intersection.hxx`:170 - `IntPatch_Intersection::SequenceOfLine`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>> const&)
-//   // pub fn sequence_of_line(&self) -> /* NCollection_Sequence<occ::handle<IntPatch_Line>> const& */;
-//
-// SKIPPED: **Source:** `IntPatch_Intersection.hxx`:195 - `IntPatch_Intersection::PrepareSurfaces`
-//   static_method: Prepares surfaces for intersection
-//   Reason: has unbindable types: param 'theSeqHS1': unresolved template type (NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>&); param 'theSeqHS2': unresolved template type (NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>&)
-//   // pub fn prepare_surfaces(theS1: &HandleSurface, theD1: &HandleTopolTool, theS2: &HandleSurface, theD2: &HandleTopolTool, Tol: f64, theSeqHS1: /* NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>& */, theSeqHS2: /* NCollection_DynamicArray<occ::handle<Adaptor3d_Surface>>& */);
-//
+    /// **Source:** `IntPatch_Intersection.hxx`:195 - `IntPatch_Intersection::PrepareSurfaces()`
+    /// Prepares surfaces for intersection
+    pub fn prepare_surfaces(
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theD1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theD2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Tol: f64,
+        theSeqHS1: &mut crate::ffi_types::NCollection_DynamicArray_Handle_Adaptor3d_Surface,
+        theSeqHS2: &mut crate::ffi_types::NCollection_DynamicArray_Handle_Adaptor3d_Surface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_Intersection_prepare_surfaces(
+                theS1, theD1, theS2, theD2, Tol, theSeqHS1, theSeqHS2,
+            )
+        })
+    }
+}
 
 // ========================
 // From IntPatch_Line.hxx
@@ -4036,6 +4068,31 @@ impl LineConstructor {
         }
     }
 
+    /// **Source:** `IntPatch_LineConstructor.hxx`:36 - `IntPatch_LineConstructor::Perform()`
+    pub fn perform(
+        &mut self,
+        SL: &crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+        L: &crate::ffi_types::Handle_IntPatch_Line,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        D2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        Tol: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_LineConstructor_perform(
+                self as *mut Self,
+                SL,
+                L,
+                S1,
+                D1,
+                S2,
+                D2,
+                Tol,
+            )
+        })
+    }
+
     /// **Source:** `IntPatch_LineConstructor.hxx`:44 - `IntPatch_LineConstructor::NbLines()`
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4055,12 +4112,6 @@ impl LineConstructor {
         }
     }
 }
-
-// ── Skipped symbols for LineConstructor (1 total) ──
-// SKIPPED: **Source:** `IntPatch_LineConstructor.hxx`:36 - `IntPatch_LineConstructor::Perform`
-//   Reason: has unbindable types: param 'SL': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>> const&)
-//   // pub fn perform(&mut self, SL: /* NCollection_Sequence<occ::handle<IntPatch_Line>> const& */, L: &HandleLine, S1: &HandleSurface, D1: &HandleTopolTool, S2: &HandleSurface, D2: &HandleTopolTool, Tol: f64);
-//
 
 // ========================
 // From IntPatch_Point.hxx
@@ -9931,20 +9982,62 @@ impl WLineTool {
             ))
         }
     }
-}
 
-// ── Skipped symbols for WLineTool (2 total) ──
-// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:58 - `IntPatch_WLineTool::JoinWLines`
-//   static_method: Joins all WLines from theSlin to one if it is possible and records
-//   static_method: the result into theSlin again. Lines will be kept to be split if:
-//   static_method: a) they are separated (has no common points);
-//   Reason: has unbindable types: param 'theSlin': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn join_w_lines(theSlin: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, theSPnt: &mut Sequence_IntPatch_Point, theS1: &HandleSurface, theS2: &HandleSurface, theTol3D: f64);
-//
-// SKIPPED: **Source:** `IntPatch_WLineTool.hxx`:75 - `IntPatch_WLineTool::ExtendTwoWLines`
-//   static_method: Extends every line from theSlin (if it is possible) to be started/finished
-//   static_method: in strictly determined point (in the place of joint of two lines).
-//   static_method: As result, some gaps between two lines will vanish.
-//   Reason: has unbindable types: param 'theSlin': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn extend_two_w_lines(theSlin: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, theS1: &HandleSurface, theS2: &HandleSurface, theToler3D: f64, theArrPeriods: *const f64, theBoxS1: &Box2d, theBoxS2: &Box2d, theListOfCriticalPoints: &List_gp_Pnt);
-//
+    /// **Source:** `IntPatch_WLineTool.hxx`:58 - `IntPatch_WLineTool::JoinWLines()`
+    /// Joins all WLines from theSlin to one if it is possible and records
+    /// the result into theSlin again. Lines will be kept to be split if:
+    /// a) they are separated (has no common points);
+    /// b) resulted line (after joining) go through seam-edges or surface boundaries.
+    ///
+    /// In addition, if points in theSPnt lies at least in one of the line in theSlin,
+    /// this point will be deleted.
+    pub fn join_w_lines(
+        theSlin: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+        theSPnt: &mut crate::ffi_types::NCollection_Sequence_IntPatch_Point,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theTol3D: f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_join_w_lines(
+                theSlin, theSPnt, theS1, theS2, theTol3D,
+            )
+        })
+    }
+
+    /// **Source:** `IntPatch_WLineTool.hxx`:75 - `IntPatch_WLineTool::ExtendTwoWLines()`
+    /// Extends every line from theSlin (if it is possible) to be started/finished
+    /// in strictly determined point (in the place of joint of two lines).
+    /// As result, some gaps between two lines will vanish.
+    /// The Walking lines are supposed (algorithm will do nothing for not-Walking line)
+    /// to be computed as a result of intersection. Both theS1 and theS2
+    /// must be quadrics. Other cases are not supported.
+    /// theArrPeriods must be filled as follows (every value must not be negative;
+    /// if the surface is not periodic the period must be equal to 0.0 strictly):
+    /// {<U-period of 1st surface>, <V-period of 1st surface>,
+    /// <U-period of 2nd surface>, <V-period of 2nd surface>}.
+    /// theListOfCriticalPoints must contain 3D-points where joining is disabled.
+    pub unsafe fn extend_two_w_lines(
+        theSlin: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theToler3D: f64,
+        theArrPeriods: *const f64,
+        theBoxS1: &crate::bnd::Box2d,
+        theBoxS2: &crate::bnd::Box2d,
+        theListOfCriticalPoints: &crate::ffi_types::NCollection_List_gp_Pnt,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntPatch_WLineTool_extend_two_w_lines(
+                theSlin,
+                theS1,
+                theS2,
+                theToler3D,
+                theArrPeriods,
+                theBoxS1,
+                theBoxS2,
+                theListOfCriticalPoints,
+            )
+        })
+    }
+}

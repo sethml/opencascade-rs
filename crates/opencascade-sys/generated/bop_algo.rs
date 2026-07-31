@@ -21538,6 +21538,36 @@ impl Tools {
         }
     }
 
+    /// **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap()`
+    pub fn fill_map(
+        thePB1: &crate::ffi_types::Handle_BOPDS_PaveBlock,
+        theF: i32,
+        theMILI: &mut crate::ffi_types::NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPAlgo_Tools_fill_map(thePB1, theF, theMILI, theAllocator)
+        })
+    }
+
+    /// **Source:** `BOPAlgo_Tools.hxx`:120 - `BOPAlgo_Tools::PerformCommonBlocks()`
+    /// Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
+    pub unsafe fn perform_common_blocks(
+        theMBlocks: &crate::ffi_types::NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
+        pDS: &mut *mut crate::bopds::DS,
+        theContext: &crate::ffi_types::Handle_IntTools_Context,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPAlgo_Tools_perform_common_blocks(
+                theMBlocks,
+                theAllocator,
+                pDS,
+                theContext,
+            )
+        })
+    }
+
     /// **Source:** `BOPAlgo_Tools.hxx`:127 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
     pub fn compute_tolerance_of_cb(
         theCB: &crate::ffi_types::Handle_BOPDS_CommonBlock,
@@ -21715,21 +21745,12 @@ impl Tools {
     }
 }
 
-// ── Skipped symbols for Tools (3 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap`
-//   Reason: has unbindable types: param 'theMILI': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>>&)
-//   // pub fn fill_map(thePB1: &HandlePaveBlock, theF: i32, theMILI: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>>& */, theAllocator: &HAllocator);
-//
+// ── Skipped symbols for Tools (1 total) ──
 // SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:112 - `BOPAlgo_Tools::PerformCommonBlocks`
 //   static_method: Create Common Blocks from the groups of pave blocks of <theMBlocks>
 //   static_method: connection map.
 //   Reason: has unbindable types: param 'theMBlocks': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<occ::handle<BOPDS_PaveBlock>>>&)
 //   // pub fn perform_common_blocks(theMBlocks: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<occ::handle<BOPDS_PaveBlock>>>& */, theAllocator: &HAllocator, theDS: &mut *mut DS, theContext: &HandleContext);
-//
-// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:120 - `BOPAlgo_Tools::PerformCommonBlocks`
-//   static_method: Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
-//   Reason: has unbindable types: param 'theMBlocks': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>> const&)
-//   // pub fn perform_common_blocks(theMBlocks: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>> const& */, theAllocator: &HAllocator, pDS: &mut *mut DS, theContext: &HandleContext);
 //
 
 // ========================

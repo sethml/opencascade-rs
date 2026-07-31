@@ -1205,8 +1205,8 @@ impl Framework {
 
 // ── Skipped symbols for Framework (1 total) ──
 // SKIPPED: **Source:** `AdvApp2Var_Framework.hxx`:43 - `AdvApp2Var_Framework::AdvApp2Var_Framework`
-//   Reason: has unbindable types: param 'Frame': unresolved template type (NCollection_Sequence<occ::handle<AdvApp2Var_Node>> const&); param 'UFrontier': unresolved template type (NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const&); param 'VFrontier': unresolved template type (NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const&)
-//   // pub fn new_node>>_iso>>>2(Frame: /* NCollection_Sequence<occ::handle<AdvApp2Var_Node>> const& */, UFrontier: /* NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const& */, VFrontier: /* NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const& */) -> OwnedPtr<Self>;
+//   Reason: has unbindable types: param 'UFrontier': unresolved template type (NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const&); param 'VFrontier': unresolved template type (NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const&)
+//   // pub fn new_seq_advapp2var_node_iso>>>2(Frame: &Sequence_Handle_AdvApp2Var_Node, UFrontier: /* NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const& */, VFrontier: /* NCollection_Sequence<NCollection_Sequence<occ::handle<AdvApp2Var_Iso>>> const& */) -> OwnedPtr<Self>;
 //
 
 // ========================
@@ -2328,6 +2328,17 @@ impl Network {
         }
     }
 
+    /// **Source:** `AdvApp2Var_Network.hxx`:36 - `AdvApp2Var_Network::AdvApp2Var_Network()`
+    pub fn new_seq_advapp2var_patch_seq_double2(
+        Net: &crate::ffi_types::NCollection_Sequence_Handle_AdvApp2Var_Patch,
+        TheU: &crate::ffi_types::NCollection_Sequence_double,
+        TheV: &crate::ffi_types::NCollection_Sequence_double,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_ctor_seq_advapp2var_patch_seq_double2(Net, TheU, TheV)))
+        }
+    }
+
     /// **Source:** `AdvApp2Var_Network.hxx`:42 - `AdvApp2Var_Network::FirstNotApprox()`
     /// search the Index of the first Patch not approximated,
     /// if all Patches are approximated false is returned
@@ -2431,12 +2442,6 @@ impl Network {
         }
     }
 }
-
-// ── Skipped symbols for Network (1 total) ──
-// SKIPPED: **Source:** `AdvApp2Var_Network.hxx`:36 - `AdvApp2Var_Network::AdvApp2Var_Network`
-//   Reason: has unbindable types: param 'Net': unresolved template type (NCollection_Sequence<occ::handle<AdvApp2Var_Patch>> const&)
-//   // pub fn new_patch>>_seq_double2(Net: /* NCollection_Sequence<occ::handle<AdvApp2Var_Patch>> const& */, TheU: &Sequence_double, TheV: &Sequence_double) -> OwnedPtr<Self>;
-//
 
 // ========================
 // From AdvApp2Var_Node.hxx

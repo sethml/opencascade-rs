@@ -1599,6 +1599,16 @@ impl Graph {
         })
     }
 
+    /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::ChangeBasicElts()`
+    pub fn change_basic_elts(
+        &mut self,
+        NewMap: &crate::ffi_types::NCollection_DataMap_int_Handle_MAT_BasicElt,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_Graph_change_basic_elts(self as *mut Self, NewMap)
+        })
+    }
+
     /// **Source:** `MAT_Graph.hxx`:108 - `MAT_Graph::ChangeBasicElt()`
     pub fn change_basic_elt(
         &mut self,
@@ -1780,12 +1790,6 @@ impl Handle_MAT_Graph {
         }
     }
 }
-
-// ── Skipped symbols for Graph (1 total) ──
-// SKIPPED: **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::ChangeBasicElts`
-//   Reason: has unbindable types: param 'NewMap': unresolved template type (NCollection_DataMap<int, occ::handle<MAT_BasicElt>> const&)
-//   // pub fn change_basic_elts(&mut self, NewMap: /* NCollection_DataMap<int, occ::handle<MAT_BasicElt>> const& */);
-//
 
 // ========================
 // From MAT_ListOfBisector.hxx
@@ -2632,6 +2636,23 @@ impl Node {
         })
     }
 
+    /// **Source:** `MAT_Node.hxx`:48 - `MAT_Node::LinkedArcs()`
+    /// Returns in <S> the Arcs linked to <me>.
+    pub fn linked_arcs(&self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_MAT_Arc) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_Node_linked_arcs(self as *const Self, S)
+        })
+    }
+
+    /// **Source:** `MAT_Node.hxx`:52 - `MAT_Node::NearElts()`
+    /// Returns in <S> the BasicElts equidistant
+    /// to <me>.
+    pub fn near_elts(&self, S: &mut crate::ffi_types::NCollection_Sequence_Handle_MAT_BasicElt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT_Node_near_elts(self as *const Self, S)
+        })
+    }
+
     /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::Distance()`
     pub fn distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2845,19 +2866,6 @@ impl Handle_MAT_Node {
         }
     }
 }
-
-// ── Skipped symbols for Node (2 total) ──
-// SKIPPED: **Source:** `MAT_Node.hxx`:48 - `MAT_Node::LinkedArcs`
-//   method: Returns in <S> the Arcs linked to <me>.
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<MAT_Arc>>&)
-//   // pub fn linked_arcs(&self, S: /* NCollection_Sequence<occ::handle<MAT_Arc>>& */);
-//
-// SKIPPED: **Source:** `MAT_Node.hxx`:52 - `MAT_Node::NearElts`
-//   method: Returns in <S> the BasicElts equidistant
-//   method: to <me>.
-//   Reason: has unbindable types: param 'S': unresolved template type (NCollection_Sequence<occ::handle<MAT_BasicElt>>&)
-//   // pub fn near_elts(&self, S: /* NCollection_Sequence<occ::handle<MAT_BasicElt>>& */);
-//
 
 // ========================
 // From MAT_TListNodeOfListOfBisector.hxx

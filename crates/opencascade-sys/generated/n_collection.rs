@@ -47,6 +47,16 @@ pub use crate::ffi_types::{
     NCollection_Array1_HLRAlgo_TriangleData as Array1_HLRAlgo_TriangleData,
     NCollection_Array1_HLRBRep_EdgeData as Array1_HLRBRep_EdgeData,
     NCollection_Array1_HLRBRep_FaceData as Array1_HLRBRep_FaceData,
+    NCollection_Array1_Handle_Expr_GeneralExpression as Array1_Handle_Expr_GeneralExpression,
+    NCollection_Array1_Handle_Expr_NamedUnknown as Array1_Handle_Expr_NamedUnknown,
+    NCollection_Array1_Handle_Geom2d_BSplineCurve as Array1_Handle_Geom2d_BSplineCurve,
+    NCollection_Array1_Handle_Geom2d_BezierCurve as Array1_Handle_Geom2d_BezierCurve,
+    NCollection_Array1_Handle_Geom_BSplineCurve as Array1_Handle_Geom_BSplineCurve,
+    NCollection_Array1_Handle_Geom_BezierCurve as Array1_Handle_Geom_BezierCurve,
+    NCollection_Array1_Handle_Geom_Curve as Array1_Handle_Geom_Curve,
+    NCollection_Array1_Handle_HLRAlgo_PolyData as Array1_Handle_HLRAlgo_PolyData,
+    NCollection_Array1_Handle_HLRAlgo_PolyInternalNode as Array1_Handle_HLRAlgo_PolyInternalNode,
+    NCollection_Array1_Handle_HLRAlgo_PolyShellData as Array1_Handle_HLRAlgo_PolyShellData,
     NCollection_Array1_Plate_PinpointConstraint as Array1_Plate_PinpointConstraint,
     NCollection_Array1_Poly_Triangle as Array1_Poly_Triangle,
     NCollection_Array1_TopLoc_Location as Array1_TopLoc_Location,
@@ -56,13 +66,26 @@ pub use crate::ffi_types::{
     NCollection_Array1_gp_Pnt2d as Array1_gp_Pnt2d, NCollection_Array1_gp_Trsf as Array1_gp_Trsf,
     NCollection_Array1_gp_Vec as Array1_gp_Vec, NCollection_Array1_gp_Vec2d as Array1_gp_Vec2d,
     NCollection_Array1_gp_XYZ as Array1_gp_XYZ, NCollection_Array1_int as Array1_int,
+    NCollection_Array2_Handle_Geom_BezierSurface as Array2_Handle_Geom_BezierSurface,
     NCollection_Array2_double as Array2_double, NCollection_Array2_gp_Pnt as Array2_gp_Pnt,
     NCollection_Array2_gp_Vec as Array2_gp_Vec, NCollection_Array2_gp_XYZ as Array2_gp_XYZ,
     NCollection_Array2_int as Array2_int,
+    NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient as DataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent as DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent,
+    NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape as DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape,
+    NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape as DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape,
+    NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label as DataMap_Handle_TCollection_HExtendedString_TDF_Label,
+    NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute as DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute,
+    NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance as DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance,
+    NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject as DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject,
+    NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial as DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial,
+    NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile as DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile,
+    NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver as DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
     NCollection_DataMap_TCollection_AsciiString_RWObj_Material as DataMap_TCollection_AsciiString_RWObj_Material,
     NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString as DataMap_TCollection_AsciiString_TCollection_AsciiString,
     NCollection_DataMap_TCollection_AsciiString_TopoDS_Shape as DataMap_TCollection_AsciiString_TopoDS_Shape,
     NCollection_DataMap_TCollection_AsciiString_int as DataMap_TCollection_AsciiString_int,
+    NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData as DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
     NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString as DataMap_TCollection_ExtendedString_TCollection_ExtendedString,
     NCollection_DataMap_TCollection_ExtendedString_double as DataMap_TCollection_ExtendedString_double,
     NCollection_DataMap_TCollection_ExtendedString_int as DataMap_TCollection_ExtendedString_int,
@@ -72,12 +95,15 @@ pub use crate::ffi_types::{
     NCollection_DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher,
+    NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_int as DataMap_TopoDS_Shape_int,
     NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher,
+    NCollection_DataMap_gp_Pnt_Handle_Standard_Transient as DataMap_gp_Pnt_Handle_Standard_Transient,
+    NCollection_DataMap_int_Handle_MAT_BasicElt as DataMap_int_Handle_MAT_BasicElt,
     NCollection_DataMap_int_TopoDS_Shape as DataMap_int_TopoDS_Shape,
     NCollection_DataMap_int_int as DataMap_int_int,
     NCollection_HArray1_AppParCurves_ConstraintCouple as HArray1_AppParCurves_ConstraintCouple,
@@ -85,6 +111,70 @@ pub use crate::ffi_types::{
     NCollection_HArray1_ChFiDS_CircSection as HArray1_ChFiDS_CircSection,
     NCollection_HArray1_HLRAlgo_PolyHidingData as HArray1_HLRAlgo_PolyHidingData,
     NCollection_HArray1_HLRAlgo_TriangleData as HArray1_HLRAlgo_TriangleData,
+    NCollection_HArray1_Handle_Adaptor3d_Curve as HArray1_Handle_Adaptor3d_Curve,
+    NCollection_HArray1_Handle_Geom2d_BSplineCurve as HArray1_Handle_Geom2d_BSplineCurve,
+    NCollection_HArray1_Handle_Geom2d_Curve as HArray1_Handle_Geom2d_Curve,
+    NCollection_HArray1_Handle_Geom_BSplineCurve as HArray1_Handle_Geom_BSplineCurve,
+    NCollection_HArray1_Handle_Geom_Curve as HArray1_Handle_Geom_Curve,
+    NCollection_HArray1_Handle_IGESAppli_FiniteElement as HArray1_Handle_IGESAppli_FiniteElement,
+    NCollection_HArray1_Handle_IGESAppli_Node as HArray1_Handle_IGESAppli_Node,
+    NCollection_HArray1_Handle_IGESData_IGESEntity as HArray1_Handle_IGESData_IGESEntity,
+    NCollection_HArray1_Handle_IGESData_LineFontEntity as HArray1_Handle_IGESData_LineFontEntity,
+    NCollection_HArray1_Handle_IGESData_ViewKindEntity as HArray1_Handle_IGESData_ViewKindEntity,
+    NCollection_HArray1_Handle_IGESDefs_TabularData as HArray1_Handle_IGESDefs_TabularData,
+    NCollection_HArray1_Handle_IGESDimen_GeneralNote as HArray1_Handle_IGESDimen_GeneralNote,
+    NCollection_HArray1_Handle_IGESDimen_LeaderArrow as HArray1_Handle_IGESDimen_LeaderArrow,
+    NCollection_HArray1_Handle_IGESDraw_ConnectPoint as HArray1_Handle_IGESDraw_ConnectPoint,
+    NCollection_HArray1_Handle_IGESGeom_Boundary as HArray1_Handle_IGESGeom_Boundary,
+    NCollection_HArray1_Handle_IGESGeom_CurveOnSurface as HArray1_Handle_IGESGeom_CurveOnSurface,
+    NCollection_HArray1_Handle_IGESGeom_TransformationMatrix as HArray1_Handle_IGESGeom_TransformationMatrix,
+    NCollection_HArray1_Handle_IGESGraph_Color as HArray1_Handle_IGESGraph_Color,
+    NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate as HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    NCollection_HArray1_Handle_IGESGraph_TextFontDef as HArray1_Handle_IGESGraph_TextFontDef,
+    NCollection_HArray1_Handle_IGESSolid_Face as HArray1_Handle_IGESSolid_Face,
+    NCollection_HArray1_Handle_IGESSolid_Loop as HArray1_Handle_IGESSolid_Loop,
+    NCollection_HArray1_Handle_IGESSolid_Shell as HArray1_Handle_IGESSolid_Shell,
+    NCollection_HArray1_Handle_IGESSolid_VertexList as HArray1_Handle_IGESSolid_VertexList,
+    NCollection_HArray1_Handle_Standard_Persistent as HArray1_Handle_Standard_Persistent,
+    NCollection_HArray1_Handle_Standard_Transient as HArray1_Handle_Standard_Transient,
+    NCollection_HArray1_Handle_StepBasic_Approval as HArray1_Handle_StepBasic_Approval,
+    NCollection_HArray1_Handle_StepBasic_DerivedUnitElement as HArray1_Handle_StepBasic_DerivedUnitElement,
+    NCollection_HArray1_Handle_StepBasic_Document as HArray1_Handle_StepBasic_Document,
+    NCollection_HArray1_Handle_StepBasic_NamedUnit as HArray1_Handle_StepBasic_NamedUnit,
+    NCollection_HArray1_Handle_StepBasic_Organization as HArray1_Handle_StepBasic_Organization,
+    NCollection_HArray1_Handle_StepBasic_Person as HArray1_Handle_StepBasic_Person,
+    NCollection_HArray1_Handle_StepBasic_Product as HArray1_Handle_StepBasic_Product,
+    NCollection_HArray1_Handle_StepBasic_ProductContext as HArray1_Handle_StepBasic_ProductContext,
+    NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit as HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    NCollection_HArray1_Handle_StepDimTol_DatumReference as HArray1_Handle_StepDimTol_DatumReference,
+    NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment as HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement as HArray1_Handle_StepDimTol_DatumReferenceElement,
+    NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket as HArray1_Handle_StepElement_CurveElementEndReleasePacket,
+    NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition as HArray1_Handle_StepElement_CurveElementSectionDefinition,
+    NCollection_HArray1_Handle_StepElement_SurfaceSection as HArray1_Handle_StepElement_SurfaceSection,
+    NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember as HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset as HArray1_Handle_StepFEA_CurveElementEndOffset,
+    NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease as HArray1_Handle_StepFEA_CurveElementEndRelease,
+    NCollection_HArray1_Handle_StepFEA_CurveElementInterval as HArray1_Handle_StepFEA_CurveElementInterval,
+    NCollection_HArray1_Handle_StepFEA_ElementRepresentation as HArray1_Handle_StepFEA_ElementRepresentation,
+    NCollection_HArray1_Handle_StepFEA_NodeRepresentation as HArray1_Handle_StepFEA_NodeRepresentation,
+    NCollection_HArray1_Handle_StepGeom_CartesianPoint as HArray1_Handle_StepGeom_CartesianPoint,
+    NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment as HArray1_Handle_StepGeom_CompositeCurveSegment,
+    NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation as HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation as HArray1_Handle_StepRepr_PropertyDefinitionRepresentation,
+    NCollection_HArray1_Handle_StepRepr_RepresentationItem as HArray1_Handle_StepRepr_RepresentationItem,
+    NCollection_HArray1_Handle_StepRepr_ShapeAspect as HArray1_Handle_StepRepr_ShapeAspect,
+    NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet as HArray1_Handle_StepShape_ConnectedEdgeSet,
+    NCollection_HArray1_Handle_StepShape_ConnectedFaceSet as HArray1_Handle_StepShape_ConnectedFaceSet,
+    NCollection_HArray1_Handle_StepShape_Edge as HArray1_Handle_StepShape_Edge,
+    NCollection_HArray1_Handle_StepShape_Face as HArray1_Handle_StepShape_Face,
+    NCollection_HArray1_Handle_StepShape_FaceBound as HArray1_Handle_StepShape_FaceBound,
+    NCollection_HArray1_Handle_StepShape_OrientedClosedShell as HArray1_Handle_StepShape_OrientedClosedShell,
+    NCollection_HArray1_Handle_StepShape_OrientedEdge as HArray1_Handle_StepShape_OrientedEdge,
+    NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern as HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment as HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem as HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    NCollection_HArray1_Handle_TCollection_HAsciiString as HArray1_Handle_TCollection_HAsciiString,
     NCollection_HArray1_Poly_Triangle as HArray1_Poly_Triangle,
     NCollection_HArray1_Quantity_Color as HArray1_Quantity_Color,
     NCollection_HArray1_Standard_Boolean as HArray1_Standard_Boolean,
@@ -152,10 +242,32 @@ pub use crate::ffi_types::{
     NCollection_HArray1_gp_Pnt2d as HArray1_gp_Pnt2d, NCollection_HArray1_gp_Vec as HArray1_gp_Vec,
     NCollection_HArray1_gp_Vec2d as HArray1_gp_Vec2d, NCollection_HArray1_gp_XY as HArray1_gp_XY,
     NCollection_HArray1_gp_XYZ as HArray1_gp_XYZ, NCollection_HArray1_int as HArray1_int,
+    NCollection_HSequence_Handle_ChFiDS_SurfData as HSequence_Handle_ChFiDS_SurfData,
+    NCollection_HSequence_Handle_Geom2d_BoundedCurve as HSequence_Handle_Geom2d_BoundedCurve,
+    NCollection_HSequence_Handle_Geom_BoundedCurve as HSequence_Handle_Geom_BoundedCurve,
+    NCollection_HSequence_Handle_STEPSelections_AssemblyLink as HSequence_Handle_STEPSelections_AssemblyLink,
+    NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData as HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    NCollection_HSequence_Handle_Standard_Transient as HSequence_Handle_Standard_Transient,
+    NCollection_HSequence_Handle_StdStorage_Root as HSequence_Handle_StdStorage_Root,
+    NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition as HSequence_Handle_StepElement_CurveElementSectionDefinition,
+    NCollection_HSequence_Handle_StepElement_ElementMaterial as HSequence_Handle_StepElement_ElementMaterial,
+    NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship as HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    NCollection_HSequence_Handle_StepFEA_ElementRepresentation as HSequence_Handle_StepFEA_ElementRepresentation,
+    NCollection_HSequence_Handle_Storage_Root as HSequence_Handle_Storage_Root,
+    NCollection_HSequence_Handle_TCollection_HAsciiString as HSequence_Handle_TCollection_HAsciiString,
+    NCollection_HSequence_Handle_TCollection_HExtendedString as HSequence_Handle_TCollection_HExtendedString,
+    NCollection_HSequence_Handle_TObj_Object as HSequence_Handle_TObj_Object,
+    NCollection_HSequence_Handle_TransferBRep_TransferResultInfo as HSequence_Handle_TransferBRep_TransferResultInfo,
+    NCollection_HSequence_Handle_Transfer_Finder as HSequence_Handle_Transfer_Finder,
+    NCollection_HSequence_Handle_Units_Quantity as HSequence_Handle_Units_Quantity,
+    NCollection_HSequence_Handle_Units_Token as HSequence_Handle_Units_Token,
+    NCollection_HSequence_Handle_Units_Unit as HSequence_Handle_Units_Unit,
     NCollection_HSequence_TCollection_AsciiString as HSequence_TCollection_AsciiString,
     NCollection_HSequence_TCollection_ExtendedString as HSequence_TCollection_ExtendedString,
     NCollection_HSequence_TopoDS_Shape as HSequence_TopoDS_Shape,
     NCollection_HSequence_double as HSequence_double, NCollection_HSequence_int as HSequence_int,
+    NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient as IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient,
+    NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient as IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
     NCollection_IndexedDataMap_TCollection_AsciiString_Standard_DumpValue as IndexedDataMap_TCollection_AsciiString_Standard_DumpValue,
     NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString as IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
     NCollection_IndexedDataMap_TCollection_AsciiString_int as IndexedDataMap_TCollection_AsciiString_int,
@@ -167,6 +279,9 @@ pub use crate::ffi_types::{
     NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher as IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     NCollection_IndexedDataMap_TopoDS_Shape_XCAFPrs_Style_TopTools_ShapeMapHasher as IndexedDataMap_TopoDS_Shape_XCAFPrs_Style_TopTools_ShapeMapHasher,
     NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher as IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher,
+    NCollection_IndexedMap_Handle_BOPDS_PaveBlock as IndexedMap_Handle_BOPDS_PaveBlock,
+    NCollection_IndexedMap_Handle_Standard_Transient as IndexedMap_Handle_Standard_Transient,
+    NCollection_IndexedMap_Handle_TDF_Attribute as IndexedMap_Handle_TDF_Attribute,
     NCollection_IndexedMap_TCollection_AsciiString as IndexedMap_TCollection_AsciiString,
     NCollection_IndexedMap_TDF_Label as IndexedMap_TDF_Label,
     NCollection_IndexedMap_TopoDS_Shape as IndexedMap_TopoDS_Shape,
@@ -179,6 +294,22 @@ pub use crate::ffi_types::{
     NCollection_List_Bnd_Range as List_Bnd_Range,
     NCollection_List_HLRAlgo_BiPoint as List_HLRAlgo_BiPoint,
     NCollection_List_HLRAlgo_Interference as List_HLRAlgo_Interference,
+    NCollection_List_Handle_BOPDS_PaveBlock as List_Handle_BOPDS_PaveBlock,
+    NCollection_List_Handle_BRepMesh_DiscretAlgoFactory as List_Handle_BRepMesh_DiscretAlgoFactory,
+    NCollection_List_Handle_BRep_CurveRepresentation as List_Handle_BRep_CurveRepresentation,
+    NCollection_List_Handle_BRep_PointRepresentation as List_Handle_BRep_PointRepresentation,
+    NCollection_List_Handle_ChFiDS_ElSpine as List_Handle_ChFiDS_ElSpine,
+    NCollection_List_Handle_ChFiDS_Stripe as List_Handle_ChFiDS_Stripe,
+    NCollection_List_Handle_Law_Function as List_Handle_Law_Function,
+    NCollection_List_Handle_Message_Alert as List_Handle_Message_Alert,
+    NCollection_List_Handle_Poly_Triangulation as List_Handle_Poly_Triangulation,
+    NCollection_List_Handle_TDF_Attribute as List_Handle_TDF_Attribute,
+    NCollection_List_Handle_TDF_AttributeDelta as List_Handle_TDF_AttributeDelta,
+    NCollection_List_Handle_TDF_Delta as List_Handle_TDF_Delta,
+    NCollection_List_Handle_TNaming_NamedShape as List_Handle_TNaming_NamedShape,
+    NCollection_List_Handle_TopOpeBRepBuild_Loop as List_Handle_TopOpeBRepBuild_Loop,
+    NCollection_List_Handle_TopOpeBRepBuild_Pave as List_Handle_TopOpeBRepBuild_Pave,
+    NCollection_List_Handle_TopOpeBRepDS_Interference as List_Handle_TopOpeBRepDS_Interference,
     NCollection_List_IntPolyh_Couple as List_IntPolyh_Couple,
     NCollection_List_IntSurf_PntOn2S as List_IntSurf_PntOn2S,
     NCollection_List_IntTools_CurveRangeSample as List_IntTools_CurveRangeSample,
@@ -191,6 +322,9 @@ pub use crate::ffi_types::{
     NCollection_List_TopoDS_Shape as List_TopoDS_Shape, NCollection_List_double as List_double,
     NCollection_List_gp_Pnt as List_gp_Pnt, NCollection_List_int as List_int,
     NCollection_Map_BOPDS_Pair as Map_BOPDS_Pair,
+    NCollection_Map_Handle_BOPDS_PaveBlock as Map_Handle_BOPDS_PaveBlock,
+    NCollection_Map_Handle_TDF_Attribute as Map_Handle_TDF_Attribute,
+    NCollection_Map_Handle_TNaming_NamedShape as Map_Handle_TNaming_NamedShape,
     NCollection_Map_TCollection_AsciiString as Map_TCollection_AsciiString,
     NCollection_Map_TDF_Label as Map_TDF_Label,
     NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher as Map_TopoDS_Shape_TopTools_ShapeMapHasher,
@@ -201,6 +335,31 @@ pub use crate::ffi_types::{
     NCollection_Sequence_Extrema_POnSurf as Sequence_Extrema_POnSurf,
     NCollection_Sequence_GeomPlate_Aij as Sequence_GeomPlate_Aij,
     NCollection_Sequence_HLRBRep_ShapeBounds as Sequence_HLRBRep_ShapeBounds,
+    NCollection_Sequence_Handle_AdvApp2Var_Node as Sequence_Handle_AdvApp2Var_Node,
+    NCollection_Sequence_Handle_AdvApp2Var_Patch as Sequence_Handle_AdvApp2Var_Patch,
+    NCollection_Sequence_Handle_ChFiDS_SurfData as Sequence_Handle_ChFiDS_SurfData,
+    NCollection_Sequence_Handle_Expr_GeneralExpression as Sequence_Handle_Expr_GeneralExpression,
+    NCollection_Sequence_Handle_Expr_NamedExpression as Sequence_Handle_Expr_NamedExpression,
+    NCollection_Sequence_Handle_Expr_NamedFunction as Sequence_Handle_Expr_NamedFunction,
+    NCollection_Sequence_Handle_Geom2d_Curve as Sequence_Handle_Geom2d_Curve,
+    NCollection_Sequence_Handle_Geom_Curve as Sequence_Handle_Geom_Curve,
+    NCollection_Sequence_Handle_IFSelect_Selection as Sequence_Handle_IFSelect_Selection,
+    NCollection_Sequence_Handle_IntPatch_Line as Sequence_Handle_IntPatch_Line,
+    NCollection_Sequence_Handle_MAT2d_Connexion as Sequence_Handle_MAT2d_Connexion,
+    NCollection_Sequence_Handle_MAT_Arc as Sequence_Handle_MAT_Arc,
+    NCollection_Sequence_Handle_MAT_BasicElt as Sequence_Handle_MAT_BasicElt,
+    NCollection_Sequence_Handle_Message_Printer as Sequence_Handle_Message_Printer,
+    NCollection_Sequence_Handle_PCDM_Document as Sequence_Handle_PCDM_Document,
+    NCollection_Sequence_Handle_Poly_Triangulation as Sequence_Handle_Poly_Triangulation,
+    NCollection_Sequence_Handle_Standard_Transient as Sequence_Handle_Standard_Transient,
+    NCollection_Sequence_Handle_TCollection_HAsciiString as Sequence_Handle_TCollection_HAsciiString,
+    NCollection_Sequence_Handle_TCollection_HExtendedString as Sequence_Handle_TCollection_HExtendedString,
+    NCollection_Sequence_Handle_TDF_Attribute as Sequence_Handle_TDF_Attribute,
+    NCollection_Sequence_Handle_TDocStd_ApplicationDelta as Sequence_Handle_TDocStd_ApplicationDelta,
+    NCollection_Sequence_Handle_TDocStd_Document as Sequence_Handle_TDocStd_Document,
+    NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject as Sequence_Handle_XCAFDimTolObjects_DatumObject,
+    NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject as Sequence_Handle_XCAFDimTolObjects_DimensionObject,
+    NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject as Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject,
     NCollection_Sequence_IntPatch_Point as Sequence_IntPatch_Point,
     NCollection_Sequence_IntRes2d_IntersectionPoint as Sequence_IntRes2d_IntersectionPoint,
     NCollection_Sequence_IntSurf_InteriorPoint as Sequence_IntSurf_InteriorPoint,
@@ -1236,6 +1395,904 @@ unsafe impl crate::CppDeletable for Array1_HLRBRep_FaceData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_Array1_HLRBRep_FaceData_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_Expr_GeneralExpression {
+    /// Create a new empty Array1_Handle_Expr_GeneralExpression
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Expr_GeneralExpression,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Expr_GeneralExpression))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Expr_GeneralExpression {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_Expr_GeneralExpression,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Expr_GeneralExpression,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Expr_GeneralExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_GeneralExpression_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Array1_Handle_Expr_NamedUnknown {
+    /// Create a new empty Array1_Handle_Expr_NamedUnknown
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Expr_NamedUnknown,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Expr_NamedUnknown))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Expr_NamedUnknown {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Expr_NamedUnknown) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Expr_NamedUnknown,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Expr_NamedUnknown {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Expr_NamedUnknown_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_Geom2d_BSplineCurve {
+    /// Create a new empty Array1_Handle_Geom2d_BSplineCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom2d_BSplineCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom2d_BSplineCurve,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Geom2d_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BSplineCurve_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Array1_Handle_Geom2d_BezierCurve {
+    /// Create a new empty Array1_Handle_Geom2d_BezierCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom2d_BezierCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom2d_BezierCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_BezierCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom2d_BezierCurve,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Geom2d_BezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom2d_BezierCurve_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_Geom_BSplineCurve {
+    /// Create a new empty Array1_Handle_Geom_BSplineCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom_BSplineCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom_BSplineCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom_BSplineCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom_BSplineCurve,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Geom_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BSplineCurve_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_Geom_BezierCurve {
+    /// Create a new empty Array1_Handle_Geom_BezierCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom_BezierCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom_BezierCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_BezierCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom_BezierCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom_BezierCurve,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Geom_BezierCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_BezierCurve_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_Geom_Curve {
+    /// Create a new empty Array1_Handle_Geom_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::Handle_Geom_Curve,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom_Curve,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_Geom_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_Geom_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_HLRAlgo_PolyData {
+    /// Create a new empty Array1_Handle_HLRAlgo_PolyData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_HLRAlgo_PolyData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_HLRAlgo_PolyData))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_HLRAlgo_PolyData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_HLRAlgo_PolyData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_HLRAlgo_PolyData,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_HLRAlgo_PolyData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyData_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_HLRAlgo_PolyInternalNode {
+    /// Create a new empty Array1_Handle_HLRAlgo_PolyInternalNode
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_HLRAlgo_PolyInternalNode,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_HLRAlgo_PolyInternalNode))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_HLRAlgo_PolyInternalNode {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_HLRAlgo_PolyInternalNode,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_HLRAlgo_PolyInternalNode,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_HLRAlgo_PolyInternalNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode_destructor(ptr);
+        }
+    }
+}
+
+impl Array1_Handle_HLRAlgo_PolyShellData {
+    /// Create a new empty Array1_Handle_HLRAlgo_PolyShellData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_HLRAlgo_PolyShellData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_HLRAlgo_PolyShellData))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_HLRAlgo_PolyShellData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_HLRAlgo_PolyShellData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_HLRAlgo_PolyShellData,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array1_Handle_HLRAlgo_PolyShellData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array1_Handle_HLRAlgo_PolyShellData_destructor(
+                ptr,
+            );
         }
     }
 }
@@ -2431,6 +3488,100 @@ unsafe impl crate::CppDeletable for Array1_int {
     }
 }
 
+impl Array2_Handle_Geom_BezierSurface {
+    /// Create a new empty Array2_Handle_Geom_BezierSurface
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_new(),
+            )
+        }
+    }
+
+    /// Create with row and column bounds
+    pub fn new_int4(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4(
+                    row_lower, row_upper, col_lower, col_upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int4_value(
+        row_lower: i32,
+        row_upper: i32,
+        col_lower: i32,
+        col_upper: i32,
+        value: &crate::ffi_types::Handle_Geom_BezierSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_ctor_int4_value(row_lower, row_upper, col_lower, col_upper, value as *const crate::ffi_types::Handle_Geom_BezierSurface))
+        }
+    }
+
+    /// Get number of rows
+    pub fn nb_rows(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_nb_rows(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get number of columns
+    pub fn nb_columns(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_nb_columns(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at (row, col)
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::Handle_Geom_BezierSurface {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_value(
+                self as *const Self,
+                row,
+                col,
+            )
+        }
+    }
+
+    /// Set element at (row, col)
+    pub fn set_value(
+        &mut self,
+        row: i32,
+        col: i32,
+        item: &crate::ffi_types::Handle_Geom_BezierSurface,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_set_value(
+                self as *mut Self,
+                row,
+                col,
+                item as *const crate::ffi_types::Handle_Geom_BezierSurface,
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Array2_Handle_Geom_BezierSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Array2_Handle_Geom_BezierSurface_destructor(ptr);
+        }
+    }
+}
+
 impl Array2_double {
     /// Create a new empty Array2_double
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -2868,6 +4019,1092 @@ unsafe impl crate::CppDeletable for Array2_int {
     }
 }
 
+impl DataMap_Handle_Standard_Transient_Handle_Standard_Transient {
+    /// Create a new empty DataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_bind(self as *mut Self, key as *const crate::ffi_types::Handle_Standard_Transient, value as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_find(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_Standard_Transient) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_Standard_Transient_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent {
+    /// Create a new empty DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+        value: &crate::ffi_types::Handle_StdObjMgt_Persistent,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_bind(self as *mut Self, key as *const crate::ffi_types::Handle_Standard_Transient, value as *const crate::ffi_types::Handle_StdObjMgt_Persistent)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StdObjMgt_Persistent>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_find(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_Standard_Transient) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_contains(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape {
+    /// Create a new empty DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
+        value: &crate::ffi_types::TopoDS_Shape,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_bind(self as *mut Self, key as *const crate::ffi_types::Handle_StepRepr_RepresentationItem, value as *const crate::ffi_types::TopoDS_Shape)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_find(self as *const Self, key as *const crate::ffi_types::Handle_StepRepr_RepresentationItem)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_StepRepr_RepresentationItem) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_contains(self as *const Self, key as *const crate::ffi_types::Handle_StepRepr_RepresentationItem)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_RepresentationItem>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepRepr_RepresentationItem_TopoDS_Shape_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape {
+    /// Create a new empty DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem,
+        value: &crate::ffi_types::TopoDS_Shape,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_bind(self as *mut Self, key as *const crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem, value as *const crate::ffi_types::TopoDS_Shape)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_find(self as *const Self, key as *const crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(
+        &self,
+        key: &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_contains(self as *const Self, key as *const crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_Shape_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_TCollection_HExtendedString_TDF_Label {
+    /// Create a new empty DataMap_Handle_TCollection_HExtendedString_TDF_Label
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_TCollection_HExtendedString,
+        value: &crate::ffi_types::TDF_Label,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_bind(self as *mut Self, key as *const crate::ffi_types::Handle_TCollection_HExtendedString, value as *const crate::ffi_types::TDF_Label)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_TCollection_HExtendedString,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::TDF_Label>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_find(self as *const Self, key as *const crate::ffi_types::Handle_TCollection_HExtendedString)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_TCollection_HExtendedString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_contains(self as *const Self, key as *const crate::ffi_types::Handle_TCollection_HExtendedString)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_TCollection_HExtendedString_TDF_Label {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TCollection_HExtendedString_TDF_Label_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute {
+    /// Create a new empty DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_TDF_Attribute,
+        value: &crate::ffi_types::Handle_TDF_Attribute,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_bind(self as *mut Self, key as *const crate::ffi_types::Handle_TDF_Attribute, value as *const crate::ffi_types::Handle_TDF_Attribute)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_TDF_Attribute,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_find(self as *const Self, key as *const crate::ffi_types::Handle_TDF_Attribute)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_TDF_Attribute) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_contains(self as *const Self, key as *const crate::ffi_types::Handle_TDF_Attribute)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TDF_Attribute_Handle_TDF_Attribute_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance {
+    /// Create a new empty DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_TopoDS_TShape,
+        value: &crate::ffi_types::Handle_VrmlData_Appearance,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_bind(self as *mut Self, key as *const crate::ffi_types::Handle_TopoDS_TShape, value as *const crate::ffi_types::Handle_VrmlData_Appearance)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_TopoDS_TShape,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Appearance>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_find(self as *const Self, key as *const crate::ffi_types::Handle_TopoDS_TShape)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_TopoDS_TShape) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_contains(self as *const Self, key as *const crate::ffi_types::Handle_TopoDS_TShape)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_TopoDS_TShape_Handle_VrmlData_Appearance_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject {
+    /// Create a new empty DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject,
+        value: &crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_bind(self as *mut Self, key as *const crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject, value as *const crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_find(self as *const Self, key as *const crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(
+        &self,
+        key: &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_contains(self as *const Self, key as *const crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject>;
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe { crate::ffi_extern_TKernel::DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_next_key(self as *mut Self) };
+        if ptr.is_null() { None } else { Some(unsafe { crate::OwnedPtr::from_raw(ptr) }) }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe { crate::ffi_extern_TKernel::DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(ptr); }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial {
+    /// Create a new empty DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::Handle_XCAFDoc_VisMaterial,
+        value: &crate::ffi_types::Handle_XCAFDoc_VisMaterial,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_bind(self as *mut Self, key as *const crate::ffi_types::Handle_XCAFDoc_VisMaterial, value as *const crate::ffi_types::Handle_XCAFDoc_VisMaterial)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::Handle_XCAFDoc_VisMaterial,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_XCAFDoc_VisMaterial>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_find(self as *const Self, key as *const crate::ffi_types::Handle_XCAFDoc_VisMaterial)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_XCAFDoc_VisMaterial) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_contains(self as *const Self, key as *const crate::ffi_types::Handle_XCAFDoc_VisMaterial)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_XCAFDoc_VisMaterial>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile {
+    /// Create a new empty DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+        value: &crate::ffi_types::Handle_STEPCAFControl_ExternFile,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_bind(self as *mut Self, key as *const crate::ffi_types::TCollection_AsciiString, value as *const crate::ffi_types::Handle_STEPCAFControl_ExternFile)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_STEPCAFControl_ExternFile>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_find(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_contains(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::TCollection_AsciiString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFile_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver {
+    /// Create a new empty DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+        value: &crate::ffi_types::Handle_XmlMDF_ADriver,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_bind(self as *mut Self, key as *const crate::ffi_types::TCollection_AsciiString, value as *const crate::ffi_types::Handle_XmlMDF_ADriver)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriver>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_find(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_contains(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::TCollection_AsciiString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver_destructor(ptr);
+        }
+    }
+}
+
 impl DataMap_TCollection_AsciiString_RWObj_Material {
     /// Create a new empty DataMap_TCollection_AsciiString_RWObj_Material
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -3282,6 +5519,104 @@ unsafe impl crate::CppDeletable for DataMap_TCollection_AsciiString_int {
             crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_AsciiString_int_destructor(
                 ptr,
             );
+        }
+    }
+}
+
+impl DataMap_TCollection_ExtendedString_Handle_CDM_MetaData {
+    /// Create a new empty DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::TCollection_ExtendedString,
+        value: &crate::ffi_types::Handle_CDM_MetaData,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_bind(self as *mut Self, key as *const crate::ffi_types::TCollection_ExtendedString, value as *const crate::ffi_types::Handle_CDM_MetaData)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::TCollection_ExtendedString,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_CDM_MetaData>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_find(self as *const Self, key as *const crate::ffi_types::TCollection_ExtendedString)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::TCollection_ExtendedString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_contains(self as *const Self, key as *const crate::ffi_types::TCollection_ExtendedString)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::TCollection_ExtendedString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_TCollection_ExtendedString_Handle_CDM_MetaData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData_destructor(ptr);
         }
     }
 }
@@ -4230,6 +6565,104 @@ unsafe impl crate::CppDeletable for DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeM
     }
 }
 
+impl DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher {
+    /// Create a new empty DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_clear(self as *mut Self)
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::TopoDS_Shape,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_bind(self as *mut Self, key as *const crate::ffi_types::TopoDS_Shape, value as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::TopoDS_Shape,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_find(self as *const Self, key as *const crate::ffi_types::TopoDS_Shape)
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::TopoDS_Shape) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_contains(self as *const Self, key as *const crate::ffi_types::TopoDS_Shape)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasher_destructor(ptr);
+        }
+    }
+}
+
 impl DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher {
     /// Create a new empty DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasher
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -4810,6 +7243,237 @@ unsafe impl crate::CppDeletable for DataMap_TopoDS_Shape_int_TopTools_ShapeMapHa
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_gp_Pnt_Handle_Standard_Transient {
+    /// Create a new empty DataMap_gp_Pnt_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_new(
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(
+        &mut self,
+        key: &crate::ffi_types::gp_Pnt,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_bind(
+                self as *mut Self,
+                key as *const crate::ffi_types::gp_Pnt,
+                value as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &crate::ffi_types::gp_Pnt,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_find(
+                self as *const Self,
+                key as *const crate::ffi_types::gp_Pnt,
+            )
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::gp_Pnt) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_contains(
+                self as *const Self,
+                key as *const crate::ffi_types::gp_Pnt,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::DataMap_gp_Pnt_Handle_Standard_TransientIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for DataMap_gp_Pnt_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::gp_Pnt>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_gp_Pnt_Handle_Standard_TransientIterator_next_key(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_gp_Pnt_Handle_Standard_TransientIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_gp_Pnt_Handle_Standard_TransientIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_gp_Pnt_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_gp_Pnt_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+
+impl DataMap_int_Handle_MAT_BasicElt {
+    /// Create a new empty DataMap_int_Handle_MAT_BasicElt
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Bind a key to a value
+    pub fn bind(&mut self, key: &i32, value: &crate::ffi_types::Handle_MAT_BasicElt) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_bind(
+                self as *mut Self,
+                key as *const i32,
+                value as *const crate::ffi_types::Handle_MAT_BasicElt,
+            )
+        }
+    }
+
+    /// Find a value by key (returns None if not found)
+    pub fn find(
+        &self,
+        key: &i32,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt>> {
+        let p = unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_find(
+                self as *const Self,
+                key as *const i32,
+            )
+        };
+        if p.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(p) })
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &i32) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_contains(
+                self as *const Self,
+                key as *const i32,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::DataMap_int_Handle_MAT_BasicEltIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for DataMap_int_Handle_MAT_BasicEltIterator {
+    type Item = i32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::DataMap_int_Handle_MAT_BasicEltIterator_next_key(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { *ptr })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_int_Handle_MAT_BasicEltIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::DataMap_int_Handle_MAT_BasicEltIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for DataMap_int_Handle_MAT_BasicElt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_DataMap_int_Handle_MAT_BasicElt_destructor(ptr);
         }
     }
 }
@@ -5615,6 +8279,7398 @@ impl crate::ffi_types::Handle_NCollection_HArray1_HLRAlgo_TriangleData {
             &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_HLRAlgo_TriangleData_get_mut(
                 self as *mut Self,
             )
+        }
+    }
+}
+
+impl HArray1_Handle_Adaptor3d_Curve {
+    /// Create a new empty HArray1_Handle_Adaptor3d_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Adaptor3d_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Adaptor3d_Curve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Adaptor3d_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Adaptor3d_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Adaptor3d_Curve,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Adaptor3d_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Adaptor3d_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve {
+    /// Borrow the underlying NCollection_HArray1_Handle_Adaptor3d_Curve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Adaptor3d_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Adaptor3d_Curve pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Adaptor3d_Curve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Adaptor3d_Curve_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_Geom2d_BSplineCurve {
+    /// Create a new empty HArray1_Handle_Geom2d_BSplineCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom2d_BSplineCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom2d_BSplineCurve,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Geom2d_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_BSplineCurve_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+    /// Borrow the underlying NCollection_HArray1_Handle_Geom2d_BSplineCurve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Geom2d_BSplineCurve pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Geom2d_BSplineCurve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_Geom2d_Curve {
+    /// Create a new empty HArray1_Handle_Geom2d_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom2d_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::Handle_Geom2d_Curve,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom2d_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom2d_Curve,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Geom2d_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom2d_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom2d_Curve {
+    /// Borrow the underlying NCollection_HArray1_Handle_Geom2d_Curve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Geom2d_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom2d_Curve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Geom2d_Curve pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Geom2d_Curve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom2d_Curve_get_mut(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
+impl HArray1_Handle_Geom_BSplineCurve {
+    /// Create a new empty HArray1_Handle_Geom_BSplineCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom_BSplineCurve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Geom_BSplineCurve))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom_BSplineCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom_BSplineCurve,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Geom_BSplineCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_BSplineCurve_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve {
+    /// Borrow the underlying NCollection_HArray1_Handle_Geom_BSplineCurve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Geom_BSplineCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Geom_BSplineCurve pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Geom_BSplineCurve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom_BSplineCurve_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_Geom_Curve {
+    /// Create a new empty HArray1_Handle_Geom_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Geom_Curve,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::Handle_Geom_Curve,
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Geom_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Geom_Curve,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_Curve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Geom_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Geom_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Geom_Curve {
+    /// Borrow the underlying NCollection_HArray1_Handle_Geom_Curve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Geom_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom_Curve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Geom_Curve pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Geom_Curve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Geom_Curve_get_mut(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
+impl HArray1_Handle_IGESAppli_FiniteElement {
+    /// Create a new empty HArray1_Handle_IGESAppli_FiniteElement
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESAppli_FiniteElement,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESAppli_FiniteElement))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESAppli_FiniteElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESAppli_FiniteElement,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESAppli_FiniteElement,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESAppli_FiniteElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_FiniteElement_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESAppli_FiniteElement pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESAppli_FiniteElement pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESAppli_FiniteElement {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESAppli_FiniteElement_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESAppli_Node {
+    /// Create a new empty HArray1_Handle_IGESAppli_Node
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESAppli_Node,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESAppli_Node))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESAppli_Node {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESAppli_Node) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESAppli_Node,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_Node> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESAppli_Node {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESAppli_Node_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESAppli_Node {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESAppli_Node pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESAppli_Node {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESAppli_Node_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESAppli_Node pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESAppli_Node {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESAppli_Node_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESData_IGESEntity {
+    /// Create a new empty HArray1_Handle_IGESData_IGESEntity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESData_IGESEntity,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESData_IGESEntity))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESData_IGESEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESData_IGESEntity) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESData_IGESEntity,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESData_IGESEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_IGESEntity_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESData_IGESEntity pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESData_IGESEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESData_IGESEntity pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESData_IGESEntity {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_IGESEntity_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESData_LineFontEntity {
+    /// Create a new empty HArray1_Handle_IGESData_LineFontEntity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESData_LineFontEntity,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESData_LineFontEntity))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESData_LineFontEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESData_LineFontEntity,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESData_LineFontEntity,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESData_LineFontEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_LineFontEntity_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESData_LineFontEntity pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESData_LineFontEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESData_LineFontEntity pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESData_LineFontEntity {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_LineFontEntity_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESData_ViewKindEntity {
+    /// Create a new empty HArray1_Handle_IGESData_ViewKindEntity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESData_ViewKindEntity,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESData_ViewKindEntity))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESData_ViewKindEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESData_ViewKindEntity,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESData_ViewKindEntity,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESData_ViewKindEntity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESData_ViewKindEntity_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESData_ViewKindEntity pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESData_ViewKindEntity pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESData_ViewKindEntity {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESData_ViewKindEntity_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESDefs_TabularData {
+    /// Create a new empty HArray1_Handle_IGESDefs_TabularData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESDefs_TabularData,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESDefs_TabularData))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESDefs_TabularData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESDefs_TabularData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESDefs_TabularData,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDefs_TabularData>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESDefs_TabularData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDefs_TabularData_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDefs_TabularData {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESDefs_TabularData pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESDefs_TabularData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESDefs_TabularData pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESDefs_TabularData {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDefs_TabularData_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESDimen_GeneralNote {
+    /// Create a new empty HArray1_Handle_IGESDimen_GeneralNote
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESDimen_GeneralNote,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESDimen_GeneralNote))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESDimen_GeneralNote {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESDimen_GeneralNote) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESDimen_GeneralNote,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESDimen_GeneralNote {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_GeneralNote_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESDimen_GeneralNote pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESDimen_GeneralNote pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESDimen_GeneralNote {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDimen_GeneralNote_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESDimen_LeaderArrow {
+    /// Create a new empty HArray1_Handle_IGESDimen_LeaderArrow
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESDimen_LeaderArrow,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESDimen_LeaderArrow))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESDimen_LeaderArrow {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESDimen_LeaderArrow) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESDimen_LeaderArrow,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESDimen_LeaderArrow {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDimen_LeaderArrow_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESDimen_LeaderArrow pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESDimen_LeaderArrow pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESDimen_LeaderArrow {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDimen_LeaderArrow_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESDraw_ConnectPoint {
+    /// Create a new empty HArray1_Handle_IGESDraw_ConnectPoint
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESDraw_ConnectPoint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESDraw_ConnectPoint))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESDraw_ConnectPoint {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESDraw_ConnectPoint) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESDraw_ConnectPoint,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESDraw_ConnectPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESDraw_ConnectPoint_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESDraw_ConnectPoint pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESDraw_ConnectPoint pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESDraw_ConnectPoint {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESDraw_ConnectPoint_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGeom_Boundary {
+    /// Create a new empty HArray1_Handle_IGESGeom_Boundary
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGeom_Boundary,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGeom_Boundary))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGeom_Boundary {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESGeom_Boundary) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESGeom_Boundary,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_Boundary>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGeom_Boundary {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_Boundary_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_Boundary {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGeom_Boundary pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_Boundary {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGeom_Boundary pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_Boundary {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_Boundary_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGeom_CurveOnSurface {
+    /// Create a new empty HArray1_Handle_IGESGeom_CurveOnSurface
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGeom_CurveOnSurface,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGeom_CurveOnSurface))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGeom_CurveOnSurface {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESGeom_CurveOnSurface,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESGeom_CurveOnSurface,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGeom_CurveOnSurface {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGeom_CurveOnSurface pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGeom_CurveOnSurface pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_CurveOnSurface {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_CurveOnSurface_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGeom_TransformationMatrix {
+    /// Create a new empty HArray1_Handle_IGESGeom_TransformationMatrix
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGeom_TransformationMatrix,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGeom_TransformationMatrix))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGeom_TransformationMatrix {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESGeom_TransformationMatrix,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_IGESGeom_TransformationMatrix)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGeom_TransformationMatrix {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGeom_TransformationMatrix pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGeom_TransformationMatrix pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGeom_TransformationMatrix {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGeom_TransformationMatrix_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGraph_Color {
+    /// Create a new empty HArray1_Handle_IGESGraph_Color
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGraph_Color,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGraph_Color))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGraph_Color {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESGraph_Color) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESGraph_Color,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_Color> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGraph_Color {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_Color_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_Color {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGraph_Color pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_Color {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_Color_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGraph_Color pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_Color {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_Color_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    /// Create a new empty HArray1_Handle_IGESGraph_TextDisplayTemplate
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_IGESGraph_TextDisplayTemplate)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_TextDisplayTemplate_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESGraph_TextFontDef {
+    /// Create a new empty HArray1_Handle_IGESGraph_TextFontDef
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESGraph_TextFontDef,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESGraph_TextFontDef))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESGraph_TextFontDef {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESGraph_TextFontDef) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESGraph_TextFontDef,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESGraph_TextFontDef {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESGraph_TextFontDef_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESGraph_TextFontDef pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESGraph_TextFontDef pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESGraph_TextFontDef {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESGraph_TextFontDef_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESSolid_Face {
+    /// Create a new empty HArray1_Handle_IGESSolid_Face
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESSolid_Face,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESSolid_Face))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESSolid_Face {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESSolid_Face) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESSolid_Face,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Face> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESSolid_Face {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Face_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Face {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESSolid_Face pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Face {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Face_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESSolid_Face pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Face {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Face_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESSolid_Loop {
+    /// Create a new empty HArray1_Handle_IGESSolid_Loop
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESSolid_Loop,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESSolid_Loop))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESSolid_Loop {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESSolid_Loop) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESSolid_Loop,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Loop> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESSolid_Loop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Loop_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Loop {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESSolid_Loop pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Loop {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESSolid_Loop pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Loop {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Loop_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESSolid_Shell {
+    /// Create a new empty HArray1_Handle_IGESSolid_Shell
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESSolid_Shell,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESSolid_Shell))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESSolid_Shell {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESSolid_Shell) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESSolid_Shell,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Shell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESSolid_Shell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_Shell_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_Shell {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESSolid_Shell pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Shell {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESSolid_Shell pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_Shell {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_Shell_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_IGESSolid_VertexList {
+    /// Create a new empty HArray1_Handle_IGESSolid_VertexList
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_IGESSolid_VertexList,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_IGESSolid_VertexList))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IGESSolid_VertexList {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_IGESSolid_VertexList) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_IGESSolid_VertexList,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_IGESSolid_VertexList {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_IGESSolid_VertexList_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList {
+    /// Borrow the underlying NCollection_HArray1_Handle_IGESSolid_VertexList pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_VertexList {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_IGESSolid_VertexList pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_IGESSolid_VertexList {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_IGESSolid_VertexList_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_Standard_Persistent {
+    /// Create a new empty HArray1_Handle_Standard_Persistent
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Standard_Persistent,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Standard_Persistent))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Standard_Persistent {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Standard_Persistent) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Standard_Persistent,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Persistent>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Standard_Persistent {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Persistent_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Persistent {
+    /// Borrow the underlying NCollection_HArray1_Handle_Standard_Persistent pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Standard_Persistent {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Standard_Persistent_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Standard_Persistent pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Standard_Persistent {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Standard_Persistent_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_Standard_Transient {
+    /// Create a new empty HArray1_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_Standard_Transient))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_Standard_Transient) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_Standard_Transient_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_Standard_Transient {
+    /// Borrow the underlying NCollection_HArray1_Handle_Standard_Transient pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Standard_Transient_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_Standard_Transient pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_Standard_Transient {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_Standard_Transient_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_Approval {
+    /// Create a new empty HArray1_Handle_StepBasic_Approval
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_Approval,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_Approval))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_Approval {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepBasic_Approval) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_Approval,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Approval>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_Approval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Approval_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Approval {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_Approval pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Approval {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Approval_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_Approval pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Approval {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Approval_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_DerivedUnitElement {
+    /// Create a new empty HArray1_Handle_StepBasic_DerivedUnitElement
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_DerivedUnitElement,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_DerivedUnitElement))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_DerivedUnitElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepBasic_DerivedUnitElement,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepBasic_DerivedUnitElement)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_DerivedUnitElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_DerivedUnitElement pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_DerivedUnitElement pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_DerivedUnitElement {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_DerivedUnitElement_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_Document {
+    /// Create a new empty HArray1_Handle_StepBasic_Document
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_Document,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_Document))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_Document {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepBasic_Document) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_Document,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Document>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_Document {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Document_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Document {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_Document pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Document {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Document_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_Document pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Document {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Document_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_NamedUnit {
+    /// Create a new empty HArray1_Handle_StepBasic_NamedUnit
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_NamedUnit,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_NamedUnit))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_NamedUnit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepBasic_NamedUnit) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_NamedUnit,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_NamedUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_NamedUnit_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_NamedUnit pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_NamedUnit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_NamedUnit pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_NamedUnit {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_NamedUnit_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_Organization {
+    /// Create a new empty HArray1_Handle_StepBasic_Organization
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_Organization,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_Organization))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_Organization {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepBasic_Organization,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_Organization,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Organization>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_Organization {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Organization_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Organization {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_Organization pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Organization {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Organization_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_Organization pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Organization {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Organization_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_Person {
+    /// Create a new empty HArray1_Handle_StepBasic_Person
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_Person,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_Person))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_Person {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepBasic_Person) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_Person,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Person> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_Person {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Person_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Person {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_Person pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Person {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Person_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_Person pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Person {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Person_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_Product {
+    /// Create a new empty HArray1_Handle_StepBasic_Product
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_Product,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_Product))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_Product {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepBasic_Product) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_Product,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_Product {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_Product_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_Product {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_Product pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Product {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Product_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_Product pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_Product {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_Product_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_ProductContext {
+    /// Create a new empty HArray1_Handle_StepBasic_ProductContext
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_new(
+                ),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_ProductContext,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_ProductContext))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepBasic_ProductContext {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepBasic_ProductContext,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepBasic_ProductContext,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_ProductContext {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_ProductContext_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_ProductContext pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_ProductContext {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_ProductContext pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_ProductContext {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_ProductContext_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    /// Create a new empty HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepBasic_UncertaintyMeasureWithUnit))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepBasic_UncertaintyMeasureWithUnit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepBasic_UncertaintyMeasureWithUnit,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepBasic_UncertaintyMeasureWithUnit)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepBasic_UncertaintyMeasureWithUnit_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepDimTol_DatumReference {
+    /// Create a new empty HArray1_Handle_StepDimTol_DatumReference
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_new(
+                ),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepDimTol_DatumReference,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepDimTol_DatumReference))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepDimTol_DatumReference {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepDimTol_DatumReference,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepDimTol_DatumReference)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepDimTol_DatumReference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReference_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReference pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReference {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReference pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReference {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    /// Create a new empty HArray1_Handle_StepDimTol_DatumReferenceCompartment
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepDimTol_DatumReferenceCompartment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepDimTol_DatumReferenceCompartment))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepDimTol_DatumReferenceCompartment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepDimTol_DatumReferenceCompartment,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepDimTol_DatumReferenceCompartment)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepDimTol_DatumReferenceElement {
+    /// Create a new empty HArray1_Handle_StepDimTol_DatumReferenceElement
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepDimTol_DatumReferenceElement,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepDimTol_DatumReferenceElement))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepDimTol_DatumReferenceElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepDimTol_DatumReferenceElement,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepDimTol_DatumReferenceElement)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepDimTol_DatumReferenceElement {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    /// Create a new empty HArray1_Handle_StepElement_CurveElementEndReleasePacket
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+    {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_CurveElementEndReleasePacket_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    /// Create a new empty HArray1_Handle_StepElement_CurveElementSectionDefinition
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+    {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_CurveElementSectionDefinition_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepElement_SurfaceSection {
+    /// Create a new empty HArray1_Handle_StepElement_SurfaceSection
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepElement_SurfaceSection,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepElement_SurfaceSection))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepElement_SurfaceSection {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepElement_SurfaceSection,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepElement_SurfaceSection)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepElement_SurfaceSection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_SurfaceSection_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepElement_SurfaceSection pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepElement_SurfaceSection {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepElement_SurfaceSection pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepElement_SurfaceSection {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_SurfaceSection_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    /// Create a new empty HArray1_Handle_StepElement_VolumeElementPurposeMember
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepElement_VolumeElementPurposeMember_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepFEA_CurveElementEndOffset {
+    /// Create a new empty HArray1_Handle_StepFEA_CurveElementEndOffset
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepFEA_CurveElementEndOffset,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepFEA_CurveElementEndOffset))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_CurveElementEndOffset {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepFEA_CurveElementEndOffset,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepFEA_CurveElementEndOffset)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepFEA_CurveElementEndOffset {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndOffset_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepFEA_CurveElementEndRelease {
+    /// Create a new empty HArray1_Handle_StepFEA_CurveElementEndRelease
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepFEA_CurveElementEndRelease,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepFEA_CurveElementEndRelease))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_CurveElementEndRelease {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepFEA_CurveElementEndRelease,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepFEA_CurveElementEndRelease)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepFEA_CurveElementEndRelease {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementEndRelease_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepFEA_CurveElementInterval {
+    /// Create a new empty HArray1_Handle_StepFEA_CurveElementInterval
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepFEA_CurveElementInterval,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepFEA_CurveElementInterval))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_CurveElementInterval {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepFEA_CurveElementInterval,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepFEA_CurveElementInterval)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepFEA_CurveElementInterval {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_CurveElementInterval_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementInterval pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepFEA_CurveElementInterval pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepFEA_CurveElementInterval {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_CurveElementInterval_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepFEA_ElementRepresentation {
+    /// Create a new empty HArray1_Handle_StepFEA_ElementRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepFEA_ElementRepresentation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepFEA_ElementRepresentation))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepFEA_ElementRepresentation,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepFEA_ElementRepresentation)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepFEA_ElementRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_ElementRepresentation_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepFEA_ElementRepresentation pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepFEA_ElementRepresentation pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_ElementRepresentation_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepFEA_NodeRepresentation {
+    /// Create a new empty HArray1_Handle_StepFEA_NodeRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepFEA_NodeRepresentation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepFEA_NodeRepresentation))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_NodeRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepFEA_NodeRepresentation,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepFEA_NodeRepresentation)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepFEA_NodeRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepFEA_NodeRepresentation_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepFEA_NodeRepresentation pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepFEA_NodeRepresentation pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepFEA_NodeRepresentation {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepFEA_NodeRepresentation_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepGeom_CartesianPoint {
+    /// Create a new empty HArray1_Handle_StepGeom_CartesianPoint
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepGeom_CartesianPoint,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepGeom_CartesianPoint))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepGeom_CartesianPoint {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepGeom_CartesianPoint,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepGeom_CartesianPoint,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepGeom_CartesianPoint {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CartesianPoint_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepGeom_CartesianPoint pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepGeom_CartesianPoint pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepGeom_CartesianPoint {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepGeom_CompositeCurveSegment {
+    /// Create a new empty HArray1_Handle_StepGeom_CompositeCurveSegment
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepGeom_CompositeCurveSegment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepGeom_CompositeCurveSegment))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepGeom_CompositeCurveSegment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepGeom_CompositeCurveSegment,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepGeom_CompositeCurveSegment)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepGeom_CompositeCurveSegment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepGeom_CompositeCurveSegment_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    /// Create a new empty HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepRepr_MaterialPropertyRepresentation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepRepr_MaterialPropertyRepresentation))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepRepr_MaterialPropertyRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepRepr_MaterialPropertyRepresentation,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepRepr_MaterialPropertyRepresentation)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_MaterialPropertyRepresentation_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    /// Create a new empty HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepRepr_PropertyDefinitionRepresentation))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepRepr_PropertyDefinitionRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepRepr_PropertyDefinitionRepresentation,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepRepr_PropertyDefinitionRepresentation)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+    {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_PropertyDefinitionRepresentation_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepRepr_RepresentationItem {
+    /// Create a new empty HArray1_Handle_StepRepr_RepresentationItem
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepRepr_RepresentationItem))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepRepr_RepresentationItem {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepRepr_RepresentationItem)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepRepr_RepresentationItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_RepresentationItem_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepRepr_RepresentationItem pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepRepr_RepresentationItem pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepRepr_RepresentationItem {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepRepr_ShapeAspect {
+    /// Create a new empty HArray1_Handle_StepRepr_ShapeAspect
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepRepr_ShapeAspect))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepRepr_ShapeAspect {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepRepr_ShapeAspect) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepRepr_ShapeAspect,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepRepr_ShapeAspect {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepRepr_ShapeAspect_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepRepr_ShapeAspect pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepRepr_ShapeAspect pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepRepr_ShapeAspect {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_ConnectedEdgeSet {
+    /// Create a new empty HArray1_Handle_StepShape_ConnectedEdgeSet
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_ConnectedEdgeSet,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_ConnectedEdgeSet))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_ConnectedEdgeSet {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepShape_ConnectedEdgeSet,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepShape_ConnectedEdgeSet)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_ConnectedEdgeSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_ConnectedFaceSet {
+    /// Create a new empty HArray1_Handle_StepShape_ConnectedFaceSet
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_ConnectedFaceSet,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_ConnectedFaceSet))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_ConnectedFaceSet {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepShape_ConnectedFaceSet,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepShape_ConnectedFaceSet)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_ConnectedFaceSet {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_ConnectedFaceSet pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_ConnectedFaceSet pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_ConnectedFaceSet {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_Edge {
+    /// Create a new empty HArray1_Handle_StepShape_Edge
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_Edge,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_Edge))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_Edge {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepShape_Edge) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepShape_Edge,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Edge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_Edge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Edge_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Edge {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_Edge pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_Edge {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_Edge_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_Edge pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_Edge {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_Edge_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_Face {
+    /// Create a new empty HArray1_Handle_StepShape_Face
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_Face,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_Face))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_Face {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepShape_Face) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepShape_Face,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_Face {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_Face_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_Face pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_Face {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_Face_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_Face pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_Face {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_Face_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_FaceBound {
+    /// Create a new empty HArray1_Handle_StepShape_FaceBound
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2(
+                    lower, upper,
+                ),
+            )
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_FaceBound,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_FaceBound))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_FaceBound {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::Handle_StepShape_FaceBound) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepShape_FaceBound,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_FaceBound {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_FaceBound_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_FaceBound pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_FaceBound {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_FaceBound pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_FaceBound {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_FaceBound_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_OrientedClosedShell {
+    /// Create a new empty HArray1_Handle_StepShape_OrientedClosedShell
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_OrientedClosedShell,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_OrientedClosedShell))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_OrientedClosedShell {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepShape_OrientedClosedShell,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepShape_OrientedClosedShell)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_OrientedClosedShell {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedClosedShell_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_OrientedClosedShell pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_OrientedClosedShell pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_OrientedClosedShell {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepShape_OrientedEdge {
+    /// Create a new empty HArray1_Handle_StepShape_OrientedEdge
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_new(),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepShape_OrientedEdge,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepShape_OrientedEdge))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepShape_OrientedEdge {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepShape_OrientedEdge,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_StepShape_OrientedEdge,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepShape_OrientedEdge {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepShape_OrientedEdge_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepShape_OrientedEdge pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_StepShape_OrientedEdge {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepShape_OrientedEdge pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepShape_OrientedEdge {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    /// Create a new empty HArray1_Handle_StepVisual_CurveStyleFontPattern
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepVisual_CurveStyleFontPattern,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepVisual_CurveStyleFontPattern))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepVisual_CurveStyleFontPattern {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepVisual_CurveStyleFontPattern,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepVisual_CurveStyleFontPattern)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_CurveStyleFontPattern_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    /// Create a new empty HArray1_Handle_StepVisual_PresentationStyleAssignment
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepVisual_PresentationStyleAssignment,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepVisual_PresentationStyleAssignment))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepVisual_PresentationStyleAssignment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepVisual_PresentationStyleAssignment,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepVisual_PresentationStyleAssignment)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_PresentationStyleAssignment_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    /// Create a new empty HArray1_Handle_StepVisual_TessellatedStructuredItem
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_new())
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_StepVisual_TessellatedStructuredItem,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_StepVisual_TessellatedStructuredItem))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_length(self as *const Self)
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_lower(self as *const Self)
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_upper(self as *const Self)
+        }
+    }
+
+    /// Get element at index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepVisual_TessellatedStructuredItem {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_value(self as *const Self, index)
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_StepVisual_TessellatedStructuredItem,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_set_value(self as *mut Self, index, item as *const crate::ffi_types::Handle_StepVisual_TessellatedStructuredItem)
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem {
+    /// Borrow the underlying NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_StepVisual_TessellatedStructuredItem_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HArray1_Handle_TCollection_HAsciiString {
+    /// Create a new empty HArray1_Handle_TCollection_HAsciiString
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_new(
+                ),
+            )
+        }
+    }
+
+    /// Create with lower and upper bounds
+    pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2(lower, upper))
+        }
+    }
+
+    /// Create with bounds, all elements initialized
+    pub fn new_int2_value(
+        lower: i32,
+        upper: i32,
+        value: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_ctor_int2_value(lower, upper, value as *const crate::ffi_types::Handle_TCollection_HAsciiString))
+        }
+    }
+
+    /// Get number of elements
+    pub fn length(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_length(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get lower bound index
+    pub fn lower(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_lower(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get upper bound index
+    pub fn upper(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_upper(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Get element at index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Set element at index
+    pub fn set_value(
+        &mut self,
+        index: i32,
+        item: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_set_value(
+                self as *mut Self,
+                index,
+                item as *const crate::ffi_types::Handle_TCollection_HAsciiString,
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HArray1_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HArray1_Handle_TCollection_HAsciiString_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString {
+    /// Borrow the underlying NCollection_HArray1_Handle_TCollection_HAsciiString pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HArray1_Handle_TCollection_HAsciiString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HArray1_Handle_TCollection_HAsciiString pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HArray1_Handle_TCollection_HAsciiString {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HArray1_Handle_TCollection_HAsciiString_get_mut(self as *mut Self)
         }
     }
 }
@@ -13940,6 +23996,2426 @@ impl crate::ffi_types::Handle_NCollection_HArray1_int {
     }
 }
 
+impl HSequence_Handle_ChFiDS_SurfData {
+    /// Create a new empty HSequence_Handle_ChFiDS_SurfData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_ChFiDS_SurfData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_SurfData,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_ChFiDS_SurfData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_ChFiDS_SurfDataIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_ChFiDS_SurfDataIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_SurfData>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_ChFiDS_SurfDataIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_ChFiDS_SurfDataIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_ChFiDS_SurfDataIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_ChFiDS_SurfData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ChFiDS_SurfData_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData {
+    /// Borrow the underlying NCollection_HSequence_Handle_ChFiDS_SurfData pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_ChFiDS_SurfData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_ChFiDS_SurfData pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_ChFiDS_SurfData {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_ChFiDS_SurfData_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Geom2d_BoundedCurve {
+    /// Create a new empty HSequence_Handle_Geom2d_BoundedCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Geom2d_BoundedCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Geom2d_BoundedCurve,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_BoundedCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Geom2d_BoundedCurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Geom2d_BoundedCurveIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BoundedCurve>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Geom2d_BoundedCurveIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Geom2d_BoundedCurveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Geom2d_BoundedCurveIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Geom2d_BoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom2d_BoundedCurve_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+    /// Borrow the underlying NCollection_HSequence_Handle_Geom2d_BoundedCurve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Geom2d_BoundedCurve pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Geom2d_BoundedCurve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Geom2d_BoundedCurve_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Geom_BoundedCurve {
+    /// Create a new empty HSequence_Handle_Geom_BoundedCurve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Geom_BoundedCurve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Geom_BoundedCurve,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_BoundedCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Geom_BoundedCurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Geom_BoundedCurveIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Geom_BoundedCurve>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Geom_BoundedCurveIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Geom_BoundedCurveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Geom_BoundedCurveIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Geom_BoundedCurve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Geom_BoundedCurve_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve {
+    /// Borrow the underlying NCollection_HSequence_Handle_Geom_BoundedCurve pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Geom_BoundedCurve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Geom_BoundedCurve pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Geom_BoundedCurve {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Geom_BoundedCurve_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_STEPSelections_AssemblyLink {
+    /// Create a new empty HSequence_Handle_STEPSelections_AssemblyLink
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_STEPSelections_AssemblyLink) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_append(self as *mut Self, item as *const crate::ffi_types::Handle_STEPSelections_AssemblyLink)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_STEPSelections_AssemblyLink {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_STEPSelections_AssemblyLinkIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_STEPSelections_AssemblyLinkIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_STEPSelections_AssemblyLink>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_STEPSelections_AssemblyLinkIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_STEPSelections_AssemblyLinkIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_STEPSelections_AssemblyLinkIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_STEPSelections_AssemblyLink {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_STEPSelections_AssemblyLink_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
+    /// Borrow the underlying NCollection_HSequence_Handle_STEPSelections_AssemblyLink pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_STEPSelections_AssemblyLink pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_STEPSelections_AssemblyLink {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_STEPSelections_AssemblyLink_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_ShapeAnalysis_FreeBoundData {
+    /// Create a new empty HSequence_Handle_ShapeAnalysis_FreeBoundData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_append(self as *mut Self, item as *const crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_ShapeAnalysis_FreeBoundData>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_ShapeAnalysis_FreeBoundData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
+    /// Borrow the underlying NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_ShapeAnalysis_FreeBoundData_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Standard_Transient {
+    /// Create a new empty HSequence_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Standard_Transient) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Standard_TransientIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Standard_TransientIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Standard_TransientIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Standard_Transient_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient {
+    /// Borrow the underlying NCollection_HSequence_Handle_Standard_Transient pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Standard_Transient_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Standard_Transient pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Standard_Transient {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Standard_Transient_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_StdStorage_Root {
+    /// Create a new empty HSequence_Handle_StdStorage_Root
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_StdStorage_Root) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_StdStorage_Root,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StdStorage_Root {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_StdStorage_RootIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_StdStorage_Root>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_StdStorage_RootIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StdStorage_Root>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StdStorage_RootIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StdStorage_RootIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StdStorage_RootIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StdStorage_Root {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StdStorage_Root_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_StdStorage_Root {
+    /// Borrow the underlying NCollection_HSequence_Handle_StdStorage_Root pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_StdStorage_Root {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StdStorage_Root_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_StdStorage_Root pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_StdStorage_Root {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StdStorage_Root_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_StepElement_CurveElementSectionDefinition {
+    /// Create a new empty HSequence_Handle_StepElement_CurveElementSectionDefinition
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(
+        &mut self,
+        item: &crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_append(self as *mut Self, item as *const crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepElement_CurveElementSectionDefinition {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_destructor(ptr);
+        }
+    }
+}
+
+impl
+    crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+{
+    /// Borrow the underlying NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepElement_CurveElementSectionDefinition_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_StepElement_ElementMaterial {
+    /// Create a new empty HSequence_Handle_StepElement_ElementMaterial
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_StepElement_ElementMaterial) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_append(self as *mut Self, item as *const crate::ffi_types::Handle_StepElement_ElementMaterial)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepElement_ElementMaterial {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_StepElement_ElementMaterialIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_StepElement_ElementMaterialIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementMaterial>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepElement_ElementMaterialIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepElement_ElementMaterialIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepElement_ElementMaterialIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepElement_ElementMaterial {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepElement_ElementMaterial_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial {
+    /// Borrow the underlying NCollection_HSequence_Handle_StepElement_ElementMaterial pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_StepElement_ElementMaterial {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_StepElement_ElementMaterial pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_StepElement_ElementMaterial {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepElement_ElementMaterial_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_StepFEA_ElementGeometricRelationship {
+    /// Create a new empty HSequence_Handle_StepFEA_ElementGeometricRelationship
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_StepFEA_ElementGeometricRelationship) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_append(self as *mut Self, item as *const crate::ffi_types::Handle_StepFEA_ElementGeometricRelationship)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_StepFEA_ElementGeometricRelationship {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_ElementGeometricRelationship>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepFEA_ElementGeometricRelationship {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship {
+    /// Borrow the underlying NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship
+    {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepFEA_ElementGeometricRelationship_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_StepFEA_ElementRepresentation {
+    /// Create a new empty HSequence_Handle_StepFEA_ElementRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_StepFEA_ElementRepresentation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_append(self as *mut Self, item as *const crate::ffi_types::Handle_StepFEA_ElementRepresentation)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_StepFEA_ElementRepresentationIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_StepFEA_ElementRepresentationIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_ElementRepresentation>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepFEA_ElementRepresentationIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepFEA_ElementRepresentationIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_StepFEA_ElementRepresentationIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_StepFEA_ElementRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_StepFEA_ElementRepresentation_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+    /// Borrow the underlying NCollection_HSequence_Handle_StepFEA_ElementRepresentation pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_StepFEA_ElementRepresentation pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_StepFEA_ElementRepresentation {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_StepFEA_ElementRepresentation_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Storage_Root {
+    /// Create a new empty HSequence_Handle_Storage_Root
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Storage_Root) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Storage_Root,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Storage_Root {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Storage_RootIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Storage_Root> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Storage_RootIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Storage_Root>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Storage_RootIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Storage_RootIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Storage_RootIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Storage_Root {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Storage_Root_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Storage_Root {
+    /// Borrow the underlying NCollection_HSequence_Handle_Storage_Root pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Storage_Root {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Storage_Root_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Storage_Root pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Storage_Root {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Storage_Root_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_TCollection_HAsciiString {
+    /// Create a new empty HSequence_Handle_TCollection_HAsciiString
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TCollection_HAsciiString) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TCollection_HAsciiString,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_TCollection_HAsciiStringIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_TCollection_HAsciiStringIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TCollection_HAsciiStringIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TCollection_HAsciiStringIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TCollection_HAsciiStringIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HAsciiString_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString {
+    /// Borrow the underlying NCollection_HSequence_Handle_TCollection_HAsciiString pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_TCollection_HAsciiString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_TCollection_HAsciiString pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_TCollection_HAsciiString {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_TCollection_HExtendedString {
+    /// Create a new empty HSequence_Handle_TCollection_HExtendedString
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TCollection_HExtendedString) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_append(self as *mut Self, item as *const crate::ffi_types::Handle_TCollection_HExtendedString)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TCollection_HExtendedString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_TCollection_HExtendedStringIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_TCollection_HExtendedStringIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TCollection_HExtendedStringIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TCollection_HExtendedStringIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TCollection_HExtendedStringIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TCollection_HExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TCollection_HExtendedString_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString {
+    /// Borrow the underlying NCollection_HSequence_Handle_TCollection_HExtendedString pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_TCollection_HExtendedString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_TCollection_HExtendedString pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_TCollection_HExtendedString {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_TObj_Object {
+    /// Create a new empty HSequence_Handle_TObj_Object
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TObj_Object) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TObj_Object,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TObj_Object {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_TObj_ObjectIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_TObj_Object> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_TObj_ObjectIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TObj_Object>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TObj_ObjectIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TObj_ObjectIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TObj_ObjectIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TObj_Object {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TObj_Object_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_TObj_Object {
+    /// Borrow the underlying NCollection_HSequence_Handle_TObj_Object pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_TObj_Object {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TObj_Object_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_TObj_Object pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HSequence_Handle_TObj_Object {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TObj_Object_get_mut(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
+impl HSequence_Handle_TransferBRep_TransferResultInfo {
+    /// Create a new empty HSequence_Handle_TransferBRep_TransferResultInfo
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TransferBRep_TransferResultInfo) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_append(self as *mut Self, item as *const crate::ffi_types::Handle_TransferBRep_TransferResultInfo)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TransferBRep_TransferResultInfo {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_TransferBRep_TransferResultInfoIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_iter(self as *const Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_to_handle(obj.into_raw()))
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_TransferBRep_TransferResultInfoIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_TransferResultInfo>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TransferBRep_TransferResultInfoIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TransferBRep_TransferResultInfoIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_TransferBRep_TransferResultInfoIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_TransferBRep_TransferResultInfo {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+    /// Borrow the underlying NCollection_HSequence_Handle_TransferBRep_TransferResultInfo pointee.
+    pub fn get(
+        &self,
+    ) -> &crate::ffi_types::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get(self as *const Self)
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_TransferBRep_TransferResultInfo pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_TransferBRep_TransferResultInfo {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_TransferBRep_TransferResultInfo_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Transfer_Finder {
+    /// Create a new empty HSequence_Handle_Transfer_Finder
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Transfer_Finder) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Transfer_Finder,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Transfer_Finder {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Transfer_FinderIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Transfer_Finder>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Transfer_FinderIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Finder>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Transfer_FinderIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Transfer_FinderIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Transfer_FinderIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Transfer_Finder {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Transfer_Finder_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Transfer_Finder {
+    /// Borrow the underlying NCollection_HSequence_Handle_Transfer_Finder pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Transfer_Finder {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Transfer_Finder_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Transfer_Finder pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Transfer_Finder {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Transfer_Finder_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Units_Quantity {
+    /// Create a new empty HSequence_Handle_Units_Quantity
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Units_Quantity) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Units_Quantity,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Units_Quantity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Units_QuantityIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Units_QuantityIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Units_Quantity>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_QuantityIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_QuantityIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_QuantityIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_Quantity {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Quantity_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Quantity {
+    /// Borrow the underlying NCollection_HSequence_Handle_Units_Quantity pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Units_Quantity {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Quantity_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Units_Quantity pointee.
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Units_Quantity {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Quantity_get_mut(self as *mut Self)
+        }
+    }
+}
+
+impl HSequence_Handle_Units_Token {
+    /// Create a new empty HSequence_Handle_Units_Token
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Units_Token) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Units_Token,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Units_Token {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Units_TokenIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Units_TokenIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Units_Token>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_TokenIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_TokenIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_TokenIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_Token {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Token_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Token {
+    /// Borrow the underlying NCollection_HSequence_Handle_Units_Token pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Units_Token {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Token_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Units_Token pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Units_Token {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Token_get_mut(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
+impl HSequence_Handle_Units_Unit {
+    /// Create a new empty HSequence_Handle_Units_Unit
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Units_Unit) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Units_Unit,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Units_Unit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::HSequence_Handle_Units_UnitIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Unit> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_to_handle(
+                    obj.into_raw(),
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for HSequence_Handle_Units_UnitIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Units_Unit>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_UnitIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_UnitIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::HSequence_Handle_Units_UnitIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for HSequence_Handle_Units_Unit {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_HSequence_Handle_Units_Unit_destructor(ptr);
+        }
+    }
+}
+
+impl crate::ffi_types::Handle_NCollection_HSequence_Handle_Units_Unit {
+    /// Borrow the underlying NCollection_HSequence_Handle_Units_Unit pointee.
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HSequence_Handle_Units_Unit {
+        unsafe {
+            &*crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Unit_get(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Mutably borrow the underlying NCollection_HSequence_Handle_Units_Unit pointee.
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HSequence_Handle_Units_Unit {
+        unsafe {
+            &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_Handle_Units_Unit_get_mut(
+                self as *mut Self,
+            )
+        }
+    }
+}
+
 impl HSequence_TCollection_AsciiString {
     /// Create a new empty HSequence_TCollection_AsciiString
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -14527,6 +27003,250 @@ impl crate::ffi_types::Handle_NCollection_HSequence_int {
             &mut *crate::ffi_extern_TKernel::Handle_NCollection_HSequence_int_get_mut(
                 self as *mut Self,
             )
+        }
+    }
+}
+
+impl IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient {
+    /// Create a new empty IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_clear(self as *mut Self)
+        }
+    }
+
+    /// Add a key-value pair, returns index
+    pub fn add(
+        &mut self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_add(self as *mut Self, key as *const crate::ffi_types::Handle_Standard_Transient, value as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Find value by key
+    pub fn find_from_key<'a>(
+        &'a self,
+        key: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> &'a crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_key(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Find value by 1-based index
+    pub fn find_from_index<'a>(
+        &'a self,
+        index: i32,
+    ) -> &'a crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_from_index(self as *const Self, index)
+        }
+    }
+
+    /// Find key by 1-based index
+    pub fn find_key(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_key(self as *const Self, index))
+        }
+    }
+
+    /// Find index by key (returns 0 if not found)
+    pub fn find_index(&self, key: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_find_index(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::Handle_Standard_Transient) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_contains(self as *const Self, key as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator>{
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_Handle_Standard_Transient_Handle_Standard_Transient_destructor(ptr);
+        }
+    }
+}
+
+impl IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient {
+    /// Create a new empty IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_clear(self as *mut Self)
+        }
+    }
+
+    /// Add a key-value pair, returns index
+    pub fn add(
+        &mut self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+        value: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_add(self as *mut Self, key as *const crate::ffi_types::TCollection_AsciiString, value as *const crate::ffi_types::Handle_Standard_Transient)
+        }
+    }
+
+    /// Find value by key
+    pub fn find_from_key<'a>(
+        &'a self,
+        key: &crate::ffi_types::TCollection_AsciiString,
+    ) -> &'a crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_key(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        }
+    }
+
+    /// Find value by 1-based index
+    pub fn find_from_index<'a>(
+        &'a self,
+        index: i32,
+    ) -> &'a crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_from_index(self as *const Self, index)
+        }
+    }
+
+    /// Find key by 1-based index
+    pub fn find_key(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::TCollection_AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_key(self as *const Self, index))
+        }
+    }
+
+    /// Find index by key (returns 0 if not found)
+    pub fn find_index(&self, key: &crate::ffi_types::TCollection_AsciiString) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_find_index(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        }
+    }
+
+    /// Check if key exists
+    pub fn contains(&self, key: &crate::ffi_types::TCollection_AsciiString) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_contains(self as *const Self, key as *const crate::ffi_types::TCollection_AsciiString)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::TCollection_AsciiString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_next_key(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable
+    for IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient
+{
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient_destructor(ptr);
         }
     }
 }
@@ -15871,6 +28591,325 @@ unsafe impl crate::CppDeletable for IndexedDataMap_TopoDS_Shape_double_TopTools_
     }
 }
 
+impl IndexedMap_Handle_BOPDS_PaveBlock {
+    /// Create a new empty IndexedMap_Handle_BOPDS_PaveBlock
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn find_key(&self, index: i32) -> &crate::ffi_types::Handle_BOPDS_PaveBlock {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_key(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::IndexedMap_Handle_BOPDS_PaveBlockIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for IndexedMap_Handle_BOPDS_PaveBlockIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BOPDS_PaveBlock>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_BOPDS_PaveBlockIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_BOPDS_PaveBlockIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_BOPDS_PaveBlockIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_BOPDS_PaveBlock {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_BOPDS_PaveBlock_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl IndexedMap_Handle_Standard_Transient {
+    /// Create a new empty IndexedMap_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn find_key(&self, index: i32) -> &crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_find_key(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::IndexedMap_Handle_Standard_TransientIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for IndexedMap_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_Standard_TransientIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_Standard_TransientIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_Standard_Transient_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl IndexedMap_Handle_TDF_Attribute {
+    /// Create a new empty IndexedMap_Handle_TDF_Attribute
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_TDF_Attribute) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn find_key(&self, index: i32) -> &crate::ffi_types::Handle_TDF_Attribute {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_find_key(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Find the 1-based index of an element (returns 0 if not found)
+    pub fn find_index(&self, item: &crate::ffi_types::Handle_TDF_Attribute) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_find_index(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::IndexedMap_Handle_TDF_AttributeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for IndexedMap_Handle_TDF_AttributeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_TDF_AttributeIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_TDF_AttributeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::IndexedMap_Handle_TDF_AttributeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for IndexedMap_Handle_TDF_Attribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_IndexedMap_Handle_TDF_Attribute_destructor(ptr);
+        }
+    }
+}
+
 impl IndexedMap_TCollection_AsciiString {
     /// Create a new empty IndexedMap_TCollection_AsciiString
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -16949,6 +29988,1503 @@ unsafe impl crate::CppDeletable for List_HLRAlgo_Interference {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_List_HLRAlgo_Interference_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_BOPDS_PaveBlock {
+    /// Create a new empty List_Handle_BOPDS_PaveBlock
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_BOPDS_PaveBlockIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_BOPDS_PaveBlockIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BOPDS_PaveBlock>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BOPDS_PaveBlockIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BOPDS_PaveBlockIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BOPDS_PaveBlockIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BOPDS_PaveBlock {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BOPDS_PaveBlock_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_BRepMesh_DiscretAlgoFactory {
+    /// Create a new empty List_Handle_BRepMesh_DiscretAlgoFactory
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_new(
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_BRepMesh_DiscretAlgoFactoryIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_BRepMesh_DiscretAlgoFactoryIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRepMesh_DiscretAlgoFactoryIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRepMesh_DiscretAlgoFactoryIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRepMesh_DiscretAlgoFactoryIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRepMesh_DiscretAlgoFactory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_BRep_CurveRepresentation {
+    /// Create a new empty List_Handle_BRep_CurveRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_BRep_CurveRepresentation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRep_CurveRepresentation,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_BRep_CurveRepresentation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRep_CurveRepresentation,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_BRep_CurveRepresentationIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_BRep_CurveRepresentationIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BRep_CurveRepresentation>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRep_CurveRepresentationIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRep_CurveRepresentationIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRep_CurveRepresentationIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRep_CurveRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_CurveRepresentation_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl List_Handle_BRep_PointRepresentation {
+    /// Create a new empty List_Handle_BRep_PointRepresentation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_BRep_PointRepresentation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRep_PointRepresentation,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_BRep_PointRepresentation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BRep_PointRepresentation,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_BRep_PointRepresentationIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_BRep_PointRepresentationIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BRep_PointRepresentation>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRep_PointRepresentationIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRep_PointRepresentationIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_BRep_PointRepresentationIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_BRep_PointRepresentation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_BRep_PointRepresentation_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl List_Handle_ChFiDS_ElSpine {
+    /// Create a new empty List_Handle_ChFiDS_ElSpine
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_ChFiDS_ElSpine) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_ElSpine,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_ChFiDS_ElSpine) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_ElSpine,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_ChFiDS_ElSpineIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_ChFiDS_ElSpineIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_ElSpine>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_ChFiDS_ElSpineIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_ChFiDS_ElSpineIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_ChFiDS_ElSpineIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_ChFiDS_ElSpine {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_ElSpine_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_ChFiDS_Stripe {
+    /// Create a new empty List_Handle_ChFiDS_Stripe
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_ChFiDS_Stripe) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_Stripe,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_ChFiDS_Stripe) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_Stripe,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_ChFiDS_StripeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_ChFiDS_StripeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_Stripe>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_ChFiDS_StripeIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_ChFiDS_StripeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_ChFiDS_StripeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_ChFiDS_Stripe {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_ChFiDS_Stripe_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_Law_Function {
+    /// Create a new empty List_Handle_Law_Function
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Law_Function) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Law_Function,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_Law_Function) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Law_Function,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_Law_FunctionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_Law_FunctionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Law_Function>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Law_FunctionIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Law_FunctionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Law_FunctionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Law_Function {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Law_Function_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_Message_Alert {
+    /// Create a new empty List_Handle_Message_Alert
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Message_Alert) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Message_Alert,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_Message_Alert) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Message_Alert,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_Message_AlertIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_Message_AlertIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Message_AlertIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Message_AlertIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Message_AlertIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Message_Alert {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Message_Alert_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_Poly_Triangulation {
+    /// Create a new empty List_Handle_Poly_Triangulation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Poly_Triangulation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Poly_Triangulation,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_Poly_Triangulation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Poly_Triangulation,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_Poly_TriangulationIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_Poly_TriangulationIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Poly_TriangulationIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Poly_TriangulationIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_Poly_TriangulationIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_Poly_Triangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_Poly_Triangulation_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TDF_Attribute {
+    /// Create a new empty List_Handle_TDF_Attribute
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDF_Attribute) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TDF_Attribute) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TDF_AttributeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TDF_AttributeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_AttributeIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_AttributeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_AttributeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_Attribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Attribute_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TDF_AttributeDelta {
+    /// Create a new empty List_Handle_TDF_AttributeDelta
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDF_AttributeDelta) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_AttributeDelta,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TDF_AttributeDelta) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_AttributeDelta,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TDF_AttributeDeltaIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TDF_AttributeDeltaIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_AttributeDelta>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_AttributeDeltaIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_AttributeDeltaIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_AttributeDeltaIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_AttributeDelta {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_AttributeDelta_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TDF_Delta {
+    /// Create a new empty List_Handle_TDF_Delta
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDF_Delta) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Delta,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TDF_Delta) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Delta,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TDF_DeltaIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TDF_DeltaIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Delta>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_DeltaIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_DeltaIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TDF_DeltaIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TDF_Delta {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TDF_Delta_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TNaming_NamedShape {
+    /// Create a new empty List_Handle_TNaming_NamedShape
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TNaming_NamedShape) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TNaming_NamedShape,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TNaming_NamedShape) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TNaming_NamedShape,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TNaming_NamedShapeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TNaming_NamedShapeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TNaming_NamedShape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TNaming_NamedShapeIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TNaming_NamedShapeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TNaming_NamedShapeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TNaming_NamedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TNaming_NamedShape_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TopOpeBRepBuild_Loop {
+    /// Create a new empty List_Handle_TopOpeBRepBuild_Loop
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TopOpeBRepBuild_LoopIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TopOpeBRepBuild_LoopIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Loop>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepBuild_LoopIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepBuild_LoopIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepBuild_LoopIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepBuild_Loop {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Loop_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TopOpeBRepBuild_Pave {
+    /// Create a new empty List_Handle_TopOpeBRepBuild_Pave
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepBuild_Pave) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepBuild_Pave,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepBuild_Pave) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepBuild_Pave,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TopOpeBRepBuild_PaveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TopOpeBRepBuild_PaveIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Pave>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepBuild_PaveIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepBuild_PaveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepBuild_PaveIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepBuild_Pave {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepBuild_Pave_destructor(ptr);
+        }
+    }
+}
+
+impl List_Handle_TopOpeBRepDS_Interference {
+    /// Create a new empty List_Handle_TopOpeBRepDS_Interference
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+            )
+        }
+    }
+
+    /// Prepend an element
+    pub fn prepend(&mut self, item: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_prepend(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::List_Handle_TopOpeBRepDS_InterferenceIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for List_Handle_TopOpeBRepDS_InterferenceIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepDS_Interference>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepDS_InterferenceIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepDS_InterferenceIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::List_Handle_TopOpeBRepDS_InterferenceIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for List_Handle_TopOpeBRepDS_Interference {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_List_Handle_TopOpeBRepDS_Interference_destructor(
+                ptr,
+            );
         }
     }
 }
@@ -18138,6 +32674,277 @@ unsafe impl crate::CppDeletable for Map_BOPDS_Pair {
     }
 }
 
+impl Map_Handle_BOPDS_PaveBlock {
+    /// Create a new empty Map_Handle_BOPDS_PaveBlock
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::Handle_BOPDS_PaveBlock) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_BOPDS_PaveBlock,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Map_Handle_BOPDS_PaveBlockIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Map_Handle_BOPDS_PaveBlockIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_BOPDS_PaveBlock>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_BOPDS_PaveBlockIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_BOPDS_PaveBlockIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_BOPDS_PaveBlockIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_BOPDS_PaveBlock {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_BOPDS_PaveBlock_destructor(ptr);
+        }
+    }
+}
+
+impl Map_Handle_TDF_Attribute {
+    /// Create a new empty Map_Handle_TDF_Attribute
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_clear(self as *mut Self)
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_TDF_Attribute) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::Handle_TDF_Attribute) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Map_Handle_TDF_AttributeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Map_Handle_TDF_AttributeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_TDF_AttributeIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_TDF_AttributeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_TDF_AttributeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_TDF_Attribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TDF_Attribute_destructor(ptr);
+        }
+    }
+}
+
+impl Map_Handle_TNaming_NamedShape {
+    /// Create a new empty Map_Handle_TNaming_NamedShape
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Add an element, returns index
+    pub fn add(&mut self, item: &crate::ffi_types::Handle_TNaming_NamedShape) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_add(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TNaming_NamedShape,
+            )
+        }
+    }
+
+    /// Check if an element is present
+    pub fn contains(&self, item: &crate::ffi_types::Handle_TNaming_NamedShape) -> bool {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_contains(
+                self as *const Self,
+                item as *const crate::ffi_types::Handle_TNaming_NamedShape,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Map_Handle_TNaming_NamedShapeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Map_Handle_TNaming_NamedShapeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TNaming_NamedShape>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_TNaming_NamedShapeIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_TNaming_NamedShapeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Map_Handle_TNaming_NamedShapeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Map_Handle_TNaming_NamedShape {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Map_Handle_TNaming_NamedShape_destructor(ptr);
+        }
+    }
+}
+
 impl Map_TCollection_AsciiString {
     /// Create a new empty Map_TCollection_AsciiString
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -19020,6 +33827,2306 @@ unsafe impl crate::CppDeletable for Sequence_HLRBRep_ShapeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
             crate::ffi_extern_TKernel::NCollection_Sequence_HLRBRep_ShapeBounds_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_AdvApp2Var_Node {
+    /// Create a new empty Sequence_Handle_AdvApp2Var_Node
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_AdvApp2Var_Node) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_AdvApp2Var_Node,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_AdvApp2Var_Node {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_AdvApp2Var_NodeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_AdvApp2Var_NodeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_AdvApp2Var_Node>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_AdvApp2Var_NodeIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_AdvApp2Var_NodeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_AdvApp2Var_NodeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_AdvApp2Var_Node {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Node_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_AdvApp2Var_Patch {
+    /// Create a new empty Sequence_Handle_AdvApp2Var_Patch
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_AdvApp2Var_Patch) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_AdvApp2Var_Patch,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_AdvApp2Var_Patch {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_AdvApp2Var_PatchIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_AdvApp2Var_PatchIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_AdvApp2Var_Patch>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_AdvApp2Var_PatchIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_AdvApp2Var_PatchIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_AdvApp2Var_PatchIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_AdvApp2Var_Patch {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_AdvApp2Var_Patch_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_ChFiDS_SurfData {
+    /// Create a new empty Sequence_Handle_ChFiDS_SurfData
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_ChFiDS_SurfData) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_ChFiDS_SurfData,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_ChFiDS_SurfData {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_ChFiDS_SurfDataIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_ChFiDS_SurfDataIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_SurfData>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_ChFiDS_SurfDataIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_ChFiDS_SurfDataIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_ChFiDS_SurfDataIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_ChFiDS_SurfData {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_ChFiDS_SurfData_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_Expr_GeneralExpression {
+    /// Create a new empty Sequence_Handle_Expr_GeneralExpression
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Expr_GeneralExpression) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Expr_GeneralExpression,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Expr_GeneralExpression {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Expr_GeneralExpressionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Expr_GeneralExpressionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Expr_GeneralExpression>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_GeneralExpressionIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_GeneralExpressionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_GeneralExpressionIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_GeneralExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_GeneralExpression_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_Expr_NamedExpression {
+    /// Create a new empty Sequence_Handle_Expr_NamedExpression
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Expr_NamedExpression) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Expr_NamedExpression,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Expr_NamedExpression {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Expr_NamedExpressionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Expr_NamedExpressionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedExpression>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_NamedExpressionIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_NamedExpressionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_NamedExpressionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_NamedExpression {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedExpression_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Sequence_Handle_Expr_NamedFunction {
+    /// Create a new empty Sequence_Handle_Expr_NamedFunction
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Expr_NamedFunction) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Expr_NamedFunction,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Expr_NamedFunction {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Expr_NamedFunctionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Expr_NamedFunctionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Expr_NamedFunction>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_NamedFunctionIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_NamedFunctionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Expr_NamedFunctionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Expr_NamedFunction {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Expr_NamedFunction_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Sequence_Handle_Geom2d_Curve {
+    /// Create a new empty Sequence_Handle_Geom2d_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Geom2d_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Geom2d_Curve,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom2d_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Geom2d_CurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Geom2d_CurveIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Geom2d_CurveIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Geom2d_CurveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Geom2d_CurveIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Geom2d_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom2d_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_Geom_Curve {
+    /// Create a new empty Sequence_Handle_Geom_Curve
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Geom_Curve) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Geom_Curve,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Geom_Curve {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Geom_CurveIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Geom_CurveIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Geom_CurveIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Geom_CurveIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Geom_CurveIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Geom_Curve {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Geom_Curve_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_IFSelect_Selection {
+    /// Create a new empty Sequence_Handle_IFSelect_Selection
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_IFSelect_Selection) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_IFSelect_Selection,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IFSelect_Selection {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_IFSelect_SelectionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_IFSelect_SelectionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_IFSelect_SelectionIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_IFSelect_SelectionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_IFSelect_SelectionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_IFSelect_Selection {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IFSelect_Selection_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Sequence_Handle_IntPatch_Line {
+    /// Create a new empty Sequence_Handle_IntPatch_Line
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_IntPatch_Line) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_IntPatch_Line,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_IntPatch_Line {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_IntPatch_LineIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_IntPatch_LineIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_IntPatch_Line>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_IntPatch_LineIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_IntPatch_LineIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_IntPatch_LineIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_IntPatch_Line {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_IntPatch_Line_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_MAT2d_Connexion {
+    /// Create a new empty Sequence_Handle_MAT2d_Connexion
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_MAT2d_Connexion) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_MAT2d_Connexion,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_MAT2d_Connexion {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_MAT2d_ConnexionIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_MAT2d_ConnexionIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_MAT2d_Connexion>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT2d_ConnexionIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT2d_ConnexionIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT2d_ConnexionIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT2d_Connexion {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT2d_Connexion_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_MAT_Arc {
+    /// Create a new empty Sequence_Handle_MAT_Arc
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_MAT_Arc) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_MAT_Arc,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_MAT_Arc {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_MAT_ArcIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_MAT_ArcIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_MAT_Arc>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT_ArcIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT_ArcIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT_ArcIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT_Arc {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_Arc_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_MAT_BasicElt {
+    /// Create a new empty Sequence_Handle_MAT_BasicElt
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_MAT_BasicElt) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_MAT_BasicElt,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_MAT_BasicElt {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_MAT_BasicEltIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_MAT_BasicEltIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_MAT_BasicElt>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT_BasicEltIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT_BasicEltIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_MAT_BasicEltIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_MAT_BasicElt {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_MAT_BasicElt_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_Message_Printer {
+    /// Create a new empty Sequence_Handle_Message_Printer
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Message_Printer) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Message_Printer,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Message_Printer {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Message_PrinterIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Message_PrinterIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Message_Printer>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Message_PrinterIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Message_PrinterIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Message_PrinterIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Message_Printer {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Message_Printer_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_PCDM_Document {
+    /// Create a new empty Sequence_Handle_PCDM_Document
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_PCDM_Document) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_PCDM_Document,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_PCDM_Document {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_PCDM_DocumentIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_PCDM_DocumentIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Document>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_PCDM_DocumentIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_PCDM_DocumentIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_PCDM_DocumentIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_PCDM_Document {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_PCDM_Document_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_Poly_Triangulation {
+    /// Create a new empty Sequence_Handle_Poly_Triangulation
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Poly_Triangulation) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Poly_Triangulation,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Poly_Triangulation {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Poly_TriangulationIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Poly_TriangulationIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Poly_TriangulationIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Poly_TriangulationIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Poly_TriangulationIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Poly_Triangulation {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Poly_Triangulation_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Sequence_Handle_Standard_Transient {
+    /// Create a new empty Sequence_Handle_Standard_Transient
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_Standard_Transient) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_Standard_Transient,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_Standard_Transient {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_Standard_TransientIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_Standard_TransientIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Standard_TransientIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Standard_TransientIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_Standard_TransientIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_Standard_Transient {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_Standard_Transient_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl Sequence_Handle_TCollection_HAsciiString {
+    /// Create a new empty Sequence_Handle_TCollection_HAsciiString
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_new(
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TCollection_HAsciiString) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TCollection_HAsciiString,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_TCollection_HAsciiStringIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_TCollection_HAsciiStringIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TCollection_HAsciiStringIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TCollection_HAsciiStringIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TCollection_HAsciiStringIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TCollection_HAsciiString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HAsciiString_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_TCollection_HExtendedString {
+    /// Create a new empty Sequence_Handle_TCollection_HExtendedString
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TCollection_HExtendedString) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_append(self as *mut Self, item as *const crate::ffi_types::Handle_TCollection_HExtendedString)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TCollection_HExtendedString {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_TCollection_HExtendedStringIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_TCollection_HExtendedStringIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TCollection_HExtendedStringIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TCollection_HExtendedStringIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TCollection_HExtendedStringIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TCollection_HExtendedString {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TCollection_HExtendedString_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_TDF_Attribute {
+    /// Create a new empty Sequence_Handle_TDF_Attribute
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDF_Attribute) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDF_Attribute,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TDF_Attribute {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_TDF_AttributeIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_TDF_AttributeIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDF_AttributeIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDF_AttributeIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDF_AttributeIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDF_Attribute {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDF_Attribute_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_TDocStd_ApplicationDelta {
+    /// Create a new empty Sequence_Handle_TDocStd_ApplicationDelta
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_new(
+                ),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDocStd_ApplicationDelta) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDocStd_ApplicationDelta,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TDocStd_ApplicationDelta {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_TDocStd_ApplicationDeltaIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_TDocStd_ApplicationDeltaIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDocStd_ApplicationDelta>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDocStd_ApplicationDeltaIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDocStd_ApplicationDeltaIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDocStd_ApplicationDeltaIterator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDocStd_ApplicationDelta {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_ApplicationDelta_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_TDocStd_Document {
+    /// Create a new empty Sequence_Handle_TDocStd_Document
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_new(),
+            )
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_size(
+                self as *const Self,
+            )
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_clear(
+                self as *mut Self,
+            )
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_TDocStd_Document) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_append(
+                self as *mut Self,
+                item as *const crate::ffi_types::Handle_TDocStd_Document,
+            )
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_TDocStd_Document {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_value(
+                self as *const Self,
+                index,
+            )
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_TDocStd_DocumentIterator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_iter(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_TDocStd_DocumentIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_TDocStd_Document>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDocStd_DocumentIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDocStd_DocumentIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_TDocStd_DocumentIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_TDocStd_Document {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_TDocStd_Document_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_XCAFDimTolObjects_DatumObject {
+    /// Create a new empty Sequence_Handle_XCAFDimTolObjects_DatumObject
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_append(self as *mut Self, item as *const crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_DatumObject>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_next(
+                self as *mut Self,
+            )
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_DatumObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_XCAFDimTolObjects_DimensionObject {
+    /// Create a new empty Sequence_Handle_XCAFDimTolObjects_DimensionObject
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(&mut self, item: &crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_append(self as *mut Self, item as *const crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(&self, index: i32) -> &crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator>
+    {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_DimensionObject>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_DimensionObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject_destructor(ptr);
+        }
+    }
+}
+
+impl Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject {
+    /// Create a new empty Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_new())
+        }
+    }
+
+    /// Get number of elements
+    pub fn size(&self) -> i32 {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_size(self as *const Self)
+        }
+    }
+
+    /// Remove all elements
+    pub fn clear(&mut self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_clear(self as *mut Self)
+        }
+    }
+
+    /// Append an element
+    pub fn append(
+        &mut self,
+        item: &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject,
+    ) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_append(self as *mut Self, item as *const crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject)
+        }
+    }
+
+    /// Get element at 1-based index
+    pub fn value(
+        &self,
+        index: i32,
+    ) -> &crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject {
+        unsafe {
+            &*crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_value(self as *const Self, index)
+        }
+    }
+
+    /// Create an iterator over the collection
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator,
+    > {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_iter(self as *const Self))
+        }
+    }
+}
+
+impl Iterator for Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator {
+    type Item = crate::OwnedPtr<crate::ffi_types::Handle_XCAFDimTolObjects_GeomToleranceObject>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_next(self as *mut Self)
+        };
+        if ptr.is_null() {
+            None
+        } else {
+            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppDeletable for Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKernel::NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject_destructor(ptr);
         }
     }
 }
@@ -24001,10 +41108,22 @@ impl Handle_NCollection_WinHeapAllocator {
 // ========================
 
 pub use crate::ffi_types::{
+    DataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    DataMap_Handle_Standard_Transient_Handle_StdObjMgt_PersistentIterator,
+    DataMap_Handle_StepRepr_RepresentationItem_TopoDS_ShapeIterator,
+    DataMap_Handle_StepShape_TopologicalRepresentationItem_TopoDS_ShapeIterator,
+    DataMap_Handle_TCollection_HExtendedString_TDF_LabelIterator,
+    DataMap_Handle_TDF_Attribute_Handle_TDF_AttributeIterator,
+    DataMap_Handle_TopoDS_TShape_Handle_VrmlData_AppearanceIterator,
+    DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterialIterator,
+    DataMap_TCollection_AsciiString_Handle_STEPCAFControl_ExternFileIterator,
+    DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriverIterator,
     DataMap_TCollection_AsciiString_RWObj_MaterialIterator,
     DataMap_TCollection_AsciiString_TCollection_AsciiStringIterator,
     DataMap_TCollection_AsciiString_TopoDS_ShapeIterator,
     DataMap_TCollection_AsciiString_intIterator,
+    DataMap_TCollection_ExtendedString_Handle_CDM_MetaDataIterator,
     DataMap_TCollection_ExtendedString_TCollection_ExtendedStringIterator,
     DataMap_TCollection_ExtendedString_doubleIterator,
     DataMap_TCollection_ExtendedString_intIterator, DataMap_TDF_Label_TDF_LabelIterator,
@@ -24013,22 +41132,69 @@ pub use crate::ffi_types::{
     DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasherIterator,
+    DataMap_TopoDS_Shape_Handle_Standard_Transient_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_TDF_Label_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasherIterator,
     DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasherIterator, DataMap_TopoDS_Shape_intIterator,
-    DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator, DataMap_int_TopoDS_ShapeIterator,
-    DataMap_int_intIterator, HArray1_AppParCurves_ConstraintCoupleIterator,
-    HArray1_Bnd_BoxIterator, HArray1_ChFiDS_CircSectionIterator,
-    HArray1_HLRAlgo_PolyHidingDataIterator, HArray1_HLRAlgo_TriangleDataIterator,
-    HArray1_Poly_TriangleIterator, HArray1_Quantity_ColorIterator,
-    HArray1_Standard_BooleanIterator, HArray1_StepAP203_ApprovedItemIterator,
-    HArray1_StepAP203_CertifiedItemIterator, HArray1_StepAP203_ChangeRequestItemIterator,
-    HArray1_StepAP203_ClassifiedItemIterator, HArray1_StepAP203_ContractedItemIterator,
-    HArray1_StepAP203_DateTimeItemIterator, HArray1_StepAP203_PersonOrganizationItemIterator,
-    HArray1_StepAP203_SpecifiedItemIterator, HArray1_StepAP203_StartRequestItemIterator,
-    HArray1_StepAP203_WorkItemIterator, HArray1_StepAP214_ApprovalItemIterator,
-    HArray1_StepAP214_AutoDesignDateAndPersonItemIterator,
+    DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasherIterator,
+    DataMap_gp_Pnt_Handle_Standard_TransientIterator, DataMap_int_Handle_MAT_BasicEltIterator,
+    DataMap_int_TopoDS_ShapeIterator, DataMap_int_intIterator,
+    HArray1_AppParCurves_ConstraintCoupleIterator, HArray1_Bnd_BoxIterator,
+    HArray1_ChFiDS_CircSectionIterator, HArray1_HLRAlgo_PolyHidingDataIterator,
+    HArray1_HLRAlgo_TriangleDataIterator, HArray1_Handle_Adaptor3d_CurveIterator,
+    HArray1_Handle_Geom2d_BSplineCurveIterator, HArray1_Handle_Geom2d_CurveIterator,
+    HArray1_Handle_Geom_BSplineCurveIterator, HArray1_Handle_Geom_CurveIterator,
+    HArray1_Handle_IGESAppli_FiniteElementIterator, HArray1_Handle_IGESAppli_NodeIterator,
+    HArray1_Handle_IGESData_IGESEntityIterator, HArray1_Handle_IGESData_LineFontEntityIterator,
+    HArray1_Handle_IGESData_ViewKindEntityIterator, HArray1_Handle_IGESDefs_TabularDataIterator,
+    HArray1_Handle_IGESDimen_GeneralNoteIterator, HArray1_Handle_IGESDimen_LeaderArrowIterator,
+    HArray1_Handle_IGESDraw_ConnectPointIterator, HArray1_Handle_IGESGeom_BoundaryIterator,
+    HArray1_Handle_IGESGeom_CurveOnSurfaceIterator,
+    HArray1_Handle_IGESGeom_TransformationMatrixIterator, HArray1_Handle_IGESGraph_ColorIterator,
+    HArray1_Handle_IGESGraph_TextDisplayTemplateIterator,
+    HArray1_Handle_IGESGraph_TextFontDefIterator, HArray1_Handle_IGESSolid_FaceIterator,
+    HArray1_Handle_IGESSolid_LoopIterator, HArray1_Handle_IGESSolid_ShellIterator,
+    HArray1_Handle_IGESSolid_VertexListIterator, HArray1_Handle_Standard_PersistentIterator,
+    HArray1_Handle_Standard_TransientIterator, HArray1_Handle_StepBasic_ApprovalIterator,
+    HArray1_Handle_StepBasic_DerivedUnitElementIterator, HArray1_Handle_StepBasic_DocumentIterator,
+    HArray1_Handle_StepBasic_NamedUnitIterator, HArray1_Handle_StepBasic_OrganizationIterator,
+    HArray1_Handle_StepBasic_PersonIterator, HArray1_Handle_StepBasic_ProductContextIterator,
+    HArray1_Handle_StepBasic_ProductIterator,
+    HArray1_Handle_StepBasic_UncertaintyMeasureWithUnitIterator,
+    HArray1_Handle_StepDimTol_DatumReferenceCompartmentIterator,
+    HArray1_Handle_StepDimTol_DatumReferenceElementIterator,
+    HArray1_Handle_StepDimTol_DatumReferenceIterator,
+    HArray1_Handle_StepElement_CurveElementEndReleasePacketIterator,
+    HArray1_Handle_StepElement_CurveElementSectionDefinitionIterator,
+    HArray1_Handle_StepElement_SurfaceSectionIterator,
+    HArray1_Handle_StepElement_VolumeElementPurposeMemberIterator,
+    HArray1_Handle_StepFEA_CurveElementEndOffsetIterator,
+    HArray1_Handle_StepFEA_CurveElementEndReleaseIterator,
+    HArray1_Handle_StepFEA_CurveElementIntervalIterator,
+    HArray1_Handle_StepFEA_ElementRepresentationIterator,
+    HArray1_Handle_StepFEA_NodeRepresentationIterator,
+    HArray1_Handle_StepGeom_CartesianPointIterator,
+    HArray1_Handle_StepGeom_CompositeCurveSegmentIterator,
+    HArray1_Handle_StepRepr_MaterialPropertyRepresentationIterator,
+    HArray1_Handle_StepRepr_PropertyDefinitionRepresentationIterator,
+    HArray1_Handle_StepRepr_RepresentationItemIterator,
+    HArray1_Handle_StepRepr_ShapeAspectIterator, HArray1_Handle_StepShape_ConnectedEdgeSetIterator,
+    HArray1_Handle_StepShape_ConnectedFaceSetIterator, HArray1_Handle_StepShape_EdgeIterator,
+    HArray1_Handle_StepShape_FaceBoundIterator, HArray1_Handle_StepShape_FaceIterator,
+    HArray1_Handle_StepShape_OrientedClosedShellIterator,
+    HArray1_Handle_StepShape_OrientedEdgeIterator,
+    HArray1_Handle_StepVisual_CurveStyleFontPatternIterator,
+    HArray1_Handle_StepVisual_PresentationStyleAssignmentIterator,
+    HArray1_Handle_StepVisual_TessellatedStructuredItemIterator,
+    HArray1_Handle_TCollection_HAsciiStringIterator, HArray1_Poly_TriangleIterator,
+    HArray1_Quantity_ColorIterator, HArray1_Standard_BooleanIterator,
+    HArray1_StepAP203_ApprovedItemIterator, HArray1_StepAP203_CertifiedItemIterator,
+    HArray1_StepAP203_ChangeRequestItemIterator, HArray1_StepAP203_ClassifiedItemIterator,
+    HArray1_StepAP203_ContractedItemIterator, HArray1_StepAP203_DateTimeItemIterator,
+    HArray1_StepAP203_PersonOrganizationItemIterator, HArray1_StepAP203_SpecifiedItemIterator,
+    HArray1_StepAP203_StartRequestItemIterator, HArray1_StepAP203_WorkItemIterator,
+    HArray1_StepAP214_ApprovalItemIterator, HArray1_StepAP214_AutoDesignDateAndPersonItemIterator,
     HArray1_StepAP214_AutoDesignDateAndTimeItemIterator,
     HArray1_StepAP214_AutoDesignDatedItemIterator,
     HArray1_StepAP214_AutoDesignGeneralOrgItemIterator,
@@ -24065,8 +41231,24 @@ pub use crate::ffi_types::{
     HArray1_boolIterator, HArray1_doubleIterator, HArray1_floatIterator, HArray1_gp_Pnt2dIterator,
     HArray1_gp_PntIterator, HArray1_gp_Vec2dIterator, HArray1_gp_VecIterator,
     HArray1_gp_XYIterator, HArray1_gp_XYZIterator, HArray1_intIterator,
+    HSequence_Handle_ChFiDS_SurfDataIterator, HSequence_Handle_Geom2d_BoundedCurveIterator,
+    HSequence_Handle_Geom_BoundedCurveIterator,
+    HSequence_Handle_STEPSelections_AssemblyLinkIterator,
+    HSequence_Handle_ShapeAnalysis_FreeBoundDataIterator,
+    HSequence_Handle_Standard_TransientIterator, HSequence_Handle_StdStorage_RootIterator,
+    HSequence_Handle_StepElement_CurveElementSectionDefinitionIterator,
+    HSequence_Handle_StepElement_ElementMaterialIterator,
+    HSequence_Handle_StepFEA_ElementGeometricRelationshipIterator,
+    HSequence_Handle_StepFEA_ElementRepresentationIterator, HSequence_Handle_Storage_RootIterator,
+    HSequence_Handle_TCollection_HAsciiStringIterator,
+    HSequence_Handle_TCollection_HExtendedStringIterator, HSequence_Handle_TObj_ObjectIterator,
+    HSequence_Handle_TransferBRep_TransferResultInfoIterator,
+    HSequence_Handle_Transfer_FinderIterator, HSequence_Handle_Units_QuantityIterator,
+    HSequence_Handle_Units_TokenIterator, HSequence_Handle_Units_UnitIterator,
     HSequence_TCollection_AsciiStringIterator, HSequence_TCollection_ExtendedStringIterator,
     HSequence_TopoDS_ShapeIterator, HSequence_doubleIterator, HSequence_intIterator,
+    IndexedDataMap_Handle_Standard_Transient_Handle_Standard_TransientIterator,
+    IndexedDataMap_TCollection_AsciiString_Handle_Standard_TransientIterator,
     IndexedDataMap_TCollection_AsciiString_Standard_DumpValueIterator,
     IndexedDataMap_TCollection_AsciiString_TCollection_AsciiStringIterator,
     IndexedDataMap_TCollection_AsciiString_intIterator,
@@ -24077,18 +41259,29 @@ pub use crate::ffi_types::{
     IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasherIterator,
     IndexedDataMap_TopoDS_Shape_XCAFPrs_Style_TopTools_ShapeMapHasherIterator,
     IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasherIterator,
-    IndexedMap_TCollection_AsciiStringIterator, IndexedMap_TDF_LabelIterator,
-    IndexedMap_TopoDS_ShapeIterator, IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasherIterator,
-    List_BOPAlgo_CheckResultIterator, List_BOPDS_PaveIterator,
-    List_BOPTools_ConnexityBlockIterator, List_BOPTools_CoupleOfShapeIterator,
-    List_BRepOffset_IntervalIterator, List_Bnd_RangeIterator, List_HLRAlgo_BiPointIterator,
-    List_HLRAlgo_InterferenceIterator, List_IntPolyh_CoupleIterator, List_IntSurf_PntOn2SIterator,
+    IndexedMap_Handle_BOPDS_PaveBlockIterator, IndexedMap_Handle_Standard_TransientIterator,
+    IndexedMap_Handle_TDF_AttributeIterator, IndexedMap_TCollection_AsciiStringIterator,
+    IndexedMap_TDF_LabelIterator, IndexedMap_TopoDS_ShapeIterator,
+    IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasherIterator, List_BOPAlgo_CheckResultIterator,
+    List_BOPDS_PaveIterator, List_BOPTools_ConnexityBlockIterator,
+    List_BOPTools_CoupleOfShapeIterator, List_BRepOffset_IntervalIterator, List_Bnd_RangeIterator,
+    List_HLRAlgo_BiPointIterator, List_HLRAlgo_InterferenceIterator,
+    List_Handle_BOPDS_PaveBlockIterator, List_Handle_BRepMesh_DiscretAlgoFactoryIterator,
+    List_Handle_BRep_CurveRepresentationIterator, List_Handle_BRep_PointRepresentationIterator,
+    List_Handle_ChFiDS_ElSpineIterator, List_Handle_ChFiDS_StripeIterator,
+    List_Handle_Law_FunctionIterator, List_Handle_Message_AlertIterator,
+    List_Handle_Poly_TriangulationIterator, List_Handle_TDF_AttributeDeltaIterator,
+    List_Handle_TDF_AttributeIterator, List_Handle_TDF_DeltaIterator,
+    List_Handle_TNaming_NamedShapeIterator, List_Handle_TopOpeBRepBuild_LoopIterator,
+    List_Handle_TopOpeBRepBuild_PaveIterator, List_Handle_TopOpeBRepDS_InterferenceIterator,
+    List_IntPolyh_CoupleIterator, List_IntSurf_PntOn2SIterator,
     List_IntTools_CurveRangeSampleIterator, List_IntTools_SurfaceRangeSampleIterator,
     List_Poly_TriangleIterator, List_Standard_GUIDIterator, List_TCollection_AsciiStringIterator,
     List_TCollection_ExtendedStringIterator, List_TDF_LabelIterator, List_TopoDS_ShapeIterator,
     List_doubleIterator, List_gp_PntIterator, List_intIterator, Map_BOPDS_PairIterator,
-    Map_TCollection_AsciiStringIterator, Map_TDF_LabelIterator,
-    Map_TopoDS_Shape_TopTools_ShapeMapHasherIterator, Map_intIterator,
+    Map_Handle_BOPDS_PaveBlockIterator, Map_Handle_TDF_AttributeIterator,
+    Map_Handle_TNaming_NamedShapeIterator, Map_TCollection_AsciiStringIterator,
+    Map_TDF_LabelIterator, Map_TopoDS_Shape_TopTools_ShapeMapHasherIterator, Map_intIterator,
     NCollection_Array1_BRepGraphInc_ParityOrientation as Array1_BRepGraphInc_ParityOrientation,
     NCollection_Array1_BRepGraph_ChildRefId as Array1_BRepGraph_ChildRefId,
     NCollection_Array1_BRepGraph_CoEdgeId as Array1_BRepGraph_CoEdgeId,
@@ -24112,12 +41305,16 @@ pub use crate::ffi_types::{
     NCollection_Array2_GeomGridEval_SurfD1 as Array2_GeomGridEval_SurfD1,
     NCollection_Array2_GeomGridEval_SurfD2 as Array2_GeomGridEval_SurfD2,
     NCollection_Array2_GeomGridEval_SurfD3 as Array2_GeomGridEval_SurfD3,
+    NCollection_DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg as DataMap_Handle_Standard_Transient_NCollection_List_Message_Msg,
+    NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double as DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_double,
+    NCollection_DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int as DataMap_TCollection_ExtendedString_occ_handle_NCollection_HArray1_int,
     NCollection_DataMap_TCollection_ExtendedString_uint8_t as DataMap_TCollection_ExtendedString_uint8_t,
     NCollection_DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_NCollection_List_Message_Msg_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_NCollection_List_double_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher,
     NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
+    NCollection_DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher as DataMap_TopoDS_Shape_occ_handle_NCollection_HArray2_TopoDS_Shape_TopTools_ShapeMapHasher,
     NCollection_DataMap_int_NCollection_List_TopoDS_Shape as DataMap_int_NCollection_List_TopoDS_Shape,
     NCollection_DataMap_int_TColStd_PackedMapOfInteger as DataMap_int_TColStd_PackedMapOfInteger,
     NCollection_DoubleMap_int_TDF_Label as DoubleMap_int_TDF_Label,
@@ -24134,6 +41331,8 @@ pub use crate::ffi_types::{
     NCollection_DynamicArray_BOPDS_InterfVZ as DynamicArray_BOPDS_InterfVZ,
     NCollection_DynamicArray_BOPDS_InterfZZ as DynamicArray_BOPDS_InterfZZ,
     NCollection_DynamicArray_BOPDS_Point as DynamicArray_BOPDS_Point,
+    NCollection_DynamicArray_Handle_Adaptor3d_Surface as DynamicArray_Handle_Adaptor3d_Surface,
+    NCollection_DynamicArray_Handle_Standard_Transient as DynamicArray_Handle_Standard_Transient,
     NCollection_DynamicArray_ProxPnt_Status as DynamicArray_ProxPnt_Status,
     NCollection_DynamicArray_TopoDS_Shape as DynamicArray_TopoDS_Shape,
     NCollection_DynamicArray_double as DynamicArray_double,
@@ -24147,103 +41346,20 @@ pub use crate::ffi_types::{
     NCollection_ForwardRangeSentinel as ForwardRangeSentinel,
     NCollection_HArray1_NCollection_List_int as HArray1_NCollection_List_int,
     NCollection_HArray1_StepDimTol_GeometricToleranceModifier as HArray1_StepDimTol_GeometricToleranceModifier,
-    NCollection_HArray1_opencascade_handle_Adaptor3d_Curve as HArray1_opencascade_handle_Adaptor3d_Curve,
-    NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve as HArray1_opencascade_handle_Geom2d_BSplineCurve,
-    NCollection_HArray1_opencascade_handle_Geom2d_Curve as HArray1_opencascade_handle_Geom2d_Curve,
-    NCollection_HArray1_opencascade_handle_Geom_BSplineCurve as HArray1_opencascade_handle_Geom_BSplineCurve,
-    NCollection_HArray1_opencascade_handle_Geom_Curve as HArray1_opencascade_handle_Geom_Curve,
-    NCollection_HArray1_opencascade_handle_IGESAppli_FiniteElement as HArray1_opencascade_handle_IGESAppli_FiniteElement,
-    NCollection_HArray1_opencascade_handle_IGESAppli_Node as HArray1_opencascade_handle_IGESAppli_Node,
-    NCollection_HArray1_opencascade_handle_IGESData_IGESEntity as HArray1_opencascade_handle_IGESData_IGESEntity,
-    NCollection_HArray1_opencascade_handle_IGESData_LineFontEntity as HArray1_opencascade_handle_IGESData_LineFontEntity,
-    NCollection_HArray1_opencascade_handle_IGESData_ViewKindEntity as HArray1_opencascade_handle_IGESData_ViewKindEntity,
-    NCollection_HArray1_opencascade_handle_IGESDefs_TabularData as HArray1_opencascade_handle_IGESDefs_TabularData,
-    NCollection_HArray1_opencascade_handle_IGESDimen_GeneralNote as HArray1_opencascade_handle_IGESDimen_GeneralNote,
-    NCollection_HArray1_opencascade_handle_IGESDimen_LeaderArrow as HArray1_opencascade_handle_IGESDimen_LeaderArrow,
-    NCollection_HArray1_opencascade_handle_IGESDraw_ConnectPoint as HArray1_opencascade_handle_IGESDraw_ConnectPoint,
-    NCollection_HArray1_opencascade_handle_IGESGeom_Boundary as HArray1_opencascade_handle_IGESGeom_Boundary,
-    NCollection_HArray1_opencascade_handle_IGESGeom_CurveOnSurface as HArray1_opencascade_handle_IGESGeom_CurveOnSurface,
-    NCollection_HArray1_opencascade_handle_IGESGeom_TransformationMatrix as HArray1_opencascade_handle_IGESGeom_TransformationMatrix,
-    NCollection_HArray1_opencascade_handle_IGESGraph_Color as HArray1_opencascade_handle_IGESGraph_Color,
-    NCollection_HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate as HArray1_opencascade_handle_IGESGraph_TextDisplayTemplate,
-    NCollection_HArray1_opencascade_handle_IGESGraph_TextFontDef as HArray1_opencascade_handle_IGESGraph_TextFontDef,
-    NCollection_HArray1_opencascade_handle_IGESSolid_Face as HArray1_opencascade_handle_IGESSolid_Face,
-    NCollection_HArray1_opencascade_handle_IGESSolid_Loop as HArray1_opencascade_handle_IGESSolid_Loop,
-    NCollection_HArray1_opencascade_handle_IGESSolid_Shell as HArray1_opencascade_handle_IGESSolid_Shell,
-    NCollection_HArray1_opencascade_handle_IGESSolid_VertexList as HArray1_opencascade_handle_IGESSolid_VertexList,
-    NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember as HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
-    NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember as HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
-    NCollection_HArray1_opencascade_handle_Standard_Persistent as HArray1_opencascade_handle_Standard_Persistent,
-    NCollection_HArray1_opencascade_handle_Standard_Transient as HArray1_opencascade_handle_Standard_Transient,
-    NCollection_HArray1_opencascade_handle_StepBasic_Approval as HArray1_opencascade_handle_StepBasic_Approval,
-    NCollection_HArray1_opencascade_handle_StepBasic_DerivedUnitElement as HArray1_opencascade_handle_StepBasic_DerivedUnitElement,
-    NCollection_HArray1_opencascade_handle_StepBasic_Document as HArray1_opencascade_handle_StepBasic_Document,
-    NCollection_HArray1_opencascade_handle_StepBasic_NamedUnit as HArray1_opencascade_handle_StepBasic_NamedUnit,
-    NCollection_HArray1_opencascade_handle_StepBasic_Organization as HArray1_opencascade_handle_StepBasic_Organization,
-    NCollection_HArray1_opencascade_handle_StepBasic_Person as HArray1_opencascade_handle_StepBasic_Person,
-    NCollection_HArray1_opencascade_handle_StepBasic_Product as HArray1_opencascade_handle_StepBasic_Product,
-    NCollection_HArray1_opencascade_handle_StepBasic_ProductContext as HArray1_opencascade_handle_StepBasic_ProductContext,
-    NCollection_HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit as HArray1_opencascade_handle_StepBasic_UncertaintyMeasureWithUnit,
-    NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference as HArray1_opencascade_handle_StepDimTol_DatumReference,
-    NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment as HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
-    NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement as HArray1_opencascade_handle_StepDimTol_DatumReferenceElement,
-    NCollection_HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket as HArray1_opencascade_handle_StepElement_CurveElementEndReleasePacket,
-    NCollection_HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition as HArray1_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection as HArray1_opencascade_handle_StepElement_SurfaceSection,
-    NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember as HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
-    NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndOffset as HArray1_opencascade_handle_StepFEA_CurveElementEndOffset,
-    NCollection_HArray1_opencascade_handle_StepFEA_CurveElementEndRelease as HArray1_opencascade_handle_StepFEA_CurveElementEndRelease,
-    NCollection_HArray1_opencascade_handle_StepFEA_CurveElementInterval as HArray1_opencascade_handle_StepFEA_CurveElementInterval,
-    NCollection_HArray1_opencascade_handle_StepFEA_ElementRepresentation as HArray1_opencascade_handle_StepFEA_ElementRepresentation,
-    NCollection_HArray1_opencascade_handle_StepFEA_NodeRepresentation as HArray1_opencascade_handle_StepFEA_NodeRepresentation,
-    NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint as HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    NCollection_HArray1_opencascade_handle_StepGeom_CompositeCurveSegment as HArray1_opencascade_handle_StepGeom_CompositeCurveSegment,
-    NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation as HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
-    NCollection_HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation as HArray1_opencascade_handle_StepRepr_PropertyDefinitionRepresentation,
-    NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem as HArray1_opencascade_handle_StepRepr_RepresentationItem,
-    NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect as HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet as HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
-    NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet as HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
-    NCollection_HArray1_opencascade_handle_StepShape_Edge as HArray1_opencascade_handle_StepShape_Edge,
-    NCollection_HArray1_opencascade_handle_StepShape_Face as HArray1_opencascade_handle_StepShape_Face,
-    NCollection_HArray1_opencascade_handle_StepShape_FaceBound as HArray1_opencascade_handle_StepShape_FaceBound,
-    NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell as HArray1_opencascade_handle_StepShape_OrientedClosedShell,
-    NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge as HArray1_opencascade_handle_StepShape_OrientedEdge,
-    NCollection_HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern as HArray1_opencascade_handle_StepVisual_CurveStyleFontPattern,
-    NCollection_HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment as HArray1_opencascade_handle_StepVisual_PresentationStyleAssignment,
-    NCollection_HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem as HArray1_opencascade_handle_StepVisual_TessellatedStructuredItem,
-    NCollection_HArray1_opencascade_handle_TCollection_HAsciiString as HArray1_opencascade_handle_TCollection_HAsciiString,
+    NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember as HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_CurveElementPurposeMember,
+    NCollection_HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember as HArray1_opencascade_handle_NCollection_HSequence_Handle_StepElement_SurfaceElementPurposeMember,
+    NCollection_HArray2_Handle_Geom_Surface as HArray2_Handle_Geom_Surface,
+    NCollection_HArray2_Handle_Standard_Transient as HArray2_Handle_Standard_Transient,
+    NCollection_HArray2_Handle_StepGeom_CartesianPoint as HArray2_Handle_StepGeom_CartesianPoint,
+    NCollection_HArray2_Handle_StepGeom_SurfacePatch as HArray2_Handle_StepGeom_SurfacePatch,
     NCollection_HArray2_TopoDS_Shape as HArray2_TopoDS_Shape,
     NCollection_HArray2_double as HArray2_double, NCollection_HArray2_gp_Pnt as HArray2_gp_Pnt,
     NCollection_HArray2_gp_Pnt2d as HArray2_gp_Pnt2d, NCollection_HArray2_gp_XYZ as HArray2_gp_XYZ,
     NCollection_HArray2_int as HArray2_int,
-    NCollection_HArray2_opencascade_handle_Geom_Surface as HArray2_opencascade_handle_Geom_Surface,
     NCollection_HArray2_opencascade_handle_NCollection_HArray1_double as HArray2_opencascade_handle_NCollection_HArray1_double,
     NCollection_HArray2_opencascade_handle_NCollection_HArray1_int as HArray2_opencascade_handle_NCollection_HArray1_int,
-    NCollection_HArray2_opencascade_handle_Standard_Transient as HArray2_opencascade_handle_Standard_Transient,
-    NCollection_HArray2_opencascade_handle_StepGeom_CartesianPoint as HArray2_opencascade_handle_StepGeom_CartesianPoint,
-    NCollection_HArray2_opencascade_handle_StepGeom_SurfacePatch as HArray2_opencascade_handle_StepGeom_SurfacePatch,
-    NCollection_HSequence_opencascade_handle_ChFiDS_SurfData as HSequence_opencascade_handle_ChFiDS_SurfData,
-    NCollection_HSequence_opencascade_handle_Geom2d_BoundedCurve as HSequence_opencascade_handle_Geom2d_BoundedCurve,
-    NCollection_HSequence_opencascade_handle_Geom_BoundedCurve as HSequence_opencascade_handle_Geom_BoundedCurve,
     NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt as HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt,
-    NCollection_HSequence_opencascade_handle_STEPSelections_AssemblyLink as HSequence_opencascade_handle_STEPSelections_AssemblyLink,
-    NCollection_HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData as HSequence_opencascade_handle_ShapeAnalysis_FreeBoundData,
-    NCollection_HSequence_opencascade_handle_Standard_Transient as HSequence_opencascade_handle_Standard_Transient,
-    NCollection_HSequence_opencascade_handle_StdStorage_Root as HSequence_opencascade_handle_StdStorage_Root,
-    NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition as HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition,
-    NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial as HSequence_opencascade_handle_StepElement_ElementMaterial,
-    NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship as HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship,
-    NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation as HSequence_opencascade_handle_StepFEA_ElementRepresentation,
-    NCollection_HSequence_opencascade_handle_Storage_Root as HSequence_opencascade_handle_Storage_Root,
-    NCollection_HSequence_opencascade_handle_TCollection_HAsciiString as HSequence_opencascade_handle_TCollection_HAsciiString,
-    NCollection_HSequence_opencascade_handle_TCollection_HExtendedString as HSequence_opencascade_handle_TCollection_HExtendedString,
-    NCollection_HSequence_opencascade_handle_TObj_Object as HSequence_opencascade_handle_TObj_Object,
-    NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo as HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
-    NCollection_HSequence_opencascade_handle_Transfer_Finder as HSequence_opencascade_handle_Transfer_Finder,
-    NCollection_HSequence_opencascade_handle_Units_Quantity as HSequence_opencascade_handle_Units_Quantity,
-    NCollection_HSequence_opencascade_handle_Units_Token as HSequence_opencascade_handle_Units_Token,
-    NCollection_HSequence_opencascade_handle_Units_Unit as HSequence_opencascade_handle_Units_Unit,
+    NCollection_IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int as IndexedDataMap_Handle_BOPDS_PaveBlock_NCollection_List_int,
     NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher as IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     NCollection_IndexedMap_Message_MetricType as IndexedMap_Message_MetricType,
     NCollection_LinearVector_BRepGraph_ChildRefId as LinearVector_BRepGraph_ChildRefId,
@@ -24276,16 +41392,29 @@ pub use crate::ffi_types::{
     Sequence_AppParCurves_MultiCurveIterator, Sequence_BRepExtrema_SolutionElemIterator,
     Sequence_Extrema_POnCurvIterator, Sequence_Extrema_POnSurfIterator,
     Sequence_GeomPlate_AijIterator, Sequence_HLRBRep_ShapeBoundsIterator,
-    Sequence_IntPatch_PointIterator, Sequence_IntRes2d_IntersectionPointIterator,
-    Sequence_IntSurf_InteriorPointIterator, Sequence_IntSurf_PathPointIterator,
-    Sequence_IntTools_CommonPrtIterator, Sequence_IntTools_CurveIterator,
-    Sequence_IntTools_PntOn2FacesIterator, Sequence_IntTools_RangeIterator,
-    Sequence_IntTools_RootIterator, Sequence_PCDM_ReferenceIterator,
-    Sequence_Plate_PinpointConstraintIterator, Sequence_ShapeFix_WireSegmentIterator,
-    Sequence_TCollection_AsciiStringIterator, Sequence_TCollection_ExtendedStringIterator,
-    Sequence_TDF_LabelIterator, Sequence_TopOpeBRep_Point2dIterator, Sequence_TopoDS_ShapeIterator,
-    Sequence_boolIterator, Sequence_doubleIterator, Sequence_gp_CircIterator,
-    Sequence_gp_LinIterator, Sequence_gp_Pnt2dIterator, Sequence_gp_PntIterator,
-    Sequence_gp_TrsfIterator, Sequence_gp_VecIterator, Sequence_gp_XYIterator,
-    Sequence_gp_XYZIterator, Sequence_intIterator,
+    Sequence_Handle_AdvApp2Var_NodeIterator, Sequence_Handle_AdvApp2Var_PatchIterator,
+    Sequence_Handle_ChFiDS_SurfDataIterator, Sequence_Handle_Expr_GeneralExpressionIterator,
+    Sequence_Handle_Expr_NamedExpressionIterator, Sequence_Handle_Expr_NamedFunctionIterator,
+    Sequence_Handle_Geom2d_CurveIterator, Sequence_Handle_Geom_CurveIterator,
+    Sequence_Handle_IFSelect_SelectionIterator, Sequence_Handle_IntPatch_LineIterator,
+    Sequence_Handle_MAT2d_ConnexionIterator, Sequence_Handle_MAT_ArcIterator,
+    Sequence_Handle_MAT_BasicEltIterator, Sequence_Handle_Message_PrinterIterator,
+    Sequence_Handle_PCDM_DocumentIterator, Sequence_Handle_Poly_TriangulationIterator,
+    Sequence_Handle_Standard_TransientIterator, Sequence_Handle_TCollection_HAsciiStringIterator,
+    Sequence_Handle_TCollection_HExtendedStringIterator, Sequence_Handle_TDF_AttributeIterator,
+    Sequence_Handle_TDocStd_ApplicationDeltaIterator, Sequence_Handle_TDocStd_DocumentIterator,
+    Sequence_Handle_XCAFDimTolObjects_DatumObjectIterator,
+    Sequence_Handle_XCAFDimTolObjects_DimensionObjectIterator,
+    Sequence_Handle_XCAFDimTolObjects_GeomToleranceObjectIterator, Sequence_IntPatch_PointIterator,
+    Sequence_IntRes2d_IntersectionPointIterator, Sequence_IntSurf_InteriorPointIterator,
+    Sequence_IntSurf_PathPointIterator, Sequence_IntTools_CommonPrtIterator,
+    Sequence_IntTools_CurveIterator, Sequence_IntTools_PntOn2FacesIterator,
+    Sequence_IntTools_RangeIterator, Sequence_IntTools_RootIterator,
+    Sequence_PCDM_ReferenceIterator, Sequence_Plate_PinpointConstraintIterator,
+    Sequence_ShapeFix_WireSegmentIterator, Sequence_TCollection_AsciiStringIterator,
+    Sequence_TCollection_ExtendedStringIterator, Sequence_TDF_LabelIterator,
+    Sequence_TopOpeBRep_Point2dIterator, Sequence_TopoDS_ShapeIterator, Sequence_boolIterator,
+    Sequence_doubleIterator, Sequence_gp_CircIterator, Sequence_gp_LinIterator,
+    Sequence_gp_Pnt2dIterator, Sequence_gp_PntIterator, Sequence_gp_TrsfIterator,
+    Sequence_gp_VecIterator, Sequence_gp_XYIterator, Sequence_gp_XYZIterator, Sequence_intIterator,
 };

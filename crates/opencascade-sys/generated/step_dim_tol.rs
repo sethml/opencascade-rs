@@ -396,7 +396,7 @@ impl AngularityTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_AngularityTolerance_inherited_Init(
@@ -414,7 +414,7 @@ impl AngularityTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -439,7 +439,7 @@ impl AngularityTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_AngularityTolerance_inherited_SetDatumSystem(
@@ -813,7 +813,7 @@ impl CircularRunoutTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_CircularRunoutTolerance_inherited_Init(
@@ -831,7 +831,7 @@ impl CircularRunoutTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepDimTol_CircularRunoutTolerance_inherited_DatumSystem(self as *const Self)))
@@ -852,7 +852,7 @@ impl CircularRunoutTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_CircularRunoutTolerance_inherited_SetDatumSystem(
@@ -1221,7 +1221,7 @@ impl CoaxialityTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_CoaxialityTolerance_inherited_Init(
@@ -1239,7 +1239,7 @@ impl CoaxialityTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1264,7 +1264,7 @@ impl CoaxialityTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_CoaxialityTolerance_inherited_SetDatumSystem(
@@ -2065,7 +2065,7 @@ impl ConcentricityTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ConcentricityTolerance_inherited_Init(
@@ -2083,7 +2083,7 @@ impl ConcentricityTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2108,7 +2108,7 @@ impl ConcentricityTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ConcentricityTolerance_inherited_SetDatumSystem(
@@ -3500,7 +3500,11 @@ impl DatumOrCommonDatum {
 
     /// **Source:** `StepDimTol_DatumOrCommonDatum.hxx`:50 - `StepDimTol_DatumOrCommonDatum::CommonDatumList()`
     /// returns Value as a CommonDatumList (Null if another type)
-    pub fn common_datum_list(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceElement>{
+    pub fn common_datum_list(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceElement,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepDimTol_DatumOrCommonDatum_common_datum_list(
@@ -5423,7 +5427,7 @@ impl DatumSystem {
         theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theOfShape: &crate::ffi_types::Handle_StepRepr_ProductDefinitionShape,
         theProductDefinitional: crate::step_data::Logical,
-        theConstituents: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
+        theConstituents: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_DatumSystem_init(
@@ -5439,7 +5443,11 @@ impl DatumSystem {
 
     /// **Source:** `StepDimTol_DatumSystem.hxx`:45 - `StepDimTol_DatumSystem::Constituents()`
     /// Returns field Constituents
-    pub fn constituents(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment>{
+    pub fn constituents(
+        &mut self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepDimTol_DatumSystem_constituents(self as *mut Self),
@@ -5451,7 +5459,7 @@ impl DatumSystem {
     /// Set field Constituents
     pub fn set_constituents(
         &mut self,
-        theConstituents: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReferenceCompartment,
+        theConstituents: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReferenceCompartment,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_DatumSystem_set_constituents(
@@ -11550,16 +11558,16 @@ impl GeometricToleranceWithDatumReference {
 
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:40 - `StepDimTol_GeometricToleranceWithDatumReference::Init()`
     /// Initialize all fields (own and inherited) AP214
-    pub fn init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_handlencollectionharray1opencascadehandlestepdimtoldatumreference(
+    pub fn init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_harr1_stepdimtol_datumreference(
         &mut self,
         theGeometricTolerance_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_handlencollectionharray1opencascadehandlestepdimtoldatumreference(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem)
+            crate::ffi_extern_TKDESTEP::StepDimTol_GeometricToleranceWithDatumReference_init_handletcollectionhasciistring2_handlestandardtransient_handlestepreprshapeaspect_harr1_stepdimtol_datumreference(self as *mut Self, theGeometricTolerance_Name, theGeometricTolerance_Description, theGeometricTolerance_Magnitude, theGeometricTolerance_TolerancedShapeAspect, theDatumSystem)
         })
     }
 
@@ -11583,7 +11591,7 @@ impl GeometricToleranceWithDatumReference {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepDimTol_GeometricToleranceWithDatumReference_datum_system(self as *const Self)))
@@ -11604,12 +11612,12 @@ impl GeometricToleranceWithDatumReference {
 
     /// **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     /// Set field DatumSystem AP214
-    pub fn set_datum_system_handlencollectionharray1opencascadehandlestepdimtoldatumreference(
+    pub fn set_datum_system_harr1_stepdimtol_datumreference(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_handlencollectionharray1opencascadehandlestepdimtoldatumreference(self as *mut Self, theDatumSystem)
+            crate::ffi_extern_TKDESTEP::StepDimTol_GeometricToleranceWithDatumReference_set_datum_system_harr1_stepdimtol_datumreference(self as *mut Self, theDatumSystem)
         })
     }
 
@@ -14325,7 +14333,7 @@ impl NonUniformZoneDefinition {
     pub fn init(
         &mut self,
         theZone: &crate::ffi_types::Handle_StepDimTol_ToleranceZone,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_NonUniformZoneDefinition_inherited_Init(
@@ -14339,9 +14347,8 @@ impl NonUniformZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn boundaries(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepDimTol_NonUniformZoneDefinition_inherited_Boundaries(self as *const Self)))
         }
@@ -14350,7 +14357,7 @@ impl NonUniformZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn set_boundaries(
         &mut self,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_NonUniformZoneDefinition_inherited_SetBoundaries(
@@ -14679,7 +14686,7 @@ impl ParallelismTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ParallelismTolerance_inherited_Init(
@@ -14697,7 +14704,7 @@ impl ParallelismTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14722,7 +14729,7 @@ impl ParallelismTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ParallelismTolerance_inherited_SetDatumSystem(
@@ -15089,7 +15096,7 @@ impl PerpendicularityTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_PerpendicularityTolerance_inherited_Init(
@@ -15107,7 +15114,7 @@ impl PerpendicularityTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepDimTol_PerpendicularityTolerance_inherited_DatumSystem(self as *const Self)))
@@ -15128,7 +15135,7 @@ impl PerpendicularityTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_PerpendicularityTolerance_inherited_SetDatumSystem(self as *mut Self, theDatumSystem)
@@ -16133,7 +16140,7 @@ impl ProjectedZoneDefinition {
     pub fn init(
         &mut self,
         theZone: &crate::ffi_types::Handle_StepDimTol_ToleranceZone,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
         theProjectionEnd: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
         theProjectionLength: &crate::ffi_types::Handle_StepBasic_LengthMeasureWithUnit,
     ) {
@@ -16278,9 +16285,8 @@ impl ProjectedZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn boundaries(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepDimTol_ProjectedZoneDefinition_inherited_Boundaries(
@@ -16293,7 +16299,7 @@ impl ProjectedZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn set_boundaries(
         &mut self,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ProjectedZoneDefinition_inherited_SetBoundaries(
@@ -16879,7 +16885,7 @@ impl RunoutZoneDefinition {
     pub fn init(
         &mut self,
         theZone: &crate::ffi_types::Handle_StepDimTol_ToleranceZone,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
         theOrientation: &crate::ffi_types::Handle_StepDimTol_RunoutZoneOrientation,
     ) {
         crate::check_void_result(unsafe {
@@ -16999,9 +17005,8 @@ impl RunoutZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:42 - `StepDimTol_ToleranceZoneDefinition::Boundaries()`
     pub fn boundaries(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepDimTol_RunoutZoneDefinition_inherited_Boundaries(
@@ -17014,7 +17019,7 @@ impl RunoutZoneDefinition {
     /// Inherited: **Source:** `StepDimTol_ToleranceZoneDefinition.hxx`:48 - `StepDimTol_ToleranceZoneDefinition::SetBoundaries()`
     pub fn set_boundaries(
         &mut self,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_RunoutZoneDefinition_inherited_SetBoundaries(
@@ -18975,7 +18980,7 @@ impl SymmetryTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_SymmetryTolerance_inherited_Init(
@@ -18993,7 +18998,7 @@ impl SymmetryTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -19022,7 +19027,7 @@ impl SymmetryTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_SymmetryTolerance_inherited_SetDatumSystem(
@@ -19760,7 +19765,7 @@ impl ToleranceZoneDefinition {
     pub fn init(
         &mut self,
         theZone: &crate::ffi_types::Handle_StepDimTol_ToleranceZone,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ToleranceZoneDefinition_init(
@@ -19775,9 +19780,8 @@ impl ToleranceZoneDefinition {
     /// Returns field Boundaries
     pub fn boundaries(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepDimTol_ToleranceZoneDefinition_boundaries(
@@ -19791,7 +19795,7 @@ impl ToleranceZoneDefinition {
     /// Set field Boundaries
     pub fn set_boundaries(
         &mut self,
-        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_ShapeAspect,
+        theBoundaries: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_ShapeAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_ToleranceZoneDefinition_set_boundaries(
@@ -20783,7 +20787,7 @@ impl TotalRunoutTolerance {
         theGeometricTolerance_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theGeometricTolerance_Magnitude: &crate::ffi_types::Handle_Standard_Transient,
         theGeometricTolerance_TolerancedShapeAspect: &crate::ffi_types::Handle_StepRepr_ShapeAspect,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_TotalRunoutTolerance_inherited_Init(
@@ -20801,7 +20805,7 @@ impl TotalRunoutTolerance {
     pub fn datum_system(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -20826,7 +20830,7 @@ impl TotalRunoutTolerance {
     /// Inherited: **Source:** `StepDimTol_GeometricToleranceWithDatumReference.hxx`:64 - `StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem()`
     pub fn set_datum_system(
         &mut self,
-        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepDimTol_DatumReference,
+        theDatumSystem: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepDimTol_DatumReference,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepDimTol_TotalRunoutTolerance_inherited_SetDatumSystem(

@@ -5744,7 +5744,7 @@ impl EditForm {
     pub fn load_list(
         &mut self,
         num: i32,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_EditForm_load_list(self as *mut Self, num, list)
@@ -5778,7 +5778,7 @@ impl EditForm {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5821,7 +5821,7 @@ impl EditForm {
         &self,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5909,7 +5909,7 @@ impl EditForm {
     pub fn modify_list_value(
         &mut self,
         num: i32,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5946,7 +5946,7 @@ impl EditForm {
     pub fn touch_list(
         &mut self,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_EditForm_touch_list(
@@ -6473,7 +6473,7 @@ impl Editor {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6537,7 +6537,7 @@ impl Editor {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -6916,9 +6916,8 @@ impl Functions {
         WS: &crate::ffi_types::Handle_IFSelect_WorkSession,
         first: &str,
         second: &str,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_first = std::ffi::CString::new(first).unwrap();
         let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
@@ -7659,7 +7658,7 @@ impl GraphCounter {
     /// Can be redefined
     pub fn add_with_graph(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: &crate::interface::Graph,
     ) {
         crate::check_void_result(unsafe {
@@ -7831,7 +7830,7 @@ impl GraphCounter {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) {
         crate::check_void_result(unsafe {
@@ -8522,7 +8521,7 @@ impl ListEditor {
     /// Remark : If its length is more then MaxLength, editions remain allowed, except Add
     pub fn load_values(
         &mut self,
-        vals: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        vals: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_ListEditor_load_values(self as *mut Self, vals)
@@ -8556,7 +8555,7 @@ impl ListEditor {
     /// specialisation may also lock it by returning always False ...
     pub fn load_edited(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_ListEditor_load_edited(self as *mut Self, list)
@@ -8611,7 +8610,7 @@ impl ListEditor {
     pub fn original_values(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8627,7 +8626,7 @@ impl ListEditor {
     pub fn edited_values(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9304,7 +9303,7 @@ impl ModelCopier {
     pub fn sent_files(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11001,7 +11000,7 @@ impl PacketList {
     /// Adds an list of entities into the current packet for Add
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_PacketList_add_list(self as *mut Self, list)
@@ -11435,7 +11434,7 @@ impl ParamEditor {
     /// which names are listed in <list>
     /// Null Handle if <list> is null or empty
     pub fn static_editor(
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         label: &str,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_ParamEditor> {
         let c_label = std::ffi::CString::new(label).unwrap();
@@ -11657,7 +11656,7 @@ impl ParamEditor {
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11694,7 +11693,7 @@ impl ParamEditor {
         &self,
         form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -20529,7 +20528,7 @@ impl SelectPointed {
     /// - then Clear to drop it
     pub fn set_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_SelectPointed_set_list(self as *mut Self, list)
@@ -20568,7 +20567,7 @@ impl SelectPointed {
     /// one item has been added, False else
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_SelectPointed_add_list(self as *mut Self, list)
@@ -20580,7 +20579,7 @@ impl SelectPointed {
     /// least one item has been removed, False else
     pub fn remove_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_SelectPointed_remove_list(self as *mut Self, list)
@@ -20592,7 +20591,7 @@ impl SelectPointed {
     /// not pointed or removes it if already pointed.
     pub fn toggle_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::IFSelect_SelectPointed_toggle_list(self as *mut Self, list)
@@ -28756,6 +28755,18 @@ impl SelectionIterator {
         })
     }
 
+    /// **Source:** `IFSelect_SelectionIterator.hxx`:52 - `IFSelect_SelectionIterator::AddList()`
+    /// Adds a list of Selections to an iterator (this list comes
+    /// from the description of a Selection or a Dispatch, etc...)
+    pub fn add_list(
+        &mut self,
+        list: &crate::ffi_types::NCollection_Sequence_Handle_IFSelect_Selection,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::IFSelect_SelectionIterator_add_list(self as *mut Self, list)
+        })
+    }
+
     /// **Source:** `IFSelect_SelectionIterator.hxx`:55 - `IFSelect_SelectionIterator::More()`
     /// Returns True if there are more Selections to get
     pub fn more(&self) -> bool {
@@ -28783,14 +28794,6 @@ impl SelectionIterator {
         }
     }
 }
-
-// ── Skipped symbols for SelectionIterator (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SelectionIterator.hxx`:52 - `IFSelect_SelectionIterator::AddList`
-//   method: Adds a list of Selections to an iterator (this list comes
-//   method: from the description of a Selection or a Dispatch, etc...)
-//   Reason: has unbindable types: param 'list': unresolved template type (NCollection_Sequence<occ::handle<IFSelect_Selection>> const&)
-//   // pub fn add_list(&mut self, list: /* NCollection_Sequence<occ::handle<IFSelect_Selection>> const& */);
-//
 
 // ========================
 // From IFSelect_SessionDumper.hxx
@@ -32189,7 +32192,7 @@ impl SignCounter {
     /// Adds a list of entities by adding each of the items
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) {
         crate::check_void_result(unsafe {
@@ -32207,7 +32210,7 @@ impl SignCounter {
     /// Can be redefined to get a signature computed with the graph
     pub fn add_with_graph(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         graph: &crate::interface::Graph,
     ) {
         crate::check_void_result(unsafe {
@@ -34845,6 +34848,27 @@ impl SignatureList {
         .into_owned()
     }
 
+    /// **Source:** `IFSelect_SignatureList.hxx`:76 - `IFSelect_SignatureList::Init()`
+    /// Acknowledges the list in once. Name identifies the Signature
+    pub fn init(
+        &mut self,
+        name: &str,
+        count: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_int,
+        list: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_Handle_Standard_Transient,
+        nbnuls: i32,
+    ) {
+        let c_name = std::ffi::CString::new(name).unwrap();
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::IFSelect_SignatureList_init(
+                self as *mut Self,
+                c_name.as_ptr(),
+                count,
+                list,
+                nbnuls,
+            )
+        })
+    }
+
     /// **Source:** `IFSelect_SignatureList.hxx`:87 - `IFSelect_SignatureList::List()`
     /// Returns the list of signatures, as a sequence of strings
     /// (but without their respective counts). It is ordered.
@@ -34855,7 +34879,7 @@ impl SignatureList {
         &self,
         root: &str,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         let c_root = std::ffi::CString::new(root).unwrap();
         unsafe {
@@ -34905,9 +34929,8 @@ impl SignatureList {
     pub fn entities(
         &self,
         sign: &str,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_sign = std::ffi::CString::new(sign).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -35246,13 +35269,6 @@ impl Handle_IFSelect_SignatureList {
         }
     }
 }
-
-// ── Skipped symbols for SignatureList (1 total) ──
-// SKIPPED: **Source:** `IFSelect_SignatureList.hxx`:76 - `IFSelect_SignatureList::Init`
-//   method: Acknowledges the list in once. Name identifies the Signature
-//   Reason: has unbindable types: param 'list': unresolved template type (NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<Standard_Transient>> const&)
-//   // pub fn init(&mut self, name: *const char, count: &IndexedDataMap_TCollection_AsciiString_int, list: /* NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<Standard_Transient>> const& */, nbnuls: i32);
-//
 
 // ========================
 // From IFSelect_TransformStandard.hxx
@@ -37048,9 +37064,8 @@ impl WorkSession {
     pub fn shareds(
         &mut self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_shareds(self as *mut Self, ent),
@@ -37064,9 +37079,8 @@ impl WorkSession {
     pub fn sharings(
         &mut self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_sharings(self as *mut Self, ent),
@@ -37416,7 +37430,7 @@ impl WorkSession {
         &self,
         type_: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -37437,7 +37451,7 @@ impl WorkSession {
         &self,
         label: &str,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         let c_label = std::ffi::CString::new(label).unwrap();
         unsafe {
@@ -37726,9 +37740,8 @@ impl WorkSession {
     pub fn selection_result(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_selection_result(
@@ -37751,10 +37764,9 @@ impl WorkSession {
     pub fn selection_result_from_list(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_selection_result_from_list(
@@ -37868,7 +37880,7 @@ impl WorkSession {
     pub fn compute_counter_from_list(
         &mut self,
         counter: &crate::ffi_types::Handle_IFSelect_SignCounter,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         clear: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -38492,7 +38504,7 @@ impl WorkSession {
     pub fn sent_files(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -38834,7 +38846,7 @@ impl WorkSession {
     /// starts with <list>. A name must be given (can be empty)
     pub fn new_select_pointed(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         name: &str,
     ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -38858,7 +38870,7 @@ impl WorkSession {
     pub fn set_select_pointed(
         &self,
         sel: &crate::ffi_types::Handle_IFSelect_Selection,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -38903,9 +38915,8 @@ impl WorkSession {
     pub fn give_list_handlestandardtransient(
         &self,
         obj: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_give_list_handlestandardtransient(
@@ -38933,9 +38944,8 @@ impl WorkSession {
         &self,
         first: &str,
         second: &str,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_first = std::ffi::CString::new(first).unwrap();
         let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
@@ -38965,9 +38975,8 @@ impl WorkSession {
         &self,
         selname: &str,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         let c_selname = std::ffi::CString::new(selname).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -38987,12 +38996,11 @@ impl WorkSession {
     /// <mode> > 0 : entities in <l1> OR  in <l2>
     pub fn give_list_combined(
         &self,
-        l1: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-        l2: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        l1: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
+        l2: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
         mode: i32,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::IFSelect_WorkSession_give_list_combined(
@@ -39048,6 +39056,39 @@ impl WorkSession {
                 self as *const Self,
                 entdad,
                 entson,
+            )
+        })
+    }
+
+    /// **Source:** `IFSelect_WorkSession.hxx`:1030 - `IFSelect_WorkSession::SetParams()`
+    /// Sets a list of Parameters, i.e. TypedValue, to be handled
+    /// through an Editor
+    /// The two lists are parallel, if <params> is longer than <uses>,
+    /// surnumeral parameters are for general use
+    ///
+    /// EditForms are created to handle these parameters (list, edit)
+    /// on the basis of a ParamEditor xst-params-edit
+    ///
+    /// A use number dispatches the parameter to a given EditForm
+    /// EditForms are defined as follows
+    /// Name                Use   Means
+    /// xst-params          all   All Parameters (complete list)
+    /// xst-params-general  1     Generals
+    /// xst-params-load     2     LoadFile (no Transfer)
+    /// xst-params-send     3     SendFile (Write, no Transfer)
+    /// xst-params-split    4     Split
+    /// xst-param-read      5     Transfer on Reading
+    /// xst-param-write     6     Transfer on Writing
+    pub fn set_params(
+        &mut self,
+        params: &crate::ffi_types::NCollection_DynamicArray_Handle_Standard_Transient,
+        uselist: &crate::ffi_types::NCollection_DynamicArray_int,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXSBase::IFSelect_WorkSession_set_params(
+                self as *mut Self,
+                params,
+                uselist,
             )
         })
     }
@@ -39516,15 +39557,6 @@ impl Handle_IFSelect_WorkSession {
         }
     }
 }
-
-// ── Skipped symbols for WorkSession (1 total) ──
-// SKIPPED: **Source:** `IFSelect_WorkSession.hxx`:1030 - `IFSelect_WorkSession::SetParams`
-//   method: Sets a list of Parameters, i.e. TypedValue, to be handled
-//   method: through an Editor
-//   method: The two lists are parallel, if <params> is longer than <uses>,
-//   Reason: has unbindable types: param 'params': unresolved template type (NCollection_DynamicArray<occ::handle<Standard_Transient>> const&)
-//   // pub fn set_params(&mut self, params: /* NCollection_DynamicArray<occ::handle<Standard_Transient>> const& */, uselist: &DynamicArray_int);
-//
 
 // ========================
 // Additional type re-exports

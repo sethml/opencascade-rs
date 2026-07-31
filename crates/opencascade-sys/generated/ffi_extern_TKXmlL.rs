@@ -698,6 +698,11 @@ unsafe extern "C" {
         self_: *mut XmlMDF_ADriverTable,
         theDerivedType: *const std::ffi::c_char,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDF_ADriverTable.hxx`:53 - `XmlMDF_ADriverTable::CreateDrvMap()`
+    pub fn XmlMDF_ADriverTable_create_drv_map(
+        self_: *mut XmlMDF_ADriverTable,
+        theDriverMap: *mut NCollection_DataMap_TCollection_AsciiString_Handle_XmlMDF_ADriver,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `XmlMDF_ADriverTable.hxx`:59 - `XmlMDF_ADriverTable::GetDriver()`
     pub fn XmlMDF_ADriverTable_get_driver(
         self_: *mut XmlMDF_ADriverTable,

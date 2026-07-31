@@ -5,7 +5,6 @@
 
 #include <Adaptor2d_Curve2d.hxx>
 #include <Adaptor3d_HVertex.hxx>
-#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <Approx_SweepFunction.hxx>
@@ -90,7 +89,6 @@
 #include <ChFiDS_ChamfMode.hxx>
 #include <ChFiDS_ChamfSpine.hxx>
 #include <ChFiDS_CommonPoint.hxx>
-#include <ChFiDS_ElSpine.hxx>
 #include <ChFiDS_ErrorStatus.hxx>
 #include <ChFiDS_FaceInterference.hxx>
 #include <ChFiDS_FilSpine.hxx>
@@ -98,7 +96,6 @@
 #include <ChFiDS_Regul.hxx>
 #include <ChFiDS_Spine.hxx>
 #include <ChFiDS_State.hxx>
-#include <ChFiDS_Stripe.hxx>
 #include <ChFiDS_StripeMap.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <ChFiKPart_ComputeData.hxx>
@@ -108,15 +105,12 @@
 #include <FilletSurf_InternalBuilder.hxx>
 #include <FilletSurf_StatusDone.hxx>
 #include <FilletSurf_StatusType.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <Geom_BezierCurve.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
 #include <Law_Composite.hxx>
-#include <Law_Function.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
@@ -173,7 +167,7 @@ typedef opencascade::handle<Geom_TrimmedCurve> Handle_Geom_TrimmedCurve;
 typedef opencascade::handle<Law_Composite> Handle_Law_Composite;
 typedef opencascade::handle<Law_Function> Handle_Law_Function;
 typedef opencascade::handle<NCollection_HArray1_ChFiDS_CircSection> Handle_NCollection_HArray1_ChFiDS_CircSection;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_ChFiDS_SurfData> Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData;
+typedef opencascade::handle<NCollection_HSequence_Handle_ChFiDS_SurfData> Handle_NCollection_HSequence_Handle_ChFiDS_SurfData;
 typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
 typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 typedef opencascade::handle<TopOpeBRepBuild_HBuilder> Handle_TopOpeBRepBuild_HBuilder;
@@ -7461,6 +7455,10 @@ extern "C" const char* ChFi3d_Builder_reset(ChFi3d_Builder* self_) {
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<bool> ChFi3d_Builder_split_k_part(ChFi3d_Builder* self_, Handle(ChFiDS_SurfData) const* Data, NCollection_Sequence_Handle_ChFiDS_SurfData* SetData, Handle(ChFiDS_Spine) const* Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, bool* Intf, bool* Intl) {
+    try { return {self_->SplitKPart(*Data, *SetData, *Spine, Iedge, *S1, *I1, *S2, *I2, *Intf, *Intl), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> ChFi3d_Builder_perform_two_cornerby_inter(ChFi3d_Builder* self_, int32_t Index) {
     try { return {self_->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7553,6 +7551,22 @@ extern "C" const char* ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlech
 }
 extern "C" const char* ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(ChFi3d_ChBuilder* self_, Handle(ChFiDS_SurfData)* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, int32_t Or2, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP1, bool RecRst1, bool RecP2, bool RecRst2, math_Vector const* Soldep) {
     try { self_->SimulSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, static_cast<TopAbs_Orientation>(Or2), Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, *Soldep); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(ChFi3d_ChBuilder* self_, NCollection_Sequence_Handle_ChFiDS_SurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecOnS1, bool RecOnS2, math_Vector const* Soldep, int32_t* Intf, int32_t* Intl) {
+    try { return {self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *S2, *I2, MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecOnS1, RecOnS2, *Soldep, *Intf, *Intl), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(ChFi3d_ChBuilder* self_, NCollection_Sequence_Handle_ChFiDS_SurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, int32_t Or2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP, bool RecS, bool RecRst, math_Vector const* Soldep) {
+    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, *S2, *I2, static_cast<TopAbs_Orientation>(Or2), MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP, RecS, RecRst, *Soldep); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(ChFi3d_ChBuilder* self_, NCollection_Sequence_Handle_ChFiDS_SurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP, bool RecS, bool RecRst, math_Vector const* Soldep) {
+    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP, RecS, RecRst, *Soldep); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ChFi3d_ChBuilder_perform_surf_seq_chfids_surfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(ChFi3d_ChBuilder* self_, NCollection_Sequence_Handle_ChFiDS_SurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, int32_t Or2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP1, bool RecRst1, bool RecP2, bool RecRst2, math_Vector const* Soldep) {
+    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, static_cast<TopAbs_Orientation>(Or2), MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, *Soldep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const ChFi3d_Builder*> ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder* self_) { return {static_cast<const ChFi3d_Builder*>(self_), nullptr}; }
@@ -7663,6 +7677,10 @@ extern "C" const char* ChFi3d_ChBuilder_inherited_Reset(ChFi3d_ChBuilder* self) 
 }
 extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> ChFi3d_ChBuilder_inherited_Builder(const ChFi3d_ChBuilder* self) {
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> ChFi3d_ChBuilder_inherited_SplitKPart(ChFi3d_ChBuilder* self, Handle(ChFiDS_SurfData) const& Data, NCollection_Sequence_Handle_ChFiDS_SurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
+    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder* self, int32_t Index) {
@@ -7873,6 +7891,10 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> ChFi3d_FilBuilder_inher
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> ChFi3d_FilBuilder_inherited_SplitKPart(ChFi3d_FilBuilder* self, Handle(ChFiDS_SurfData) const& Data, NCollection_Sequence_Handle_ChFiDS_SurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
+    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder* self, int32_t Index) {
     try { return {self->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8035,6 +8057,14 @@ extern "C" const char* ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(ChFiDS_Ch
 }
 extern "C" OcctResult<Handle(ChFiDS_ElSpine)*> ChFiDS_ChamfSpine_inherited_ElSpine(const ChFiDS_ChamfSpine* self, int32_t IE) {
     try { return {new Handle(ChFiDS_ElSpine)(self->ElSpine(IE)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_ChamfSpine_inherited_ChangeElSpines(ChFiDS_ChamfSpine* self) {
+    try { return {&(self->ChangeElSpines()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(ChFiDS_ChamfSpine* self) {
+    try { return {&(self->ChangeOffsetElSpines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFiDS_ChamfSpine_inherited_Reset(ChFiDS_ChamfSpine* self, bool AllData) {
@@ -8879,6 +8909,14 @@ extern "C" OcctResult<Handle(ChFiDS_ElSpine)*> ChFiDS_FilSpine_inherited_ElSpine
     try { return {new Handle(ChFiDS_ElSpine)(self->ElSpine(IE)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_FilSpine_inherited_ChangeElSpines(ChFiDS_FilSpine* self) {
+    try { return {&(self->ChangeElSpines()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(ChFiDS_FilSpine* self) {
+    try { return {&(self->ChangeOffsetElSpines()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> ChFiDS_FilSpine_inherited_SplitDone(const ChFiDS_FilSpine* self) {
     try { return {self->SplitDone(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9241,6 +9279,14 @@ extern "C" const char* ChFiDS_Spine_append_offset_el_spine(ChFiDS_Spine* self_, 
     try { self_->AppendOffsetElSpine(*Els); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_Spine_change_el_spines(ChFiDS_Spine* self_) {
+    try { return {&(self_->ChangeElSpines()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_ElSpine*> ChFiDS_Spine_change_offset_el_spines(ChFiDS_Spine* self_) {
+    try { return {&(self_->ChangeOffsetElSpines()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* ChFiDS_Spine_reset(ChFiDS_Spine* self_, bool AllData) {
     try { self_->Reset(AllData); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9521,7 +9567,7 @@ extern "C" const char* ChFiDS_Stripe_reset(ChFiDS_Stripe* self_) {
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ChFiDS_SurfData) const*> ChFiDS_Stripe_set_of_surf_data(const ChFiDS_Stripe* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_ChFiDS_SurfData) const*> ChFiDS_Stripe_set_of_surf_data(const ChFiDS_Stripe* self_) {
     try { return {&(self_->SetOfSurfData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9541,7 +9587,7 @@ extern "C" OcctResult<int32_t> ChFiDS_Stripe_choix(const ChFiDS_Stripe* self_) {
     try { return {self_->Choix(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ChFiDS_SurfData)*> ChFiDS_Stripe_change_set_of_surf_data(ChFiDS_Stripe* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_ChFiDS_SurfData)*> ChFiDS_Stripe_change_set_of_surf_data(ChFiDS_Stripe* self_) {
     try { return {&(self_->ChangeSetOfSurfData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9795,6 +9841,14 @@ extern "C" const char* ChFiDS_StripeMap_add(ChFiDS_StripeMap* self_, TopoDS_Vert
 }
 extern "C" OcctResult<int32_t> ChFiDS_StripeMap_extent(const ChFiDS_StripeMap* self_) {
     try { return {self_->Extent(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_Stripe const*> ChFiDS_StripeMap_find_from_key(const ChFiDS_StripeMap* self_, TopoDS_Vertex const* V) {
+    try { return {&(self_->FindFromKey(*V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_List_Handle_ChFiDS_Stripe const*> ChFiDS_StripeMap_find_from_index(const ChFiDS_StripeMap* self_, int32_t I) {
+    try { return {&(self_->FindFromIndex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Vertex const*> ChFiDS_StripeMap_find_key(const ChFiDS_StripeMap* self_, int32_t I) {
@@ -10453,6 +10507,10 @@ extern "C" const char* FilletSurf_InternalBuilder_inherited_Reset(FilletSurf_Int
 }
 extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> FilletSurf_InternalBuilder_inherited_Builder(const FilletSurf_InternalBuilder* self) {
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> FilletSurf_InternalBuilder_inherited_SplitKPart(FilletSurf_InternalBuilder* self, Handle(ChFiDS_SurfData) const& Data, NCollection_Sequence_Handle_ChFiDS_SurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
+    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(FilletSurf_InternalBuilder* self, int32_t Index) {

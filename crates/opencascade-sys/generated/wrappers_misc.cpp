@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Surface.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <HelixBRep_BuilderHelix.hxx>
 #include <HelixGeom_BuilderApproxCurve.hxx>
@@ -132,6 +131,10 @@ extern "C" OcctResult<double> HelixGeom_BuilderApproxCurve_tolerance_reached(con
     try { return {self_->ToleranceReached(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom_Curve const*> HelixGeom_BuilderApproxCurve_curves(const HelixGeom_BuilderApproxCurve* self_) {
+    try { return {&(self_->Curves()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> HelixGeom_BuilderApproxCurve_error_status(const HelixGeom_BuilderApproxCurve* self_) {
     try { return {self_->ErrorStatus(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -193,6 +196,10 @@ extern "C" OcctResult<double> HelixGeom_BuilderHelix_inherited_ToleranceReached(
     try { return {self->ToleranceReached(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom_Curve const*> HelixGeom_BuilderHelix_inherited_Curves(const HelixGeom_BuilderHelix* self) {
+    try { return {&(self->Curves()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<int32_t> HelixGeom_BuilderHelix_inherited_ErrorStatus(const HelixGeom_BuilderHelix* self) {
     try { return {self->ErrorStatus(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -241,6 +248,10 @@ extern "C" OcctResult<double> HelixGeom_BuilderHelixCoil_inherited_Tolerance(con
 }
 extern "C" OcctResult<double> HelixGeom_BuilderHelixCoil_inherited_ToleranceReached(const HelixGeom_BuilderHelixCoil* self) {
     try { return {self->ToleranceReached(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Sequence_Handle_Geom_Curve const*> HelixGeom_BuilderHelixCoil_inherited_Curves(const HelixGeom_BuilderHelixCoil* self) {
+    try { return {&(self->Curves()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> HelixGeom_BuilderHelixCoil_inherited_ErrorStatus(const HelixGeom_BuilderHelixCoil* self) {

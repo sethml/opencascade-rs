@@ -24,29 +24,25 @@
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDF_Attribute.hxx>
 #include <TDF_DataSet.hxx>
+#include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDataStd_GenericEmpty.hxx>
 #include <TDataStd_NamedData.hxx>
 #include <TDataStd_Real.hxx>
 #include <TDocStd_Application.hxx>
-#include <TDocStd_Document.hxx>
 #include <TPrsStd_Driver.hxx>
 #include <TopoDS_Edge.hxx>
 #include <UnitsMethods_LengthUnit.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XCAFDimTolObjects_AngularQualifier.hxx>
 #include <XCAFDimTolObjects_DatumModifWithValue.hxx>
-#include <XCAFDimTolObjects_DatumObject.hxx>
 #include <XCAFDimTolObjects_DatumTargetType.hxx>
 #include <XCAFDimTolObjects_DimensionFormVariance.hxx>
 #include <XCAFDimTolObjects_DimensionGrade.hxx>
-#include <XCAFDimTolObjects_DimensionObject.hxx>
 #include <XCAFDimTolObjects_DimensionQualifier.hxx>
 #include <XCAFDimTolObjects_DimensionType.hxx>
 #include <XCAFDimTolObjects_GeomToleranceMatReqModif.hxx>
-#include <XCAFDimTolObjects_GeomToleranceObject.hxx>
 #include <XCAFDimTolObjects_GeomToleranceType.hxx>
 #include <XCAFDimTolObjects_GeomToleranceTypeValue.hxx>
 #include <XCAFDimTolObjects_GeomToleranceZoneModif.hxx>
@@ -85,7 +81,6 @@
 #include <XCAFDoc_ShapeTool.hxx>
 #include <XCAFDoc_View.hxx>
 #include <XCAFDoc_ViewTool.hxx>
-#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialCommon.hxx>
 #include <XCAFDoc_VisMaterialPBR.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
@@ -592,6 +587,10 @@ extern "C" OcctResult<TCollection_ExtendedString*> XCAFApp_Application_inherited
 }
 extern "C" OcctResult<TCollection_AsciiString*> XCAFApp_Application_inherited_Version(const XCAFApp_Application* self) {
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData*> XCAFApp_Application_inherited_MetaDataLookUpTable(XCAFApp_Application* self) {
+    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFApp_Application_inherited_IsInstance(const XCAFApp_Application* self, Handle(Standard_Type) const& theType) {
@@ -1448,6 +1447,22 @@ extern "C" OcctResult<XCAFDimTolObjects_Tool*> XCAFDimTolObjects_Tool_ctor_handl
     try { return {new XCAFDimTolObjects_Tool(*theDoc), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* XCAFDimTolObjects_Tool_get_dimensions(const XCAFDimTolObjects_Tool* self_, NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* theDimensionObjectSequence) {
+    try { self_->GetDimensions(*theDimensionObjectSequence); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_dimensions(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, NCollection_Sequence_Handle_XCAFDimTolObjects_DimensionObject* theDimensions) {
+    try { return {self_->GetRefDimensions(*theShape, *theDimensions), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* XCAFDimTolObjects_Tool_get_geom_tolerances(const XCAFDimTolObjects_Tool* self_, NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* theGeomToleranceObjectSequence, NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* theDatumObjectSequence, NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* theMap) {
+    try { self_->GetGeomTolerances(*theGeomToleranceObjectSequence, *theDatumObjectSequence, *theMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_geom_tolerances(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, NCollection_Sequence_Handle_XCAFDimTolObjects_GeomToleranceObject* theGeomToleranceObjectSequence, NCollection_Sequence_Handle_XCAFDimTolObjects_DatumObject* theDatumObjectSequence, NCollection_DataMap_Handle_XCAFDimTolObjects_GeomToleranceObject_Handle_XCAFDimTolObjects_DatumObject* theMap) {
+    try { return {self_->GetRefGeomTolerances(*theShape, *theGeomToleranceObjectSequence, *theDatumObjectSequence, *theMap), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_datum(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, Handle(XCAFDimTolObjects_DatumObject)* theDatum) {
     try { return {self_->GetRefDatum(*theShape, *theDatum), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1662,6 +1677,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Area_inherited_DeltaO
 }
 extern "C" const char* XCAFDoc_Area_inherited_References(const XCAFDoc_Area* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Area_inherited_ExtendedDump(const XCAFDoc_Area* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Area_inherited_Forget(XCAFDoc_Area* self, int32_t aTransaction) {
@@ -2138,6 +2157,10 @@ extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_References(const XCAFDo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_ExtendedDump(const XCAFDoc_AssemblyItemRef* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_Forget(XCAFDoc_AssemblyItemRef* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2396,6 +2419,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Centroid_inherited_De
 }
 extern "C" const char* XCAFDoc_Centroid_inherited_References(const XCAFDoc_Centroid* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Centroid_inherited_ExtendedDump(const XCAFDoc_Centroid* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Centroid_inherited_Forget(XCAFDoc_Centroid* self, int32_t aTransaction) {
@@ -2678,6 +2705,10 @@ extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_References(const XCAF
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_ExtendedDump(const XCAFDoc_ClippingPlaneTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_Forget(XCAFDoc_ClippingPlaneTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2942,6 +2973,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Color_inherited_Delta
 }
 extern "C" const char* XCAFDoc_Color_inherited_References(const XCAFDoc_Color* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Color_inherited_ExtendedDump(const XCAFDoc_Color* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Color_inherited_Forget(XCAFDoc_Color* self, int32_t aTransaction) {
@@ -3332,6 +3367,10 @@ extern "C" const char* XCAFDoc_ColorTool_inherited_References(const XCAFDoc_Colo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_ColorTool_inherited_ExtendedDump(const XCAFDoc_ColorTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_ColorTool_inherited_Forget(XCAFDoc_ColorTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3578,6 +3617,10 @@ extern "C" const char* XCAFDoc_Datum_inherited_References(const XCAFDoc_Datum* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_Datum_inherited_ExtendedDump(const XCAFDoc_Datum* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_Datum_inherited_Forget(XCAFDoc_Datum* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3814,6 +3857,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_DimTol_inherited_Delt
 }
 extern "C" const char* XCAFDoc_DimTol_inherited_References(const XCAFDoc_DimTol* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_DimTol_inherited_ExtendedDump(const XCAFDoc_DimTol* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_DimTol_inherited_Forget(XCAFDoc_DimTol* self, int32_t aTransaction) {
@@ -4208,6 +4255,10 @@ extern "C" const char* XCAFDoc_DimTolTool_inherited_References(const XCAFDoc_Dim
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_DimTolTool_inherited_ExtendedDump(const XCAFDoc_DimTolTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_DimTolTool_inherited_Forget(XCAFDoc_DimTolTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4438,6 +4489,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Dimension_inherited_D
 }
 extern "C" const char* XCAFDoc_Dimension_inherited_References(const XCAFDoc_Dimension* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Dimension_inherited_ExtendedDump(const XCAFDoc_Dimension* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Dimension_inherited_Forget(XCAFDoc_Dimension* self, int32_t aTransaction) {
@@ -4800,6 +4855,10 @@ extern "C" const char* XCAFDoc_DocumentTool_inherited_References(const XCAFDoc_D
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_DocumentTool_inherited_ExtendedDump(const XCAFDoc_DocumentTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_DocumentTool_inherited_Forget(XCAFDoc_DocumentTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4861,6 +4920,10 @@ extern "C" OcctResult<bool> XCAFDoc_Editor_extract_label2_bool(TDF_Label const* 
 extern "C" OcctResult<TDF_Label*> XCAFDoc_Editor_clone_shape_label(TDF_Label const* theSrcLabel, Handle(XCAFDoc_ShapeTool) const* theSrcShapeTool, Handle(XCAFDoc_ShapeTool) const* theDstShapeTool, NCollection_DataMap_TDF_Label_TDF_Label* theMap) {
     try { return {new TDF_Label(XCAFDoc_Editor::CloneShapeLabel(*theSrcLabel, *theSrcShapeTool, *theDstShapeTool, *theMap)), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* XCAFDoc_Editor_clone_meta_data(TDF_Label const* theSrcLabel, TDF_Label const* theDstLabel, NCollection_DataMap_Handle_XCAFDoc_VisMaterial_Handle_XCAFDoc_VisMaterial* theVisMatMap, bool theToCopyColor, bool theToCopyLayer, bool theToCopyMaterial, bool theToCopyVisMaterial, bool theToCopyAttributes) {
+    try { XCAFDoc_Editor::CloneMetaData(*theSrcLabel, *theDstLabel, theVisMatMap, theToCopyColor, theToCopyLayer, theToCopyMaterial, theToCopyVisMaterial, theToCopyAttributes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Editor_get_parent_shape_labels(TDF_Label const* theLabel, NCollection_Map_TDF_Label* theRelatedLabels) {
     try { XCAFDoc_Editor::GetParentShapeLabels(*theLabel, *theRelatedLabels); return nullptr; }
@@ -5080,6 +5143,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_GeomTolerance_inherit
 }
 extern "C" const char* XCAFDoc_GeomTolerance_inherited_References(const XCAFDoc_GeomTolerance* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_GeomTolerance_inherited_ExtendedDump(const XCAFDoc_GeomTolerance* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_GeomTolerance_inherited_Forget(XCAFDoc_GeomTolerance* self, int32_t aTransaction) {
@@ -5371,6 +5438,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> XCAFDoc_GraphNode_inheri
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_GraphNode_inherited_DeltaOnRemoval(const XCAFDoc_GraphNode* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* XCAFDoc_GraphNode_inherited_ExtendedDump(const XCAFDoc_GraphNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_GraphNode_inherited_Forget(XCAFDoc_GraphNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -5728,6 +5799,10 @@ extern "C" const char* XCAFDoc_LayerTool_inherited_References(const XCAFDoc_Laye
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_LayerTool_inherited_ExtendedDump(const XCAFDoc_LayerTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_LayerTool_inherited_Forget(XCAFDoc_LayerTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5974,6 +6049,10 @@ extern "C" const char* XCAFDoc_LengthUnit_inherited_References(const XCAFDoc_Len
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_LengthUnit_inherited_ExtendedDump(const XCAFDoc_LengthUnit* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_LengthUnit_inherited_Forget(XCAFDoc_LengthUnit* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6198,6 +6277,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Location_inherited_De
 }
 extern "C" const char* XCAFDoc_Location_inherited_References(const XCAFDoc_Location* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Location_inherited_ExtendedDump(const XCAFDoc_Location* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Location_inherited_Forget(XCAFDoc_Location* self, int32_t aTransaction) {
@@ -6440,6 +6523,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Material_inherited_De
 }
 extern "C" const char* XCAFDoc_Material_inherited_References(const XCAFDoc_Material* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Material_inherited_ExtendedDump(const XCAFDoc_Material* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Material_inherited_Forget(XCAFDoc_Material* self, int32_t aTransaction) {
@@ -6700,6 +6787,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_MaterialTool_inherite
 }
 extern "C" const char* XCAFDoc_MaterialTool_inherited_References(const XCAFDoc_MaterialTool* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_MaterialTool_inherited_ExtendedDump(const XCAFDoc_MaterialTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_MaterialTool_inherited_Forget(XCAFDoc_MaterialTool* self, int32_t aTransaction) {
@@ -6964,6 +7055,10 @@ extern "C" const char* XCAFDoc_Note_inherited_References(const XCAFDoc_Note* sel
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_Note_inherited_ExtendedDump(const XCAFDoc_Note* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_Note_inherited_Forget(XCAFDoc_Note* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7220,6 +7315,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_NoteBalloon_inherited
 }
 extern "C" const char* XCAFDoc_NoteBalloon_inherited_References(const XCAFDoc_NoteBalloon* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_NoteBalloon_inherited_ExtendedDump(const XCAFDoc_NoteBalloon* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_NoteBalloon_inherited_Forget(XCAFDoc_NoteBalloon* self, int32_t aTransaction) {
@@ -7490,6 +7589,10 @@ extern "C" const char* XCAFDoc_NoteBinData_inherited_References(const XCAFDoc_No
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_NoteBinData_inherited_ExtendedDump(const XCAFDoc_NoteBinData* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_NoteBinData_inherited_Forget(XCAFDoc_NoteBinData* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7756,6 +7859,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_NoteComment_inherited
 }
 extern "C" const char* XCAFDoc_NoteComment_inherited_References(const XCAFDoc_NoteComment* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_NoteComment_inherited_ExtendedDump(const XCAFDoc_NoteComment* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_NoteComment_inherited_Forget(XCAFDoc_NoteComment* self, int32_t aTransaction) {
@@ -8166,6 +8273,10 @@ extern "C" const char* XCAFDoc_NotesTool_inherited_References(const XCAFDoc_Note
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_NotesTool_inherited_ExtendedDump(const XCAFDoc_NotesTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_NotesTool_inherited_Forget(XCAFDoc_NotesTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8396,6 +8507,10 @@ extern "C" const char* XCAFDoc_ShapeMapTool_inherited_References(const XCAFDoc_S
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_ShapeMapTool_inherited_ExtendedDump(const XCAFDoc_ShapeMapTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_ShapeMapTool_inherited_Forget(XCAFDoc_ShapeMapTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8476,6 +8591,10 @@ extern "C" OcctResult<TDF_Label*> XCAFDoc_ShapeTool_find_main_shape(const XCAFDo
 }
 extern "C" OcctResult<TDF_Label*> XCAFDoc_ShapeTool_base_label(const XCAFDoc_ShapeTool* self_) {
     try { return {new TDF_Label(self_->BaseLabel()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TDF_Label*> XCAFDoc_ShapeTool_set_extern_refs_seq_tcollection_hasciistring(const XCAFDoc_ShapeTool* self_, NCollection_Sequence_Handle_TCollection_HAsciiString const* SHAS) {
+    try { return {new TDF_Label(self_->SetExternRefs(*SHAS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> XCAFDoc_ShapeTool_get_shuo_instance(const XCAFDoc_ShapeTool* self_, Handle(XCAFDoc_GraphNode) const* theSHUO) {
@@ -8573,6 +8692,10 @@ extern "C" OcctResult<Standard_OStream*> XCAFDoc_ShapeTool_dump_ostream(XCAFDoc_
 extern "C" OcctResult<Standard_GUID const*> XCAFDoc_ShapeTool_id(const XCAFDoc_ShapeTool* self_) {
     try { return {&(self_->ID()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* XCAFDoc_ShapeTool_set_extern_refs_label_seq_tcollection_hasciistring(const XCAFDoc_ShapeTool* self_, TDF_Label const* L, NCollection_Sequence_Handle_TCollection_HAsciiString const* SHAS) {
+    try { self_->SetExternRefs(*L, *SHAS); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> XCAFDoc_ShapeTool_set_shuo(const XCAFDoc_ShapeTool* self_, NCollection_Sequence_TDF_Label const* Labels, Handle(XCAFDoc_GraphNode)* MainSHUOAttr) {
     try { return {self_->SetSHUO(*Labels, *MainSHUOAttr), nullptr}; }
@@ -8694,8 +8817,16 @@ extern "C" OcctResult<bool> XCAFDoc_ShapeTool_is_extern_ref(TDF_Label const* L) 
     try { return {XCAFDoc_ShapeTool::IsExternRef(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" const char* XCAFDoc_ShapeTool_get_extern_refs(TDF_Label const* L, NCollection_Sequence_Handle_TCollection_HAsciiString* SHAS) {
+    try { XCAFDoc_ShapeTool::GetExternRefs(*L, *SHAS); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo(TDF_Label const* SHUOLabel, Handle(XCAFDoc_GraphNode)* aSHUOAttr) {
     try { return {XCAFDoc_ShapeTool::GetSHUO(*SHUOLabel, *aSHUOAttr), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_all_component_shuo(TDF_Label const* CompLabel, NCollection_Sequence_Handle_TDF_Attribute* SHUOAttrs) {
+    try { return {XCAFDoc_ShapeTool::GetAllComponentSHUO(*CompLabel, *SHUOAttrs), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo_upper_usage(TDF_Label const* NextUsageL, NCollection_Sequence_TDF_Label* Labels) {
@@ -8870,6 +9001,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_ShapeTool_inherited_D
 }
 extern "C" const char* XCAFDoc_ShapeTool_inherited_References(const XCAFDoc_ShapeTool* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_ShapeTool_inherited_ExtendedDump(const XCAFDoc_ShapeTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_ShapeTool_inherited_Forget(XCAFDoc_ShapeTool* self, int32_t aTransaction) {
@@ -9102,6 +9237,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_View_inherited_DeltaO
 }
 extern "C" const char* XCAFDoc_View_inherited_References(const XCAFDoc_View* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_View_inherited_ExtendedDump(const XCAFDoc_View* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_View_inherited_Forget(XCAFDoc_View* self, int32_t aTransaction) {
@@ -9416,6 +9555,10 @@ extern "C" const char* XCAFDoc_ViewTool_inherited_References(const XCAFDoc_ViewT
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_ViewTool_inherited_ExtendedDump(const XCAFDoc_ViewTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_ViewTool_inherited_Forget(XCAFDoc_ViewTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9696,6 +9839,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_VisMaterial_inherited
 }
 extern "C" const char* XCAFDoc_VisMaterial_inherited_References(const XCAFDoc_VisMaterial* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_VisMaterial_inherited_ExtendedDump(const XCAFDoc_VisMaterial* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_VisMaterial_inherited_Forget(XCAFDoc_VisMaterial* self, int32_t aTransaction) {
@@ -10016,6 +10163,10 @@ extern "C" const char* XCAFDoc_VisMaterialTool_inherited_References(const XCAFDo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* XCAFDoc_VisMaterialTool_inherited_ExtendedDump(const XCAFDoc_VisMaterialTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFDoc_VisMaterialTool_inherited_Forget(XCAFDoc_VisMaterialTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10258,6 +10409,10 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Volume_inherited_Delt
 }
 extern "C" const char* XCAFDoc_Volume_inherited_References(const XCAFDoc_Volume* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDoc_Volume_inherited_ExtendedDump(const XCAFDoc_Volume* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, NCollection_IndexedMap_Handle_TDF_Attribute& aMap) {
+    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Volume_inherited_Forget(XCAFDoc_Volume* self, int32_t aTransaction) {

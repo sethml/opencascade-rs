@@ -3,9 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BRep_CurveRepresentation.hxx>
-#include <BRep_PointRepresentation.hxx>
-#include <Geom2d_BezierCurve.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Hyperbola.hxx>
@@ -15,8 +12,6 @@
 #include <Geom2d_TrimmedCurve.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Geom_BSplineSurface.hxx>
-#include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
 #include <Geom_Circle.hxx>
 #include <Geom_ConicalSurface.hxx>
 #include <Geom_CylindricalSurface.hxx>
@@ -39,7 +34,6 @@
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
-#include <Poly_Triangulation.hxx>
 #include <ShapePersistent_BRep.hxx>
 #include <ShapePersistent_Geom.hxx>
 #include <ShapePersistent_Geom2d.hxx>
@@ -54,7 +48,6 @@
 #include <StdDrivers.hxx>
 #include <StdDrivers_DocumentRetrievalDriver.hxx>
 #include <StdLDrivers_DocumentRetrievalDriver.hxx>
-#include <StdObjMgt_Persistent.hxx>
 #include <StdObjMgt_ReadData.hxx>
 #include <StdObjMgt_WriteData.hxx>
 #include <StdObject_Location.hxx>
@@ -79,7 +72,6 @@
 #include <TDataXtd_Presentation.hxx>
 #include <TDocStd_Application.hxx>
 #include <TNaming_Name.hxx>
-#include <TNaming_NamedShape.hxx>
 #include <TopLoc_Datum3D.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
@@ -120,8 +112,8 @@ typedef opencascade::handle<Geom_SurfaceOfLinearExtrusion> Handle_Geom_SurfaceOf
 typedef opencascade::handle<Geom_SurfaceOfRevolution> Handle_Geom_SurfaceOfRevolution;
 typedef opencascade::handle<Geom_ToroidalSurface> Handle_Geom_ToroidalSurface;
 typedef opencascade::handle<Geom_TrimmedCurve> Handle_Geom_TrimmedCurve;
+typedef opencascade::handle<NCollection_HSequence_Handle_StdStorage_Root> Handle_NCollection_HSequence_Handle_StdStorage_Root;
 typedef opencascade::handle<NCollection_HSequence_TCollection_AsciiString> Handle_NCollection_HSequence_TCollection_AsciiString;
-typedef opencascade::handle<NCollection_HSequence_opencascade_handle_StdStorage_Root> Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root;
 typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
 typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
 typedef opencascade::handle<Poly_Polygon2D> Handle_Poly_Polygon2D;
@@ -328,6 +320,54 @@ extern "C" OcctResult<ShapePersistent_BRep*> ShapePersistent_BRep_ctor() {
     try { return {new ShapePersistent_BRep(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PointOnCurve)*> ShapePersistent_BRep_translate_real_handlegeomcurve_location_dmap_standard_transient_stdobjmgt_persistent(double theParam, Handle(Geom_Curve) const* theCurve, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PointOnCurve)(ShapePersistent_BRep::Translate(theParam, *theCurve, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PointOnCurveOnSurface)*> ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(double theParam, Handle(Geom2d_Curve) const* theCurve, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PointOnCurveOnSurface)(ShapePersistent_BRep::Translate(theParam, *theCurve, *theSurf, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PointOnSurface)*> ShapePersistent_BRep_translate_real2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(double theParam, double theParam2, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PointOnSurface)(ShapePersistent_BRep::Translate(theParam, theParam2, *theSurf, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::CurveOnSurface)*> ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Curve) const* theCurve, double theFirstParam, double theLastParam, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::CurveOnSurface)(ShapePersistent_BRep::Translate(*theCurve, theFirstParam, theLastParam, *theSurf, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::CurveOnClosedSurface)*> ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Curve) const* theCurve, Handle(Geom2d_Curve) const* theCurve2, double theFirstParam, double theLastParam, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, int32_t theContinuity, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::CurveOnClosedSurface)(ShapePersistent_BRep::Translate(*theCurve, *theCurve2, theFirstParam, theLastParam, *theSurf, *theLoc, static_cast<GeomAbs_Shape>(theContinuity), *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::CurveOn2Surfaces)*> ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Surface) const* theSurf, Handle(Geom_Surface) const* theSurf2, TopLoc_Location const* theLoc, TopLoc_Location const* theLoc2, int32_t theContinuity, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::CurveOn2Surfaces)(ShapePersistent_BRep::Translate(*theSurf, *theSurf2, *theLoc, *theLoc2, static_cast<GeomAbs_Shape>(theContinuity), *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::Curve3D)*> ShapePersistent_BRep_translate_handlegeomcurve_real2_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Curve) const* theCurve, double theFirstParam, double theLastParam, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::Curve3D)(ShapePersistent_BRep::Translate(*theCurve, theFirstParam, theLastParam, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::Polygon3D)*> ShapePersistent_BRep_translate_handlepolypolygon3d_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Poly_Polygon3D) const* thePoly, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::Polygon3D)(ShapePersistent_BRep::Translate(*thePoly, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PolygonOnClosedSurface)*> ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Poly_Polygon2D) const* thePoly, Handle(Poly_Polygon2D) const* thePoly2, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PolygonOnClosedSurface)(ShapePersistent_BRep::Translate(*thePoly, *thePoly2, *theSurf, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PolygonOnSurface)*> ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Poly_Polygon2D) const* thePoly, Handle(Geom_Surface) const* theSurf, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PolygonOnSurface)(ShapePersistent_BRep::Translate(*thePoly, *theSurf, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PolygonOnClosedTriangulation)*> ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Poly_PolygonOnTriangulation) const* thePolyOnTriang, Handle(Poly_PolygonOnTriangulation) const* thePolyOnTriang2, Handle(Poly_Triangulation) const* thePolyTriang, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PolygonOnClosedTriangulation)(ShapePersistent_BRep::Translate(*thePolyOnTriang, *thePolyOnTriang2, *thePolyTriang, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_BRep::PolygonOnTriangulation)*> ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_dmap_standard_transient_stdobjmgt_persistent(Handle(Poly_PolygonOnTriangulation) const* thePolyOnTriang, Handle(Poly_Triangulation) const* thePolyTriang, TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_BRep::PolygonOnTriangulation)(ShapePersistent_BRep::Translate(*thePolyOnTriang, *thePolyTriang, *theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<const ShapePersistent_TopoDS*> ShapePersistent_BRep_as_ShapePersistent_TopoDS(const ShapePersistent_BRep* self_) { return {static_cast<const ShapePersistent_TopoDS*>(self_), nullptr}; }
 extern "C" OcctResult<ShapePersistent_TopoDS*> ShapePersistent_BRep_as_ShapePersistent_TopoDS_mut(ShapePersistent_BRep* self_) { return {static_cast<ShapePersistent_TopoDS*>(self_), nullptr}; }
 extern "C" void ShapePersistent_BRep_destructor(ShapePersistent_BRep* self_) { delete self_; }
@@ -355,6 +395,10 @@ extern "C" const char* ShapePersistent_BRep_PointRepresentation_p_children(const
 extern "C" OcctResult<char const*> ShapePersistent_BRep_PointRepresentation_p_name(const ShapePersistent_BRep::PointRepresentation* self_) {
     try { return {self_->PName(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapePersistent_BRep_PointRepresentation_import(const ShapePersistent_BRep::PointRepresentation* self_, NCollection_List_Handle_BRep_PointRepresentation* thePoints) {
+    try { self_->Import(*thePoints); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const StdObjMgt_Persistent*> ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent(const ShapePersistent_BRep::PointRepresentation* self_) { return {static_cast<const StdObjMgt_Persistent*>(self_), nullptr}; }
 extern "C" OcctResult<StdObjMgt_Persistent*> ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent_mut(ShapePersistent_BRep::PointRepresentation* self_) { return {static_cast<StdObjMgt_Persistent*>(self_), nullptr}; }
@@ -621,6 +665,10 @@ extern "C" const char* ShapePersistent_BRep_CurveRepresentation_p_children(const
 extern "C" OcctResult<char const*> ShapePersistent_BRep_CurveRepresentation_p_name(const ShapePersistent_BRep::CurveRepresentation* self_) {
     try { return {self_->PName(), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapePersistent_BRep_CurveRepresentation_import(const ShapePersistent_BRep::CurveRepresentation* self_, NCollection_List_Handle_BRep_CurveRepresentation* theCurves) {
+    try { self_->Import(*theCurves); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const StdObjMgt_Persistent*> ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent(const ShapePersistent_BRep::CurveRepresentation* self_) { return {static_cast<const StdObjMgt_Persistent*>(self_), nullptr}; }
 extern "C" OcctResult<StdObjMgt_Persistent*> ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent_mut(ShapePersistent_BRep::CurveRepresentation* self_) { return {static_cast<StdObjMgt_Persistent*>(self_), nullptr}; }
@@ -1124,6 +1172,14 @@ extern "C" OcctResult<ShapePersistent_Geom*> ShapePersistent_Geom_ctor() {
     try { return {new ShapePersistent_Geom(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_translate_handlegeomcurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Curve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_translate_handlegeomsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Surface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void ShapePersistent_Geom_destructor(ShapePersistent_Geom* self_) { delete self_; }
 
 // ========================
@@ -1252,6 +1308,10 @@ extern "C" OcctResult<ShapePersistent_Geom2d*> ShapePersistent_Geom2d_ctor() {
     try { return {new ShapePersistent_Geom2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_translate(Handle(Geom2d_Curve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<const ShapePersistent_Geom*> ShapePersistent_Geom2d_as_ShapePersistent_Geom(const ShapePersistent_Geom2d* self_) { return {static_cast<const ShapePersistent_Geom*>(self_), nullptr}; }
 extern "C" OcctResult<ShapePersistent_Geom*> ShapePersistent_Geom2d_as_ShapePersistent_Geom_mut(ShapePersistent_Geom2d* self_) { return {static_cast<ShapePersistent_Geom*>(self_), nullptr}; }
 extern "C" void ShapePersistent_Geom2d_destructor(ShapePersistent_Geom2d* self_) { delete self_; }
@@ -1262,6 +1322,42 @@ extern "C" void ShapePersistent_Geom2d_destructor(ShapePersistent_Geom2d* self_)
 
 extern "C" OcctResult<ShapePersistent_Geom2d_Curve*> ShapePersistent_Geom2d_Curve_ctor() {
     try { return {new ShapePersistent_Geom2d_Curve(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Line) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Circle) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Ellipse) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Hyperbola) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_Parabola) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_BezierCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_BSplineCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_TrimmedCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom2d::Curve)*> ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom2d_OffsetCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom2d::Curve)(ShapePersistent_Geom2d_Curve::Translate(*theCurve, *theMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const ShapePersistent_Geom2d*> ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d(const ShapePersistent_Geom2d_Curve* self_) { return {static_cast<const ShapePersistent_Geom2d*>(self_), nullptr}; }
@@ -1278,6 +1374,42 @@ extern "C" OcctResult<ShapePersistent_Geom_Curve*> ShapePersistent_Geom_Curve_ct
     try { return {new ShapePersistent_Geom_Curve(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomline_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Line) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomcircle_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Circle) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomellipse_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Ellipse) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Hyperbola) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomparabola_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Parabola) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_BezierCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_BSplineCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_TrimmedCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Curve)*> ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_OffsetCurve) const* theCurve, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Curve)(ShapePersistent_Geom_Curve::Translate(*theCurve, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" void ShapePersistent_Geom_Curve_destructor(ShapePersistent_Geom_Curve* self_) { delete self_; }
 
 // ========================
@@ -1286,6 +1418,50 @@ extern "C" void ShapePersistent_Geom_Curve_destructor(ShapePersistent_Geom_Curve
 
 extern "C" OcctResult<ShapePersistent_Geom_Surface*> ShapePersistent_Geom_Surface_ctor() {
     try { return {new ShapePersistent_Geom_Surface(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomplane_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_Plane) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_CylindricalSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_ConicalSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_SphericalSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_ToroidalSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_SurfaceOfLinearExtrusion) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_SurfaceOfRevolution) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_BezierSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_BSplineSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_RectangularTrimmedSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_Geom::Surface)*> ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_dmap_standard_transient_stdobjmgt_persistent(Handle(Geom_OffsetSurface) const* theSurf, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(ShapePersistent_Geom::Surface)(ShapePersistent_Geom_Surface::Translate(*theSurf, *theMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void ShapePersistent_Geom_Surface_destructor(ShapePersistent_Geom_Surface* self_) { delete self_; }
@@ -1306,6 +1482,10 @@ extern "C" void ShapePersistent_Poly_destructor(ShapePersistent_Poly* self_) { d
 
 extern "C" OcctResult<ShapePersistent_TopoDS*> ShapePersistent_TopoDS_ctor() {
     try { return {new ShapePersistent_TopoDS(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(ShapePersistent_TopoDS::HShape)*> ShapePersistent_TopoDS_translate(TopoDS_Shape const* theShape, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap, int32_t theTriangleMode) {
+    try { return {new Handle(ShapePersistent_TopoDS::HShape)(ShapePersistent_TopoDS::Translate(*theShape, *theMap, static_cast<ShapePersistent_TriangleMode>(theTriangleMode))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void ShapePersistent_TopoDS_destructor(ShapePersistent_TopoDS* self_) { delete self_; }
@@ -1551,6 +1731,10 @@ extern "C" OcctResult<TopLoc_Location*> StdObject_Location_import(const StdObjec
 extern "C" const char* StdObject_Location_p_children(const StdObject_Location* self_, StdObjMgt_Persistent::SequenceOfPersistent* theChildren) {
     try { self_->PChildren(*theChildren); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<StdObject_Location*> StdObject_Location_translate(TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new StdObject_Location(StdObject_Location::Translate(*theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" void StdObject_Location_destructor(StdObject_Location* self_) { delete self_; }
 
@@ -1992,6 +2176,14 @@ extern "C" void StdPersistent_PPrsStd_AISPresentation_1_destructor(StdPersistent
 
 extern "C" OcctResult<StdPersistent_TopLoc*> StdPersistent_TopLoc_ctor() {
     try { return {new StdPersistent_TopLoc(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(StdPersistent_TopLoc::ItemLocation)*> StdPersistent_TopLoc_translate_location_dmap_standard_transient_stdobjmgt_persistent(TopLoc_Location const* theLoc, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(StdPersistent_TopLoc::ItemLocation)(StdPersistent_TopLoc::Translate(*theLoc, *theMap)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(StdPersistent_TopLoc::Datum3D)*> StdPersistent_TopLoc_translate_handletoplocdatum3d_dmap_standard_transient_stdobjmgt_persistent(Handle(TopLoc_Datum3D) const* theDatum, NCollection_DataMap_Handle_Standard_Transient_Handle_StdObjMgt_Persistent* theMap) {
+    try { return {new Handle(StdPersistent_TopLoc::Datum3D)(StdPersistent_TopLoc::Translate(*theDatum, *theMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void StdPersistent_TopLoc_destructor(StdPersistent_TopLoc* self_) { delete self_; }
@@ -2570,8 +2762,8 @@ extern "C" void StdStorage_Root_destructor(StdStorage_Root* self_) { delete self
 // StdStorage_RootData wrappers
 // ========================
 
-extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_StdStorage_Root)*> StdStorage_RootData_roots(const StdStorage_RootData* self_) {
-    try { return {new Handle(NCollection_HSequence_opencascade_handle_StdStorage_Root)(self_->Roots()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_Handle_StdStorage_Root)*> StdStorage_RootData_roots(const StdStorage_RootData* self_) {
+    try { return {new Handle(NCollection_HSequence_Handle_StdStorage_Root)(self_->Roots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(StdStorage_Root)*> StdStorage_RootData_find(const StdStorage_RootData* self_, TCollection_AsciiString const* aName) {

@@ -1526,6 +1526,26 @@ impl PolyAlgo {
         })
     }
 
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::PolyShell()`
+    pub fn poly_shell(&self) -> &crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyShellData {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_poly_shell(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:41 - `HLRAlgo_PolyAlgo::ChangePolyShell()`
+    pub fn change_poly_shell(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyShellData {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRAlgo_PolyAlgo_change_poly_shell(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:43 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -1816,16 +1836,6 @@ impl Handle_HLRAlgo_PolyAlgo {
         }
     }
 }
-
-// ── Skipped symbols for PolyAlgo (2 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::PolyShell`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> const&)
-//   // pub fn poly_shell(&self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>> const& */;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyAlgo.hxx`:41 - `HLRAlgo_PolyAlgo::ChangePolyShell`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>>&)
-//   // pub fn change_poly_shell(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyShellData>>& */;
-//
 
 // ========================
 // From HLRAlgo_PolyData.hxx
@@ -2299,6 +2309,63 @@ impl PolyInternalData {
         }
     }
 
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:37 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub fn update_links_arr1_triangledata_arr1_polyinternalsegment_arr1_hlralgo_polyinternalnode(
+        &mut self,
+        theTData: &mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData,
+        thePISeg: &mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePINod: &mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_update_links_arr1_triangledata_arr1_polyinternalsegment_arr1_hlralgo_polyinternalnode(self as *mut Self, theTData, thePISeg, thePINod)
+        })
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:42 - `HLRAlgo_PolyInternalData::AddNode()`
+    pub unsafe fn add_node(
+        &mut self,
+        theNod1RValues: &mut PolyInternalNode_NodeData,
+        theNod2RValues: &mut PolyInternalNode_NodeData,
+        thePINod1: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        theCoef1: f64,
+        theX3: f64,
+        theY3: f64,
+        theZ3: f64,
+    ) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_add_node(
+                self as *mut Self,
+                theNod1RValues,
+                theNod2RValues,
+                thePINod1,
+                thePINod2,
+                theCoef1,
+                theX3,
+                theY3,
+                theZ3,
+            )
+        })
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:51 - `HLRAlgo_PolyInternalData::UpdateLinks()`
+    pub unsafe fn update_links_int3_arr1_triangledataptr2_arr1_polyinternalsegmentptr2_arr1_hlralgo_polyinternalnodeptr2(
+        &mut self,
+        theIp1: i32,
+        theIp2: i32,
+        theIp3: i32,
+        theTData1: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData,
+        theTData2: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_TriangleData,
+        thePISeg1: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePISeg2: &mut *mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        thePINod1: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_update_links_int3_arr1_triangledataptr2_arr1_polyinternalsegmentptr2_arr1_hlralgo_polyinternalnodeptr2(self as *mut Self, theIp1, theIp2, theIp3, theTData1, theTData2, thePISeg1, thePISeg2, thePINod1, thePINod2)
+        })
+    }
+
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -2332,6 +2399,21 @@ impl PolyInternalData {
                 self as *mut Self,
                 PISeg1,
                 PISeg2,
+            )
+        })
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:70 - `HLRAlgo_PolyInternalData::IncPINod()`
+    pub unsafe fn inc_pi_nod(
+        &mut self,
+        thePINod1: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+        thePINod2: &mut *mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_inc_pi_nod(
+                self as *mut Self,
+                thePINod1,
+                thePINod2,
             )
         })
     }
@@ -2421,6 +2503,17 @@ impl PolyInternalData {
     ) -> &mut crate::ffi_types::NCollection_Array1_HLRAlgo_PolyInternalSegment {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_pi_seg(
+                self as *mut Self,
+            )))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:98 - `HLRAlgo_PolyInternalData::PINod()`
+    pub fn pi_nod(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyInternalNode {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyInternalData_pi_nod(
                 self as *mut Self,
             )))
         }
@@ -2612,28 +2705,6 @@ impl Handle_HLRAlgo_PolyInternalData {
         }
     }
 }
-
-// ── Skipped symbols for PolyInternalData (5 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:37 - `HLRAlgo_PolyInternalData::UpdateLinks`
-//   Reason: has unbindable types: param 'thePINod': unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>&)
-//   // pub fn update_links(&mut self, theTData: &mut Array1_HLRAlgo_TriangleData, thePISeg: &mut Array1_HLRAlgo_PolyInternalSegment, thePINod: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:42 - `HLRAlgo_PolyInternalData::AddNode`
-//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
-//   // pub fn add_node(&mut self, theNod1RValues: &mut PolyInternalNode_NodeData, theNod2RValues: &mut PolyInternalNode_NodeData, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, theCoef1: f64, theX3: f64, theY3: f64, theZ3: f64) -> i32;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:51 - `HLRAlgo_PolyInternalData::UpdateLinks`
-//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
-//   // pub fn update_links(&mut self, theIp1: i32, theIp2: i32, theIp3: i32, theTData1: &mut *mut Array1_HLRAlgo_TriangleData, theTData2: &mut *mut Array1_HLRAlgo_TriangleData, thePISeg1: &mut *mut Array1_HLRAlgo_PolyInternalSegment, thePISeg2: &mut *mut Array1_HLRAlgo_PolyInternalSegment, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:70 - `HLRAlgo_PolyInternalData::IncPINod`
-//   Reason: has unbindable types: param 'thePINod1': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&); param 'thePINod2': raw pointer (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*&)
-//   // pub fn inc_pi_nod(&mut self, thePINod1: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */, thePINod2: /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>*& */);
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyInternalData.hxx`:98 - `HLRAlgo_PolyInternalData::PINod`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>&)
-//   // pub fn pi_nod(&self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyInternalNode>>& */;
-//
 
 // ========================
 // From HLRAlgo_PolyInternalNode.hxx
@@ -2968,6 +3039,28 @@ impl PolyShellData {
         })
     }
 
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:45 - `HLRAlgo_PolyShellData::PolyData()`
+    pub fn poly_data(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyData {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_poly_data(
+                self as *mut Self,
+            )))
+        }
+    }
+
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:47 - `HLRAlgo_PolyShellData::HidingPolyData()`
+    pub fn hiding_poly_data(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_Handle_HLRAlgo_PolyData {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRAlgo_PolyShellData_hiding_poly_data(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:49 - `HLRAlgo_PolyShellData::Edges()`
     pub fn edges(&mut self) -> &mut crate::ffi_types::NCollection_List_HLRAlgo_BiPoint {
         unsafe {
@@ -3174,16 +3267,6 @@ impl Handle_HLRAlgo_PolyShellData {
         }
     }
 }
-
-// ── Skipped symbols for PolyShellData (2 total) ──
-// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:45 - `HLRAlgo_PolyShellData::PolyData`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyData>>&)
-//   // pub fn poly_data(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyData>>& */;
-//
-// SKIPPED: **Source:** `HLRAlgo_PolyShellData.hxx`:47 - `HLRAlgo_PolyShellData::HidingPolyData`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Array1<occ::handle<HLRAlgo_PolyData>>&)
-//   // pub fn hiding_poly_data(&mut self) -> /* NCollection_Array1<occ::handle<HLRAlgo_PolyData>>& */;
-//
 
 /// **Source:** `HLRAlgo_PolyShellData.hxx`:32 - `HLRAlgo_PolyShellData_ShellIndices`
 pub use crate::ffi_types::HLRAlgo_PolyShellData_ShellIndices as PolyShellData_ShellIndices;

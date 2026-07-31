@@ -1087,6 +1087,12 @@ unsafe extern "C" {
     pub fn AdvApp2Var_Network_destructor(self_: *mut AdvApp2Var_Network);
     /// **Source:** `AdvApp2Var_Network.hxx`:34 - `AdvApp2Var_Network::AdvApp2Var_Network()`
     pub fn AdvApp2Var_Network_ctor() -> crate::OcctResult<*mut AdvApp2Var_Network>;
+    /// **Source:** `AdvApp2Var_Network.hxx`:36 - `AdvApp2Var_Network::AdvApp2Var_Network()`
+    pub fn AdvApp2Var_Network_ctor_seq_advapp2var_patch_seq_double2(
+        Net: *const NCollection_Sequence_Handle_AdvApp2Var_Patch,
+        TheU: *const NCollection_Sequence_double,
+        TheV: *const NCollection_Sequence_double,
+    ) -> crate::OcctResult<*mut AdvApp2Var_Network>;
     /// **Source:** `AdvApp2Var_Network.hxx`:42 - `AdvApp2Var_Network::FirstNotApprox()`
     pub fn AdvApp2Var_Network_first_not_approx(
         self_: *const AdvApp2Var_Network,
@@ -12979,6 +12985,10 @@ unsafe extern "C" {
         theTolerance: f64,
         theAngleTol: f64,
     ) -> crate::OcctResult<*mut Geom2dConvert_ApproxArcsSegments>;
+    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:45 - `Geom2dConvert_ApproxArcsSegments::GetResult()`
+    pub fn Geom2dConvert_ApproxArcsSegments_get_result(
+        self_: *const Geom2dConvert_ApproxArcsSegments,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom2d_Curve>;
     // ======================== Geom2dConvert_ApproxCurve ========================
     pub fn Geom2dConvert_ApproxCurve_destructor(self_: *mut Geom2dConvert_ApproxCurve);
     /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:41 - `Geom2dConvert_ApproxCurve::Geom2dConvert_ApproxCurve()`
@@ -13061,6 +13071,11 @@ unsafe extern "C" {
         self_: *mut Geom2dConvert_BSplineCurveToBezierCurve,
         Index: i32,
     ) -> crate::OcctResult<*mut Handle_Geom2d_BezierCurve>;
+    /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs()`
+    pub fn Geom2dConvert_BSplineCurveToBezierCurve_arcs(
+        self_: *mut Geom2dConvert_BSplineCurveToBezierCurve,
+        Curves: *mut NCollection_Array1_Handle_Geom2d_BezierCurve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:105 - `Geom2dConvert_BSplineCurveToBezierCurve::Knots()`
     pub fn Geom2dConvert_BSplineCurveToBezierCurve_knots(
         self_: *const Geom2dConvert_BSplineCurveToBezierCurve,
@@ -14500,6 +14515,11 @@ unsafe extern "C" {
         self_: *mut GeomConvert_BSplineCurveToBezierCurve,
         Index: i32,
     ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:89 - `GeomConvert_BSplineCurveToBezierCurve::Arcs()`
+    pub fn GeomConvert_BSplineCurveToBezierCurve_arcs(
+        self_: *mut GeomConvert_BSplineCurveToBezierCurve,
+        Curves: *mut NCollection_Array1_Handle_Geom_BezierCurve,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:95 - `GeomConvert_BSplineCurveToBezierCurve::Knots()`
     pub fn GeomConvert_BSplineCurveToBezierCurve_knots(
         self_: *const GeomConvert_BSplineCurveToBezierCurve,
@@ -14566,6 +14586,11 @@ unsafe extern "C" {
         UIndex: i32,
         VIndex: i32,
     ) -> crate::OcctResult<*mut Handle_Geom_BezierSurface>;
+    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:142 - `GeomConvert_BSplineSurfaceToBezierSurface::Patches()`
+    pub fn GeomConvert_BSplineSurfaceToBezierSurface_patches(
+        self_: *mut GeomConvert_BSplineSurfaceToBezierSurface,
+        Surfaces: *mut NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:148 - `GeomConvert_BSplineSurfaceToBezierSurface::UKnots()`
     pub fn GeomConvert_BSplineSurfaceToBezierSurface_u_knots(
         self_: *const GeomConvert_BSplineSurfaceToBezierSurface,
@@ -14588,6 +14613,25 @@ unsafe extern "C" {
     pub fn GeomConvert_CompBezierSurfacesToBSplineSurface_destructor(
         self_: *mut GeomConvert_CompBezierSurfacesToBSplineSurface,
     );
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:115 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    pub fn GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface(
+        Beziers: *const NCollection_Array2_Handle_Geom_BezierSurface,
+    ) -> crate::OcctResult<*mut GeomConvert_CompBezierSurfacesToBSplineSurface>;
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:122 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    pub fn GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_real_bool(
+        Beziers: *const NCollection_Array2_Handle_Geom_BezierSurface,
+        Tolerance: f64,
+        RemoveKnots: bool,
+    ) -> crate::OcctResult<*mut GeomConvert_CompBezierSurfacesToBSplineSurface>;
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:213 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
+    pub fn GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_arr2_geom_beziersurface_arr1_double2_shape2_real(
+        Beziers: *const NCollection_Array2_Handle_Geom_BezierSurface,
+        UKnots: *const NCollection_Array1_double,
+        VKnots: *const NCollection_Array1_double,
+        UContinuity: i32,
+        VContinuity: i32,
+        Tolerance: f64,
+    ) -> crate::OcctResult<*mut GeomConvert_CompBezierSurfacesToBSplineSurface>;
     /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:223 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUKnots()`
     pub fn GeomConvert_CompBezierSurfacesToBSplineSurface_nb_u_knots(
         self_: *const GeomConvert_CompBezierSurfacesToBSplineSurface,
@@ -19937,21 +19981,48 @@ unsafe extern "C" {
         C: *const Handle_Geom2d_Curve,
         Parameterisation: i32,
     ) -> crate::OcctResult<*mut Handle_Geom2d_BSplineCurve>;
+    /// **Source:** `Geom2dConvert.hxx`:185 - `Geom2dConvert::ConcatG1`
+    pub fn Geom2dConvert_concat_g1_arr1_geom2d_bsplinecurve_arr1_double_harr1_geom2d_bsplinecurve_bool_real(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `Geom2dConvert.hxx`:204 - `Geom2dConvert::ConcatC1`
+    pub fn Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfIndices: *mut Handle_NCollection_HArray1_int,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `Geom2dConvert.hxx`:224 - `Geom2dConvert::ConcatC1`
+    pub fn Geom2dConvert_concat_c1_arr1_geom2d_bsplinecurve_arr1_double_harr1_int_harr1_geom2d_bsplinecurve_bool_real2(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom2d_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfIndices: *mut Handle_NCollection_HArray1_int,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+        AngularTolerance: f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `Geom2dConvert.hxx`:237 - `Geom2dConvert::C0BSplineToC1BSplineCurve`
     pub fn Geom2dConvert_c0b_spline_to_c1b_spline_curve_handlegeom2dbsplinecurve_real(
         BS: *mut Handle_Geom2d_BSplineCurve,
         Tolerance: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Geom2dConvert.hxx`:244 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
-    pub fn Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(
+    pub fn Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real(
         BS: *const Handle_Geom2d_BSplineCurve,
-        tabBS: *mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
+        tabBS: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
         Tolerance: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Geom2dConvert.hxx`:253 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
-    pub fn Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(
+    pub fn Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_harr1_geom2d_bsplinecurve_real2(
         BS: *const Handle_Geom2d_BSplineCurve,
-        tabBS: *mut Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
+        tabBS: *mut Handle_NCollection_HArray1_Handle_Geom2d_BSplineCurve,
         AngularTolerance: f64,
         Tolerance: f64,
     ) -> *const std::ffi::c_char;
@@ -20017,6 +20088,33 @@ unsafe extern "C" {
     pub fn GeomConvert_surface_to_b_spline_surface(
         S: *const Handle_Geom_Surface,
     ) -> crate::OcctResult<*mut Handle_Geom_BSplineSurface>;
+    /// **Source:** `GeomConvert.hxx`:297 - `GeomConvert::ConcatG1`
+    pub fn GeomConvert_concat_g1_arr1_geom_bsplinecurve_arr1_double_harr1_geom_bsplinecurve_bool_real(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomConvert.hxx`:316 - `GeomConvert::ConcatC1`
+    pub fn GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfIndices: *mut Handle_NCollection_HArray1_int,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `GeomConvert.hxx`:336 - `GeomConvert::ConcatC1`
+    pub fn GeomConvert_concat_c1_arr1_geom_bsplinecurve_arr1_double_harr1_int_harr1_geom_bsplinecurve_bool_real2(
+        ArrayOfCurves: *mut NCollection_Array1_Handle_Geom_BSplineCurve,
+        ArrayOfToler: *const NCollection_Array1_double,
+        ArrayOfIndices: *mut Handle_NCollection_HArray1_int,
+        ArrayOfConcatenated: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
+        ClosedFlag: *mut bool,
+        ClosedTolerance: f64,
+        AngularTolerance: f64,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `GeomConvert.hxx`:352 - `GeomConvert::C0BSplineToC1BSplineCurve`
     pub fn GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
         BS: *mut Handle_Geom_BSplineCurve,
@@ -20024,15 +20122,15 @@ unsafe extern "C" {
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `GeomConvert.hxx`:359 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
-    pub fn GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(
+    pub fn GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real(
         BS: *const Handle_Geom_BSplineCurve,
-        tabBS: *mut Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
+        tabBS: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
         tolerance: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `GeomConvert.hxx`:371 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
-    pub fn GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(
+    pub fn GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_harr1_geom_bsplinecurve_real2(
         BS: *const Handle_Geom_BSplineCurve,
-        tabBS: *mut Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
+        tabBS: *mut Handle_NCollection_HArray1_Handle_Geom_BSplineCurve,
         AngularTolerance: f64,
         tolerance: f64,
     ) -> *const std::ffi::c_char;

@@ -5429,6 +5429,17 @@ impl DiscretAlgoFactory {
         }
     }
 
+    /// **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:57 - `BRepMesh_DiscretAlgoFactory::Factories()`
+    /// Returns the global list of registered factories.
+    pub fn factories(
+    ) -> &'static crate::ffi_types::NCollection_List_Handle_BRepMesh_DiscretAlgoFactory {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMesh::BRepMesh_DiscretAlgoFactory_factories(),
+            ))
+        }
+    }
+
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
@@ -5615,13 +5626,6 @@ impl Handle_BRepMesh_DiscretAlgoFactory {
         }
     }
 }
-
-// ── Skipped symbols for DiscretAlgoFactory (1 total) ──
-// SKIPPED: **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:57 - `BRepMesh_DiscretAlgoFactory::Factories`
-//   static_method: Returns the global list of registered factories.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<BRepMesh_DiscretAlgoFactory>> const&)
-//   // pub fn factories() -> /* NCollection_List<occ::handle<BRepMesh_DiscretAlgoFactory>> const& */;
-//
 
 // ========================
 // From BRepMesh_DiscretFactory.hxx
@@ -9509,7 +9513,12 @@ impl ModelBuilder {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
-    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
+    pub fn get_message_strings(
+        &self,
+        theStatus: crate::message::Status,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HExtendedString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMesh::BRepMesh_ModelBuilder_inherited_GetMessageStrings(

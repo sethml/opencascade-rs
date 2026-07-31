@@ -10602,6 +10602,11 @@ unsafe extern "C" {
     pub fn BRepMAT2d_Explorer_shape(
         self_: *const BRepMAT2d_Explorer,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour()`
+    pub fn BRepMAT2d_Explorer_contour(
+        self_: *const BRepMAT2d_Explorer,
+        IndexContour: i32,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_Geom2d_Curve>;
     /// **Source:** `BRepMAT2d_Explorer.hxx`:76 - `BRepMAT2d_Explorer::IsModified()`
     pub fn BRepMAT2d_Explorer_is_modified(
         self_: *const BRepMAT2d_Explorer,
@@ -13680,6 +13685,11 @@ unsafe extern "C" {
     pub fn MAT_Graph_compact_arcs(self_: *mut MAT_Graph) -> *const std::ffi::c_char;
     /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactNodes()`
     pub fn MAT_Graph_compact_nodes(self_: *mut MAT_Graph) -> *const std::ffi::c_char;
+    /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::ChangeBasicElts()`
+    pub fn MAT_Graph_change_basic_elts(
+        self_: *mut MAT_Graph,
+        NewMap: *const NCollection_DataMap_int_Handle_MAT_BasicElt,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `MAT_Graph.hxx`:108 - `MAT_Graph::ChangeBasicElt()`
     pub fn MAT_Graph_change_basic_elt(
         self_: *mut MAT_Graph,
@@ -14074,6 +14084,16 @@ unsafe extern "C" {
     pub fn MAT_Node_geom_index(self_: *const MAT_Node) -> crate::OcctResult<i32>;
     /// **Source:** `MAT_Node.hxx`:45 - `MAT_Node::Index()`
     pub fn MAT_Node_index(self_: *const MAT_Node) -> crate::OcctResult<i32>;
+    /// **Source:** `MAT_Node.hxx`:48 - `MAT_Node::LinkedArcs()`
+    pub fn MAT_Node_linked_arcs(
+        self_: *const MAT_Node,
+        S: *mut NCollection_Sequence_Handle_MAT_Arc,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `MAT_Node.hxx`:52 - `MAT_Node::NearElts()`
+    pub fn MAT_Node_near_elts(
+        self_: *const MAT_Node,
+        S: *mut NCollection_Sequence_Handle_MAT_BasicElt,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::Distance()`
     pub fn MAT_Node_distance(self_: *const MAT_Node) -> crate::OcctResult<f64>;
     /// **Source:** `MAT_Node.hxx`:58 - `MAT_Node::PendingNode()`
@@ -14837,11 +14857,20 @@ unsafe extern "C" {
     pub fn MAT2d_MiniPath_ctor() -> crate::OcctResult<*mut MAT2d_MiniPath>;
     /// **Source:** `MAT2d_MiniPath.hxx`:72 - `MAT2d_MiniPath::RunOnConnexions()`
     pub fn MAT2d_MiniPath_run_on_connexions(self_: *mut MAT2d_MiniPath) -> *const std::ffi::c_char;
+    /// **Source:** `MAT2d_MiniPath.hxx`:76 - `MAT2d_MiniPath::Path()`
+    pub fn MAT2d_MiniPath_path(
+        self_: *const MAT2d_MiniPath,
+    ) -> crate::OcctResult<*const NCollection_Sequence_Handle_MAT2d_Connexion>;
     /// **Source:** `MAT2d_MiniPath.hxx`:80 - `MAT2d_MiniPath::IsConnexionsFrom()`
     pub fn MAT2d_MiniPath_is_connexions_from(
         self_: *const MAT2d_MiniPath,
         Index: i32,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `MAT2d_MiniPath.hxx`:84 - `MAT2d_MiniPath::ConnexionsFrom()`
+    pub fn MAT2d_MiniPath_connexions_from(
+        self_: *mut MAT2d_MiniPath,
+        Index: i32,
+    ) -> crate::OcctResult<*mut NCollection_Sequence_Handle_MAT2d_Connexion>;
     /// **Source:** `MAT2d_MiniPath.hxx`:89 - `MAT2d_MiniPath::IsRoot()`
     pub fn MAT2d_MiniPath_is_root(
         self_: *const MAT2d_MiniPath,

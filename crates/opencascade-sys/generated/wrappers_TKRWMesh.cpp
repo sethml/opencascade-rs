@@ -11,7 +11,6 @@
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
 #include <Poly_Polygon3D.hxx>
-#include <Poly_Triangulation.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <RWMesh.hxx>
 #include <RWMesh_CafReader.hxx>
@@ -31,7 +30,6 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
-#include <TDocStd_Document.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>

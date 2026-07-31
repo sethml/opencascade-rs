@@ -905,6 +905,20 @@ impl Application {
         }
     }
 
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn meta_data_look_up_table(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData
+    {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
@@ -1145,6 +1159,17 @@ impl ApplicationDelta {
         }
     }
 
+    /// **Source:** `TDocStd_ApplicationDelta.hxx`:33 - `TDocStd_ApplicationDelta::GetDocuments()`
+    pub fn get_documents(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Sequence_Handle_TDocStd_Document {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_ApplicationDelta_get_documents(self as *mut Self),
+            ))
+        }
+    }
+
     /// **Source:** `TDocStd_ApplicationDelta.hxx`:35 - `TDocStd_ApplicationDelta::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::ExtendedString {
         unsafe {
@@ -1361,12 +1386,6 @@ impl Handle_TDocStd_ApplicationDelta {
     }
 }
 
-// ── Skipped symbols for ApplicationDelta (1 total) ──
-// SKIPPED: **Source:** `TDocStd_ApplicationDelta.hxx`:33 - `TDocStd_ApplicationDelta::GetDocuments`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<TDocStd_Document>>&)
-//   // pub fn get_documents(&mut self) -> /* NCollection_Sequence<occ::handle<TDocStd_Document>>& */;
-//
-
 // ========================
 // From TDocStd_CompoundDelta.hxx
 // ========================
@@ -1518,6 +1537,19 @@ impl CompoundDelta {
                 aLabelList,
             )
         })
+    }
+
+    /// Inherited: **Source:** `TDF_Delta.hxx`:61 - `TDF_Delta::AttributeDeltas()`
+    pub fn attribute_deltas(
+        &self,
+    ) -> &crate::ffi_types::NCollection_List_Handle_TDF_AttributeDelta {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_CompoundDelta_inherited_AttributeDeltas(
+                    self as *const Self,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `TDF_Delta.hxx`:64 - `TDF_Delta::Name()`
@@ -2029,6 +2061,24 @@ impl Document {
         crate::check_result(unsafe {
             crate::ffi_extern_TKLCAF::TDocStd_Document_redo(self as *mut Self)
         })
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:174 - `TDocStd_Document::GetUndos()`
+    pub fn get_undos(&self) -> &crate::ffi_types::NCollection_List_Handle_TDF_Delta {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TDocStd_Document_get_undos(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `TDocStd_Document.hxx`:176 - `TDocStd_Document::GetRedos()`
+    pub fn get_redos(&self) -> &crate::ffi_types::NCollection_List_Handle_TDF_Delta {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TDocStd_Document_get_redos(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TDocStd_Document.hxx`:180 - `TDocStd_Document::RemoveFirstUndo()`
@@ -3050,16 +3100,6 @@ impl Handle_TDocStd_Document {
     }
 }
 
-// ── Skipped symbols for Document (2 total) ──
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:174 - `TDocStd_Document::GetUndos`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TDF_Delta>> const&)
-//   // pub fn get_undos(&self) -> /* NCollection_List<occ::handle<TDF_Delta>> const& */;
-//
-// SKIPPED: **Source:** `TDocStd_Document.hxx`:176 - `TDocStd_Document::GetRedos`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TDF_Delta>> const&)
-//   // pub fn get_redos(&self) -> /* NCollection_List<occ::handle<TDF_Delta>> const& */;
-//
-
 // ========================
 // From TDocStd_Modified.hxx
 // ========================
@@ -3588,6 +3628,23 @@ impl Modified {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Modified_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -3815,6 +3872,34 @@ impl MultiTransactionManager {
         })
     }
 
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:72 - `TDocStd_MultiTransactionManager::GetAvailableUndos()`
+    /// Returns available manager undos.
+    pub fn get_available_undos(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_TDocStd_ApplicationDelta {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_MultiTransactionManager_get_available_undos(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:75 - `TDocStd_MultiTransactionManager::GetAvailableRedos()`
+    /// Returns available manager redos.
+    pub fn get_available_redos(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_TDocStd_ApplicationDelta {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_MultiTransactionManager_get_available_redos(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:80 - `TDocStd_MultiTransactionManager::OpenCommand()`
     /// Opens transaction in each document and sets the flag that
     /// transaction is opened. If there are already opened transactions in the documents,
@@ -3919,6 +4004,18 @@ impl MultiTransactionManager {
                 theDoc,
             )
         })
+    }
+
+    /// **Source:** `TDocStd_MultiTransactionManager.hxx`:114 - `TDocStd_MultiTransactionManager::Documents()`
+    /// Returns the added documents to the transaction manager.
+    pub fn documents(&self) -> &crate::ffi_types::NCollection_Sequence_Handle_TDocStd_Document {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TDocStd_MultiTransactionManager_documents(
+                    self as *const Self,
+                ),
+            ))
+        }
     }
 
     /// **Source:** `TDocStd_MultiTransactionManager.hxx`:120 - `TDocStd_MultiTransactionManager::SetNestedTransactionMode()`
@@ -4181,23 +4278,6 @@ impl Handle_TDocStd_MultiTransactionManager {
         }
     }
 }
-
-// ── Skipped symbols for MultiTransactionManager (3 total) ──
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:72 - `TDocStd_MultiTransactionManager::GetAvailableUndos`
-//   method: Returns available manager undos.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> const&)
-//   // pub fn get_available_undos(&self) -> /* NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> const& */;
-//
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:75 - `TDocStd_MultiTransactionManager::GetAvailableRedos`
-//   method: Returns available manager redos.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> const&)
-//   // pub fn get_available_redos(&self) -> /* NCollection_Sequence<occ::handle<TDocStd_ApplicationDelta>> const& */;
-//
-// SKIPPED: **Source:** `TDocStd_MultiTransactionManager.hxx`:114 - `TDocStd_MultiTransactionManager::Documents`
-//   method: Returns the added documents to the transaction manager.
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<TDocStd_Document>> const&)
-//   // pub fn documents(&self) -> /* NCollection_Sequence<occ::handle<TDocStd_Document>> const& */;
-//
 
 // ========================
 // From TDocStd_Owner.hxx
@@ -4704,6 +4784,23 @@ impl Owner {
             crate::ffi_extern_TKLCAF::TDocStd_Owner_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_Owner_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }
@@ -5452,6 +5549,23 @@ impl XLink {
         })
     }
 
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLink_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
+        })
+    }
+
     /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
@@ -6145,6 +6259,23 @@ impl XLinkRoot {
             crate::ffi_extern_TKLCAF::TDocStd_XLinkRoot_inherited_References(
                 self as *const Self,
                 aDataSet,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:353 - `TDF_Attribute::ExtendedDump()`
+    pub fn extended_dump(
+        &self,
+        anOS: &mut crate::ffi_types::Standard_OStream,
+        aFilter: &crate::tdf::IDFilter,
+        aMap: &mut crate::ffi_types::NCollection_IndexedMap_Handle_TDF_Attribute,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TDocStd_XLinkRoot_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
             )
         })
     }

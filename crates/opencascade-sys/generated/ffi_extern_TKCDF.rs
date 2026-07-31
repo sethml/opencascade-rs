@@ -211,6 +211,10 @@ unsafe extern "C" {
     pub fn CDF_Application_inherited_Version(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn CDF_Application_inherited_MetaDataLookUpTable(
+        self_: *mut CDF_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_Application_inherited_IsInstance(
         self_: *const CDF_Application,
@@ -358,6 +362,10 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Handle_CDM_Document>;
     // ======================== CDF_FWOSDriver ========================
     pub fn CDF_FWOSDriver_destructor(self_: *mut CDF_FWOSDriver);
+    /// **Source:** `CDF_FWOSDriver.hxx`:37 - `CDF_FWOSDriver::CDF_FWOSDriver()`
+    pub fn CDF_FWOSDriver_ctor_dmap_extendedstring_cdm_metadata(
+        theLookUpTable: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+    ) -> crate::OcctResult<*mut CDF_FWOSDriver>;
     /// **Source:** `CDF_FWOSDriver.hxx`:41 - `CDF_FWOSDriver::Find()`
     pub fn CDF_FWOSDriver_find(
         self_: *mut CDF_FWOSDriver,
@@ -971,6 +979,10 @@ unsafe extern "C" {
     pub fn CDM_Application_version(
         self_: *const CDM_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
+    /// **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
+    pub fn CDM_Application_meta_data_look_up_table(
+        self_: *mut CDM_Application,
+    ) -> crate::OcctResult<*mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData>;
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::DynamicType()`
     pub fn CDM_Application_dynamic_type(
         self_: *const CDM_Application,
@@ -1439,6 +1451,25 @@ unsafe extern "C" {
     pub fn CDM_MetaData_dynamic_type(
         self_: *const CDM_MetaData,
     ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDM_MetaData.hxx`:37 - `CDM_MetaData::LookUp()`
+    pub fn CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring4_bool(
+        theLookUpTable: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        aFolder: *const TCollection_ExtendedString,
+        aName: *const TCollection_ExtendedString,
+        aPath: *const TCollection_ExtendedString,
+        aFileName: *const TCollection_ExtendedString,
+        ReadOnly: bool,
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDM_MetaData.hxx`:45 - `CDM_MetaData::LookUp()`
+    pub fn CDM_MetaData_look_up_dmap_extendedstring_cdm_metadata_extendedstring5_bool(
+        theLookUpTable: *mut NCollection_DataMap_TCollection_ExtendedString_Handle_CDM_MetaData,
+        aFolder: *const TCollection_ExtendedString,
+        aName: *const TCollection_ExtendedString,
+        aPath: *const TCollection_ExtendedString,
+        aVersion: *const TCollection_ExtendedString,
+        aFileName: *const TCollection_ExtendedString,
+        ReadOnly: bool,
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_name()`
     pub fn CDM_MetaData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_descriptor()`
@@ -3578,10 +3609,16 @@ unsafe extern "C" {
     /// **Source:** `PCDM_StorageDriver.hxx` - `PCDM_StorageDriver::PCDM_StorageDriver()`
     pub fn PCDM_StorageDriver_ctor() -> crate::OcctResult<*mut PCDM_StorageDriver>;
     /// **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
-    pub fn PCDM_StorageDriver_make(
+    pub fn PCDM_StorageDriver_make_handlecdmdocument(
         self_: *mut PCDM_StorageDriver,
         aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
+    /// **Source:** `PCDM_StorageDriver.hxx`:55 - `PCDM_StorageDriver::Make()`
+    pub fn PCDM_StorageDriver_make_handlecdmdocument_seq_pcdm_document(
+        self_: *mut PCDM_StorageDriver,
+        aDocument: *const Handle_CDM_Document,
+        Documents: *mut NCollection_Sequence_Handle_PCDM_Document,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `PCDM_StorageDriver.hxx`:64 - `PCDM_StorageDriver::Write()`
     pub fn PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(
         self_: *mut PCDM_StorageDriver,

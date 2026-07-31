@@ -792,7 +792,7 @@ impl Check {
         &self,
         final_: bool,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -921,7 +921,7 @@ impl Check {
         &self,
         final_: bool,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -988,7 +988,7 @@ impl Check {
         &self,
         final_: bool,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1804,9 +1804,8 @@ impl CheckIterator {
         &self,
         failsonly: bool,
         global: bool,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_checkeds(
@@ -3385,11 +3384,15 @@ impl EntityIterator {
 
     /// **Source:** `Interface_EntityIterator.hxx`:44 - `Interface_EntityIterator::Interface_EntityIterator()`
     /// Defines an iterator on a list, directly i.e. without copying it
-    pub fn new_handlencollectionhsequenceopencascadehandlestandardtransient(
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    pub fn new_hseq_standard_transient(
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityIterator_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(list)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Interface_EntityIterator_ctor_hseq_standard_transient(
+                    list,
+                ),
+            ))
         }
     }
 
@@ -3397,7 +3400,7 @@ impl EntityIterator {
     /// Gets a list of entities and adds its to the iteration list
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_add_list(self as *mut Self, list)
@@ -3518,9 +3521,8 @@ impl EntityIterator {
     /// Calls Start if not yet done
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityIterator_content(self as *const Self),
@@ -7220,9 +7222,8 @@ impl Graph {
     pub fn get_shareds(
         &self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Graph_get_shareds(self as *const Self, ent),
@@ -7264,9 +7265,8 @@ impl Graph {
     pub fn get_sharings(
         &self,
         ent: &crate::ffi_types::Handle_Standard_Transient,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Graph_get_sharings(self as *const Self, ent),
@@ -7487,7 +7487,7 @@ impl GraphContent {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_AddList(
@@ -7597,9 +7597,8 @@ impl GraphContent {
     /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     pub fn content(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_Handle_Standard_Transient>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Content(
@@ -9515,7 +9514,7 @@ impl InterfaceModel {
     /// **Source:** `Interface_InterfaceModel.hxx`:413 - `Interface_InterfaceModel::ListTemplates()`
     /// Returns the complete list of names attached to template models
     pub fn list_templates() -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14965,7 +14964,7 @@ impl Static {
         mode: i32,
         criter: &str,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+        crate::ffi_types::Handle_NCollection_HSequence_Handle_TCollection_HAsciiString,
     > {
         let c_criter = std::ffi::CString::new(criter).unwrap();
         unsafe {

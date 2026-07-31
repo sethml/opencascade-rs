@@ -104,6 +104,51 @@ impl Area1dBuilder {
         })
     }
 
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList()`
+    pub fn dump_list(L: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_dump_list(L)
+        })
+    }
+
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
         unsafe {
@@ -184,22 +229,10 @@ impl Area1dBuilder {
     }
 }
 
-// ── Skipped symbols for Area1dBuilder (4 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
-//
+// ── Skipped symbols for Area1dBuilder (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&); param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 'LOL1': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&); param 'LOL2': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, LOL2: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void, s1: *mut void, s2: *mut void);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList`
-//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> const&)
-//   // pub fn dump_list(L: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> const& */);
+//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&)
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: &mut List_Handle_TopOpeBRepBuild_Loop, s: *mut void);
 //
 
 // ========================
@@ -354,6 +387,37 @@ impl Area2dBuilder {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+        s1: Option<&mut std::ffi::c_void>,
+        s2: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s.map_or(std::ptr::null_mut(), |r| r as *mut _), s1.map_or(std::ptr::null_mut(), |r| r as *mut _), s2.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
     }
 }
 
@@ -510,6 +574,37 @@ impl Area3dBuilder {
             ))
         }
     }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+        s1: Option<&mut std::ffi::c_void>,
+        s2: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s.map_or(std::ptr::null_mut(), |r| r as *mut _), s1.map_or(std::ptr::null_mut(), |r| r as *mut _), s2.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
+    }
 }
 
 // ========================
@@ -649,20 +744,50 @@ impl AreaBuilder {
             )))
         }
     }
+
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
+                self as *const Self,
+                L,
+                LOL,
+                s,
+            )
+        })
+    }
+
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: *mut std::ffi::c_void,
+        s1: *mut std::ffi::c_void,
+        s2: *mut std::ffi::c_void,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
+                self as *const Self,
+                LOL1,
+                LOL2,
+                s,
+                s1,
+                s2,
+            )
+        })
+    }
 }
 
-// ── Skipped symbols for AreaBuilder (3 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
-//
+// ── Skipped symbols for AreaBuilder (1 total) ──
 // SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop`
-//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&); param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
-//
-// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
-//   Reason: has unbindable types: param 'LOL1': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&); param 'LOL2': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, LOL2: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void, s1: *mut void, s2: *mut void);
+//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&)
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: &mut List_Handle_TopOpeBRepBuild_Loop, s: *mut void);
 //
 
 // ========================
@@ -6189,6 +6314,37 @@ impl EdgeBuilder {
         })
     }
 
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
+                self as *const Self,
+                L,
+                LOL,
+                s.map_or(std::ptr::null_mut(), |r| r as *mut _),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+        s1: Option<&mut std::ffi::c_void>,
+        s2: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s.map_or(std::ptr::null_mut(), |r| r as *mut _), s1.map_or(std::ptr::null_mut(), |r| r as *mut _), s2.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
+    }
+
     /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -6436,6 +6592,32 @@ impl FaceAreaBuilder {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(self as *const Self, L, LOL, s.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+        s1: Option<&mut std::ffi::c_void>,
+        s2: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s.map_or(std::ptr::null_mut(), |r| r as *mut _), s1.map_or(std::ptr::null_mut(), |r| r as *mut _), s2.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
     }
 }
 
@@ -8419,6 +8601,19 @@ impl LoopSet {
         }
     }
 
+    /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
+    pub fn change_list_of_loop(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopSet_change_list_of_loop(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:41 - `TopOpeBRepBuild_LoopSet::InitLoop()`
     pub fn init_loop(&mut self) {
         crate::check_void_result(unsafe {
@@ -8449,12 +8644,6 @@ impl LoopSet {
         }
     }
 }
-
-// ── Skipped symbols for LoopSet (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
-//   // pub fn change_list_of_loop(&mut self) -> /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */;
-//
 
 // ========================
 // From TopOpeBRepBuild_Pave.hxx
@@ -9028,6 +9217,16 @@ impl PaveSet {
         })
     }
 
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:63 - `TopOpeBRepBuild_PaveSet::SortPave()`
+    pub fn sort_pave(
+        Lin: &crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Pave,
+        Lout: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Pave,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_sort_pave(Lin, Lout)
+        })
+    }
+
     /// Upcast to TopOpeBRepBuild_LoopSet
     pub fn as_loop_set(&self) -> &LoopSet {
         unsafe {
@@ -9049,13 +9248,20 @@ impl PaveSet {
             )
         }
     }
-}
 
-// ── Skipped symbols for PaveSet (1 total) ──
-// SKIPPED: **Source:** `TopOpeBRepBuild_PaveSet.hxx`:63 - `TopOpeBRepBuild_PaveSet::SortPave`
-//   Reason: has unbindable types: param 'Lin': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> const&); param 'Lout': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Pave>>&)
-//   // pub fn sort_pave(Lin: /* NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> const& */, Lout: /* NCollection_List<occ::handle<TopOpeBRepBuild_Pave>>& */);
-//
+    /// Inherited: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
+    pub fn change_list_of_loop(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+}
 
 // ========================
 // From TopOpeBRepBuild_ShapeListOfShape.hxx
@@ -10383,6 +10589,32 @@ impl SolidAreaBuilder {
                 ),
             ))
         }
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
+    pub fn add_loop_to_listof_loop(
+        &self,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        LOL: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(self as *const Self, L, LOL, s.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
+    }
+
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
+    pub fn add_listof_loop_to_listof_loop(
+        &self,
+        LOL1: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        LOL2: &mut crate::ffi_types::NCollection_List_Handle_TopOpeBRepBuild_Loop,
+        s: Option<&mut std::ffi::c_void>,
+        s1: Option<&mut std::ffi::c_void>,
+        s2: Option<&mut std::ffi::c_void>,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s.map_or(std::ptr::null_mut(), |r| r as *mut _), s1.map_or(std::ptr::null_mut(), |r| r as *mut _), s2.map_or(std::ptr::null_mut(), |r| r as *mut _))
+        })
     }
 }
 

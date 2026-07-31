@@ -188,7 +188,7 @@ impl AdvancedBrepShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -221,7 +221,7 @@ impl AdvancedBrepShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_AdvancedBrepShapeRepresentation_inherited_SetItems(
@@ -235,7 +235,7 @@ impl AdvancedBrepShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_AdvancedBrepShapeRepresentation_inherited_Items(self as *const Self)))
@@ -596,7 +596,7 @@ impl AdvancedFace {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aFaceGeometry: &crate::ffi_types::Handle_StepGeom_Surface,
         aSameSense: bool,
     ) {
@@ -654,7 +654,7 @@ impl AdvancedFace {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_AdvancedFace_inherited_SetBounds(
@@ -667,9 +667,8 @@ impl AdvancedFace {
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn bounds(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_AdvancedFace_inherited_Bounds(
@@ -3266,7 +3265,7 @@ impl BrepWithVoids {
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aOuter: &crate::ffi_types::Handle_StepShape_ClosedShell,
-        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_BrepWithVoids_init(
@@ -3281,7 +3280,7 @@ impl BrepWithVoids {
     /// **Source:** `StepShape_BrepWithVoids.hxx`:44 - `StepShape_BrepWithVoids::SetVoids()`
     pub fn set_voids(
         &mut self,
-        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_BrepWithVoids_set_voids(self as *mut Self, aVoids)
@@ -3289,7 +3288,11 @@ impl BrepWithVoids {
     }
 
     /// **Source:** `StepShape_BrepWithVoids.hxx`:48 - `StepShape_BrepWithVoids::Voids()`
-    pub fn voids(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell>{
+    pub fn voids(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_BrepWithVoids_voids(self as *const Self),
@@ -3818,7 +3821,7 @@ impl ClosedShell {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ClosedShell_inherited_Init(
@@ -3832,7 +3835,7 @@ impl ClosedShell {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ClosedShell_inherited_SetCfsFaces(
@@ -3845,9 +3848,7 @@ impl ClosedShell {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_ClosedShell_inherited_CfsFaces(
@@ -4185,7 +4186,7 @@ impl CompoundShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -4222,7 +4223,7 @@ impl CompoundShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_CompoundShapeRepresentation_inherited_SetItems(
@@ -4236,7 +4237,7 @@ impl CompoundShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4468,7 +4469,7 @@ impl ConnectedEdgeSet {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aCesEdges: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
+        aCesEdges: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Edge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedEdgeSet_init(
@@ -4483,9 +4484,7 @@ impl ConnectedEdgeSet {
     /// Returns field CesEdges
     pub fn ces_edges(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_ConnectedEdgeSet_ces_edges(
@@ -4499,7 +4498,7 @@ impl ConnectedEdgeSet {
     /// Set field CesEdges
     pub fn set_ces_edges(
         &mut self,
-        CesEdges: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Edge,
+        CesEdges: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Edge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedEdgeSet_set_ces_edges(
@@ -4807,7 +4806,7 @@ impl ConnectedFaceSet {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceSet_init(
@@ -4821,7 +4820,7 @@ impl ConnectedFaceSet {
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceSet_set_cfs_faces(
@@ -4834,9 +4833,7 @@ impl ConnectedFaceSet {
     /// **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceSet_cfs_faces(
@@ -5311,7 +5308,7 @@ impl ConnectedFaceShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -5344,7 +5341,7 @@ impl ConnectedFaceShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -5355,7 +5352,7 @@ impl ConnectedFaceShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceShapeRepresentation_inherited_Items(self as *const Self)))
@@ -5563,7 +5560,7 @@ impl ConnectedFaceSubSet {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aConnectedFaceSet_CfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aConnectedFaceSet_CfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
         aParentFaceSet: &crate::ffi_types::Handle_StepShape_ConnectedFaceSet,
     ) {
         crate::check_void_result(unsafe {
@@ -5715,7 +5712,7 @@ impl ConnectedFaceSubSet {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceSubSet_inherited_SetCfsFaces(
@@ -5728,9 +5725,7 @@ impl ConnectedFaceSubSet {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_ConnectedFaceSubSet_inherited_CfsFaces(
@@ -6699,7 +6694,7 @@ impl CsgShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -6736,7 +6731,7 @@ impl CsgShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_CsgShapeRepresentation_inherited_SetItems(
@@ -6750,7 +6745,7 @@ impl CsgShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7422,7 +7417,7 @@ impl DefinitionalRepresentationAndShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -7447,7 +7442,7 @@ impl DefinitionalRepresentationAndShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -7458,7 +7453,7 @@ impl DefinitionalRepresentationAndShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_DefinitionalRepresentationAndShapeRepresentation_inherited_Items(self as *const Self)))
@@ -10407,7 +10402,7 @@ impl EdgeBasedWireframeModel {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aEbwmBoundary: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
+        aEbwmBoundary: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_EdgeBasedWireframeModel_init(
@@ -10423,7 +10418,7 @@ impl EdgeBasedWireframeModel {
     pub fn ebwm_boundary(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10438,7 +10433,7 @@ impl EdgeBasedWireframeModel {
     /// Set field EbwmBoundary
     pub fn set_ebwm_boundary(
         &mut self,
-        EbwmBoundary: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedEdgeSet,
+        EbwmBoundary: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedEdgeSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_EdgeBasedWireframeModel_set_ebwm_boundary(
@@ -10818,7 +10813,7 @@ impl EdgeBasedWireframeShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -10843,7 +10838,7 @@ impl EdgeBasedWireframeShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_EdgeBasedWireframeShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -10854,7 +10849,7 @@ impl EdgeBasedWireframeShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_EdgeBasedWireframeShapeRepresentation_inherited_Items(self as *const Self)))
@@ -11476,7 +11471,7 @@ impl EdgeLoop {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_EdgeLoop_init(self as *mut Self, aName, aEdgeList)
@@ -11486,7 +11481,7 @@ impl EdgeLoop {
     /// **Source:** `StepShape_EdgeLoop.hxx`:42 - `StepShape_EdgeLoop::SetEdgeList()`
     pub fn set_edge_list(
         &mut self,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_EdgeLoop_set_edge_list(
@@ -11499,9 +11494,8 @@ impl EdgeLoop {
     /// **Source:** `StepShape_EdgeLoop.hxx`:45 - `StepShape_EdgeLoop::EdgeList()`
     pub fn edge_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_EdgeLoop_edge_list(self as *const Self),
@@ -12739,7 +12733,7 @@ impl Face {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_Face_init(self as *mut Self, aName, aBounds)
@@ -12749,7 +12743,7 @@ impl Face {
     /// **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_Face_set_bounds(self as *mut Self, aBounds)
@@ -12759,9 +12753,8 @@ impl Face {
     /// **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn bounds(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_Face_bounds(self as *const Self),
@@ -13137,7 +13130,7 @@ impl FaceBasedSurfaceModel {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aFbsmFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
+        aFbsmFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_FaceBasedSurfaceModel_init(
@@ -13153,7 +13146,7 @@ impl FaceBasedSurfaceModel {
     pub fn fbsm_faces(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -13168,7 +13161,7 @@ impl FaceBasedSurfaceModel {
     /// Set field FbsmFaces
     pub fn set_fbsm_faces(
         &mut self,
-        FbsmFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_ConnectedFaceSet,
+        FbsmFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_ConnectedFaceSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_FaceBasedSurfaceModel_set_fbsm_faces(
@@ -14212,7 +14205,7 @@ impl FaceSurface {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aFaceGeometry: &crate::ffi_types::Handle_StepGeom_Surface,
         aSameSense: bool,
     ) {
@@ -14386,7 +14379,7 @@ impl FaceSurface {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_FaceSurface_inherited_SetBounds(
@@ -14399,9 +14392,8 @@ impl FaceSurface {
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn bounds(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_FaceSurface_inherited_Bounds(
@@ -15050,14 +15042,14 @@ impl FacetedBrepAndBrepWithVoids {
     }
 
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:46 - `StepShape_FacetedBrepAndBrepWithVoids::Init()`
-    pub fn init_handletcollectionhasciistring_handlestepshapeclosedshell_handlencollectionharray1opencascadehandlestepshapeorientedclosedshell(
+    pub fn init_handletcollectionhasciistring_handlestepshapeclosedshell_harr1_stepshape_orientedclosedshell(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aOuter: &crate::ffi_types::Handle_StepShape_ClosedShell,
-        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_handlencollectionharray1opencascadehandlestepshapeorientedclosedshell(self as *mut Self, aName, aOuter, aVoids)
+            crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepAndBrepWithVoids_init_handletcollectionhasciistring_handlestepshapeclosedshell_harr1_stepshape_orientedclosedshell(self as *mut Self, aName, aOuter, aVoids)
         })
     }
 
@@ -15114,7 +15106,7 @@ impl FacetedBrepAndBrepWithVoids {
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:59 - `StepShape_FacetedBrepAndBrepWithVoids::SetVoids()`
     pub fn set_voids(
         &mut self,
-        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell,
+        aVoids: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepAndBrepWithVoids_set_voids(
@@ -15125,7 +15117,11 @@ impl FacetedBrepAndBrepWithVoids {
     }
 
     /// **Source:** `StepShape_FacetedBrepAndBrepWithVoids.hxx`:63 - `StepShape_FacetedBrepAndBrepWithVoids::Voids()`
-    pub fn voids(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedClosedShell>{
+    pub fn voids(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedClosedShell,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepAndBrepWithVoids_voids(
@@ -15603,7 +15599,7 @@ impl FacetedBrepShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -15640,7 +15636,7 @@ impl FacetedBrepShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepShapeRepresentation_inherited_SetItems(
@@ -15654,7 +15650,7 @@ impl FacetedBrepShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_FacetedBrepShapeRepresentation_inherited_Items(self as *const Self)))
@@ -17011,7 +17007,7 @@ impl GeometricallyBoundedSurfaceShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -17036,7 +17032,7 @@ impl GeometricallyBoundedSurfaceShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -17047,7 +17043,7 @@ impl GeometricallyBoundedSurfaceShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_GeometricallyBoundedSurfaceShapeRepresentation_inherited_Items(self as *const Self)))
@@ -17321,7 +17317,7 @@ impl GeometricallyBoundedWireframeShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -17346,7 +17342,7 @@ impl GeometricallyBoundedWireframeShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -17357,7 +17353,7 @@ impl GeometricallyBoundedWireframeShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_GeometricallyBoundedWireframeShapeRepresentation_inherited_Items(self as *const Self)))
@@ -18604,13 +18600,13 @@ impl LoopAndPath {
     }
 
     /// **Source:** `StepShape_LoopAndPath.hxx`:44 - `StepShape_LoopAndPath::Init()`
-    pub fn init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepshapeorientededge(
+    pub fn init_handletcollectionhasciistring_harr1_stepshape_orientededge(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepShape_LoopAndPath_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepshapeorientededge(self as *mut Self, aName, aEdgeList)
+            crate::ffi_extern_TKDESTEP::StepShape_LoopAndPath_init_handletcollectionhasciistring_harr1_stepshape_orientededge(self as *mut Self, aName, aEdgeList)
         })
     }
 
@@ -18649,7 +18645,7 @@ impl LoopAndPath {
     /// **Source:** `StepShape_LoopAndPath.hxx`:56 - `StepShape_LoopAndPath::SetEdgeList()`
     pub fn set_edge_list(
         &mut self,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_LoopAndPath_set_edge_list(
@@ -18662,9 +18658,8 @@ impl LoopAndPath {
     /// **Source:** `StepShape_LoopAndPath.hxx`:59 - `StepShape_LoopAndPath::EdgeList()`
     pub fn edge_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_LoopAndPath_edge_list(self as *const Self),
@@ -19480,7 +19475,7 @@ impl ManifoldSurfaceShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -19510,7 +19505,7 @@ impl ManifoldSurfaceShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ManifoldSurfaceShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -19521,7 +19516,7 @@ impl ManifoldSurfaceShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_ManifoldSurfaceShapeRepresentation_inherited_Items(self as *const Self)))
@@ -20468,7 +20463,7 @@ impl NonManifoldSurfaceShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -20493,7 +20488,7 @@ impl NonManifoldSurfaceShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_NonManifoldSurfaceShapeRepresentation_inherited_SetItems(self as *mut Self, aItems)
@@ -20504,7 +20499,7 @@ impl NonManifoldSurfaceShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_NonManifoldSurfaceShapeRepresentation_inherited_Items(self as *const Self)))
@@ -20826,7 +20821,7 @@ impl OpenShell {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OpenShell_inherited_Init(
@@ -20840,7 +20835,7 @@ impl OpenShell {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:42 - `StepShape_ConnectedFaceSet::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OpenShell_inherited_SetCfsFaces(
@@ -20853,9 +20848,7 @@ impl OpenShell {
     /// Inherited: **Source:** `StepShape_ConnectedFaceSet.hxx`:45 - `StepShape_ConnectedFaceSet::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_OpenShell_inherited_CfsFaces(
@@ -21169,7 +21162,7 @@ impl OrientedClosedShell {
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:52 - `StepShape_OrientedClosedShell::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OrientedClosedShell_set_cfs_faces(
@@ -21182,9 +21175,7 @@ impl OrientedClosedShell {
     /// **Source:** `StepShape_OrientedClosedShell.hxx`:55 - `StepShape_OrientedClosedShell::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_OrientedClosedShell_cfs_faces(
@@ -22070,7 +22061,7 @@ impl OrientedFace {
     /// **Source:** `StepShape_OrientedFace.hxx`:51 - `StepShape_OrientedFace::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OrientedFace_set_bounds(
@@ -22083,9 +22074,8 @@ impl OrientedFace {
     /// **Source:** `StepShape_OrientedFace.hxx`:54 - `StepShape_OrientedFace::Bounds()`
     pub fn bounds(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_OrientedFace_bounds(self as *const Self),
@@ -22503,7 +22493,7 @@ impl OrientedOpenShell {
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:52 - `StepShape_OrientedOpenShell::SetCfsFaces()`
     pub fn set_cfs_faces(
         &mut self,
-        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
+        aCfsFaces: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OrientedOpenShell_set_cfs_faces(
@@ -22516,9 +22506,7 @@ impl OrientedOpenShell {
     /// **Source:** `StepShape_OrientedOpenShell.hxx`:55 - `StepShape_OrientedOpenShell::CfsFaces()`
     pub fn cfs_faces(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_Face,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_OrientedOpenShell_cfs_faces(
@@ -22958,7 +22946,7 @@ impl OrientedPath {
     /// **Source:** `StepShape_OrientedPath.hxx`:51 - `StepShape_OrientedPath::SetEdgeList()`
     pub fn set_edge_list(
         &mut self,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_OrientedPath_set_edge_list(
@@ -22971,9 +22959,8 @@ impl OrientedPath {
     /// **Source:** `StepShape_OrientedPath.hxx`:55 - `StepShape_OrientedPath::EdgeList()`
     pub fn edge_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_OrientedPath_edge_list(self as *const Self),
@@ -23332,7 +23319,7 @@ impl Path {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_Path_init(self as *mut Self, aName, aEdgeList)
@@ -23342,7 +23329,7 @@ impl Path {
     /// **Source:** `StepShape_Path.hxx`:42 - `StepShape_Path::SetEdgeList()`
     pub fn set_edge_list(
         &mut self,
-        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
+        aEdgeList: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_Path_set_edge_list(self as *mut Self, aEdgeList)
@@ -23352,9 +23339,8 @@ impl Path {
     /// **Source:** `StepShape_Path.hxx`:46 - `StepShape_Path::EdgeList()`
     pub fn edge_list(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_OrientedEdge,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_OrientedEdge>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_Path_edge_list(self as *const Self),
@@ -24054,7 +24040,7 @@ impl PointRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -24091,7 +24077,7 @@ impl PointRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_PointRepresentation_inherited_SetItems(
@@ -24105,7 +24091,7 @@ impl PointRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -24349,7 +24335,7 @@ impl PolyLoop {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aPolygon: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPolygon: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_PolyLoop_init(self as *mut Self, aName, aPolygon)
@@ -24359,7 +24345,7 @@ impl PolyLoop {
     /// **Source:** `StepShape_PolyLoop.hxx`:42 - `StepShape_PolyLoop::SetPolygon()`
     pub fn set_polygon(
         &mut self,
-        aPolygon: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
+        aPolygon: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_PolyLoop_set_polygon(self as *mut Self, aPolygon)
@@ -24369,9 +24355,8 @@ impl PolyLoop {
     /// **Source:** `StepShape_PolyLoop.hxx`:45 - `StepShape_PolyLoop::Polygon()`
     pub fn polygon(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepGeom_CartesianPoint,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepGeom_CartesianPoint>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_PolyLoop_polygon(self as *const Self),
@@ -28427,14 +28412,14 @@ impl ShapeDimensionRepresentation {
 
     /// **Source:** `StepShape_ShapeDimensionRepresentation.hxx`:35 - `StepShape_ShapeDimensionRepresentation::Init()`
     /// Initialize all fields AP214
-    pub fn init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepreprrepresentationitem_handlestepreprrepresentationcontext(
+    pub fn init_handletcollectionhasciistring_harr1_steprepr_representationitem_handlestepreprrepresentationcontext(
         &mut self,
         theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        theItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        theItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         theContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_handlencollectionharray1opencascadehandlestepreprrepresentationitem_handlestepreprrepresentationcontext(self as *mut Self, theName, theItems, theContextOfItems)
+            crate::ffi_extern_TKDESTEP::StepShape_ShapeDimensionRepresentation_init_handletcollectionhasciistring_harr1_steprepr_representationitem_handlestepreprrepresentationcontext(self as *mut Self, theName, theItems, theContextOfItems)
         })
     }
 
@@ -28587,7 +28572,7 @@ impl ShapeDimensionRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ShapeDimensionRepresentation_inherited_SetItems(
@@ -28601,7 +28586,7 @@ impl ShapeDimensionRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -29155,7 +29140,7 @@ impl ShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -29192,7 +29177,7 @@ impl ShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ShapeRepresentation_inherited_SetItems(
@@ -29206,7 +29191,7 @@ impl ShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -29775,7 +29760,7 @@ impl ShapeRepresentationWithParameters {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -29805,7 +29790,7 @@ impl ShapeRepresentationWithParameters {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_ShapeRepresentationWithParameters_inherited_SetItems(self as *mut Self, aItems)
@@ -29816,7 +29801,7 @@ impl ShapeRepresentationWithParameters {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_ShapeRepresentationWithParameters_inherited_Items(self as *const Self)))
@@ -32228,7 +32213,7 @@ impl Subface {
     pub fn init(
         &mut self,
         aRepresentationItem_Name: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aFace_Bounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aFace_Bounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
         aParentFace: &crate::ffi_types::Handle_StepShape_Face,
     ) {
         crate::check_void_result(unsafe {
@@ -32385,7 +32370,7 @@ impl Subface {
     /// Inherited: **Source:** `StepShape_Face.hxx`:42 - `StepShape_Face::SetBounds()`
     pub fn set_bounds(
         &mut self,
-        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
+        aBounds: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_Subface_inherited_SetBounds(
@@ -32398,9 +32383,8 @@ impl Subface {
     /// Inherited: **Source:** `StepShape_Face.hxx`:46 - `StepShape_Face::Bounds()`
     pub fn bounds(
         &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepShape_FaceBound,
-    > {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Handle_StepShape_FaceBound>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepShape_Subface_inherited_Bounds(self as *const Self),
@@ -35418,7 +35402,7 @@ impl TransitionalShapeRepresentation {
     pub fn init(
         &mut self,
         aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
         aContextOfItems: &crate::ffi_types::Handle_StepRepr_RepresentationContext,
     ) {
         crate::check_void_result(unsafe {
@@ -35451,7 +35435,7 @@ impl TransitionalShapeRepresentation {
     /// Inherited: **Source:** `StepRepr_Representation.hxx`:48 - `StepRepr_Representation::SetItems()`
     pub fn set_items(
         &mut self,
-        aItems: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        aItems: &crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepShape_TransitionalShapeRepresentation_inherited_SetItems(
@@ -35465,7 +35449,7 @@ impl TransitionalShapeRepresentation {
     pub fn items(
         &self,
     ) -> crate::OwnedPtr<
-        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+        crate::ffi_types::Handle_NCollection_HArray1_Handle_StepRepr_RepresentationItem,
     > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepShape_TransitionalShapeRepresentation_inherited_Items(self as *const Self)))

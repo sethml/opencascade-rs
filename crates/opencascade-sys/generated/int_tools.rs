@@ -5097,10 +5097,33 @@ impl WLineTool {
             )
         })
     }
-}
 
-// ── Skipped symbols for WLineTool (1 total) ──
-// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:38 - `IntTools_WLineTool::DecompositionOfWLine`
-//   Reason: has unbindable types: param 'theNewLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
-//   // pub fn decomposition_of_w_line(theWLine: &HandleWLine, theSurface1: &HandleSurface, theSurface2: &HandleSurface, theFace1: &Face, theFace2: &Face, theLConstructor: &LineConstructor, theAvoidLConstructor: bool, theTol: f64, theNewLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, arg9: &HandleContext) -> bool;
-//
+    /// **Source:** `IntTools_WLineTool.hxx`:38 - `IntTools_WLineTool::DecompositionOfWLine()`
+    pub fn decomposition_of_w_line(
+        theWLine: &crate::ffi_types::Handle_IntPatch_WLine,
+        theSurface1: &crate::ffi_types::Handle_GeomAdaptor_Surface,
+        theSurface2: &crate::ffi_types::Handle_GeomAdaptor_Surface,
+        theFace1: &crate::topo_ds::Face,
+        theFace2: &crate::topo_ds::Face,
+        theLConstructor: &crate::geom_int::LineConstructor,
+        theAvoidLConstructor: bool,
+        theTol: f64,
+        theNewLines: &mut crate::ffi_types::NCollection_Sequence_Handle_IntPatch_Line,
+        arg9: &crate::ffi_types::Handle_IntTools_Context,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::IntTools_WLineTool_decomposition_of_w_line(
+                theWLine,
+                theSurface1,
+                theSurface2,
+                theFace1,
+                theFace2,
+                theLConstructor,
+                theAvoidLConstructor,
+                theTol,
+                theNewLines,
+                arg9,
+            )
+        })
+    }
+}

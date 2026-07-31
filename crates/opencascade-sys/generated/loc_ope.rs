@@ -249,6 +249,19 @@ impl CSIntersector {
         })
     }
 
+    /// **Source:** `LocOpe_CSIntersector.hxx`:55 - `LocOpe_CSIntersector::Perform()`
+    pub fn perform_seq_geom_curve(
+        &mut self,
+        Scur: &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_perform_seq_geom_curve(
+                self as *mut Self,
+                Scur,
+            )
+        })
+    }
+
     /// **Source:** `LocOpe_CSIntersector.hxx`:59 - `LocOpe_CSIntersector::IsDone()`
     /// Returns <true> if the intersection has
     /// been done.
@@ -420,12 +433,6 @@ impl CSIntersector {
         })
     }
 }
-
-// ── Skipped symbols for CSIntersector (1 total) ──
-// SKIPPED: **Source:** `LocOpe_CSIntersector.hxx`:55 - `LocOpe_CSIntersector::Perform`
-//   Reason: has unbindable types: param 'Scur': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn perform(&mut self, Scur: /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */);
-//
 
 // ========================
 // From LocOpe_CurveShapeIntersector.hxx
@@ -757,6 +764,13 @@ impl DPrism {
         }
     }
 
+    /// **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_DPrism_curves(self as *const Self, SCurves)
+        })
+    }
+
     /// **Source:** `LocOpe_DPrism.hxx`:66 - `LocOpe_DPrism::BarycCurve()`
     pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -766,12 +780,6 @@ impl DPrism {
         }
     }
 }
-
-// ── Skipped symbols for DPrism (1 total) ──
-// SKIPPED: **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves`
-//   Reason: has unbindable types: param 'SCurves': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&self, SCurves: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From LocOpe_FindEdges.hxx
@@ -2000,6 +2008,25 @@ impl Pipe {
         }
     }
 
+    /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::Curves()`
+    ///
+    /// # Safety
+    ///
+    /// It is not known whether the returned reference borrows from `self` or from one
+    /// of the reference parameters. The caller must ensure the returned reference does
+    /// not outlive whichever source it actually borrows from.
+    pub unsafe fn curves(
+        &mut self,
+        Spt: &crate::ffi_types::NCollection_Sequence_gp_Pnt,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_curves(
+                self as *mut Self,
+                Spt,
+            )))
+        }
+    }
+
     /// **Source:** `LocOpe_Pipe.hxx`:59 - `LocOpe_Pipe::BarycCurve()`
     pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -2009,12 +2036,6 @@ impl Pipe {
         }
     }
 }
-
-// ── Skipped symbols for Pipe (1 total) ──
-// SKIPPED: **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::Curves`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>> const&)
-//   // pub fn curves(&mut self, Spt: &Sequence_gp_Pnt) -> /* NCollection_Sequence<occ::handle<Geom_Curve>> const& */;
-//
 
 // ========================
 // From LocOpe_PntFace.hxx
@@ -2245,6 +2266,13 @@ impl Prism {
         }
     }
 
+    /// **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Prism_curves(self as *const Self, SCurves)
+        })
+    }
+
     /// **Source:** `LocOpe_Prism.hxx`:60 - `LocOpe_Prism::BarycCurve()`
     pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -2254,12 +2282,6 @@ impl Prism {
         }
     }
 }
-
-// ── Skipped symbols for Prism (1 total) ──
-// SKIPPED: **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::Curves`
-//   Reason: has unbindable types: param 'SCurves': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&self, SCurves: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From LocOpe_Revol.hxx
@@ -2399,6 +2421,13 @@ impl Revol {
         }
     }
 
+    /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Curves()`
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::NCollection_Sequence_Handle_Geom_Curve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Revol_curves(self as *const Self, SCurves)
+        })
+    }
+
     /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::BarycCurve()`
     pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
@@ -2408,12 +2437,6 @@ impl Revol {
         }
     }
 }
-
-// ── Skipped symbols for Revol (1 total) ──
-// SKIPPED: **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Curves`
-//   Reason: has unbindable types: param 'SCurves': unresolved template type (NCollection_Sequence<occ::handle<Geom_Curve>>&)
-//   // pub fn curves(&self, SCurves: /* NCollection_Sequence<occ::handle<Geom_Curve>>& */);
-//
 
 // ========================
 // From LocOpe_RevolutionForm.hxx

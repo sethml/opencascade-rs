@@ -335,6 +335,19 @@ impl Explorer {
         }
     }
 
+    /// **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour()`
+    pub fn contour(
+        &self,
+        IndexContour: i32,
+    ) -> &crate::ffi_types::NCollection_Sequence_Handle_Geom2d_Curve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_contour(
+                self as *const Self,
+                IndexContour,
+            )))
+        }
+    }
+
     /// **Source:** `BRepMAT2d_Explorer.hxx`:76 - `BRepMAT2d_Explorer::IsModified()`
     pub fn is_modified(&self, aShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -367,12 +380,6 @@ impl Explorer {
         }
     }
 }
-
-// ── Skipped symbols for Explorer (1 total) ──
-// SKIPPED: **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour`
-//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Geom2d_Curve>> const&)
-//   // pub fn contour(&self, IndexContour: i32) -> /* NCollection_Sequence<occ::handle<Geom2d_Curve>> const& */;
-//
 
 // ========================
 // From BRepMAT2d_LinkTopoBilo.hxx
