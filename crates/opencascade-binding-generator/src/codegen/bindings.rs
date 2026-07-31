@@ -4214,9 +4214,10 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
-    // 8. to_handle wrapper
+    // 8. to_handle wrapper. `handle_type` here is only ever a C++ type spelling
+    // (the symbol name is `{ffi_cn}_to_handle`), so use the canonical form.
     if bindings.has_to_handle {
-        let handle_type = type_mapping::handle_type_name(ffi_cn);
+        let handle_type = type_mapping::handle_cpp_type(ffi_cn);
         let fn_name = format!("{ffi_cn}_to_handle");
         writeln!(
             output,
@@ -4228,12 +4229,15 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
-    // 8b. Handle get (dereference) wrapper
+    // 8b. Handle get (dereference) wrapper. `handle_sym` is the FFI symbol prefix
+    // (Handle_X); `handle_cty` is the C++ type spelling (canonical form for classes
+    // whose Handle_X typedef OCCT deprecates).
     if bindings.has_handle_get {
-        let handle_type = type_mapping::handle_type_name(ffi_cn);
+        let handle_sym = type_mapping::handle_type_name(ffi_cn);
+        let handle_cty = type_mapping::handle_cpp_type(ffi_cn);
         writeln!(
             output,
-            "extern \"C\" OcctResult<const {cn}*> {handle_type}_get(const {handle_type}* handle) {{"
+            "extern \"C\" OcctResult<const {cn}*> {handle_sym}_get(const {handle_cty}* handle) {{"
         )
         .unwrap();
         writeln!(output, "    try {{ return {{(*handle).get(), nullptr}}; }}").unwrap();
@@ -4241,7 +4245,7 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
         writeln!(
             output,
-            "extern \"C\" OcctResult<{cn}*> {handle_type}_get_mut({handle_type}* handle) {{"
+            "extern \"C\" OcctResult<{cn}*> {handle_sym}_get_mut({handle_cty}* handle) {{"
         )
         .unwrap();
         writeln!(output, "    try {{ return {{(*handle).get(), nullptr}}; }}").unwrap();
@@ -4249,29 +4253,34 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(output, "}}").unwrap();
     }
 
-    // 9. Handle upcast wrappers
+    // 9. Handle upcast wrappers. The handle names in the struct are FFI symbol
+    // spellings; for the C++ *types* use the canonical handle spelling (which only
+    // differs from Handle_X for classes whose typedef OCCT deprecates). The derived
+    // side is the class being emitted (`ffi_cn`); the base side is `hup.base_class`.
     for hup in &bindings.handle_upcasts {
+        let base_handle = type_mapping::handle_cpp_type(&hup.base_class);
+        let derived_handle = type_mapping::handle_cpp_type(ffi_cn);
         writeln!(
             output,
             "extern \"C\" OcctResult<{base_handle}*> {fn_name}(const {derived_handle}* self_) {{",
-            base_handle = hup.base_handle_name,
             fn_name = hup.ffi_fn_name,
-            derived_handle = hup.derived_handle_name
         )
         .unwrap();
-        writeln!(output, "    try {{ return {{new {base_handle}(*self_), nullptr}}; }}", base_handle = hup.base_handle_name).unwrap();
+        writeln!(output, "    try {{ return {{new {base_handle}(*self_), nullptr}}; }}").unwrap();
         writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
         writeln!(output, "}}").unwrap();
     }
 
-    // 9b. Handle downcast wrappers
+    // 9b. Handle downcast wrappers. As with upcasts, use canonical handle spellings
+    // for the C++ types. The base side is the class being emitted (`ffi_cn`); the
+    // derived side is `hdown.derived_class`.
     for hdown in &bindings.handle_downcasts {
+        let derived_handle = type_mapping::handle_cpp_type(&hdown.derived_class);
+        let base_handle = type_mapping::handle_cpp_type(ffi_cn);
         writeln!(
             output,
             "extern \"C\" OcctResult<{derived_handle}*> {fn_name}(const {base_handle}* self_) {{",
-            derived_handle = hdown.derived_handle_name,
             fn_name = hdown.ffi_fn_name,
-            base_handle = hdown.base_handle_name
         )
         .unwrap();
         writeln!(output, "    try {{").unwrap();
@@ -4285,7 +4294,6 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
         writeln!(
             output,
             "    return {{new {derived_handle}(result), nullptr}};",
-            derived_handle = hdown.derived_handle_name
         )
         .unwrap();
         writeln!(output, "    }}").unwrap();

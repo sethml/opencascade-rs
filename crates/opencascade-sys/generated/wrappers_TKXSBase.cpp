@@ -316,7 +316,6 @@
 #include <Transfer_SimpleBinderOfTransient.hxx>
 #include <Transfer_StatusExec.hxx>
 #include <Transfer_StatusResult.hxx>
-#include <Transfer_TransferDeadLoop.hxx>
 #include <Transfer_TransferDispatch.hxx>
 #include <Transfer_TransferFailure.hxx>
 #include <Transfer_TransferInput.hxx>
@@ -24195,34 +24194,6 @@ extern "C" const char* Transfer_SimpleBinderOfTransient_inherited_Delete(const T
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Transfer_SimpleBinderOfTransient_destructor(Transfer_SimpleBinderOfTransient* self_) { delete self_; }
-
-// ========================
-// Transfer_TransferDeadLoop wrappers
-// ========================
-
-extern "C" OcctResult<Transfer_TransferDeadLoop*> Transfer_TransferDeadLoop_ctor_charptr(const char* theMessage) {
-    try { return {new Transfer_TransferDeadLoop(theMessage), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Transfer_TransferDeadLoop*> Transfer_TransferDeadLoop_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Transfer_TransferDeadLoop(theMessage, theStackTrace), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Transfer_TransferDeadLoop_exception_type(const Transfer_TransferDeadLoop* self_) {
-    try { return {self_->ExceptionType(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Transfer_TransferFailure*> Transfer_TransferDeadLoop_as_Transfer_TransferFailure(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Transfer_TransferFailure*>(self_), nullptr}; }
-extern "C" OcctResult<Transfer_TransferFailure*> Transfer_TransferDeadLoop_as_Transfer_TransferFailure_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Transfer_TransferFailure*>(self_), nullptr}; }
-extern "C" OcctResult<const Interface_InterfaceError*> Transfer_TransferDeadLoop_as_Interface_InterfaceError(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Interface_InterfaceError*>(self_), nullptr}; }
-extern "C" OcctResult<Interface_InterfaceError*> Transfer_TransferDeadLoop_as_Interface_InterfaceError_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Interface_InterfaceError*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Failure*> Transfer_TransferDeadLoop_as_Standard_Failure(const Transfer_TransferDeadLoop* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Failure*> Transfer_TransferDeadLoop_as_Standard_Failure_mut(Transfer_TransferDeadLoop* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" const char* Transfer_TransferDeadLoop_inherited_Print(const Transfer_TransferDeadLoop* self, Standard_OStream& theStream) {
-    try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Transfer_TransferDeadLoop_destructor(Transfer_TransferDeadLoop* self_) { delete self_; }
 
 // ========================
 // Transfer_TransferDispatch wrappers

@@ -982,7 +982,6 @@
 #include <Standard_MMgrOpt.hxx>
 #include <Standard_MMgrRoot.hxx>
 #include <Standard_MultiplyDefined.hxx>
-#include <Standard_Mutex.hxx>
 #include <Standard_NegativeValue.hxx>
 #include <Standard_NoMoreObject.hxx>
 #include <Standard_NoSuchObject.hxx>
@@ -4423,12 +4422,12 @@ extern "C" OcctResult<Handle_Standard_Transient*> Handle_Standard_Transient_clon
     OCCT_CATCH_RETURN
 }
 extern "C" bool Handle_Standard_Transient_is_null(const Handle_Standard_Transient* self_) { return self_->IsNull(); }
-extern "C" void Handle_Standard_Type_destructor(Handle_Standard_Type* self_) { delete self_; }
-extern "C" OcctResult<Handle_Standard_Type*> Handle_Standard_Type_clone(const Handle_Standard_Type* self_) {
-    try { return {new Handle_Standard_Type(*self_), nullptr}; }
+extern "C" void Handle_Standard_Type_destructor(opencascade::handle<Standard_Type>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<Standard_Type>*> Handle_Standard_Type_clone(const opencascade::handle<Standard_Type>* self_) {
+    try { return {new opencascade::handle<Standard_Type>(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool Handle_Standard_Type_is_null(const Handle_Standard_Type* self_) { return self_->IsNull(); }
+extern "C" bool Handle_Standard_Type_is_null(const opencascade::handle<Standard_Type>* self_) { return self_->IsNull(); }
 extern "C" void Handle_Storage_BaseDriver_destructor(Handle_Storage_BaseDriver* self_) { delete self_; }
 extern "C" OcctResult<Handle_Storage_BaseDriver*> Handle_Storage_BaseDriver_clone(const Handle_Storage_BaseDriver* self_) {
     try { return {new Handle_Storage_BaseDriver(*self_), nullptr}; }
@@ -12842,52 +12841,6 @@ extern "C" const char* Standard_MultiplyDefined_inherited_Print(const Standard_M
 extern "C" void Standard_MultiplyDefined_destructor(Standard_MultiplyDefined* self_) { delete self_; }
 
 // ========================
-// Standard_Mutex wrappers
-// ========================
-
-extern "C" OcctResult<Standard_Mutex*> Standard_Mutex_ctor() {
-    try { return {new Standard_Mutex(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Standard_Mutex_lock(Standard_Mutex* self_) {
-    try { self_->Lock(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Standard_Mutex_try_lock(Standard_Mutex* self_) {
-    try { return {self_->TryLock(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Standard_Mutex_unlock(Standard_Mutex* self_) {
-    try { self_->Unlock(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<const Standard_ErrorHandler::Callback*> Standard_Mutex_as_Standard_ErrorHandler_Callback(const Standard_Mutex* self_) { return {static_cast<const Standard_ErrorHandler::Callback*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_ErrorHandler::Callback*> Standard_Mutex_as_Standard_ErrorHandler_Callback_mut(Standard_Mutex* self_) { return {static_cast<Standard_ErrorHandler::Callback*>(self_), nullptr}; }
-extern "C" const char* Standard_Mutex_inherited_RegisterCallback(Standard_Mutex* self) {
-    try { self->RegisterCallback(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Standard_Mutex_inherited_UnregisterCallback(Standard_Mutex* self) {
-    try { self->UnregisterCallback(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Standard_Mutex_destructor(Standard_Mutex* self_) { delete self_; }
-
-// ========================
-// Standard_Mutex::Sentry wrappers
-// ========================
-
-extern "C" OcctResult<Standard_Mutex::Sentry*> Standard_Mutex_Sentry_ctor_mutex(Standard_Mutex* theMutex) {
-    try { return {new Standard_Mutex::Sentry(*theMutex), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Mutex::Sentry*> Standard_Mutex_Sentry_ctor_mutexptr(Standard_Mutex* theMutex) {
-    try { return {new Standard_Mutex::Sentry(theMutex), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Standard_Mutex_Sentry_destructor(Standard_Mutex::Sentry* self_) { delete self_; }
-
-// ========================
 // Standard_NegativeValue wrappers
 // ========================
 
@@ -20885,11 +20838,11 @@ extern "C" OcctResult<Handle_Standard_Persistent*> Handle_Standard_Transient_dow
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle_Standard_Type*> Handle_Standard_Transient_downcast_to_Handle_Standard_Type(const Handle_Standard_Transient* self_) {
+extern "C" OcctResult<opencascade::handle<Standard_Type>*> Handle_Standard_Transient_downcast_to_Handle_Standard_Type(const Handle_Standard_Transient* self_) {
     try {
     opencascade::handle<Standard_Type> result = opencascade::handle<Standard_Type>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new Handle_Standard_Type(result), nullptr};
+    return {new opencascade::handle<Standard_Type>(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -29917,19 +29870,19 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Standard_Type_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> Standard_Type_as_Standard_Transient(const Standard_Type* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Standard_Type_as_Standard_Transient_mut(Standard_Type* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Handle_Standard_Type*> Standard_Type_to_handle(Standard_Type* obj) {
-    try { return {new Handle_Standard_Type(obj), nullptr}; }
+extern "C" OcctResult<opencascade::handle<Standard_Type>*> Standard_Type_to_handle(Standard_Type* obj) {
+    try { return {new opencascade::handle<Standard_Type>(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Type*> Handle_Standard_Type_get(const Handle_Standard_Type* handle) {
+extern "C" OcctResult<const Standard_Type*> Handle_Standard_Type_get(const opencascade::handle<Standard_Type>* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Type*> Handle_Standard_Type_get_mut(Handle_Standard_Type* handle) {
+extern "C" OcctResult<Standard_Type*> Handle_Standard_Type_get_mut(opencascade::handle<Standard_Type>* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle_Standard_Transient*> Handle_Standard_Type_to_Handle_Standard_Transient(const Handle_Standard_Type* self_) {
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Standard_Type_to_Handle_Standard_Transient(const opencascade::handle<Standard_Type>* self_) {
     try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -35671,33 +35624,33 @@ extern "C" void NCollection_Array1_AppDef_MultiPointConstraint_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_Array1_AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_AppDef_MultiPointConstraint(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const AppDef_MultiPointConstraint* theValue) {
+extern "C" NCollection_Array1_AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_ctor_int2_value(int theLower, int theUpper, const AppDef_MultiPointConstraint* theValue) {
     auto arr = new NCollection_Array1_AppDef_MultiPointConstraint(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppDef_MultiPointConstraint_length(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
+extern "C" int NCollection_Array1_AppDef_MultiPointConstraint_length(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppDef_MultiPointConstraint_lower(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
+extern "C" int NCollection_Array1_AppDef_MultiPointConstraint_lower(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppDef_MultiPointConstraint_upper(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
+extern "C" int NCollection_Array1_AppDef_MultiPointConstraint_upper(const NCollection_Array1_AppDef_MultiPointConstraint* arr) {
     return arr->Upper();
 }
 
-extern "C" const AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_value(const NCollection_Array1_AppDef_MultiPointConstraint* arr, Standard_Integer theIndex) {
+extern "C" const AppDef_MultiPointConstraint* NCollection_Array1_AppDef_MultiPointConstraint_value(const NCollection_Array1_AppDef_MultiPointConstraint* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_AppDef_MultiPointConstraint_set_value(NCollection_Array1_AppDef_MultiPointConstraint* arr, Standard_Integer theIndex, const AppDef_MultiPointConstraint* theItem) {
+extern "C" void NCollection_Array1_AppDef_MultiPointConstraint_set_value(NCollection_Array1_AppDef_MultiPointConstraint* arr, int theIndex, const AppDef_MultiPointConstraint* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35719,33 +35672,33 @@ extern "C" void NCollection_Array1_AppParCurves_MultiPoint_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_Array1_AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_AppParCurves_MultiPoint(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const AppParCurves_MultiPoint* theValue) {
+extern "C" NCollection_Array1_AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_ctor_int2_value(int theLower, int theUpper, const AppParCurves_MultiPoint* theValue) {
     auto arr = new NCollection_Array1_AppParCurves_MultiPoint(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppParCurves_MultiPoint_length(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
+extern "C" int NCollection_Array1_AppParCurves_MultiPoint_length(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppParCurves_MultiPoint_lower(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
+extern "C" int NCollection_Array1_AppParCurves_MultiPoint_lower(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_AppParCurves_MultiPoint_upper(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
+extern "C" int NCollection_Array1_AppParCurves_MultiPoint_upper(const NCollection_Array1_AppParCurves_MultiPoint* arr) {
     return arr->Upper();
 }
 
-extern "C" const AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_value(const NCollection_Array1_AppParCurves_MultiPoint* arr, Standard_Integer theIndex) {
+extern "C" const AppParCurves_MultiPoint* NCollection_Array1_AppParCurves_MultiPoint_value(const NCollection_Array1_AppParCurves_MultiPoint* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_AppParCurves_MultiPoint_set_value(NCollection_Array1_AppParCurves_MultiPoint* arr, Standard_Integer theIndex, const AppParCurves_MultiPoint* theItem) {
+extern "C" void NCollection_Array1_AppParCurves_MultiPoint_set_value(NCollection_Array1_AppParCurves_MultiPoint* arr, int theIndex, const AppParCurves_MultiPoint* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35767,33 +35720,33 @@ extern "C" void NCollection_Array1_BRepGraph_ItemUID_destructor(NCollection_Arra
     delete self_;
 }
 
-extern "C" NCollection_Array1_BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_BRepGraph_ItemUID(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const BRepGraph_ItemUID* theValue) {
+extern "C" NCollection_Array1_BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_ctor_int2_value(int theLower, int theUpper, const BRepGraph_ItemUID* theValue) {
     auto arr = new NCollection_Array1_BRepGraph_ItemUID(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_ItemUID_length(const NCollection_Array1_BRepGraph_ItemUID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_ItemUID_length(const NCollection_Array1_BRepGraph_ItemUID* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_ItemUID_lower(const NCollection_Array1_BRepGraph_ItemUID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_ItemUID_lower(const NCollection_Array1_BRepGraph_ItemUID* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_ItemUID_upper(const NCollection_Array1_BRepGraph_ItemUID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_ItemUID_upper(const NCollection_Array1_BRepGraph_ItemUID* arr) {
     return arr->Upper();
 }
 
-extern "C" const BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_value(const NCollection_Array1_BRepGraph_ItemUID* arr, Standard_Integer theIndex) {
+extern "C" const BRepGraph_ItemUID* NCollection_Array1_BRepGraph_ItemUID_value(const NCollection_Array1_BRepGraph_ItemUID* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_BRepGraph_ItemUID_set_value(NCollection_Array1_BRepGraph_ItemUID* arr, Standard_Integer theIndex, const BRepGraph_ItemUID* theItem) {
+extern "C" void NCollection_Array1_BRepGraph_ItemUID_set_value(NCollection_Array1_BRepGraph_ItemUID* arr, int theIndex, const BRepGraph_ItemUID* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35815,33 +35768,33 @@ extern "C" void NCollection_Array1_BRepGraph_NodeId_destructor(NCollection_Array
     delete self_;
 }
 
-extern "C" NCollection_Array1_BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_BRepGraph_NodeId(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const BRepGraph_NodeId* theValue) {
+extern "C" NCollection_Array1_BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_ctor_int2_value(int theLower, int theUpper, const BRepGraph_NodeId* theValue) {
     auto arr = new NCollection_Array1_BRepGraph_NodeId(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_NodeId_length(const NCollection_Array1_BRepGraph_NodeId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_NodeId_length(const NCollection_Array1_BRepGraph_NodeId* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_NodeId_lower(const NCollection_Array1_BRepGraph_NodeId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_NodeId_lower(const NCollection_Array1_BRepGraph_NodeId* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_NodeId_upper(const NCollection_Array1_BRepGraph_NodeId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_NodeId_upper(const NCollection_Array1_BRepGraph_NodeId* arr) {
     return arr->Upper();
 }
 
-extern "C" const BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_value(const NCollection_Array1_BRepGraph_NodeId* arr, Standard_Integer theIndex) {
+extern "C" const BRepGraph_NodeId* NCollection_Array1_BRepGraph_NodeId_value(const NCollection_Array1_BRepGraph_NodeId* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_BRepGraph_NodeId_set_value(NCollection_Array1_BRepGraph_NodeId* arr, Standard_Integer theIndex, const BRepGraph_NodeId* theItem) {
+extern "C" void NCollection_Array1_BRepGraph_NodeId_set_value(NCollection_Array1_BRepGraph_NodeId* arr, int theIndex, const BRepGraph_NodeId* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35863,33 +35816,33 @@ extern "C" void NCollection_Array1_BRepGraph_RefId_destructor(NCollection_Array1
     delete self_;
 }
 
-extern "C" NCollection_Array1_BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_BRepGraph_RefId(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const BRepGraph_RefId* theValue) {
+extern "C" NCollection_Array1_BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_ctor_int2_value(int theLower, int theUpper, const BRepGraph_RefId* theValue) {
     auto arr = new NCollection_Array1_BRepGraph_RefId(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_RefId_length(const NCollection_Array1_BRepGraph_RefId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_RefId_length(const NCollection_Array1_BRepGraph_RefId* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_RefId_lower(const NCollection_Array1_BRepGraph_RefId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_RefId_lower(const NCollection_Array1_BRepGraph_RefId* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_RefId_upper(const NCollection_Array1_BRepGraph_RefId* arr) {
+extern "C" int NCollection_Array1_BRepGraph_RefId_upper(const NCollection_Array1_BRepGraph_RefId* arr) {
     return arr->Upper();
 }
 
-extern "C" const BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_value(const NCollection_Array1_BRepGraph_RefId* arr, Standard_Integer theIndex) {
+extern "C" const BRepGraph_RefId* NCollection_Array1_BRepGraph_RefId_value(const NCollection_Array1_BRepGraph_RefId* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_BRepGraph_RefId_set_value(NCollection_Array1_BRepGraph_RefId* arr, Standard_Integer theIndex, const BRepGraph_RefId* theItem) {
+extern "C" void NCollection_Array1_BRepGraph_RefId_set_value(NCollection_Array1_BRepGraph_RefId* arr, int theIndex, const BRepGraph_RefId* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35911,33 +35864,33 @@ extern "C" void NCollection_Array1_BRepGraph_UID_destructor(NCollection_Array1_B
     delete self_;
 }
 
-extern "C" NCollection_Array1_BRepGraph_UID* NCollection_Array1_BRepGraph_UID_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_BRepGraph_UID* NCollection_Array1_BRepGraph_UID_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_BRepGraph_UID(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_BRepGraph_UID* NCollection_Array1_BRepGraph_UID_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const BRepGraph_UID* theValue) {
+extern "C" NCollection_Array1_BRepGraph_UID* NCollection_Array1_BRepGraph_UID_ctor_int2_value(int theLower, int theUpper, const BRepGraph_UID* theValue) {
     auto arr = new NCollection_Array1_BRepGraph_UID(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_UID_length(const NCollection_Array1_BRepGraph_UID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_UID_length(const NCollection_Array1_BRepGraph_UID* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_UID_lower(const NCollection_Array1_BRepGraph_UID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_UID_lower(const NCollection_Array1_BRepGraph_UID* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_BRepGraph_UID_upper(const NCollection_Array1_BRepGraph_UID* arr) {
+extern "C" int NCollection_Array1_BRepGraph_UID_upper(const NCollection_Array1_BRepGraph_UID* arr) {
     return arr->Upper();
 }
 
-extern "C" const BRepGraph_UID* NCollection_Array1_BRepGraph_UID_value(const NCollection_Array1_BRepGraph_UID* arr, Standard_Integer theIndex) {
+extern "C" const BRepGraph_UID* NCollection_Array1_BRepGraph_UID_value(const NCollection_Array1_BRepGraph_UID* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_BRepGraph_UID_set_value(NCollection_Array1_BRepGraph_UID* arr, Standard_Integer theIndex, const BRepGraph_UID* theItem) {
+extern "C" void NCollection_Array1_BRepGraph_UID_set_value(NCollection_Array1_BRepGraph_UID* arr, int theIndex, const BRepGraph_UID* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -35959,33 +35912,33 @@ extern "C" void NCollection_Array1_HLRAlgo_PolyHidingData_destructor(NCollection
     delete self_;
 }
 
-extern "C" NCollection_Array1_HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_HLRAlgo_PolyHidingData(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRAlgo_PolyHidingData* theValue) {
+extern "C" NCollection_Array1_HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_ctor_int2_value(int theLower, int theUpper, const HLRAlgo_PolyHidingData* theValue) {
     auto arr = new NCollection_Array1_HLRAlgo_PolyHidingData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyHidingData_length(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyHidingData_length(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyHidingData_lower(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyHidingData_lower(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyHidingData_upper(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyHidingData_upper(const NCollection_Array1_HLRAlgo_PolyHidingData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_value(const NCollection_Array1_HLRAlgo_PolyHidingData* arr, Standard_Integer theIndex) {
+extern "C" const HLRAlgo_PolyHidingData* NCollection_Array1_HLRAlgo_PolyHidingData_value(const NCollection_Array1_HLRAlgo_PolyHidingData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_HLRAlgo_PolyHidingData_set_value(NCollection_Array1_HLRAlgo_PolyHidingData* arr, Standard_Integer theIndex, const HLRAlgo_PolyHidingData* theItem) {
+extern "C" void NCollection_Array1_HLRAlgo_PolyHidingData_set_value(NCollection_Array1_HLRAlgo_PolyHidingData* arr, int theIndex, const HLRAlgo_PolyHidingData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36007,33 +35960,33 @@ extern "C" void NCollection_Array1_HLRAlgo_PolyInternalSegment_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_Array1_HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_HLRAlgo_PolyInternalSegment(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRAlgo_PolyInternalSegment* theValue) {
+extern "C" NCollection_Array1_HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_ctor_int2_value(int theLower, int theUpper, const HLRAlgo_PolyInternalSegment* theValue) {
     auto arr = new NCollection_Array1_HLRAlgo_PolyInternalSegment(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyInternalSegment_length(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyInternalSegment_length(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyInternalSegment_lower(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyInternalSegment_lower(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_PolyInternalSegment_upper(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_PolyInternalSegment_upper(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_value(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr, Standard_Integer theIndex) {
+extern "C" const HLRAlgo_PolyInternalSegment* NCollection_Array1_HLRAlgo_PolyInternalSegment_value(const NCollection_Array1_HLRAlgo_PolyInternalSegment* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_HLRAlgo_PolyInternalSegment_set_value(NCollection_Array1_HLRAlgo_PolyInternalSegment* arr, Standard_Integer theIndex, const HLRAlgo_PolyInternalSegment* theItem) {
+extern "C" void NCollection_Array1_HLRAlgo_PolyInternalSegment_set_value(NCollection_Array1_HLRAlgo_PolyInternalSegment* arr, int theIndex, const HLRAlgo_PolyInternalSegment* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36055,33 +36008,33 @@ extern "C" void NCollection_Array1_HLRAlgo_TriangleData_destructor(NCollection_A
     delete self_;
 }
 
-extern "C" NCollection_Array1_HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_HLRAlgo_TriangleData(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRAlgo_TriangleData* theValue) {
+extern "C" NCollection_Array1_HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_ctor_int2_value(int theLower, int theUpper, const HLRAlgo_TriangleData* theValue) {
     auto arr = new NCollection_Array1_HLRAlgo_TriangleData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_TriangleData_length(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_TriangleData_length(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_TriangleData_lower(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_TriangleData_lower(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRAlgo_TriangleData_upper(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_Array1_HLRAlgo_TriangleData_upper(const NCollection_Array1_HLRAlgo_TriangleData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_value(const NCollection_Array1_HLRAlgo_TriangleData* arr, Standard_Integer theIndex) {
+extern "C" const HLRAlgo_TriangleData* NCollection_Array1_HLRAlgo_TriangleData_value(const NCollection_Array1_HLRAlgo_TriangleData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_HLRAlgo_TriangleData_set_value(NCollection_Array1_HLRAlgo_TriangleData* arr, Standard_Integer theIndex, const HLRAlgo_TriangleData* theItem) {
+extern "C" void NCollection_Array1_HLRAlgo_TriangleData_set_value(NCollection_Array1_HLRAlgo_TriangleData* arr, int theIndex, const HLRAlgo_TriangleData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36103,33 +36056,33 @@ extern "C" void NCollection_Array1_HLRBRep_EdgeData_destructor(NCollection_Array
     delete self_;
 }
 
-extern "C" NCollection_Array1_HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_HLRBRep_EdgeData(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRBRep_EdgeData* theValue) {
+extern "C" NCollection_Array1_HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_ctor_int2_value(int theLower, int theUpper, const HLRBRep_EdgeData* theValue) {
     auto arr = new NCollection_Array1_HLRBRep_EdgeData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_EdgeData_length(const NCollection_Array1_HLRBRep_EdgeData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_EdgeData_length(const NCollection_Array1_HLRBRep_EdgeData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_EdgeData_lower(const NCollection_Array1_HLRBRep_EdgeData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_EdgeData_lower(const NCollection_Array1_HLRBRep_EdgeData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_EdgeData_upper(const NCollection_Array1_HLRBRep_EdgeData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_EdgeData_upper(const NCollection_Array1_HLRBRep_EdgeData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_value(const NCollection_Array1_HLRBRep_EdgeData* arr, Standard_Integer theIndex) {
+extern "C" const HLRBRep_EdgeData* NCollection_Array1_HLRBRep_EdgeData_value(const NCollection_Array1_HLRBRep_EdgeData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_HLRBRep_EdgeData_set_value(NCollection_Array1_HLRBRep_EdgeData* arr, Standard_Integer theIndex, const HLRBRep_EdgeData* theItem) {
+extern "C" void NCollection_Array1_HLRBRep_EdgeData_set_value(NCollection_Array1_HLRBRep_EdgeData* arr, int theIndex, const HLRBRep_EdgeData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36151,33 +36104,33 @@ extern "C" void NCollection_Array1_HLRBRep_FaceData_destructor(NCollection_Array
     delete self_;
 }
 
-extern "C" NCollection_Array1_HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_HLRBRep_FaceData(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRBRep_FaceData* theValue) {
+extern "C" NCollection_Array1_HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_ctor_int2_value(int theLower, int theUpper, const HLRBRep_FaceData* theValue) {
     auto arr = new NCollection_Array1_HLRBRep_FaceData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_FaceData_length(const NCollection_Array1_HLRBRep_FaceData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_FaceData_length(const NCollection_Array1_HLRBRep_FaceData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_FaceData_lower(const NCollection_Array1_HLRBRep_FaceData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_FaceData_lower(const NCollection_Array1_HLRBRep_FaceData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_HLRBRep_FaceData_upper(const NCollection_Array1_HLRBRep_FaceData* arr) {
+extern "C" int NCollection_Array1_HLRBRep_FaceData_upper(const NCollection_Array1_HLRBRep_FaceData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_value(const NCollection_Array1_HLRBRep_FaceData* arr, Standard_Integer theIndex) {
+extern "C" const HLRBRep_FaceData* NCollection_Array1_HLRBRep_FaceData_value(const NCollection_Array1_HLRBRep_FaceData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_HLRBRep_FaceData_set_value(NCollection_Array1_HLRBRep_FaceData* arr, Standard_Integer theIndex, const HLRBRep_FaceData* theItem) {
+extern "C" void NCollection_Array1_HLRBRep_FaceData_set_value(NCollection_Array1_HLRBRep_FaceData* arr, int theIndex, const HLRBRep_FaceData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36199,33 +36152,33 @@ extern "C" void NCollection_Array1_Plate_PinpointConstraint_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_Array1_Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_Plate_PinpointConstraint(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Plate_PinpointConstraint* theValue) {
+extern "C" NCollection_Array1_Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_ctor_int2_value(int theLower, int theUpper, const Plate_PinpointConstraint* theValue) {
     auto arr = new NCollection_Array1_Plate_PinpointConstraint(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_Plate_PinpointConstraint_length(const NCollection_Array1_Plate_PinpointConstraint* arr) {
+extern "C" int NCollection_Array1_Plate_PinpointConstraint_length(const NCollection_Array1_Plate_PinpointConstraint* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_Plate_PinpointConstraint_lower(const NCollection_Array1_Plate_PinpointConstraint* arr) {
+extern "C" int NCollection_Array1_Plate_PinpointConstraint_lower(const NCollection_Array1_Plate_PinpointConstraint* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_Plate_PinpointConstraint_upper(const NCollection_Array1_Plate_PinpointConstraint* arr) {
+extern "C" int NCollection_Array1_Plate_PinpointConstraint_upper(const NCollection_Array1_Plate_PinpointConstraint* arr) {
     return arr->Upper();
 }
 
-extern "C" const Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_value(const NCollection_Array1_Plate_PinpointConstraint* arr, Standard_Integer theIndex) {
+extern "C" const Plate_PinpointConstraint* NCollection_Array1_Plate_PinpointConstraint_value(const NCollection_Array1_Plate_PinpointConstraint* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_Plate_PinpointConstraint_set_value(NCollection_Array1_Plate_PinpointConstraint* arr, Standard_Integer theIndex, const Plate_PinpointConstraint* theItem) {
+extern "C" void NCollection_Array1_Plate_PinpointConstraint_set_value(NCollection_Array1_Plate_PinpointConstraint* arr, int theIndex, const Plate_PinpointConstraint* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36247,33 +36200,33 @@ extern "C" void NCollection_Array1_Poly_Triangle_destructor(NCollection_Array1_P
     delete self_;
 }
 
-extern "C" NCollection_Array1_Poly_Triangle* NCollection_Array1_Poly_Triangle_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_Poly_Triangle* NCollection_Array1_Poly_Triangle_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_Poly_Triangle(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_Poly_Triangle* NCollection_Array1_Poly_Triangle_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Poly_Triangle* theValue) {
+extern "C" NCollection_Array1_Poly_Triangle* NCollection_Array1_Poly_Triangle_ctor_int2_value(int theLower, int theUpper, const Poly_Triangle* theValue) {
     auto arr = new NCollection_Array1_Poly_Triangle(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_Poly_Triangle_length(const NCollection_Array1_Poly_Triangle* arr) {
+extern "C" int NCollection_Array1_Poly_Triangle_length(const NCollection_Array1_Poly_Triangle* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_Poly_Triangle_lower(const NCollection_Array1_Poly_Triangle* arr) {
+extern "C" int NCollection_Array1_Poly_Triangle_lower(const NCollection_Array1_Poly_Triangle* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_Poly_Triangle_upper(const NCollection_Array1_Poly_Triangle* arr) {
+extern "C" int NCollection_Array1_Poly_Triangle_upper(const NCollection_Array1_Poly_Triangle* arr) {
     return arr->Upper();
 }
 
-extern "C" const Poly_Triangle* NCollection_Array1_Poly_Triangle_value(const NCollection_Array1_Poly_Triangle* arr, Standard_Integer theIndex) {
+extern "C" const Poly_Triangle* NCollection_Array1_Poly_Triangle_value(const NCollection_Array1_Poly_Triangle* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_Poly_Triangle_set_value(NCollection_Array1_Poly_Triangle* arr, Standard_Integer theIndex, const Poly_Triangle* theItem) {
+extern "C" void NCollection_Array1_Poly_Triangle_set_value(NCollection_Array1_Poly_Triangle* arr, int theIndex, const Poly_Triangle* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36295,33 +36248,33 @@ extern "C" void NCollection_Array1_TopLoc_Location_destructor(NCollection_Array1
     delete self_;
 }
 
-extern "C" NCollection_Array1_TopLoc_Location* NCollection_Array1_TopLoc_Location_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_TopLoc_Location* NCollection_Array1_TopLoc_Location_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_TopLoc_Location(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_TopLoc_Location* NCollection_Array1_TopLoc_Location_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TopLoc_Location* theValue) {
+extern "C" NCollection_Array1_TopLoc_Location* NCollection_Array1_TopLoc_Location_ctor_int2_value(int theLower, int theUpper, const TopLoc_Location* theValue) {
     auto arr = new NCollection_Array1_TopLoc_Location(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopLoc_Location_length(const NCollection_Array1_TopLoc_Location* arr) {
+extern "C" int NCollection_Array1_TopLoc_Location_length(const NCollection_Array1_TopLoc_Location* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopLoc_Location_lower(const NCollection_Array1_TopLoc_Location* arr) {
+extern "C" int NCollection_Array1_TopLoc_Location_lower(const NCollection_Array1_TopLoc_Location* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopLoc_Location_upper(const NCollection_Array1_TopLoc_Location* arr) {
+extern "C" int NCollection_Array1_TopLoc_Location_upper(const NCollection_Array1_TopLoc_Location* arr) {
     return arr->Upper();
 }
 
-extern "C" const TopLoc_Location* NCollection_Array1_TopLoc_Location_value(const NCollection_Array1_TopLoc_Location* arr, Standard_Integer theIndex) {
+extern "C" const TopLoc_Location* NCollection_Array1_TopLoc_Location_value(const NCollection_Array1_TopLoc_Location* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_TopLoc_Location_set_value(NCollection_Array1_TopLoc_Location* arr, Standard_Integer theIndex, const TopLoc_Location* theItem) {
+extern "C" void NCollection_Array1_TopLoc_Location_set_value(NCollection_Array1_TopLoc_Location* arr, int theIndex, const TopLoc_Location* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36343,33 +36296,33 @@ extern "C" void NCollection_Array1_TopoDS_Shape_destructor(NCollection_Array1_To
     delete self_;
 }
 
-extern "C" NCollection_Array1_TopoDS_Shape* NCollection_Array1_TopoDS_Shape_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_TopoDS_Shape* NCollection_Array1_TopoDS_Shape_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_TopoDS_Shape(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_TopoDS_Shape* NCollection_Array1_TopoDS_Shape_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TopoDS_Shape* theValue) {
+extern "C" NCollection_Array1_TopoDS_Shape* NCollection_Array1_TopoDS_Shape_ctor_int2_value(int theLower, int theUpper, const TopoDS_Shape* theValue) {
     auto arr = new NCollection_Array1_TopoDS_Shape(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopoDS_Shape_length(const NCollection_Array1_TopoDS_Shape* arr) {
+extern "C" int NCollection_Array1_TopoDS_Shape_length(const NCollection_Array1_TopoDS_Shape* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopoDS_Shape_lower(const NCollection_Array1_TopoDS_Shape* arr) {
+extern "C" int NCollection_Array1_TopoDS_Shape_lower(const NCollection_Array1_TopoDS_Shape* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_TopoDS_Shape_upper(const NCollection_Array1_TopoDS_Shape* arr) {
+extern "C" int NCollection_Array1_TopoDS_Shape_upper(const NCollection_Array1_TopoDS_Shape* arr) {
     return arr->Upper();
 }
 
-extern "C" const TopoDS_Shape* NCollection_Array1_TopoDS_Shape_value(const NCollection_Array1_TopoDS_Shape* arr, Standard_Integer theIndex) {
+extern "C" const TopoDS_Shape* NCollection_Array1_TopoDS_Shape_value(const NCollection_Array1_TopoDS_Shape* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_TopoDS_Shape_set_value(NCollection_Array1_TopoDS_Shape* arr, Standard_Integer theIndex, const TopoDS_Shape* theItem) {
+extern "C" void NCollection_Array1_TopoDS_Shape_set_value(NCollection_Array1_TopoDS_Shape* arr, int theIndex, const TopoDS_Shape* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36391,33 +36344,33 @@ extern "C" void NCollection_Array1_bool_destructor(NCollection_Array1_bool* self
     delete self_;
 }
 
-extern "C" NCollection_Array1_bool* NCollection_Array1_bool_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_bool* NCollection_Array1_bool_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_bool(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_bool* NCollection_Array1_bool_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const bool* theValue) {
+extern "C" NCollection_Array1_bool* NCollection_Array1_bool_ctor_int2_value(int theLower, int theUpper, const bool* theValue) {
     auto arr = new NCollection_Array1_bool(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_bool_length(const NCollection_Array1_bool* arr) {
+extern "C" int NCollection_Array1_bool_length(const NCollection_Array1_bool* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_bool_lower(const NCollection_Array1_bool* arr) {
+extern "C" int NCollection_Array1_bool_lower(const NCollection_Array1_bool* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_bool_upper(const NCollection_Array1_bool* arr) {
+extern "C" int NCollection_Array1_bool_upper(const NCollection_Array1_bool* arr) {
     return arr->Upper();
 }
 
-extern "C" const bool* NCollection_Array1_bool_value(const NCollection_Array1_bool* arr, Standard_Integer theIndex) {
+extern "C" const bool* NCollection_Array1_bool_value(const NCollection_Array1_bool* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_bool_set_value(NCollection_Array1_bool* arr, Standard_Integer theIndex, const bool* theItem) {
+extern "C" void NCollection_Array1_bool_set_value(NCollection_Array1_bool* arr, int theIndex, const bool* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36439,33 +36392,33 @@ extern "C" void NCollection_Array1_double_destructor(NCollection_Array1_double* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_double* NCollection_Array1_double_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_double* NCollection_Array1_double_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_double(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_double* NCollection_Array1_double_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const double* theValue) {
+extern "C" NCollection_Array1_double* NCollection_Array1_double_ctor_int2_value(int theLower, int theUpper, const double* theValue) {
     auto arr = new NCollection_Array1_double(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_double_length(const NCollection_Array1_double* arr) {
+extern "C" int NCollection_Array1_double_length(const NCollection_Array1_double* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_double_lower(const NCollection_Array1_double* arr) {
+extern "C" int NCollection_Array1_double_lower(const NCollection_Array1_double* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_double_upper(const NCollection_Array1_double* arr) {
+extern "C" int NCollection_Array1_double_upper(const NCollection_Array1_double* arr) {
     return arr->Upper();
 }
 
-extern "C" const double* NCollection_Array1_double_value(const NCollection_Array1_double* arr, Standard_Integer theIndex) {
+extern "C" const double* NCollection_Array1_double_value(const NCollection_Array1_double* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_double_set_value(NCollection_Array1_double* arr, Standard_Integer theIndex, const double* theItem) {
+extern "C" void NCollection_Array1_double_set_value(NCollection_Array1_double* arr, int theIndex, const double* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36487,33 +36440,33 @@ extern "C" void NCollection_Array1_gp_Dir_destructor(NCollection_Array1_gp_Dir* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Dir* NCollection_Array1_gp_Dir_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Dir* NCollection_Array1_gp_Dir_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Dir(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Dir* NCollection_Array1_gp_Dir_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Dir* theValue) {
+extern "C" NCollection_Array1_gp_Dir* NCollection_Array1_gp_Dir_ctor_int2_value(int theLower, int theUpper, const gp_Dir* theValue) {
     auto arr = new NCollection_Array1_gp_Dir(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Dir_length(const NCollection_Array1_gp_Dir* arr) {
+extern "C" int NCollection_Array1_gp_Dir_length(const NCollection_Array1_gp_Dir* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Dir_lower(const NCollection_Array1_gp_Dir* arr) {
+extern "C" int NCollection_Array1_gp_Dir_lower(const NCollection_Array1_gp_Dir* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Dir_upper(const NCollection_Array1_gp_Dir* arr) {
+extern "C" int NCollection_Array1_gp_Dir_upper(const NCollection_Array1_gp_Dir* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Dir* NCollection_Array1_gp_Dir_value(const NCollection_Array1_gp_Dir* arr, Standard_Integer theIndex) {
+extern "C" const gp_Dir* NCollection_Array1_gp_Dir_value(const NCollection_Array1_gp_Dir* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Dir_set_value(NCollection_Array1_gp_Dir* arr, Standard_Integer theIndex, const gp_Dir* theItem) {
+extern "C" void NCollection_Array1_gp_Dir_set_value(NCollection_Array1_gp_Dir* arr, int theIndex, const gp_Dir* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36535,33 +36488,33 @@ extern "C" void NCollection_Array1_gp_Lin_destructor(NCollection_Array1_gp_Lin* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Lin* NCollection_Array1_gp_Lin_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Lin* NCollection_Array1_gp_Lin_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Lin(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Lin* NCollection_Array1_gp_Lin_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Lin* theValue) {
+extern "C" NCollection_Array1_gp_Lin* NCollection_Array1_gp_Lin_ctor_int2_value(int theLower, int theUpper, const gp_Lin* theValue) {
     auto arr = new NCollection_Array1_gp_Lin(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Lin_length(const NCollection_Array1_gp_Lin* arr) {
+extern "C" int NCollection_Array1_gp_Lin_length(const NCollection_Array1_gp_Lin* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Lin_lower(const NCollection_Array1_gp_Lin* arr) {
+extern "C" int NCollection_Array1_gp_Lin_lower(const NCollection_Array1_gp_Lin* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Lin_upper(const NCollection_Array1_gp_Lin* arr) {
+extern "C" int NCollection_Array1_gp_Lin_upper(const NCollection_Array1_gp_Lin* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Lin* NCollection_Array1_gp_Lin_value(const NCollection_Array1_gp_Lin* arr, Standard_Integer theIndex) {
+extern "C" const gp_Lin* NCollection_Array1_gp_Lin_value(const NCollection_Array1_gp_Lin* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Lin_set_value(NCollection_Array1_gp_Lin* arr, Standard_Integer theIndex, const gp_Lin* theItem) {
+extern "C" void NCollection_Array1_gp_Lin_set_value(NCollection_Array1_gp_Lin* arr, int theIndex, const gp_Lin* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36583,33 +36536,33 @@ extern "C" void NCollection_Array1_gp_Pnt_destructor(NCollection_Array1_gp_Pnt* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Pnt* NCollection_Array1_gp_Pnt_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Pnt* NCollection_Array1_gp_Pnt_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Pnt(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Pnt* NCollection_Array1_gp_Pnt_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt* theValue) {
+extern "C" NCollection_Array1_gp_Pnt* NCollection_Array1_gp_Pnt_ctor_int2_value(int theLower, int theUpper, const gp_Pnt* theValue) {
     auto arr = new NCollection_Array1_gp_Pnt(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt_length(const NCollection_Array1_gp_Pnt* arr) {
+extern "C" int NCollection_Array1_gp_Pnt_length(const NCollection_Array1_gp_Pnt* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt_lower(const NCollection_Array1_gp_Pnt* arr) {
+extern "C" int NCollection_Array1_gp_Pnt_lower(const NCollection_Array1_gp_Pnt* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt_upper(const NCollection_Array1_gp_Pnt* arr) {
+extern "C" int NCollection_Array1_gp_Pnt_upper(const NCollection_Array1_gp_Pnt* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Pnt* NCollection_Array1_gp_Pnt_value(const NCollection_Array1_gp_Pnt* arr, Standard_Integer theIndex) {
+extern "C" const gp_Pnt* NCollection_Array1_gp_Pnt_value(const NCollection_Array1_gp_Pnt* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Pnt_set_value(NCollection_Array1_gp_Pnt* arr, Standard_Integer theIndex, const gp_Pnt* theItem) {
+extern "C" void NCollection_Array1_gp_Pnt_set_value(NCollection_Array1_gp_Pnt* arr, int theIndex, const gp_Pnt* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36631,33 +36584,33 @@ extern "C" void NCollection_Array1_gp_Pnt2d_destructor(NCollection_Array1_gp_Pnt
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Pnt2d* NCollection_Array1_gp_Pnt2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Pnt2d* NCollection_Array1_gp_Pnt2d_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Pnt2d(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Pnt2d* NCollection_Array1_gp_Pnt2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt2d* theValue) {
+extern "C" NCollection_Array1_gp_Pnt2d* NCollection_Array1_gp_Pnt2d_ctor_int2_value(int theLower, int theUpper, const gp_Pnt2d* theValue) {
     auto arr = new NCollection_Array1_gp_Pnt2d(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt2d_length(const NCollection_Array1_gp_Pnt2d* arr) {
+extern "C" int NCollection_Array1_gp_Pnt2d_length(const NCollection_Array1_gp_Pnt2d* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt2d_lower(const NCollection_Array1_gp_Pnt2d* arr) {
+extern "C" int NCollection_Array1_gp_Pnt2d_lower(const NCollection_Array1_gp_Pnt2d* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Pnt2d_upper(const NCollection_Array1_gp_Pnt2d* arr) {
+extern "C" int NCollection_Array1_gp_Pnt2d_upper(const NCollection_Array1_gp_Pnt2d* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Pnt2d* NCollection_Array1_gp_Pnt2d_value(const NCollection_Array1_gp_Pnt2d* arr, Standard_Integer theIndex) {
+extern "C" const gp_Pnt2d* NCollection_Array1_gp_Pnt2d_value(const NCollection_Array1_gp_Pnt2d* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Pnt2d_set_value(NCollection_Array1_gp_Pnt2d* arr, Standard_Integer theIndex, const gp_Pnt2d* theItem) {
+extern "C" void NCollection_Array1_gp_Pnt2d_set_value(NCollection_Array1_gp_Pnt2d* arr, int theIndex, const gp_Pnt2d* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36679,33 +36632,33 @@ extern "C" void NCollection_Array1_gp_Trsf_destructor(NCollection_Array1_gp_Trsf
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Trsf* NCollection_Array1_gp_Trsf_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Trsf* NCollection_Array1_gp_Trsf_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Trsf(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Trsf* NCollection_Array1_gp_Trsf_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Trsf* theValue) {
+extern "C" NCollection_Array1_gp_Trsf* NCollection_Array1_gp_Trsf_ctor_int2_value(int theLower, int theUpper, const gp_Trsf* theValue) {
     auto arr = new NCollection_Array1_gp_Trsf(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Trsf_length(const NCollection_Array1_gp_Trsf* arr) {
+extern "C" int NCollection_Array1_gp_Trsf_length(const NCollection_Array1_gp_Trsf* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Trsf_lower(const NCollection_Array1_gp_Trsf* arr) {
+extern "C" int NCollection_Array1_gp_Trsf_lower(const NCollection_Array1_gp_Trsf* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Trsf_upper(const NCollection_Array1_gp_Trsf* arr) {
+extern "C" int NCollection_Array1_gp_Trsf_upper(const NCollection_Array1_gp_Trsf* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Trsf* NCollection_Array1_gp_Trsf_value(const NCollection_Array1_gp_Trsf* arr, Standard_Integer theIndex) {
+extern "C" const gp_Trsf* NCollection_Array1_gp_Trsf_value(const NCollection_Array1_gp_Trsf* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Trsf_set_value(NCollection_Array1_gp_Trsf* arr, Standard_Integer theIndex, const gp_Trsf* theItem) {
+extern "C" void NCollection_Array1_gp_Trsf_set_value(NCollection_Array1_gp_Trsf* arr, int theIndex, const gp_Trsf* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36727,33 +36680,33 @@ extern "C" void NCollection_Array1_gp_Vec_destructor(NCollection_Array1_gp_Vec* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Vec* NCollection_Array1_gp_Vec_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Vec* NCollection_Array1_gp_Vec_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Vec(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Vec* NCollection_Array1_gp_Vec_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec* theValue) {
+extern "C" NCollection_Array1_gp_Vec* NCollection_Array1_gp_Vec_ctor_int2_value(int theLower, int theUpper, const gp_Vec* theValue) {
     auto arr = new NCollection_Array1_gp_Vec(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec_length(const NCollection_Array1_gp_Vec* arr) {
+extern "C" int NCollection_Array1_gp_Vec_length(const NCollection_Array1_gp_Vec* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec_lower(const NCollection_Array1_gp_Vec* arr) {
+extern "C" int NCollection_Array1_gp_Vec_lower(const NCollection_Array1_gp_Vec* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec_upper(const NCollection_Array1_gp_Vec* arr) {
+extern "C" int NCollection_Array1_gp_Vec_upper(const NCollection_Array1_gp_Vec* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Vec* NCollection_Array1_gp_Vec_value(const NCollection_Array1_gp_Vec* arr, Standard_Integer theIndex) {
+extern "C" const gp_Vec* NCollection_Array1_gp_Vec_value(const NCollection_Array1_gp_Vec* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Vec_set_value(NCollection_Array1_gp_Vec* arr, Standard_Integer theIndex, const gp_Vec* theItem) {
+extern "C" void NCollection_Array1_gp_Vec_set_value(NCollection_Array1_gp_Vec* arr, int theIndex, const gp_Vec* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36775,33 +36728,33 @@ extern "C" void NCollection_Array1_gp_Vec2d_destructor(NCollection_Array1_gp_Vec
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_Vec2d* NCollection_Array1_gp_Vec2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_Vec2d* NCollection_Array1_gp_Vec2d_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_Vec2d(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_Vec2d* NCollection_Array1_gp_Vec2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec2d* theValue) {
+extern "C" NCollection_Array1_gp_Vec2d* NCollection_Array1_gp_Vec2d_ctor_int2_value(int theLower, int theUpper, const gp_Vec2d* theValue) {
     auto arr = new NCollection_Array1_gp_Vec2d(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec2d_length(const NCollection_Array1_gp_Vec2d* arr) {
+extern "C" int NCollection_Array1_gp_Vec2d_length(const NCollection_Array1_gp_Vec2d* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec2d_lower(const NCollection_Array1_gp_Vec2d* arr) {
+extern "C" int NCollection_Array1_gp_Vec2d_lower(const NCollection_Array1_gp_Vec2d* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_Vec2d_upper(const NCollection_Array1_gp_Vec2d* arr) {
+extern "C" int NCollection_Array1_gp_Vec2d_upper(const NCollection_Array1_gp_Vec2d* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Vec2d* NCollection_Array1_gp_Vec2d_value(const NCollection_Array1_gp_Vec2d* arr, Standard_Integer theIndex) {
+extern "C" const gp_Vec2d* NCollection_Array1_gp_Vec2d_value(const NCollection_Array1_gp_Vec2d* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_Vec2d_set_value(NCollection_Array1_gp_Vec2d* arr, Standard_Integer theIndex, const gp_Vec2d* theItem) {
+extern "C" void NCollection_Array1_gp_Vec2d_set_value(NCollection_Array1_gp_Vec2d* arr, int theIndex, const gp_Vec2d* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36823,33 +36776,33 @@ extern "C" void NCollection_Array1_gp_XYZ_destructor(NCollection_Array1_gp_XYZ* 
     delete self_;
 }
 
-extern "C" NCollection_Array1_gp_XYZ* NCollection_Array1_gp_XYZ_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_gp_XYZ* NCollection_Array1_gp_XYZ_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_gp_XYZ(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_gp_XYZ* NCollection_Array1_gp_XYZ_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XYZ* theValue) {
+extern "C" NCollection_Array1_gp_XYZ* NCollection_Array1_gp_XYZ_ctor_int2_value(int theLower, int theUpper, const gp_XYZ* theValue) {
     auto arr = new NCollection_Array1_gp_XYZ(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_XYZ_length(const NCollection_Array1_gp_XYZ* arr) {
+extern "C" int NCollection_Array1_gp_XYZ_length(const NCollection_Array1_gp_XYZ* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_XYZ_lower(const NCollection_Array1_gp_XYZ* arr) {
+extern "C" int NCollection_Array1_gp_XYZ_lower(const NCollection_Array1_gp_XYZ* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_gp_XYZ_upper(const NCollection_Array1_gp_XYZ* arr) {
+extern "C" int NCollection_Array1_gp_XYZ_upper(const NCollection_Array1_gp_XYZ* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_XYZ* NCollection_Array1_gp_XYZ_value(const NCollection_Array1_gp_XYZ* arr, Standard_Integer theIndex) {
+extern "C" const gp_XYZ* NCollection_Array1_gp_XYZ_value(const NCollection_Array1_gp_XYZ* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_gp_XYZ_set_value(NCollection_Array1_gp_XYZ* arr, Standard_Integer theIndex, const gp_XYZ* theItem) {
+extern "C" void NCollection_Array1_gp_XYZ_set_value(NCollection_Array1_gp_XYZ* arr, int theIndex, const gp_XYZ* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36871,33 +36824,33 @@ extern "C" void NCollection_Array1_int_destructor(NCollection_Array1_int* self_)
     delete self_;
 }
 
-extern "C" NCollection_Array1_int* NCollection_Array1_int_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_Array1_int* NCollection_Array1_int_ctor_int2(int theLower, int theUpper) {
     return new NCollection_Array1_int(theLower, theUpper);
 }
 
-extern "C" NCollection_Array1_int* NCollection_Array1_int_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const int* theValue) {
+extern "C" NCollection_Array1_int* NCollection_Array1_int_ctor_int2_value(int theLower, int theUpper, const int* theValue) {
     auto arr = new NCollection_Array1_int(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array1_int_length(const NCollection_Array1_int* arr) {
+extern "C" int NCollection_Array1_int_length(const NCollection_Array1_int* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_Array1_int_lower(const NCollection_Array1_int* arr) {
+extern "C" int NCollection_Array1_int_lower(const NCollection_Array1_int* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_Array1_int_upper(const NCollection_Array1_int* arr) {
+extern "C" int NCollection_Array1_int_upper(const NCollection_Array1_int* arr) {
     return arr->Upper();
 }
 
-extern "C" const int* NCollection_Array1_int_value(const NCollection_Array1_int* arr, Standard_Integer theIndex) {
+extern "C" const int* NCollection_Array1_int_value(const NCollection_Array1_int* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_Array1_int_set_value(NCollection_Array1_int* arr, Standard_Integer theIndex, const int* theItem) {
+extern "C" void NCollection_Array1_int_set_value(NCollection_Array1_int* arr, int theIndex, const int* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -36919,49 +36872,49 @@ extern "C" void NCollection_Array2_double_destructor(NCollection_Array2_double* 
     delete self_;
 }
 
-extern "C" NCollection_Array2_double* NCollection_Array2_double_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+extern "C" NCollection_Array2_double* NCollection_Array2_double_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
     return new NCollection_Array2_double(theRowLower, theRowUpper, theColLower, theColUpper);
 }
 
-extern "C" NCollection_Array2_double* NCollection_Array2_double_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const double* theValue) {
+extern "C" NCollection_Array2_double* NCollection_Array2_double_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const double* theValue) {
     auto arr = new NCollection_Array2_double(theRowLower, theRowUpper, theColLower, theColUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_nb_rows(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_nb_rows(const NCollection_Array2_double* arr) {
     return arr->NbRows();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_nb_columns(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_nb_columns(const NCollection_Array2_double* arr) {
     return arr->NbColumns();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_lower_row(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_lower_row(const NCollection_Array2_double* arr) {
     return arr->LowerRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_upper_row(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_upper_row(const NCollection_Array2_double* arr) {
     return arr->UpperRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_lower_col(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_lower_col(const NCollection_Array2_double* arr) {
     return arr->LowerCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_upper_col(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_upper_col(const NCollection_Array2_double* arr) {
     return arr->UpperCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_double_length(const NCollection_Array2_double* arr) {
+extern "C" int NCollection_Array2_double_length(const NCollection_Array2_double* arr) {
     return arr->Length();
 }
 
-extern "C" const double* NCollection_Array2_double_value(const NCollection_Array2_double* arr, Standard_Integer theRow, Standard_Integer theCol) {
+extern "C" const double* NCollection_Array2_double_value(const NCollection_Array2_double* arr, int theRow, int theCol) {
     return &arr->Value(theRow, theCol);
 }
 
-extern "C" void NCollection_Array2_double_set_value(NCollection_Array2_double* arr, Standard_Integer theRow, Standard_Integer theCol, const double* theItem) {
+extern "C" void NCollection_Array2_double_set_value(NCollection_Array2_double* arr, int theRow, int theCol, const double* theItem) {
     arr->SetValue(theRow, theCol, *theItem);
 }
 
@@ -36983,49 +36936,49 @@ extern "C" void NCollection_Array2_gp_Pnt_destructor(NCollection_Array2_gp_Pnt* 
     delete self_;
 }
 
-extern "C" NCollection_Array2_gp_Pnt* NCollection_Array2_gp_Pnt_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+extern "C" NCollection_Array2_gp_Pnt* NCollection_Array2_gp_Pnt_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
     return new NCollection_Array2_gp_Pnt(theRowLower, theRowUpper, theColLower, theColUpper);
 }
 
-extern "C" NCollection_Array2_gp_Pnt* NCollection_Array2_gp_Pnt_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Pnt* theValue) {
+extern "C" NCollection_Array2_gp_Pnt* NCollection_Array2_gp_Pnt_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const gp_Pnt* theValue) {
     auto arr = new NCollection_Array2_gp_Pnt(theRowLower, theRowUpper, theColLower, theColUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_nb_rows(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_nb_rows(const NCollection_Array2_gp_Pnt* arr) {
     return arr->NbRows();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_nb_columns(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_nb_columns(const NCollection_Array2_gp_Pnt* arr) {
     return arr->NbColumns();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_lower_row(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_lower_row(const NCollection_Array2_gp_Pnt* arr) {
     return arr->LowerRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_upper_row(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_upper_row(const NCollection_Array2_gp_Pnt* arr) {
     return arr->UpperRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_lower_col(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_lower_col(const NCollection_Array2_gp_Pnt* arr) {
     return arr->LowerCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_upper_col(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_upper_col(const NCollection_Array2_gp_Pnt* arr) {
     return arr->UpperCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Pnt_length(const NCollection_Array2_gp_Pnt* arr) {
+extern "C" int NCollection_Array2_gp_Pnt_length(const NCollection_Array2_gp_Pnt* arr) {
     return arr->Length();
 }
 
-extern "C" const gp_Pnt* NCollection_Array2_gp_Pnt_value(const NCollection_Array2_gp_Pnt* arr, Standard_Integer theRow, Standard_Integer theCol) {
+extern "C" const gp_Pnt* NCollection_Array2_gp_Pnt_value(const NCollection_Array2_gp_Pnt* arr, int theRow, int theCol) {
     return &arr->Value(theRow, theCol);
 }
 
-extern "C" void NCollection_Array2_gp_Pnt_set_value(NCollection_Array2_gp_Pnt* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Pnt* theItem) {
+extern "C" void NCollection_Array2_gp_Pnt_set_value(NCollection_Array2_gp_Pnt* arr, int theRow, int theCol, const gp_Pnt* theItem) {
     arr->SetValue(theRow, theCol, *theItem);
 }
 
@@ -37047,49 +37000,49 @@ extern "C" void NCollection_Array2_gp_Vec_destructor(NCollection_Array2_gp_Vec* 
     delete self_;
 }
 
-extern "C" NCollection_Array2_gp_Vec* NCollection_Array2_gp_Vec_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+extern "C" NCollection_Array2_gp_Vec* NCollection_Array2_gp_Vec_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
     return new NCollection_Array2_gp_Vec(theRowLower, theRowUpper, theColLower, theColUpper);
 }
 
-extern "C" NCollection_Array2_gp_Vec* NCollection_Array2_gp_Vec_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Vec* theValue) {
+extern "C" NCollection_Array2_gp_Vec* NCollection_Array2_gp_Vec_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const gp_Vec* theValue) {
     auto arr = new NCollection_Array2_gp_Vec(theRowLower, theRowUpper, theColLower, theColUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_nb_rows(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_nb_rows(const NCollection_Array2_gp_Vec* arr) {
     return arr->NbRows();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_nb_columns(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_nb_columns(const NCollection_Array2_gp_Vec* arr) {
     return arr->NbColumns();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_lower_row(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_lower_row(const NCollection_Array2_gp_Vec* arr) {
     return arr->LowerRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_upper_row(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_upper_row(const NCollection_Array2_gp_Vec* arr) {
     return arr->UpperRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_lower_col(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_lower_col(const NCollection_Array2_gp_Vec* arr) {
     return arr->LowerCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_upper_col(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_upper_col(const NCollection_Array2_gp_Vec* arr) {
     return arr->UpperCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_Vec_length(const NCollection_Array2_gp_Vec* arr) {
+extern "C" int NCollection_Array2_gp_Vec_length(const NCollection_Array2_gp_Vec* arr) {
     return arr->Length();
 }
 
-extern "C" const gp_Vec* NCollection_Array2_gp_Vec_value(const NCollection_Array2_gp_Vec* arr, Standard_Integer theRow, Standard_Integer theCol) {
+extern "C" const gp_Vec* NCollection_Array2_gp_Vec_value(const NCollection_Array2_gp_Vec* arr, int theRow, int theCol) {
     return &arr->Value(theRow, theCol);
 }
 
-extern "C" void NCollection_Array2_gp_Vec_set_value(NCollection_Array2_gp_Vec* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Vec* theItem) {
+extern "C" void NCollection_Array2_gp_Vec_set_value(NCollection_Array2_gp_Vec* arr, int theRow, int theCol, const gp_Vec* theItem) {
     arr->SetValue(theRow, theCol, *theItem);
 }
 
@@ -37111,49 +37064,49 @@ extern "C" void NCollection_Array2_gp_XYZ_destructor(NCollection_Array2_gp_XYZ* 
     delete self_;
 }
 
-extern "C" NCollection_Array2_gp_XYZ* NCollection_Array2_gp_XYZ_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+extern "C" NCollection_Array2_gp_XYZ* NCollection_Array2_gp_XYZ_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
     return new NCollection_Array2_gp_XYZ(theRowLower, theRowUpper, theColLower, theColUpper);
 }
 
-extern "C" NCollection_Array2_gp_XYZ* NCollection_Array2_gp_XYZ_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_XYZ* theValue) {
+extern "C" NCollection_Array2_gp_XYZ* NCollection_Array2_gp_XYZ_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const gp_XYZ* theValue) {
     auto arr = new NCollection_Array2_gp_XYZ(theRowLower, theRowUpper, theColLower, theColUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_nb_rows(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_nb_rows(const NCollection_Array2_gp_XYZ* arr) {
     return arr->NbRows();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_nb_columns(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_nb_columns(const NCollection_Array2_gp_XYZ* arr) {
     return arr->NbColumns();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_lower_row(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_lower_row(const NCollection_Array2_gp_XYZ* arr) {
     return arr->LowerRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_upper_row(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_upper_row(const NCollection_Array2_gp_XYZ* arr) {
     return arr->UpperRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_lower_col(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_lower_col(const NCollection_Array2_gp_XYZ* arr) {
     return arr->LowerCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_upper_col(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_upper_col(const NCollection_Array2_gp_XYZ* arr) {
     return arr->UpperCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_gp_XYZ_length(const NCollection_Array2_gp_XYZ* arr) {
+extern "C" int NCollection_Array2_gp_XYZ_length(const NCollection_Array2_gp_XYZ* arr) {
     return arr->Length();
 }
 
-extern "C" const gp_XYZ* NCollection_Array2_gp_XYZ_value(const NCollection_Array2_gp_XYZ* arr, Standard_Integer theRow, Standard_Integer theCol) {
+extern "C" const gp_XYZ* NCollection_Array2_gp_XYZ_value(const NCollection_Array2_gp_XYZ* arr, int theRow, int theCol) {
     return &arr->Value(theRow, theCol);
 }
 
-extern "C" void NCollection_Array2_gp_XYZ_set_value(NCollection_Array2_gp_XYZ* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_XYZ* theItem) {
+extern "C" void NCollection_Array2_gp_XYZ_set_value(NCollection_Array2_gp_XYZ* arr, int theRow, int theCol, const gp_XYZ* theItem) {
     arr->SetValue(theRow, theCol, *theItem);
 }
 
@@ -37175,49 +37128,49 @@ extern "C" void NCollection_Array2_int_destructor(NCollection_Array2_int* self_)
     delete self_;
 }
 
-extern "C" NCollection_Array2_int* NCollection_Array2_int_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
+extern "C" NCollection_Array2_int* NCollection_Array2_int_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {
     return new NCollection_Array2_int(theRowLower, theRowUpper, theColLower, theColUpper);
 }
 
-extern "C" NCollection_Array2_int* NCollection_Array2_int_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const int* theValue) {
+extern "C" NCollection_Array2_int* NCollection_Array2_int_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const int* theValue) {
     auto arr = new NCollection_Array2_int(theRowLower, theRowUpper, theColLower, theColUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_nb_rows(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_nb_rows(const NCollection_Array2_int* arr) {
     return arr->NbRows();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_nb_columns(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_nb_columns(const NCollection_Array2_int* arr) {
     return arr->NbColumns();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_lower_row(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_lower_row(const NCollection_Array2_int* arr) {
     return arr->LowerRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_upper_row(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_upper_row(const NCollection_Array2_int* arr) {
     return arr->UpperRow();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_lower_col(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_lower_col(const NCollection_Array2_int* arr) {
     return arr->LowerCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_upper_col(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_upper_col(const NCollection_Array2_int* arr) {
     return arr->UpperCol();
 }
 
-extern "C" Standard_Integer NCollection_Array2_int_length(const NCollection_Array2_int* arr) {
+extern "C" int NCollection_Array2_int_length(const NCollection_Array2_int* arr) {
     return arr->Length();
 }
 
-extern "C" const int* NCollection_Array2_int_value(const NCollection_Array2_int* arr, Standard_Integer theRow, Standard_Integer theCol) {
+extern "C" const int* NCollection_Array2_int_value(const NCollection_Array2_int* arr, int theRow, int theCol) {
     return &arr->Value(theRow, theCol);
 }
 
-extern "C" void NCollection_Array2_int_set_value(NCollection_Array2_int* arr, Standard_Integer theRow, Standard_Integer theCol, const int* theItem) {
+extern "C" void NCollection_Array2_int_set_value(NCollection_Array2_int* arr, int theRow, int theCol, const int* theItem) {
     arr->SetValue(theRow, theCol, *theItem);
 }
 
@@ -38520,33 +38473,33 @@ extern "C" void NCollection_HArray1_AppParCurves_ConstraintCouple_destructor(NCo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_AppParCurves_ConstraintCouple(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const AppParCurves_ConstraintCouple* theValue) {
+extern "C" NCollection_HArray1_AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_ctor_int2_value(int theLower, int theUpper, const AppParCurves_ConstraintCouple* theValue) {
     auto arr = new NCollection_HArray1_AppParCurves_ConstraintCouple(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_AppParCurves_ConstraintCouple_length(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
+extern "C" int NCollection_HArray1_AppParCurves_ConstraintCouple_length(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_AppParCurves_ConstraintCouple_lower(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
+extern "C" int NCollection_HArray1_AppParCurves_ConstraintCouple_lower(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_AppParCurves_ConstraintCouple_upper(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
+extern "C" int NCollection_HArray1_AppParCurves_ConstraintCouple_upper(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr) {
     return arr->Upper();
 }
 
-extern "C" const AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_value(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr, Standard_Integer theIndex) {
+extern "C" const AppParCurves_ConstraintCouple* NCollection_HArray1_AppParCurves_ConstraintCouple_value(const NCollection_HArray1_AppParCurves_ConstraintCouple* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_AppParCurves_ConstraintCouple_set_value(NCollection_HArray1_AppParCurves_ConstraintCouple* arr, Standard_Integer theIndex, const AppParCurves_ConstraintCouple* theItem) {
+extern "C" void NCollection_HArray1_AppParCurves_ConstraintCouple_set_value(NCollection_HArray1_AppParCurves_ConstraintCouple* arr, int theIndex, const AppParCurves_ConstraintCouple* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38578,33 +38531,33 @@ extern "C" void NCollection_HArray1_Bnd_Box_destructor(NCollection_HArray1_Bnd_B
     delete self_;
 }
 
-extern "C" NCollection_HArray1_Bnd_Box* NCollection_HArray1_Bnd_Box_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_Bnd_Box* NCollection_HArray1_Bnd_Box_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_Bnd_Box(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_Bnd_Box* NCollection_HArray1_Bnd_Box_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Bnd_Box* theValue) {
+extern "C" NCollection_HArray1_Bnd_Box* NCollection_HArray1_Bnd_Box_ctor_int2_value(int theLower, int theUpper, const Bnd_Box* theValue) {
     auto arr = new NCollection_HArray1_Bnd_Box(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Bnd_Box_length(const NCollection_HArray1_Bnd_Box* arr) {
+extern "C" int NCollection_HArray1_Bnd_Box_length(const NCollection_HArray1_Bnd_Box* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Bnd_Box_lower(const NCollection_HArray1_Bnd_Box* arr) {
+extern "C" int NCollection_HArray1_Bnd_Box_lower(const NCollection_HArray1_Bnd_Box* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Bnd_Box_upper(const NCollection_HArray1_Bnd_Box* arr) {
+extern "C" int NCollection_HArray1_Bnd_Box_upper(const NCollection_HArray1_Bnd_Box* arr) {
     return arr->Upper();
 }
 
-extern "C" const Bnd_Box* NCollection_HArray1_Bnd_Box_value(const NCollection_HArray1_Bnd_Box* arr, Standard_Integer theIndex) {
+extern "C" const Bnd_Box* NCollection_HArray1_Bnd_Box_value(const NCollection_HArray1_Bnd_Box* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_Bnd_Box_set_value(NCollection_HArray1_Bnd_Box* arr, Standard_Integer theIndex, const Bnd_Box* theItem) {
+extern "C" void NCollection_HArray1_Bnd_Box_set_value(NCollection_HArray1_Bnd_Box* arr, int theIndex, const Bnd_Box* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38636,33 +38589,33 @@ extern "C" void NCollection_HArray1_ChFiDS_CircSection_destructor(NCollection_HA
     delete self_;
 }
 
-extern "C" NCollection_HArray1_ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_ChFiDS_CircSection(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const ChFiDS_CircSection* theValue) {
+extern "C" NCollection_HArray1_ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_ctor_int2_value(int theLower, int theUpper, const ChFiDS_CircSection* theValue) {
     auto arr = new NCollection_HArray1_ChFiDS_CircSection(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_ChFiDS_CircSection_length(const NCollection_HArray1_ChFiDS_CircSection* arr) {
+extern "C" int NCollection_HArray1_ChFiDS_CircSection_length(const NCollection_HArray1_ChFiDS_CircSection* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_ChFiDS_CircSection_lower(const NCollection_HArray1_ChFiDS_CircSection* arr) {
+extern "C" int NCollection_HArray1_ChFiDS_CircSection_lower(const NCollection_HArray1_ChFiDS_CircSection* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_ChFiDS_CircSection_upper(const NCollection_HArray1_ChFiDS_CircSection* arr) {
+extern "C" int NCollection_HArray1_ChFiDS_CircSection_upper(const NCollection_HArray1_ChFiDS_CircSection* arr) {
     return arr->Upper();
 }
 
-extern "C" const ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_value(const NCollection_HArray1_ChFiDS_CircSection* arr, Standard_Integer theIndex) {
+extern "C" const ChFiDS_CircSection* NCollection_HArray1_ChFiDS_CircSection_value(const NCollection_HArray1_ChFiDS_CircSection* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_ChFiDS_CircSection_set_value(NCollection_HArray1_ChFiDS_CircSection* arr, Standard_Integer theIndex, const ChFiDS_CircSection* theItem) {
+extern "C" void NCollection_HArray1_ChFiDS_CircSection_set_value(NCollection_HArray1_ChFiDS_CircSection* arr, int theIndex, const ChFiDS_CircSection* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38694,33 +38647,33 @@ extern "C" void NCollection_HArray1_HLRAlgo_PolyHidingData_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_HArray1_HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_HLRAlgo_PolyHidingData(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRAlgo_PolyHidingData* theValue) {
+extern "C" NCollection_HArray1_HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_ctor_int2_value(int theLower, int theUpper, const HLRAlgo_PolyHidingData* theValue) {
     auto arr = new NCollection_HArray1_HLRAlgo_PolyHidingData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_PolyHidingData_length(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_PolyHidingData_length(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_PolyHidingData_lower(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_PolyHidingData_lower(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_PolyHidingData_upper(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_PolyHidingData_upper(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_value(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr, Standard_Integer theIndex) {
+extern "C" const HLRAlgo_PolyHidingData* NCollection_HArray1_HLRAlgo_PolyHidingData_value(const NCollection_HArray1_HLRAlgo_PolyHidingData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_HLRAlgo_PolyHidingData_set_value(NCollection_HArray1_HLRAlgo_PolyHidingData* arr, Standard_Integer theIndex, const HLRAlgo_PolyHidingData* theItem) {
+extern "C" void NCollection_HArray1_HLRAlgo_PolyHidingData_set_value(NCollection_HArray1_HLRAlgo_PolyHidingData* arr, int theIndex, const HLRAlgo_PolyHidingData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38752,33 +38705,33 @@ extern "C" void NCollection_HArray1_HLRAlgo_TriangleData_destructor(NCollection_
     delete self_;
 }
 
-extern "C" NCollection_HArray1_HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_HLRAlgo_TriangleData(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const HLRAlgo_TriangleData* theValue) {
+extern "C" NCollection_HArray1_HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_ctor_int2_value(int theLower, int theUpper, const HLRAlgo_TriangleData* theValue) {
     auto arr = new NCollection_HArray1_HLRAlgo_TriangleData(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_TriangleData_length(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_TriangleData_length(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_TriangleData_lower(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_TriangleData_lower(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_HLRAlgo_TriangleData_upper(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
+extern "C" int NCollection_HArray1_HLRAlgo_TriangleData_upper(const NCollection_HArray1_HLRAlgo_TriangleData* arr) {
     return arr->Upper();
 }
 
-extern "C" const HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_value(const NCollection_HArray1_HLRAlgo_TriangleData* arr, Standard_Integer theIndex) {
+extern "C" const HLRAlgo_TriangleData* NCollection_HArray1_HLRAlgo_TriangleData_value(const NCollection_HArray1_HLRAlgo_TriangleData* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_HLRAlgo_TriangleData_set_value(NCollection_HArray1_HLRAlgo_TriangleData* arr, Standard_Integer theIndex, const HLRAlgo_TriangleData* theItem) {
+extern "C" void NCollection_HArray1_HLRAlgo_TriangleData_set_value(NCollection_HArray1_HLRAlgo_TriangleData* arr, int theIndex, const HLRAlgo_TriangleData* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38810,33 +38763,33 @@ extern "C" void NCollection_HArray1_Poly_Triangle_destructor(NCollection_HArray1
     delete self_;
 }
 
-extern "C" NCollection_HArray1_Poly_Triangle* NCollection_HArray1_Poly_Triangle_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_Poly_Triangle* NCollection_HArray1_Poly_Triangle_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_Poly_Triangle(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_Poly_Triangle* NCollection_HArray1_Poly_Triangle_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Poly_Triangle* theValue) {
+extern "C" NCollection_HArray1_Poly_Triangle* NCollection_HArray1_Poly_Triangle_ctor_int2_value(int theLower, int theUpper, const Poly_Triangle* theValue) {
     auto arr = new NCollection_HArray1_Poly_Triangle(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Poly_Triangle_length(const NCollection_HArray1_Poly_Triangle* arr) {
+extern "C" int NCollection_HArray1_Poly_Triangle_length(const NCollection_HArray1_Poly_Triangle* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Poly_Triangle_lower(const NCollection_HArray1_Poly_Triangle* arr) {
+extern "C" int NCollection_HArray1_Poly_Triangle_lower(const NCollection_HArray1_Poly_Triangle* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Poly_Triangle_upper(const NCollection_HArray1_Poly_Triangle* arr) {
+extern "C" int NCollection_HArray1_Poly_Triangle_upper(const NCollection_HArray1_Poly_Triangle* arr) {
     return arr->Upper();
 }
 
-extern "C" const Poly_Triangle* NCollection_HArray1_Poly_Triangle_value(const NCollection_HArray1_Poly_Triangle* arr, Standard_Integer theIndex) {
+extern "C" const Poly_Triangle* NCollection_HArray1_Poly_Triangle_value(const NCollection_HArray1_Poly_Triangle* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_Poly_Triangle_set_value(NCollection_HArray1_Poly_Triangle* arr, Standard_Integer theIndex, const Poly_Triangle* theItem) {
+extern "C" void NCollection_HArray1_Poly_Triangle_set_value(NCollection_HArray1_Poly_Triangle* arr, int theIndex, const Poly_Triangle* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38868,33 +38821,33 @@ extern "C" void NCollection_HArray1_Quantity_Color_destructor(NCollection_HArray
     delete self_;
 }
 
-extern "C" NCollection_HArray1_Quantity_Color* NCollection_HArray1_Quantity_Color_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_Quantity_Color* NCollection_HArray1_Quantity_Color_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_Quantity_Color(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_Quantity_Color* NCollection_HArray1_Quantity_Color_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Quantity_Color* theValue) {
+extern "C" NCollection_HArray1_Quantity_Color* NCollection_HArray1_Quantity_Color_ctor_int2_value(int theLower, int theUpper, const Quantity_Color* theValue) {
     auto arr = new NCollection_HArray1_Quantity_Color(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Quantity_Color_length(const NCollection_HArray1_Quantity_Color* arr) {
+extern "C" int NCollection_HArray1_Quantity_Color_length(const NCollection_HArray1_Quantity_Color* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Quantity_Color_lower(const NCollection_HArray1_Quantity_Color* arr) {
+extern "C" int NCollection_HArray1_Quantity_Color_lower(const NCollection_HArray1_Quantity_Color* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Quantity_Color_upper(const NCollection_HArray1_Quantity_Color* arr) {
+extern "C" int NCollection_HArray1_Quantity_Color_upper(const NCollection_HArray1_Quantity_Color* arr) {
     return arr->Upper();
 }
 
-extern "C" const Quantity_Color* NCollection_HArray1_Quantity_Color_value(const NCollection_HArray1_Quantity_Color* arr, Standard_Integer theIndex) {
+extern "C" const Quantity_Color* NCollection_HArray1_Quantity_Color_value(const NCollection_HArray1_Quantity_Color* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_Quantity_Color_set_value(NCollection_HArray1_Quantity_Color* arr, Standard_Integer theIndex, const Quantity_Color* theItem) {
+extern "C" void NCollection_HArray1_Quantity_Color_set_value(NCollection_HArray1_Quantity_Color* arr, int theIndex, const Quantity_Color* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -38916,7 +38869,7 @@ extern "C" bool Handle_NCollection_HArray1_Quantity_Color_is_null(const opencasc
 // NCollection_HArray1_Standard_Boolean - Handle-managed fixed-size 1D array (1-indexed)
 // ========================
 
-typedef NCollection_HArray1<Standard_Boolean> NCollection_HArray1_Standard_Boolean;
+typedef NCollection_HArray1<bool> NCollection_HArray1_Standard_Boolean;
 
 extern "C" NCollection_HArray1_Standard_Boolean* NCollection_HArray1_Standard_Boolean_new() {
     return new NCollection_HArray1_Standard_Boolean();
@@ -38926,49 +38879,49 @@ extern "C" void NCollection_HArray1_Standard_Boolean_destructor(NCollection_HArr
     delete self_;
 }
 
-extern "C" NCollection_HArray1_Standard_Boolean* NCollection_HArray1_Standard_Boolean_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_Standard_Boolean* NCollection_HArray1_Standard_Boolean_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_Standard_Boolean(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_Standard_Boolean* NCollection_HArray1_Standard_Boolean_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const Standard_Boolean* theValue) {
+extern "C" NCollection_HArray1_Standard_Boolean* NCollection_HArray1_Standard_Boolean_ctor_int2_value(int theLower, int theUpper, const bool* theValue) {
     auto arr = new NCollection_HArray1_Standard_Boolean(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Standard_Boolean_length(const NCollection_HArray1_Standard_Boolean* arr) {
+extern "C" int NCollection_HArray1_Standard_Boolean_length(const NCollection_HArray1_Standard_Boolean* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Standard_Boolean_lower(const NCollection_HArray1_Standard_Boolean* arr) {
+extern "C" int NCollection_HArray1_Standard_Boolean_lower(const NCollection_HArray1_Standard_Boolean* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_Standard_Boolean_upper(const NCollection_HArray1_Standard_Boolean* arr) {
+extern "C" int NCollection_HArray1_Standard_Boolean_upper(const NCollection_HArray1_Standard_Boolean* arr) {
     return arr->Upper();
 }
 
-extern "C" const Standard_Boolean* NCollection_HArray1_Standard_Boolean_value(const NCollection_HArray1_Standard_Boolean* arr, Standard_Integer theIndex) {
+extern "C" const bool* NCollection_HArray1_Standard_Boolean_value(const NCollection_HArray1_Standard_Boolean* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_Standard_Boolean_set_value(NCollection_HArray1_Standard_Boolean* arr, Standard_Integer theIndex, const Standard_Boolean* theItem) {
+extern "C" void NCollection_HArray1_Standard_Boolean_set_value(NCollection_HArray1_Standard_Boolean* arr, int theIndex, const bool* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
-extern "C" void NCollection_HArray1_Standard_Boolean_init(NCollection_HArray1_Standard_Boolean* arr, const Standard_Boolean* theValue) {
+extern "C" void NCollection_HArray1_Standard_Boolean_init(NCollection_HArray1_Standard_Boolean* arr, const bool* theValue) {
     arr->Init(*theValue);
 }
 
-extern "C" opencascade::handle<NCollection_HArray1<Standard_Boolean>>* NCollection_HArray1_Standard_Boolean_to_handle(NCollection_HArray1_Standard_Boolean* self_) {
-    return new opencascade::handle<NCollection_HArray1<Standard_Boolean>>(self_);
+extern "C" opencascade::handle<NCollection_HArray1<bool>>* NCollection_HArray1_Standard_Boolean_to_handle(NCollection_HArray1_Standard_Boolean* self_) {
+    return new opencascade::handle<NCollection_HArray1<bool>>(self_);
 }
 
-extern "C" const NCollection_HArray1_Standard_Boolean* Handle_NCollection_HArray1_Standard_Boolean_get(const opencascade::handle<NCollection_HArray1<Standard_Boolean>>* h) { return h->get(); }
-extern "C" NCollection_HArray1_Standard_Boolean* Handle_NCollection_HArray1_Standard_Boolean_get_mut(opencascade::handle<NCollection_HArray1<Standard_Boolean>>* h) { return h->get(); }
-extern "C" void Handle_NCollection_HArray1_Standard_Boolean_destructor(opencascade::handle<NCollection_HArray1<Standard_Boolean>>* self_) { delete self_; }
-extern "C" OcctResult<opencascade::handle<NCollection_HArray1<Standard_Boolean>>*> Handle_NCollection_HArray1_Standard_Boolean_clone(const opencascade::handle<NCollection_HArray1<Standard_Boolean>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<Standard_Boolean>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
-extern "C" bool Handle_NCollection_HArray1_Standard_Boolean_is_null(const opencascade::handle<NCollection_HArray1<Standard_Boolean>>* self_) { return self_->IsNull(); }
+extern "C" const NCollection_HArray1_Standard_Boolean* Handle_NCollection_HArray1_Standard_Boolean_get(const opencascade::handle<NCollection_HArray1<bool>>* h) { return h->get(); }
+extern "C" NCollection_HArray1_Standard_Boolean* Handle_NCollection_HArray1_Standard_Boolean_get_mut(opencascade::handle<NCollection_HArray1<bool>>* h) { return h->get(); }
+extern "C" void Handle_NCollection_HArray1_Standard_Boolean_destructor(opencascade::handle<NCollection_HArray1<bool>>* self_) { delete self_; }
+extern "C" OcctResult<opencascade::handle<NCollection_HArray1<bool>>*> Handle_NCollection_HArray1_Standard_Boolean_clone(const opencascade::handle<NCollection_HArray1<bool>>* self_) { try { return {new opencascade::handle<NCollection_HArray1<bool>>(*self_), nullptr}; } OCCT_CATCH_RETURN }
+extern "C" bool Handle_NCollection_HArray1_Standard_Boolean_is_null(const opencascade::handle<NCollection_HArray1<bool>>* self_) { return self_->IsNull(); }
 
 // ========================
 // NCollection_HArray1_StepAP203_ApprovedItem - Handle-managed fixed-size 1D array (1-indexed)
@@ -38984,33 +38937,33 @@ extern "C" void NCollection_HArray1_StepAP203_ApprovedItem_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_ApprovedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_ApprovedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_ApprovedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_ApprovedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ApprovedItem_length(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ApprovedItem_length(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ApprovedItem_lower(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ApprovedItem_lower(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ApprovedItem_upper(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ApprovedItem_upper(const NCollection_HArray1_StepAP203_ApprovedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_value(const NCollection_HArray1_StepAP203_ApprovedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_ApprovedItem* NCollection_HArray1_StepAP203_ApprovedItem_value(const NCollection_HArray1_StepAP203_ApprovedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_ApprovedItem_set_value(NCollection_HArray1_StepAP203_ApprovedItem* arr, Standard_Integer theIndex, const StepAP203_ApprovedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_ApprovedItem_set_value(NCollection_HArray1_StepAP203_ApprovedItem* arr, int theIndex, const StepAP203_ApprovedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39042,33 +38995,33 @@ extern "C" void NCollection_HArray1_StepAP203_CertifiedItem_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_CertifiedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_CertifiedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_CertifiedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_CertifiedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_CertifiedItem_length(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_CertifiedItem_length(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_CertifiedItem_lower(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_CertifiedItem_lower(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_CertifiedItem_upper(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_CertifiedItem_upper(const NCollection_HArray1_StepAP203_CertifiedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_value(const NCollection_HArray1_StepAP203_CertifiedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_CertifiedItem* NCollection_HArray1_StepAP203_CertifiedItem_value(const NCollection_HArray1_StepAP203_CertifiedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_CertifiedItem_set_value(NCollection_HArray1_StepAP203_CertifiedItem* arr, Standard_Integer theIndex, const StepAP203_CertifiedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_CertifiedItem_set_value(NCollection_HArray1_StepAP203_CertifiedItem* arr, int theIndex, const StepAP203_CertifiedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39100,33 +39053,33 @@ extern "C" void NCollection_HArray1_StepAP203_ChangeRequestItem_destructor(NColl
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_ChangeRequestItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_ChangeRequestItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_ChangeRequestItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_ChangeRequestItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ChangeRequestItem_length(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ChangeRequestItem_length(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ChangeRequestItem_lower(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ChangeRequestItem_lower(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ChangeRequestItem_upper(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ChangeRequestItem_upper(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_value(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_ChangeRequestItem* NCollection_HArray1_StepAP203_ChangeRequestItem_value(const NCollection_HArray1_StepAP203_ChangeRequestItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_ChangeRequestItem_set_value(NCollection_HArray1_StepAP203_ChangeRequestItem* arr, Standard_Integer theIndex, const StepAP203_ChangeRequestItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_ChangeRequestItem_set_value(NCollection_HArray1_StepAP203_ChangeRequestItem* arr, int theIndex, const StepAP203_ChangeRequestItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39158,33 +39111,33 @@ extern "C" void NCollection_HArray1_StepAP203_ClassifiedItem_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_ClassifiedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_ClassifiedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_ClassifiedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_ClassifiedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ClassifiedItem_length(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ClassifiedItem_length(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ClassifiedItem_lower(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ClassifiedItem_lower(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ClassifiedItem_upper(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ClassifiedItem_upper(const NCollection_HArray1_StepAP203_ClassifiedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_value(const NCollection_HArray1_StepAP203_ClassifiedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_ClassifiedItem* NCollection_HArray1_StepAP203_ClassifiedItem_value(const NCollection_HArray1_StepAP203_ClassifiedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_ClassifiedItem_set_value(NCollection_HArray1_StepAP203_ClassifiedItem* arr, Standard_Integer theIndex, const StepAP203_ClassifiedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_ClassifiedItem_set_value(NCollection_HArray1_StepAP203_ClassifiedItem* arr, int theIndex, const StepAP203_ClassifiedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39216,33 +39169,33 @@ extern "C" void NCollection_HArray1_StepAP203_ContractedItem_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_ContractedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_ContractedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_ContractedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_ContractedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ContractedItem_length(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ContractedItem_length(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ContractedItem_lower(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ContractedItem_lower(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_ContractedItem_upper(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_ContractedItem_upper(const NCollection_HArray1_StepAP203_ContractedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_value(const NCollection_HArray1_StepAP203_ContractedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_ContractedItem* NCollection_HArray1_StepAP203_ContractedItem_value(const NCollection_HArray1_StepAP203_ContractedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_ContractedItem_set_value(NCollection_HArray1_StepAP203_ContractedItem* arr, Standard_Integer theIndex, const StepAP203_ContractedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_ContractedItem_set_value(NCollection_HArray1_StepAP203_ContractedItem* arr, int theIndex, const StepAP203_ContractedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39274,33 +39227,33 @@ extern "C" void NCollection_HArray1_StepAP203_DateTimeItem_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_DateTimeItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_DateTimeItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_DateTimeItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_DateTimeItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_DateTimeItem_length(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_DateTimeItem_length(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_DateTimeItem_lower(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_DateTimeItem_lower(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_DateTimeItem_upper(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_DateTimeItem_upper(const NCollection_HArray1_StepAP203_DateTimeItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_value(const NCollection_HArray1_StepAP203_DateTimeItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_DateTimeItem* NCollection_HArray1_StepAP203_DateTimeItem_value(const NCollection_HArray1_StepAP203_DateTimeItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_DateTimeItem_set_value(NCollection_HArray1_StepAP203_DateTimeItem* arr, Standard_Integer theIndex, const StepAP203_DateTimeItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_DateTimeItem_set_value(NCollection_HArray1_StepAP203_DateTimeItem* arr, int theIndex, const StepAP203_DateTimeItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39332,33 +39285,33 @@ extern "C" void NCollection_HArray1_StepAP203_PersonOrganizationItem_destructor(
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_PersonOrganizationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_PersonOrganizationItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_PersonOrganizationItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_PersonOrganizationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_PersonOrganizationItem_length(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_PersonOrganizationItem_length(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_PersonOrganizationItem_lower(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_PersonOrganizationItem_lower(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_PersonOrganizationItem_upper(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_PersonOrganizationItem_upper(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_value(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_PersonOrganizationItem* NCollection_HArray1_StepAP203_PersonOrganizationItem_value(const NCollection_HArray1_StepAP203_PersonOrganizationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_PersonOrganizationItem_set_value(NCollection_HArray1_StepAP203_PersonOrganizationItem* arr, Standard_Integer theIndex, const StepAP203_PersonOrganizationItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_PersonOrganizationItem_set_value(NCollection_HArray1_StepAP203_PersonOrganizationItem* arr, int theIndex, const StepAP203_PersonOrganizationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39390,33 +39343,33 @@ extern "C" void NCollection_HArray1_StepAP203_SpecifiedItem_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_SpecifiedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_SpecifiedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_SpecifiedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_SpecifiedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_SpecifiedItem_length(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_SpecifiedItem_length(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_SpecifiedItem_lower(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_SpecifiedItem_lower(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_SpecifiedItem_upper(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_SpecifiedItem_upper(const NCollection_HArray1_StepAP203_SpecifiedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_value(const NCollection_HArray1_StepAP203_SpecifiedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_SpecifiedItem* NCollection_HArray1_StepAP203_SpecifiedItem_value(const NCollection_HArray1_StepAP203_SpecifiedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_SpecifiedItem_set_value(NCollection_HArray1_StepAP203_SpecifiedItem* arr, Standard_Integer theIndex, const StepAP203_SpecifiedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_SpecifiedItem_set_value(NCollection_HArray1_StepAP203_SpecifiedItem* arr, int theIndex, const StepAP203_SpecifiedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39448,33 +39401,33 @@ extern "C" void NCollection_HArray1_StepAP203_StartRequestItem_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_StartRequestItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_StartRequestItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_StartRequestItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_StartRequestItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_StartRequestItem_length(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_StartRequestItem_length(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_StartRequestItem_lower(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_StartRequestItem_lower(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_StartRequestItem_upper(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_StartRequestItem_upper(const NCollection_HArray1_StepAP203_StartRequestItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_value(const NCollection_HArray1_StepAP203_StartRequestItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_StartRequestItem* NCollection_HArray1_StepAP203_StartRequestItem_value(const NCollection_HArray1_StepAP203_StartRequestItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_StartRequestItem_set_value(NCollection_HArray1_StepAP203_StartRequestItem* arr, Standard_Integer theIndex, const StepAP203_StartRequestItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_StartRequestItem_set_value(NCollection_HArray1_StepAP203_StartRequestItem* arr, int theIndex, const StepAP203_StartRequestItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39506,33 +39459,33 @@ extern "C" void NCollection_HArray1_StepAP203_WorkItem_destructor(NCollection_HA
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP203_WorkItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP203_WorkItem* theValue) {
+extern "C" NCollection_HArray1_StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_ctor_int2_value(int theLower, int theUpper, const StepAP203_WorkItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP203_WorkItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_WorkItem_length(const NCollection_HArray1_StepAP203_WorkItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_WorkItem_length(const NCollection_HArray1_StepAP203_WorkItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_WorkItem_lower(const NCollection_HArray1_StepAP203_WorkItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_WorkItem_lower(const NCollection_HArray1_StepAP203_WorkItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP203_WorkItem_upper(const NCollection_HArray1_StepAP203_WorkItem* arr) {
+extern "C" int NCollection_HArray1_StepAP203_WorkItem_upper(const NCollection_HArray1_StepAP203_WorkItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_value(const NCollection_HArray1_StepAP203_WorkItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP203_WorkItem* NCollection_HArray1_StepAP203_WorkItem_value(const NCollection_HArray1_StepAP203_WorkItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP203_WorkItem_set_value(NCollection_HArray1_StepAP203_WorkItem* arr, Standard_Integer theIndex, const StepAP203_WorkItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP203_WorkItem_set_value(NCollection_HArray1_StepAP203_WorkItem* arr, int theIndex, const StepAP203_WorkItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39564,33 +39517,33 @@ extern "C" void NCollection_HArray1_StepAP214_ApprovalItem_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_ApprovalItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_ApprovalItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_ApprovalItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_ApprovalItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ApprovalItem_length(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ApprovalItem_length(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ApprovalItem_lower(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ApprovalItem_lower(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ApprovalItem_upper(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ApprovalItem_upper(const NCollection_HArray1_StepAP214_ApprovalItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_value(const NCollection_HArray1_StepAP214_ApprovalItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_ApprovalItem* NCollection_HArray1_StepAP214_ApprovalItem_value(const NCollection_HArray1_StepAP214_ApprovalItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_ApprovalItem_set_value(NCollection_HArray1_StepAP214_ApprovalItem* arr, Standard_Integer theIndex, const StepAP214_ApprovalItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_ApprovalItem_set_value(NCollection_HArray1_StepAP214_ApprovalItem* arr, int theIndex, const StepAP214_ApprovalItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39622,33 +39575,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_destru
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignDateAndPersonItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignDateAndPersonItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_length(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_length(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_value(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignDateAndPersonItem* NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_value(const NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignDateAndPersonItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDateAndPersonItem* arr, int theIndex, const StepAP214_AutoDesignDateAndPersonItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39680,33 +39633,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_destruct
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignDateAndTimeItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignDateAndTimeItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_length(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_length(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_value(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignDateAndTimeItem* NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_value(const NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignDateAndTimeItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDateAndTimeItem* arr, int theIndex, const StepAP214_AutoDesignDateAndTimeItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39738,33 +39691,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignDatedItem_destructor(NCo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignDatedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignDatedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignDatedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignDatedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDatedItem_length(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDatedItem_length(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDatedItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDatedItem_lower(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignDatedItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignDatedItem_upper(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_value(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignDatedItem* NCollection_HArray1_StepAP214_AutoDesignDatedItem_value(const NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignDatedItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignDatedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignDatedItem_set_value(NCollection_HArray1_StepAP214_AutoDesignDatedItem* arr, int theIndex, const StepAP214_AutoDesignDatedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39796,33 +39749,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_destructo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignGeneralOrgItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignGeneralOrgItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_length(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_length(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_lower(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_lower(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_upper(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_upper(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_value(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignGeneralOrgItem* NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_value(const NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_set_value(NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignGeneralOrgItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem_set_value(NCollection_HArray1_StepAP214_AutoDesignGeneralOrgItem* arr, int theIndex, const StepAP214_AutoDesignGeneralOrgItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39854,33 +39807,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignGroupedItem_destructor(N
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignGroupedItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignGroupedItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignGroupedItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignGroupedItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGroupedItem_length(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGroupedItem_length(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGroupedItem_lower(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGroupedItem_lower(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignGroupedItem_upper(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignGroupedItem_upper(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_value(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignGroupedItem* NCollection_HArray1_StepAP214_AutoDesignGroupedItem_value(const NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignGroupedItem_set_value(NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignGroupedItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignGroupedItem_set_value(NCollection_HArray1_StepAP214_AutoDesignGroupedItem* arr, int theIndex, const StepAP214_AutoDesignGroupedItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39912,33 +39865,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_dest
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignPresentedItemSelect* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignPresentedItemSelect* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_length(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_length(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_lower(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_lower(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_upper(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_upper(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_value(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignPresentedItemSelect* NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_value(const NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_set_value(NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr, Standard_Integer theIndex, const StepAP214_AutoDesignPresentedItemSelect* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect_set_value(NCollection_HArray1_StepAP214_AutoDesignPresentedItemSelect* arr, int theIndex, const StepAP214_AutoDesignPresentedItemSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -39970,33 +39923,33 @@ extern "C" void NCollection_HArray1_StepAP214_AutoDesignReferencingItem_destruct
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_AutoDesignReferencingItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_AutoDesignReferencingItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_AutoDesignReferencingItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_AutoDesignReferencingItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignReferencingItem_length(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignReferencingItem_length(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignReferencingItem_lower(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignReferencingItem_lower(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_AutoDesignReferencingItem_upper(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_AutoDesignReferencingItem_upper(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_value(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_AutoDesignReferencingItem* NCollection_HArray1_StepAP214_AutoDesignReferencingItem_value(const NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_AutoDesignReferencingItem_set_value(NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr, Standard_Integer theIndex, const StepAP214_AutoDesignReferencingItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_AutoDesignReferencingItem_set_value(NCollection_HArray1_StepAP214_AutoDesignReferencingItem* arr, int theIndex, const StepAP214_AutoDesignReferencingItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40028,33 +39981,33 @@ extern "C" void NCollection_HArray1_StepAP214_DateAndTimeItem_destructor(NCollec
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_DateAndTimeItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_DateAndTimeItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_DateAndTimeItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_DateAndTimeItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateAndTimeItem_length(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateAndTimeItem_length(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateAndTimeItem_lower(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateAndTimeItem_lower(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateAndTimeItem_upper(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateAndTimeItem_upper(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_value(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_DateAndTimeItem* NCollection_HArray1_StepAP214_DateAndTimeItem_value(const NCollection_HArray1_StepAP214_DateAndTimeItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_DateAndTimeItem_set_value(NCollection_HArray1_StepAP214_DateAndTimeItem* arr, Standard_Integer theIndex, const StepAP214_DateAndTimeItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_DateAndTimeItem_set_value(NCollection_HArray1_StepAP214_DateAndTimeItem* arr, int theIndex, const StepAP214_DateAndTimeItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40086,33 +40039,33 @@ extern "C" void NCollection_HArray1_StepAP214_DateItem_destructor(NCollection_HA
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_DateItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_DateItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_DateItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_DateItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateItem_length(const NCollection_HArray1_StepAP214_DateItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateItem_length(const NCollection_HArray1_StepAP214_DateItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateItem_lower(const NCollection_HArray1_StepAP214_DateItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateItem_lower(const NCollection_HArray1_StepAP214_DateItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DateItem_upper(const NCollection_HArray1_StepAP214_DateItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DateItem_upper(const NCollection_HArray1_StepAP214_DateItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_value(const NCollection_HArray1_StepAP214_DateItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_DateItem* NCollection_HArray1_StepAP214_DateItem_value(const NCollection_HArray1_StepAP214_DateItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_DateItem_set_value(NCollection_HArray1_StepAP214_DateItem* arr, Standard_Integer theIndex, const StepAP214_DateItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_DateItem_set_value(NCollection_HArray1_StepAP214_DateItem* arr, int theIndex, const StepAP214_DateItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40144,33 +40097,33 @@ extern "C" void NCollection_HArray1_StepAP214_DocumentReferenceItem_destructor(N
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_DocumentReferenceItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_DocumentReferenceItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_DocumentReferenceItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_DocumentReferenceItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DocumentReferenceItem_length(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DocumentReferenceItem_length(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DocumentReferenceItem_lower(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DocumentReferenceItem_lower(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_DocumentReferenceItem_upper(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_DocumentReferenceItem_upper(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_value(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_DocumentReferenceItem* NCollection_HArray1_StepAP214_DocumentReferenceItem_value(const NCollection_HArray1_StepAP214_DocumentReferenceItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_DocumentReferenceItem_set_value(NCollection_HArray1_StepAP214_DocumentReferenceItem* arr, Standard_Integer theIndex, const StepAP214_DocumentReferenceItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_DocumentReferenceItem_set_value(NCollection_HArray1_StepAP214_DocumentReferenceItem* arr, int theIndex, const StepAP214_DocumentReferenceItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40202,33 +40155,33 @@ extern "C" void NCollection_HArray1_StepAP214_ExternalIdentificationItem_destruc
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_ExternalIdentificationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_ExternalIdentificationItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_ExternalIdentificationItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_ExternalIdentificationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ExternalIdentificationItem_length(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ExternalIdentificationItem_length(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ExternalIdentificationItem_lower(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ExternalIdentificationItem_lower(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_ExternalIdentificationItem_upper(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_ExternalIdentificationItem_upper(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_value(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_ExternalIdentificationItem* NCollection_HArray1_StepAP214_ExternalIdentificationItem_value(const NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_ExternalIdentificationItem_set_value(NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr, Standard_Integer theIndex, const StepAP214_ExternalIdentificationItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_ExternalIdentificationItem_set_value(NCollection_HArray1_StepAP214_ExternalIdentificationItem* arr, int theIndex, const StepAP214_ExternalIdentificationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40260,33 +40213,33 @@ extern "C" void NCollection_HArray1_StepAP214_GroupItem_destructor(NCollection_H
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_GroupItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_GroupItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_GroupItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_GroupItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_GroupItem_length(const NCollection_HArray1_StepAP214_GroupItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_GroupItem_length(const NCollection_HArray1_StepAP214_GroupItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_GroupItem_lower(const NCollection_HArray1_StepAP214_GroupItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_GroupItem_lower(const NCollection_HArray1_StepAP214_GroupItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_GroupItem_upper(const NCollection_HArray1_StepAP214_GroupItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_GroupItem_upper(const NCollection_HArray1_StepAP214_GroupItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_value(const NCollection_HArray1_StepAP214_GroupItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_GroupItem* NCollection_HArray1_StepAP214_GroupItem_value(const NCollection_HArray1_StepAP214_GroupItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_GroupItem_set_value(NCollection_HArray1_StepAP214_GroupItem* arr, Standard_Integer theIndex, const StepAP214_GroupItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_GroupItem_set_value(NCollection_HArray1_StepAP214_GroupItem* arr, int theIndex, const StepAP214_GroupItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40318,33 +40271,33 @@ extern "C" void NCollection_HArray1_StepAP214_OrganizationItem_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_OrganizationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_OrganizationItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_OrganizationItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_OrganizationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_OrganizationItem_length(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_OrganizationItem_length(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_OrganizationItem_lower(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_OrganizationItem_lower(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_OrganizationItem_upper(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_OrganizationItem_upper(const NCollection_HArray1_StepAP214_OrganizationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_value(const NCollection_HArray1_StepAP214_OrganizationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_OrganizationItem* NCollection_HArray1_StepAP214_OrganizationItem_value(const NCollection_HArray1_StepAP214_OrganizationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_OrganizationItem_set_value(NCollection_HArray1_StepAP214_OrganizationItem* arr, Standard_Integer theIndex, const StepAP214_OrganizationItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_OrganizationItem_set_value(NCollection_HArray1_StepAP214_OrganizationItem* arr, int theIndex, const StepAP214_OrganizationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40376,33 +40329,33 @@ extern "C" void NCollection_HArray1_StepAP214_PersonAndOrganizationItem_destruct
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_PersonAndOrganizationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_PersonAndOrganizationItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_PersonAndOrganizationItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_PersonAndOrganizationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PersonAndOrganizationItem_length(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PersonAndOrganizationItem_length(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PersonAndOrganizationItem_lower(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PersonAndOrganizationItem_lower(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PersonAndOrganizationItem_upper(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PersonAndOrganizationItem_upper(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_value(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_PersonAndOrganizationItem* NCollection_HArray1_StepAP214_PersonAndOrganizationItem_value(const NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_PersonAndOrganizationItem_set_value(NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr, Standard_Integer theIndex, const StepAP214_PersonAndOrganizationItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_PersonAndOrganizationItem_set_value(NCollection_HArray1_StepAP214_PersonAndOrganizationItem* arr, int theIndex, const StepAP214_PersonAndOrganizationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40434,33 +40387,33 @@ extern "C" void NCollection_HArray1_StepAP214_PresentedItemSelect_destructor(NCo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_PresentedItemSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_PresentedItemSelect* theValue) {
+extern "C" NCollection_HArray1_StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_ctor_int2_value(int theLower, int theUpper, const StepAP214_PresentedItemSelect* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_PresentedItemSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PresentedItemSelect_length(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PresentedItemSelect_length(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PresentedItemSelect_lower(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PresentedItemSelect_lower(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_PresentedItemSelect_upper(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
+extern "C" int NCollection_HArray1_StepAP214_PresentedItemSelect_upper(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_value(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_PresentedItemSelect* NCollection_HArray1_StepAP214_PresentedItemSelect_value(const NCollection_HArray1_StepAP214_PresentedItemSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_PresentedItemSelect_set_value(NCollection_HArray1_StepAP214_PresentedItemSelect* arr, Standard_Integer theIndex, const StepAP214_PresentedItemSelect* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_PresentedItemSelect_set_value(NCollection_HArray1_StepAP214_PresentedItemSelect* arr, int theIndex, const StepAP214_PresentedItemSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40492,33 +40445,33 @@ extern "C" void NCollection_HArray1_StepAP214_SecurityClassificationItem_destruc
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepAP214_SecurityClassificationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepAP214_SecurityClassificationItem* theValue) {
+extern "C" NCollection_HArray1_StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_ctor_int2_value(int theLower, int theUpper, const StepAP214_SecurityClassificationItem* theValue) {
     auto arr = new NCollection_HArray1_StepAP214_SecurityClassificationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_SecurityClassificationItem_length(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_SecurityClassificationItem_length(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_SecurityClassificationItem_lower(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_SecurityClassificationItem_lower(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepAP214_SecurityClassificationItem_upper(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
+extern "C" int NCollection_HArray1_StepAP214_SecurityClassificationItem_upper(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_value(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepAP214_SecurityClassificationItem* NCollection_HArray1_StepAP214_SecurityClassificationItem_value(const NCollection_HArray1_StepAP214_SecurityClassificationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepAP214_SecurityClassificationItem_set_value(NCollection_HArray1_StepAP214_SecurityClassificationItem* arr, Standard_Integer theIndex, const StepAP214_SecurityClassificationItem* theItem) {
+extern "C" void NCollection_HArray1_StepAP214_SecurityClassificationItem_set_value(NCollection_HArray1_StepAP214_SecurityClassificationItem* arr, int theIndex, const StepAP214_SecurityClassificationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40550,33 +40503,33 @@ extern "C" void NCollection_HArray1_StepDimTol_DatumReferenceModifier_destructor
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepDimTol_DatumReferenceModifier(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepDimTol_DatumReferenceModifier* theValue) {
+extern "C" NCollection_HArray1_StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_ctor_int2_value(int theLower, int theUpper, const StepDimTol_DatumReferenceModifier* theValue) {
     auto arr = new NCollection_HArray1_StepDimTol_DatumReferenceModifier(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumReferenceModifier_length(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumReferenceModifier_length(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumReferenceModifier_lower(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumReferenceModifier_lower(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumReferenceModifier_upper(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumReferenceModifier_upper(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_value(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr, Standard_Integer theIndex) {
+extern "C" const StepDimTol_DatumReferenceModifier* NCollection_HArray1_StepDimTol_DatumReferenceModifier_value(const NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepDimTol_DatumReferenceModifier_set_value(NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr, Standard_Integer theIndex, const StepDimTol_DatumReferenceModifier* theItem) {
+extern "C" void NCollection_HArray1_StepDimTol_DatumReferenceModifier_set_value(NCollection_HArray1_StepDimTol_DatumReferenceModifier* arr, int theIndex, const StepDimTol_DatumReferenceModifier* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40608,33 +40561,33 @@ extern "C" void NCollection_HArray1_StepDimTol_DatumSystemOrReference_destructor
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepDimTol_DatumSystemOrReference(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepDimTol_DatumSystemOrReference* theValue) {
+extern "C" NCollection_HArray1_StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_ctor_int2_value(int theLower, int theUpper, const StepDimTol_DatumSystemOrReference* theValue) {
     auto arr = new NCollection_HArray1_StepDimTol_DatumSystemOrReference(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumSystemOrReference_length(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumSystemOrReference_length(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumSystemOrReference_lower(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumSystemOrReference_lower(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_DatumSystemOrReference_upper(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_DatumSystemOrReference_upper(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_value(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr, Standard_Integer theIndex) {
+extern "C" const StepDimTol_DatumSystemOrReference* NCollection_HArray1_StepDimTol_DatumSystemOrReference_value(const NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepDimTol_DatumSystemOrReference_set_value(NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr, Standard_Integer theIndex, const StepDimTol_DatumSystemOrReference* theItem) {
+extern "C" void NCollection_HArray1_StepDimTol_DatumSystemOrReference_set_value(NCollection_HArray1_StepDimTol_DatumSystemOrReference* arr, int theIndex, const StepDimTol_DatumSystemOrReference* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40666,33 +40619,33 @@ extern "C" void NCollection_HArray1_StepDimTol_ToleranceZoneTarget_destructor(NC
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepDimTol_ToleranceZoneTarget(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepDimTol_ToleranceZoneTarget* theValue) {
+extern "C" NCollection_HArray1_StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_ctor_int2_value(int theLower, int theUpper, const StepDimTol_ToleranceZoneTarget* theValue) {
     auto arr = new NCollection_HArray1_StepDimTol_ToleranceZoneTarget(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_ToleranceZoneTarget_length(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_ToleranceZoneTarget_length(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_ToleranceZoneTarget_lower(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_ToleranceZoneTarget_lower(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepDimTol_ToleranceZoneTarget_upper(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
+extern "C" int NCollection_HArray1_StepDimTol_ToleranceZoneTarget_upper(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_value(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr, Standard_Integer theIndex) {
+extern "C" const StepDimTol_ToleranceZoneTarget* NCollection_HArray1_StepDimTol_ToleranceZoneTarget_value(const NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepDimTol_ToleranceZoneTarget_set_value(NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr, Standard_Integer theIndex, const StepDimTol_ToleranceZoneTarget* theItem) {
+extern "C" void NCollection_HArray1_StepDimTol_ToleranceZoneTarget_set_value(NCollection_HArray1_StepDimTol_ToleranceZoneTarget* arr, int theIndex, const StepDimTol_ToleranceZoneTarget* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40724,33 +40677,33 @@ extern "C" void NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_destru
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepElement_MeasureOrUnspecifiedValue* theValue) {
+extern "C" NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_ctor_int2_value(int theLower, int theUpper, const StepElement_MeasureOrUnspecifiedValue* theValue) {
     auto arr = new NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_length(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
+extern "C" int NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_length(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_lower(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
+extern "C" int NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_lower(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_upper(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
+extern "C" int NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_upper(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_value(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr, Standard_Integer theIndex) {
+extern "C" const StepElement_MeasureOrUnspecifiedValue* NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_value(const NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_set_value(NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr, Standard_Integer theIndex, const StepElement_MeasureOrUnspecifiedValue* theItem) {
+extern "C" void NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue_set_value(NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue* arr, int theIndex, const StepElement_MeasureOrUnspecifiedValue* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40782,33 +40735,33 @@ extern "C" void NCollection_HArray1_StepFEA_DegreeOfFreedom_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepFEA_DegreeOfFreedom(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepFEA_DegreeOfFreedom* theValue) {
+extern "C" NCollection_HArray1_StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_ctor_int2_value(int theLower, int theUpper, const StepFEA_DegreeOfFreedom* theValue) {
     auto arr = new NCollection_HArray1_StepFEA_DegreeOfFreedom(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepFEA_DegreeOfFreedom_length(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
+extern "C" int NCollection_HArray1_StepFEA_DegreeOfFreedom_length(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepFEA_DegreeOfFreedom_lower(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
+extern "C" int NCollection_HArray1_StepFEA_DegreeOfFreedom_lower(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepFEA_DegreeOfFreedom_upper(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
+extern "C" int NCollection_HArray1_StepFEA_DegreeOfFreedom_upper(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_value(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr, Standard_Integer theIndex) {
+extern "C" const StepFEA_DegreeOfFreedom* NCollection_HArray1_StepFEA_DegreeOfFreedom_value(const NCollection_HArray1_StepFEA_DegreeOfFreedom* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepFEA_DegreeOfFreedom_set_value(NCollection_HArray1_StepFEA_DegreeOfFreedom* arr, Standard_Integer theIndex, const StepFEA_DegreeOfFreedom* theItem) {
+extern "C" void NCollection_HArray1_StepFEA_DegreeOfFreedom_set_value(NCollection_HArray1_StepFEA_DegreeOfFreedom* arr, int theIndex, const StepFEA_DegreeOfFreedom* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40840,33 +40793,33 @@ extern "C" void NCollection_HArray1_StepGeom_PcurveOrSurface_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepGeom_PcurveOrSurface(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepGeom_PcurveOrSurface* theValue) {
+extern "C" NCollection_HArray1_StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_ctor_int2_value(int theLower, int theUpper, const StepGeom_PcurveOrSurface* theValue) {
     auto arr = new NCollection_HArray1_StepGeom_PcurveOrSurface(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_PcurveOrSurface_length(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
+extern "C" int NCollection_HArray1_StepGeom_PcurveOrSurface_length(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_PcurveOrSurface_lower(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
+extern "C" int NCollection_HArray1_StepGeom_PcurveOrSurface_lower(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_PcurveOrSurface_upper(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
+extern "C" int NCollection_HArray1_StepGeom_PcurveOrSurface_upper(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_value(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr, Standard_Integer theIndex) {
+extern "C" const StepGeom_PcurveOrSurface* NCollection_HArray1_StepGeom_PcurveOrSurface_value(const NCollection_HArray1_StepGeom_PcurveOrSurface* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepGeom_PcurveOrSurface_set_value(NCollection_HArray1_StepGeom_PcurveOrSurface* arr, Standard_Integer theIndex, const StepGeom_PcurveOrSurface* theItem) {
+extern "C" void NCollection_HArray1_StepGeom_PcurveOrSurface_set_value(NCollection_HArray1_StepGeom_PcurveOrSurface* arr, int theIndex, const StepGeom_PcurveOrSurface* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40898,33 +40851,33 @@ extern "C" void NCollection_HArray1_StepGeom_SurfaceBoundary_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepGeom_SurfaceBoundary(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepGeom_SurfaceBoundary* theValue) {
+extern "C" NCollection_HArray1_StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_ctor_int2_value(int theLower, int theUpper, const StepGeom_SurfaceBoundary* theValue) {
     auto arr = new NCollection_HArray1_StepGeom_SurfaceBoundary(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_SurfaceBoundary_length(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
+extern "C" int NCollection_HArray1_StepGeom_SurfaceBoundary_length(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_SurfaceBoundary_lower(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
+extern "C" int NCollection_HArray1_StepGeom_SurfaceBoundary_lower(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_SurfaceBoundary_upper(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
+extern "C" int NCollection_HArray1_StepGeom_SurfaceBoundary_upper(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_value(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr, Standard_Integer theIndex) {
+extern "C" const StepGeom_SurfaceBoundary* NCollection_HArray1_StepGeom_SurfaceBoundary_value(const NCollection_HArray1_StepGeom_SurfaceBoundary* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepGeom_SurfaceBoundary_set_value(NCollection_HArray1_StepGeom_SurfaceBoundary* arr, Standard_Integer theIndex, const StepGeom_SurfaceBoundary* theItem) {
+extern "C" void NCollection_HArray1_StepGeom_SurfaceBoundary_set_value(NCollection_HArray1_StepGeom_SurfaceBoundary* arr, int theIndex, const StepGeom_SurfaceBoundary* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -40956,33 +40909,33 @@ extern "C" void NCollection_HArray1_StepGeom_TrimmingSelect_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepGeom_TrimmingSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepGeom_TrimmingSelect* theValue) {
+extern "C" NCollection_HArray1_StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_ctor_int2_value(int theLower, int theUpper, const StepGeom_TrimmingSelect* theValue) {
     auto arr = new NCollection_HArray1_StepGeom_TrimmingSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_TrimmingSelect_length(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
+extern "C" int NCollection_HArray1_StepGeom_TrimmingSelect_length(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_TrimmingSelect_lower(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
+extern "C" int NCollection_HArray1_StepGeom_TrimmingSelect_lower(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepGeom_TrimmingSelect_upper(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
+extern "C" int NCollection_HArray1_StepGeom_TrimmingSelect_upper(const NCollection_HArray1_StepGeom_TrimmingSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_value(const NCollection_HArray1_StepGeom_TrimmingSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepGeom_TrimmingSelect* NCollection_HArray1_StepGeom_TrimmingSelect_value(const NCollection_HArray1_StepGeom_TrimmingSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepGeom_TrimmingSelect_set_value(NCollection_HArray1_StepGeom_TrimmingSelect* arr, Standard_Integer theIndex, const StepGeom_TrimmingSelect* theItem) {
+extern "C" void NCollection_HArray1_StepGeom_TrimmingSelect_set_value(NCollection_HArray1_StepGeom_TrimmingSelect* arr, int theIndex, const StepGeom_TrimmingSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41014,33 +40967,33 @@ extern "C" void NCollection_HArray1_StepShape_GeometricSetSelect_destructor(NCol
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepShape_GeometricSetSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepShape_GeometricSetSelect* theValue) {
+extern "C" NCollection_HArray1_StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_ctor_int2_value(int theLower, int theUpper, const StepShape_GeometricSetSelect* theValue) {
     auto arr = new NCollection_HArray1_StepShape_GeometricSetSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_GeometricSetSelect_length(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
+extern "C" int NCollection_HArray1_StepShape_GeometricSetSelect_length(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_GeometricSetSelect_lower(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
+extern "C" int NCollection_HArray1_StepShape_GeometricSetSelect_lower(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_GeometricSetSelect_upper(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
+extern "C" int NCollection_HArray1_StepShape_GeometricSetSelect_upper(const NCollection_HArray1_StepShape_GeometricSetSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_value(const NCollection_HArray1_StepShape_GeometricSetSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepShape_GeometricSetSelect* NCollection_HArray1_StepShape_GeometricSetSelect_value(const NCollection_HArray1_StepShape_GeometricSetSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepShape_GeometricSetSelect_set_value(NCollection_HArray1_StepShape_GeometricSetSelect* arr, Standard_Integer theIndex, const StepShape_GeometricSetSelect* theItem) {
+extern "C" void NCollection_HArray1_StepShape_GeometricSetSelect_set_value(NCollection_HArray1_StepShape_GeometricSetSelect* arr, int theIndex, const StepShape_GeometricSetSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41072,33 +41025,33 @@ extern "C" void NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_d
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepShape_ShapeDimensionRepresentationItem* theValue) {
+extern "C" NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_ctor_int2_value(int theLower, int theUpper, const StepShape_ShapeDimensionRepresentationItem* theValue) {
     auto arr = new NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_length(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
+extern "C" int NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_length(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_lower(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
+extern "C" int NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_lower(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_upper(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
+extern "C" int NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_upper(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_value(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr, Standard_Integer theIndex) {
+extern "C" const StepShape_ShapeDimensionRepresentationItem* NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_value(const NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_set_value(NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr, Standard_Integer theIndex, const StepShape_ShapeDimensionRepresentationItem* theItem) {
+extern "C" void NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem_set_value(NCollection_HArray1_StepShape_ShapeDimensionRepresentationItem* arr, int theIndex, const StepShape_ShapeDimensionRepresentationItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41130,33 +41083,33 @@ extern "C" void NCollection_HArray1_StepShape_Shell_destructor(NCollection_HArra
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepShape_Shell* NCollection_HArray1_StepShape_Shell_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepShape_Shell* NCollection_HArray1_StepShape_Shell_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepShape_Shell(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepShape_Shell* NCollection_HArray1_StepShape_Shell_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepShape_Shell* theValue) {
+extern "C" NCollection_HArray1_StepShape_Shell* NCollection_HArray1_StepShape_Shell_ctor_int2_value(int theLower, int theUpper, const StepShape_Shell* theValue) {
     auto arr = new NCollection_HArray1_StepShape_Shell(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_Shell_length(const NCollection_HArray1_StepShape_Shell* arr) {
+extern "C" int NCollection_HArray1_StepShape_Shell_length(const NCollection_HArray1_StepShape_Shell* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_Shell_lower(const NCollection_HArray1_StepShape_Shell* arr) {
+extern "C" int NCollection_HArray1_StepShape_Shell_lower(const NCollection_HArray1_StepShape_Shell* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_Shell_upper(const NCollection_HArray1_StepShape_Shell* arr) {
+extern "C" int NCollection_HArray1_StepShape_Shell_upper(const NCollection_HArray1_StepShape_Shell* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepShape_Shell* NCollection_HArray1_StepShape_Shell_value(const NCollection_HArray1_StepShape_Shell* arr, Standard_Integer theIndex) {
+extern "C" const StepShape_Shell* NCollection_HArray1_StepShape_Shell_value(const NCollection_HArray1_StepShape_Shell* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepShape_Shell_set_value(NCollection_HArray1_StepShape_Shell* arr, Standard_Integer theIndex, const StepShape_Shell* theItem) {
+extern "C" void NCollection_HArray1_StepShape_Shell_set_value(NCollection_HArray1_StepShape_Shell* arr, int theIndex, const StepShape_Shell* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41188,33 +41141,33 @@ extern "C" void NCollection_HArray1_StepShape_ValueQualifier_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepShape_ValueQualifier(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepShape_ValueQualifier* theValue) {
+extern "C" NCollection_HArray1_StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_ctor_int2_value(int theLower, int theUpper, const StepShape_ValueQualifier* theValue) {
     auto arr = new NCollection_HArray1_StepShape_ValueQualifier(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ValueQualifier_length(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
+extern "C" int NCollection_HArray1_StepShape_ValueQualifier_length(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ValueQualifier_lower(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
+extern "C" int NCollection_HArray1_StepShape_ValueQualifier_lower(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepShape_ValueQualifier_upper(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
+extern "C" int NCollection_HArray1_StepShape_ValueQualifier_upper(const NCollection_HArray1_StepShape_ValueQualifier* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_value(const NCollection_HArray1_StepShape_ValueQualifier* arr, Standard_Integer theIndex) {
+extern "C" const StepShape_ValueQualifier* NCollection_HArray1_StepShape_ValueQualifier_value(const NCollection_HArray1_StepShape_ValueQualifier* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepShape_ValueQualifier_set_value(NCollection_HArray1_StepShape_ValueQualifier* arr, Standard_Integer theIndex, const StepShape_ValueQualifier* theItem) {
+extern "C" void NCollection_HArray1_StepShape_ValueQualifier_set_value(NCollection_HArray1_StepShape_ValueQualifier* arr, int theIndex, const StepShape_ValueQualifier* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41246,33 +41199,33 @@ extern "C" void NCollection_HArray1_StepVisual_AnnotationPlaneElement_destructor
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_AnnotationPlaneElement(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_AnnotationPlaneElement* theValue) {
+extern "C" NCollection_HArray1_StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_ctor_int2_value(int theLower, int theUpper, const StepVisual_AnnotationPlaneElement* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_AnnotationPlaneElement(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_AnnotationPlaneElement_length(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_AnnotationPlaneElement_length(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_AnnotationPlaneElement_lower(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_AnnotationPlaneElement_lower(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_AnnotationPlaneElement_upper(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_AnnotationPlaneElement_upper(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_value(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_AnnotationPlaneElement* NCollection_HArray1_StepVisual_AnnotationPlaneElement_value(const NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_AnnotationPlaneElement_set_value(NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr, Standard_Integer theIndex, const StepVisual_AnnotationPlaneElement* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_AnnotationPlaneElement_set_value(NCollection_HArray1_StepVisual_AnnotationPlaneElement* arr, int theIndex, const StepVisual_AnnotationPlaneElement* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41304,33 +41257,33 @@ extern "C" void NCollection_HArray1_StepVisual_BoxCharacteristicSelect_destructo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_BoxCharacteristicSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_BoxCharacteristicSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_BoxCharacteristicSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_BoxCharacteristicSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_BoxCharacteristicSelect_length(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_BoxCharacteristicSelect_length(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_BoxCharacteristicSelect_lower(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_BoxCharacteristicSelect_lower(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_BoxCharacteristicSelect_upper(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_BoxCharacteristicSelect_upper(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_value(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_BoxCharacteristicSelect* NCollection_HArray1_StepVisual_BoxCharacteristicSelect_value(const NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_BoxCharacteristicSelect_set_value(NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr, Standard_Integer theIndex, const StepVisual_BoxCharacteristicSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_BoxCharacteristicSelect_set_value(NCollection_HArray1_StepVisual_BoxCharacteristicSelect* arr, int theIndex, const StepVisual_BoxCharacteristicSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41362,33 +41315,33 @@ extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterec
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_CameraModelD3MultiClippingInterectionSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_CameraModelD3MultiClippingInterectionSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_length(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_length(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_lower(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_lower(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_upper(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_upper(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_value(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_CameraModelD3MultiClippingInterectionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_value(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_set_value(NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr, Standard_Integer theIndex, const StepVisual_CameraModelD3MultiClippingInterectionSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect_set_value(NCollection_HArray1_StepVisual_CameraModelD3MultiClippingInterectionSelect* arr, int theIndex, const StepVisual_CameraModelD3MultiClippingInterectionSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41420,33 +41373,33 @@ extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSe
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_CameraModelD3MultiClippingUnionSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_CameraModelD3MultiClippingUnionSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_length(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_length(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_lower(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_lower(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_upper(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_upper(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_value(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_CameraModelD3MultiClippingUnionSelect* NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_value(const NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_set_value(NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr, Standard_Integer theIndex, const StepVisual_CameraModelD3MultiClippingUnionSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect_set_value(NCollection_HArray1_StepVisual_CameraModelD3MultiClippingUnionSelect* arr, int theIndex, const StepVisual_CameraModelD3MultiClippingUnionSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41478,33 +41431,33 @@ extern "C" void NCollection_HArray1_StepVisual_DirectionCountSelect_destructor(N
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_DirectionCountSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_DirectionCountSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_DirectionCountSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_DirectionCountSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DirectionCountSelect_length(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DirectionCountSelect_length(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DirectionCountSelect_lower(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DirectionCountSelect_lower(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DirectionCountSelect_upper(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DirectionCountSelect_upper(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_value(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_DirectionCountSelect* NCollection_HArray1_StepVisual_DirectionCountSelect_value(const NCollection_HArray1_StepVisual_DirectionCountSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_DirectionCountSelect_set_value(NCollection_HArray1_StepVisual_DirectionCountSelect* arr, Standard_Integer theIndex, const StepVisual_DirectionCountSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_DirectionCountSelect_set_value(NCollection_HArray1_StepVisual_DirectionCountSelect* arr, int theIndex, const StepVisual_DirectionCountSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41536,33 +41489,33 @@ extern "C" void NCollection_HArray1_StepVisual_DraughtingCalloutElement_destruct
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_DraughtingCalloutElement(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_DraughtingCalloutElement* theValue) {
+extern "C" NCollection_HArray1_StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_ctor_int2_value(int theLower, int theUpper, const StepVisual_DraughtingCalloutElement* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_DraughtingCalloutElement(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DraughtingCalloutElement_length(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DraughtingCalloutElement_length(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DraughtingCalloutElement_lower(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DraughtingCalloutElement_lower(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_DraughtingCalloutElement_upper(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
+extern "C" int NCollection_HArray1_StepVisual_DraughtingCalloutElement_upper(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_value(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_DraughtingCalloutElement* NCollection_HArray1_StepVisual_DraughtingCalloutElement_value(const NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_DraughtingCalloutElement_set_value(NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr, Standard_Integer theIndex, const StepVisual_DraughtingCalloutElement* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_DraughtingCalloutElement_set_value(NCollection_HArray1_StepVisual_DraughtingCalloutElement* arr, int theIndex, const StepVisual_DraughtingCalloutElement* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41594,33 +41547,33 @@ extern "C" void NCollection_HArray1_StepVisual_FillStyleSelect_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_FillStyleSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_FillStyleSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_FillStyleSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_FillStyleSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_FillStyleSelect_length(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_FillStyleSelect_length(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_FillStyleSelect_lower(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_FillStyleSelect_lower(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_FillStyleSelect_upper(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_FillStyleSelect_upper(const NCollection_HArray1_StepVisual_FillStyleSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_value(const NCollection_HArray1_StepVisual_FillStyleSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_FillStyleSelect* NCollection_HArray1_StepVisual_FillStyleSelect_value(const NCollection_HArray1_StepVisual_FillStyleSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_FillStyleSelect_set_value(NCollection_HArray1_StepVisual_FillStyleSelect* arr, Standard_Integer theIndex, const StepVisual_FillStyleSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_FillStyleSelect_set_value(NCollection_HArray1_StepVisual_FillStyleSelect* arr, int theIndex, const StepVisual_FillStyleSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41652,33 +41605,33 @@ extern "C" void NCollection_HArray1_StepVisual_InvisibleItem_destructor(NCollect
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_InvisibleItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_InvisibleItem* theValue) {
+extern "C" NCollection_HArray1_StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_ctor_int2_value(int theLower, int theUpper, const StepVisual_InvisibleItem* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_InvisibleItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_InvisibleItem_length(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_InvisibleItem_length(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_InvisibleItem_lower(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_InvisibleItem_lower(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_InvisibleItem_upper(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_InvisibleItem_upper(const NCollection_HArray1_StepVisual_InvisibleItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_value(const NCollection_HArray1_StepVisual_InvisibleItem* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_InvisibleItem* NCollection_HArray1_StepVisual_InvisibleItem_value(const NCollection_HArray1_StepVisual_InvisibleItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_InvisibleItem_set_value(NCollection_HArray1_StepVisual_InvisibleItem* arr, Standard_Integer theIndex, const StepVisual_InvisibleItem* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_InvisibleItem_set_value(NCollection_HArray1_StepVisual_InvisibleItem* arr, int theIndex, const StepVisual_InvisibleItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41710,33 +41663,33 @@ extern "C" void NCollection_HArray1_StepVisual_LayeredItem_destructor(NCollectio
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_LayeredItem(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_LayeredItem* theValue) {
+extern "C" NCollection_HArray1_StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_ctor_int2_value(int theLower, int theUpper, const StepVisual_LayeredItem* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_LayeredItem(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_LayeredItem_length(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_LayeredItem_length(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_LayeredItem_lower(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_LayeredItem_lower(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_LayeredItem_upper(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
+extern "C" int NCollection_HArray1_StepVisual_LayeredItem_upper(const NCollection_HArray1_StepVisual_LayeredItem* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_value(const NCollection_HArray1_StepVisual_LayeredItem* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_LayeredItem* NCollection_HArray1_StepVisual_LayeredItem_value(const NCollection_HArray1_StepVisual_LayeredItem* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_LayeredItem_set_value(NCollection_HArray1_StepVisual_LayeredItem* arr, Standard_Integer theIndex, const StepVisual_LayeredItem* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_LayeredItem_set_value(NCollection_HArray1_StepVisual_LayeredItem* arr, int theIndex, const StepVisual_LayeredItem* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41768,33 +41721,33 @@ extern "C" void NCollection_HArray1_StepVisual_PresentationStyleSelect_destructo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_PresentationStyleSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_PresentationStyleSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_PresentationStyleSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_PresentationStyleSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_PresentationStyleSelect_length(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_PresentationStyleSelect_length(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_PresentationStyleSelect_lower(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_PresentationStyleSelect_lower(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_PresentationStyleSelect_upper(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_PresentationStyleSelect_upper(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_value(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_PresentationStyleSelect* NCollection_HArray1_StepVisual_PresentationStyleSelect_value(const NCollection_HArray1_StepVisual_PresentationStyleSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_PresentationStyleSelect_set_value(NCollection_HArray1_StepVisual_PresentationStyleSelect* arr, Standard_Integer theIndex, const StepVisual_PresentationStyleSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_PresentationStyleSelect_set_value(NCollection_HArray1_StepVisual_PresentationStyleSelect* arr, int theIndex, const StepVisual_PresentationStyleSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41826,33 +41779,33 @@ extern "C" void NCollection_HArray1_StepVisual_RenderingPropertiesSelect_destruc
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_RenderingPropertiesSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_RenderingPropertiesSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_RenderingPropertiesSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_RenderingPropertiesSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_RenderingPropertiesSelect_length(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_RenderingPropertiesSelect_length(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_RenderingPropertiesSelect_lower(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_RenderingPropertiesSelect_lower(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_RenderingPropertiesSelect_upper(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_RenderingPropertiesSelect_upper(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_value(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_RenderingPropertiesSelect* NCollection_HArray1_StepVisual_RenderingPropertiesSelect_value(const NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_RenderingPropertiesSelect_set_value(NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr, Standard_Integer theIndex, const StepVisual_RenderingPropertiesSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_RenderingPropertiesSelect_set_value(NCollection_HArray1_StepVisual_RenderingPropertiesSelect* arr, int theIndex, const StepVisual_RenderingPropertiesSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41884,33 +41837,33 @@ extern "C" void NCollection_HArray1_StepVisual_StyleContextSelect_destructor(NCo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_StyleContextSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_StyleContextSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_StyleContextSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_StyleContextSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_StyleContextSelect_length(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_StyleContextSelect_length(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_StyleContextSelect_lower(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_StyleContextSelect_lower(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_StyleContextSelect_upper(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_StyleContextSelect_upper(const NCollection_HArray1_StepVisual_StyleContextSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_value(const NCollection_HArray1_StepVisual_StyleContextSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_StyleContextSelect* NCollection_HArray1_StepVisual_StyleContextSelect_value(const NCollection_HArray1_StepVisual_StyleContextSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_StyleContextSelect_set_value(NCollection_HArray1_StepVisual_StyleContextSelect* arr, Standard_Integer theIndex, const StepVisual_StyleContextSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_StyleContextSelect_set_value(NCollection_HArray1_StepVisual_StyleContextSelect* arr, int theIndex, const StepVisual_StyleContextSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -41942,33 +41895,33 @@ extern "C" void NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_destruc
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_SurfaceStyleElementSelect(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_SurfaceStyleElementSelect* theValue) {
+extern "C" NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_ctor_int2_value(int theLower, int theUpper, const StepVisual_SurfaceStyleElementSelect* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_SurfaceStyleElementSelect(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_length(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_length(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_lower(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_lower(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_upper(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
+extern "C" int NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_upper(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_value(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_SurfaceStyleElementSelect* NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_value(const NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_set_value(NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr, Standard_Integer theIndex, const StepVisual_SurfaceStyleElementSelect* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_SurfaceStyleElementSelect_set_value(NCollection_HArray1_StepVisual_SurfaceStyleElementSelect* arr, int theIndex, const StepVisual_SurfaceStyleElementSelect* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42000,33 +41953,33 @@ extern "C" void NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_destructo
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_TessellatedEdgeOrVertex* theValue) {
+extern "C" NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_ctor_int2_value(int theLower, int theUpper, const StepVisual_TessellatedEdgeOrVertex* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_length(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_length(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_lower(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_lower(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_upper(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_upper(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_value(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_TessellatedEdgeOrVertex* NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_value(const NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_set_value(NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr, Standard_Integer theIndex, const StepVisual_TessellatedEdgeOrVertex* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex_set_value(NCollection_HArray1_StepVisual_TessellatedEdgeOrVertex* arr, int theIndex, const StepVisual_TessellatedEdgeOrVertex* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42058,33 +42011,33 @@ extern "C" void NCollection_HArray1_StepVisual_TextOrCharacter_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_HArray1_StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_StepVisual_TextOrCharacter(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const StepVisual_TextOrCharacter* theValue) {
+extern "C" NCollection_HArray1_StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_ctor_int2_value(int theLower, int theUpper, const StepVisual_TextOrCharacter* theValue) {
     auto arr = new NCollection_HArray1_StepVisual_TextOrCharacter(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TextOrCharacter_length(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TextOrCharacter_length(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TextOrCharacter_lower(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TextOrCharacter_lower(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_StepVisual_TextOrCharacter_upper(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
+extern "C" int NCollection_HArray1_StepVisual_TextOrCharacter_upper(const NCollection_HArray1_StepVisual_TextOrCharacter* arr) {
     return arr->Upper();
 }
 
-extern "C" const StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_value(const NCollection_HArray1_StepVisual_TextOrCharacter* arr, Standard_Integer theIndex) {
+extern "C" const StepVisual_TextOrCharacter* NCollection_HArray1_StepVisual_TextOrCharacter_value(const NCollection_HArray1_StepVisual_TextOrCharacter* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_StepVisual_TextOrCharacter_set_value(NCollection_HArray1_StepVisual_TextOrCharacter* arr, Standard_Integer theIndex, const StepVisual_TextOrCharacter* theItem) {
+extern "C" void NCollection_HArray1_StepVisual_TextOrCharacter_set_value(NCollection_HArray1_StepVisual_TextOrCharacter* arr, int theIndex, const StepVisual_TextOrCharacter* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42116,33 +42069,33 @@ extern "C" void NCollection_HArray1_TCollection_AsciiString_destructor(NCollecti
     delete self_;
 }
 
-extern "C" NCollection_HArray1_TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_TCollection_AsciiString(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TCollection_AsciiString* theValue) {
+extern "C" NCollection_HArray1_TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_ctor_int2_value(int theLower, int theUpper, const TCollection_AsciiString* theValue) {
     auto arr = new NCollection_HArray1_TCollection_AsciiString(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_AsciiString_length(const NCollection_HArray1_TCollection_AsciiString* arr) {
+extern "C" int NCollection_HArray1_TCollection_AsciiString_length(const NCollection_HArray1_TCollection_AsciiString* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_AsciiString_lower(const NCollection_HArray1_TCollection_AsciiString* arr) {
+extern "C" int NCollection_HArray1_TCollection_AsciiString_lower(const NCollection_HArray1_TCollection_AsciiString* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_AsciiString_upper(const NCollection_HArray1_TCollection_AsciiString* arr) {
+extern "C" int NCollection_HArray1_TCollection_AsciiString_upper(const NCollection_HArray1_TCollection_AsciiString* arr) {
     return arr->Upper();
 }
 
-extern "C" const TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_value(const NCollection_HArray1_TCollection_AsciiString* arr, Standard_Integer theIndex) {
+extern "C" const TCollection_AsciiString* NCollection_HArray1_TCollection_AsciiString_value(const NCollection_HArray1_TCollection_AsciiString* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_TCollection_AsciiString_set_value(NCollection_HArray1_TCollection_AsciiString* arr, Standard_Integer theIndex, const TCollection_AsciiString* theItem) {
+extern "C" void NCollection_HArray1_TCollection_AsciiString_set_value(NCollection_HArray1_TCollection_AsciiString* arr, int theIndex, const TCollection_AsciiString* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42174,33 +42127,33 @@ extern "C" void NCollection_HArray1_TCollection_ExtendedString_destructor(NColle
     delete self_;
 }
 
-extern "C" NCollection_HArray1_TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_TCollection_ExtendedString(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TCollection_ExtendedString* theValue) {
+extern "C" NCollection_HArray1_TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_ctor_int2_value(int theLower, int theUpper, const TCollection_ExtendedString* theValue) {
     auto arr = new NCollection_HArray1_TCollection_ExtendedString(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_ExtendedString_length(const NCollection_HArray1_TCollection_ExtendedString* arr) {
+extern "C" int NCollection_HArray1_TCollection_ExtendedString_length(const NCollection_HArray1_TCollection_ExtendedString* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_ExtendedString_lower(const NCollection_HArray1_TCollection_ExtendedString* arr) {
+extern "C" int NCollection_HArray1_TCollection_ExtendedString_lower(const NCollection_HArray1_TCollection_ExtendedString* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TCollection_ExtendedString_upper(const NCollection_HArray1_TCollection_ExtendedString* arr) {
+extern "C" int NCollection_HArray1_TCollection_ExtendedString_upper(const NCollection_HArray1_TCollection_ExtendedString* arr) {
     return arr->Upper();
 }
 
-extern "C" const TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_value(const NCollection_HArray1_TCollection_ExtendedString* arr, Standard_Integer theIndex) {
+extern "C" const TCollection_ExtendedString* NCollection_HArray1_TCollection_ExtendedString_value(const NCollection_HArray1_TCollection_ExtendedString* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_TCollection_ExtendedString_set_value(NCollection_HArray1_TCollection_ExtendedString* arr, Standard_Integer theIndex, const TCollection_ExtendedString* theItem) {
+extern "C" void NCollection_HArray1_TCollection_ExtendedString_set_value(NCollection_HArray1_TCollection_ExtendedString* arr, int theIndex, const TCollection_ExtendedString* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42232,33 +42185,33 @@ extern "C" void NCollection_HArray1_TDF_Label_destructor(NCollection_HArray1_TDF
     delete self_;
 }
 
-extern "C" NCollection_HArray1_TDF_Label* NCollection_HArray1_TDF_Label_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_TDF_Label* NCollection_HArray1_TDF_Label_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_TDF_Label(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_TDF_Label* NCollection_HArray1_TDF_Label_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TDF_Label* theValue) {
+extern "C" NCollection_HArray1_TDF_Label* NCollection_HArray1_TDF_Label_ctor_int2_value(int theLower, int theUpper, const TDF_Label* theValue) {
     auto arr = new NCollection_HArray1_TDF_Label(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TDF_Label_length(const NCollection_HArray1_TDF_Label* arr) {
+extern "C" int NCollection_HArray1_TDF_Label_length(const NCollection_HArray1_TDF_Label* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TDF_Label_lower(const NCollection_HArray1_TDF_Label* arr) {
+extern "C" int NCollection_HArray1_TDF_Label_lower(const NCollection_HArray1_TDF_Label* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TDF_Label_upper(const NCollection_HArray1_TDF_Label* arr) {
+extern "C" int NCollection_HArray1_TDF_Label_upper(const NCollection_HArray1_TDF_Label* arr) {
     return arr->Upper();
 }
 
-extern "C" const TDF_Label* NCollection_HArray1_TDF_Label_value(const NCollection_HArray1_TDF_Label* arr, Standard_Integer theIndex) {
+extern "C" const TDF_Label* NCollection_HArray1_TDF_Label_value(const NCollection_HArray1_TDF_Label* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_TDF_Label_set_value(NCollection_HArray1_TDF_Label* arr, Standard_Integer theIndex, const TDF_Label* theItem) {
+extern "C" void NCollection_HArray1_TDF_Label_set_value(NCollection_HArray1_TDF_Label* arr, int theIndex, const TDF_Label* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42290,33 +42243,33 @@ extern "C" void NCollection_HArray1_TopOpeBRep_LineInter_destructor(NCollection_
     delete self_;
 }
 
-extern "C" NCollection_HArray1_TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_TopOpeBRep_LineInter(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TopOpeBRep_LineInter* theValue) {
+extern "C" NCollection_HArray1_TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_ctor_int2_value(int theLower, int theUpper, const TopOpeBRep_LineInter* theValue) {
     auto arr = new NCollection_HArray1_TopOpeBRep_LineInter(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopOpeBRep_LineInter_length(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
+extern "C" int NCollection_HArray1_TopOpeBRep_LineInter_length(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopOpeBRep_LineInter_lower(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
+extern "C" int NCollection_HArray1_TopOpeBRep_LineInter_lower(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopOpeBRep_LineInter_upper(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
+extern "C" int NCollection_HArray1_TopOpeBRep_LineInter_upper(const NCollection_HArray1_TopOpeBRep_LineInter* arr) {
     return arr->Upper();
 }
 
-extern "C" const TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_value(const NCollection_HArray1_TopOpeBRep_LineInter* arr, Standard_Integer theIndex) {
+extern "C" const TopOpeBRep_LineInter* NCollection_HArray1_TopOpeBRep_LineInter_value(const NCollection_HArray1_TopOpeBRep_LineInter* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_TopOpeBRep_LineInter_set_value(NCollection_HArray1_TopOpeBRep_LineInter* arr, Standard_Integer theIndex, const TopOpeBRep_LineInter* theItem) {
+extern "C" void NCollection_HArray1_TopOpeBRep_LineInter_set_value(NCollection_HArray1_TopOpeBRep_LineInter* arr, int theIndex, const TopOpeBRep_LineInter* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42348,33 +42301,33 @@ extern "C" void NCollection_HArray1_TopoDS_Shape_destructor(NCollection_HArray1_
     delete self_;
 }
 
-extern "C" NCollection_HArray1_TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_TopoDS_Shape(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const TopoDS_Shape* theValue) {
+extern "C" NCollection_HArray1_TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_ctor_int2_value(int theLower, int theUpper, const TopoDS_Shape* theValue) {
     auto arr = new NCollection_HArray1_TopoDS_Shape(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopoDS_Shape_length(const NCollection_HArray1_TopoDS_Shape* arr) {
+extern "C" int NCollection_HArray1_TopoDS_Shape_length(const NCollection_HArray1_TopoDS_Shape* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopoDS_Shape_lower(const NCollection_HArray1_TopoDS_Shape* arr) {
+extern "C" int NCollection_HArray1_TopoDS_Shape_lower(const NCollection_HArray1_TopoDS_Shape* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_TopoDS_Shape_upper(const NCollection_HArray1_TopoDS_Shape* arr) {
+extern "C" int NCollection_HArray1_TopoDS_Shape_upper(const NCollection_HArray1_TopoDS_Shape* arr) {
     return arr->Upper();
 }
 
-extern "C" const TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_value(const NCollection_HArray1_TopoDS_Shape* arr, Standard_Integer theIndex) {
+extern "C" const TopoDS_Shape* NCollection_HArray1_TopoDS_Shape_value(const NCollection_HArray1_TopoDS_Shape* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_TopoDS_Shape_set_value(NCollection_HArray1_TopoDS_Shape* arr, Standard_Integer theIndex, const TopoDS_Shape* theItem) {
+extern "C" void NCollection_HArray1_TopoDS_Shape_set_value(NCollection_HArray1_TopoDS_Shape* arr, int theIndex, const TopoDS_Shape* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42406,33 +42359,33 @@ extern "C" void NCollection_HArray1_bool_destructor(NCollection_HArray1_bool* se
     delete self_;
 }
 
-extern "C" NCollection_HArray1_bool* NCollection_HArray1_bool_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_bool* NCollection_HArray1_bool_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_bool(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_bool* NCollection_HArray1_bool_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const bool* theValue) {
+extern "C" NCollection_HArray1_bool* NCollection_HArray1_bool_ctor_int2_value(int theLower, int theUpper, const bool* theValue) {
     auto arr = new NCollection_HArray1_bool(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_bool_length(const NCollection_HArray1_bool* arr) {
+extern "C" int NCollection_HArray1_bool_length(const NCollection_HArray1_bool* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_bool_lower(const NCollection_HArray1_bool* arr) {
+extern "C" int NCollection_HArray1_bool_lower(const NCollection_HArray1_bool* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_bool_upper(const NCollection_HArray1_bool* arr) {
+extern "C" int NCollection_HArray1_bool_upper(const NCollection_HArray1_bool* arr) {
     return arr->Upper();
 }
 
-extern "C" const bool* NCollection_HArray1_bool_value(const NCollection_HArray1_bool* arr, Standard_Integer theIndex) {
+extern "C" const bool* NCollection_HArray1_bool_value(const NCollection_HArray1_bool* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_bool_set_value(NCollection_HArray1_bool* arr, Standard_Integer theIndex, const bool* theItem) {
+extern "C" void NCollection_HArray1_bool_set_value(NCollection_HArray1_bool* arr, int theIndex, const bool* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42464,33 +42417,33 @@ extern "C" void NCollection_HArray1_double_destructor(NCollection_HArray1_double
     delete self_;
 }
 
-extern "C" NCollection_HArray1_double* NCollection_HArray1_double_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_double* NCollection_HArray1_double_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_double(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_double* NCollection_HArray1_double_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const double* theValue) {
+extern "C" NCollection_HArray1_double* NCollection_HArray1_double_ctor_int2_value(int theLower, int theUpper, const double* theValue) {
     auto arr = new NCollection_HArray1_double(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_double_length(const NCollection_HArray1_double* arr) {
+extern "C" int NCollection_HArray1_double_length(const NCollection_HArray1_double* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_double_lower(const NCollection_HArray1_double* arr) {
+extern "C" int NCollection_HArray1_double_lower(const NCollection_HArray1_double* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_double_upper(const NCollection_HArray1_double* arr) {
+extern "C" int NCollection_HArray1_double_upper(const NCollection_HArray1_double* arr) {
     return arr->Upper();
 }
 
-extern "C" const double* NCollection_HArray1_double_value(const NCollection_HArray1_double* arr, Standard_Integer theIndex) {
+extern "C" const double* NCollection_HArray1_double_value(const NCollection_HArray1_double* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_double_set_value(NCollection_HArray1_double* arr, Standard_Integer theIndex, const double* theItem) {
+extern "C" void NCollection_HArray1_double_set_value(NCollection_HArray1_double* arr, int theIndex, const double* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42522,33 +42475,33 @@ extern "C" void NCollection_HArray1_float_destructor(NCollection_HArray1_float* 
     delete self_;
 }
 
-extern "C" NCollection_HArray1_float* NCollection_HArray1_float_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_float* NCollection_HArray1_float_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_float(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_float* NCollection_HArray1_float_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const float* theValue) {
+extern "C" NCollection_HArray1_float* NCollection_HArray1_float_ctor_int2_value(int theLower, int theUpper, const float* theValue) {
     auto arr = new NCollection_HArray1_float(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_float_length(const NCollection_HArray1_float* arr) {
+extern "C" int NCollection_HArray1_float_length(const NCollection_HArray1_float* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_float_lower(const NCollection_HArray1_float* arr) {
+extern "C" int NCollection_HArray1_float_lower(const NCollection_HArray1_float* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_float_upper(const NCollection_HArray1_float* arr) {
+extern "C" int NCollection_HArray1_float_upper(const NCollection_HArray1_float* arr) {
     return arr->Upper();
 }
 
-extern "C" const float* NCollection_HArray1_float_value(const NCollection_HArray1_float* arr, Standard_Integer theIndex) {
+extern "C" const float* NCollection_HArray1_float_value(const NCollection_HArray1_float* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_float_set_value(NCollection_HArray1_float* arr, Standard_Integer theIndex, const float* theItem) {
+extern "C" void NCollection_HArray1_float_set_value(NCollection_HArray1_float* arr, int theIndex, const float* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42580,33 +42533,33 @@ extern "C" void NCollection_HArray1_gp_Pnt_destructor(NCollection_HArray1_gp_Pnt
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_Pnt* NCollection_HArray1_gp_Pnt_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_Pnt* NCollection_HArray1_gp_Pnt_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_Pnt(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_Pnt* NCollection_HArray1_gp_Pnt_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt* theValue) {
+extern "C" NCollection_HArray1_gp_Pnt* NCollection_HArray1_gp_Pnt_ctor_int2_value(int theLower, int theUpper, const gp_Pnt* theValue) {
     auto arr = new NCollection_HArray1_gp_Pnt(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt_length(const NCollection_HArray1_gp_Pnt* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt_length(const NCollection_HArray1_gp_Pnt* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt_lower(const NCollection_HArray1_gp_Pnt* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt_lower(const NCollection_HArray1_gp_Pnt* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt_upper(const NCollection_HArray1_gp_Pnt* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt_upper(const NCollection_HArray1_gp_Pnt* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Pnt* NCollection_HArray1_gp_Pnt_value(const NCollection_HArray1_gp_Pnt* arr, Standard_Integer theIndex) {
+extern "C" const gp_Pnt* NCollection_HArray1_gp_Pnt_value(const NCollection_HArray1_gp_Pnt* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_Pnt_set_value(NCollection_HArray1_gp_Pnt* arr, Standard_Integer theIndex, const gp_Pnt* theItem) {
+extern "C" void NCollection_HArray1_gp_Pnt_set_value(NCollection_HArray1_gp_Pnt* arr, int theIndex, const gp_Pnt* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42638,33 +42591,33 @@ extern "C" void NCollection_HArray1_gp_Pnt2d_destructor(NCollection_HArray1_gp_P
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_Pnt2d(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt2d* theValue) {
+extern "C" NCollection_HArray1_gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_ctor_int2_value(int theLower, int theUpper, const gp_Pnt2d* theValue) {
     auto arr = new NCollection_HArray1_gp_Pnt2d(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt2d_length(const NCollection_HArray1_gp_Pnt2d* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt2d_length(const NCollection_HArray1_gp_Pnt2d* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt2d_lower(const NCollection_HArray1_gp_Pnt2d* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt2d_lower(const NCollection_HArray1_gp_Pnt2d* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Pnt2d_upper(const NCollection_HArray1_gp_Pnt2d* arr) {
+extern "C" int NCollection_HArray1_gp_Pnt2d_upper(const NCollection_HArray1_gp_Pnt2d* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_value(const NCollection_HArray1_gp_Pnt2d* arr, Standard_Integer theIndex) {
+extern "C" const gp_Pnt2d* NCollection_HArray1_gp_Pnt2d_value(const NCollection_HArray1_gp_Pnt2d* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_Pnt2d_set_value(NCollection_HArray1_gp_Pnt2d* arr, Standard_Integer theIndex, const gp_Pnt2d* theItem) {
+extern "C" void NCollection_HArray1_gp_Pnt2d_set_value(NCollection_HArray1_gp_Pnt2d* arr, int theIndex, const gp_Pnt2d* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42696,33 +42649,33 @@ extern "C" void NCollection_HArray1_gp_Vec_destructor(NCollection_HArray1_gp_Vec
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_Vec* NCollection_HArray1_gp_Vec_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_Vec* NCollection_HArray1_gp_Vec_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_Vec(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_Vec* NCollection_HArray1_gp_Vec_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec* theValue) {
+extern "C" NCollection_HArray1_gp_Vec* NCollection_HArray1_gp_Vec_ctor_int2_value(int theLower, int theUpper, const gp_Vec* theValue) {
     auto arr = new NCollection_HArray1_gp_Vec(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec_length(const NCollection_HArray1_gp_Vec* arr) {
+extern "C" int NCollection_HArray1_gp_Vec_length(const NCollection_HArray1_gp_Vec* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec_lower(const NCollection_HArray1_gp_Vec* arr) {
+extern "C" int NCollection_HArray1_gp_Vec_lower(const NCollection_HArray1_gp_Vec* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec_upper(const NCollection_HArray1_gp_Vec* arr) {
+extern "C" int NCollection_HArray1_gp_Vec_upper(const NCollection_HArray1_gp_Vec* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Vec* NCollection_HArray1_gp_Vec_value(const NCollection_HArray1_gp_Vec* arr, Standard_Integer theIndex) {
+extern "C" const gp_Vec* NCollection_HArray1_gp_Vec_value(const NCollection_HArray1_gp_Vec* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_Vec_set_value(NCollection_HArray1_gp_Vec* arr, Standard_Integer theIndex, const gp_Vec* theItem) {
+extern "C" void NCollection_HArray1_gp_Vec_set_value(NCollection_HArray1_gp_Vec* arr, int theIndex, const gp_Vec* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42754,33 +42707,33 @@ extern "C" void NCollection_HArray1_gp_Vec2d_destructor(NCollection_HArray1_gp_V
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_Vec2d* NCollection_HArray1_gp_Vec2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_Vec2d* NCollection_HArray1_gp_Vec2d_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_Vec2d(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_Vec2d* NCollection_HArray1_gp_Vec2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec2d* theValue) {
+extern "C" NCollection_HArray1_gp_Vec2d* NCollection_HArray1_gp_Vec2d_ctor_int2_value(int theLower, int theUpper, const gp_Vec2d* theValue) {
     auto arr = new NCollection_HArray1_gp_Vec2d(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec2d_length(const NCollection_HArray1_gp_Vec2d* arr) {
+extern "C" int NCollection_HArray1_gp_Vec2d_length(const NCollection_HArray1_gp_Vec2d* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec2d_lower(const NCollection_HArray1_gp_Vec2d* arr) {
+extern "C" int NCollection_HArray1_gp_Vec2d_lower(const NCollection_HArray1_gp_Vec2d* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_Vec2d_upper(const NCollection_HArray1_gp_Vec2d* arr) {
+extern "C" int NCollection_HArray1_gp_Vec2d_upper(const NCollection_HArray1_gp_Vec2d* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_Vec2d* NCollection_HArray1_gp_Vec2d_value(const NCollection_HArray1_gp_Vec2d* arr, Standard_Integer theIndex) {
+extern "C" const gp_Vec2d* NCollection_HArray1_gp_Vec2d_value(const NCollection_HArray1_gp_Vec2d* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_Vec2d_set_value(NCollection_HArray1_gp_Vec2d* arr, Standard_Integer theIndex, const gp_Vec2d* theItem) {
+extern "C" void NCollection_HArray1_gp_Vec2d_set_value(NCollection_HArray1_gp_Vec2d* arr, int theIndex, const gp_Vec2d* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42812,33 +42765,33 @@ extern "C" void NCollection_HArray1_gp_XY_destructor(NCollection_HArray1_gp_XY* 
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_XY* NCollection_HArray1_gp_XY_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_XY* NCollection_HArray1_gp_XY_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_XY(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_XY* NCollection_HArray1_gp_XY_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XY* theValue) {
+extern "C" NCollection_HArray1_gp_XY* NCollection_HArray1_gp_XY_ctor_int2_value(int theLower, int theUpper, const gp_XY* theValue) {
     auto arr = new NCollection_HArray1_gp_XY(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XY_length(const NCollection_HArray1_gp_XY* arr) {
+extern "C" int NCollection_HArray1_gp_XY_length(const NCollection_HArray1_gp_XY* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XY_lower(const NCollection_HArray1_gp_XY* arr) {
+extern "C" int NCollection_HArray1_gp_XY_lower(const NCollection_HArray1_gp_XY* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XY_upper(const NCollection_HArray1_gp_XY* arr) {
+extern "C" int NCollection_HArray1_gp_XY_upper(const NCollection_HArray1_gp_XY* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_XY* NCollection_HArray1_gp_XY_value(const NCollection_HArray1_gp_XY* arr, Standard_Integer theIndex) {
+extern "C" const gp_XY* NCollection_HArray1_gp_XY_value(const NCollection_HArray1_gp_XY* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_XY_set_value(NCollection_HArray1_gp_XY* arr, Standard_Integer theIndex, const gp_XY* theItem) {
+extern "C" void NCollection_HArray1_gp_XY_set_value(NCollection_HArray1_gp_XY* arr, int theIndex, const gp_XY* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42870,33 +42823,33 @@ extern "C" void NCollection_HArray1_gp_XYZ_destructor(NCollection_HArray1_gp_XYZ
     delete self_;
 }
 
-extern "C" NCollection_HArray1_gp_XYZ* NCollection_HArray1_gp_XYZ_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_gp_XYZ* NCollection_HArray1_gp_XYZ_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_gp_XYZ(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_gp_XYZ* NCollection_HArray1_gp_XYZ_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XYZ* theValue) {
+extern "C" NCollection_HArray1_gp_XYZ* NCollection_HArray1_gp_XYZ_ctor_int2_value(int theLower, int theUpper, const gp_XYZ* theValue) {
     auto arr = new NCollection_HArray1_gp_XYZ(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XYZ_length(const NCollection_HArray1_gp_XYZ* arr) {
+extern "C" int NCollection_HArray1_gp_XYZ_length(const NCollection_HArray1_gp_XYZ* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XYZ_lower(const NCollection_HArray1_gp_XYZ* arr) {
+extern "C" int NCollection_HArray1_gp_XYZ_lower(const NCollection_HArray1_gp_XYZ* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_gp_XYZ_upper(const NCollection_HArray1_gp_XYZ* arr) {
+extern "C" int NCollection_HArray1_gp_XYZ_upper(const NCollection_HArray1_gp_XYZ* arr) {
     return arr->Upper();
 }
 
-extern "C" const gp_XYZ* NCollection_HArray1_gp_XYZ_value(const NCollection_HArray1_gp_XYZ* arr, Standard_Integer theIndex) {
+extern "C" const gp_XYZ* NCollection_HArray1_gp_XYZ_value(const NCollection_HArray1_gp_XYZ* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_gp_XYZ_set_value(NCollection_HArray1_gp_XYZ* arr, Standard_Integer theIndex, const gp_XYZ* theItem) {
+extern "C" void NCollection_HArray1_gp_XYZ_set_value(NCollection_HArray1_gp_XYZ* arr, int theIndex, const gp_XYZ* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 
@@ -42928,33 +42881,33 @@ extern "C" void NCollection_HArray1_int_destructor(NCollection_HArray1_int* self
     delete self_;
 }
 
-extern "C" NCollection_HArray1_int* NCollection_HArray1_int_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
+extern "C" NCollection_HArray1_int* NCollection_HArray1_int_ctor_int2(int theLower, int theUpper) {
     return new NCollection_HArray1_int(theLower, theUpper);
 }
 
-extern "C" NCollection_HArray1_int* NCollection_HArray1_int_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const int* theValue) {
+extern "C" NCollection_HArray1_int* NCollection_HArray1_int_ctor_int2_value(int theLower, int theUpper, const int* theValue) {
     auto arr = new NCollection_HArray1_int(theLower, theUpper);
     arr->Init(*theValue);
     return arr;
 }
 
-extern "C" Standard_Integer NCollection_HArray1_int_length(const NCollection_HArray1_int* arr) {
+extern "C" int NCollection_HArray1_int_length(const NCollection_HArray1_int* arr) {
     return arr->Length();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_int_lower(const NCollection_HArray1_int* arr) {
+extern "C" int NCollection_HArray1_int_lower(const NCollection_HArray1_int* arr) {
     return arr->Lower();
 }
 
-extern "C" Standard_Integer NCollection_HArray1_int_upper(const NCollection_HArray1_int* arr) {
+extern "C" int NCollection_HArray1_int_upper(const NCollection_HArray1_int* arr) {
     return arr->Upper();
 }
 
-extern "C" const int* NCollection_HArray1_int_value(const NCollection_HArray1_int* arr, Standard_Integer theIndex) {
+extern "C" const int* NCollection_HArray1_int_value(const NCollection_HArray1_int* arr, int theIndex) {
     return &arr->Value(theIndex);
 }
 
-extern "C" void NCollection_HArray1_int_set_value(NCollection_HArray1_int* arr, Standard_Integer theIndex, const int* theItem) {
+extern "C" void NCollection_HArray1_int_set_value(NCollection_HArray1_int* arr, int theIndex, const int* theItem) {
     arr->SetValue(theIndex, *theItem);
 }
 

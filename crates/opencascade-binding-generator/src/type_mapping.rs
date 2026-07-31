@@ -19,6 +19,38 @@ pub fn handle_type_name(cpp_name: &str) -> String {
     format!("Handle_{}", cpp_name.replace("::", "_"))
 }
 
+/// The small, fixed set of OCCT classes whose classic `Handle_X` typedef is
+/// `Standard_DEPRECATED`. These are the classes declared with
+/// `DEFINE_STANDARD_HANDLE` (which emits a deprecated `Handle_X` typedef) rather
+/// than the usual `DEFINE_STANDARD_RTTIEXT` (which emits no `Handle_X` at all, so
+/// the generator's own typedef is the sole, non-deprecated definition).
+///
+/// As of OCCT 8.0 these are the only three such classes in the public headers
+/// (`grep -rl DEFINE_STANDARD_HANDLE target/OCCT/include/*.hxx`, excluding the
+/// macro definition in `Standard_Handle.hxx`). If a future OCCT bump adds more,
+/// they will resume warning until added here; re-run that grep to refresh.
+pub fn handle_typedef_is_deprecated(cpp_name: &str) -> bool {
+    matches!(
+        cpp_name,
+        "Standard_Type" | "math_NotSquare" | "math_SingularMatrix"
+    )
+}
+
+/// C++ type spelling for a handle to `cpp_name`, for use in generated wrapper
+/// bodies. Normally this is the classic `Handle_X` typedef (readable, and defined
+/// by the generator for every handle-able class). For the few classes whose
+/// `Handle_X` typedef OCCT marks `Standard_DEPRECATED` (see
+/// [`handle_typedef_is_deprecated`]), it returns the canonical
+/// `opencascade::handle<X>` form instead — an ABI-identical spelling that avoids
+/// `-Wdeprecated-declarations`. FFI *symbol* names keep using [`handle_type_name`].
+pub fn handle_cpp_type(cpp_name: &str) -> String {
+    if handle_typedef_is_deprecated(cpp_name) {
+        format!("opencascade::handle<{}>", cpp_name)
+    } else {
+        handle_type_name(cpp_name)
+    }
+}
+
 /// Lowercase variant used for parameter names.
 pub fn handle_param_name(cpp_name: &str) -> String {
     format!("handle{}", cpp_name.to_lowercase().replace("::", "").replace('_', ""))

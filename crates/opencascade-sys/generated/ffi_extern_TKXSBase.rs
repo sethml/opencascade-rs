@@ -25759,50 +25759,6 @@ unsafe extern "C" {
     pub fn Transfer_SimpleBinderOfTransient_inherited_Delete(
         self_: *const Transfer_SimpleBinderOfTransient,
     ) -> *const std::ffi::c_char;
-    // ======================== Transfer_TransferDeadLoop ========================
-    pub fn Transfer_TransferDeadLoop_destructor(self_: *mut Transfer_TransferDeadLoop);
-    /// **Source:** `Transfer_TransferDeadLoop.hxx`:37 - `Transfer_TransferDeadLoop::Transfer_TransferDeadLoop()`
-    pub fn Transfer_TransferDeadLoop_ctor_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Transfer_TransferDeadLoop>;
-    /// **Source:** `Transfer_TransferDeadLoop.hxx`:37 - `Transfer_TransferDeadLoop::Transfer_TransferDeadLoop()`
-    pub fn Transfer_TransferDeadLoop_ctor_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut Transfer_TransferDeadLoop>;
-    /// **Source:** `Transfer_TransferDeadLoop.hxx`:37 - `Transfer_TransferDeadLoop::ExceptionType()`
-    pub fn Transfer_TransferDeadLoop_exception_type(
-        self_: *const Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// Upcast Transfer_TransferDeadLoop to Transfer_TransferFailure
-    pub fn Transfer_TransferDeadLoop_as_Transfer_TransferFailure(
-        self_: *const Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*const Transfer_TransferFailure>;
-    /// Upcast Transfer_TransferDeadLoop to Transfer_TransferFailure (mutable)
-    pub fn Transfer_TransferDeadLoop_as_Transfer_TransferFailure_mut(
-        self_: *mut Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*mut Transfer_TransferFailure>;
-    /// Upcast Transfer_TransferDeadLoop to Interface_InterfaceError
-    pub fn Transfer_TransferDeadLoop_as_Interface_InterfaceError(
-        self_: *const Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*const Interface_InterfaceError>;
-    /// Upcast Transfer_TransferDeadLoop to Interface_InterfaceError (mutable)
-    pub fn Transfer_TransferDeadLoop_as_Interface_InterfaceError_mut(
-        self_: *mut Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*mut Interface_InterfaceError>;
-    /// Upcast Transfer_TransferDeadLoop to Standard_Failure
-    pub fn Transfer_TransferDeadLoop_as_Standard_Failure(
-        self_: *const Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*const Standard_Failure>;
-    /// Upcast Transfer_TransferDeadLoop to Standard_Failure (mutable)
-    pub fn Transfer_TransferDeadLoop_as_Standard_Failure_mut(
-        self_: *mut Transfer_TransferDeadLoop,
-    ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
-    pub fn Transfer_TransferDeadLoop_inherited_Print(
-        self_: *const Transfer_TransferDeadLoop,
-        theStream: *mut Standard_OStream,
-    ) -> *const std::ffi::c_char;
     // ======================== Transfer_TransferDispatch ========================
     pub fn Transfer_TransferDispatch_destructor(self_: *mut Transfer_TransferDispatch);
     /// **Source:** `Transfer_TransferDispatch.hxx`:53 - `Transfer_TransferDispatch::Transfer_TransferDispatch()`

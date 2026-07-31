@@ -8773,42 +8773,6 @@ unsafe extern "C" {
         self_: *const Standard_MultiplyDefined,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    // ======================== Standard_Mutex ========================
-    pub fn Standard_Mutex_destructor(self_: *mut Standard_Mutex);
-    /// **Source:** `Standard_Mutex.hxx`:141 - `Standard_Mutex::Standard_Mutex()`
-    pub fn Standard_Mutex_ctor() -> crate::OcctResult<*mut Standard_Mutex>;
-    /// **Source:** `Standard_Mutex.hxx`:148 - `Standard_Mutex::Lock()`
-    pub fn Standard_Mutex_lock(self_: *mut Standard_Mutex) -> *const std::ffi::c_char;
-    /// **Source:** `Standard_Mutex.hxx`:153 - `Standard_Mutex::TryLock()`
-    pub fn Standard_Mutex_try_lock(self_: *mut Standard_Mutex) -> crate::OcctResult<bool>;
-    /// **Source:** `Standard_Mutex.hxx`:156 - `Standard_Mutex::Unlock()`
-    pub fn Standard_Mutex_unlock(self_: *mut Standard_Mutex) -> *const std::ffi::c_char;
-    /// Upcast Standard_Mutex to Standard_ErrorHandler_Callback
-    pub fn Standard_Mutex_as_Standard_ErrorHandler_Callback(
-        self_: *const Standard_Mutex,
-    ) -> crate::OcctResult<*const Standard_ErrorHandler_Callback>;
-    /// Upcast Standard_Mutex to Standard_ErrorHandler_Callback (mutable)
-    pub fn Standard_Mutex_as_Standard_ErrorHandler_Callback_mut(
-        self_: *mut Standard_Mutex,
-    ) -> crate::OcctResult<*mut Standard_ErrorHandler_Callback>;
-    /// Inherited: **Source:** `Standard_ErrorHandler.hxx`:198 - `Standard_ErrorHandler::Callback::RegisterCallback()`
-    pub fn Standard_Mutex_inherited_RegisterCallback(
-        self_: *mut Standard_Mutex,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_ErrorHandler.hxx`:205 - `Standard_ErrorHandler::Callback::UnregisterCallback()`
-    pub fn Standard_Mutex_inherited_UnregisterCallback(
-        self_: *mut Standard_Mutex,
-    ) -> *const std::ffi::c_char;
-    // ======================== Standard_Mutex_Sentry ========================
-    pub fn Standard_Mutex_Sentry_destructor(self_: *mut Standard_Mutex_Sentry);
-    /// **Source:** `Standard_Mutex.hxx`:87 - `Standard_Mutex_Sentry::Standard_Mutex_Sentry()`
-    pub fn Standard_Mutex_Sentry_ctor_mutex(
-        theMutex: *mut Standard_Mutex,
-    ) -> crate::OcctResult<*mut Standard_Mutex_Sentry>;
-    /// **Source:** `Standard_Mutex.hxx`:95 - `Standard_Mutex_Sentry::Standard_Mutex_Sentry()`
-    pub fn Standard_Mutex_Sentry_ctor_mutexptr(
-        theMutex: *mut Standard_Mutex,
-    ) -> crate::OcctResult<*mut Standard_Mutex_Sentry>;
     // ======================== Standard_NegativeValue ========================
     pub fn Standard_NegativeValue_destructor(self_: *mut Standard_NegativeValue);
     /// **Source:** `Standard_NegativeValue.hxx`:32 - `Standard_NegativeValue::Standard_NegativeValue()`

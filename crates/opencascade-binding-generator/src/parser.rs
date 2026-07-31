@@ -737,6 +737,18 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
         return Vec::new();
     }
 
+    // Skip classes marked Standard_DEPRECATED, matching the existing policy for
+    // deprecated functions/constructors/methods. Returning early also drops any
+    // nested classes (e.g. Standard_Mutex::Sentry), which are deprecated with
+    // their parent. Binding these emits -Wdeprecated-declarations warnings for
+    // types OCCT no longer uses itself and that no other header references.
+    if entity.get_availability() == Availability::Deprecated {
+        if verbose {
+            println!("    Skipping {} (deprecated class)", name);
+        }
+        return Vec::new();
+    }
+
     // Skip template classes and template specializations
     // Template classes have get_template() returning Some, or get_template_kind() returning Some
     // Also skip if the display name contains angle brackets (indicates template instantiation)

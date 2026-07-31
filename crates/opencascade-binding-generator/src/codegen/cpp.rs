@@ -744,7 +744,10 @@ pub fn generate_wrappers(
         sorted_tmpls.sort_by_key(|(k, _)| (*k).clone());
         for (spelling, _inst) in &sorted_tmpls {
             let alias = crate::config::template_alias_name(spelling);
-            writeln!(output, "typedef {} {};", spelling, alias).unwrap();
+            // Canonicalize deprecated primitive aliases (e.g. Standard_Boolean → bool)
+            // in the C++ template spelling; `alias` (the FFI name) is left unchanged.
+            let cpp = super::collections::canonicalize_cpp_spelling(spelling);
+            writeln!(output, "typedef {} {};", cpp, alias).unwrap();
         }
         writeln!(output).unwrap();
     }
@@ -763,20 +766,24 @@ pub fn generate_wrappers(
         }
         writeln!(output).unwrap();
 
-        // Handle type destructors, clone, and is_null functions
+        // Handle type destructors, clone, and is_null functions.
+        // `handle_name` is the FFI symbol prefix (Handle_X); `handle_cty` is the C++
+        // type spelling, which is the canonical `opencascade::handle<X>` for classes
+        // whose `Handle_X` typedef OCCT deprecates (see handle_cpp_type).
         writeln!(output, "// Handle type destructors, clone, and is_null functions").unwrap();
-        for (_inner_class, handle_name) in &handle_types {
+        for (inner_class, handle_name) in &handle_types {
+            let handle_cty = crate::type_mapping::handle_cpp_type(inner_class);
             writeln!(
                 output,
                 "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}",
-                handle_name, handle_name
+                handle_name, handle_cty
             )
             .unwrap();
-            writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_name, handle_name, handle_name).unwrap();
-            writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_name).unwrap();
+            writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_cty, handle_name, handle_cty).unwrap();
+            writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_cty).unwrap();
             writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
             writeln!(output, "}}").unwrap();
-            writeln!(output, "extern \"C\" bool {}_is_null(const {}* self_) {{ return self_->IsNull(); }}", handle_name, handle_name).unwrap();
+            writeln!(output, "extern \"C\" bool {}_is_null(const {}* self_) {{ return self_->IsNull(); }}", handle_name, handle_cty).unwrap();
         }
         writeln!(output).unwrap();
     }
@@ -860,7 +867,10 @@ pub fn generate_preamble(
         writeln!(output, "// Template instantiation aliases").unwrap();
         for (spelling, _inst) in &sorted_tmpls {
             let alias = crate::config::template_alias_name(spelling);
-            writeln!(output, "typedef {} {};", spelling, alias).unwrap();
+            // Canonicalize deprecated primitive aliases (e.g. Standard_Boolean → bool)
+            // in the C++ template spelling; `alias` (the FFI name) is left unchanged.
+            let cpp = super::collections::canonicalize_cpp_spelling(spelling);
+            writeln!(output, "typedef {} {};", cpp, alias).unwrap();
         }
         writeln!(output).unwrap();
     }
@@ -991,12 +1001,16 @@ pub fn generate_wrappers_for_group(
         writeln!(output, "// Handle type destructors, clone, and is_null functions").unwrap();
         for (inner_class, handle_name) in &handle_types {
             if own_class_names.contains(inner_class) && !handle_collection_types.contains(inner_class.as_str()) {
-                writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", handle_name, handle_name).unwrap();
-                writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_name, handle_name, handle_name).unwrap();
-                writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_name).unwrap();
+                // `handle_name` is the FFI symbol prefix; `handle_cty` is the C++ type
+                // spelling (canonical `opencascade::handle<X>` for classes whose
+                // Handle_X typedef OCCT deprecates, e.g. Standard_Type).
+                let handle_cty = crate::type_mapping::handle_cpp_type(inner_class);
+                writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", handle_name, handle_cty).unwrap();
+                writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_cty, handle_name, handle_cty).unwrap();
+                writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_cty).unwrap();
                 writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
                 writeln!(output, "}}").unwrap();
-                writeln!(output, "extern \"C\" bool {}_is_null(const {}* self_) {{ return self_->IsNull(); }}", handle_name, handle_name).unwrap();
+                writeln!(output, "extern \"C\" bool {}_is_null(const {}* self_) {{ return self_->IsNull(); }}", handle_name, handle_cty).unwrap();
             }
         }
         writeln!(output).unwrap();

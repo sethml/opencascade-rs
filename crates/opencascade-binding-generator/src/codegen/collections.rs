@@ -224,6 +224,57 @@ pub fn is_primitive_element(cpp_type: &str) -> bool {
     )
 }
 
+/// Maps a deprecated OCCT primitive type alias to its canonical C++ spelling
+/// (e.g. `Standard_Boolean` → `bool`), returning the input unchanged for anything
+/// that is not a deprecated scalar alias.
+///
+/// This is applied only to the *C++ type spelling* emitted in wrapper bodies. The
+/// FFI symbol names (`typedef_name`, `handle_name`, overload suffix tokens) and the
+/// Rust element type are derived separately from the original spelling, so the
+/// binding surface is unchanged — this only keeps the generated C++ free of
+/// `-Wdeprecated-declarations` warnings. Every alias here is `Standard_DEPRECATED`
+/// in `Standard_TypeDef.hxx` and is an exact `typedef` for the canonical type, so
+/// substitution is ABI-identical.
+pub fn canonical_cpp_primitive(cpp_type: &str) -> &str {
+    match cpp_type {
+        "Standard_Integer" => "int",
+        "Standard_UInteger" => "unsigned int",
+        "Standard_Real" => "double",
+        "Standard_Boolean" => "bool",
+        "Standard_ShortReal" => "float",
+        "Standard_Character" => "char",
+        "Standard_Byte" => "uint8_t",
+        "Standard_Utf8Char" => "char",
+        "Standard_Utf8UChar" => "unsigned char",
+        "Standard_ExtCharacter" => "char16_t",
+        "Standard_Utf16Char" => "char16_t",
+        "Standard_Utf32Char" => "char32_t",
+        "Standard_WideChar" => "wchar_t",
+        "Standard_Size" => "size_t",
+        other => other,
+    }
+}
+
+/// Replace deprecated OCCT primitive aliases with their canonical C++ spellings
+/// inside a full template spelling (e.g. `NCollection_HArray1<Standard_Boolean>` →
+/// `NCollection_HArray1<bool>`). Matches only whole identifier tokens, so mangled
+/// FFI names like `NCollection_HArray1_Standard_Boolean` (where the alias is joined
+/// by `_`) are never touched — `\b` treats `_` as a word character.
+pub fn canonicalize_cpp_spelling(spelling: &str) -> String {
+    use std::sync::OnceLock;
+    static RE: OnceLock<regex::Regex> = OnceLock::new();
+    let re = RE.get_or_init(|| {
+        regex::Regex::new(
+            r"\b(Standard_Integer|Standard_UInteger|Standard_Real|Standard_Boolean|Standard_ShortReal|Standard_Character|Standard_Byte|Standard_Utf8Char|Standard_Utf8UChar|Standard_ExtCharacter|Standard_Utf16Char|Standard_Utf32Char|Standard_WideChar|Standard_Size)\b",
+        )
+        .unwrap()
+    });
+    re.replace_all(spelling, |caps: &regex::Captures| {
+        canonical_cpp_primitive(&caps[1]).to_string()
+    })
+    .into_owned()
+}
+
 /// Helper to extract module name from a type (e.g., "topo_ds" from "TopoDS_Shape")
 fn type_to_module(type_name: &str) -> String {
     if let Some(underscore_pos) = type_name.find('_') {
@@ -387,15 +438,19 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     
     let typedef_name = &info.typedef_name;
     let short_name = &info.short_name;
-    let element_type = &info.element_type;
-    
+    // Canonicalize deprecated OCCT primitive aliases (e.g. Standard_Boolean → bool)
+    // in the emitted C++ *type spellings* only. `typedef_name`/`short_name` and the
+    // Rust element type keep the original spelling, so the FFI surface is unchanged.
+    let element_type = canonical_cpp_primitive(&info.element_type);
+    let cpp_spelling = canonicalize_cpp_spelling(&info.cpp_spelling);
+
     output.push_str("// ========================\n");
     output.push_str(&format!("// {} - {}\n", typedef_name, collection_kind_description(info.kind)));
     output.push_str("// ========================\n\n");
 
     // Bridge the mangled canonical identifier to the C++ template spelling so the
     // rest of the generation (which uses `typedef_name`) refers to the real type.
-    output.push_str(&format!("typedef {} {typedef_name};\n\n", info.cpp_spelling));
+    output.push_str(&format!("typedef {} {typedef_name};\n\n", cpp_spelling));
 
     // Constructor
     output.push_str(&format!(
@@ -424,11 +479,11 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
             generate_cpp_indexed_collection(&mut output, typedef_name, short_name, element_type, info.kind);
         }
         CollectionKind::DataMap => {
-            let value_type = info.value_type.as_ref().expect("DataMap must have value_type");
+            let value_type = canonical_cpp_primitive(info.value_type.as_ref().expect("DataMap must have value_type"));
             generate_cpp_data_map_collection(&mut output, typedef_name, short_name, element_type, value_type);
         }
         CollectionKind::IndexedDataMap => {
-            let value_type = info.value_type.as_ref().expect("IndexedDataMap must have value_type");
+            let value_type = canonical_cpp_primitive(info.value_type.as_ref().expect("IndexedDataMap must have value_type"));
             generate_cpp_indexed_data_map_collection(&mut output, typedef_name, short_name, element_type, value_type);
         }
         CollectionKind::Array1 | CollectionKind::HArray1 => {
@@ -442,7 +497,7 @@ pub fn generate_cpp_collection(info: &CollectionInfo) -> String {
     // Handle-managed collections (HArray1/HSequence) also expose to_handle (wrap an
     // owned collection pointer in an OCCT Handle) and get/get_mut (borrow the pointee).
     if info.kind.is_handle() {
-        let handle_ctype = format!("opencascade::handle<{}>", info.cpp_spelling);
+        let handle_ctype = format!("opencascade::handle<{}>", cpp_spelling);
         let handle_name = crate::type_mapping::handle_type_name(typedef_name);
         output.push_str(&format!(
             "extern \"C\" {handle_ctype}* {typedef_name}_to_handle({typedef_name}* self_) {{\n"
@@ -945,7 +1000,7 @@ fn generate_cpp_array1_collection(
 ) {
     // Constructor with bounds
     output.push_str(&format!(
-        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2(int theLower, int theUpper) {{\n"
     ));
     output.push_str(&format!(
         "    return new {typedef_name}(theLower, theUpper);\n"
@@ -954,7 +1009,7 @@ fn generate_cpp_array1_collection(
 
     // Constructor with bounds and init value
     output.push_str(&format!(
-        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const {element_type}* theValue) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int2_value(int theLower, int theUpper, const {element_type}* theValue) {{\n"
     ));
     output.push_str(&format!(
         "    auto arr = new {typedef_name}(theLower, theUpper);\n"
@@ -965,35 +1020,35 @@ fn generate_cpp_array1_collection(
 
     // Length
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_length(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_length(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->Length();\n");
     output.push_str("}\n\n");
 
     // Lower bound
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_lower(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_lower(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->Lower();\n");
     output.push_str("}\n\n");
 
     // Upper bound
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_upper(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_upper(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->Upper();\n");
     output.push_str("}\n\n");
 
     // Value (const pointer return)
     output.push_str(&format!(
-        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, Standard_Integer theIndex) {{\n"
+        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, int theIndex) {{\n"
     ));
     output.push_str("    return &arr->Value(theIndex);\n");
     output.push_str("}\n\n");
 
     // SetValue
     output.push_str(&format!(
-        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, Standard_Integer theIndex, const {element_type}* theItem) {{\n"
+        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, int theIndex, const {element_type}* theItem) {{\n"
     ));
     output.push_str("    arr->SetValue(theIndex, *theItem);\n");
     output.push_str("}\n\n");
@@ -1014,7 +1069,7 @@ fn generate_cpp_array2_collection(
 ) {
     // Constructor with row/col bounds
     output.push_str(&format!(
-        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4(int theRowLower, int theRowUpper, int theColLower, int theColUpper) {{\n"
     ));
     output.push_str(&format!(
         "    return new {typedef_name}(theRowLower, theRowUpper, theColLower, theColUpper);\n"
@@ -1023,7 +1078,7 @@ fn generate_cpp_array2_collection(
 
     // Constructor with row/col bounds and init value
     output.push_str(&format!(
-        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const {element_type}* theValue) {{\n"
+        "extern \"C\" {typedef_name}* {typedef_name}_ctor_int4_value(int theRowLower, int theRowUpper, int theColLower, int theColUpper, const {element_type}* theValue) {{\n"
     ));
     output.push_str(&format!(
         "    auto arr = new {typedef_name}(theRowLower, theRowUpper, theColLower, theColUpper);\n"
@@ -1034,63 +1089,63 @@ fn generate_cpp_array2_collection(
 
     // NbRows
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_nb_rows(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_nb_rows(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->NbRows();\n");
     output.push_str("}\n\n");
 
     // NbColumns
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_nb_columns(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_nb_columns(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->NbColumns();\n");
     output.push_str("}\n\n");
 
     // LowerRow
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_lower_row(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_lower_row(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->LowerRow();\n");
     output.push_str("}\n\n");
 
     // UpperRow
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_upper_row(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_upper_row(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->UpperRow();\n");
     output.push_str("}\n\n");
 
     // LowerCol
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_lower_col(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_lower_col(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->LowerCol();\n");
     output.push_str("}\n\n");
 
     // UpperCol
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_upper_col(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_upper_col(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->UpperCol();\n");
     output.push_str("}\n\n");
 
     // Length (total elements)
     output.push_str(&format!(
-        "extern \"C\" Standard_Integer {typedef_name}_length(const {typedef_name}* arr) {{\n"
+        "extern \"C\" int {typedef_name}_length(const {typedef_name}* arr) {{\n"
     ));
     output.push_str("    return arr->Length();\n");
     output.push_str("}\n\n");
 
     // Value (const pointer return, row/col indexed)
     output.push_str(&format!(
-        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, Standard_Integer theRow, Standard_Integer theCol) {{\n"
+        "extern \"C\" const {element_type}* {typedef_name}_value(const {typedef_name}* arr, int theRow, int theCol) {{\n"
     ));
     output.push_str("    return &arr->Value(theRow, theCol);\n");
     output.push_str("}\n\n");
 
     // SetValue
     output.push_str(&format!(
-        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, Standard_Integer theRow, Standard_Integer theCol, const {element_type}* theItem) {{\n"
+        "extern \"C\" void {typedef_name}_set_value({typedef_name}* arr, int theRow, int theCol, const {element_type}* theItem) {{\n"
     ));
     output.push_str("    arr->SetValue(theRow, theCol, *theItem);\n");
     output.push_str("}\n\n");
